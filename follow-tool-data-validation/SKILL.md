@@ -1,6 +1,6 @@
 ---
 name: follow-tool-data-validation
-description: ใช้งาน validator ใน project สำหรับ data, forms, API payloads, และ schemas
+description: Use a validator in the project for data, forms, API payloads, and schemas
 argument-hint: "[scope]"
 related:
   - follow-tool-linter
@@ -11,110 +11,110 @@ related:
 
 ## Goal
 
-ใช้งาน validator ใน project เพื่อตรวจสอบ data, forms, API payloads, และ schemas อย่าง type-safe และ consistent
+Use a validator in the project to check data, forms, API payloads, and schemas in a type-safe, consistent way
 
 ## Scope
 
-ใช้สำหรับ projects ที่ต้อง validate input ทั้งภายนอก (API, forms, CLI args) และภายใน (function arguments, config) รองรับ TypeScript, Rust, Python, Go
+Use for projects that must validate both external input (API, forms, CLI args) and internal input (function arguments, config) — supports TypeScript, Rust, Python, Go
 
-- Boundary: skill นี้ครอบคลุม runtime/schema validation เท่านั้น — code style/syntax ใช้ `/follow-tool-linter`; zod deep-dive ใช้ `/follow-lib-zod`
+- Boundary: this skill covers runtime/schema validation only — code style/syntax uses `/follow-tool-linter`; the zod deep-dive uses `/follow-lib-zod`
 
 ## Execute
 
 ### 1. Select Validator
 
-> Goal: เลือก validator ตาม tech stack
+> Goal: pick the validator per tech stack
 
-1. ตรวจสอบ tech stack ของ project
-2. เลือก validator ตามความเหมาะสม:
+1. Check the project's tech stack
+2. Choose a validator as appropriate:
    - TypeScript/JavaScript: zod (`^4.x` — latest `4.6.4`, verified 2026-09-13), valibot, arktype, yup, joi, class-validator
    - Rust: validator crate, garde, serde_json schema
    - Python: pydantic, marshmallow, cerberus
    - Go: go-playground/validator, govalidator
-3. ถ้ามี existing schemas อยู่แล้ว → ใช้ตัวเดิม ถ้าไม่มี → เลือกตาม ecosystem ที่แนะนำ
+3. If existing schemas are present → keep using them; if not → pick the ecosystem-recommended one
 
 ### 2. Define Schemas
 
-> Goal: กำหนด validation schemas สำหรับทุก input
+> Goal: define validation schemas for every input
 
-1. สร้าง schema สำหรับแต่ละ domain model / DTO / form
-2. ใช้ type inference จาก validator ถ้ามี (เช่น `z.infer<typeof Schema>`)
-3. กำหนด custom error messages ทีอ่านง่าย (zod 4 ใช้ `error` param แทน `message`/`invalid_type_error`)
-4. แยก schema ไฟล์ตาม domain/feature ไม่รวมทั้งหมดในไฟล์เดียว
-5. ถ้า schema ใช้ซ้ำหลายที → สร้าง shared schema แล้ว compose
+1. Create a schema per domain model / DTO / form
+2. Use type inference from the validator when available (e.g. `z.infer<typeof Schema>`)
+3. Define custom error messages that read well (zod 4 uses the `error` param instead of `message`/`invalid_type_error`)
+4. Split schema files by domain/feature — do not put everything in one file
+5. If a schema is reused often → create a shared schema and compose
 
 ### 3. Validate In Code
 
-> Goal: เรียกใช้ validator ในจุดที่เหมาะสม
+> Goal: call the validator at the right points
 
-1. ใช้ validation ในขั้น boundary: API handler, controller, CLI input, form submit
-2. ไม่ validate ซ้ำซ้อนภายใน business logic
-3. แปลง validation error เป็น domain error ที caller เข้าใจ
-4. ใช้ `parse`/`safeParse` หรือ equivalent ตาม library
-5. ถ้า validation fail → throw หรือ return structured error ทีระบุ field
+1. Validate at the boundary: API handler, controller, CLI input, form submit
+2. Do not re-validate inside business logic
+3. Convert validation errors into domain errors the caller understands
+4. Use `parse`/`safeParse` or the library's equivalent
+5. On validation failure → throw or return a structured error naming the field
 
 ### 4. Handle Errors
 
-> Goal: จัดการ validation errors อย่างสม่ำเสมอ
+> Goal: handle validation errors consistently
 
-1. สร้าง error format มาตรฐาน: `{ field, message, code }`
-2. ใช้ `flatten` หรือ `formatError` ของ library ถ้ามี
-3. ถ้า API → ส่ง 400 พร้อม field-level errors
-4. ถ้า CLI → แสดง readable message แล้ว exit ด้วย non-zero
-5. ถ้า form → bind error กลับไปยัง field
+1. Create a standard error format: `{ field, message, code }`
+2. Use the library's `flatten` or `formatError` when available
+3. For an API → return 400 with field-level errors
+4. For a CLI → show a readable message and exit non-zero
+5. For a form → bind the error back to the field
 
 ### 5. Test Validation
 
-> Goal: ทดสอบ schemas และ error cases
+> Goal: test the schemas and error cases
 
-1. ทำ `/update-tests` สำหรับ happy path, invalid type, missing field, edge cases
-2. ทดสอบ custom error messages
-3. ทดสอบ schema composition/refinement
-4. รัน `/run-test` เพื่อ verify
+1. Run `/update-tests` for the happy path, invalid types, missing fields, and edge cases
+2. Test the custom error messages
+3. Test schema composition/refinement
+4. Run `/run-test` to verify
 
 ## Rules
 
 ### 1. Type Safety
 
-- ใช้ type inference จาก validator เมื่อทำได้
-- ไม่ใช้ `any` สำหรับ validated data
-- แยก domain types ออกจาก schema types ถ้าจำเป็น
+- Use type inference from the validator whenever possible
+- Never use `any` for validated data
+- Separate domain types from schema types when needed
 
 ### 2. Single Source Of Truth
 
-- ห้าม duplicate schema logic หลายที
-- ใช้ schema composition แทนการ copy-paste
-- shared schema อยู่ใน `shared/schemas/` หรือ `domain/schemas/`
+- Never duplicate schema logic in several places
+- Use schema composition instead of copy-paste
+- Shared schemas live in `shared/schemas/` or `domain/schemas/`
 
 ### 3. Error Clarity
 
-- error message ต้องบอก field, expected value, และ actual value ถ้าได้
-- ใช้ error code เพื่อ handle ใน caller
-- ไม่ expose internal detail ทีอาจเปลี่ยนแปลง
+- An error message must state the field, the expected value, and the actual value when available
+- Use error codes so callers can handle them
+- Do not expose internal details that may change
 
 ### 4. No Validation In Business Logic
 
-- business logic รับ input ที่ validated แล้ว
-- ถ้าต้อง validate ใน business logic → ควรย้ายไป schema layer
-- ห้ามใช้ manual `if (!x) throw` แทน schema validation
+- Business logic receives already-validated input
+- If business logic must validate → the rule should move to the schema layer
+- Never use manual `if (!x) throw` in place of schema validation
 
-- ใช้ /follow-tool-linter ถ้าจำเป็น
-- ใช้ /follow-lib-zod ถ้าจำเป็น
-- ใช้ /update-tests ถ้าจำเป็น
-- ใช้ /run-test ถ้าจำเป็น
+- Use /follow-tool-linter if needed
+- Use /follow-lib-zod if needed
+- Use /update-tests if needed
+- Use /run-test if needed
 
 ## References
 
 - [CLI reference](references/cli.md)
 
 
-- ดู best-practices/ สำหรับ recommended patterns และ pitfalls
+- See best-practices/ for recommended patterns and pitfalls
 
 ## Expected Outcome
 
-- Validator ถูกเลือกและติดตั้งถูกต้องตาม tech stack
-- Schemas ครอบคลุมทุก boundary input
-- Validation errors สม่ำเสมอและ readable
-- Tests ครอบคลุม happy path และ invalid cases
-- Business logic ไม่ซ้ำซ้อน validation
+- The validator selected and installed correctly for the tech stack
+- Schemas cover every boundary input
+- Validation errors are consistent and readable
+- Tests cover the happy path and invalid cases
+- Business logic carries no redundant validation
 

@@ -1,34 +1,34 @@
 # Data Validation — Best Practices
 
-Validator usage discipline — schemas, boundaries และ error surfacing
+Validator usage discipline — schemas, boundaries, and error surfacing
 
 ## Recommended Patterns
 
-- Validate ที่ system boundaries เท่านั้น: API inputs, env vars, form submits, external payloads, DB results ที่ไม่ trust — ภายใน trust types
-- Schema = source of truth — derive types จาก schema (`z.infer`, `type.infer`) ไม่เขียน interface แยก
-- Fail-fast + structured errors: collect `issues` ทั้งหมดแล้ว format — อย่า throw raw error แรกให้ user
-- Env validation ตอน boot — startup crash ดีกว่า runtime misconfig เงียบ
-- Reuse schemas ข้าม layers: API contract = form validation = DB input เดียวกัน
+- Validate only at system boundaries: API inputs, env vars, form submits, external payloads, untrusted DB results — inside, trust the types
+- Schema = source of truth — derive types from the schema (`z.infer`, `type.infer`); never write a separate interface
+- Fail-fast with structured errors: collect all `issues` then format — never throw the first raw error at the user
+- Validate env at boot — a startup crash beats a silent runtime misconfiguration
+- Reuse schemas across layers: the API contract = the form validation = the DB input, all one schema
 
 ## Common Pitfalls
 
-- Double validation ทุก layer = ช้า + error paths ซ้ำ — validate ครั้งเดียวที่เข้าระบบ แล้ว typed ต่อ
-- Parse vs validate: transformation ใน schema (`.transform`, morphs) เปลี่ยน output — ตรวจ output type
-- Error messages ต้อง user-mappable — path + code + message structure ไม่ใช่ string เดียว
-- อย่า validate ใน loops/hot paths — hoisted validators + validate batch เดียว
-- Sensitive fields: อย่า log raw validated data ที่มี secrets/PII — sanitize error payloads
+- Re-validating at every layer = slow + duplicated error paths — validate once at entry, then stay typed
+- Parse vs validate: transformations in the schema (`.transform`, morphs) change the output — check the output type
+- Error messages must be mappable to users — a path + code + message structure, not one flat string
+- Do not validate inside loops/hot paths — hoist the validator and validate once per batch
+- Sensitive fields: never log raw validated data containing secrets/PII — sanitize the error payloads
 
 ## Security Notes
 
-- Validation ≠ sanitization — HTML/JS sanitize เป็นงานแยก (DOMPurify); schema แค่เช็ค shape/type
-- Strict unknown-key handling — passthrough/loose objects เปิด mass-assignment; explicit fields เสมอ
-- Size limits: `max` strings/arrays ป้องกัน DoS payload ใหญ่
+- Validation ≠ sanitization — HTML/JS sanitizing is a separate job (DOMPurify); a schema only checks shape/type
+- Strict unknown-key handling — passthrough/loose objects open mass-assignment; always declare fields explicitly
+- Size limits: `max` on strings/arrays prevents large-payload DoS
 
 ## Do / Don't
 
 | Do | Don't |
 |----|-------|
-| validate ที่ boundaries เดียว | re-validate ทุก function call |
-| structured issues → UI errors | raw error strings ให้ user |
-| env validation ตอน boot | lazy env checks ใน runtime |
-| strict schemas + explicit fields | passthrough objects ทั่วไป |
+| validate at one boundary set | re-validate at every function call |
+| structured issues → UI errors | raw error strings to users |
+| env validation at boot | lazy env checks at runtime |
+| strict schemas + explicit fields | passthrough objects by default |

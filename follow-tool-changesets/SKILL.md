@@ -1,6 +1,6 @@
 ---
 name: follow-tool-changesets
-description: ตั้งค่า Changesets สำหรับ versioning และ changelog management ใน monorepo
+description: Set up Changesets for monorepo versioning and changelog management
 argument-hint: "[scope]"
 related:
   - use-agent-browser
@@ -17,13 +17,13 @@ related:
 
 ## Goal
 
-ตั้งค่า Changesets สำหรับจัดการ versioning, changelogs และ package publishing ใน monorepo อย่างเป็นระบบ
+Set up Changesets to manage versioning, changelogs, and package publishing in a monorepo systematically
 
 ## Scope
 
-ตั้งค่า Changesets สำหรับ monorepos และ workspaces
+Set up Changesets for monorepos and workspaces
 
-- Boundary: Changesets ใช้ changeset files (`.changeset/*.md`) สำหรับ multi-package versioning + release PR flow — เหมาะกับ monorepo; สำหรับ single-package changelog จาก conventional commits ใช้ `/follow-tool-changelogen`; สำหรับ PR-label releases ดู `/follow-tool-auto-it`; alternatives: `/follow-tool-release-it`, `/follow-tool-semantic-release`
+- Boundary: Changesets uses changeset files (`.changeset/*.md`) for multi-package versioning + a release PR flow — best for monorepos; for single-package changelogs from conventional commits use `/follow-tool-changelogen`; for PR-label releases see `/follow-tool-auto-it`; alternatives: `/follow-tool-release-it`, `/follow-tool-semantic-release`
 - Latest: `@changesets/cli@3.0.3` (verified 2026-09-26) — `changesets/action@v2` (v2.1.2), `actions/checkout@v7`, `oven-sh/setup-bun@v2`
 - References: [apis](references/apis.md) | [cli](references/cli.md) 
 ## Execute
@@ -33,18 +33,18 @@ related:
 | Topic | Workflow |-------|----------| Init, `.changeset/` flow, version/publish commands | `workflows/setup-changesets/SKILL.md` | `config.json`, `fixed`/`linked` packages, access | `workflows/config-changesets/SKILL.md` 
 ### 1. Install Changesets
 
-> Goal: ติดตั้ง Changesets CLI และ init config
+> Goal: install the Changesets CLI and init config
 
-1. รัน `bun add -D @changesets/cli`
-2. รัน `bunx changeset init`
+1. Run `bun add -D @changesets/cli`
+2. Run `bunx changeset init`
 
 ### 2. Configure Changesets
 
-> Goal: ตั้งค่า `.changeset/config.json` ให้เหมาะสม
+> Goal: tune `.changeset/config.json` appropriately
 
-1. แก้ไข `.changeset/config.json`
-2. ตั้งค่า base branch, access, และ updateInternalDependencies
-3. กำหนดค่า access token สำหรับ publishing
+1. Edit `.changeset/config.json`
+2. Set the base branch, access, and updateInternalDependencies
+3. Configure the access token for publishing
 
 ```json [.changeset/config.json]
 {
@@ -62,10 +62,10 @@ related:
 
 ### 3. Setup GitHub Actions
 
-> Goal: สร้าง GitHub Actions workflow สำหรับ release
-1. สร้าง `.github/workflows/release.yml`
-2. กำหนดค่า GITHUB_TOKEN และ NPM_TOKEN
-3. ตั้งค่า version และ publish commands
+> Goal: create the GitHub Actions release workflow
+1. Create `.github/workflows/release.yml`
+2. Configure GITHUB_TOKEN and NPM_TOKEN
+3. Set the version and publish commands
 
 ```yml [.github/workflows/release.yml]
 name: Release
@@ -96,59 +96,59 @@ jobs:
 
 ### 4. Create Changesets
 
-> Goal: สร้าง changeset file สำหรับการเปลี่ยนแปลง
-1. รัน `bunx changeset` เพื่อสร้าง changeset file
-2. เลือก packages และระบุ changeset type (major, minor, patch)
-3. เขียน description สำหรับ changelog
+> Goal: create changeset files for changes
+1. Run `bunx changeset` to create a changeset file
+2. Select the packages and the changeset type (major, minor, patch)
+3. Write the description for the changelog
 
 ### 5. Publish
 
-> Goal: publish packages ผ่าน Changesets
-1. Merge release PR ที่สร้างโดย GitHub Actions
-2. หรือรัน `bunx changeset publish` ด้วยตนเอง
-3. Changesets จะ version และ publish packages อัตโนมัติ
+> Goal: publish packages through Changesets
+1. Merge the release PR created by GitHub Actions
+2. Or run `bunx changeset publish` manually
+3. Changesets versions and publishes the packages automatically
 
 ## Rules
 
 ### 1. Installation
 
-- ใช้ `bun add -D @changesets/cli` สำหรับติดตั้ง
-- รัน `bunx changeset init` เพื่อ initialize
+- Use `bun add -D @changesets/cli` to install
+- Run `bunx changeset init` to initialize
 
 ### 2. Configuration
 
-- ต้องมี base branch (default: main)
-- ตั้งค่า access (restricted สำหรับ scoped packages)
-- ตั้งค่า updateInternalDependencies เป็น patch
+- A base branch is required (default: main)
+- Set access (restricted for scoped packages)
+- Set updateInternalDependencies to patch
 
 ### 3. Authentication
 
-- ต้องมี GITHUB_TOKEN สำหรับ GitHub operations
-- ต้องมี NPM_TOKEN สำหรับ npm publishing
+- GITHUB_TOKEN is required for GitHub operations
+- NPM_TOKEN is required for npm publishing
 
 ### 4. Workflow
 
-- ใช้ changesets/action@v2 สำหรับ GitHub Actions — v2 ต้อง pair กับ Changesets CLI v3 (CLI v2 ใช้ action@v1)
-- ใช้ inputs `version-script` และ `publish-script` (v2 เปลี่ยนชื่อจาก `version`/`publish`)
-- ใช้ concurrency เพื่อป้องกัน conflicts
+- Use changesets/action@v2 for GitHub Actions — v2 must pair with Changesets CLI v3 (CLI v2 uses action@v1)
+- Use the `version-script` and `publish-script` inputs (v2 renamed them from `version`/`publish`)
+- Use concurrency to prevent conflicts
 
-- ใช้ /use-agent-browser ถ้าจำเป็น
-- ใช้ /use-astgrep ถ้าจำเป็น
-- ใช้ /follow-tool-aube ถ้าจำเป็น
-- ใช้ /follow-tool-usage ถ้าจำเป็น
-- ใช้ /follow-best-practice ถ้าจำเป็น
-- ใช้ /setup-cicd ถ้าจำเป็น
-- ใช้ /follow-tool-changelogen ถ้าจำเป็น
-- ใช้ /follow-tool-auto-it ถ้าจำเป็น
-- ใช้ /follow-tool-release-it ถ้าจำเป็น
-- ใช้ /follow-tool-semantic-release ถ้าจำเป็น
+- Use /use-agent-browser if needed
+- Use /use-astgrep if needed
+- Use /follow-tool-aube if needed
+- Use /follow-tool-usage if needed
+- Use /follow-best-practice if needed
+- Use /setup-cicd if needed
+- Use /follow-tool-changelogen if needed
+- Use /follow-tool-auto-it if needed
+- Use /follow-tool-release-it if needed
+- Use /follow-tool-semantic-release if needed
 
-- ดู best-practices/ สำหรับ recommended patterns และ pitfalls
+- See best-practices/ for recommended patterns and pitfalls
 
 ## Expected Outcome
 
-- Changesets ติดตั้งและทำงานได้
-- Config กำหนดค่าถูกต้อง
-- GitHub Actions workflow พร้อมใช้งาน
-- Versioning และ publishing ทำงานอัตโนมัติ
+- Changesets installed and working
+- Config set correctly
+- GitHub Actions workflow ready to use
+- Versioning and publishing fully automated
 

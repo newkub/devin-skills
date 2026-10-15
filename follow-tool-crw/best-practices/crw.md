@@ -4,30 +4,30 @@ Web scraping/crawling/search tool — scrape, map, crawl, extract discipline
 
 ## Recommended Patterns
 
-- เลือก tool ตาม job: `crw_scrape` = หน้าเดียวเป็น markdown สะอาด, `crw_map` = discover URLs ของ site, `crw_crawl` = หลายหน้าตาม pattern, `crw_extract` = structured data จาก schema
-- `crw_map` ก่อนเสมอเมื่อไม่รู้ site structure — ได้ URL list แล้วค่อย scrape เฉพาะที่จำเป็น
-- `crw_crawl` จำกัด depth/limit/path filters เสมอ — unbounded crawl = เวลา+quota ไหม้
-- `crw_extract` ด้วย explicit schema เมื่อต้องการ fields เจาะจง — markdown scrape สำหรับอ่านเอง, extract สำหรับ pipeline
+- Pick the tool by job: `crw_scrape` = one page as clean markdown, `crw_map` = discover a site's URLs, `crw_crawl` = multiple pages by pattern, `crw_extract` = structured data from a schema
+- Always `crw_map` first when the site structure is unknown — get the URL list, then scrape only what is needed
+- Always bound `crw_crawl` with depth/limit/path filters — an unbounded crawl = wasted time + burned quota
+- Use `crw_extract` with an explicit schema when you need specific fields — markdown scrape for human reading, extract for pipelines
 
 ## Common Pitfalls
 
-- Respect robots.txt + rate limits — crawl ดุด่า = IP ban + ethical issue; ใช้ delays/concurrency ต่ำกับ site เล็ก
-- JS-heavy sites: scrape อาจได้ shell เปล่า — ตรวจ output; ถ้าต้อง render จริงพิจารณา `/playwright`/`agent-browser`
-- Paywalled/auth content — crw ไม่ bypass auth; อย่าพยายาม scrape หลัง login wall
-- Output markdown ตัด boilerplate แล้ว แต่ไม่สมบูรณ์ — verify ก่อน quote; หน้า SPA อาจขาด content
-- URLs ต้องมาจาก user หรือ discovery — ห้าม generate/guess URLs เอง
+- Respect robots.txt + rate limits — aggressive crawling = IP ban + ethical issue; use delays/low concurrency on small sites
+- JS-heavy sites: a scrape may return an empty shell — check the output; if real rendering is required consider `/playwright`/`agent-browser`
+- Paywalled/auth content — crw does not bypass auth; never try to scrape behind a login wall
+- The output markdown strips boilerplate but not perfectly — verify before quoting; SPA pages may be missing content
+- URLs must come from the user or discovery — never generate/guess URLs yourself
 
 ## Efficiency
 
-- Batch: map ครั้งเดียว → filter URLs → parallel scrape ≤10/batch (ตาม `/deep-research` convention)
-- Cache results ใน temp/files เมื่อ crawl ใหญ่ — ไม่ crawl ซ้ำภายใน session เดียว
-- Search-first workflow: `/crw` search → เลือก URLs จริง → scrape — ไม่ crawl ทั้ง domain เพื่อหา 1 หน้า
+- Batch: map once → filter URLs → parallel scrape ≤10/batch (per the `/deep-research` convention)
+- Cache results in temp/files for large crawls — do not re-crawl within the same session
+- Search-first workflow: `/crw` search → pick real URLs → scrape — never crawl a whole domain to find one page
 
 ## Do / Don't
 
 | Do | Don't |
 |----|-------|
-| map → filter → scrape เจาะจง | crawl ทั้ง site แบบ blind |
-| depth/limit/path filters เสมอ | unbounded crawl |
-| `extract` schema สำหรับ structured data | parse markdown ด้วย regex |
-| respect robots + rate limits | hammer sites ด้วย concurrency สูง |
+| map → filter → targeted scrape | crawl the whole site unbounded |
+| respect robots.txt + rate limits | hammer a site with fast concurrency |
+| verify output before quoting | trust stripped markdown blindly |
+| search first, then fetch | guess URLs from patterns |

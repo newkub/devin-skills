@@ -1,34 +1,34 @@
 # Changesets — Best Practices
 
-Versioning + changelog automation สำหรับ monorepo
+Versioning + changelog automation for monorepos
 
 ## Recommended Patterns
 
-- Changeset file ต่อ PR ที่เปลี่ยน behavior — `bunx changeset` (หรือ `pnpm changeset`) สร้าง `.changeset/*.md`; CI บังคับด้วย changeset-bot/status check
-- Bump เลือกตาม semver จริง: `patch` = fixes/internal, `minor` = features backward-compat, `major` = breaking — อย่า bump major "เผื่อ"
-- `changesets/action` ใน CI — สร้าง "Version Packages" PR อัตโนมัติ; merge แล้ว publish+tag
-- `linked`/`fixed` packages ใน config สำหรับ packages ที่ต้อง bump พร้อมกันเสมอ
-- Changelog: commit summaries ใน changeset เป็น user-facing — เขียนจากมุม consumer ไม่ใช่ implementer
+- One changeset file per behavior-changing PR — `bunx changeset` (or `pnpm changeset`) creates `.changeset/*.md`; enforce in CI with changeset-bot/a status check
+- Pick the bump by real semver: `patch` = fixes/internal, `minor` = backward-compatible features, `major` = breaking — never bump major "just in case"
+- `changesets/action` in CI — it auto-creates the "Version Packages" PR; merging it publishes + tags
+- Use `linked`/`fixed` packages in the config for packages that must always bump together
+- Changelog: the changeset's commit summary is user-facing — write it from the consumer's perspective, not the implementer's
 
 ## Common Pitfalls
 
-- ลืม changeset = version ไม่ bump = release พังเงียบ — enforce ใน CI หรือ PR template
-- Private packages: `"private": true` ต้อง ignore ใน config (`ignore` list) — มิฉะนั้น changesets พยายาม publish
-- Snapshot releases (`--snapshot`) สำหรับ pre-release testing — ห้าม merge snapshot versions เข้า main
-- Fixed vs linked: `fixed` bump ทุกตัวพร้อมกันแม้ไม่เปลี่ยน, `linked` เฉพาะเมื่อตัวใดตัวหนึ่ง bump — เลือกตาม release cadence
-- Version PR ต้อง merge เร็ว — stale version PR ที่มี changesets ใหม่ตามหลัง = conflicts
+- Forgetting a changeset = no version bump = silently broken release — enforce in CI or the PR template
+- Private packages: `"private": true` must also be ignored in the config (`ignore` list) — otherwise changesets tries to publish them
+- Snapshot releases (`--snapshot`) are for pre-release testing — never merge snapshot versions into main
+- Fixed vs linked: `fixed` bumps every member together even when unchanged; `linked` only when one of them bumps — choose per release cadence
+- The version PR must be merged quickly — a stale version PR with new changesets landing behind it = conflicts
 
 ## Workflow Tips
 
-- `changeset status` ตรวจว่า changesets pending — ใช้ใน CI หรือ pre-release check
-- `changeset publish` = publish + git tags — อย่า tag มือซ้อน
-- Pre-release mode (`changeset pre enter beta`) สำหรับ beta/alpha channels — exit ด้วย `pre exit` ก่อน stable
+- `changeset status` checks for pending changesets — use it in CI or as a pre-release check
+- `changeset publish` = publish + git tags — don't hand-tag on top of it
+- Pre-release mode (`changeset pre enter beta`) for beta/alpha channels — exit with `pre exit` before going stable
 
 ## Do / Don't
 
 | Do | Don't |
 |----|-------|
-| changeset ต่อ user-facing change | batch changesets ก่อน release |
-| semver ตาม impact จริง | bump เผื่อ/by default minor |
-| `linked`/`fixed` ตาม coupling จริง | link ทุก package อัตโนมัติ |
+| one changeset per user-facing change | batch changesets right before release |
+| semver by real impact | bump by default "just in case"/minor |
+| `linked`/`fixed` by real coupling | auto-link every package |
 | ignore private packages | publish internal apps |

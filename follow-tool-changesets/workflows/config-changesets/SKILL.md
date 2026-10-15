@@ -1,6 +1,6 @@
 ---
 name: follow-tool-changesets-config-changesets
-description: ตั้งค่า `.changeset/config.json` — access, baseBranch, linked/fixed packages
+description: Configure `.changeset/config.json` — access, baseBranch, linked/fixed packages
 argument-hint: "[scope]"
 related:
   - setup-cicd
@@ -10,72 +10,72 @@ related:
 
 ## Goal
 
-ตั้งค่า `.changeset/config.json` ให้ตรง versioning policy ของ project — `access`, `baseBranch`, `fixed`/`linked` packages, `updateInternalDependencies`, `ignore` — โดย merge ไม่ clobber
+Configure `.changeset/config.json` to match the project's versioning policy — `access`, `baseBranch`, `fixed`/`linked` packages, `updateInternalDependencies`, `ignore` — by merging, never clobbering
 
 ## Scope
 
-ใช้เมื่อต้องแก้ Changesets config ที่มีอยู่ — install/init อยู่ใน `workflows/setup-changesets/SKILL.md`
+Use when editing an existing Changesets config — install/init lives in `workflows/setup-changesets/SKILL.md`
 
 ## Execute
 
 ### 1. Read Current Config
 
-> Goal: อ่าน config เดิมก่อนแก้
+> Goal: read the original config before editing
 
-1. อ่าน `.changeset/config.json` — บันทึก keys ปัจจุบัน
-2. อ่าน root `package.json` workspaces — list ทุก publishable package
-3. ถ้าไม่มี `.changeset/` → ทำ `workflows/setup-changesets/SKILL.md` ก่อน
+1. Read `.changeset/config.json` — record the current keys
+2. Read the root `package.json` workspaces — list every publishable package
+3. If there is no `.changeset/` → run `workflows/setup-changesets/SKILL.md` first
 
 ### 2. Core Options
 
-> Goal: ตั้งค่า core keys ให้ถูกต้อง
+> Goal: set the core keys correctly
 
-1. `"$schema"` — ชี้ไป schema ของ `@changesets/config` ที่ตรงกับ installed major version
-2. `baseBranch` — default `"main"` ตาม branch จริงของ repo
-3. `access` — `"restricted"` สำหรับ scoped/private packages, `"public"` สำหรับ public npm packages
-4. `updateInternalDependencies` — `"patch"` เพื่อ bump internal deps เมื่อ patch เปลี่ยน
-5. `commit` — `false` ให้ git จัดการ commit เอง หรือ `true`/`@changesets/cli/commit` ตาม workflow
-6. `ignore` — list packages ที่ไม่ publish (private apps, tooling packages)
-7. `changelog` — default `"@changesets/cli/changelog"` หรือ custom changelog generator ถ้าต้องการ PR links
+1. `"$schema"` — point at the `@changesets/config` schema matching the installed major version
+2. `baseBranch` — default `"main"`, follow the repo's actual branch
+3. `access` — `"restricted"` for scoped/private packages, `"public"` for public npm packages
+4. `updateInternalDependencies` — `"patch"` to bump internal deps when a patch changes
+5. `commit` — `false` to let git handle commits, or `true`/`@changesets/cli/commit` per the workflow
+6. `ignore` — list packages that are not published (private apps, tooling packages)
+7. `changelog` — default `"@changesets/cli/changelog"`, or a custom changelog generator if PR links are wanted
 
 ### 3. Linked And Fixed Packages
 
-> Goal: กำหนด version coupling ของ packages
+> Goal: define the version coupling of packages
 
-1. `fixed` — array of package groups ที่ version เดียวกันเสมอ (bump พร้อมกันและ version เท่ากัน) เช่น `[["@scope/a", "@scope/b"]]`
-2. `linked` — array of package groups ที่ bump พร้อมกันแต่ versions อาจต่างกัน
-3. เลือก `fixed` เมื่อ packages ต้อง release lockstep; `linked` เมื่อ coordinate แต่ versions ต่างได้
-4. ตรวจว่าทุก package ใน groups มีอยู่จริงใน workspaces — typo = config error
+1. `fixed` — array of package groups that always share one version (bump together and stay equal), e.g. `[["@scope/a", "@scope/b"]]`
+2. `linked` — array of package groups that bump together but may hold different versions
+3. Choose `fixed` when packages must release in lockstep; `linked` when they coordinate but versions may differ
+4. Verify every package in the groups actually exists in the workspaces — a typo is a config error
 
 ### 4. Verify
 
-> Goal: ตรวจ config ถูกต้อง
+> Goal: check the config is correct
 
-1. รัน `bunx changeset status` — config ต้อง parse ผ่านและแสดง pending changesets
-2. สร้าง changeset ทดสอบแล้วรัน `bunx changeset version` บน branch แยก — ตรวจ fixed/linked bumps ทำงานตามที่ตั้งใจ (revert หลังตรวจ)
-3. ถ้าพัง → revert keys ที่แก้แล้ว report diff ด้วย `/report-before-after`
+1. Run `bunx changeset status` — the config must parse and show pending changesets
+2. Create a test changeset and run `bunx changeset version` on a separate branch — confirm the fixed/linked bumps behave as intended (revert after checking)
+3. If it breaks → revert the edited keys and report the diff with `/report-before-after`
 
 ## Rules
 
 ### 1. Merge Discipline
 
-- แก้เฉพาะ keys ที่จำเป็น — ห้าม overwrite ทั้งไฟล์
-- เก็บ `$schema` ตรงกับ installed `@changesets/cli` major version
+- Edit only the necessary keys — never overwrite the whole file
+- Keep `$schema` matching the installed `@changesets/cli` major version
 
 ### 2. Version Coupling
 
-- `fixed` = same version เสมอ; `linked` = bump พร้อมกันแต่ version ต่างได้ — เลือกให้ตรง release policy
-- private packages ที่ไม่ publish ต้องอยู่ใน `ignore`
+- `fixed` = always the same version; `linked` = bump together but versions may differ — pick per the release policy
+- private packages that are not published must be in `ignore`
 
 ### 3. Access
 
-- `access: "restricted"` สำหรับ scoped packages ที่ไม่เปิด public — ผิดจะทำ publish fail
-- secrets (`NPM_TOKEN`) ห้ามใส่ใน config — ผ่าน env/secrets manager
+- `access: "restricted"` for scoped packages that are not public — getting this wrong fails the publish
+- secrets (`NPM_TOKEN`) must never be in the config — keep them in env/secrets manager
 
-- ใช้ /run-release ถ้าจำเป็น
+- Use /run-release if needed
 
 ## Expected Outcome
 
-- `.changeset/config.json` ถูกต้องตาม versioning policy
-- `fixed`/`linked` groups ทำงานตามที่ตั้งใจ
-- `changeset status` และ `version` รันผ่าน
+- `.changeset/config.json` correct per the versioning policy
+- `fixed`/`linked` groups behave as intended
+- `changeset status` and `version` run cleanly

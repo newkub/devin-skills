@@ -1,6 +1,6 @@
 ---
 name: follow-tool-crw
-description: แนวทางการใช้งาน CRW (fastCRW) สำหรับ web scraping, crawling, search และ serving
+description: Guidelines for using CRW (fastCRW) for web scraping, crawling, search and serving
 argument-hint: "[scope]"
 related:
   - use-agent-browser
@@ -14,14 +14,14 @@ related:
 
 ## Goal
 
-ใช้ CRW (fastCRW) สำหรับ web scraping, crawling, search และ serving อย่างมีประสิทธิภาพสูงสุด เร็วที่สุด และลด AI token
+Use CRW (fastCRW) for web scraping, crawling, search and serving at maximum efficiency and speed while reducing AI tokens
 
 ## Scope
 
-ใช้ `follow-tool-crw` สำหรับ tasks และ workflows เฉพาะที่ครอบคลุม (tool crw)
+Use `follow-tool-crw` for the tasks and workflows it covers (tool crw)
 
-- Boundary: ใช้ `crw` เมื่อต้อง scrape/crawl/search/map แบบ batch หรือ structured output เพื่อลด AI token — สำหรับ interactive browser session (click, form, login) ใช้ `/use-agent-browser` แทน; สำหรับ fetch หน้าเดียวแบบง่ายใช้ webfetch ในตัวได้
-- สำหรับ web search/scrape ด้วย crw ดู `references/apis.md`
+- Boundary: use `crw` when you need batch or structured scrape/crawl/search/map output to cut AI tokens — for interactive browser sessions (click, form, login) use `/use-agent-browser` instead; for a simple single-page fetch the built-in webfetch is fine
+- For web search/scrape with crw see `references/apis.md`
 
 - Latest: `crw-mcp@0.36.0` / `crw` CLI v0.36.0 (verified 2026-09-24)
 - Install: `curl -fsSL https://fastcrw.com/install | sh` · `brew install us/crw/crw` · `cargo install crw-cli` · `npx crw-mcp` (MCP only) · `docker run ghcr.io/us/crw`
@@ -30,9 +30,9 @@ related:
 
 ### 1. Web Search
 
-> Goal: ใช้ `crw search` สำหรับ web search ผ่าน SearXNG
+> Goal: use `crw search` for web search via SearXNG
 
-ใช้ `crw search` สำหรับ web search ผ่าน SearXNG:
+Use `crw search` for web search via SearXNG:
 
 ```bash
 crw search "query"
@@ -40,20 +40,20 @@ crw search "rust web scraper" --format json
 crw search "query" --json --fields title,url,snippet --limit 3
 ```
 
-Options สำคัญ:
-- `--json` - shorthand สำหรับ `--format json`
-- `--fields <LIST>` - project เฉพาะ fields (title, url, description, snippet, position, score, category) ลด token
-- `--limit <N>` - จำกัดจำนวนผลลัพธ์ (default 5, max 20)
-- ต้องรัน `crw setup` ก่อนใช้ search ครั้งแรก (self-hosted ไม่ต้องใช้ key; hosted ใช้ `CRW_API_KEY`)
+Key options:
+- `--json` - shorthand for `--format json`
+- `--fields <LIST>` - project only the given fields (title, url, description, snippet, position, score, category) to cut tokens
+- `--limit <N>` - limit the number of results (default 5, max 20)
+- `crw setup` must run before the first use of search (self-hosted needs no key; hosted uses `CRW_API_KEY`)
 
-เหมาะสำหรับ:
-- ค้นหาข้อมูลจากหลายแหล่งพร้อมกัน
-- ต้องการผลลัพธ์แบบ structured (JSON)
-- ลด AI token โดยใช้ search engine แทน AI generation
+Best for:
+- Searching many sources at once
+- Needing structured results (JSON)
+- Reducing AI tokens by using a search engine instead of AI generation
 
 ### 2. URL Scraping
 
-> Goal: ใช้ `crw scrape` หรือ default mode สำหรับ scrape URL เดียว
+> Goal: use `crw scrape` or the default mode to scrape a single URL
 
 ```bash
 crw example.com
@@ -61,183 +61,183 @@ crw scrape example.com --format json
 crw example.com --format markdown --output result.md
 ```
 
-Options สำคัญ:
-- `--format markdown|json|html|rawhtml|text|links` - เลือก output format
-- `--output <FILE>` - เขียนลงไฟล์แทน stdout
-- `--raw` - ปิด main content extraction (return full page)
-- `--js` - เปิด JavaScript rendering
-- `--css <SELECTOR>` - extract เฉพาะ element ที่ match
-- `--xpath <EXPR>` - extract เฉพาะ element ที่ match XPath
+Key options:
+- `--format markdown|json|html|rawhtml|text|links` - pick the output format
+- `--output <FILE>` - write to a file instead of stdout
+- `--raw` - disable main content extraction (return the full page)
+- `--js` - enable JavaScript rendering
+- `--css <SELECTOR>` - extract only the matching elements
+- `--xpath <EXPR>` - extract only the elements matching the XPath
 
-เหมาะสำหรับ:
-- ดึง content จาก URL เดียว
-- ต้องการ specific format (markdown, json, etc.)
-- Extract เฉพาะส่วนที่ต้องการด้วย CSS/XPath
+Best for:
+- Pulling content from a single URL
+- Needing a specific format (markdown, json, etc.)
+- Extracting only the needed parts with CSS/XPath
 
 ### 3. Website Crawling
 
-> Goal: ใช้ `crw crawl` สำหรับ BFS crawl เว็บไซต์
+> Goal: use `crw crawl` for BFS website crawling
 
 ```bash
 crw crawl example.com --depth 3
 crw crawl example.com --depth 2 --format json
 ```
 
-เหมาะสำหรับ:
-- Crawl เว็บไซต์ทั้งหมดด้วย BFS
-- ต้องการ content จากหลายหน้า
-- กำหนด depth ชัดเจน
+Best for:
+- Crawling an entire site with BFS
+- Needing content from multiple pages
+- A clearly bounded depth
 
 ### 4. URL Discovery
 
-> Goal: ใช้ `crw map` สำหรับ discover URLs บนเว็บไซต์
+> Goal: use `crw map` to discover URLs on a website
 
-ใช้ `crw map` สำหรับ discover URLs บนเว็บไซต์:
+Use `crw map` to discover URLs on a website:
 
 ```bash
 crw map example.com
 crw map example.com --format json
 ```
 
-เหมาะสำหรับ:
-- Discover URLs ผ่าน sitemap และ crawling
-- ต้องการรายการ URLs ทั้งหมด
-- วิเคราะห์โครงสร้างเว็บไซต์
+Best for:
+- Discovering URLs via sitemap and crawling
+- Needing the full URL list
+- Analyzing site structure
 
 ### 5. Structured Data Extraction
 
-> Goal: ใช้ `--extract` กับ JSON Schema สำหรับ extract structured data
+> Goal: use `--extract` with a JSON Schema to extract structured data
 
 ```bash
 crw example.com --extract '{"type": "object", "properties": {"title": {"type": "string"}}}'
 crw example.com --extract @schema.json
 ```
 
-เหมาะสำหรับ:
-- Extract data แบบ structured
-- ลด AI token โดยใช้ schema validation
-- ต้องการ data ที่ consistent
+Best for:
+- Extracting structured data
+- Reducing AI tokens with schema validation
+- Needing consistent data
 
 ### 6. AI Summary
 
-> Goal: ใช้ `--summary` หรือ `--prompt` สำหรับ generate AI summary
+> Goal: use `--summary` or `--prompt` to generate an AI summary
 
 ```bash
 crw example.com --summary
 crw example.com --summary --prompt "in 3 bullet points"
 ```
 
-Options สำหรับ LLM:
-- `--llm-provider <NAME>` - Override LLM provider (anthropic, openai, deepseek, azure, openrouter)
-- `--llm-key <KEY>` - Override LLM API key
-- `--llm-model <MODEL>` - Override LLM model
-- `--llm-base-url <URL>` - Override LLM base URL
+LLM options:
+- `--llm-provider <NAME>` - override the LLM provider (anthropic, openai, deepseek, azure, openrouter)
+- `--llm-key <KEY>` - override the LLM API key
+- `--llm-model <MODEL>` - override the LLM model
+- `--llm-base-url <URL>` - override the LLM base URL
 
-เหมาะสำหรับ:
-- Generate summary อัตโนมัติ
-- ต้องการ formatted output
-- ใช้ LLM ที่ configure ไว้แล้ว
+Best for:
+- Automatic summary generation
+- Needing formatted output
+- Using an already-configured LLM
 
 ### 7. MCP Server
 
-> Goal: ใช้ `crw mcp` สำหรับ start MCP server
+> Goal: use `crw mcp` to start the MCP server
 
-ใช้ `crw mcp` สำหรับ start MCP server:
+Use `crw mcp` to start the MCP server:
 
 ```bash
 crw mcp
 ```
 
-Environment Variables:
-- `CRW_BROWSER_PATH` - Path ไปยัง browser executable (Chrome/Edge) สำหรับ JS rendering
-- ตัวอย่าง: `C:\Program Files\Google\Chrome\Application\chrome.exe`
-- `CRW_API_URL` - Proxy mode: forward tool calls ไป remote CRW server (cloud หรือ self-hosted)
-- `CRW_API_KEY` - API key สำหรับ hosted fastcrw.com
+Environment variables:
+- `CRW_BROWSER_PATH` - path to a browser executable (Chrome/Edge) for JS rendering
+- Example: `C:\Program Files\Google\Chrome\Application\chrome.exe`
+- `CRW_API_URL` - proxy mode: forward tool calls to a remote CRW server (cloud or self-hosted)
+- `CRW_API_KEY` - API key for hosted fastcrw.com
 
-MCP tools: `crw_scrape`, `crw_search`, `crw_crawl`, `crw_map`, `crw_extract`, `crw_parse_file` (PDF/file — ไม่มี CLI verb), `crw_check_crawl_status`
+MCP tools: `crw_scrape`, `crw_search`, `crw_crawl`, `crw_map`, `crw_extract`, `crw_parse_file` (PDF/file — has no CLI verb), `crw_check_crawl_status`
 
-เหมาะสำหรับ:
-- Integration กับ MCP-compatible tools
-- ใช้เป็น MCP server สำหรับ AI agents
-- Real-time web access ผ่าน MCP
-- JavaScript rendering สำหรับ SPA/React/Vue/Angular sites
-- Parse PDF/file ผ่าน `crw_parse_file` หรือ REST `/v2/parse`
+Best for:
+- Integration with MCP-compatible tools
+- Serving as an MCP server for AI agents
+- Real-time web access via MCP
+- JavaScript rendering for SPA/React/Vue/Angular sites
+- Parsing PDF/files via `crw_parse_file` or the REST `/v2/parse`
 
 ### 8. Browser Automation
 
-> Goal: ใช้ `crw browse` สำหรับ browser automation MCP
+> Goal: use `crw browse` for the browser automation MCP
 
 ```bash
 crw browse
 ```
 
-เหมาะสำหรับ:
-- Browser automation ผ่าน MCP
-- ต้องการ JavaScript rendering ขั้นสูง
+Best for:
+- Browser automation through MCP
+- Needing advanced JavaScript rendering
 - Interactive web testing
 
 ### 9. REST API Server
 
-> Goal: ใช้ `crw serve` สำหรับ start REST API server (Firecrawl-compatible)
+> Goal: use `crw serve` to start a REST API server (Firecrawl-compatible)
 
 ```bash
 crw serve --port 3000
 ```
 
-เหมาะสำหรับ:
-- Integration กับ existing systems
-- Firecrawl-compatible API
-- Serve ผ่าน HTTP endpoint
+Best for:
+- Integration with existing systems
+- A Firecrawl-compatible API
+- Serving over an HTTP endpoint
 
 ## Rules
 
 ### 1. Command Selection
 
-เลือก command ตาม use case:
-- Search: `crw search` - สำหรับ web search
-- Scrape: `crw scrape` หรือ `crw <url>` - สำหรับ single URL
-- Crawl: `crw crawl` - สำหรับ multi-page
-- Map: `crw map` - สำหรับ URL discovery
-- Extract: `--extract` - สำหรับ structured data
-- Summary: `--summary` - สำหรับ AI summary
+Pick the command by use case:
+- Search: `crw search` - for web search
+- Scrape: `crw scrape` or `crw <url>` - for a single URL
+- Crawl: `crw crawl` - for multiple pages
+- Map: `crw map` - for URL discovery
+- Extract: `--extract` - for structured data
+- Summary: `--summary` - for an AI summary
 
 ### 2. Performance Optimization
 
-- ใช้ `--format json` สำหรับ structured output และ reduce AI token
-- ใช้ `--css` หรือ `--xpath` เพื่อ extract เฉพาะส่วนที่ต้องการ
-- ใช้ `--depth` อย่างเกินความจำเป็นใน crawl mode
-- ใช้ `--output` เพื่อเขียนลงไฟล์แทน stdout
+- Use `--format json` for structured output and fewer AI tokens
+- Use `--css` or `--xpath` to extract only the needed parts
+- Avoid `--depth` values beyond necessity in crawl mode
+- Use `--output` to write to a file instead of stdout
 
 ### 3. Token Reduction
 
-- ใช้ `crw search` แทน AI generation สำหรับ web search
-- ใช้ `--extract` กับ JSON Schema แทน AI parsing
-- ใช้ `--format markdown` สำหรับ direct LLM consumption
-- ใช้ `--prompt` เพื่อ style AI summary และ reduce iteration
+- Use `crw search` instead of AI generation for web search
+- Use `--extract` with a JSON Schema instead of AI parsing
+- Use `--format markdown` for direct LLM consumption
+- Use `--prompt` to style the AI summary and reduce iteration
 
 ### 4. Format Selection
 
-เลือก format ตาม use case:
-- markdown: สำหรับ LLM consumption และ documentation
-- json: สำหรับ structured data และ programmatic access
-- html: สำหรับ web rendering
-- rawhtml: สำหรับ full HTML content
-- text: สำหรับ plain text
-- links: สำหรับ URL extraction
+Pick the format by use case:
+- markdown: for LLM consumption and documentation
+- json: for structured data and programmatic access
+- html: for web rendering
+- rawhtml: for full HTML content
+- text: for plain text
+- links: for URL extraction
 
-- ใช้ /use-agent-browser ถ้าจำเป็น
-- ใช้ /use-astgrep ถ้าจำเป็น
-- ใช้ /follow-tool-aube ถ้าจำเป็น
-- ใช้ /follow-tool-usage ถ้าจำเป็น
-- ใช้ /follow-best-practice ถ้าจำเป็น
-- ใช้ /setup-cicd ถ้าจำเป็น
+- Use /use-agent-browser if needed
+- Use /use-astgrep if needed
+- Use /follow-tool-aube if needed
+- Use /follow-tool-usage if needed
+- Use /follow-best-practice if needed
+- Use /setup-cicd if needed
 
-- ดู best-practices/ สำหรับ recommended patterns และ pitfalls
+- See best-practices/ for recommended patterns and pitfalls
 
 ## Expected Outcome
 
-- ใช้ CRW อย่างมีประสิทธิภาพสูงสุด
-- ลด AI token ด้วย command ที่เหมาะสม
-- เลือก format และ options ตาม use case
-- Integration กับ MCP และ REST API ได้อย่างราบรื่น
+- CRW used at maximum effectiveness
+- AI tokens reduced with the right commands
+- Formats and options chosen per use case
+- Smooth integration with MCP and the REST API
 
