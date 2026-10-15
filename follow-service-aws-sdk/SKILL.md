@@ -1,6 +1,6 @@
 ---
 name: follow-service-aws-sdk
-description: ใช้ AWS SDK ตาม best practices สำหรับการเชื่อมต่อกับ AWS cloud services
+description: Use the AWS SDK per best practices for connecting to AWS cloud services
 argument-hint: "[scope]"
 related:
   - follow-create-sdk
@@ -14,11 +14,11 @@ related:
 
 ## Goal
 
-ใช้ AWS SDK ตาม best practices สำหรับการเชื่อมต่อกับ AWS cloud services
+Use the AWS SDK per best practices for connecting to AWS cloud services
 
 ## Scope
 
-ใช้สำหรับการพัฒนา applications ที่ต้องการ interact กับ AWS services เช่น S3, Lambda, DynamoDB และอื่นๆ
+Use for developing applications that need to interact with AWS services such as S3, Lambda, DynamoDB, and others
 
 ## Execute
 
@@ -30,59 +30,59 @@ related:
 | Config | `## Merged Details → config-aws-sdk` — region, credentials chain, endpoint config |
 | Verify | `## Merged Details → verify-connection` — smoke test credentials/connectivity |
 
-อ่าน `workflows/<name>/SKILL.md` ตาม topic แล้วทำตาม flow ในนั้น — ไม่ execute จากตารางนี้โดยตรง
+Read `workflows/<name>/SKILL.md` per topic and follow the flow there — do not execute from this table directly
 
 ### 1. Install And Configure
 
-> Goal: ติดตั้ง AWS SDK และกำหนดค่า credentials
+> Goal: Install the AWS SDK and configure credentials
 
-Latest: `@aws-sdk/client-s3@3.1139.0` (verified 2026-09-24) — ใช้ AWS SDK v3 (modular) เท่านั้น, `aws-sdk` v2 ถูก deprecated
+Latest: `@aws-sdk/client-s3@3.1139.0` (verified 2026-09-24) — use AWS SDK v3 (modular) only; `aws-sdk` v2 is deprecated
 
-1. Install SDK ด้วย `bun add @aws-sdk/client-s3` สำหรับ service ที่ต้องการ
-2. Configure credentials ด้วย IAM roles สำหรับ production หรือ environment variables สำหรับ development
-3. Create client instance ด้วย `new S3Client({ region: 'us-east-1' })`
-4. ใช้ TypeScript สำหรับ type safety และ autocomplete
+1. Install the SDK with `bun add @aws-sdk/client-s3` for the needed service
+2. Configure credentials with IAM roles for production or environment variables for development
+3. Create a client instance with `new S3Client({ region: 'us-east-1' })`
+4. Use TypeScript for type safety and autocomplete
 
 ### 2. Make API Calls
 
-> Goal: เรียกใช้ AWS services ด้วย command pattern
+> Goal: Call AWS services with the command pattern
 
-1. Make API calls ด้วย command pattern เช่น `await client.send(new PutObjectCommand(...))`
-2. Handle errors ด้วย try-catch และใช้ built-in retry logic
-3. ใช้ streaming สำหรับ large files
-4. ใช้ pagination helpers สำหรับ large datasets
+1. Make API calls with the command pattern such as `await client.send(new PutObjectCommand(...))`
+2. Handle errors with try-catch and use built-in retry logic
+3. Use streaming for large files
+4. Use pagination helpers for large datasets
 
 ## Rules
 
 ### 1. Installation
 
-- ใช้ `bun add` หรือ `bun add -D` แทน `bun install`
-- Install เฉพาะ clients ที่ต้องการ (modular v3)
+- Use `bun add` or `bun add -D` instead of `bun install`
+- Install only the clients you need (modular v3)
 
 ### 2. Security
 
-- ใช้ IAM roles สำหรับ production
-- ใช้ environment variables สำหรับ development
-- ไม่ hardcode credentials ใน code
+- Use IAM roles for production
+- Use environment variables for development
+- Never hardcode credentials in code
 
 ### 3. Error Handling
 
-- Handle AWS SDK errors อย่างเหมาะสม
-- Implement retry logic ด้วย built-in retries
-- Log errors สำหรับ debugging
+- Handle AWS SDK errors properly
+- Implement retry logic with built-in retries
+- Log errors for debugging
 
 ### 4. Type Safety
 
-- ใช้ TypeScript สำหรับ type safety
-- ใช้ streaming สำหรับ large files
-- ใช้ pagination helpers สำหรับ large datasets
+- Use TypeScript for type safety
+- Use streaming for large files
+- Use pagination helpers for large datasets
 
-- ใช้ /follow-create-sdk ถ้าจำเป็น
-- ใช้ /follow-service-cloudflare ถ้าจำเป็น
-- ใช้ /follow-secret-manager ถ้าจำเป็น
-- ใช้ /follow-best-practice ถ้าจำเป็น
-- ใช้ /learn-from-web ถ้าจำเป็น
-- ใช้ /setup-cicd ถ้าจำเป็น
+- Use /follow-create-sdk if needed
+- Use /follow-service-cloudflare if needed
+- Use /follow-secret-manager if needed
+- Use /follow-best-practice if needed
+- Use /learn-from-web if needed
+- Use /setup-cicd if needed
 
 ## Merged Details
 
@@ -90,177 +90,177 @@ Latest: `@aws-sdk/client-s3@3.1139.0` (verified 2026-09-24) — ใช้ AWS SD
 
 ##### Goal
 
-ตั้งค่า/แก้ไข AWS SDK configuration — region, credentials chain, endpoint overrides และ client options — โดย merge กับ config เดิม
+Set/edit AWS SDK configuration — region, credentials chain, endpoint overrides, and client options — merging with the existing config
 
 ##### Scope
 
-- ครอบคลุม env keys, client options และ local endpoints (เช่น LocalStack)
-- ถ้ายังไม่ได้ install/credentials → ทำ `## Merged Details → setup-aws-sdk` ก่อน
+- Covers env keys, client options, and local endpoints (e.g. LocalStack)
+- If not yet installed/credentials missing → do `## Merged Details → setup-aws-sdk` first
 
 ##### Execute
 
 ###### 1. Read Current Config
 
-> Goal: รู้ config ปัจจุบันก่อนแก้
+> Goal: Know the current config before editing
 
-1. อ่าน client construction ปัจจุบัน, env keys (`AWS_REGION`, `AWS_PROFILE`, `AWS_ENDPOINT_URL*`) และ `~/.aws/config` ถ้าเกี่ยวข้อง
-2. ทำ `/deep-review` domain `review-config` ถ้าต้องเทียบ env กับ code
-3. ถ้าไม่พบ client → ทำ `## Merged Details → setup-aws-sdk` ก่อน
+1. Read the current client construction, env keys (`AWS_REGION`, `AWS_PROFILE`, `AWS_ENDPOINT_URL*`), and `~/.aws/config` if relevant
+2. Do `/deep-review` domain `review-config` if env must be compared with code
+3. If no client is found → do `## Merged Details → setup-aws-sdk` first
 
 ###### 2. Configure Region
 
-> Goal: region ถูกต้องและ consistent
+> Goal: region correct and consistent
 
-1. ใช้ `AWS_REGION` env เป็นแหล่งหลัก — client option `{ region }` เฉพาะเมื่อต้อง override
-2. ยืนยัน region ตรงกับ resources จริง (S3 bucket region, DynamoDB table region)
+1. Use the `AWS_REGION` env var as the primary source — client option `{ region }` only when an override is needed
+2. Confirm the region matches the real resources (S3 bucket region, DynamoDB table region)
 
 ###### 3. Configure Credentials Chain
 
-> Goal: SDK resolve credentials ถูกลำดับ
+> Goal: the SDK resolves credentials in the right order
 
-1. ใช้ default provider chain: env vars → shared config/`AWS_PROFILE` → IAM role
-2. สำหรับ assume role → ใช้ `@aws-sdk/credential-providers` (`fromTemporaryCredentials`) ตาม official docs
-3. secrets ทั้งหมดผ่าน `/follow-secret-manager` — ห้าม hardcode
+1. Use the default provider chain: env vars → shared config/`AWS_PROFILE` → IAM role
+2. For assume role → use `@aws-sdk/credential-providers` (`fromTemporaryCredentials`) per the official docs
+3. All secrets through `/follow-secret-manager` — never hardcode
 
 ###### 4. Configure Endpoints And Options
 
-> Goal: endpoint overrides ถูก scope
+> Goal: endpoint overrides correctly scoped
 
-1. สำหรับ local dev (LocalStack) → ตั้ง `endpoint` ใน client options หรือ env `AWS_ENDPOINT_URL` เฉพาะ dev
-2. เพิ่ม options ที่จำเป็นเช่น `maxAttempts`, `requestHandler` timeouts — เฉพาะที่ใช้จริง
-3. guard endpoint overrides ด้วย `NODE_ENV` — ห้ามชี้ local endpoint บน production
+1. For local dev (LocalStack) → set `endpoint` in client options or the `AWS_ENDPOINT_URL` env var in dev only
+2. Add only options actually used, such as `maxAttempts` and `requestHandler` timeouts
+3. Guard endpoint overrides with `NODE_ENV` — never point at a local endpoint in production
 
 ###### 5. Verify
 
-> Goal: config ใช้ได้กับ AWS จริงหรือ local endpoint
+> Goal: config works against real AWS or the local endpoint
 
-1. รัน smoke call เช่น `ListBucketsCommand` หรือ `DescribeTableCommand`
-2. ทำ `/run-verify` สำหรับ lint, typecheck
-3. ถ้าพัง → revert key ที่เพิ่งแก้แล้ว report diff
+1. Run a smoke call such as `ListBucketsCommand` or `DescribeTableCommand`
+2. Do `/run-verify` for lint, typecheck
+3. If broken → revert the key just changed, then report the diff
 
 ##### Rules
 
-- แก้เฉพาะ keys/options ที่จำเป็น — ห้าม overwrite config ทั้งชุด
-- production ใช้ IAM role — ห้าม static credentials
-- endpoint overrides ต้อง scoped ต่อ environment
-- ใช้ `/follow-best-practice` สำหรับ retry/timeout patterns
+- Edit only the necessary keys/options — never overwrite the whole config
+- Production uses IAM roles — never static credentials
+- Endpoint overrides must be scoped per environment
+- Use `/follow-best-practice` for retry/timeout patterns
 
 ##### Expected Outcome
 
-- region/credentials chain ถูกต้องต่อ environment
-- endpoint overrides ทำงานใน dev โดยไม่กระทบ production
-- smoke call สำเร็จ — lint, typecheck ผ่าน
+- Region/credentials chain correct per environment
+- Endpoint overrides work in dev without affecting production
+- Smoke call succeeds — lint, typecheck pass
 
 ### setup-aws-sdk
 
 ##### Goal
 
-ติดตั้ง AWS SDK v3 (modular packages) และเตรียม credentials ให้ client เรียก AWS services ได้ — first-time setup
+Install AWS SDK v3 (modular packages) and prepare credentials so the client can call AWS services — first-time setup
 
 ##### Scope
 
-- ติดตั้ง `@aws-sdk/client-<service>` เฉพาะ service ที่ใช้ — `aws-sdk` v2 ถูก deprecated
-- ตั้งค่า credentials ผ่าน env/IAM role
-- ถ้า setup แล้ว → verify เท่านั้น; region/endpoint config → `## Merged Details → config-aws-sdk`
+- Install `@aws-sdk/client-<service>` only for services used — `aws-sdk` v2 is deprecated
+- Configure credentials via env/IAM role
+- If already set up → verify only; region/endpoint config → `## Merged Details → config-aws-sdk`
 
 ##### Execute
 
 ###### 1. Check Prerequisites
 
-> Goal: ยืนยัน project พร้อมและยังไม่ได้ setup
+> Goal: Confirm the project is ready and not yet set up
 
-1. ตรวจ `package.json` ว่ามี `@aws-sdk/client-*` แล้วหรือยัง — ถ้ามี → install เฉพาะที่ขาด
-2. ตรวจ env/secrets ว่ามี `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY` หรือ `AWS_PROFILE` หรือยัง
-3. ถ้าขาด credentials → เก็บผ่าน `/follow-secret-manager` หรือใช้ IAM role (production)
+1. Check `package.json` for existing `@aws-sdk/client-*` — if present → install only what's missing
+2. Check env/secrets for `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`, or `AWS_PROFILE`
+3. If credentials are missing → store them via `/follow-secret-manager` or use an IAM role (production)
 
 ###### 2. Install SDK
 
-> Goal: ติดตั้งเฉพาะ modular clients ที่ใช้
+> Goal: Install only the modular clients actually used
 
-1. รัน `bun add @aws-sdk/client-s3` (หรือ service ที่ต้องการ เช่น `@aws-sdk/client-dynamodb`, `@aws-sdk/client-lambda`)
-2. ยืนยัน import ได้ เช่น `import { S3Client } from '@aws-sdk/client-s3'`
-3. ใช้ TypeScript สำหรับ type safety
+1. Run `bun add @aws-sdk/client-s3` (or the needed service such as `@aws-sdk/client-dynamodb`, `@aws-sdk/client-lambda`)
+2. Confirm the import works, e.g. `import { S3Client } from '@aws-sdk/client-s3'`
+3. Use TypeScript for type safety
 
 ###### 3. Configure Credentials
 
-> Goal: credential chain ถูกต้อง
+> Goal: correct credential chain
 
-1. development → env vars `AWS_ACCESS_KEY_ID`/`AWS_SECRET_ACCESS_KEY` หรือ `aws configure` + `AWS_PROFILE`
-2. production → IAM role/instance profile — ห้ามใส่ static keys
-3. ห้าม hardcode credentials ใน code — SDK resolve จาก default chain อัตโนมัติ
+1. development → env vars `AWS_ACCESS_KEY_ID`/`AWS_SECRET_ACCESS_KEY` or `aws configure` + `AWS_PROFILE`
+2. production → IAM role/instance profile — never put static keys
+3. Never hardcode credentials in code — the SDK resolves them from the default chain automatically
 
 ###### 4. Create Client And Smoke Check
 
-> Goal: client ทำงานได้จริง
+> Goal: the client really works
 
-1. สร้าง client เช่น `new S3Client({ region })` — อ่าน region จาก env/config
-2. รัน smoke check ด้วย read-only call เช่น `client.send(new ListBucketsCommand({}))`
-3. ถ้า local AWS CLI พร้อม → ตรวจ identity ด้วย `aws sts get-caller-identity`
+1. Create a client such as `new S3Client({ region })` — read region from env/config
+2. Run a smoke check with a read-only call such as `client.send(new ListBucketsCommand({}))`
+3. If the local AWS CLI is ready → check identity with `aws sts get-caller-identity`
 
 ###### 5. Verify
 
-> Goal: SDK ทำงานได้จริง
+> Goal: the SDK actually works
 
-1. ทำ `/run-verify` สำหรับ lint, typecheck
-2. ถ้า verify ไม่ผ่าน → ทำ `/resolve-errors` max 3 รอบ แล้ว stop report
-3. สำเร็จ → ทำ `/suggest-next-action`
+1. Do `/run-verify` for lint, typecheck
+2. If verify fails → do `/resolve-errors` max 3 rounds, then stop and report
+3. Success → do `/suggest-next-action`
 
 ##### Rules
 
-- ใช้ AWS SDK v3 เท่านั้น — ห้ามเพิ่ม `aws-sdk` v2
-- install เฉพาะ clients ที่ใช้จริง (modular)
-- ใช้ `/follow-best-practice` และ `/learn-from-web` ถ้าไม่แน่ใจ API — ดู official docs https://docs.aws.amazon.com/AWSJavaScriptSDK/v3/
+- Use AWS SDK v3 only — never add `aws-sdk` v2
+- Install only the clients actually used (modular)
+- Use `/follow-best-practice` and `/learn-from-web` when unsure about the API — see official docs https://docs.aws.amazon.com/AWSJavaScriptSDK/v3/
 
 ##### Expected Outcome
 
-- `@aws-sdk/client-*` ติดตั้งเฉพาะ service ที่ใช้
-- credentials อยู่ใน env/IAM role ไม่มีใน code
-- smoke check ผ่าน — พร้อมไป `## Merged Details → config-aws-sdk`
+- `@aws-sdk/client-*` installed only for services used
+- Credentials live in env/IAM role, never in code
+- Smoke check passes — ready for `## Merged Details → config-aws-sdk`
 
 ### verify-connection
 
 ##### Goal
 
-ยืนยันหลัง setup/config ว่า AWS SDK เชื่อมต่อได้จริง — credentials valid, region ถูก, permissions เพียงพอ
+Confirm after setup/config that the AWS SDK really connects — credentials valid, region correct, permissions sufficient
 
 ##### Scope
 
-- ใช้เมื่อ `/follow-service-aws-sdk` dispatch มาที่ `verify`/`verify-connection`
-- Read-only: ตรวจสอบ — ไม่แก้ credentials
+- Used when `/follow-service-aws-sdk` dispatches to `verify`/`verify-connection`
+- Read-only: check only — do not change credentials
 
 ##### Execute
 
 ###### 1. Check Credentials Loaded
 
-> Goal: credentials มีและ load ถูก chain
+> Goal: credentials exist and load via the right chain
 
-1. ตรวจ `AWS_ACCESS_KEY_ID`/`AWS_SECRET_ACCESS_KEY` หรือ credentials chain (profile, SSO, IAM role)
-2. ตรวจ `AWS_REGION` ตั้งไว้และตรงกับที่ config คาด
+1. Check `AWS_ACCESS_KEY_ID`/`AWS_SECRET_ACCESS_KEY` or the credentials chain (profile, SSO, IAM role)
+2. Check `AWS_REGION` is set and matches what the config expects
 
 ###### 2. Smoke Test API Call
 
-> Goal: call จริงตอบกลับ
+> Goal: a real call responds
 
-1. `aws sts get-caller-identity` — ต้องคืน Account/Arn
-2. ถ้าใช้ SDK ใน code → call minimal read (เช่น `sts.getCallerIdentity()` ผ่าน SDK)
-3. ถ้า service-specific → call read-only ของ service นั้น (เช่น `s3.listBuckets()`, `dynamodb.listTables()`)
+1. `aws sts get-caller-identity` — must return Account/Arn
+2. If the SDK is used in code → a minimal read call (e.g. `sts.getCallerIdentity()` via the SDK)
+3. If service-specific → a read-only call of that service (e.g. `s3.listBuckets()`, `dynamodb.listTables()`)
 
 ###### 3. Report
 
-> Goal: สรุป connection status
+> Goal: Summarize connection status
 
-1. ใช้ `/report` คอลัมน์: `No.`, `Check`, `Result`, `Evidence`
+1. Use `/report` columns: `No.`, `Check`, `Result`, `Evidence`
 2. Verdict: `connected` / `auth-failed` / `wrong-region` / `missing-permission`
 
 ##### Rules
 
-- ใช้ read-only calls เท่านั้น — ห้าม call ที่เปลี่ยน state
-- ไม่ print secret values — แสดงแค่ Account/Arn/Region
-- auth failure → แนะนำ `/follow-secret-manager` — ไม่แก้เอง
+- Use read-only calls only — never calls that change state
+- Do not print secret values — show only Account/Arn/Region
+- Auth failure → recommend `/follow-secret-manager` — do not fix it yourself
 
 ##### Expected Outcome
 
-- Verdict connection พร้อม Account/Region evidence
+- Connection verdict with Account/Region evidence
 
 ### references/apis
 
@@ -630,7 +630,7 @@ bun add @aws-sdk/client-s3
 
 ## Expected Outcome
 
-- Integration กับ AWS services ที่ reliable
-- Code ที่ follow best practices
-- Error handling ที่ robust
-- Security ที่เหมาะสม
+- Reliable integration with AWS services
+- Code that follows best practices
+- Robust error handling
+- Appropriate security
