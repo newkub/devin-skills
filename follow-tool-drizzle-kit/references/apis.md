@@ -6,9 +6,9 @@
 
 | commands | description | default | options |
 |---|---|---|---|
-| `drizzle-kit generate` | สร้าง SQL migration จาก schema | `./drizzle` out | --name, --custom |
+| `drizzle-kit generate` | Create SQL migration from schema | `./drizzle` out | --name, --custom |
 | `drizzle-kit migrate` | Apply migrations | - | - |
-| `drizzle-kit push` | Push schema ตรงๆ (dev) | - | --force |
+| `drizzle-kit push` | Push schema directly (dev) | - | --force |
 | `drizzle-kit pull` | Introspect DB → schema | - | --tablesFilter |
 | `drizzle-kit check` | Validate migrations | - | - |
 | `drizzle-kit studio` | Data browser UI | - | --port |

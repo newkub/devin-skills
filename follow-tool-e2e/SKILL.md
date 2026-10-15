@@ -13,34 +13,34 @@ related:
   - run-test
   - follow-my-techstack
   - check-secrets
-  - deep-review
+  - deep-review-codebase
 ---
 
 ## Goal
 
-เขียนและรัน e2e tests ด้วย framework `e2e` (e2e.tester.army) — เลือกระดับ agentic ต่อ step: deterministic locators (`screen` + `expect`), agent goals (`agent.act` จาก natural language), หรือผสมใน test เดียว — รันเดียวกันได้ทั้ง web (Playwright engine) และ mobile (iOS/Android ผ่าน agent-device)
+Write and run e2e tests with the `e2e` framework (e2e.tester.army) — choose the agentic level per step: deterministic locators (`screen` + `expect`), agent goals (`agent.act` from natural language), or a mix in one test — the same test runs on both web (Playwright engine) and mobile (iOS/Android via agent-device)
 
 ## Scope
 
-ใช้เมื่อ project ติดตั้ง `e2e` package หรือต้องการ agentic testing — ตัวเลือก E2E strategy ทั่วไป → `/deep-test e2e`; mobile-specific → `/deep-test mobile`; catalog default → `/follow-my-techstack`
+Use when the project installs the `e2e` package or needs agentic testing — general E2E strategy choice → `/deep-test e2e`; mobile-specific → `/deep-test mobile`; catalog default → `/follow-my-techstack`
 
-- Deterministic test suites ที่ไม่ต้องการ model → `screen`/`expect` steps เท่านั้น (ไม่เสีย token)
-- API checks ผสมใน test file เดียวกันได้ด้วย `fetch` + value matchers
+- Deterministic test suites that need no model → `screen`/`expect` steps only (no token cost)
+- API checks can be mixed into the same test file via `fetch` + value matchers
 
 ## Execute
 
 ### 1. Setup
 
-> Goal: ติดตั้งและตั้งค่า runner
+> Goal: install and configure the runner
 
-1. `bun add -d e2e` ผ่าน `/run-install` (packages แยกตาม platform — ดู `references/apis.md`)
-2. ตั้งค่า model สำหรับ agent steps: subscription (ChatGPT/Copilot/SuperGrok), API key ผ่าน AI SDK providers, หรือ local model — ดู `references/cli.md`
-3. กำหนด targets: `web` (Chromium ผ่าน Playwright), iOS simulator, Android emulator
-4. Import `test` จาก `@e2e-dev/web` หรือ `@e2e-dev/mobile` เพื่อได้ `browser`/`device` fixture typed
+1. `bun add -d e2e` via `/run-install` (packages split by platform — see `references/apis.md`)
+2. Configure the model for agent steps: subscription (ChatGPT/Copilot/SuperGrok), API key via AI SDK providers, or a local model — see `references/cli.md`
+3. Define targets: `web` (Chromium via Playwright), iOS simulator, Android emulator
+4. Import `test` from `@e2e-dev/web` or `@e2e-dev/mobile` to get typed `browser`/`device` fixtures
 
 ### 2. Write Test
 
-> Goal: ผสม 3 step types ให้ถูกจุด
+> Goal: combine the 3 step types at the right points
 
 ```ts
 import { test, expect, unique } from 'e2e';
@@ -53,58 +53,58 @@ test('member upgrades to Pro', async ({ app, agent, screen }) => {
 });
 ```
 
-- **Goal** — `agent.act('one goal per call', { params })` — agent เลือก actions เอง; ใช้ `unique()` กับค่าที่เปลี่ยนทุก run เพื่อให้ replay cache ใช้ได้; password ใช้ `Secret` (model ไม่เห็นค่าจริง)
-- **Assertion** — `agent.assert` (screen ตอนนี้), `agent.waitFor` (รอจน condition จริง, model ถูกเรียกเฉพาะตอน screen เปลี่ยน), `agent.extract` → Standard Schema (เช่น Zod); `{ vision: true }` เมื่อต้อง judge pixels (chart/layout)
-- **Locator** — `screen.getByRole/getByLabel/getByTestId` (ลำดับ priority ตามนั้น), `.filter()/.first()/.nth()` เมื่อ match หลาย node, actions `tap/fill/swipe`, `expect(locator)` retry จน pass/timeout — ไม่เสีย model call
+- **Goal** — `agent.act('one goal per call', { params })` — the agent picks its own actions; use `unique()` for values that change every run so the replay cache still works; use `Secret` for passwords (the model never sees the real value)
+- **Assertion** — `agent.assert` (current screen), `agent.waitFor` (wait until a real condition; the model is called only when the screen changes), `agent.extract` → Standard Schema (e.g. Zod); `{ vision: true }` when pixels must be judged (chart/layout)
+- **Locator** — `screen.getByRole/getByLabel/getByTestId` (that priority order), `.filter()/.first()/.nth()` when multiple nodes match, actions `tap/fill/swipe`, `expect(locator)` retries until pass/timeout — costs no model call
 
 ### 3. Structure And Run
 
-> Goal: จัด suite และรันถูก scope
+> Goal: organize the suite and run the right scope
 
-1. `describe` + `{ tags }`, `beforeEach`, `{ retries, timeout }` ต่อ test, `{ serial: true }` สำหรับ flow ข้าม tests, `test.skip(condition, reason)`, `test.extend` สำหรับ fixtures
-2. `bunx e2e run tests/x.e2e.ts:12` / `--grep checkout` / `--target web` — ดู `references/cli.md`
-3. Explore โดยไม่มี test file → `e2e explore` ให้ agent ทำ goal แล้ว report สิ่งที่เจอ
-4. `e2e mcp` — expose live app session ให้ coding agent inspect/interact ผ่าน MCP
+1. `describe` + `{ tags }`, `beforeEach`, per-test `{ retries, timeout }`, `{ serial: true }` for flows spanning tests, `test.skip(condition, reason)`, `test.extend` for fixtures
+2. `bunx e2e run tests/x.e2e.ts:12` / `--grep checkout` / `--target web` — see `references/cli.md`
+3. Exploring with no test file → `e2e explore` lets the agent pursue a goal and report findings
+4. `e2e mcp` — expose a live app session so a coding agent can inspect/interact via MCP
 
 ### 4. Cache And Debug
 
-> Goal: ลดต้นทุนและ debug failures
+> Goal: cut cost and debug failures
 
-1. `agent.act` ที่มี later check ผ่าน → recorded; run ถัดไป replay จาก cache โดยไม่เรียก model — agent เข้าแทรกเฉพาะตอน app เปลี่ยน
-2. `assert`/`waitFor`/`extract` เรียก model เสมอ (ไม่ถูก cache)
-3. อ่าน trace page + evidence + model input ใน report — secrets ที่ register ถูก redact
-4. Flaky `act` → ทำ instruction specific ขึ้น, ย้ายคำที่ใช้ซ้ำไป agent `context`, หรือเปลี่ยนเป็น locator step
+1. An `agent.act` whose later check passes → recorded; the next run replays from cache without calling the model — the agent steps in only when the app changes
+2. `assert`/`waitFor`/`extract` always call the model (never cached)
+3. Read the trace page + evidence + model input in the report — registered secrets are redacted
+4. Flaky `act` → make the instruction more specific, move repeated wording into the agent `context`, or convert it to a locator step
 
 ### 5. CI
 
-> Goal: รันบน CI และ report
+> Goal: run on CI and report
 
-- GitHub Actions, EAS Workflows, Bitrise, Codemagic — `@e2e-dev/github` reporter post comment ต่อ run บน PR
+- GitHub Actions, EAS Workflows, Bitrise, Codemagic — the `@e2e-dev/github` reporter posts a per-run comment on the PR
 - Hosted targets: `@e2e-dev/kernel` (Kernel Chromium), `@e2e-dev/eas` (EAS simulators/emulators)
-- หลัง suite เขียว → ทำ `/run-test` และ `/check-secrets` ว่าไม่มี secret ใน test files
+- After the suite goes green → run `/run-test` and `/check-secrets` to confirm no secret is in the test files
 
 ## Rules
 
 ### 1. Await Everything
 
-- await ทุก agent call, screen call, `expect.poll` — test ที่ return ระหว่าง step ยังรัน fail ด้วย `STEP_NOT_AWAITED`
-- direct reads (`textContent()`) ไม่ retry — ใช้ `expect` matcher แทนเมื่อต้องรอ
+- await every agent call, screen call, `expect.poll` — a test that returns while steps are still running fails with `STEP_NOT_AWAITED`
+- direct reads (`textContent()`) do not retry — use an `expect` matcher instead when waiting is needed
 
 ### 2. Secrets
 
-- ส่ง secrets ผ่าน `Secret`/`params` เท่านั้น — ห้าม interpolate ลง goal string ตรงๆ
-- sign-in ครั้งเดียวแล้ว reuse session ข้าม tests
+- pass secrets only via `Secret`/`params` — never interpolate them directly into the goal string
+- sign in once and reuse the session across tests
 
 ### 3. Determinism First
 
-- ใช้ `agent.*` เฉพาะจุดที่ selector เขียนไม่ได้/เปลี่ยนบ่อย — จุดที่รู้ exact action ใช้ `screen` locator (ฟรี, deterministic)
-- `expect` locator check หลัง `agent.act` เสมอ — cache record เฉพาะ goal ที่มี later check ผ่าน
+- use `agent.*` only where a selector cannot be written or changes often — where the exact action is known, use a `screen` locator (free, deterministic)
+- always follow `agent.act` with an `expect` locator check — the cache records only goals whose later check passes
 
-- ใช้ /deep-test e2e ถ้าต้องเลือก framework/กลยุทธ์
-- ใช้ /deep-test mobile สำหรับ device specifics
-- ใช้ /deep-review domain `review-test` สำหรับ review suite
+- Use /deep-test e2e when a framework/strategy choice is needed
+- Use /deep-test mobile for device specifics
+- Use /deep-review-codebase domain `review-test` for suite review
 
 ## Expected Outcome
 
-- Tests ผสม deterministic + agentic ถูกจุด รันได้บน web + mobile targets
-- Replay cache ลด model calls; report/debug อ่านได้; secrets ไม่รั่วเข้า model input
+- Tests mixing deterministic + agentic steps at the right points, runnable on web + mobile targets
+- Replay cache cuts model calls; report/debug is readable; secrets never leak into model input

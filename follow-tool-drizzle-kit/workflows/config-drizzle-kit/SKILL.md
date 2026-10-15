@@ -1,6 +1,6 @@
 ---
 name: follow-tool-drizzle-kit-config-drizzle-kit
-description: ตั้งค่า `drizzle.config.ts` — dialect, schema path, dbCredentials, out dir
+description: Configure `drizzle.config.ts` — dialect, schema path, dbCredentials, out dir
 argument-hint: "[scope]"
 related:
   - run-drizzle-studio
@@ -10,72 +10,72 @@ related:
 
 ## Goal
 
-ตั้งค่า `drizzle.config.ts` ให้ถูกต้อง — `dialect`, `schema`, `out`, `dbCredentials` — ให้ generate/migrate/push ทำงาน
+Configure `drizzle.config.ts` correctly — `dialect`, `schema`, `out`, `dbCredentials` — so generate/migrate/push work
 
 ## Scope
 
-ใช้เมื่อต้องสร้าง/แก้ drizzle-kit config — migration workflow อยู่ใน `workflows/migrate-schema/SKILL.md`
+Use when creating/editing the drizzle-kit config — the migration workflow lives in `workflows/migrate-schema/SKILL.md`
 
 ## Execute
 
 ### 1. Read Current Config
 
-> Goal: อ่าน config เดิมก่อนแก้
+> Goal: read the existing config before editing
 
-1. หา `drizzle.config.ts` (หรือ `.js`/`.json`) ที่ root — บันทึก keys ปัจจุบัน
-2. ระบุ schema entrypoint — เช่น `./src/db/schema.ts` หรือ glob `./src/**/schema.ts` สำหรับ multi-file
-3. ถ้าไม่มี config → สร้าง `drizzle.config.ts` ที่ root
+1. Find `drizzle.config.ts` (or `.js`/`.json`) at the root — record the current keys
+2. Identify the schema entrypoint — e.g. `./src/db/schema.ts` or the glob `./src/**/schema.ts` for multi-file
+3. No config → create `drizzle.config.ts` at the root
 
 ### 2. Core Options
 
-> Goal: ตั้งค่า keys หลัก
+> Goal: set the main keys
 
-1. ใช้ `defineConfig` จาก `drizzle-kit` — type safety
-2. `dialect` — `"postgresql"`, `"mysql"`, `"sqlite"`, `"turso"` ฯลฯ ตาม database จริง (ดู official docs สำหรับ dialect names)
-3. `schema` — path/glob ไปยัง schema files
-4. `out` — directory สำหรับ generated migrations เช่น `"./drizzle"` หรือ `"./migrations"`
-5. `dbCredentials` — `url` หรือ fields เฉพาะ dialect (host/port/user/database) — อ่านจาก env vars เสมอ (`process.env.DATABASE_URL!`) ห้าม hard-code
+1. Use `defineConfig` from `drizzle-kit` — type safety
+2. `dialect` — `"postgresql"`, `"mysql"`, `"sqlite"`, `"turso"` etc. matching the real database (check official docs for dialect names)
+3. `schema` — path/glob to the schema files
+4. `out` — directory for generated migrations, e.g. `"./drizzle"` or `"./migrations"`
+5. `dbCredentials` — `url` or dialect-specific fields (host/port/user/database) — always read from env vars (`process.env.DATABASE_URL!`), never hard-code
 
 ### 3. Additional Options
 
-> Goal: ตั้งค่า options เสริมตามต้องการ
+> Goal: set extra options as needed
 
-1. `strict`/`verbose` — สำหรับ generate/push safety และ logging
-2. `tablesFilter` — จำกัด tables ที่ drizzle-kit จัดการ
-3. `migrations` options — prefix/table settings ถ้าต้องการ (ดู official docs)
-4. หลาย databases/configs → สร้างหลาย config files แล้วเลือกด้วย `--config=<path>`
+1. `strict`/`verbose` — for generate/push safety and logging
+2. `tablesFilter` — limit which tables drizzle-kit manages
+3. `migrations` options — prefix/table settings when needed (see official docs)
+4. Multiple databases/configs → create multiple config files and select with `--config=<path>`
 
 ### 4. Verify
 
-> Goal: ตรวจ config ทำงาน
+> Goal: check the config works
 
-1. รัน `bunx drizzle-kit generate` บน schema ที่ไม่เปลี่ยน — ต้อง parse config ผ่าน (อาจบอก no changes)
-2. หรือ `bunx drizzle-kit check` ตรวจ migration consistency ถ้ามี migrations อยู่แล้ว
-3. รัน `bunx drizzle-kit studio` หรือ `/run-drizzle-studio` ตรวจ dbCredentials connect ได้จริง (ถ้า DB พร้อม)
-4. ถ้าพัง → revert keys ที่แก้แล้ว report diff
+1. Run `bunx drizzle-kit generate` on an unchanged schema — the config must parse (it may report no changes)
+2. Or `bunx drizzle-kit check` to verify migration consistency when migrations already exist
+3. Run `bunx drizzle-kit studio` or `/run-drizzle-studio` to confirm dbCredentials actually connect (when the DB is available)
+4. If it breaks → revert the edited keys and report the diff
 
 ## Rules
 
 ### 1. Config Discipline
 
-- `defineConfig` เสมอ; merge กับ config เดิม ห้าม overwrite
-- `dbCredentials` จาก env เท่านั้น — ใช้ `/follow-secret-manager` สำหรับ secrets
-- `schema` path ต้องตรง entrypoint จริง — wrong glob = generate ผิด/ว่าง
+- always `defineConfig`; merge with the existing config, never overwrite
+- `dbCredentials` from env only — use `/follow-secret-manager` for secrets
+- the `schema` path must match the real entrypoint — a wrong glob = wrong/empty generate
 
 ### 2. Dialect
 
-- `dialect` ต้องตรง database จริง — ผิด = SQL ผิด dialect ทั้งหมด
-- ถ้าไม่แน่ใจ key name ให้ดู official docs — ห้ามเดา
+- `dialect` must match the real database — wrong = every SQL in the wrong dialect
+- unsure about a key name → check the official docs — never guess
 
 ### 3. Multi-Config
 
-- หลาย DBs → หลาย config files + `--config` flag — อย่ายัดทุกอย่างใน config เดียว
+- multiple DBs → multiple config files + the `--config` flag — never cram everything into one config
 
-- ใช้ /follow-secret-manager ถ้าจำเป็น
-- ใช้ /run-drizzle-studio ถ้าจำเป็น
+- Use /follow-secret-manager if needed
+- Use /run-drizzle-studio if needed
 
 ## Expected Outcome
 
-- `drizzle.config.ts` ถูกต้อง — dialect/schema/out/dbCredentials ตรงจริง
-- `drizzle-kit` commands parse config และทำงานได้
-- Credentials ปลอดภัยผ่าน env vars
+- `drizzle.config.ts` is correct — dialect/schema/out/dbCredentials match reality
+- `drizzle-kit` commands parse the config and work
+- Credentials stay safe via env vars

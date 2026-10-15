@@ -1,6 +1,6 @@
 ---
 name: follow-tool-eslint
-description: ตั้งค่า ESLint 10 พร้อม plugins ครบถ้วนสำหรับ TypeScript/Vue/Nuxt
+description: Configure ESLint 10 with a complete plugin setup for TypeScript/Vue/Nuxt
 argument-hint: "[scope]"
 related:
   - follow-create-plugins
@@ -16,51 +16,51 @@ related:
 
 ## Goal
 
-ตั้งค่า ESLint 10 ด้วย flat config format พร้อม plugins ครบถ้วน
+Configure ESLint 10 with the flat config format and a complete plugin setup
 
 ## Scope
 
-ใช้สำหรับตั้งค่า ESLint 10 ใน TypeScript, Vue, และ Nuxt projects
+Use for configuring ESLint 10 in TypeScript, Vue, and Nuxt projects
 
-- Latest: `eslint@10.11.0` — flat config เท่านั้น (eslintrc removed), Node `^20.19 | ^22.13 | >=24` (verified 2026-09-26) — pair กับ `typescript-eslint@8.70.1`
+- Latest: `eslint@10.11.0` — flat config only (eslintrc removed), Node `^20.19 | ^22.13 | >=24` (verified 2026-09-26) — pairs with `typescript-eslint@8.70.1`
 
-- eslint-plugin-oxlint ดู official docs ผ่าน `/learn-from-web`
+- eslint-plugin-oxlint: read official docs via `/learn-from-web`
 - References: [cli](references/cli.md) 
 ## Execute
 
 ### 1. Install Core Dependencies
 
-> Goal: ติดตั้ง ESLint core dependencies
+> Goal: install ESLint core dependencies
 
-1. รัน `bun add -D eslint @eslint/js typescript-eslint`
-2. รัน `bun add -D eslint-config-prettier`
+1. Run `bun add -D eslint @eslint/js typescript-eslint`
+2. Run `bun add -D eslint-config-prettier`
 
 ### 2. Install Vue/Nuxt Plugins
 
-> Goal: ติดตั้ง Vue และ Nuxt ESLint plugins
+> Goal: install Vue and Nuxt ESLint plugins
 
-1. รัน `bun add -D eslint-plugin-vue @vue/eslint-config-typescript`
-2. รัน `bun add -D @nuxt/eslint-config`
+1. Run `bun add -D eslint-plugin-vue @vue/eslint-config-typescript`
+2. Run `bun add -D @nuxt/eslint-config`
 
 ### 3. Install Code Quality Plugins
 
-> Goal: ติดตั้ง plugins สำหรับ code quality และ security
+> Goal: install plugins for code quality and security
 
-1. รัน `bun add -D eslint-plugin-import eslint-plugin-unused-imports`
-2. รัน `bun add -D eslint-plugin-no-secrets eslint-plugin-regexp`
-3. รัน `bun add -D eslint-plugin-functional eslint-plugin-oxlint`
+1. Run `bun add -D eslint-plugin-import eslint-plugin-unused-imports`
+2. Run `bun add -D eslint-plugin-no-secrets eslint-plugin-regexp`
+3. Run `bun add -D eslint-plugin-functional eslint-plugin-oxlint`
 
 ### 4. Install Testing/A11y Plugins
 
-> Goal: ติดตั้ง plugins สำหรับ testing และ accessibility
+> Goal: install plugins for testing and accessibility
 
-1. รัน `bun add -D eslint-plugin-vitest eslint-plugin-vue-a11y`
+1. Run `bun add -D eslint-plugin-vitest eslint-plugin-vue-a11y`
 
 ### 5. Create Flat Config
 
-> Goal: สร้าง `eslint.config.ts` ด้วย flat config format
+> Goal: create `eslint.config.ts` in flat config format
 
-สร้าง `eslint.config.ts` ด้วย flat config format
+Create `eslint.config.ts` with the flat config format
 
 ```typescript [eslint.config.ts]
 import { defineConfig } from 'eslint/config'
@@ -114,7 +114,7 @@ export default defineConfig([
 
 ### 6. Add Package Scripts
 
-> Goal: เพิ่ม scripts สำหรับ linting ใน `package.json`
+> Goal: add linting scripts to `package.json`
 
 ```json [package.json]
 {
@@ -128,7 +128,7 @@ export default defineConfig([
 
 ### 7. Configure IDE
 
-> Goal: ตั้งค่า IDE settings สำหรับ ESLint integration
+> Goal: set IDE settings for ESLint integration
 
 ```json [.vscode/settings.json]
 {
@@ -142,74 +142,74 @@ export default defineConfig([
 
 ### 8. Dispatch To Workflow
 
-> Goal: dispatch งานเฉพาะทางไป workflow ที่เหมาะสม
+> Goal: dispatch specialized work to the appropriate workflow
 
-| Topic | Workflow |-------|----------| เขียน/แก้ flat config (`eslint.config.js`) | `workflows/config-flat/SKILL.md` | migrate ไป oxlint | `workflows/migrate-to-oxlint/SKILL.md` 
+| Topic | Workflow |-------|----------| write/edit the flat config (`eslint.config.js`) | `workflows/config-flat/SKILL.md` | migrate to oxlint | `workflows/migrate-to-oxlint/SKILL.md` 
 ## Rules
 
 ### 1. Vue/Nuxt Configuration
 
-ตั้งค่า ESLint สำหรับ Vue และ Nuxt projects
+Configure ESLint for Vue and Nuxt projects
 
-- ใช้ `eslint-plugin-vue` สำหรับ Vue 3 linting rules และ template linting
-- ใช้ `@vue/eslint-config-typescript` สำหรับ Vue + TypeScript config อย่างเป็นทางการ
-- ใช้ `@nuxt/eslint-config` สำหรับ Nuxt 3 project-aware config
+- Use `eslint-plugin-vue` for Vue 3 linting rules and template linting
+- Use `@vue/eslint-config-typescript` for the official Vue + TypeScript config
+- Use `@nuxt/eslint-config` for Nuxt 3 project-aware config
 
 ### 2. Import/Export Management
 
-จัดการ import และ export อย่างเป็นระเบียบ
+Manage imports and exports in an orderly way
 
-- ใช้ `eslint-plugin-import` สำหรับ import ordering, validation, auto-sort
-- ใช้ `eslint-plugin-unused-imports` สำหรับ auto-remove unused imports
-- ใช้ `import/no-cycle` สำหรับ detect circular dependencies
+- Use `eslint-plugin-import` for import ordering, validation, auto-sort
+- Use `eslint-plugin-unused-imports` for auto-removing unused imports
+- Use `import/no-cycle` to detect circular dependencies
 
 ### 3. Code Quality & Security
 
-ตรวจสอบคุณภาพโค้ดและ security
+Check code quality and security
 
-- ใช้ `eslint-plugin-no-secrets` สำหรับ detect hardcoded secrets/API keys
-- ใช้ `eslint-plugin-regexp` สำหรับ RegExp best practices
-- ใช้ `eslint-plugin-functional` สำหรับ functional programming rules
-- ใช้ `eslint-plugin-oxlint` สำหรับ fast Rust-based linting
+- Use `eslint-plugin-no-secrets` to detect hardcoded secrets/API keys
+- Use `eslint-plugin-regexp` for RegExp best practices
+- Use `eslint-plugin-functional` for functional programming rules
+- Use `eslint-plugin-oxlint` for fast Rust-based linting
 
 ### 4. Testing & Accessibility
 
-ตรวจสอบ testing และ accessibility
+Check testing and accessibility
 
-- ใช้ `eslint-plugin-vitest` สำหรับ Vitest linting rules
-- ใช้ `eslint-plugin-vue-a11y` สำหรับ Vue accessibility rules
+- Use `eslint-plugin-vitest` for Vitest linting rules
+- Use `eslint-plugin-vue-a11y` for Vue accessibility rules
 
 ### 5. Configuration Standards
 
-ตั้งค่า configuration ตามมาตรฐาน ESLint 10
+Configure per ESLint 10 standards
 
-- ใช้ `eslint.config.ts` แทน `.eslintrc` (Flat Config — eslintrc ถูก removed ใน ESLint 10)
-- ใช้ `defineConfig()` จาก `eslint/config`
-- ใช้ `typescript-eslint` แทน `@typescript-eslint/parser`
-- ใส่ `prettier` config เป็นตัวสุดท้าย
-- ไม่ใช้ `.eslintignore` ใน ESLint 10 — ใช้ `ignores` ใน flat config
-- Config lookup ใน v10 เริ่มจาก directory ของ linted file ขึ้นไป (ไม่ใช่ cwd) — ถ้าต้องการ behavior เดิมให้ระบุ `--config <path>`
-- Migrate จาก v9 → v10 ด้วย codemod `npx codemod @eslint/v9-to-v10` (Codemod Registry — ไม่ใช่ npm package; มี sub-codemods `@eslint/v9-to-v10-config`, `-custom-rules`, `-ruletester`, `-linter-api`) ตาม official guide `https://eslint.org/docs/latest/use/migrate-to-10.0.0`
-- ตรวจ plugin compatibility กับ ESLint 10 ก่อน upgrade (`typescript-eslint`, `eslint-plugin-*`)
+- Use `eslint.config.ts` instead of `.eslintrc` (Flat Config — eslintrc was removed in ESLint 10)
+- Use `defineConfig()` from `eslint/config`
+- Use `typescript-eslint` instead of `@typescript-eslint/parser`
+- Put the `prettier` config last
+- Do not use `.eslintignore` in ESLint 10 — use `ignores` in the flat config
+- Config lookup in v10 starts from the linted file's directory upward (not cwd) — pass `--config <path>` to keep the old behavior
+- Migrate from v9 → v10 with the codemod `npx codemod @eslint/v9-to-v10` (Codemod Registry — not an npm package; has sub-codemods `@eslint/v9-to-v10-config`, `-custom-rules`, `-ruletester`, `-linter-api`) per the official guide `https://eslint.org/docs/latest/use/migrate-to-10.0.0`
+- Check plugin compatibility with ESLint 10 before upgrading (`typescript-eslint`, `eslint-plugin-*`)
 
-- ใช้ `/follow-create-plugins` (eslint) ถ้าจำเป็น
-- ใช้ `/use-agent-browser` ถ้าจำเป็น
-- ใช้ `/use-astgrep` ถ้าจำเป็น
-- ใช้ `/follow-tool-usage` ถ้าจำเป็น
-- ใช้ `/follow-best-practice` ถ้าจำเป็น
-- ใช้ `/setup-cicd` ถ้าจำเป็น
-- ใช้ `/run-lint` ถ้าจำเป็น
-- ใช้ `/run-format` ถ้าจำเป็น
+- Use `/follow-create-plugins` (eslint) if needed
+- Use `/use-agent-browser` if needed
+- Use `/use-astgrep` if needed
+- Use `/follow-tool-usage` if needed
+- Use `/follow-best-practice` if needed
+- Use `/setup-cicd` if needed
+- Use `/run-lint` if needed
+- Use `/run-format` if needed
 
-- ดู best-practices/ สำหรับ recommended patterns และ pitfalls
+- See best-practices/ for recommended patterns and pitfalls
 
 ## Expected Outcome
 
-1. ESLint 10 พร้อม flat config และ plugins ครบถ้วน
+1. ESLint 10 with flat config and a complete plugin setup
 2. Vue 3 + TypeScript + Nuxt 3 support
-3. Import ordering และ circular dependency detection
-4. Security checks สำหรับ hardcoded secrets
+3. Import ordering and circular dependency detection
+4. Security checks for hardcoded secrets
 5. Functional programming best practices
-6. Fast linting ด้วย oxlint
-7. Testing linting ด้วย vitest
-8. Accessibility rules สำหรับ Vue
+6. Fast linting with oxlint
+7. Test linting with vitest
+8. Accessibility rules for Vue

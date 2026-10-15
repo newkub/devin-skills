@@ -6,11 +6,11 @@
 
 | Command | Description | Options |
 |---|---|---|
-| `drizzle-kit generate` | Generate SQL migrations จาก schema diff | --name, --custom, --breakpoints |
+| `drizzle-kit generate` | Generate SQL migrations from schema diff | --name, --custom, --breakpoints |
 | `drizzle-kit migrate` | Run migrations against DB | - |
-| `drizzle-kit push` | Push schema โดยตรง (dev only) | --force, --strict |
+| `drizzle-kit push` | Push schema directly (dev only) | --force, --strict |
 | `drizzle-kit pull` | Introspect existing DB → drizzle schema | --tablesFilter, --extensionsFilters |
 | `drizzle-kit check` | Check migration files consistency | - |
 | `drizzle-kit studio` | Launch Drizzle Studio UI | --port, --host |
 | `drizzle-kit up` | Upgrade snapshot format | - |
-| `drizzle-kit export` | Export schema เป็น SQL DDL (ไม่ต้องมี DB) | --config |
+| `drizzle-kit export` | Export schema as SQL DDL (no DB needed) | --config |

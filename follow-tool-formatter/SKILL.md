@@ -1,6 +1,6 @@
 ---
 name: follow-tool-formatter
-description: ใช้งาน code formatter ใน project เพื่อรักษา style สม่ำเสมอ
+description: Use a code formatter in the project to keep style consistent
 argument-hint: "[scope]"
 related:
   - follow-tool-linter
@@ -16,108 +16,107 @@ related:
 
 ## Goal
 
-ใช้งาน code formatter ใน project เพื่อ format code สม่ำเสมอตาม style guide
+Use a code formatter in the project to format code consistently per the style guide
 
 ## Scope
 
-ใช้สำหรับ projects ที่ต้องการ formatter รองรับ TypeScript, JavaScript, Rust, Python, Go ตาม tech stack
+Use for projects needing a formatter supporting TypeScript, JavaScript, Rust, Python, Go, per tech stack
 
-- Boundary: skill นี้ช่วยเลือกและ wire formatter เข้า repo/CI — หลังเลือก tool แล้วให้ใช้ skill เฉพาะทาง (`/follow-tool-biome`, `/follow-tool-dprint`) สำหรับ config ละเอียด; linting อยู่ที่ `/follow-tool-linter`
+- Boundary: this skill helps select and wire a formatter into the repo/CI — after choosing a tool use its dedicated skill (`/follow-tool-biome`, `/follow-tool-dprint`) for detailed config; linting lives in `/follow-tool-linter`
 - Latest: `prettier@3.9.9` / `dprint@0.57.4` / `@biomejs/biome@2.5.14` (verified 2026-09-26)
 - References: [cli](references/cli.md) | [apis](references/apis.md) 
 ## Execute
 
 ### 1. Select Formatter
 
-> Goal: เลือก formatter ตาม tech stack
+> Goal: pick the formatter by tech stack
 
-1. ตรวจสอบ tech stack ของ project
-2. เลือก formatter ตามความเหมาะสม:
+1. Check the project's tech stack
+2. Pick a formatter by fit:
    - TypeScript/JavaScript: biome, prettier, dprint
    - Rust: rustfmt
    - Python: ruff format, black
    - Go: gofmt
-3. ถ้า project มี formatter อยู่แล้ว → ใช้ตัวเดิม
+3. If the project already has a formatter → keep using it
 
 ### 2. Configure Formatter
 
-> Goal: ตั้งค่า formatter ให้ตรง style guide
+> Goal: configure the formatter to match the style guide
 
-1. สร้าง config file ตาม formatter เช่น `biome.json`, `.prettierrc`, `rustfmt.toml`
-2. กำหนด quote, semicolon, tab width, line width ตาม project convention
-3. ใช้ `ignore`/`exclude` สำหรับ generated files, vendored files, lock files
-4. เก็บ config ใน root หรือ `.config/` ตาม project structure
-5. ถ้ามี `package.json` scripts ให้เพิ่ม `format` script
+1. Create the config file per formatter, e.g. `biome.json`, `.prettierrc`, `rustfmt.toml`
+2. Set quote, semicolon, tab width, line width per project convention
+3. Use `ignore`/`exclude` for generated files, vendored files, lock files
+4. Keep the config at the root or in `.config/` per project structure
+5. If `package.json` scripts exist, add a `format` script
 
 ### 3. Run Formatter
 
-> Goal: format code ทั้งหมด
+> Goal: format all code
 
-1. รัน formatter กับทุกไฟล์ทีเกี่ยวข้อง
-2. ตรวจสอบ diff ว่าไม่มี unintended changes
-3. ถ้ามี unintended changes → ปรับ config แล้ว format ใหม่
-4. รัน `format:check` หรือ equivalent เพื่อ verify ใน CI
+1. Run the formatter over every relevant file
+2. Review the diff for unintended changes
+3. Unintended changes → adjust the config and re-format
+4. Run `format:check` or the equivalent to verify in CI
 
 ### 4. Integrate With Lint And CI
 
-> Goal: formatter ทำงานร่วมกับ lint และ CI
+> Goal: the formatter works with lint and CI
 
-1. แยก `format` ออกจาก `lint` (format แก้ไฟล์ ได้, lint ตรวจ)
-2. ใช้ `format --check` หรือ `fmt --check` ใน CI
-3. git hooks สำหรับ format (fix): repo ที่มี `.moon/workspace.yml` → `vcs.hooks` ของ moon เพิ่ม `moon run :format --affected --status=staged`; repo อื่น → hk/lefthook `pre-commit` step
-4. ทำ `/run-verify` เพื่อ verify format + lint + typecheck
+1. Keep `format` separate from `lint` (format may fix files; lint only checks)
+2. Use `format --check` or `fmt --check` in CI
+3. Git hooks for format (fix): repos with `.moon/workspace.yml` → add `moon run :format --affected --status=staged` to moon's `vcs.hooks`; other repos → an hk/lefthook `pre-commit` step
+4. Run `/run-verify` to verify format + lint + typecheck
 
 ### 5. Editor And Onboarding
 
-> Goal: ให้ทีมใช้ formatter สม่ำเสมอ
+> Goal: the team uses the formatter consistently
 
-1. เพิ่ม editor integration (VS Code settings, .editorconfig)
-2. เอกสารวิธี format ก่อน commit
-3. ถ้าใช้ `formatOnSave` → ระบุใน editor config
-4. ตรวจสอบว่า CI จับ code ที่ยังไม่ format
+1. Add editor integration (VS Code settings, .editorconfig)
+2. Document how to format before commit
+3. If using `formatOnSave` → state it in the editor config
+4. Confirm CI catches unformatted code
 
 ## Rules
 
 ### 1. Format Separate From Lint
 
-- formatter จัดการ style (spacing, quote, semicolon)
-- linter จัดการ code quality (unused, errors, patterns)
-- ไม่ให้ linter ทำหน้าที format หลัก
+- the formatter handles style (spacing, quote, semicolon)
+- the linter handles code quality (unused, errors, patterns)
+- never let the linter be the primary formatter
 
 ### 2. Config In Version Control
 
-- config file ต้องอยู่ใน repo
-- ไม่ commit personal/IDE-specific format settings
-- ใช้ root-level config เพื่อ consistency
+- the config file must live in the repo
+- do not commit personal/IDE-specific format settings
+- use root-level config for consistency
 
 ### 3. Fast And Deterministic
 
-- formatter ต้องเร็วพอสำหรับ pre-commit
-- ผลลัพธ์ deterministic (รันซ้ำได้ output เดิม)
-- ไม่ format generated files หรือ vendored files
+- the formatter must be fast enough for pre-commit
+- deterministic output (re-running yields the same result)
+- do not format generated or vendored files
 
 ### 4. No Manual Formatting Battles
 
-- ห้าม commit โดยไม่ format
-- ห้ามสลับ formatter บ่อย
-- ถ้าเปลี่ยน formatter → ทำ `/update-references` และระบุใน CHANGELOG
+- never commit unformatted code
+- do not switch formatters often
+- changing formatter → run `/update-references` and note it in the CHANGELOG
 
-- ใช้ `/follow-tool-linter` ถ้าจำเป็น
-- ใช้ `/follow-tool-data-validation` ถ้าจำเป็น
-- ใช้ `/follow-tool-biome` ถ้าจำเป็น
-- ใช้ `/follow-tool-dprint` ถ้าจำเป็น
-- ใช้ `/run-verify` เพื่อ verify format + lint + typecheck
-- ใช้ `/update-references` เมื่อเปลี่ยน formatter
-- ใช้ `/run-lint` ถ้าจำเป็น
-- ใช้ `/run-format` ถ้าจำเป็น
+- Use `/follow-tool-linter` if needed
+- Use `/follow-tool-data-validation` if needed
+- Use `/follow-tool-biome` if needed
+- Use `/follow-tool-dprint` if needed
+- Use `/run-verify` to verify format + lint + typecheck
+- Use `/update-references` when changing formatter
+- Use `/run-lint` if needed
+- Use `/run-format` if needed
 
-- ดู best-practices/ สำหรับ recommended patterns และ pitfalls
+- See best-practices/ for recommended patterns and pitfalls
 
 ## Expected Outcome
 
-- Formatter ถูกเลือกและตั้งค่าถูกต้อง
-- `format` และ `format:check` scripts ทำงานได้
-- CI ตรวจ code ที่ยังไม่ format
-- Editor settings สนับสนุน format on save
-- Code style สม่ำเสมอทั้ง project
-
+- Formatter selected and configured correctly
+- `format` and `format:check` scripts work
+- CI catches unformatted code
+- Editor settings support format on save
+- Code style stays consistent across the project

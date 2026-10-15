@@ -1,6 +1,6 @@
 ---
 name: follow-tool-drizzle-kit
-description: ใช้ drizzle-kit จัดการ migrations — generate, migrate, push, studio
+description: Use drizzle-kit for migrations — generate, migrate, push, studio
 argument-hint: "[target-or-scope]"
 related:
   - follow-lib-drizzle
@@ -12,58 +12,58 @@ related:
 
 ## Goal
 
-ใช้ drizzle-kit จัดการ migrations — generate, migrate, push, studio
+Use drizzle-kit to manage migrations — generate, migrate, push, studio
 
 ## Scope
 
-ใช้เมื่อ task เกี่ยวข้องกับ library/tool นี้ — setup, usage, debugging, หรือ best practices (tool drizzle kit)
+Use when the task involves this library/tool — setup, usage, debugging, or best practices (drizzle kit tool)
 
-- Boundary: skill นี้ครอบคลุม `drizzle-kit` CLI เท่านั้น (generate/migrate/push/pull/check/studio) — สำหรับ `drizzle-orm` schema/query API ใช้ `/follow-lib-drizzle`
-- Latest: `drizzle-kit@0.31.11` (pair กับ `drizzle-orm@0.45.3`) (verified 2026-09-26)
-- Note: v1.0.0 อยู่ใน beta/rc channel (`beta` dist-tag, ล่าสุด 1.0.0-rc.x) — มี breaking changes (casing API, ลบ RQB v1 `db._query`); production ยังใช้ stable 0.31.x
+- Boundary: this skill covers the `drizzle-kit` CLI only (generate/migrate/push/pull/check/studio) — for `drizzle-orm` schema/query APIs use `/follow-lib-drizzle`
+- Latest: `drizzle-kit@0.31.11` (pairs with `drizzle-orm@0.45.3`) (verified 2026-09-26)
+- Note: v1.0.0 is in the beta/rc channel (`beta` dist-tag, latest 1.0.0-rc.x) — has breaking changes (casing API, removes RQB v1 `db._query`); production still uses stable 0.31.x
 - References: [apis](references/apis.md) | [cli](references/cli.md) 
 ## Execute
 
 ### 1. Pick Workflow
 
-> Goal: dispatch งานเฉพาะทางไป workflow ที่เหมาะสม
+> Goal: dispatch specialized work to the appropriate workflow
 
 | Topic | Workflow |-------|----------| `drizzle.config.ts` — dialect, schema, `out`, dbCredentials | `workflows/config-drizzle-kit/SKILL.md` | generate/push/migrate commands, workflow, rollback | `workflows/migrate-schema/SKILL.md` 
 ### 2. Setup And Usage
 
-> Goal: ใช้งานถูกต้องตาม official docs
+> Goal: use it correctly per official docs
 
-1. ติดตั้ง `bun add -D drizzle-kit` (ต้องมี `drizzle-orm` + database driver เป็น peer — ดู `references/apis.md`)
-1. `drizzle-kit generate` สร้าง SQL migration จาก schema diff (`--name`, `--custom`, `--breakpoints`)
-1. `drizzle-kit migrate` apply migrations; `push` สำหรับ dev prototyping (`--force`, `--strict`)
-1. `drizzle-kit pull` introspect DB → drizzle schema; `check` ตรวจ migration collisions; `up` upgrade snapshots; `export` แปลง schema เป็น SQL DDL
-1. ตั้ง `drizzle.config.ts`: schema path, dialect, dbCredentials (หลาย config ใช้ `--config=<path>`)
-1. ใช้ `drizzle-kit studio` หรือ `/run-drizzle-studio` สำหรับ data browsing
+1. Install `bun add -D drizzle-kit` (requires `drizzle-orm` + a database driver as peers — see `references/apis.md`)
+1. `drizzle-kit generate` creates SQL migrations from schema diff (`--name`, `--custom`, `--breakpoints`)
+1. `drizzle-kit migrate` applies migrations; `push` is for dev prototyping (`--force`, `--strict`)
+1. `drizzle-kit pull` introspects the DB → drizzle schema; `check` detects migration collisions; `up` upgrades snapshots; `export` converts schema to SQL DDL
+1. Set `drizzle.config.ts`: schema path, dialect, dbCredentials (multiple configs → select with `--config=<path>`)
+1. Use `drizzle-kit studio` or `/run-drizzle-studio` for data browsing
 
 ### 3. Verify
 
-> Goal: ตรวจสอบว่าใช้งานถูกต้อง
+> Goal: verify correct usage
 
-1. ทำ `/run-verify` สำหรับ lint, typecheck
-2. ทำ `/run-test` ถ้ามี test ที่เกี่ยวข้อง
-3. ตรวจ official docs ล่าสุดก่อนใช้ API ที่ไม่แน่ใจ (tool drizzle kit)
+1. Run `/run-verify` for lint, typecheck
+2. Run `/run-test` if related tests exist
+3. Check the latest official docs before using an uncertain API (drizzle kit tool)
 
 ## Rules
 
-- production ใช้ `migrate` เสมอ — `push` เฉพาะ dev
-- review generated SQL ก่อน commit — rename detection ไม่สมบูรณ์
-- เก็บ migrations ใน version control เสมอ
-- อย่าแก้ migration ที่ applied แล้ว — สร้าง migration ใหม่
+- production always uses `migrate` — `push` is dev-only
+- review generated SQL before commit — rename detection is incomplete
+- always keep migrations in version control
+- never edit an applied migration — create a new migration
 
-- ใช้ `/follow-lib-drizzle` สำหรับ `drizzle-orm` schema/query API
-- ใช้ `/run-drizzle-studio` สำหรับ data browsing UI
-- ใช้ `/run-verify` เพื่อ verify lint + typecheck
-- ใช้ `/run-test` สำหรับ tests ที่เกี่ยวข้อง
+- Use `/follow-lib-drizzle` for `drizzle-orm` schema/query APIs
+- Use `/run-drizzle-studio` for the data browsing UI
+- Use `/run-verify` to verify lint + typecheck
+- Use `/run-test` for related tests
 
-- ดู best-practices/ สำหรับ recommended patterns และ pitfalls
+- See best-practices/ for recommended patterns and pitfalls
 
 ## Expected Outcome
 
-- ใช้งาน library ถูกต้องตาม best practices (tool drizzle kit)
-- ไม่มี security/performance pitfalls ที่รู้จัก (tool drizzle kit)
-- Lint, typecheck, tests ผ่าน
+- The library is used correctly per best practices (drizzle kit tool)
+- No known security/performance pitfalls (drizzle kit tool)
+- Lint, typecheck, tests pass

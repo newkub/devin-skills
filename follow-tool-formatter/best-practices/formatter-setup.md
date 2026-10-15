@@ -1,16 +1,16 @@
 # Formatter Best Practices
 
-แนวทางเลือก ตั้งค่า และ integrate formatter ให้ทีมใช้สม่ำเสมอ — prettier, biome, dprint, rustfmt, ruff, gofmt
+Guidance for selecting, configuring, and integrating a formatter so the team stays consistent — prettier, biome, dprint, rustfmt, ruff, gofmt
 
 ## Recommended Patterns
 
 ### 1. One formatter per language, one source of truth
 
-- เลือก formatter เดียวต่อภาษา แล้ว commit config ที่ root: `biome.json`, `.prettierrc`, `rustfmt.toml`
-- ห้ามมี 2 formatter แก้ไฟล์เดียวกัน (เช่น prettier + eslint stylistic rules) → conflict วนลูป
-- monorepo: config ที่ root ให้ sub-packages inherit — override เฉพาะเมื่อจำเป็นจริง
+- pick one formatter per language and commit the config at the root: `biome.json`, `.prettierrc`, `rustfmt.toml`
+- never let 2 formatters touch the same file (e.g. prettier + eslint stylistic rules) → endless conflict loops
+- monorepo: config at the root for sub-packages to inherit — override only when truly necessary
 
-### 2. Scripts ที่เป็นมาตรฐาน
+### 2. Standard scripts
 
 ```json
 {
@@ -21,14 +21,14 @@
 }
 ```
 
-- `format` = write mode สำหรับ local/pre-commit
-- `format:check` = read-only สำหรับ CI — exit non-zero เมื่อมีไฟล์ยังไม่ format
-- ทุก formatter มี check mode: `prettier --check`, `dprint fmt --check`, `cargo fmt --check`, `ruff format --check`
+- `format` = write mode for local/pre-commit
+- `format:check` = read-only for CI — exits non-zero when a file is unformatted
+- every formatter has a check mode: `prettier --check`, `dprint fmt --check`, `cargo fmt --check`, `ruff format --check`
 
-### 3. Ignore ให้ครบ
+### 3. Complete ignores
 
 ```text
-# .prettierignore / ignores ใน config
+# .prettierignore / ignores in config
 node_modules/
 dist/
 coverage/
@@ -37,37 +37,37 @@ coverage/
 .generated/
 ```
 
-- generated files, vendored files, lock files ต้อง ignore — format พวกมัน = diff noise มหาศาลและช้า
-- เครื่องมือส่วนใหญ่ respect `.gitignore` อยู่แล้ว (biome, dprint) — prettier ต้อง `.prettierignore` แยก
+- generated files, vendored files, lock files must be ignored — formatting them = massive diff noise and slow
+- most tools respect `.gitignore` already (biome, dprint) — prettier needs a separate `.prettierignore`
 
 ### 4. Format on save + pre-commit gate
 
-- editor `formatOnSave` + ชี้ formatter เป็น default formatter → ไม่มีใคร commit unformatted code
-- pre-commit hook (hk/lefthook/moon `vcs.hooks`) รัน format บน staged files เท่านั้น — เร็วและไม่รบกวนไฟล์ที่ไม่ได้แตะ
-- CI `format:check` เป็น gate สุดท้าย — จับคนที่ bypass hook
+- editor `formatOnSave` + pointing the formatter as the default formatter → nobody commits unformatted code
+- pre-commit hook (hk/lefthook/moon `vcs.hooks`) runs format on staged files only — fast and doesn't touch files you didn't change
+- CI `format:check` is the last gate — catches those who bypass the hook
 
 ## Do / Don't
 
 | Do | Don't |
 |---|---|
-| formatter แก้ style, linter แก้ quality — แยกหน้าที่ | ให้ linter rules ทำหน้าที่ formatter (เช่น eslint indent rules) |
-| ใช้ `--write` local, `--check` ใน CI | รัน write mode ใน CI แล้วหวังว่าใครจะ commit กลับ |
-| format เฉพาะ staged files ใน pre-commit | format ทั้ง repo ทุก commit (ช้า) |
-| reformat ทั้ง repo ใน PR เดียวเมื่อเปลี่ยน formatter/config | เปลี่ยน config แล้วปล่อยให้ format drift ค่อยๆ เกิด |
-| pin formatter version ใน devDependencies | ให้แต่ละเครื่องใช้ global formatter คนละ version |
+| formatter fixes style, linter fixes quality — separate duties | let linter rules act as the formatter (e.g. eslint indent rules) |
+| use `--write` locally, `--check` in CI | run write mode in CI hoping someone commits it back |
+| format only staged files in pre-commit | format the whole repo on every commit (slow) |
+| reformat the whole repo in one PR when changing formatter/config | change config and let format drift happen gradually |
+| pin the formatter version in devDependencies | let each machine use a different global formatter version |
 
 ## Common Pitfalls
 
-- Editor extension คนละ version กับ repo: VS Code prettier extension ใช้ bundled prettier ถ้าไม่ตั้ง `prettier.prettierPath` → format ต่างจาก CI ให้ชี้ไปที่ `node_modules` version
-- Format + lint fix ชนกัน: `eslint --fix` ที่มี style rules + prettier → แก้ไปแก้กลับ — ใช้ `eslint-config-prettier` ปิด style rules
-- Line endings บน Windows: `endOfLine` / `core.autocrlf` ไม่ตรงกัน → formatter flip-flop ทุกไฟล์ — ตั้ง `endOfLine: "lf"` ใน config และ `.gitattributes` `* text=auto eol=lf`
-- Format migration PR ใหญ่เกิน: เปลี่ยน formatter แล้ว reformat ทั้ง repo → PR diff ท่วม review ไม่ได้ — แยก PR reformat ล้วนๆ ไม่มี logic change และใส่ commit ใน `.git-blame-ignore-revs`
-- Slow pre-commit: format ทั้ง repo ใน hook → devs bypass ด้วย `--no-verify` — ใช้ staged-only (hk `fix` step, `lint-staged`, `dprint fmt --staged`)
+- Editor extension on a different version than the repo: the VS Code prettier extension uses its bundled prettier unless `prettier.prettierPath` is set → formatting differs from CI; point it at the `node_modules` version
+- Format + lint fix colliding: `eslint --fix` with style rules + prettier → back-and-forth edits — use `eslint-config-prettier` to disable style rules
+- Line endings on Windows: mismatched `endOfLine` / `core.autocrlf` → the formatter flip-flops every file — set `endOfLine: "lf"` in config and `* text=auto eol=lf` in `.gitattributes`
+- Format-migration PR too large: switching formatters and reformatting the whole repo → a PR diff that swallows review — split a pure reformat PR with no logic change and add its commit to `.git-blame-ignore-revs`
+- Slow pre-commit: formatting the whole repo in the hook → devs bypass with `--no-verify` — use staged-only (hk `fix` step, `lint-staged`, `dprint fmt --staged`)
 
 ## Performance / CI Notes
 
-- Speed ranking โดยทั่วไป: `biome`/`dprint` (Rust, parallel) > `prettier` — codebase ใหญ่เปลี่ยนได้เรื่อง pre-commit latency
-- `dprint --incremental` / `biome --changed` ประหยัดเวลาใน repo ใหญ่
-- CI: `format:check` เป็น job แยกหรืออยู่ใน lint job — fast fail ก่อน test jobs ที่หนักกว่า
-- cache formatter binary/config ใน CI (`actions/cache` สำหรับ cargo tools หรือ bun install)
-- `.editorconfig` เป็น baseline ข้าม editors (`indent_style`, `indent_width`) — formatter หลายตัวอ่านมันเป็น fallback
+- Typical speed ranking: `biome`/`dprint` (Rust, parallel) > `prettier` — on large codebases this matters for pre-commit latency
+- `dprint --incremental` / `biome --changed` save time in big repos
+- CI: `format:check` as a separate job or inside the lint job — fast-fail before heavier test jobs
+- cache the formatter binary/config in CI (`actions/cache` for cargo tools or bun install)
+- `.editorconfig` as the cross-editor baseline (`indent_style`, `indent_width`) — many formatters read it as a fallback
