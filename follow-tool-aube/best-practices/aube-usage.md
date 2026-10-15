@@ -1,73 +1,73 @@
 # Aube Best Practices
 
-แนวทางใช้ Aube เป็น Node.js package manager อย่างถูกต้อง — command selection, security posture, lockfile และ CI
+Guidelines for using Aube correctly as the Node.js package manager — command selection, security posture, lockfiles, and CI
 
 ## Recommended Patterns
 
 ### Command Selection
 
-- `aubr <script>` เมื่อ script ต้องการ `node_modules` ที่ติดตั้งแล้ว (test, build, dev, lint) — auto-install ทำงานก่อนรันเสมอ
-- `aubx <tool>` สำหรับ one-off tool ที่ resolve ได้โดยไม่ต้อง install ทั้ง project (เช่น `aubx tsc --noEmit` ชั่วคราว)
-- `aube exec <bin>` เมื่อต้องการ binary จาก `node_modules/.bin` ของ project ปัจจุบันโดยตรง — deterministic กว่า `aubx` สำหรับ tools ที่เป็น dependency อยู่แล้ว
-- `aube add`/`remove`/`update` สำหรับ dependency lifecycle — อย่าแก้ `package.json` มือแล้วลืม lockfile ให้ aube จัดการคู่กัน
+- `aubr <script>` when the script needs installed `node_modules` (test, build, dev, lint) — auto-install always runs first
+- `aubx <tool>` for a one-off tool that can be resolved without installing the whole project (e.g. temporary `aubx tsc --noEmit`)
+- `aube exec <bin>` when you want the binary directly from the current project's `node_modules/.bin` — more deterministic than `aubx` for tools that are already dependencies
+- `aube add`/`remove`/`update` for the dependency lifecycle — do not hand-edit `package.json` and forget the lockfile; let aube manage both together
 
 ### Lockfile Strategy
 
-- เลือก lockfile เดียวต่อ repo — ถ้ามีทั้ง `package-lock.json` และ `pnpm-lock.yaml` ปนกัน resolution จะไม่ deterministic ให้เก็บตัวที่ทีมใช้จริงแล้วลบตัวอื่น
-- commit lockfile เสมอ — Aube อ่าน/เขียน in place จึงไม่ต้อง migrate แต่ lockfile คือ source of truth ของ resolution
-- หลัง `aube update` ให้ review lockfile diff ใน PR — auto-install ที่เงียบเกินไปทำให้ dependency drift โดยไม่รู้ตัว
+- Keep one lockfile per repo — if `package-lock.json` and `pnpm-lock.yaml` are mixed, resolution is not deterministic; keep the one the team actually uses and delete the rest
+- Always commit the lockfile — Aube reads/writes in place so no migration is needed, but the lockfile is the source of truth for resolution
+- After `aube update`, review the lockfile diff in the PR — silent auto-install can cause unnoticed dependency drift
 
 ### Security Posture
 
-- เปิด `paranoid: true` ใน `aube-workspace.yaml` สำหรับ production projects และ repos ที่รับ PR จากภายนอก
-- Review lifecycle scripts ทุกครั้งก่อน `aube approve-builds` — lifecycle script คือ code execution ตอน install
-- ใช้ `allowBuilds` allowlist เฉพาะ package ที่จำเป็นจริง (เช่น native modules) ไม่ใช่เปิดทั้งหมด
-- อย่าข้าม near-zero-download prompt โดยไม่ดูชื่อ package — supply-chain attack ชอบ typosquat ที่ยังไม่มี downloads
+- Enable `paranoid: true` in `aube-workspace.yaml` for production projects and repos accepting external PRs
+- Review every lifecycle script before `aube approve-builds` — a lifecycle script is code execution at install time
+- Use the `allowBuilds` allowlist only for packages that truly need it (e.g. native modules), never allow everything
+- Do not skip the near-zero-download prompt without checking the package name — supply-chain attacks favor typosquats with no downloads yet
 
 ### Workspace
 
-- ใช้ `aube -r run <script>` สำหรับรันทุก package และ `aube -F '<pattern>' run <script>` เมื่อ scope ชัดเจน — filter ช่วยลดเวลา CI มาก
-- Global content-addressable store แชร์ข้าม projects อยู่แล้ว — อย่าลบ `node_modules` ทิ้งบ่อยโดยไม่จำเป็นเพราะ relink ถูกกว่า reinstall
+- Use `aube -r run <script>` to run every package and `aube -F '<pattern>' run <script>` when the scope is clear — filtering cuts CI time significantly
+- The global content-addressable store is already shared across projects — do not delete `node_modules` needlessly because relinking is cheaper than reinstalling
 
 ## Common Pitfalls
 
-| Pitfall | อาการ | วิธีหลีกเลี่ยง |
+| Pitfall | Symptom | Avoidance |
 |---|---|---|
-| ติดตั้งผ่าน npm แล้ว version เก่า | features ใหม่ไม่มี | npm dist-tag lag — ใช้ `mise use -g aube` หรือ `cargo install aube --locked` |
-| หลาย lockfile ใน repo เดียว | resolution แกว่ง | เก็บ lockfile เดียว ลบที่เหลือ |
-| auto-install ใน read-only env | run script fail หรือช้า | ใน CI ที่ lock deps แล้วให้ install ล่วงหน้าหรือใช้ `aubx` กับ tools ที่ไม่ต้องการ tree |
-| approve builds ทั้งหมด | supply-chain risk | `aube approve-builds` ทีละตัว + เก็บ allowlist ใน config |
-| คิดว่า `aubx` = `aube exec` | tool version ผิด | `aubx` fetch/run ad-hoc, `aube exec` ใช้ local installed bin เท่านั้น |
+| Installed via npm, version old | new features missing | npm dist-tag lags — use `mise use -g aube` or `cargo install aube --locked` |
+| Multiple lockfiles in one repo | resolution wobbles | keep one lockfile, delete the rest |
+| auto-install in read-only env | run script fails or slow | in CI with locked deps, install ahead or use `aubx` for tools needing no tree |
+| approving all builds | supply-chain risk | `aube approve-builds` one at a time + keep the allowlist in config |
+| thinking `aubx` = `aube exec` | wrong tool version | `aubx` fetches/runs ad-hoc, `aube exec` uses only the local installed bin |
 
 ## Do / Don't
 
 | Do | Don't |
 |---|---|
-| `aubr test` ให้ auto-install จัดการ | `aube install` มือทุกครั้งก่อนรัน script |
-| commit `aube-workspace.yaml` กับ `paranoid: true` | ปิด security defaults เพราะ prompt รบกวน |
-| review lockfile diff หลัง update | merge auto-update โดยไม่ดู transitive changes |
-| filter workspace ด้วย `-F` ใน CI | รัน `-r` ทั้ง monorepoเมื่อแก้ package เดียว |
-| pin install method ในทีม (mise/brew/cargo) | ให้สมาชิกทีมติดตั้งคนละช่องทางจน version ต่างกัน |
+| `aubr test` lets auto-install handle it | hand-run `aube install` before every script |
+| commit `aube-workspace.yaml` with `paranoid: true` | disable security defaults because prompts are annoying |
+| review lockfile diff after update | merge auto-updates without looking at transitive changes |
+| filter the workspace with `-F` in CI | run `-r` over the whole monorepo for a one-package change |
+| pin one install method per team (mise/brew/cargo) | let members install via different channels until versions diverge |
 
 ## Performance And CI Notes
 
-- Auto-install เช็ค freshness ก่อน — repeat `aubr` runs เร็วเพราะ skip install เมื่อ lockfile ไม่เปลี่ยน อย่าเพิ่ม install step ซ้ำใน CI
-- GitHub Actions: `jdx/aube-action` ติดตั้งและ cache ให้ — ใช้คู่กับ `aubr test` โดยไม่ต้อง `bun install` แยก
-- Cache global store ระหว่าง CI runs (key ตาม lockfile hash) เพื่อตัดเวลา resolve+link
-- Trust downgrades fail at resolve โดย default — ถ้า CI เริ่ม fail หลัง publish ใหม่ของ upstream ให้เช็คว่าเป็น cooling window (24h) ไม่ใช่ bug
-- Script ที่เรียก `aubr` ซ้อน `aubr` ทำให้ freshness check รันซ้ำ — ภายใน script เดียวกันใช้ `aube exec` ต่อกันแทน
+- Auto-install checks freshness first — repeat `aubr` runs are fast because install is skipped when the lockfile is unchanged; do not add a redundant install step in CI
+- GitHub Actions: `jdx/aube-action` installs and caches for you — pair it with `aubr test` without a separate `bun install`
+- Cache the global store between CI runs (key by lockfile hash) to cut resolve+link time
+- Trust downgrades fail at resolve by default — if CI starts failing right after an upstream publish, check whether it is the cooling window (24h), not a bug
+- Scripts that call `aubr` nested inside `aubr` re-run the freshness check — within one script, chain `aube exec` calls instead
 
 ## Config Guidance
 
-`aube-workspace.yaml` ที่แนะนำ:
+Recommended `aube-workspace.yaml`:
 
 ```yaml
-paranoid: true          # สำหรับ production / public repos
-allowBuilds:            # lifecycle scripts ที่ approve แล้วเท่านั้น
+paranoid: true          # for production / public repos
+allowBuilds:            # only approved lifecycle scripts
   - esbuild
   - sharp
 ```
 
-- เก็บ config ไว้ที่ workspace root เดียว — nested configs ทำให้ security posture ไม่สม่ำเสมอ
-- Document เหตุผลของแต่ละ `allowBuilds` entry ใน comment — auditor จะได้เข้าใจว่าทำไมต้องรัน native build
-- ถ้า migrate จาก pnpm/npm: เก็บ lockfile เดิมให้ Aube ใช้ต่อ แล้วค่อยเพิ่ม security knobs ทีละตัว
+- Keep the config at a single workspace root — nested configs make the security posture inconsistent
+- Document the reason for each `allowBuilds` entry in a comment — auditors then understand why a native build must run
+- When migrating from pnpm/npm: keep the old lockfile for Aube to reuse, then add security knobs one at a time

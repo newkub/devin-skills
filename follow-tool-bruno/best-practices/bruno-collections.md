@@ -1,66 +1,66 @@
 # Bruno Best Practices
 
-แนวทางจัดการ Bruno collections (`.bru` / OpenCollection) ให้ Git-native, ปลอดภัย และรันใน CI ได้เสถียร
+Guidelines for keeping Bruno collections (`.bru` / OpenCollection) Git-native, secure, and stable in CI
 
 ## Recommended Patterns
 
 ### Collection Hygiene
 
-- Commit collection เข้า repo เดียวกับ API code — ทุก API change จะเห็น request/test diff ใน PR เดียวกัน
-- แยก folder ตาม domain/resource ไม่ใช่ตาม environment — environments อยู่ใน `environments/` แยกอยู่แล้ว
-- เลือก format เดียวต่อ collection: `opencollection` (YAML, default ใหม่) หรือ `bru` (classic) — ปนกันทำ diff/review ยาก
-- เขียน tests (`assert`/`test` blocks) ใน request file เลย — collection ที่ไม่มี assertions ใช้เป็น smoke test ใน CI ไม่ได้
-- ใช้ `bru import openapi` เป็น starting point แล้ว curate ต่อ — อย่า import ซ้ำทับ collection ที่แก้มือแล้วเพราะจะ overwrite
+- Commit the collection into the same repo as the API code — every API change shows its request/test diff in the same PR
+- Organize folders by domain/resource, not by environment — environments already live in `environments/`
+- Pick one format per collection: `opencollection` (YAML, new default) or `bru` (classic) — mixing makes diff/review hard
+- Write tests (`assert`/`test` blocks) right in the request file — a collection without assertions cannot serve as a CI smoke test
+- Use `bru import openapi` as a starting point, then curate — do not re-import over hand-edited collections because it overwrites
 
 ### Environments And Secrets
 
-- ใช้ `environments/*.bru` เก็บ non-secret config เท่านั้น (baseUrl, timeouts, public ids)
-- Secrets (API keys, tokens) ใช้ `vars:secret` หรือ dotenv `.env` ที่ gitignore — Bruno mask secret vars ใน UI/logs ให้
-- ใน CI: inject ผ่าน `--env-var KEY=$SECRET` หรือ `--secrets-env-file` ดึงจาก Vault/AWS/Azure/GCP — ห้าม commit ไฟล์ secrets
-- ตั้ง env name ให้สื่อ เช่น `staging`, `prod-readonly` — ลดโอกาสยิงผิด env
+- Use `environments/*.bru` for non-secret config only (baseUrl, timeouts, public ids)
+- For secrets (API keys, tokens) use `vars:secret` or a gitignored dotenv `.env` — Bruno masks secret vars in UI/logs
+- In CI: inject via `--env-var KEY=$SECRET` or `--secrets-env-file` pulling from Vault/AWS/Azure/GCP — never commit secret files
+- Name envs meaningfully, e.g. `staging`, `prod-readonly` — reduces the chance of hitting the wrong env
 
 ### Test Execution
 
-- ใช้ `--bail` ใน CI เพื่อ fail-fast เมื่อ request แรกๆ พัง — ประหยัดเวลาและอ่าน log ง่ายกว่า fail ทีละตัว
-- ใช้ `--tags`/`--exclude-tags` แยก smoke vs full regression — smoke รันทุก PR, full รัน nightly
-- ใช้ `--tests-only` เมื่อ collection ปน exploratory requests ที่ไม่มี assertions
-- Data-driven: `--csv-file-path`/`--json-file-path` สำหรับ iterations — เก็บ fixture files ใน `data/` ข้าง collection
-- ใช้ `--iteration-count` + `--delay` เมื่อต้องการ soak/rate-limit — อย่า spam API โดยไม่จำเป็น
+- Use `--bail` in CI to fail fast when early requests break — saves time and the log is easier to read than one failure at a time
+- Use `--tags`/`--exclude-tags` to split smoke vs full regression — smoke runs on every PR, full runs nightly
+- Use `--tests-only` when the collection mixes in exploratory requests without assertions
+- Data-driven: `--csv-file-path`/`--json-file-path` for iterations — keep fixture files in `data/` beside the collection
+- Use `--iteration-count` + `--delay` for soak/rate-limit needs — do not spam the API unnecessarily
 
 ## Common Pitfalls
 
-| Pitfall | อาการ | วิธีหลีกเลี่ยง |
+| Pitfall | Symptom | Avoidance |
 |---|---|---|
-| Secrets ใน `.bru` env file | credential leak ใน git history | ใช้ secret vars / external secrets / env injection |
-| `--sandbox developer` เปิดทิ้ง | scripts เข้าถึง Node APIs/fs เต็ม | default `safe` sandbox; เปลี่ยนเฉพาะเมื่อจำเป็นจริง |
-| `--parallel` กับ rate-limited API | flaky CI, 429 responses | รัน sequential หรือจำกัด concurrency + `--delay` |
-| Reporter artifacts มี secrets | tokens หลุดใน junit/html | ใช้ `--reporter-skip-headers`/`--reporter-skip-body` flags |
-| Mixed `bru` + `opencollection` files | CLI confuse, review ยาก | convert ให้ format เดียวด้วย export/import |
-| ชี้ `--env prod` โดยไม่เช็ค | mutating requests ไป production | gate prod runs ด้วย manual approval / separate workflow |
-| Collection นอก repo | tests ไม่ตาม code version | keep collection ใน repo เดียวกันเสมอ |
+| Secrets in `.bru` env files | credential leak in git history | use secret vars / external secrets / env injection |
+| Leaving `--sandbox developer` on | scripts get full Node APIs/fs access | keep the default `safe` sandbox; switch only when truly needed |
+| `--parallel` against a rate-limited API | flaky CI, 429 responses | run sequential or limit concurrency + `--delay` |
+| Reporter artifacts contain secrets | tokens leak into junit/html | use `--reporter-skip-headers`/`--reporter-skip-body` flags |
+| Mixed `bru` + `opencollection` files | CLI confusion, hard reviews | convert to one format via export/import |
+| Pointing `--env prod` without checking | mutating requests hit production | gate prod runs with manual approval / a separate workflow |
+| Collection outside the repo | tests drift from code version | always keep the collection in the same repo |
 
 ## Do / Don't
 
 | Do | Don't |
 |---|---|
-| `bru run --env staging --bail --reporter-junit results.xml` ใน CI | รัน collection โดยไม่มี reporter — debug ยากเมื่อ fail |
-| tag requests (`@smoke`, `@critical`) | รันทั้ง collection เมื่อต้องการแค่ subset ทุกครั้ง |
-| pin `bru-version` ใน CI action | ใช้ latest CLI ที่ behavior เปลี่ยนระหว่าง runs |
-| gate production env ด้วย approval | ให้ PR workflow ยิง prod env ได้เลย |
-| เก็บ expected fixtures ใน repo | hardcode response values ใน test scripts |
+| `bru run --env staging --bail --reporter-junit results.xml` in CI | run collections without a reporter — debugging failures is hard |
+| tag requests (`@smoke`, `@critical`) | run the whole collection every time you only need a subset |
+| pin `bru-version` in the CI action | use the latest CLI whose behavior changes between runs |
+| gate the production env with approval | let a PR workflow hit the prod env directly |
+| keep expected fixtures in the repo | hardcode response values in test scripts |
 
 ## Performance And CI Notes
 
-- `usebruno/bruno-cli-action` เป็น composite — เขียน `run --env staging` ไม่ต้องมี `bru` นำหน้า และ inject `--reporter-junit` ให้อัตโนมัติ
-- Action expose outputs `exit-code`, `passed`, `failed` — feed ต่อ PR comment / status checks ได้โดยไม่ parse XML
-- Cache `bru` binary ผ่าน `bru-version` input แทน `npm i -g` ทุก run
-- `--parallel` ลดเวลา wall-clock แต่เพิ่ม flakiness กับ rate limits — ใช้เมื่อ API รองรับ
-- Publish junit report ผ่าน test-reporter actions เพื่อเห็น failures บน PR โดยไม่เปิด logs
-- Keep CI collections lean — full collection ที่ช้าให้รันเป็น scheduled workflow แยกจาก PR gate
+- `usebruno/bruno-cli-action` is composite — write `run --env staging` without a leading `bru`, and it injects `--reporter-junit` automatically
+- The action exposes outputs `exit-code`, `passed`, `failed` — feed PR comments / status checks directly without parsing XML
+- Cache the `bru` binary via the `bru-version` input instead of `npm i -g` on every run
+- `--parallel` cuts wall-clock time but increases flakiness under rate limits — use only when the API supports it
+- Publish the junit report via test-reporter actions to show failures on the PR without opening logs
+- Keep CI collections lean — run the slow full collection as a scheduled workflow separate from the PR gate
 
 ## Config Guidance
 
-`bruno.json` ที่แนะนำ:
+Recommended `bruno.json`:
 
 ```json
 {
@@ -72,8 +72,8 @@
 }
 ```
 
-- ตั้ง `ignore` ให้ครอบคลุม generated/temp dirs — Bruno จะไม่ parse ไฟล์ไม่เกี่ยว
-- Structure ที่แนะนำ:
+- Set `ignore` to cover generated/temp dirs — Bruno will not parse unrelated files
+- Recommended structure:
 
 ```text
 collection/
@@ -81,11 +81,11 @@ collection/
 ├── environments/
 │   ├── local.bru
 │   ├── staging.bru
-│   └── prod.bru          # secrets เป็น vars:secret refs เท่านั้น
+│   └── prod.bru          # secrets as vars:secret refs only
 ├── data/                  # csv/json fixtures
 ├── smoke/                 # tagged requests
 └── <domain>/
     └── *.bru
 ```
 
-- Document env setup ใน collection `README` — contributor จะได้รู้ว่าต้อง set secrets อะไรบ้าง
+- Document the env setup in the collection `README` — contributors then know which secrets to set

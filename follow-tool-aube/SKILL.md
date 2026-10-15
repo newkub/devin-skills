@@ -1,6 +1,6 @@
 ---
 name: follow-tool-aube
-description: แนวทางการใช้งาน Aube package manager สำหรับ Node.js projects
+description: Guidelines for using the Aube package manager for Node.js projects
 argument-hint: "[scope]"
 related:
   - use-agent-browser
@@ -13,38 +13,38 @@ related:
 
 ## Goal
 
-ใช้ Aube เป็น Node.js package manager หลักสำหรับโปรเจกต์ที่ต้องการความเร็วสูง ความปลอดภัย และประสิทธิภาพสูงสุด
+Use Aube as the primary Node.js package manager for projects that need high speed, security, and maximum efficiency
 
 ## Scope
 
-ใช้ `follow-tool-aube` สำหรับ tasks และ workflows เฉพาะที่กำหนด
+Use `follow-tool-aube` for the specified tasks and workflows
 
-- Boundary: Aube เป็น Node.js package manager (install/run/update deps) — ใช้แทน `npm`/`pnpm`/`yarn`/`bun install` เมื่อ project เลือก Aube; สำหรับ setup Bun runtime ดู `/use-bun-native-api`, สำหรับงาน CI ดู `/setup-cicd`
+- Boundary: Aube is a Node.js package manager (install/run/update deps) — use it instead of `npm`/`pnpm`/`yarn`/`bun install` when the project chose Aube; for Bun runtime setup see `/use-bun-native-api`, for CI work see `/setup-cicd`
 - Latest: `aube@2.4.0` (GitHub `aubepkg/aube`, crates.io `aube`) / npm `@endevco/aube@2.4.0` (npm dist-tag lags) (verified 2026-09-26)
 - References:  | [apis](references/apis.md) | [cli](references/cli.md) 
 ## Execute
 
 ### 1. Installation
 
-> Goal: ติดตั้ง Aube และตรวจสอบ version
+> Goal: install Aube and verify the version
 
-1. ติดตั้ง Aube ด้วย `mise use -g aube` (แนะนำ) หรือ `brew install jdx/tap/aube`, `cargo install aube --locked`, `npm i -g @endevco/aube` — ดูวิธีอื่นๆ ที่ https://aube.jdx.dev/installation
-2. ตรวจสอบ version ด้วย `aube --version`
-3. Aube จะ auto-install dependencies เมื่อ run scripts โดยอัตโนมัติ
+1. Install Aube with `mise use -g aube` (recommended) or `brew install jdx/tap/aube`, `cargo install aube --locked`, `npm i -g @endevco/aube` — see other methods at https://aube.jdx.dev/installation
+2. Verify the version with `aube --version`
+3. Aube auto-installs dependencies when running scripts automatically
 
 ### 2. First Run
 
-> Goal: รันครั้งแรกโดยใช้ lockfiles ที่มีอยู่
+> Goal: first run using existing lockfiles
 
-1. Aube จะอ่านและเขียน lockfiles ที่มีอยู่แล้ว (yarn.lock, pnpm-lock.yaml, package-lock.json)
-2. ไม่ต้อง migrate lockfiles ทีละคน - Aube รองรับทั้งหมด
-3. Run scripts ปกติ - Aube จะ auto-install เมื่อ dependencies เปลี่ยน
+1. Aube reads and writes existing lockfiles (yarn.lock, pnpm-lock.yaml, package-lock.json)
+2. No per-project lockfile migration needed — Aube supports all of them
+3. Run scripts normally — Aube auto-installs when dependencies change
 
 ### 3. Daily Commands
 
-> Goal: ใช้คำสั่ง `aubr` และ `aubx` ได้ถูกต้องตาม use case
+> Goal: use `aubr` and `aubx` correctly per use case
 
-ใช้ `aubr` สำหรับ run scripts ที่ต้องการ dependencies:
+Use `aubr` for running scripts that need dependencies:
 
 ```bash
 aubr test      # run test script, auto-installs first
@@ -52,14 +52,14 @@ aubr build     # run build script, auto-installs first
 aubr dev       # run dev script, auto-installs first
 ```
 
-ใช้ `aubx` สำหรับ one-off tools ที่ไม่ต้องการ dependencies:
+Use `aubx` for one-off tools that do not need dependencies:
 
 ```bash
 aubx vitest    # run vitest without installing
 aubx tsc       # run tsc without installing
 ```
 
-ใช้ `aube exec` สำหรับ local binaries ที่ install แล้วใน project:
+Use `aube exec` for local binaries already installed in the project:
 
 ```bash
 aube exec vitest
@@ -68,7 +68,7 @@ aube exec tsc -- --noEmit
 
 ### 4. Dependency Management
 
-> Goal: จัดการ dependencies ด้วย Aube
+> Goal: manage dependencies with Aube
 
 ```bash
 aube add react          # add dependency
@@ -79,103 +79,102 @@ aube update             # update dependencies within package.json ranges
 
 ### 5. Security Configuration
 
-> Goal: เพิ่ม ลบ และอัปเดต dependencies ด้วย Aube
+> Goal: add, remove, and update dependencies with Aube
 
-Aube มี security defaults ที่เหมาะสมที่สุด:
+Aube ships optimal security defaults:
 - Trust downgrades fail at resolve
-- New releases มี 24h cooling window
-- Block known-malicious packages
+- New releases have a 24h cooling window
+- Known-malicious packages are blocked
 - Prompt on near-zero-download installs
 - Lifecycle scripts wait for approval
 - Exotic transitive deps blocked
 
-เปิดใช้ paranoid mode สำหรับ security สูงสุดใน `aube-workspace.yaml`:
+Enable paranoid mode for maximum security in `aube-workspace.yaml`:
 
 ```yaml
 # aube-workspace.yaml
 paranoid: true
 ```
 
-Approve lifecycle build scripts ด้วย `aube approve-builds` หรือตั้ง `allowBuilds` ใน `aube-workspace.yaml`
+Approve lifecycle build scripts with `aube approve-builds` or set `allowBuilds` in `aube-workspace.yaml`
 
 ### 6. CI Integration
 
-> Goal: ใช้ Aube ใน CI โดยไม่ต้อง install step แยก
+> Goal: use Aube in CI without a separate install step
 
 ```yaml
 - uses: jdx/aube-action@v1
 - run: aubr test
 ```
 
-Aube จะ auto-install และ cache dependencies อัตโนมัติ
+Aube auto-installs and caches dependencies automatically
 
 ### 7. Workspace Support
 
-> Goal: Aube รองรับ workspaces และ monorepo
-- Global content-addressable store สำหรับ share package files
-- ลด disk usage โดยไม่ copy dependencies ทั้งหมดในแต่ละ project
-- node_modules layout ที่ efficient
-- รันใน workspace ทั้งหมดด้วย `aube -r run build` หรือ filter ด้วย `aube -F '@scope/*' run test`
+> Goal: Aube supports workspaces and monorepos
+- Global content-addressable store for sharing package files
+- Reduced disk usage without copying all dependencies into each project
+- Efficient node_modules layout
+- Run across all workspaces with `aube -r run build` or filter with `aube -F '@scope/*' run test`
 
 ### 8. Lockfile Compatibility
 
-> Goal: Aube รองรับ lockfiles หลายประเภท
+> Goal: Aube supports multiple lockfile types
 - yarn.lock
 - pnpm-lock.yaml
 - package-lock.json
 
-อ่านและเขียน lockfiles ใน place โดยไม่ต้อง migrate
+Reads and writes lockfiles in place without migration
 
 ## Rules
 
 ### 1. Command Selection
 
-เลือก command ตาม use case:
-- aubr: สำหรับ run scripts ที่ต้องการ dependencies (test, build, dev)
-- aubx: สำหรับ one-off tools ที่ไม่ต้อง dependencies (vitest, tsc)
-- aube add: สำหรับ add dependencies
-- aube remove: สำหรับ remove dependencies
-- aube update: สำหรับ update dependencies
+Pick the command by use case:
+- aubr: for running scripts that need dependencies (test, build, dev)
+- aubx: for one-off tools that need no dependencies (vitest, tsc)
+- aube add: for adding dependencies
+- aube remove: for removing dependencies
+- aube update: for updating dependencies
 
 ### 2. Auto-Install Behavior
 
-- Aube auto-installs เมื่อ run scripts ด้วย `aubr`
-- Skip install เมื่อ dependencies fresh บน repeat runs
-- ใช้ `aubx` สำหรับ tools ที่ไม่ต้องการ install
+- Aube auto-installs when running scripts with `aubr`
+- Install is skipped when dependencies are fresh on repeat runs
+- Use `aubx` for tools that need no install
 
 ### 3. Security Best Practices
 
-- เปิดใช้ `paranoid: true` สำหรับ production
-- Review lifecycle scripts ก่อน approve
+- Enable `paranoid: true` for production
+- Review lifecycle scripts before approving
 - Block exotic transitive dependencies
 - Trust downgrades fail at resolve
 
 ### 4. Lockfile Strategy
 
-- ใช้ lockfiles ที่มีอยู่แล้ว (yarn.lock, pnpm-lock.yaml, package-lock.json)
-- ไม่ต้อง migrate lockfiles ทีละคน
-- Aube จะ read/write lockfiles ใน place
+- Use existing lockfiles (yarn.lock, pnpm-lock.yaml, package-lock.json)
+- No per-project lockfile migration needed
+- Aube reads/writes lockfiles in place
 
 ### 5. Disk Optimization
 
-- Global content-addressable store ลด disk usage
-- Share package files ระหว่าง projects
-- node_modules layout ที่ efficient
+- Global content-addressable store reduces disk usage
+- Package files shared across projects
+- Efficient node_modules layout
 
-- ใช้ /use-agent-browser ถ้าจำเป็น
-- ใช้ /use-astgrep ถ้าจำเป็น
-- ใช้ /follow-tool-auto-it ถ้าจำเป็น
-- ใช้ /follow-tool-usage ถ้าจำเป็น
-- ใช้ /follow-best-practice ถ้าจำเป็น
-- ใช้ /setup-cicd ถ้าจำเป็น
+- Use /use-agent-browser if needed
+- Use /use-astgrep if needed
+- Use /follow-tool-auto-it if needed
+- Use /follow-tool-usage if needed
+- Use /follow-best-practice if needed
+- Use /setup-cicd if needed
 
-- ดู best-practices/ สำหรับ recommended patterns และ pitfalls
+- See best-practices/ for recommended patterns and pitfalls
 
 ## Expected Outcome
 
-- Aube ติดตั้งและทำงานได้
-- Auto-install dependencies เมื่อ run scripts
-- Security defaults ที่เหมาะสมที่สุด
-- ลด disk usage ด้วย global store
-- รองรับ lockfiles หลายประเภท
-
+- Aube installed and working
+- Auto-install dependencies when running scripts
+- Optimal security defaults
+- Reduced disk usage via the global store
+- Support for multiple lockfile types
