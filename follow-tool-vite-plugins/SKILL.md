@@ -1,6 +1,6 @@
 ---
 name: follow-tool-vite-plugins
-description: เลือกและตั้งค่า Vite plugins — unified (unplugin ecosystem) และ frontend-lib catalog
+description: Pick and set up Vite plugins — unified (unplugin ecosystem) and frontend-lib catalog
 argument-hint: "[plugin-or-topic | unified | frontend-lib]"
 related:
   - follow-tool-vite
@@ -15,12 +15,12 @@ related:
 
 ## Goal
 
-เลือก Vite plugin ที่เหมาะกับงานและตั้งค่าใน `vite.config.ts` — catalog ครอบคลุม unplugin ecosystem (`unified`) และ framework/frontend plugins (`frontend-lib`)
+Pick the Vite plugin that fits the job and set it up in `vite.config.ts` — the catalog covers the unplugin ecosystem (`unified`) and framework/frontend plugins (`frontend-lib`)
 
 ## Scope
 
-- เลือก/setup plugin สำหรับ Vite project — plugin catalog อยู่ใน `workflows/`
-- สร้าง plugin ใหม่ → `/follow-create-plugins` หรือ `/follow-create-vite-plugin`
+- Pick/setup a plugin for a Vite project — the plugin catalog lives in `workflows/`
+- Create a new plugin → `/follow-create-plugins` or `/follow-create-vite-plugin`
 - Vite core config (resolve/build/server) → `/follow-tool-vite`
 - Catalog sources: `search-raindrop` bookmarks + `search-github-star` (vite-plugin by stars) + awesome-vite
 
@@ -28,54 +28,54 @@ related:
 
 ### 1. Identify Need
 
-> Goal: รู้ว่าต้องการ plugin แบบไหน
+> Goal: know what kind of plugin is needed
 
-1. อ่าน `vite.config.ts` + `package.json` — ดู plugins ที่มีอยู่แล้ว (ห้ามซ้ำ)
-2. ระบุหมวด: framework adapter, auto-import, assets, PWA, DX tooling, platform (electron/extension/meta-framework)
+1. Read `vite.config.ts` + `package.json` — check the plugins already present (never duplicate)
+2. Identify the category: framework adapter, auto-import, assets, PWA, DX tooling, platform (electron/extension/meta-framework)
 
 ### 2. Pick From Catalog
 
-> Goal: เลือก plugin ที่ maintained และตรงงาน
+> Goal: pick a plugin that is maintained and fits the job
 
 | Topic | Workflow |
 |-------|----------|
-| Universal plugins — ทำงานข้าม bundler (`unplugin-*` ecosystem) | `workflows/unified/SKILL.md` |
+| Universal plugins — work across bundlers (`unplugin-*` ecosystem) | `workflows/unified/SKILL.md` |
 | Framework/frontend plugins — react, vue, svelte, css, assets, routing | `workflows/frontend-lib/SKILL.md` |
 
-- ไม่มีใน catalog → ทำ `/search-github-star` หรือ `/search-raindrop` หา plugin ที่ maintained (stars, last publish ≥7 วัน)
+- Not in the catalog → do `/search-github-star` or `/search-raindrop` to find a maintained plugin (stars, last publish ≥7 days)
 
 ### 3. Install And Wire
 
-> Goal: plugin ทำงานใน config
+> Goal: the plugin works in the config
 
-1. `bun add -D <plugin>` — pin version เผยแพร่ ≥7 วัน
-2. เพิ่มใน `plugins: [...]` ของ `vite.config.ts` ตาม official docs — ใช้ option defaults ก่อนเสมอ
-3. Vite 8 (Rolldown) — เช็ค plugin รองรับ rolldown; ถ้า plugin ผูก Rollup/Rollup hooks ให้เช็ค compat layer
-4. Type augmentation (เช่น auto-import `.d.ts`) → รัน dev 1 ครั้งเพื่อ generate
+1. `bun add -D <plugin>` — pin a version published ≥7 days ago
+2. Add it to `plugins: [...]` in `vite.config.ts` per the official docs — always use option defaults first
+3. Vite 8 (Rolldown) — check the plugin supports rolldown; if a plugin is tied to Rollup/Rollup hooks, check the compat layer
+4. Type augmentation (e.g. auto-import `.d.ts`) → run dev once to generate
 
 ### 4. Verify And Report
 
-> Goal: plugin ทำงานจริง ไม่ทำ build พัง
+> Goal: the plugin really works and doesn't break the build
 
-1. รัน `bunx vite` dev server — ดู no errors + plugin output ทำงาน
-2. `bunx vite build` — production build ผ่าน
-3. ทำ `/report` table: `Plugin`, `Purpose`, `Version`, `Status`
+1. Run `bunx vite` dev server — confirm no errors + the plugin output works
+2. `bunx vite build` — the production build passes
+3. Do `/report` table: `Plugin`, `Purpose`, `Version`, `Status`
 
 ## Rules
 
-- Official/framework plugin ก่อนเสมอ (`@vitejs/plugin-*`) — community plugin เมื่อ official ไม่มี
-- เช็ค maintenance — last publish ≥7 วัน, stars, open issues; plugin ที่ตายแล้ว (เช่น windicss → unocss) ห้ามใช้
-- Plugin order สำคัญ — auto-import/plugin ที่ transform code มาก่อน framework plugin ตาม docs
-- ห้ามใส่ plugin 2 ตัวทำงานซ้ำกัน (เช่น `vite-plugin-svgr` + `unplugin-icons` สำหรับ svg)
+- Official/framework plugins first (`@vitejs/plugin-*`) — community plugins only when no official one exists
+- Check maintenance — last publish ≥7 days, stars, open issues; a dead plugin (e.g. windicss → unocss) is never used
+- Plugin order matters — auto-import/code-transform plugins come before the framework plugin per the docs
+- Never add 2 plugins doing the same job (e.g. `vite-plugin-svgr` + `unplugin-icons` for svg)
 
-- ใช้ `/follow-tool-vite` สำหรับ config หลัก
-- ใช้ `/search-github-star`, `/search-raindrop` หา plugin ที่ไม่มีใน catalog
-- ใช้ `/follow-create-plugins` ถ้าต้องเขียน plugin เอง
+- Use `/follow-tool-vite` for the main config
+- Use `/search-github-star`, `/search-raindrop` to find plugins not in the catalog
+- Use `/follow-create-plugins` if you must write a plugin yourself
 
-- ดู best-practices/ สำหรับ recommended patterns และ pitfalls
+- See best-practices/ for recommended patterns and pitfalls
 
 ## Expected Outcome
 
-- Plugin ที่เลือกถูกติดตั้งและทำงานใน dev + build
-- ไม่มี plugin ซ้ำซ้อนหรือ unmaintained
-- Report ครบพร้อม versions
+- The selected plugin is installed and works in dev + build
+- No duplicate or unmaintained plugins
+- A complete report with versions

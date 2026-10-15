@@ -1,34 +1,34 @@
 # Vite Plugins — Best Practices
 
-Plugin selection — unplugin ecosystem และ frontend-lib catalog discipline
+Plugin selection — the unplugin ecosystem and frontend-lib catalog discipline
 
 ## Recommended Patterns
 
-- Official plugins ก่อน (`@vitejs/plugin-*`) — framework support (react, vue, svelte) ต้อง official
-- `unplugin-*` ecosystem = unified plugins (Icons, AutoImport, Components, Fonts) — ตัวเดียวทำงานทั้ง Vite/Rollup/Webpack
-- Plugin order matters: framework plugin ก่อน, transforms ตามหลัง — read plugin docs สำหรับ ordering requirements
-- `apply: 'serve'|'build'` เมื่อ plugin เฉพาะ mode — dev tools ไม่ควรอยู่ใน build pipeline
-- Audit plugins: ทุกตัว = transform overhead + supply chain — ถามว่า built-in ทำได้ไหมก่อน add
+- Official plugins first (`@vitejs/plugin-*`) — framework support (react, vue, svelte) must be official
+- `unplugin-*` ecosystem = unified plugins (Icons, AutoImport, Components, Fonts) — one package works across Vite/Rollup/Webpack
+- Plugin order matters: framework plugin first, transforms after — read plugin docs for ordering requirements
+- `apply: 'serve'|'build'` for a mode-specific plugin — dev tools should not sit in the build pipeline
+- Audit plugins: every plugin = transform overhead + supply chain — ask whether a built-in can do it before adding
 
 ## Common Pitfalls
 
-- Version compat: Vite major upgrades break plugins — check peer ranges เมื่อ upgrade Vite
-- Duplicate functionality: `unplugin-auto-import` + manual imports ชนกัน = confusion; commit หนึ่ง approach
-- Plugin config ผ่าน options ไม่ใช่ monkey-patch — virtual modules/auto-imports มี conventions
-- `@vitejs/plugin-legacy`/SWC variants — เลือกตาม browser matrix; อย่า stack plugins ซ้ำ transform เดียวกัน
-- SSR/edge targets: plugin บางตัว assume browser globals — verify ใน target environment
+- Version compat: Vite major upgrades break plugins — check peer ranges when upgrading Vite
+- Duplicate functionality: `unplugin-auto-import` + manual imports collide = confusion; commit to one approach
+- Plugin config goes through options, not monkey-patching — virtual modules/auto-imports have conventions
+- `@vitejs/plugin-legacy`/SWC variants — pick by the browser matrix; don't stack plugins repeating the same transform
+- SSR/edge targets: some plugins assume browser globals — verify in the target environment
 
 ## Selection Criteria
 
-- Maintenance: commits ล่าสุด <6 เดือน, issues response, Vite version support
-- Single-purpose ดีกว่า mega-plugins — compose smaller primitives
-- Unplugin versions preferred เมื่อเป็น multi-tool — shared config ข้าม bundlers
+- Maintenance: latest commits <6 months, issue response, Vite version support
+- Single-purpose beats mega-plugins — compose smaller primitives
+- Unplugin versions preferred for multi-tool setups — shared config across bundlers
 
 ## Do / Don't
 
 | Do | Don't |
 |----|-------|
-| official/unplugin plugins ก่อน | random community plugins |
-| `apply` scope เฉพาะ mode | dev plugins ใน production build |
-| audit plugin necessity | plugin สำหรับทุกอย่างที่ config ทำได้ |
-| check Vite peer compat | blind upgrade Vite ทำ plugins พัง |
+| official/unplugin plugins first | random community plugins |
+| `apply` scope to a specific mode | dev plugins in the production build |
+| audit plugin necessity | a plugin for everything config can do |
+| check Vite peer compat | blind Vite upgrades that break plugins |

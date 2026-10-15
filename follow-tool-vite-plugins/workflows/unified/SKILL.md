@@ -1,6 +1,6 @@
 ---
 name: follow-tool-vite-plugins-unified
-description: unplugin ecosystem catalog — universal plugins ที่ทำงานข้าม Vite/Rollup/Webpack/esbuild/Rolldown
+description: unplugin ecosystem catalog — universal plugins that work across Vite/Rollup/Webpack/esbuild/Rolldown
 argument-hint: "[plugin-or-need]"
 related:
   - follow-tool-vite-plugins
@@ -10,35 +10,35 @@ related:
 
 ## Goal
 
-เลือกและ setup universal plugins จาก unplugin ecosystem — เขียนครั้งเดียวทำงานได้ทั้ง Vite, Rollup, Webpack, esbuild, Rolldown
+Pick and set up universal plugins from the unplugin ecosystem — written once, they work across Vite, Rollup, Webpack, esbuild, Rolldown
 
 ## Scope
 
-ใช้เมื่อต้องการ plugin ที่ไม่ผูก framework เดียว — auto-import, icons, components, console, cross-bundler transforms
+Use when you want a plugin not tied to a single framework — auto-import, icons, components, console, cross-bundler transforms
 
 ## Execute
 
 ### 1. Plugin Catalog
 
-> Goal: เลือกจากรายการที่ maintained
+> Goal: pick from the maintained list
 
 | Plugin | Purpose | Note |
 |--------|---------|------|
-| `unplugin` (unjs) | core — สร้าง universal plugin เอง | plugin ทั้งหมดข้างล่าง build บนตัวนี้ |
+| `unplugin` (unjs) | core — build your own universal plugin | all plugins below are built on it |
 | `unplugin-auto-import` | auto-import APIs (vue/react/composables) on-demand | config `imports: ['vue' \| 'react']`, gen `auto-imports.d.ts` |
-| `unplugin-vue-components` | auto component registration (Vue) | resolvers: element-plus, naive, primevue ฯลฯ |
-| `unplugin-icons` | icons เป็น components — iconify collections ทั้งหมด | `~icons/`, `i-` prefix |
+| `unplugin-vue-components` | auto component registration (Vue) | resolvers: element-plus, naive, primevue, etc. |
+| `unplugin-icons` | icons as components — all iconify collections | `~icons/`, `i-` prefix |
 | `unplugin-turbo-console` | enhanced console — jump to source, inspect | dev-only, DX boost |
-| `unplugin-vue-router` | type-safe file-based routing (Vue) | ตัวแทน `vite-plugin-pages` ที่ active กว่า |
-| `unplugin-swc` | SWC transform ข้าม bundler | alternative ถ้าไม่อยากพึ่ง Oxc |
+| `unplugin-vue-router` | type-safe file-based routing (Vue) | replaces `vite-plugin-pages`, which is less active |
+| `unplugin-swc` | SWC transform across bundlers | alternative if you don't want to rely on Oxc |
 | `unplugin-fonts` | font loading (google/local) | `unplugin-fonts/vite` |
 | `unplugin-info` | build info banner | metadata embed |
-| `unplugin-preprocessor-directives` | `#if` conditional compilation | feature flags ระดับ build |
-| `unplugin-unused` | หา unused exports/files | dead-code audit |
+| `unplugin-preprocessor-directives` | `#if` conditional compilation | build-level feature flags |
+| `unplugin-unused` | find unused exports/files | dead-code audit |
 
 ### 2. Setup Pattern
 
-> Goal: config ถูกต้อง
+> Goal: correct config
 
 ```ts
 // vite.config.ts
@@ -48,35 +48,35 @@ import Icons from 'unplugin-icons/vite'
 export default defineConfig({
   plugins: [
     AutoImport({ imports: ['vue'], dts: 'src/auto-imports.d.ts' }),
-    Icons({ compiler: 'vue3' }), // หรือ 'jsx', 'solid', 'svelte'
+    Icons({ compiler: 'vue3' }), // or 'jsx', 'solid', 'svelte'
   ],
 })
 ```
 
-1. import จาก `<plugin>/vite` subpath เสมอ (ไม่ใช่ root)
-2. auto-import/components ต้อง gen `.d.ts` — commit หรือ gitignore ตาม docs
-3. dev-only plugins (turbo-console) — wrap ด้วย `apply: 'serve'` หรือ env check
+1. Always import from the `<plugin>/vite` subpath (not the root)
+2. auto-import/components must generate `.d.ts` — commit or gitignore per the docs
+3. dev-only plugins (turbo-console) — wrap with `apply: 'serve'` or an env check
 
 ### 3. Verify
 
-> Goal: plugin ทำงานใน dev + build
+> Goal: the plugin works in dev + build
 
-1. `bunx vite` — ดู generated files (`auto-imports.d.ts`, `components.d.ts`)
-2. `bunx vite build` — ผ่านไม่มี warnings จาก plugin
-3. เช็ค bundle size — auto-import ไม่ควรดึง lib ทั้งก้อน (tree-shake ทำงาน)
+1. `bunx vite` — check the generated files (`auto-imports.d.ts`, `components.d.ts`)
+2. `bunx vite build` — passes with no plugin warnings
+3. Check bundle size — auto-import should not pull in the whole lib (tree-shaking works)
 
 ## Rules
 
-- unplugin-* ทำงานได้ทุก bundler — ถ้า project เป็น Vite-only ก็ยังใช้ได้ เลือกตาม feature ไม่ใช่เพราะ "universal"
-- import ผ่าน `/vite` subpath เสมอ
-- dev-only plugins ห้ามรันใน build — ใช้ `apply: 'serve'`
-- `unplugin-icons` ต้อง install `@iconify-json/<set>` ของชุดที่ใช้แยกต่างหาก
-- Rolldown-Vite: unplugin รองรับแล้ว แต่ถ้า plugin ใช้ Rollup-specific hooks ให้เช็ค changelog
+- unplugin-* works on every bundler — if the project is Vite-only it still works; pick by feature, not because it's "universal"
+- Always import via the `/vite` subpath
+- dev-only plugins must never run in the build — use `apply: 'serve'`
+- `unplugin-icons` requires installing `@iconify-json/<set>` for each icon set separately
+- Rolldown-Vite: unplugins are supported, but if a plugin uses Rollup-specific hooks, check the changelog
 
-- ใช้ `/follow-tool-vite` สำหรับ config หลัก
-- ใช้ `/follow-tool-vite-plugins frontend-lib` สำหรับ framework-specific plugins
+- Use /follow-tool-vite if needed
+- Use `/follow-tool-vite-plugins frontend-lib` for framework-specific plugins
 
 ## Expected Outcome
 
-- Plugin ที่เลือกทำงานใน dev+build, types generated
-- ไม่มี duplicate transform หรือ dev-only leak เข้า production
+- The chosen plugin works in dev+build with types generated
+- No duplicate transform or dev-only leak into production
