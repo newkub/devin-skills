@@ -1,6 +1,6 @@
 ---
 name: follow-tool-storybook
-description: ตั้งค่าและใช้ Storybook สำหรับ component development และ documentation
+description: Set up and use Storybook for component development and documentation
 argument-hint: "[scope]"
 related:
   - follow-tool-vite
@@ -15,13 +15,13 @@ related:
 
 ## Goal
 
-ตั้งค่าและใช้ Storybook เพื่อพัฒนา UI components แบบ isolation พร้อม documentation, testing และ addons
+Set up and use Storybook to develop UI components in isolation with documentation, testing, and addons
 
 ## Scope
 
-ใช้สำหรับ frontend projects ที่ต้องการ component library, visual documentation และ interaction testing
+For frontend projects that want a component library, visual documentation, and interaction testing
 
-- Latest: `storybook@10.6.0` (verified 2026-09-13) — v10: controls/actions/interactions/viewport เป็น core features (ไม่ต้องติดตั้ง `@storybook/addon-essentials`/`addon-interactions` อีก)
+- Latest: `storybook@10.6.0` (verified 2026-09-13) — v10: controls/actions/interactions/viewport are core features (no need to install `@storybook/addon-essentials`/`addon-interactions` anymore)
 
 ## Execute
 
@@ -30,114 +30,114 @@ related:
 | Topic | Workflow |-------|----------| Init, framework detection, `.storybook/` config files | `workflows/setup-storybook/SKILL.md` | `main.ts` addons — docs, a11y, vitest | `workflows/config-addons/SKILL.md` 
 ### 1. Installation
 
-> Goal: ติดตั้ง Storybook ด้วย CLI
+> Goal: Install Storybook with the CLI
 
-1. รัน `bun create storybook@latest` ใน project root (หรือ `bunx storybook@latest create` ใน v10)
-2. เลือก framework ถ้า CLI ไม่ detect ด้วย `--type`
-3. ตรวจสอบ dependencies ทีติดตั้งอัตโนมัติ
-4. ดูคำสั่ง CLI ใน 
+1. Run `bun create storybook@latest` in the project root (or `bunx storybook@latest create` in v10)
+2. Pick the framework with `--type` if the CLI doesn't detect it
+3. Check the automatically installed dependencies
+4. See the CLI commands in 
 
 ### 2. Configuration
 
-> Goal: สร้าง `.storybook` config files
+> Goal: Create the `.storybook` config files
 
-1. สร้าง `.storybook/main.ts` พร้อม `framework`, `stories` glob, `addons`
-2. สร้าง `.storybook/preview.ts` สำหรับ global parameters, decorators, styles
-3. สร้าง `.storybook/manager.ts` ถ้าต้องการปรับ UI behavior
-4. ตั้งค่า `staticDirs` สำหรับ static assets
-5. ดูรายละเอียด config ใน 
+1. Create `.storybook/main.ts` with `framework`, `stories` glob, `addons`
+2. Create `.storybook/preview.ts` for global parameters, decorators, styles
+3. Create `.storybook/manager.ts` if you want to adjust UI behavior
+4. Set `staticDirs` for static assets
+5. See the config details in 
 
 ### 3. Write Stories
 
-> Goal: เขียน stories ตาม component variations
+> Goal: Write stories per component variations
 
-1. สร้างไฟล์ `.stories.ts` ตาม component
-2. import `Meta` และ `StoryObj` จาก framework package
-3. export default `meta` object พร้อม `component`
-4. export named stories ด้วย `args` สำหรับ props/state
-5. ใช้ decorators สำหรับ theme providers, data providers
+1. Create a `.stories.ts` file next to each component
+2. Import `Meta` and `StoryObj` from the framework package
+3. Export a default `meta` object with `component`
+4. Export named stories with `args` for props/state
+5. Use decorators for theme providers, data providers
 
 ### 4. Setup Addons
 
-> Goal: ติดตั้งและตั้งค่า Storybook addons
+> Goal: Install and configure Storybook addons
 
-1. v10: controls, actions, interactions, viewport, backgrounds เป็น core features — ไม่ต้องติดตั้ง `@storybook/addon-essentials`/`@storybook/addon-interactions` (ถูก remove ใน v10)
-2. register addons ที่เหลือใน `.storybook/main.ts` ผ่าน `addons` array
-3. เพิ่ม `@storybook/addon-docs` สำหรับ auto-docs
-4. เพิ่ม `@storybook/addon-a11y` สำหรับ accessibility testing
-5. เพิ่ม `@storybook/addon-vitest` สำหรับ component/interaction testing ผ่าน Vitest
+1. v10: controls, actions, interactions, viewport, backgrounds are core features — don't install `@storybook/addon-essentials`/`@storybook/addon-interactions` (removed in v10)
+2. register the remaining addons in `.storybook/main.ts` via the `addons` array
+3. Add `@storybook/addon-docs` for auto-docs
+4. Add `@storybook/addon-a11y` for accessibility testing
+5. Add `@storybook/addon-vitest` for component/interaction testing via Vitest
 
 ### 5. Testing Integration
 
-> Goal: ตั้งค่า testing สำหรับ components
+> Goal: Set up testing for components
 
-1. ทำ `/follow-tool-vitest` เพื่อเตรียม unit testing environment
-2. ใช้ `@storybook/addon-vitest` สำหรับ component + interaction tests (`play` functions อยู่ใน core)
-3. setup visual regression ด้วย Chromatic หรือ similar tools
-4. รัน `bun run test-storybook` (`storybook test`) ใน CI
-5. ทำ `/follow-test` เพื่อขยาย test coverage
+1. Run `/follow-tool-vitest` to prepare the unit testing environment
+2. Use `@storybook/addon-vitest` for component + interaction tests (`play` functions are in core)
+3. Set up visual regression with Chromatic or similar tools
+4. Run `bun run test-storybook` (`storybook test`) in CI
+5. Run `/follow-test` to expand test coverage
 
 ### 6. Build and Deploy
 
-> Goal: build static Storybook และ deploy
+> Goal: Build the static Storybook and deploy
 
-1. รัน `bunx storybook build` เพื่อสร้าง static site
-2. ตรวจสอบ output ใน `storybook-static/`
-3. ตั้งค่า GitHub Actions สำหรับ build และ deploy
-4. deploy ไปยัง static host ที project ใช้
+1. Run `bunx storybook build` to create the static site
+2. Check the output in `storybook-static/`
+3. Set up GitHub Actions for build and deploy
+4. Deploy to the static host the project uses
 
 ## Rules
 
 ### 1. Installation
 
-- ใช้ `bun create storybook@latest` สำหรับ latest version
-- ใช้ `--type` ถ้า auto-detect ล้มเหลว
-- ใช้ official framework packages
+- Use `bun create storybook@latest` for the latest version
+- Use `--type` if auto-detect fails
+- Use the official framework packages
 
 ### 2. Configuration
 
-- ใช้ `.storybook/main.ts` สำหรับ config
-- ใช้ `.storybook/preview.ts` สำหรับ global rendering
-- ตั้งค่า `stories` glob ให้ครอบคลุม
+- Use `.storybook/main.ts` for config
+- Use `.storybook/preview.ts` for global rendering
+- Set a `stories` glob with full coverage
 
 ### 3. Stories
 
-- ใช้ `.stories.ts` สำหรับ TypeScript
-- ใช้ `args` สำหรับ component props
-- เขียน stories สำหรับทุกสถานะสำคัญ
+- Use `.stories.ts` for TypeScript
+- Use `args` for component props
+- Write stories for every important state
 
 ### 4. Testing
 
-- ทดสอบ interactions ใน Storybook
-- ใช้ visual regression testing
-- รัน tests ใน CI
+- Test interactions in Storybook
+- Use visual regression testing
+- Run the tests in CI
 
 ### 5. Documentation
 
-- ใช้ auto-docs สร้างเอกสารจาก stories
-- ใช้ decorators สำหรับ context providers
-- รักษา components แบบ isolation
+- Use auto-docs to generate documentation from stories
+- Use decorators for context providers
+- Keep components in isolation
 
-- ใช้ /follow-tool-vite ถ้าจำเป็น
-- ใช้ /follow-create-plugins (vite) ถ้าจำเป็น (tool storybook)
-- ใช้ /follow-tool-playwright ถ้าจำเป็น
-- ใช้ /follow-tool-biome ถ้าจำเป็น
+- Use /follow-tool-vite if needed
+- Use /follow-create-plugins (vite) if needed (tool storybook)
+- Use /follow-tool-playwright if needed
+- Use /follow-tool-biome if needed
 
 ## References
 
 - [CLI reference](references/cli.md)
 
-- ใช้ /deep-test visual ถ้าจำเป็น
-- ใช้ /run-test ถ้าจำเป็น
+- Use /deep-test visual if needed
+- Use /run-test if needed
 
 
-- ดู best-practices/ สำหรับ recommended patterns และ pitfalls
+- See best-practices/ for recommended patterns and pitfalls
 
 ## Expected Outcome
 
-- Storybook ติดตั้งและ start ได้
-- Components มี stories ครบถ้วน
-- Addons ติดตั้งและทำงาน
-- Tests ผ่านใน CI
-- Static docs build และ deploy ได้
+- Storybook installed and startable
+- Components with complete stories
+- Addons installed and working
+- Tests passing in CI
+- The static docs build and deploy works
 

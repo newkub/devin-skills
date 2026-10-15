@@ -1,6 +1,6 @@
 ---
 name: follow-tool-storybook-setup-storybook
-description: ติดตั้ง Storybook ด้วย CLI init และ framework detection พร้อม config พื้นฐาน
+description: Install Storybook with the CLI init and framework detection plus basic config
 argument-hint: "[scope]"
 related:
   - follow-tool-vite
@@ -10,72 +10,72 @@ related:
 
 ## Goal
 
-ติดตั้ง Storybook ใน project ด้วย official CLI — framework detection, `.storybook/` config files, scripts — ให้ dev server start ได้
+Install Storybook in the project with the official CLI — framework detection, `.storybook/` config files, scripts — so the dev server starts
 
 ## Scope
 
-ใช้สำหรับ frontend projects ที่ยังไม่มี Storybook — init, framework setup, minimal config. Addons อยู่ใน `workflows/config-addons/SKILL.md`
+For frontend projects without Storybook yet — init, framework setup, minimal config. Addons live in `workflows/config-addons/SKILL.md`
 
-- ถ้า `.storybook/` มีอยู่แล้ว → verify เท่านั้น
+- If `.storybook/` already exists → verify only
 
 ## Execute
 
 ### 1. Check Prerequisites
 
-> Goal: ตรวจ state ก่อน setup
+> Goal: Check the state before setup
 
-1. ตรวจว่ามี `.storybook/` directory หรือ `storybook` ใน devDependencies อยู่แล้ว — ถ้ามี → skip ไป verify
-2. ระบุ framework ของ project จาก `package.json` (React, Vue, Svelte, Angular, ฯลฯ) และ builder (Vite, webpack)
-3. ระบุ package manager จาก lockfile
+1. Check whether a `.storybook/` directory or `storybook` in devDependencies already exists — if yes → skip to verify
+2. Identify the project's framework from `package.json` (React, Vue, Svelte, Angular, etc.) and the builder (Vite, webpack)
+3. Identify the package manager from the lockfile
 
 ### 2. Init Storybook
 
-> Goal: ติดตั้งด้วย CLI init
+> Goal: Install with the CLI init
 
-1. รัน `bun create storybook@latest` (หรือ `bunx storybook@latest init`/`create` ตาม version — ดู parent skill สำหรับคำสั่งล่าสุด)
-2. CLI detect framework อัตโนมัติ — ถ้า fail ให้ระบุด้วย `--type <framework>` (ดู `storybook init --help` สำหรับ type names)
-3. ตรวจสิ่งที่ CLI สร้าง: `.storybook/main.ts`, `.storybook/preview.ts`, example stories, scripts ใน `package.json`
-4. ตรวจ framework package ที่ติดตั้งตรงกับ project (เช่น `@storybook/react-vite` สำหรับ React+Vite)
+1. Run `bun create storybook@latest` (or `bunx storybook@latest init`/`create` depending on the version — see the parent skill for the latest commands)
+2. The CLI detects the framework automatically — if it fails, specify it with `--type <framework>` (see `storybook init --help` for type names)
+3. Check what the CLI created: `.storybook/main.ts`, `.storybook/preview.ts`, example stories, scripts in `package.json`
+4. Check that the installed framework package matches the project (e.g. `@storybook/react-vite` for React+Vite)
 
 ### 3. Verify Config Files
 
-> Goal: ตรวจ `.storybook/` config ขั้นต่ำถูกต้อง
+> Goal: Verify the minimal `.storybook/` config is correct
 
-1. `.storybook/main.ts` — `framework`, `stories` glob ครอบคลุม source dirs จริง, `addons` array
+1. `.storybook/main.ts` — `framework`, a `stories` glob covering the real source dirs, `addons` array
 2. `.storybook/preview.ts` — global parameters/decorators/styles
-3. `staticDirs` — ถ้า project มี static assets (public/, images)
-4. เพิ่ม scripts: `storybook` (dev server), `build-storybook` (static build) — ดู scripts ที่ CLI สร้างให้
+3. `staticDirs` — if the project has static assets (public/, images)
+4. Add scripts: `storybook` (dev server), `build-storybook` (static build) — see the scripts the CLI generated
 
 ### 4. Verify Run
 
-> Goal: ยืนยัน dev server และ build ทำงาน
+> Goal: Confirm the dev server and build work
 
-1. รัน dev server (`bun run storybook` หรือ script ที่ CLI สร้าง) — เปิด URL ที่แสดง ต้องเห็น example stories
-2. รัน `bunx storybook build` — static build ผ่าน สร้าง `storybook-static/`
-3. ถ้า fail → ทำ `/resolve-errors` max 3 รอบ แล้ว stop report
+1. Run the dev server (`bun run storybook` or the script the CLI created) — open the URL it prints, the example stories must appear
+2. Run `bunx storybook build` — the static build passes and creates `storybook-static/`
+3. If it fails → run `/resolve-errors` max 3 rounds, then stop and report
 
 ## Rules
 
 ### 1. Init
 
-- ใช้ official CLI init เสมอ — ห้ามเขียน boilerplate เองถ้า CLI ทำได้
-- ใช้ `--type` เมื่อ auto-detect ล้มเหลว
-- ใช้ official framework packages เท่านั้น
+- Always use the official CLI init — never hand-write boilerplate when the CLI can do it
+- Use `--type` when auto-detect fails
+- Use only the official framework packages
 
 ### 2. Config
 
-- `stories` glob ต้องครอบคลุม dirs ที่มี components จริง
-- `.storybook/preview.ts` สำหรับ global rendering; `manager.ts` สำหรับ UI behavior
+- The `stories` glob must cover the dirs that really contain components
+- `.storybook/preview.ts` for global rendering; `manager.ts` for UI behavior
 
 ### 3. Verification
 
-- dev server start + static build ผ่าน ก่อนถือว่า setup สำเร็จ
+- Dev server start + static build must pass before treating the setup as done
 
-- ใช้ /follow-tool-vite ถ้าจำเป็น
-- ใช้ /follow-tool-vitest ถ้าจำเป็น
+- Use /follow-tool-vite if needed
+- Use /follow-tool-vitest if needed
 
 ## Expected Outcome
 
-- Storybook ติดตั้งพร้อม framework package ที่ถูกต้อง
-- `.storybook/main.ts` + `preview.ts` ถูกสร้าง
-- dev server และ `build-storybook` ทำงาน
+- Storybook installed with the correct framework package
+- `.storybook/main.ts` + `preview.ts` created
+- The dev server and `build-storybook` work

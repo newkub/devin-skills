@@ -1,10 +1,10 @@
 ---
-description: Setup Storybook ใน project ใหม่
+description: Set up Storybook in a new project
 ---
 
 ## Goal
 
-ติดตั้งและ configure Storybook ใน project
+Install and configure Storybook in the project
 
 ## Execute
 
@@ -14,7 +14,7 @@ description: Setup Storybook ใน project ใหม่
 bun create storybook@latest
 ```
 
-หรือผ่าน storybook CLI โดยตรง (v10+):
+Or directly via the storybook CLI (v10+):
 
 ```bash
 bunx storybook@latest create
@@ -22,7 +22,7 @@ bunx storybook@latest create
 
 ### 2. Select Framework
 
-เลือก framework ที่เหมาะสม:
+Select the appropriate framework:
 - React
 - Vue
 - Angular
@@ -32,11 +32,11 @@ bunx storybook@latest create
 
 ### 3. Configure Framework
 
-Storybook จะ detect framework อัตโนมัติ และติดตั้ง packages ที่เหมาะสม:
-- `@storybook/react-vite` สำหรับ React + Vite
-- `@storybook/react-webpack5` สำหรับ React + Webpack
-- `@storybook/vue3-vite` สำหรับ Vue 3 + Vite
-- `@storybook/angular` สำหรับ Angular
+Storybook detects the framework automatically and installs the right packages:
+- `@storybook/react-vite` for React + Vite
+- `@storybook/react-webpack5` for React + Webpack
+- `@storybook/vue3-vite` for Vue 3 + Vite
+- `@storybook/angular` for Angular
 
 ### 4. Add Scripts
 
@@ -57,8 +57,8 @@ bun run storybook
 
 ## Rules
 
-- ใช้ Vite builder เมื่อเป็นไปได้สำหรับ performance ที่ดีกว่า
-- ตรวจสอบ requirements: Node.js 20.19+ หรือ 22.12+ (v10 ต้องการ `require(esm)`), npm 10+, pnpm 9+, yarn 4+, bun 1.4+
-- ตรวจสอบ framework requirements: Angular 18+, React Native 0.72+, Svelte 5+, Vue 3+, Vite 5+
-- ใช้ `--type` flag ถ้า auto-detection ล้มเหลว
-- ใช้ `--package-manager` flag สำหรับ specify package manager
+- Use the Vite builder when possible for better performance
+- Check the requirements: Node.js 20.19+ or 22.12+ (v10 needs `require(esm)`), npm 10+, pnpm 9+, yarn 4+, bun 1.4+
+- Check the framework requirements: Angular 18+, React Native 0.72+, Svelte 5+, Vue 3+, Vite 5+
+- Use the `--type` flag if auto-detection fails
+- Use the `--package-manager` flag to specify the package manager

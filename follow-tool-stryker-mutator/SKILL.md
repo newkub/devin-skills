@@ -1,6 +1,6 @@
 ---
 name: follow-tool-stryker-mutator
-description: ตั้งค่าและใช้งาน Stryker Mutator สำหรับ mutation testing ใน JavaScript/TypeScript projects
+description: Set up and use Stryker Mutator for mutation testing in JavaScript/TypeScript projects
 argument-hint: "[scope]"
 related:
   - deep-review
@@ -15,14 +15,14 @@ related:
 
 ## Goal
 
-ตั้งค่าและใช้งาน Stryker Mutator สำหรับ mutation testing เพื่อปรับปรุงคุณภาพของ JavaScript/TypeScript tests
+Set up and use Stryker Mutator for mutation testing to improve the quality of JavaScript/TypeScript tests
 
 ## Scope
 
-ใช้สำหรับ JavaScript, TypeScript, React, Angular, Vue, Svelte และ Node.js projects ที่มี test runner รองรับ
+For JavaScript, TypeScript, React, Angular, Vue, Svelte, and Node.js projects with a supported test runner
 
-- Stryker วัดคุณภาพ tests ผ่าน mutants — ไม่ใช่ test runner หรือ coverage tool; รัน tests ผ่าน `/follow-test` และดู coverage ผ่าน `improve coverage`
-- ใช้เมื่อ tests ผ่านและ stable แล้ว — ถ้า tests ยัง fail หรือ flaky ให้แก้ก่อนด้วย `/update-tests`
+- Stryker measures test quality through mutants — it is not a test runner or coverage tool; run tests via `/follow-test` and check coverage via `improve coverage`
+- Use it once tests pass and are stable — if tests still fail or are flaky, fix them first with `/update-tests`
 
 - Latest: `@stryker-mutator/core@10.0.0` (verified 2026-09-13) — v10 requires Node.js 22+ (dropped Node 20)
 
@@ -30,105 +30,105 @@ related:
 
 ### Workflows
 
-> Goal: dispatch ไปยัง workflow ที่ตรง topic
+> Goal: Dispatch to the workflow matching the topic
 
 | Topic | Workflow |-------|----------| setup | `workflows/setup-stryker/SKILL.md` — install, stryker config, test runner integration | optimize | `workflows/optimize-mutation/SKILL.md` — incremental mode, mutator filtering, concurrency, thresholds 
-1. ถ้า argument ตรง topic → อ่านและทำตาม `workflows/<name>/SKILL.md` แทน steps ด้านล่าง
-2. ถ้าไม่ตรง → ทำตาม steps ด้านล่างตามปกติ
+1. If the argument matches a topic → read and follow `workflows/<name>/SKILL.md` instead of the steps below
+2. If not → follow the steps below normally
 
 ### 1. Installation
 
-> Goal: ติดตั้ง Stryker และ test runner plugin
+> Goal: Install Stryker and the test runner plugin
 
-1. ตรวจสอบ Node.js >= 22 และ test runner ปัจจุบัน (jest, vitest, mocha, jasmine)
-2. ติดตั้ง `@stryker-mutator/core` ด้วย `bun add -D @stryker-mutator/core`
-3. ติดตั้ง runner plugin เช่น `bun add -D @stryker-mutator/vitest-runner`
-4. ติดตั้ง TypeScript checker ถ้าใช้ TypeScript: `bun add -D @stryker-mutator/typescript-checker`
-5. ดูรายละเอียดใน 
+1. Check Node.js >= 22 and the current test runner (jest, vitest, mocha, jasmine)
+2. Install `@stryker-mutator/core` with `bun add -D @stryker-mutator/core`
+3. Install the runner plugin, e.g. `bun add -D @stryker-mutator/vitest-runner`
+4. Install the TypeScript checker if you use TypeScript: `bun add -D @stryker-mutator/typescript-checker`
+5. See the details in 
 
 ### 2. Initialize and Configure
 
-> Goal: สร้าง Stryker config
+> Goal: Create the Stryker config
 
-1. รัน `bunx stryker init` เพื่อ generate config
-2. ตรวจสอบ `stryker.config.json` หรือ `stryker.config.mjs`
-3. กำหนด `testRunner`, `mutator`, `reporters`, `coverageAnalysis`
-4. ตั้งค่า `mutate` และ `ignorePatterns` glob
-5. ดู config options ใน 
+1. Run `bunx stryker init` to generate the config
+2. Check `stryker.config.json` or `stryker.config.mjs`
+3. Define `testRunner`, `mutator`, `reporters`, `coverageAnalysis`
+4. Set the `mutate` and `ignorePatterns` globs
+5. See the config options in 
 
 ### 3. Run Mutation Testing
 
-> Goal: รัน mutation testing และตรวจสอบผล
+> Goal: Run mutation testing and review the results
 
-1. รัน `bunx stryker run`
-2. ใช้ `bunx stryker run --logLevel trace` ถ้าพบปัญหา
-3. ตรวจสอบรายงานใน `reports/mutation/html/index.html`
-4. ระบุ surviving mutants, `NOT CAUGHT`, `timeout` mutants
+1. Run `bunx stryker run`
+2. Use `bunx stryker run --logLevel trace` if you hit problems
+3. Review the report in `reports/mutation/html/index.html`
+4. Identify surviving mutants, `NOT CAUGHT`, and `timeout` mutants
 
 ### 4. Improve Tests
 
-> Goal: เพิ่ม tests สำหรับ mutants ทีหลุดรอด
+> Goal: Add tests for the mutants that survived
 
-1. วิเคราะห์ surviving mutants
-2. เขียน tests เพิ่มเพื่อ catch missing cases
-3. ทำ `/update-tests` เพื่อเขียน tests ทีมีคุณภาพ
-4. รัน tests ธรรมดาก่อน แล้วรัน Stryker ซ้ำ
+1. Analyze the surviving mutants
+2. Write additional tests to catch the missing cases
+3. Run `/update-tests` to write quality tests
+4. Run the regular tests first, then re-run Stryker
 
 ### 5. CI Integration
 
-> Goal: integrate Stryker กับ CI pipeline
+> Goal: Integrate Stryker with the CI pipeline
 
-1. เพิ่ม step รัน `bunx stryker run` ใน GitHub Actions
-2. ตั้งค่า Stryker Dashboard ถ้าต้องการ track score
-3. ใช้ budget หรือ threshold ถ้ามี
-4. อัปโหลด reports สำหรับ review
+1. Add a step running `bunx stryker run` in GitHub Actions
+2. Set up the Stryker Dashboard if you want to track the score
+3. Use a budget or threshold if you have one
+4. Upload the reports for review
 
 ## Rules
 
 ### 1. Test Quality
 
-- ใช้ Node.js >= 22 (Stryker v10)
-- ต้องมี tests ที่ stable ก่อนรัน Stryker
-- ไม่รัน Stryker ถ้า tests flaky
-- build ได้บน host platform
+- Use Node.js >= 22 (Stryker v10)
+- Stable tests are required before running Stryker
+- Don't run Stryker when tests are flaky
+- The build must work on the host platform
 
 ### 2. Configuration
 
-- ใช้ `coverageAnalysis: 'perTest'` สำหรับประสิทธิภาพ
-- ระบุ `mutate` ให้ชัดเจน
-- ใช้ `ignorePatterns` สำหรับไฟล์ที่ไม่ต้องการ mutate
+- Use `coverageAnalysis: 'perTest'` for efficiency
+- Define `mutate` explicitly
+- Use `ignorePatterns` for files you don't want mutated
 
 ### 3. Mutant Handling
 
-- เพิ่ม tests สำหรับ surviving mutants
-- ใช้ `// Stryker disable` เฉพาะเมื่อจำเป็น
-- track mutation score ข้าม runs
+- Add tests for surviving mutants
+- Use `// Stryker disable` only when necessary
+- Track the mutation score across runs
 
 ### 4. Reports
 
-- ดู HTML report หลังรัน
-- ใช้ dashboard สำหรับ trend
-- ตรวจสอบ `timeout` mutants
+- View the HTML report after each run
+- Use the dashboard for trends
+- Check the `timeout` mutants
 
-- ใช้ /follow-test ถ้าจำเป็น
-- ใช้ /run-test ถ้าจำเป็น
-- ใช้ /follow-tool-vitest ถ้าจำเป็น
-- ใช้ /follow-lang-typescript ถ้าจำเป็น
-- ใช้ /follow-lang-javascript ถ้าจำเป็น
+- Use /follow-test if needed
+- Use /run-test if needed
+- Use /follow-tool-vitest if needed
+- Use /follow-lang-typescript if needed
+- Use /follow-lang-javascript if needed
 
 ## References
 
 - [CLI reference](references/cli.md)
 
-- ใช้ /deep-test mutation ถ้าจำเป็น
+- Use /deep-test mutation if needed
 
-- ดู best-practices/ สำหรับ recommended patterns และ pitfalls
+- See best-practices/ for recommended patterns and pitfalls
 
 ## Expected Outcome
 
-- Stryker ติดตั้งและทำงานได้
-- Mutation score ถูก track
-- Surviving mutants ถูกระบุและแก้ไข
-- Tests มีคุณภาพดีขึ้น
-- CI รัน mutation testing อัตโนมัติ
+- Stryker installed and working
+- The mutation score is tracked
+- Surviving mutants are identified and addressed
+- Tests are of better quality
+- CI runs mutation testing automatically
 

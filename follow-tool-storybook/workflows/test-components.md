@@ -1,16 +1,16 @@
 ---
-description: Test components ด้วย play function และ addons
+description: Test components with play functions and addons
 ---
 
 ## Goal
 
-Test components ใน Storybook ด้วย interaction, accessibility, และ visual tests
+Test components in Storybook with interaction, accessibility, and visual tests
 
 ## Execute
 
 ### 1. Interaction Testing
 
-ใช้ `play` function สำหรับ test user interactions:
+Use the `play` function to test user interactions:
 
 ```typescript
 import { within, userEvent } from 'storybook/test';
@@ -26,13 +26,13 @@ export const Interaction: StoryObj<typeof Button> = {
 
 ### 2. Accessibility Testing
 
-ติดตั้ง a11y addon:
+Install the a11y addon:
 
 ```bash
 bunx storybook add @storybook/addon-a11y
 ```
 
-Configure ใน `.storybook/main.ts`:
+Configure in `.storybook/main.ts`:
 
 ```typescript
 addons: ['@storybook/addon-a11y']
@@ -40,7 +40,7 @@ addons: ['@storybook/addon-a11y']
 
 ### 3. Visual Testing
 
-ใช้ Chromatic สำหรับ visual regression testing:
+Use Chromatic for visual regression testing:
 
 ```bash
 bunx chromatic --project-token=<token>
@@ -48,7 +48,7 @@ bunx chromatic --project-token=<token>
 
 ### 4. Vitest Integration (Vite Projects)
 
-ติดตั้ง Vitest addon:
+Install the Vitest addon:
 
 ```bash
 bunx storybook add @storybook/addon-vitest
@@ -62,9 +62,9 @@ bun run test-storybook
 
 ## Rules
 
-- ใช้ `storybook/test` (`within`, `userEvent`, `expect`) สำหรับ user interactions — `@storybook/testing-library` deprecated
-- ใช้ `within` helper สำหรับ scoped queries
-- Handle async operations ด้วย `await`
+- Use `storybook/test` (`within`, `userEvent`, `expect`) for user interactions — `@storybook/testing-library` is deprecated
+- Use the `within` helper for scoped queries
+- Handle async operations with `await`
 - Test critical user flows
-- Test edge cases และ error states
-- Configure a11y rules ตาม WCAG standards
+- Test edge cases and error states
+- Configure a11y rules per WCAG standards

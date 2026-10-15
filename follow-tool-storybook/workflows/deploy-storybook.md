@@ -1,10 +1,10 @@
 ---
-description: Build และ deploy Storybook
+description: Build and deploy Storybook
 ---
 
 ## Goal
 
-Build static Storybook และ deploy ไปยัง hosting platform
+Build the static Storybook and deploy it to a hosting platform
 
 ## Execute
 
@@ -14,7 +14,7 @@ Build static Storybook และ deploy ไปยัง hosting platform
 bun run build-storybook
 ```
 
-Output จะอยู่ใน `storybook-static/` directory
+The output is in the `storybook-static/` directory
 
 ### 2. Deploy to GitHub Pages
 
@@ -40,7 +40,7 @@ bun run deploy-storybook
 
 ### 3. Deploy to Vercel
 
-Push code ไปยัง GitHub และ import project ใน Vercel
+Push the code to GitHub and import the project in Vercel
 
 ### 4. Deploy to Netlify
 
@@ -62,8 +62,8 @@ bunx chromatic --project-token=<token>
 
 ## Rules
 
-- Build ก่อน deploy เสมอ
-- Test build locally ก่อน deploy
-- Configure base path ถ้า deploy ใน subdirectory
-- Set environment variables สำหรับ CI/CD
-- Monitor build logs สำหรับ errors
+- Always build before deploying
+- Test the build locally before deploying
+- Configure the base path when deploying in a subdirectory
+- Set environment variables for CI/CD
+- Monitor the build logs for errors

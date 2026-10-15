@@ -1,16 +1,16 @@
 ---
-description: เขียน stories ด้วย CSF3
+description: Write stories with CSF3
 ---
 
 ## Goal
 
-เขียน stories สำหรับ components ด้วย Component Story Format 3
+Write stories for components with Component Story Format 3
 
 ## Execute
 
 ### 1. Create Story File
 
-สร้างไฟล์ `Component.stories.ts` ข้างๆ component file
+Create a `Component.stories.ts` file next to the component file
 
 ### 2. Define Meta
 
@@ -76,9 +76,9 @@ export const WithAction: StoryObj<typeof Button> = {
 
 ## Rules
 
-- ใช้ `Meta` และ `StoryObj` types จาก framework-specific packages
-- ใช้ `tags: ['autodocs']` สำหรับ automatic documentation
-- ใช้ UpperCamelCase สำหรับ story exports
-- ใช้ `args` สำหรับ dynamic arguments
-- ใช้ `argTypes` สำหรับ control types
-- ใช้ `fn()` จาก `@storybook/test` สำหรับ mock functions
+- Use `Meta` and `StoryObj` types from framework-specific packages
+- Use `tags: ['autodocs']` for automatic documentation
+- Use UpperCamelCase for story exports
+- Use `args` for dynamic arguments
+- Use `argTypes` for control types
+- Use `fn()` from `@storybook/test` for mock functions

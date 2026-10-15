@@ -1,34 +1,34 @@
 # Storybook — Best Practices
 
-Component development + docs — stories มีคุณภาพ, addons ตามจำเป็น
+Component development + docs — quality stories, addons only as needed
 
 ## Recommended Patterns
 
-- CSF3 format — `export default { component, title }` + `export const Default = { args }`; args-driven stories ไม่ใช่ wrapper components
-- Stories = states matrix: default, loading, error, empty, edge data — ครอบคลุม states ที่ routes จริงเจอ
-- `play` functions (interaction tests) — click/type assertions ใน story; run ใน test-runner CI
-- Decorators สำหรับ providers (theme, router, state) — global decorators ใน `.storybook/preview.ts` ไม่ใช่ per-story
-- Addons เฉพาะที่ใช้: essentials, a11y, interactions — addon ทุกตัวเพิ่ม startup/maintenance
+- CSF3 format — `export default { component, title }` + `export const Default = { args }`; args-driven stories, not wrapper components
+- Stories = a states matrix: default, loading, error, empty, edge data — cover the states real routes actually hit
+- `play` functions (interaction tests) — click/type assertions inside the story; run in test-runner CI
+- Decorators for providers (theme, router, state) — global decorators in `.storybook/preview.ts`, not per-story
+- Addons only for what you use: essentials, a11y, interactions — every addon adds startup/maintenance cost
 
 ## Common Pitfalls
 
-- Stories ≠ docs เดียว — stories ที่ไม่ test จริงกลายเป็น stale; play functions + test-runner ทำให้ stories = tests
-- Mock data realism — stories ด้วย fake-shaped data เท่านั้น miss real bugs; mirror real API shapes
-- SB ไม่ใช่ที่ fix CSS — visual bugs ที่ stories พบ → fix ใน component ไม่ใช่ story wrapper
-- Version upgrades: storybook major migrations มี codemods (`npx storybook upgrade`) — run มันไม่ใช่ manual rewrite
-- Build time: storybook build ช้าใน monorepo — cache `.storybook` outputs + lazy compilation flags
+- Stories ≠ docs alone — stories that aren't really tested go stale; play functions + test-runner make stories = tests
+- Mock data realism — stories with fake-shaped data only miss real bugs; mirror real API shapes
+- SB is not where you fix CSS — visual bugs found in stories → fix the component, not the story wrapper
+- Version upgrades: storybook major migrations have codemods (`npx storybook upgrade`) — run them instead of a manual rewrite
+- Build time: storybook build is slow in monorepos — cache `.storybook` outputs + lazy compilation flags
 
 ## Testing Integration
 
-- `@storybook/test-runner` — run stories เป็น Playwright tests; interactions จาก play functions execute
+- `@storybook/test-runner` — run stories as Playwright tests; interactions from play functions execute
 - Visual regression: Chromatic/self-hosted screenshots — stories = visual test cases
-- a11y addon = audit signal ไม่ใช่ gate — integrate axe checks ใน play tests
+- a11y addon = an audit signal, not a gate — integrate axe checks in play tests
 
 ## Do / Don't
 
 | Do | Don't |
 |----|-------|
 | CSF3 args-driven stories | duplicate wrapper components per state |
-| play functions for interactions | static stories เท่านั้น |
-| decorators สำหรับ providers | import providers ทุก story |
-| stories = tests via test-runner | stories เป็น docs-only |
+| play functions for interactions | Static stories only |
+| decorators for providers | Import providers in every story |
+| stories = tests via test-runner | Docs-only stories |

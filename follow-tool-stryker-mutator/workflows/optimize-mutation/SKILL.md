@@ -1,6 +1,6 @@
 ---
 name: follow-tool-stryker-mutator-optimize mutation
-description: ปรับ Stryker mutation testing ให้เร็ว — incremental, mutator filtering, concurrency, thresholds
+description: Speed up Stryker mutation testing — incremental, mutator filtering, concurrency, thresholds
 argument-hint: "[scope]"
 related:
   - follow-tool-stryker-mutator
@@ -10,68 +10,68 @@ related:
 
 ## Goal
 
-ลดเวลาและขอบเขตของ Stryker mutation runs — incremental mode, กรอง mutators, concurrency, thresholds — โดยยังได้ signal ที่มีนัยสำคัญ
+Reduce the time and scope of Stryker mutation runs — incremental mode, filtered mutators, concurrency, thresholds — while keeping meaningful signal
 
 ## Scope
 
-- Optimize Stryker ที่ setup แล้ว (setup → `workflows/setup-stryker`)
-- ครอบคลุม: incremental mode, `mutator`/`mutate` filtering, `concurrency`, `thresholds`, CI strategy
-- ไม่ครอบคลุม: เพิ่ม tests สำหรับ surviving mutants (ทำ `/update-tests`)
+- Optimizing a Stryker that is already set up (setup → `workflows/setup-stryker`)
+- Covers: incremental mode, `mutator`/`mutate` filtering, `concurrency`, `thresholds`, CI strategy
+- Does not cover: adding tests for surviving mutants (run `/update-tests`)
 
 ## Execute
 
 ### 1. Baseline
 
-> Goal: เก็บตัวเลขเดิมก่อน tune
+> Goal: Capture the existing numbers before tuning
 
-1. รัน `bunx stryker run` จับเวลา — เก็บ duration, mutant count, mutation score
-2. ระบุ bottleneck: mutant count สูง, sandbox rebuild, slow tests — ทำ `/deep-optimize`
-3. ดู report ว่า mutants กระจุกตัวที่ไหน — files ที่มี mutants เยอะแต่ low value
+1. Run `bunx stryker run` timed — record duration, mutant count, mutation score
+2. Identify the bottleneck: high mutant count, sandbox rebuilds, slow tests — run `/deep-optimize`
+3. Check the report for where mutants cluster — files with many but low-value mutants
 
 ### 2. Enable Incremental Mode
 
-> Goal: รันเฉพาะ mutants ที่เกี่ยวกับ changed code
+> Goal: Run only the mutants relevant to changed code
 
-1. เปิด `incremental: true` ใน config — Stryker reuse ผลจาก run ก่อนสำหรับ files ที่ไม่เปลี่ยน
-2. ใช้ร่วมกับ `--since <ref>` (เช่น `--since main`) เพื่อ mutate เฉพาะ changed files ใน PR
-3. เหมาะกับ PR checks — full run เก็บไว้สำหรับ main branch/scheduled job
+1. Enable `incremental: true` in the config — Stryker reuses results from the previous run for unchanged files
+2. Combine with `--since <ref>` (e.g. `--since main`) to mutate only the changed files in a PR
+3. Fits PR checks — keep full runs for the main branch/scheduled job
 
 ### 3. Filter Mutants
 
-> Goal: ลด mutant count ที่ low value
+> Goal: Cut the low-value mutant count
 
-1. แคบ `mutate` glob — เฉพาะ source ที่สำคัญ ข้าม DTOs, type-only files, generated code
-2. ใช้ `mutator.excludedMutations` ข้าม operators ที่ noise สูง เช่น `['StringLiteral']` — เลือกให้เหมาะกับ project
-3. ใช้ `// Stryker disable <operators>` comment เฉพาะจุดที่ justify ได้ — อย่า disable มั่ว
-4. ตรวจ `timeout` mutants — ถ้าเยอะให้เช็คว่า tests ช้าเองหรือ mutant ทำ infinite loop
+1. Narrow the `mutate` glob — only important source, skip DTOs, type-only files, generated code
+2. Use `mutator.excludedMutations` to skip high-noise operators such as `['StringLiteral']` — choose what fits the project
+3. Use `// Stryker disable <operators>` comments only at justified spots — don't disable randomly
+4. Check the `timeout` mutants — if many, verify whether the tests are slow or a mutant creates an infinite loop
 
 ### 4. Tune Concurrency And Thresholds
 
-> Goal: ใช้ resources ให้เต็มและ gate ผลลัพธ์
+> Goal: Use resources fully and gate the results
 
-1. ตั้ง `concurrency` ตาม CPU cores ที่มีจริง — default มักพอ แต่เครื่องใหญ่ขึ้นได้
-2. ตั้ง `thresholds: { high, low, break }` — `break` ทำให้ exit code fail ถ้า score ต่ำกว่า → ใช้เป็น CI gate
-3. เริ่ม `break` ต่ำแล้วค่อยขึ้น — อย่าตั้งสูงจน block ทุก PR
-4. `coverageAnalysis: 'perTest'` (ควรตั้งไว้แล้ว) — อย่าลดเป็น `all` ถ้าไม่จำเป็น
+1. Set `concurrency` to the actual CPU cores available — the default is usually enough, bigger machines can go higher
+2. Set `thresholds: { high, low, break }` — `break` fails the exit code when the score is lower → use it as a CI gate
+3. Start `break` low and raise it gradually — don't set it so high it blocks every PR
+4. `coverageAnalysis: 'perTest'` (should already be set) — don't downgrade to `all` unless necessary
 
 ### 5. Measure And Report
 
-> Goal: วัดซ้ำและสรุปผล
+> Goal: Re-measure and summarize
 
-1. รันซ้ำหลังแก้แต่ละจุด — compare duration และ mutation score กับ baseline
-2. ทำ `/report-before-after` รายงานตัวเลขก่อน/หลัง
-3. ถ้า score drop เพราะ filtering มากเกิน → คลาย filter แล้ว report trade-off
+1. Re-run after each change — compare duration and mutation score against the baseline
+2. Run `/report-before-after` to report the before/after numbers
+3. If the score dropped because filtering went too far → loosen the filters, then report the trade-off
 
 ## Rules
 
-- Baseline ก่อนเสมอ — ห้าม tune โดยไม่มีตัวเลขเดิม
-- Filtering ต้องไม่ทำให้ score เทียบไม่ได้ — ระบุ exclusions ใน config ชัดเจน
-- `// Stryker disable` เฉพาะที่ justify ได้พร้อมเหตุผล
-- Incremental/scoped runs เหมาะกับ PR — อย่าแทนที่ full runs ทั้งหมด
-- `thresholds.break` เป็น CI gate — ปรับค่อยๆ ขึ้น ไม่ใช่ตั้งสูงตั้งแต่แรก
+- Baseline always first — never tune without the original numbers
+- Filtering must not make scores incomparable — state the exclusions clearly in the config
+- `// Stryker disable` only where it's justifiable with a reason
+- Incremental/scoped runs fit PRs — don't replace all full runs
+- `thresholds.break` is a CI gate — raise it gradually, don't start high
 
 ## Expected Outcome
 
-- Mutation runs เร็วขึ้นโดยวัดได้ โดยเฉพาะใน CI/PR
-- Mutant scope โฟกัสที่ high-value code
-- Thresholds gate score ใน CI โดยไม่ block ทุกอย่าง
+- Mutation runs measurably faster, especially in CI/PR
+- Mutant scope focused on high-value code
+- Thresholds gate the score in CI without blocking everything
