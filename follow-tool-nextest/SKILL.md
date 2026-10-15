@@ -1,6 +1,6 @@
 ---
 name: follow-tool-nextest
-description: ตั้งค่าและใช้งาน cargo-nextest สำหรับ test runner ที่รวดเร็วใน Rust projects
+description: Set up and use cargo-nextest as a fast test runner in Rust projects
 argument-hint: "[scope]"
 related:
   - follow-lang-rust
@@ -13,14 +13,14 @@ related:
 
 ## Goal
 
-ตั้งค่าและใช้งาน cargo-nextest สำหรับ test runner ที่รวดเร็วและมีประสิทธิภาพใน Rust projects
+Set up and use cargo-nextest as a fast, efficient test runner in Rust projects
 
 ## Scope
 
-ใช้สำหรับ Rust projects ที่ใช้ Cargo build system
+For Rust projects using the Cargo build system
 
-- ใช้ skill นี้แทน `cargo test` สำหรับ unit/integration tests — doctests ยังต้องรันด้วย `cargo test --doc`
-- ถ้าเป้าหมายคือ mutation testing (คุณภาพของ tests) ไม่ใช่ test runner → ใช้ `/follow-tool-mutants-rs`
+- Use this skill instead of `cargo test` for unit/integration tests — doctests still need `cargo test --doc`
+- If the goal is mutation testing (test quality) rather than a test runner → use `/follow-tool-mutants-rs`
 
 - Latest: `cargo-nextest@0.9.146` (crates.io) (verified 2026-09-24)
 
@@ -28,101 +28,101 @@ related:
 
 ### 1. Installation
 
-> Goal: ติดตั้ง cargo-nextest บน environment
+> Goal: install cargo-nextest on the environment
 
-1. ติดตั้งด้วย `cargo binstall cargo-nextest --secure`
-2. หรือติดตั้งจาก pre-built binaries ผ่าน `https://get.nexte.st/latest/{linux,mac,windows}`
-3. Windows สามารถใช้ `winget install nextest.cargo-nextest`
-4. ติดตั้งจาก source ด้วย `cargo install cargo-nextest --locked`
-5. อัปเดตด้วย `cargo nextest self-update`
-6. ดูรายละเอียดใน 
+1. Install with `cargo binstall cargo-nextest --secure`
+2. Or install from pre-built binaries via `https://get.nexte.st/latest/{linux,mac,windows}`
+3. On Windows `winget install nextest.cargo-nextest` also works
+4. Install from source with `cargo install cargo-nextest --locked`
+5. Update with `cargo nextest self-update`
+6. See details in 
 
 ### 2. Run Tests
 
-> Goal: รัน tests ด้วย cargo-nextest แทน `cargo test`
+> Goal: run tests with cargo-nextest instead of `cargo test`
 
-1. รัน all tests ด้วย `cargo nextest run`
-2. รันเฉพาะ package ด้วย `cargo nextest run -p my-package`
-3. รัน doctests แยก (nextest ไม่รองรับ doctests) ด้วย `cargo test --doc`
-4. ดูรายละเอียดใน 
+1. Run all tests with `cargo nextest run`
+2. Run a single package with `cargo nextest run -p my-package`
+3. Run doctests separately (nextest doesn't support doctests) with `cargo test --doc`
+4. See details in 
 
 ### 3. Configuration
 
-> Goal: สร้าง `.config/nextest.toml` สำหรับ repository-specific configuration
+> Goal: create `.config/nextest.toml` for repository-specific configuration
 
-1. สร้าง `.config/nextest.toml` ที่ Cargo workspace root
-2. กำหนด profiles สำหรับ local และ CI runs
-3. ใช้ profile เมื่อรัน: `cargo nextest run --profile ci`
-4. ดูรายละเอียดใน 
+1. Create `.config/nextest.toml` at the Cargo workspace root
+2. Define profiles for local and CI runs
+3. Use a profile when running: `cargo nextest run --profile ci`
+4. See details in 
 
 ### 4. List Tests
 
-> Goal: แสดงรายการ tests ทั้งหมดก่อนรัน
+> Goal: show all tests before running
 
-1. รัน `cargo nextest list` สำหรับ list all tests
-2. รัน `cargo nextest list --verbose` สำหรับ verbose output (binary paths, skipped tests)
-3. ดูรายละเอียดใน 
+1. Run `cargo nextest list` to list all tests
+2. Run `cargo nextest list --verbose` for verbose output (binary paths, skipped tests)
+3. See details in 
 
 ### 5. Profiles
 
-> Goal: ใช้ profiles สำหรับ local และ CI runs
+> Goal: use profiles for local and CI runs
 
-1. `default`: สำหรับ local development
-2. `ci`: สำหรับ CI (`fail-fast = false`)
-3. สร้าง custom profiles ใน `.config/nextest.toml` ด้วย `inherits` keyword
-4. หลีกเลี่ยง naming profiles ที่ขึ้นต้นด้วย `default-`
-5. ดูรายละเอียดใน 
+1. `default`: for local development
+2. `ci`: for CI (`fail-fast = false`)
+3. Create custom profiles in `.config/nextest.toml` with the `inherits` keyword
+4. Avoid naming profiles with a `default-` prefix
+5. See details in 
 
 ### 6. CI Integration
 
-> Goal: เพิ่ม cargo-nextest ใน CI pipeline
+> Goal: add cargo-nextest to the CI pipeline
 
-1. ติดตั้ง cargo-nextest ใน CI ด้วย `cargo binstall cargo-nextest --secure`
-2. รัน tests ด้วย `cargo nextest run --profile ci`
-3. ใช้ JUnit output สำหรับ test reporting
-4. ดูรายละเอียดใน 
+1. Install cargo-nextest in CI with `cargo binstall cargo-nextest --secure`
+2. Run tests with `cargo nextest run --profile ci`
+3. Use JUnit output for test reporting
+4. See details in 
 
 ## Rules
 
 ### 1. Test Execution
 
-- ใช้ `cargo nextest run` แทน `cargo test` สำหรับ performance ที่ดีกว่า
-- รัน doctests แยกจาก cargo-nextest ด้วย `cargo test --doc`
-- ใช้ `cargo nextest run -p <package>` สำหรับรันเฉพาะ package
+- Use `cargo nextest run` instead of `cargo test` for better performance
+- Run doctests separately from cargo-nextest with `cargo test --doc`
+- Use `cargo nextest run -p <package>` to run a single package
 
 ### 2. Profiles
 
-- ใช้ `--profile ci` ใน CI เพื่อ run ทุก tests แม้จะ fail
-- ใช้ `default` profile สำหรับ local development
-- ตั้งค่า `fail-fast = false` ใน CI profile
-- หลีกเลี่ยง naming profiles ที่ขึ้นต้นด้วย `default-`
-- ใช้ `inherits` keyword สำหรับ profile inheritance
+- Use `--profile ci` in CI to run every test even when some fail
+- Use the `default` profile for local development
+- Set `fail-fast = false` in the CI profile
+- Avoid naming profiles with a `default-` prefix
+- Use the `inherits` keyword for profile inheritance
 
 ### 3. Configuration
 
-- ตรวจสอบ configuration ใน `.config/nextest.toml`
-- Repository config ที่ `.config/nextest.toml` check-in ใน VCS
-- Personal config ที่ `~/.config/nextest/config.toml`
-- ใช้ `--config-file` สำหรับ override config location
+- Review the configuration in `.config/nextest.toml`
+- Repository config at `.config/nextest.toml` is checked into VCS
+- Personal config at `~/.config/nextest/config.toml`
+- Use `--config-file` to override the config location
 
-- ใช้ /follow-lang-rust ถ้าจำเป็น
-- ใช้ /follow-tool-cargo ถ้าจำเป็น
-- ใช้ /follow-test ถ้าจำเป็น
-- ใช้ /update-tests ถ้าจำเป็น
-- ใช้ /follow-tool-mutants-rs ถ้าจำเป็น
-- ใช้ /run-test ถ้าจำเป็น
+- Use /follow-lang-rust if needed
+- Use /follow-tool-cargo if needed
+- Use /follow-test if needed
+- Use /update-tests if needed
+- Use /follow-tool-mutants-rs if needed
+- Use /run-test if needed
 
 ## References
 
 - [CLI reference](references/cli.md)
 
 
-- ดู best-practices/ สำหรับ recommended patterns และ pitfalls
+- See best-practices/ for recommended patterns and pitfalls
 
 ## Expected Outcome
 
-- Test runner ที่รวดเร็วและมีประสิทธิภาพ
-- Tests รันแบบ parallel อัตโนมัติ
-- CI integration ที่เหมาะสม
-- Test execution time ลดลง
+- A fast and efficient test runner
+- Tests run in parallel automatically
+- Proper CI integration
+- Reduced test execution time
 

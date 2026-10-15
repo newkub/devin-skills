@@ -5,26 +5,26 @@
 
 | command | description | options |
 |---|---|---|
-| `mbx setup` | ติดตั้ง stable Cargo shim + rust-analyzer override | `--yes`, `--global`, `--local`, `--status`, `--uninstall` |
-| `mbx doctor` | ตรวจ toolchain pair, wrapping, store health | `--json` |
-| `mbx explain` | อธิบายผล cache ของ build | `--last`, `[CARGO_COMMAND] [ARGS]…` |
+| `mbx setup` | Install stable Cargo shim + rust-analyzer override | `--yes`, `--global`, `--local`, `--status`, `--uninstall` |
+| `mbx doctor` | Check toolchain pair, wrapping, store health | `--json` |
+| `mbx explain` | Explain cache results of a build | `--last`, `[CARGO_COMMAND] [ARGS]…` |
 | `mbx completion <SHELL>` | shell completions | `bash`, `zsh`, `fish`, `powershell` |
 | `mbx tui` | live dashboard — builds, hit/miss graphs, store | `--once` |
-| `mbx stats` | savings และ statistics | `--json` |
-| `mbx prefetch <CARGO_ARGS>…` | prefetch actions ที่ build จะต้องใช้ | — |
-| `mbx exec <COMMAND>…` | รัน C/C++ build นอก Cargo ผ่าน compiler wrappers | `--project-root <DIR>` |
-| `mbx adopt` | ย้าย existing `target/` เข้า managed root | `-r/--recursive`, `--dry-run`, `[PATH]…` |
-| `mbx clean` | ล้าง outputs ของ workspace | `[WORKSPACE]` |
-| `mbx gc` | เก็บกวาด store | `--dry-run`, `--max-size` |
+| `mbx stats` | Savings and statistics | `--json` |
+| `mbx prefetch <CARGO_ARGS>…` | Prefetch the actions a build will need | — |
+| `mbx exec <COMMAND>…` | Run a C/C++ build outside Cargo through the compiler wrappers | `--project-root <DIR>` |
+| `mbx adopt` | Move an existing `target/` into the managed root | `-r/--recursive`, `--dry-run`, `[PATH]…` |
+| `mbx clean` | Clear the outputs of a workspace | `[WORKSPACE]` |
+| `mbx gc` | Garbage-collect the store | `--dry-run`, `--max-size` |
 
 | command | description | options |
 |---|---|---|
-| `mbx cache dir` | path ของ local store | `--json` |
-| `mbx cache stats` | size และ contents | `--json` |
-| `mbx cache projects` | checkouts ที่มีข้อมูลใน store | — |
-| `mbx cache largest` | entries ใหญ่สุด | `--limit <N>` |
-| `mbx cache verify` | verify blobs เทียบ digest — หา corrupted objects | — |
-| `mbx cache trace <SESSION>` | trace ของ recorded session | — |
-| `mbx cache export <ARCHIVE>` | export closure ของ receipts ใน group เป็น tar | `--group <GROUP>`, `--format <FORMAT>` |
-| `mbx cache import <ARCHIVE>` | import bundle — restore scheduler state + target layout เมื่อ target ว่าง | — |
-| `mbx cache remove` | ลบ entries ของ workspace | `--interactive`, `[WORKSPACE]` |
+| `mbx cache dir` | Path of the local store | `--json` |
+| `mbx cache stats` | Size and contents | `--json` |
+| `mbx cache projects` | Checkouts that have data in the store | — |
+| `mbx cache largest` | Largest entries | `--limit <N>` |
+| `mbx cache verify` | Verify blobs against digests — find corrupted objects | — |
+| `mbx cache trace <SESSION>` | Trace of a recorded session | — |
+| `mbx cache export <ARCHIVE>` | Export the closure of a group's receipts as tar | `--group <GROUP>`, `--format <FORMAT>` |
+| `mbx cache import <ARCHIVE>` | Import a bundle — restores scheduler state + target layout when the target is empty | — |
+| `mbx cache remove` | Delete the entries of a workspace | `--interactive`, `[WORKSPACE]` |

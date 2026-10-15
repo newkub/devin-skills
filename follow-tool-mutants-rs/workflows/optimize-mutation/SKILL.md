@@ -1,6 +1,6 @@
 ---
 name: follow-tool-mutants-rs-optimize mutation
-description: ปรับ cargo-mutants ให้เร็ว — skip lists, shard/parallel jobs, CI integration
+description: Make cargo-mutants faster — skip lists, shard/parallel jobs, CI integration
 argument-hint: "[scope]"
 related:
   - follow-tool-mutants-rs
@@ -11,72 +11,72 @@ related:
 
 ## Goal
 
-ลดเวลา cargo-mutants runs — กรอง mutants ที่ low value, parallel jobs, sharding ข้าม machines, incremental CI — โดยยังได้ signal ครบ
+Cut cargo-mutants run time — filter low-value mutants, parallel jobs, sharding across machines, incremental CI — while keeping the full signal
 
 ## Scope
 
-- Optimize cargo-mutants ที่ setup แล้ว (setup → `workflows/setup-mutants`)
-- ครอบคลุม: `#[mutants::skip]`, `exclude_globs`/`exclude_re`, `--jobs`, `--shard`, CI strategy
-- ไม่ครอบคลุม: เขียน tests สำหรับ missed mutants (ทำ `/update-tests`)
+- Optimizing an already-set-up cargo-mutants (setup → `workflows/setup-mutants`)
+- Covers: `#[mutants::skip]`, `exclude_globs`/`exclude_re`, `--jobs`, `--shard`, CI strategy
+- Doesn't cover: writing tests for missed mutants (do `/update-tests`)
 
 ## Execute
 
 ### 1. Baseline
 
-> Goal: เก็บตัวเลขเดิมและหา mutants ที่ไม่คุ้ม
+> Goal: capture the old numbers and find mutants that aren't worth it
 
-1. รัน `cargo mutants` จับเวลา — เก็บ duration และ mutant count
-2. ดู `mutants.out/` — หา functions/files ที่ mutants เยอะแต่ low value (logging, getters, trivial)
-3. ระบุ tests ที่ช้า — mutants ต่อ test-time คือต้นทุนหลัก
+1. Run `cargo mutants` timed — record duration and mutant count
+2. Look through `mutants.out/` — find functions/files with many but low-value mutants (logging, getters, trivial)
+3. Identify the slow tests — mutants × test-time is the main cost
 
 ### 2. Prune Low-Value Mutants
 
-> Goal: ลด mutant count ด้วย skip lists
+> Goal: cut the mutant count with skip lists
 
-1. ใช้ `#[mutants::skip]` บน functions/impls ที่ไม่น่าสนใจ (ต้องเพิ่ม `mutants` crate เป็น dependency)
-2. ตั้ง `exclude_globs` ใน `.cargo/mutants.toml` สำหรับ generated/testdata/infra files
-3. ใช้ `exclude_re` (config) หรือ `--exclude-re "pattern"` กรอง mutation patterns เฉพาะ
-4. ใช้ `examine_globs` โฟกัสเฉพาะ modules ที่ critical — เช่น domain logic ไม่ใช่ UI glue
-5. ทุก exclusion ต้อง justify — เขียน comment หรือเอกสารไว้
+1. Use `#[mutants::skip]` on uninteresting functions/impls (requires the `mutants` crate as a dependency)
+2. Set `exclude_globs` in `.cargo/mutants.toml` for generated/testdata/infra files
+3. Use `exclude_re` (config) or `--exclude-re "pattern"` to filter specific mutation patterns
+4. Use `examine_globs` to focus only on critical modules — e.g. domain logic, not UI glue
+5. Every exclusion must be justified — write a comment or documentation
 
 ### 3. Parallelize
 
-> Goal: ใช้ CPU เต็มที่และแบ่งงานข้าม machines
+> Goal: use the CPU fully and split work across machines
 
-1. ตั้ง `--jobs`/`-j` สำหรับ parallel builds+tests บนเครื่องเดียว — เริ่ม conservative (`-j2`/`-j3`) เพราะ cargo build กิน resources
-2. ตั้ง `test_tool = "nextest"` ถ้ายังไม่ได้ใช้ — fail-fast ลดเวลาต่อ mutant
-3. ใช้ `--in-place` ถ้า tree copying ช้า (workspace ใหญ่) — แต่ระวัง side effects บน working tree
-4. หลาย machines → `--shard k/n` (k จาก 0 ถึง n-1) — CI รันแต่ละ shard เป็น job แยกแล้วรวมผล
-5. ทุก shard ต้องรันด้วย args และ denominator `n` เดียวกัน — ไม่งั้นการแบ่งผิด
+1. Set `--jobs`/`-j` for parallel builds+tests on one machine — start conservative (`-j2`/`-j3`) since cargo build is resource-hungry
+2. Set `test_tool = "nextest"` if not already — fail-fast cuts time per mutant
+3. Use `--in-place` if tree copying is slow (big workspace) — but beware side effects on the working tree
+4. Multiple machines → `--shard k/n` (k from 0 to n-1) — CI runs each shard as a separate job, then merges results
+5. Every shard must run with the same args and denominator `n` — otherwise the split is wrong
 
 ### 4. CI Integration
 
-> Goal: วาง cargo-mutants ใน pipeline อย่างคุ้ม
+> Goal: place cargo-mutants in the pipeline cost-effectively
 
-1. PR checks → รันเฉพาะ changed code (`-f`/`--in-diff` กับ diff จาก base) หรือ shard เล็ก
-2. Full run → main branch หรือ scheduled (nightly) — mutation testing ช้าเกิน block ทุก PR
-3. ใช้ `--baseline=skip` ใน CI ถ้า pre-check ว่า tests ผ่านอยู่แล้ว — ข้าม unmutated re-test
-4. Upload `mutants.out/` เป็น artifact — review ผลย้อนหลังได้
-5. ติดตั้งผ่าน `taiki-e/install-action` ใน GitHub Actions แทน `cargo install` — เร็วกว่า
+1. PR checks → run changed code only (`-f`/`--in-diff` with the diff from base) or a small shard
+2. Full run → main branch or scheduled (nightly) — mutation testing is too slow to block every PR
+3. Use `--baseline=skip` in CI when a pre-check already proved the tests pass — skip the unmutated re-test
+4. Upload `mutants.out/` as an artifact — results stay reviewable afterwards
+5. Install via `taiki-e/install-action` in GitHub Actions instead of `cargo install` — faster
 
 ### 5. Measure And Report
 
-> Goal: วัดซ้ำและสรุป trade-off
+> Goal: re-measure and summarize the trade-offs
 
-1. รันซ้ำหลังแก้แต่ละจุด — compare duration และ caught/missed กับ baseline
-2. ทำ `/report-before-after` รายงานก่อน/หลัง
-3. ถ้า exclusions ทำให้ miss mutants ที่ควรจับ → คลาย filter แล้ว report
+1. Re-run after each change — compare duration and caught/missed against the baseline
+2. Do `/report-before-after` with before/after numbers
+3. If exclusions cause should-have-been-caught mutants to be missed → loosen the filter and report
 
 ## Rules
 
-- Baseline ก่อนเสมอ — ห้าม tune โดยไม่มีตัวเลขเดิม
-- `#[mutants::skip]`/`exclude_*` ต้องมีเหตุผล — อย่า skip เพื่อให้ score ดูดี
-- `--jobs` ตั้ง conservative — cargo build กิน CPU/memory สูง เครื่องอาจ thrash
-- Shards ทุกตัว args และ `n` ต้องเหมือนกัน — ผลรวมถึงจะถูก
-- Scoped runs ใน PR ไม่แทน full runs — เก็บ scheduled full run ไว้เสมอ
+- Baseline always first — never tune without the old numbers
+- `#[mutants::skip]`/`exclude_*` must have a reason — don't skip just to make the score look good
+- Set `--jobs` conservative — cargo build consumes high CPU/memory, the machine may thrash
+- All shards need identical args and `n` — only then is the aggregate result correct
+- Scoped PR runs never replace full runs — always keep a scheduled full run
 
 ## Expected Outcome
 
-- Mutation runs เร็วขึ้นโดยวัดได้ ทั้ง local และ CI
-- Mutant scope โฟกัส critical code — low-value mutants ถูก skip พร้อมเหตุผล
-- CI รัน scoped บน PR และ full บน schedule
+- Mutation runs measurably faster, both local and CI
+- Mutant scope focuses on critical code — low-value mutants skipped with reasons
+- CI runs scoped on PRs and full on schedule

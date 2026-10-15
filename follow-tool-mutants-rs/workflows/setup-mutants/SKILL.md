@@ -1,6 +1,6 @@
 ---
 name: follow-tool-mutants-rs-setup-mutants
-description: ติดตั้ง cargo-mutants พร้อม config file และ baseline run สำหรับ Rust projects
+description: Install cargo-mutants with a config file and a baseline run for Rust projects
 argument-hint: "[scope]"
 related:
   - follow-tool-mutants-rs
@@ -12,69 +12,69 @@ related:
 
 ## Goal
 
-ติดตั้งและตั้งค่า cargo-mutants ให้รัน mutation testing บน Rust project ได้ — install, `.cargo/mutants.toml`, baseline run
+Install and configure cargo-mutants so mutation testing runs on a Rust project — install, `.cargo/mutants.toml`, baseline run
 
 ## Scope
 
-- First-time setup ของ cargo-mutants ใน Cargo workspace/project
-- ครอบคลุม: install, config file, baseline run, verify output
-- ไม่ครอบคลุม: sharding/CI optimization (`workflows/optimize mutation`)
+- First-time setup of cargo-mutants in a Cargo workspace/project
+- Covers: install, config file, baseline run, verify output
+- Doesn't cover: sharding/CI optimization (`workflows/optimize mutation`)
 
 ## Execute
 
 ### 1. Check Prerequisites
 
-> Goal: ตรวจ environment และ test suite ก่อน install
+> Goal: check the environment and test suite before install
 
-1. ตรวจว่าเป็น Cargo project (`Cargo.toml` ที่ root) — ทำ `/follow-tool-cargo` ถ้าต้อง setup cargo ก่อน
-2. รัน `cargo test` หรือ `cargo nextest run` — tests ต้องเขียวและไม่ flaky ก่อน mutation testing
-3. ตรวจว่า project build ได้บน host platform — cargo-mutants ไม่รองรับ cross-compilation
-4. ตรวจ `cargo mutants --version` — ถ้ามีแล้ว (idempotent check) → skip install
+1. Verify it's a Cargo project (`Cargo.toml` at the root) — do `/follow-tool-cargo` if cargo needs setup first
+2. Run `cargo test` or `cargo nextest run` — tests must be green and not flaky before mutation testing
+3. Verify the project builds on the host platform — cargo-mutants doesn't support cross-compilation
+4. Check `cargo mutants --version` — if already present (idempotent check) → skip install
 
 ### 2. Install cargo-mutants
 
-> Goal: ติดตั้ง cargo-mutants binary
+> Goal: install the cargo-mutants binary
 
-1. ติดตั้งด้วย `cargo install --locked cargo-mutants`
-2. หรือเร็วกว่าด้วย `cargo binstall cargo-mutants` (prebuilt binary)
-3. Verify ด้วย `cargo mutants --version`
+1. Install with `cargo install --locked cargo-mutants`
+2. Or faster with `cargo binstall cargo-mutants` (prebuilt binary)
+3. Verify with `cargo mutants --version`
 
 ### 3. Create Config
 
-> Goal: สร้าง `.cargo/mutants.toml` ขั้นต่ำ
+> Goal: create a minimal `.cargo/mutants.toml`
 
-1. สร้าง `.cargo/mutants.toml` ที่ source tree root — check-in เข้า VCS
-2. กำหนด top-level keys (ไม่มี `[mutants]` table): `timeout_multiplier`, `examine_globs`, `exclude_globs`, `test_package`
-3. ถ้าใช้ nextest → `test_tool = "nextest"` (เร็วกว่าเพราะ fail-fast) — ทำ `/follow-tool-nextest` ถ้ายังไม่มี
-4. ตั้ง `exclude_globs` สำหรับ generated/vendored/test-only code
-5. ดู config keys เพิ่มเติมใน `references/cli.md` หรือ official docs
+1. Create `.cargo/mutants.toml` at the source tree root — check it into VCS
+2. Set top-level keys (there is no `[mutants]` table): `timeout_multiplier`, `examine_globs`, `exclude_globs`, `test_package`
+3. If using nextest → `test_tool = "nextest"` (faster due to fail-fast) — do `/follow-tool-nextest` if not set up yet
+4. Set `exclude_globs` for generated/vendored/test-only code
+5. See more config keys in `references/cli.md` or official docs
 
 ### 4. Baseline Run
 
-> Goal: รัน mutation testing ครั้งแรกบน scope จำกัด
+> Goal: run mutation testing for the first time on a limited scope
 
-1. รัน `cargo mutants -f <file.rs>` บนไฟล์เล็กก่อน — ยืนยัน pipeline ทำงาน
-2. รัน `cargo mutants` เต็มถ้า scope พอเหมาะ — หรือจำกัดด้วย `examine_globs`
-3. ตรวจ output ใน `mutants.out/` — ดู `missed`/`NOT CAUGHT`, `caught`, `unviable`, `timeout`
-4. บันทึก baseline: mutant count, caught/missed ratio — ใช้เทียบ runs ถัดไป
+1. Run `cargo mutants -f <file.rs>` on a small file first — confirm the pipeline works
+2. Run a full `cargo mutants` if the scope is reasonable — or limit it with `examine_globs`
+3. Check the output in `mutants.out/` — look at `missed`/`NOT CAUGHT`, `caught`, `unviable`, `timeout`
+4. Record the baseline: mutant count, caught/missed ratio — to compare with later runs
 
 ### 5. Verify
 
-> Goal: ยืนยัน setup reproducible
+> Goal: confirm the setup is reproducible
 
-1. รันซ้ำด้วย args เดิม — ผลต้องสม่ำเสมอ (ไม่ใช่ flaky)
-2. ถ้า verify ไม่ผ่าน → ทำ `/resolve-errors` max 3 รอบ แล้ว stop report
+1. Re-run with the same args — results must be consistent (not flaky)
+2. Verify fails → do `/resolve-errors` max 3 rounds, then stop and report
 
 ## Rules
 
-- Tests ต้องเขียวและ stable ก่อน — ห้ามรันบน suite ที่ flaky
-- ไม่ต้องแก้ source code เพื่อใช้ cargo-mutants — เป็นค่าเริ่มต้น
-- เก็บ `.cargo/mutants.toml` ใน VCS — ห้ามใส่ secrets หรือ absolute paths
-- `timeout_multiplier`/`minimum_test_timeout` ตั้งให้เหมาะ — ป้องกัน tests แขวน
-- Baseline บน scope เล็กก่อน — full run อาจใช้เวลานานมาก
+- Tests must be green and stable first — never run on a flaky suite
+- No source code changes are needed to use cargo-mutants — by default
+- Keep `.cargo/mutants.toml` in VCS — no secrets or absolute paths
+- Set `timeout_multiplier`/`minimum_test_timeout` appropriately — prevents hanging tests
+- Baseline on a small scope first — a full run can take a very long time
 
 ## Expected Outcome
 
-- cargo-mutants ติดตั้งและ `.cargo/mutants.toml` commit แล้ว
-- Baseline run สำเร็จพร้อม `mutants.out/` results
-- ทราบ caught/missed mutants เริ่มต้นสำหรับ track ต่อ
+- cargo-mutants installed and `.cargo/mutants.toml` committed
+- Baseline run succeeds with `mutants.out/` results
+- Initial caught/missed mutants known, for tracking onward

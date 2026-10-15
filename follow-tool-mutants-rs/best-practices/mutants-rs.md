@@ -1,33 +1,33 @@
 # cargo-mutants — Best Practices
 
-Mutation testing สำหรับ Rust — วัดคุณภาพ test suite จริง
+Mutation testing for Rust — measures the real quality of a test suite
 
 ## Recommended Patterns
 
-- `cargo mutants` ที่ crate root — mutants = code variants ที่ควรทำให้ tests fail; survive = test gap
-- Scope ด้วย `-f`/`--file` globs — full-crate runs ช้ามาก; เจาะเฉพาะ critical modules (business logic, parsers)
-- Run ใน CI เป็น scheduled/weekly job — ไม่ใช่ทุก PR (นานเกิน); per-PR scope ให้ changed files
-- `--baseline ref` incremental mode — mutants เฉพาะ code ที่เปลี่ยน
-- Iterate: surviving mutant → เขียน test เพิ่ม → re-run เฉพาะไฟล์นั้น
+- `cargo mutants` at the crate root — mutants = code variants that should make tests fail; a survivor = a test gap
+- Scope with `-f`/`--file` globs — full-crate runs are very slow; target only critical modules (business logic, parsers)
+- Run in CI as a scheduled/weekly job — not every PR (too long); scope per-PR to changed files
+- `--baseline ref` incremental mode — mutants only for changed code
+- Iterate: surviving mutant → write an added test → re-run just that file
 
 ## Common Pitfalls
 
-- Timeout mutants (infinite loops) — ใช้ `--timeout` + `--jobs` parallel; hangs คือ cost ของ mutation testing
-- False survivors: `#[derive]` code, logging, formatting-only mutations — `--exclude`/skip annotations สำหรับ untestable paths
-- Mutation score ไม่ใช่ goal — 100% impractical; focus critical-path mutants
-- Debug asserts: mutants tests ต้องรัน release-ish behavior — `--test-tool nextest` เร็วกว่า cargo test มาก
+- Timeout mutants (infinite loops) — use `--timeout` + `--jobs` parallel; hangs are the cost of mutation testing
+- False survivors: `#[derive]` code, logging, formatting-only mutations — `--exclude`/skip annotations for untestable paths
+- Mutation score is not the goal — 100% is impractical; focus on critical-path mutants
+- Debug asserts: mutant tests must run release-ish behavior — `--test-tool nextest` is much faster than cargo test
 - Compile time dominates — incremental + parallel jobs + sccache
 
 ## Interpretation
 
-- Caught mutant = test suite ดี; Survived = missing assertion/coverage; Timeout/Unviable = analyze แยก
-- Report เป็น gap list ไม่ใช่ score เดียว — surviving mutants คือ test-writing backlog
+- Caught mutant = good test suite; Survived = missing assertion/coverage; Timeout/Unviable = analyze separately
+- Report as a gap list, not a single score — surviving mutants are the test-writing backlog
 
 ## Do / Don't
 
 | Do | Don't |
 |----|-------|
-| scope changed files / critical modules | full-crate mutants ทุก PR |
-| `--test-tool nextest` | default cargo test (ช้า) |
-| survivors → test backlog | chase 100% mutation score |
-| exclude untestable paths | fight logging/format mutants |
+| Scope changed files / critical modules | Full-crate mutants on every PR |
+| `--test-tool nextest` | Default cargo test (slow) |
+| Survivors → test backlog | Chase a 100% mutation score |
+| Exclude untestable paths | Fight logging/format mutants |

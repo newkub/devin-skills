@@ -1,6 +1,6 @@
 ---
 name: follow-tool-mutants-rs
-description: ตั้งค่าและใช้งาน cargo-mutants สำหรับ mutation testing ใน Rust projects
+description: Set up and use cargo-mutants for mutation testing in Rust projects
 argument-hint: "[scope]"
 related:
   - follow-lang-rust
@@ -14,14 +14,14 @@ related:
 
 ## Goal
 
-ตั้งค่าและใช้งาน cargo-mutants สำหรับ mutation testing เพื่อปรับปรุงคุณภาพของ Rust tests
+Set up and use cargo-mutants for mutation testing to improve the quality of Rust tests
 
 ## Scope
 
-ใช้สำหรับ Rust projects ที่ใช้ Cargo build system และต้องการตรวจสอบคุณภาพของ tests ด้วย mutation testing
+For Rust projects using the Cargo build system that want to verify test quality with mutation testing
 
-- สำหรับ JS/TS mutation testing → ใช้ `/follow-tool-stryker-mutator` แทน
-- ต้องมี test suite ที่เสถียรก่อน — ถ้า tests ยัง flaky ให้ทำ `/follow-test` หรือ `/update-tests` ก่อน
+- For JS/TS mutation testing → use `/follow-tool-stryker-mutator` instead
+- Needs a stable test suite first — if tests are still flaky, do `/follow-test` or `/update-tests` first
 
 - Latest: `cargo-mutants@27.1.0` / `mutants@0.0.4` (crates.io) (verified 2026-09-13)
 
@@ -29,111 +29,111 @@ related:
 
 ### Workflows
 
-> Goal: dispatch ไปยัง workflow ที่ตรง topic
+> Goal: dispatch to the workflow matching the topic
 
 | Topic | Workflow |-------|----------| setup | `workflows/setup-mutants/SKILL.md` — cargo-mutants install, `.cargo/mutants.toml`, baseline run | optimize | `workflows/optimize-mutation/SKILL.md` — skip lists, shard/parallel jobs, CI integration 
-1. ถ้า argument ตรง topic → อ่านและทำตาม `workflows/<name>/SKILL.md` แทน steps ด้านล่าง
-2. ถ้าไม่ตรง → ทำตาม steps ด้านล่างตามปกติ
+1. If the argument matches a topic → read and follow `workflows/<name>/SKILL.md` instead of the steps below
+2. If not → follow the steps below as usual
 
 ### 1. Installation
 
-> Goal: ติดตั้ง cargo-mutants บน environment
+> Goal: install cargo-mutants on the environment
 
-1. ติดตั้งด้วย `cargo install --locked cargo-mutants`
-2. หรือติดตั้งด้วย `cargo binstall cargo-mutants`
-3. ตรวจสอบ version ด้วย `cargo mutants --version`
-4. ดูรายละเอียดใน 
+1. Install with `cargo install --locked cargo-mutants`
+2. Or install with `cargo binstall cargo-mutants`
+3. Check the version with `cargo mutants --version`
+4. See details in 
 
 ### 2. Prerequisites
 
-> Goal: ตรวจสอบว่า project พร้อมสำหรับ mutation testing
+> Goal: verify the project is ready for mutation testing
 
-1. รัน `cargo test` หรือ `cargo nextest run` เพื่อตรวจสอบว่า tests ไม่ flaky
-2. ตรวจสอบว่า project build ได้บน host platform
-3. หลีกเลี่ยงการรัน mutation testing ถ้า tests ยังไม่เสถียร
-4. ดูรายละเอียดใน 
+1. Run `cargo test` or `cargo nextest run` to verify the tests are not flaky
+2. Verify the project builds on the host platform
+3. Avoid running mutation testing while the tests aren't stable
+4. See details in 
 
 ### 3. Run Mutation Testing
 
-> Goal: รัน mutation testing ด้วย cargo-mutants
+> Goal: run mutation testing with cargo-mutants
 
-1. รัน `cargo mutants` ที root ของ Rust project
-2. รันเฉพาะ file ด้วย `cargo mutants -f src/file.rs`
-3. รันกับ toolchain เฉพาะด้วย `cargo +1.48 mutants`
-4. แสดง caught/unviable mutants ด้วย `cargo mutants --caught` หรือ `cargo mutants --unviable`
-5. ดูรายละเอียดใน 
+1. Run `cargo mutants` at the root of the Rust project
+2. Run a single file with `cargo mutants -f src/file.rs`
+3. Run with a specific toolchain with `cargo +1.48 mutants`
+4. Show caught/unviable mutants with `cargo mutants --caught` or `cargo mutants --unviable`
+5. See details in 
 
 ### 4. Understand Results
 
-> Goal: แปลผลลัพธ์และระบุ mutants ที่ต้องแก้ไข
+> Goal: interpret the results and identify mutants to fix
 
-1. `NOT CAUGHT` / `missed`: tests ไม่จับ mutant นี้ได้ → เพิ่ม tests
-2. `CAUGHT`: tests จับ mutant นี้ได้ → test coverage ดี
-3. `UNVIABLE`: mutant นี้ build ไม่ได้ → ไม่ต้องทำอะไร
-4. `timeout`: mutant ทำให้ tests แขวน → ตรวจสอบหรือ skip
-5. ดูรายละเอียดใน 
+1. `NOT CAUGHT` / `missed`: the tests didn't catch this mutant → add tests
+2. `CAUGHT`: the tests caught this mutant → good test coverage
+3. `UNVIABLE`: this mutant doesn't build → nothing to do
+4. `timeout`: the mutant hangs the tests → investigate or skip
+5. See details in 
 
 ### 5. Configuration
 
-> Goal: ตั้งค่า cargo-mutants สำหรับ project
+> Goal: configure cargo-mutants for the project
 
-1. สร้าง `.cargo/mutants.toml` ที่ source tree root เมื่อต้องการ config ขั้นสูง (check-in เข้า VCS)
-2. กำหนด top-level keys เช่น `timeout_multiplier`, `exclude_globs`, `examine_globs`, `test_package`, `copy_target` (ไม่มี `[mutants]` table)
-3. ใช้ `test_tool = "nextest"` หรือ `--test-tool=nextest` เพื่อรัน tests ผ่าน nextest (เร็วกว่าเพราะ fail-fast)
-4. ใช้ `#[mutants::skip]` สำหรับ functions หรือ impls ที่ไม่ต้องการ mutate (ต้องเพิ่ม `mutants` crate เป็น dependency ธรรมดา)
-5. ใช้ `--exclude-re "pattern"` หรือ `exclude_re` ใน config เพื่อกรอง mutations เฉพาะ (`#[mutants::exclude_re]` attribute ยัง unreleased — ต้องรอ `mutants` crate ≥ 0.0.5)
-6. ดูรายละเอียดใน 
+1. Create `.cargo/mutants.toml` at the source tree root when advanced config is needed (check it into VCS)
+2. Set top-level keys such as `timeout_multiplier`, `exclude_globs`, `examine_globs`, `test_package`, `copy_target` (there is no `[mutants]` table)
+3. Use `test_tool = "nextest"` or `--test-tool=nextest` to run tests through nextest (faster due to fail-fast)
+4. Use `#[mutants::skip]` for functions or impls that shouldn't be mutated (requires the `mutants` crate as a regular dependency)
+5. Use `--exclude-re "pattern"` or `exclude_re` in config to filter specific mutations (the `#[mutants::exclude_re]` attribute is still unreleased — needs the `mutants` crate ≥ 0.0.5)
+6. See details in 
 
 ### 6. CI Integration
 
-> Goal: เพิ่ม cargo-mutants ใน CI pipeline
+> Goal: add cargo-mutants to the CI pipeline
 
-1. เพิ่ม step `cargo mutants` ใน GitHub Actions หรือ CI ที่ใช้
-2. ใช้ `cargo mutants --file` สำหรับ incremental testing ใน PR
-3. ใช้ `cargo mutants` เต็มรูปแบบสำหรับ main branch
-4. ดูรายละเอียดใน 
+1. Add a `cargo mutants` step in GitHub Actions or whichever CI is used
+2. Use `cargo mutants --file` for incremental testing in PRs
+3. Use a full `cargo mutants` run on the main branch
+4. See details in 
 
 ## Rules
 
 ### 1. Test Quality
 
-- ต้องมี tests ที่เชื่อถือได้ก่อนรัน `cargo mutants`
-- ไม่รองรับ cross-compilation
-- ต้อง build ได้บน host platform
-- ไม่ต้องเปลี่ยน source code เพื่อใช้ cargo-mutants เป็นค่าเริ่มต้น
+- Trustworthy tests are required before running `cargo mutants`
+- Cross-compilation is not supported
+- Must build on the host platform
+- No source code changes are needed to use cargo-mutants by default
 
 ### 2. Mutant Handling
 
-- ใช้ `#[mutants::skip]` สำหรับ mutants ที่ไม่น่าสนใจ
-- ใช้ `--exclude-re "..."` หรือ `exclude_re` ใน config เพื่อกรอง mutations เฉพาะ
-- เพิ่ม tests สำหรับ `NOT CAUGHT` mutants
-- รัน `cargo mutants` เป็นระยะ เพื่อ track test quality
+- Use `#[mutants::skip]` for mutants that aren't interesting
+- Use `--exclude-re "..."` or `exclude_re` in config to filter specific mutations
+- Add tests for `NOT CAUGHT` mutants
+- Run `cargo mutants` periodically to track test quality
 
 ### 3. Configuration
 
-- เก็บ `.cargo/mutants.toml` ใน source tree root ถ้ามี
-- ใช้ `timeout_multiplier` / `minimum_test_timeout` ที่เหมาะสม เพื่อป้องกัน tests แขวน
-- ไม่ hard-code paths หรือ secrets ใน `.cargo/mutants.toml`
+- Keep `.cargo/mutants.toml` at the source tree root when present
+- Use appropriate `timeout_multiplier` / `minimum_test_timeout` to prevent hanging tests
+- Don't hard-code paths or secrets in `.cargo/mutants.toml`
 
-- ใช้ /follow-lang-rust ถ้าจำเป็น
-- ใช้ /follow-tool-nextest ถ้าจำเป็น
-- ใช้ /follow-tool-cargo ถ้าจำเป็น
-- ใช้ /update-tests ถ้าจำเป็น
-- ใช้ /follow-test ถ้าจำเป็น
-- ใช้ /deep-test mutation ถ้าจำเป็น
+- Use /follow-lang-rust if needed
+- Use /follow-tool-nextest if needed
+- Use /follow-tool-cargo if needed
+- Use /update-tests if needed
+- Use /follow-test if needed
+- Use /deep-test mutation if needed
 
 ## References
 
 - [CLI reference](references/cli.md)
-- ใช้ /run-test ถ้าจำเป็น
+- Use /run-test if needed
 
 
-- ดู best-practices/ สำหรับ recommended patterns และ pitfalls
+- See best-practices/ for recommended patterns and pitfalls
 
 ## Expected Outcome
 
-- Mutation testing ทำงานได้อัตโนมัติ
-- Test coverage และ quality ดีขึ้น
-- Missed mutants ถูกระบุและแก้ไข
-- Test suite มีความเชื่อถือได้สูงขึ้น
+- Mutation testing runs automatically
+- Test coverage and quality improve
+- Missed mutants are identified and fixed
+- The test suite becomes more reliable
 

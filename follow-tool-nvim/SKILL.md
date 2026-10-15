@@ -1,6 +1,6 @@
 ---
 name: follow-tool-nvim
-description: ตั้งค่า Neovim configuration ด้วย lazy.nvim ตาม best practices
+description: Set up Neovim configuration with lazy.nvim following best practices
 argument-hint: "[scope]"
 related:
   - follow-lang-lua
@@ -11,133 +11,133 @@ related:
 
 ## Goal
 
-ตั้งค่า Neovim configuration ที modular, lazy-loaded และ maintainable ด้วย `lazy.nvim`
+Set up a modular, lazy-loaded, maintainable Neovim configuration with `lazy.nvim`
 
 ## Scope
 
-ใช้สำหรับสร้างหรือ refactor Neovim config บน `~/.config/nvim` หรือ project-specific config
+For creating or refactoring a Neovim config at `~/.config/nvim` or a project-specific config
 
-- ใช้ skill นี้เฉพาะ Neovim/`lazy.nvim` — ไม่ครอบคลุม Vim script configs หรือ editors อื่น (VS Code, Zed)
+- Use this skill for Neovim/`lazy.nvim` only — it doesn't cover Vim script configs or other editors (VS Code, Zed)
 
 - Latest: Neovim `0.12.5`, lazy.nvim `11.17.5` (verified 2026-09-13)
-- Neovim 0.12+ มี `vim.pack` เป็น built-in plugin manager — พิจารณาใช้แทน lazy.nvim ถ้าต้องการ minimal config
+- Neovim 0.12+ ships `vim.pack` as a built-in plugin manager — consider it instead of lazy.nvim when a minimal config is wanted
 
 ## Execute
 
 ### 1. Install Neovim
 
-> Goal: ติดตั้ง Neovim ก่อนตั้งค่า lazy.nvim
+> Goal: install Neovim before configuring lazy.nvim
 
-1. ติดตั้ง Neovim >= 0.8.0 (build ด้วย LuaJIT):
-   - Windows: ดาวน์โหลดจาก [Neovim releases](https://github.com/neovim/neovim/releases) หรือ `scoop install neovim`
+1. Install Neovim >= 0.8.0 (built with LuaJIT):
+   - Windows: download from [Neovim releases](https://github.com/neovim/neovim/releases) or `scoop install neovim`
    - macOS: `brew install neovim`
-   - Linux: `sudo apt install neovim` หรือ `sudo pacman -S neovim`
-   - mise: `mise use -g neovim` (ถ้าใช้ mise)
-2. ติดตั้ง Git >= 2.19.0 (lazy.nvim ใช้ partial clones)
-3. ตรวจสอบ `nvim --version` ก่อนดำเนินการต่อ
-4. ดูรายละเอียดใน 
+   - Linux: `sudo apt install neovim` or `sudo pacman -S neovim`
+   - mise: `mise use -g neovim` (if using mise)
+2. Install Git >= 2.19.0 (lazy.nvim uses partial clones)
+3. Verify `nvim --version` before continuing
+4. See details in 
 
 ### 2. Bootstrap lazy.nvim
 
-> Goal: ติดตั้ง lazy.nvim plugin manager
+> Goal: install the lazy.nvim plugin manager
 
-1. สร้าง `init.lua` ที `~/.config/nvim/init.lua`
-2. สร้าง `lua/config/lazy.lua` เพื่อ clone stable branch ของ `lazy.nvim`
-3. ใช้ `require("config.lazy")` ใน `init.lua`
-4. รัน `:checkhealth lazy` เพื่อตรวจสอบ
-5. ดูรายละเอียดใน 
+1. Create `init.lua` at `~/.config/nvim/init.lua`
+2. Create `lua/config/lazy.lua` to clone the stable branch of `lazy.nvim`
+3. Use `require("config.lazy")` in `init.lua`
+4. Run `:checkhealth lazy` to verify
+5. See details in 
 
 ### 3. Structure Config
 
-> Goal: แยกไฟล์ config ตาม responsibility
+> Goal: split config files by responsibility
 
-1. สร้าง `lua/core/options.lua` สำหรับ `vim.opt`
-2. สร้าง `lua/core/keymaps.lua` สำหรับ keymaps
-3. สร้าง `lua/core/autocmds.lua` สำหรับ autocommands
-4. สร้าง `lua/plugins/*.lua` สำหรับ plugin specs
-5. ดูรายละเอียดใน 
+1. Create `lua/core/options.lua` for `vim.opt`
+2. Create `lua/core/keymaps.lua` for keymaps
+3. Create `lua/core/autocmds.lua` for autocommands
+4. Create `lua/plugins/*.lua` for plugin specs
+5. See details in 
 
 ### 4. Add Plugins
 
-> Goal: เพิ่ม plugins ด้วย lazy loading
+> Goal: add plugins with lazy loading
 
-1. ใช้ `lazy = true` เป็น default
-2. ใช้ `ft`, `cmd`, `keys`, `event` สำหรับ lazy-loading
-3. ใช้ `dependencies` สำหรับ plugin dependencies
-4. ใช้ `version`, `tag`, `branch` หรือ `commit` เพื่อ pin version
-5. ดูรายละเอียดใน 
+1. Use `lazy = true` as the default
+2. Use `ft`, `cmd`, `keys`, `event` for lazy-loading
+3. Use `dependencies` for plugin dependencies
+4. Use `version`, `tag`, `branch`, or `commit` to pin versions
+5. See details in 
 
 ### 5. Configure LSP and Formatting
 
-> Goal: ตั้งค่า LSP, formatter และ linting
+> Goal: configure LSP, formatter, and linting
 
-1. ใช้ `vim.lsp.config` / `vim.lsp.enable` (Neovim ≥0.11) กับ `nvim-lspconfig` และ `mason.nvim`
-2. ใช้ `conform.nvim` สำหรับ formatting และ `nvim-lint` สำหรับ linting (null-ls archived แล้ว ห้ามใช้)
-3. ตั้งค่า auto format on save ผ่าน autocommand
-4. ใช้ `stylua` สำหรับ format Lua
-5. ดูรายละเอียดใน 
+1. Use `vim.lsp.config` / `vim.lsp.enable` (Neovim ≥0.11) with `nvim-lspconfig` and `mason.nvim`
+2. Use `conform.nvim` for formatting and `nvim-lint` for linting (null-ls is archived — don't use it)
+3. Configure auto format on save via an autocommand
+4. Use `stylua` to format Lua
+5. See details in 
 
 ### 6. Add Tests
 
-> Goal: เขียน tests สำหรับ utility functions
+> Goal: write tests for utility functions
 
-1. ติดตั้ง `plenary.nvim`
-2. สร้าง `tests/utils_spec.lua` สำหรับ unit tests
-3. รัน `:PlenaryBustedFile %` หรือ `:PlenaryBustedDirectory tests/`
-4. ดูรายละเอียดใน 
+1. Install `plenary.nvim`
+2. Create `tests/utils_spec.lua` for unit tests
+3. Run `:PlenaryBustedFile %` or `:PlenaryBustedDirectory tests/`
+4. See details in 
 
 ### 7. CI and Quality
 
-> Goal: ตั้งค่า automated checks
+> Goal: configure automated checks
 
-1. ใช้ GitHub Actions รัน `stylua --check .`
-2. รัน Plenary tests ด้วย `nvim --headless -c "PlenaryBustedDirectory tests/ { minimal_init = 'init.lua' }"`
-3. ตรวจ startup time ให้ < 50ms
-4. ดูรายละเอียดใน 
+1. Use GitHub Actions to run `stylua --check .`
+2. Run Plenary tests with `nvim --headless -c "PlenaryBustedDirectory tests/ { minimal_init = 'init.lua' }"`
+3. Keep startup time under 50ms
+4. See details in 
 
 ## Rules
 
 ### 1. Structure
 
-- `init.lua` ทำหน้าที bootstrap `lazy.nvim` เท่านั้น
-- แยก `options.lua`, `keymaps.lua`, `autocmds.lua`, plugins เป็นไฟล์ย่อย
-- ทุก plugin มี lazy loading ยกเว้น colorscheme ทีต้อง load on startup
+- `init.lua` only bootstraps `lazy.nvim`
+- Split `options.lua`, `keymaps.lua`, `autocmds.lua`, and plugins into sub-files
+- Every plugin lazy-loads, except the colorscheme that must load on startup
 
 ### 2. Performance
 
-- ใช้ `ft`, `cmd`, `keys`, `event` เพื่อ lazy load
-- ตรวจ startup time ด้วย `vim-startuptime` หรือ `:StartupTime`
-- เป้าหมาย startup time < 50ms
+- Use `ft`, `cmd`, `keys`, `event` to lazy load
+- Check startup time with `vim-startuptime` or `:StartupTime`
+- Target startup time < 50ms
 
 ### 3. Code Quality
 
-- ใช้ `stylua` สำหรับ format Lua
-- ใช้ `plenary.nvim` เขียน unit tests สำหรับ utilities
-- ใส่ `desc` ในทุก keymap เพื่อ `which-key`
+- Use `stylua` to format Lua
+- Use `plenary.nvim` to write unit tests for utilities
+- Add `desc` to every keymap for `which-key`
 
 ### 4. Maintenance
 
-- pin plugin versions เมื่อต้องการ stability
-- อัปเดต plugins ผ่าน `:Lazy update`
-- ตรวจ `lazy-lock.json` หลังอัปเดต
+- Pin plugin versions when stability is needed
+- Update plugins via `:Lazy update`
+- Review `lazy-lock.json` after updates
 
-- ใช้ /follow-lang-lua ถ้าจำเป็น
-- ใช้ /follow-tool-formatter ถ้าจำเป็น
-- ใช้ /follow-create-plugins (nvim) ถ้าจำเป็น
-- ใช้ /follow-test ถ้าจำเป็น
+- Use /follow-lang-lua if needed
+- Use /follow-tool-formatter if needed
+- Use /follow-create-plugins (nvim) if needed
+- Use /follow-test if needed
 
 ## References
 
 - [CLI reference](references/cli.md)
 
 
-- ดู best-practices/ สำหรับ recommended patterns และ pitfalls
+- See best-practices/ for recommended patterns and pitfalls
 
 ## Expected Outcome
 
-- Neovim config เป็น modular และ easy to maintain
-- ทุก plugin lazy load เป็น default
-- LSP, formatter และ linter ทำงานได้
-- Unit tests สำหรับ utilities รันได้
-- CI ตรวจ format และ tests อัตโนมัติ
+- A modular, easy-to-maintain Neovim config
+- Every plugin lazy-loads by default
+- LSP, formatter, and linter working
+- Unit tests for utilities runnable
+- CI checks format and tests automatically
 

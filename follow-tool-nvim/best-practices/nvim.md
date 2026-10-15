@@ -1,34 +1,34 @@
 # Neovim (lazy.nvim) — Best Practices
 
-Config discipline ด้วย lazy.nvim — startup speed และ maintainable setup
+Config discipline with lazy.nvim — startup speed and a maintainable setup
 
 ## Recommended Patterns
 
-- lazy.nvim เป็น plugin manager — `~/.config/nvim/lua/plugins/*.lua` per-plugin specs, `init.lua` เล็กสุด
-- Lazy-load aggressively: `event`, `ft`, `cmd`, `keys` triggers — อย่า `lazy=false` ทุก plugin
-- `opts` table แทน `config` function เมื่อพอ — lazy.nvim call setup ให้; `config` เมื่อต้อง custom logic
-- LSP ผ่าน `nvim-lspconfig` + mason (auto-install servers) — pin mason registry versions สำหรับ reproducibility
-- Keymaps ใน `lua/config/keymaps.lua` หรือ per-plugin spec `keys` — centralized/discoverable
+- lazy.nvim is the plugin manager — `~/.config/nvim/lua/plugins/*.lua` per-plugin specs, `init.lua` kept minimal
+- Lazy-load aggressively: `event`, `ft`, `cmd`, `keys` triggers — don't set `lazy=false` on every plugin
+- Prefer the `opts` table over a `config` function when enough — lazy.nvim calls setup for you; use `config` only for custom logic
+- LSP via `nvim-lspconfig` + mason (auto-installs servers) — pin mason registry versions for reproducibility
+- Keymaps in `lua/config/keymaps.lua` or per-plugin spec `keys` — centralized/discoverable
 
 ## Common Pitfalls
 
-- Startup time: `:Lazy profile` / `--startuptime` — plugin ที่ lazy=false เพิ่มทีละ ms; audit เป็นระยะ
-- Plugin ล้มเงียบ — `:checkhealth` + `:Lazy` log เมื่อ feature หาย
-- Spec fragmentation: plugin config กระจาย = debug ยาก; รวม per-plugin file
-- mason auto-install ใน headless/CI = ช้า — skip บน CI หรือ cache mason dir
-- Treesitter parsers: `:TSUpdate` หลัง upgrade; ensure_installed list ใน config
+- Startup time: `:Lazy profile` / `--startuptime` — each lazy=false plugin adds ms; audit periodically
+- Plugins failing silently — check `:checkhealth` + the `:Lazy` log when a feature disappears
+- Spec fragmentation: plugin config scattered = hard to debug; keep one file per plugin
+- mason auto-install in headless/CI = slow — skip on CI or cache the mason dir
+- Treesitter parsers: run `:TSUpdate` after upgrades; keep an ensure_installed list in config
 
 ## Maintenance
 
-- `:Lazy sync` updates ทั้งหมด — review changelog ของ breaking plugins (lsp, treesitter) ก่อน
-- Lockfile `lazy-lock.json` commit เข้า dotfiles repo — rollback ได้
-- Minimal config test: `nvim --clean` เมื่อ debug ว่าปัญหามาจาก config หรือ plugin
+- `:Lazy sync` updates everything — review the changelog of breaking-prone plugins (lsp, treesitter) first
+- Commit the `lazy-lock.json` lockfile into the dotfiles repo — enables rollback
+- Minimal config test: `nvim --clean` to tell whether a problem comes from the config or a plugin
 
 ## Do / Don't
 
 | Do | Don't |
 |----|-------|
-| lazy-load via triggers | `lazy=false` defaults |
-| per-plugin spec files | giant single plugins.lua |
-| commit lazy-lock.json | floating plugin versions |
-| profile startup เป็นระยะ | accept slow boot |
+| Lazy-load via triggers | `lazy=false` defaults |
+| Per-plugin spec files | One giant plugins.lua |
+| Commit lazy-lock.json | Floating plugin versions |
+| Profile startup periodically | Accept slow boot |
