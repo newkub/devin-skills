@@ -1,27 +1,27 @@
-# SolidJS — Rendering, Control Flow และ Async
+# SolidJS — Rendering, Control Flow and Async
 
-Best practices สำหรับ control flow components, lists, resources, และ rendering performance
+Best practices for control flow components, lists, resources, and rendering performance
 
 ## Recommended Patterns
 
-### เลือก Control Flow ให้ถูก
+### Pick the Right Control Flow
 
 | Component | Use case |
 |---|---|
-| `<For>` | keyed lists — item ถูก track ด้วย reference, เหมาะกับ object arrays ที่ reorder/insert/remove |
-| `<Index>` | unkeyed lists — track ด้วย index, เหมาะกับ primitives หรือ list ที่ items เปลี่ยนค่าแต่ตำแหน่งคงที่ |
-| `<Show>` | conditional render — ใช้ callback form `{(v) => ...}` สำหรับ type narrowing |
-| `<Switch>`/`<Match>` | multi-branch conditions — เลือก branch แรกที่ match |
-| `<Dynamic>` | dynamic component — render component จาก variable |
-| `<Portal>` | render นอก DOM tree (modals, tooltips) |
-| `<ErrorBoundary>` | catch errors ใน subtree |
-| `<Suspense>` | async boundary รอ resources/lazy components |
+| `<For>` | keyed lists — items tracked by reference, suits object arrays that reorder/insert/remove |
+| `<Index>` | unkeyed lists — tracked by index, suits primitives or lists whose item values change at fixed positions |
+| `<Show>` | conditional render — use the callback form `{(v) => ...}` for type narrowing |
+| `<Switch>`/`<Match>` | multi-branch conditions — picks the first matching branch |
+| `<Dynamic>` | dynamic component — renders a component from a variable |
+| `<Portal>` | render outside the DOM tree (modals, tooltips) |
+| `<ErrorBoundary>` | catch errors in a subtree |
+| `<Suspense>` | async boundary waiting for resources/lazy components |
 
 ```tsx
-// keyed list — For track ด้วย reference ของ item
+// keyed list — For tracks by item reference
 <For each={users()}>{user => <UserCard user={user} />}</For>
 
-// ห้าม — map ตรงๆ สร้าง elements ใหม่ทั้ง array ทุก update
+// never — mapping directly recreates every element of the array on each update
 {users().map(user => <UserCard user={user} />)}
 ```
 
@@ -31,49 +31,49 @@ Best practices สำหรับ control flow components, lists, resources, แ
 const [data, { refetch, mutate }] = createResource(userId, fetchUser)
 ```
 
-- source (arg แรก) เป็น reactive — เปลี่ยนแล้ว refetch อัตโนมัติ; ไม่ต้องการ dependency ใส่ `false`/`null`
-- `mutate` สำหรับ optimistic update, `refetch` สำหรับ reload
-- ใช้ `data.latest` เมื่ออยากได้ค่าล่าสุดที่ resolve (ข้าม loading state)
-- ห้ามใช้ `createEffect` + signal เพื่อ fetch — resource handle dedup/cancellation/suspense ให้
+- The source (first arg) is reactive — it changes and a refetch runs automatically; pass `false`/`null` when no dependency is wanted
+- `mutate` for optimistic updates, `refetch` for reloads
+- Use `data.latest` when you want the last resolved value (skipping the loading state)
+- Never fetch via `createEffect` + signal — the resource handles dedup/cancellation/suspense for you
 
-### Code Splitting และ Lazy
+### Code Splitting and Lazy
 
-- `lazy(() => import('./Heavy'))` สำหรับ component ใหญ่/route-level splitting
-- ครอบด้วย `<Suspense>` เพื่อกำหนด fallback — หลีกเลี่ยง nested Suspense เกินจำเป็น
-- preload บน hover/focus สำหรับ UX ที่ไหลลื่น: `<Link onMouseEnter={() => import('./Page')}>`
+- `lazy(() => import('./Heavy'))` for large components / route-level splitting
+- Wrap in `<Suspense>` to define the fallback — avoid nested Suspense more than necessary
+- Preload on hover/focus for smooth UX: `<Link onMouseEnter={() => import('./Page')}>`
 
 ## Common Pitfalls
 
-- ใช้ `.map()` ตรงๆ ใน JSX → ทำลาย fine-grained updates, recreate DOM ทั้ง list
-- ใช้ `<Index>` กับ list ที่ reorder บ่อย → DOM ผูกกับ index ผิด item — ใช้ `<For>` แทน
-- ลืม `<Show>` fallback → หน้าว่างแทนที่จะมี placeholder
-- `createResource` ไม่มี reactive source → fetch ครั้งเดียวไม่ refetch เมื่อ params เปลี่ยน
-- nested `<Suspense>` ทุก component → waterfall loading — ยุบ boundaries ให้น้อยลง
-- render `<Portal>` โดยไม่ cleanup context — portal children ยัง reactive ต่อ parent scope อยู่
+- Using `.map()` directly in JSX → destroys fine-grained updates, recreates the DOM for the whole list
+- Using `<Index>` for a frequently reordered list → DOM bound to indexes lands on wrong items — use `<For>` instead
+- Forgetting the `<Show>` fallback → a blank page instead of a placeholder
+- `createResource` without a reactive source → fetches once and never refetches when params change
+- A nested `<Suspense>` at every component → waterfall loading — collapse boundaries to fewer
+- Rendering a `<Portal>` without cleanup context — portal children stay reactive to the parent scope
 
 ## Do / Don't
 
 | Do | Don't |
 |---|---|
-| ใช้ `<For>` กับ array ของ objects | ใช้ `.map()`/`Array.map` ใน JSX กับ reactive arrays |
-| ใช้ `<Index>` กับ primitives/static-length lists | ใช้ `<Index>` เมื่อ items reorder บ่อย |
-| ใช้ `<Show keyed>` เมื่อต้องการ reset state ตอน value เปลี่ยน | reuse DOM ข้าม condition โดยไม่ตั้งใจ |
-| ใช้ `createResource` + `<Suspense>` สำหรับ async | fetch ใน `createEffect` แล้ว set signal |
-| split routes ด้วย `lazy()` | bundle ทุก page ใน initial chunk |
-| wrap risky subtrees ด้วย `<ErrorBoundary>` | ปล่อย error พังทั้ง app |
+| Use `<For>` for arrays of objects | Use `.map()`/`Array.map` in JSX on reactive arrays |
+| Use `<Index>` for primitives/static-length lists | Use `<Index>` when items reorder often |
+| Use `<Show keyed>` to reset state when the value changes | Unintentionally reuse DOM across conditions |
+| Use `createResource` + `<Suspense>` for async | Fetch in `createEffect` then set a signal |
+| Split routes with `lazy()` | Bundle every page into the initial chunk |
+| Wrap risky subtrees with `<ErrorBoundary>` | Let one error break the whole app |
 
 ## Performance Notes
 
-- `<For>` reconcile ด้วย reference — update เฉพาะ item ที่เปลี่ยน; ระวัง fetch ให้ array ใหม่ทั้งก้อนจะย้าย DOM ใหม่ทั้งหมด (ใช้ `reconcile` ใน store ช่วย)
-- ใช้ `createDeferred` กับ expensive lists/filters — input พิมพ์ลื่น ผลลัพธ์ตามมาทีหลัง
-- `startTransition` สำหรับ non-blocking navigation/updates — UI ไม่กระตุกระหว่าง heavy re-render
-- virtualization: list ยาวพัน+ rows ใช้ `@tanstack/solid-virtual` — `<For>` ไม่ได้ virtualize ให้
-- DOM nodes ใน Solid เป็น persistent — moving item ใน `<For>` move node จริง ไม่ recreate; อย่าทำลายข้อได้เปรียบนี้ด้วย conditional remount
+- `<For>` reconciles by reference — it updates only changed items; beware: fetching returns a whole new array, which relocates all DOM (store `reconcile` helps here)
+- Use `createDeferred` for expensive lists/filters — typing stays smooth, results follow later
+- `startTransition` for non-blocking navigation/updates — the UI doesn't jank during heavy re-renders
+- Virtualization: lists of thousands+ rows need `@tanstack/solid-virtual` — `<For>` does not virtualize
+- DOM nodes in Solid are persistent — moving an item in `<For>` moves the real node, not recreates it; don't destroy this advantage with conditional remounts
 
 ## Ecosystem / Integration
 
-- SolidStart/Solid Router: `createAsync` ใช้แทน `createResource` เมื่อต้องการ SSR streaming data
-- TanStack Virtual: `@tanstack/solid-virtual` ใช้คู่กับ `<For>` สำหรับ virtualized rows
-- forms: `@tanstack/solid-form` หรือ Modular Forms — avoid controlled input patterns ของ React (Solid inputs uncontrolled-by-default ทำงานดีกว่า)
-- animation: `solid-transition-group` หรือ animejs wrapper — exit animations ต้องใช้ transition group เพราะ Solid remove DOM ทันที
-- devtools: `solid-devtools` ช่วย inspect reactive graph — ใช้ตอน debug dependency ที่ไม่คาดคิด
+- SolidStart/Solid Router: `createAsync` replaces `createResource` when SSR streaming data is needed
+- TanStack Virtual: `@tanstack/solid-virtual` pairs with `<For>` for virtualized rows
+- Forms: `@tanstack/solid-form` or Modular Forms — avoid React's controlled-input patterns (Solid inputs are uncontrolled-by-default and work better)
+- Animation: `solid-transition-group` or an animejs wrapper — exit animations need a transition group since Solid removes DOM immediately
+- Devtools: `solid-devtools` helps inspect the reactive graph — use it when debugging unexpected dependencies

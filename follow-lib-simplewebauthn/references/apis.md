@@ -6,7 +6,7 @@
 
 | api | description | default | options |
 |---|---|---|---|
-| `generateRegistrationOptions({rpName, rpID, userName})` | สร้าง registration options | - | `attestationType`, `authenticatorSelection`, `excludeCredentials` |
+| `generateRegistrationOptions({rpName, rpID, userName})` | Create registration options | - | `attestationType`, `authenticatorSelection`, `excludeCredentials` |
 | `verifyRegistrationResponse({response, expectedChallenge, expectedOrigin, expectedRPID})` | Verify registration | - | `requireUserVerification` |
 | `generateAuthenticationOptions({rpID})` | Login challenge | - | `allowCredentials`, `userVerification` |
 | `verifyAuthenticationResponse(...)` | Verify login | - | expectedChallenge/Origin/RPID, `credential` |

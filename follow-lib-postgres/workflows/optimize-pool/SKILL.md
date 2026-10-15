@@ -10,61 +10,61 @@ related:
 
 ## Goal
 
-tune postgres.js connection pool และ query options — `max`, `prepare`, timeouts — โดยวัดผลก่อนและหลัง ไม่เปลี่ยน output
+Tune the postgres.js connection pool and query options — `max`, `prepare`, timeouts — measuring before and after, with no output change
 
 ## Scope
 
-- ใช้เมื่อมี connection exhaustion, queries ช้าจาก pool sizing, หรือต้อง tune สำหรับ production
-- ครอบคลุม: `max`, `prepare`, `idle_timeout`, `connect_timeout`, `max_lifetime`, `ssl`
-- ถ้ายังไม่มี client → ทำ `workflows/setup-postgres/SKILL.md` ก่อน
+- use when there is connection exhaustion, queries slowed by pool sizing, or production tuning is needed
+- covers: `max`, `prepare`, `idle_timeout`, `connect_timeout`, `max_lifetime`, `ssl`
+- if there is no client yet → run `workflows/setup-postgres/SKILL.md` first
 
 ## Execute
 
 ### 1. Baseline
 
-> Goal: เก็บตัวเลขเดิมก่อน tune
+> Goal: capture the original numbers before tuning
 
-1. ทำ `/run-bench` หรือจับเวลา endpoints/queries ที่ช้า — latency, throughput, error rate
-2. นับ connections ฝั่ง DB: `SELECT count(*) FROM pg_stat_activity` — เทียบกับ `max_connections` ของ server
-3. ทำ `/deep-optimize` — แยกว่าช้าจาก pool (queue waiting) หรือ query เอง (seq scan, lock)
-4. ระบุ topology: instances × `max` ต่อ instance ต้องไม่เกิน `max_connections` ของ Postgres
+1. run `/run-bench` or time the slow endpoints/queries — latency, throughput, error rate
+2. count connections on the DB side: `SELECT count(*) FROM pg_stat_activity` — compare against the server's `max_connections`
+3. run `/deep-optimize` — separate slowness from the pool (queue waiting) vs the query itself (seq scan, lock)
+4. identify the topology: instances × `max` per instance must not exceed Postgres's `max_connections`
 
 ### 2. Tune Pool Size
 
-> Goal: `max` สอดคล้องกับ capacity จริง
+> Goal: `max` aligned with real capacity
 
-1. ตั้ง `max` ใน `postgres(url, { max })` — default 10; คำนวณจาก `max_connections` หารจำนวน app instances เผื่อ headroom
-2. Pool ใหญ่เกิน = thrashing ฝั่ง DB; เล็กเกิน = queries คิว — เริ่มจากค่าที่คำนวณแล้ววัดซ้ำ
-3. บน serverless หลาย instances → ใช้ PgBouncer/Hyperdrive transaction pooling แทนการเพิ่ม `max`
-4. ตั้ง `idle_timeout` และ `max_lifetime` ให้ connections recycle — กัน stale connections หลัง restart/failover
+1. set `max` in `postgres(url, { max })` — default 10; compute from `max_connections` divided by the number of app instances, leaving headroom
+2. Too large a pool = thrashing on the DB side; too small = queued queries — start from the computed value and re-measure
+3. on serverless with many instances → use PgBouncer/Hyperdrive transaction pooling instead of raising `max`
+4. set `idle_timeout` and `max_lifetime` so connections recycle — prevents stale connections after restart/failover
 
 ### 3. Tune Prepared Statements And Options
 
-> Goal: ใช้ prepare ให้ได้ประโยชน์ ไม่ชนข้อจำกัด
+> Goal: use prepare for its benefits without hitting limitations
 
-1. `prepare: true` (default) cache query plans — เหมาะกับ repeated queries
-2. ข้อควรระวัง: ผ่าน PgBouncer transaction mode → prepared statements อาจพัง ให้ `prepare: false` (ดู official docs)
-3. Dynamic queries จำนวนมากที่ shape ไม่ซ้ำ → พิจารณา `prepare: false` ลด plan cache churn
-4. ตั้ง `connect_timeout` เพื่อ fail fast แทน hang — และ `ssl` เมื่อ connect ผ่าน network สาธารณะ
+1. `prepare: true` (default) caches query plans — suits repeated queries
+2. Caveat: behind PgBouncer transaction mode → prepared statements may break; set `prepare: false` (see the official docs)
+3. many dynamic queries with non-repeating shapes → consider `prepare: false` to reduce plan cache churn
+4. set `connect_timeout` to fail fast instead of hanging — and `ssl` when connecting over a public network
 
 ### 4. Measure Again
 
-> Goal: compare กับ baseline และตัดสินใจ
+> Goal: compare with the baseline and decide
 
-1. วัดซ้ำ workload เดิม — latency, throughput, `pg_stat_activity` count
-2. ถ้าไม่ดีขึ้นหรือ regression → revert option นั้นแล้ว report
-3. ผ่าน → `/report-before-after` พร้อมตัวเลข แล้ว `/suggest-next-action`
+1. re-measure the same workload — latency, throughput, `pg_stat_activity` count
+2. if there is no improvement or a regression → revert that option and report
+3. passing → `/report-before-after` with the numbers, then `/suggest-next-action`
 
 ## Rules
 
-- Baseline ก่อนเสมอ — ห้าม tune โดยไม่มีตัวเลขเปรียบเทียบ
-- แก้ทีละ option แล้ววัด — ห้ามเปลี่ยนหลายตัวพร้อมกันถ้าแยกผลไม่ได้
-- instances × `max` ≤ `max_connections` เสมอ — เผื่อ admin/migration connections
-- `prepare: false` เมื่ออยู่หลัง transaction-mode pooler — ถ้าไม่แน่ใจ → ดู official docs
-- Preserve behavior — pool tuning ห้ามเปลี่ยน query semantics
+- Baseline always first — never tune without comparison numbers
+- Change one option at a time then measure — never change several at once unless their effects can be separated
+- instances × `max` ≤ `max_connections` always — leave room for admin/migration connections
+- `prepare: false` behind a transaction-mode pooler — if unsure → check the official docs
+- Preserve behavior — pool tuning must never change query semantics
 
 ## Expected Outcome
 
-- Pool sizing สอดคล้อง `max_connections` และ topology จริง
-- Prepared statements ถูกตั้งตาม pooler mode
-- ตัวเลขหลัง tune ดีกว่า baseline — report พร้อม evidence
+- Pool sizing aligned with `max_connections` and the real topology
+- Prepared statements set per pooler mode
+- Post-tune numbers beat the baseline — report with evidence

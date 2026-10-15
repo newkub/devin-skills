@@ -11,34 +11,34 @@ related:
 
 ## Goal
 
-Setup Remotion project — `create-video`, `<Composition>` setup และ Studio smoke test
+Set up a Remotion project — `create-video`, the `<Composition>` setup, and a Studio smoke test
 
 ## Scope
 
-ใช้เมื่อต้องสร้าง Remotion project ใหม่หรือ setup Remotion ใน project ที่มี — ครอบคลุม scaffolding, root composition, Studio และ first render
+Use when creating a new Remotion project or setting Remotion up in an existing one — covers scaffolding, the root composition, Studio, and the first render
 
 ## Execute
 
 ### 1. Create Project
 
-> Goal: scaffold Remotion project ด้วย official CLI
+> Goal: scaffold the Remotion project with the official CLI
 
 ```bash
 bunx create-video@latest --yes --blank my-video
-# หรือ skip TailwindCSS
+# or skip TailwindCSS
 bunx create-video@latest --yes --blank --no-tailwind my-video
 
 cd my-video
 bun install
 ```
 
-1. `--yes` เป็น non-interactive (ต้องมี template flag และ directory)
-2. `--blank` ใช้ blank template — ใช้ `--no-tailwind` ถ้าไม่ต้องการ Tailwind
-3. ถ้า project มีอยู่แล้ว → ติดตั้ง `remotion` กับ `@remotion/cli` ตาม official docs ที่ `https://remotion.dev`
+1. `--yes` is non-interactive (a template flag and directory are required)
+2. `--blank` uses the blank template — add `--no-tailwind` if Tailwind is not wanted
+3. if the project already exists → install `remotion` and `@remotion/cli` per the official docs at `https://remotion.dev`
 
 ### 2. Setup Composition
 
-> Goal: สร้าง root composition ที่ทำงานได้
+> Goal: create a working root composition
 
 ```tsx
 import { Composition } from 'remotion'
@@ -57,38 +57,38 @@ export const RemotionRoot = () => (
 )
 ```
 
-1. ระบุ `id`, `component`, `durationInFrames`, `fps`, `width`, `height` ชัดเจน
-2. ใส่ `defaultProps` เป็น inline object literal เพื่อให้ Studio infer controls
-3. ใช้ `useCurrentFrame()` + `interpolate()` ใน component — ไม่ใช้ CSS animations
-4. ใช้ `staticFile()` สำหรับ assets ใน `public/`
+1. declare `id`, `component`, `durationInFrames`, `fps`, `width`, `height` explicitly
+2. put `defaultProps` as an inline object literal so the Studio infers controls
+3. use `useCurrentFrame()` + `interpolate()` inside the component — not CSS animations
+4. use `staticFile()` for assets in `public/`
 
 ### 3. Start Studio
 
-> Goal: เปิด Remotion Studio เพื่อ preview
+> Goal: open Remotion Studio for preview
 
-1. `bunx remotion studio --no-open` หรือ `bun run dev`
-2. `bunx remotion preview` deprecated — ใช้ `remotion studio` เท่านั้น
-3. กด `s` ใน terminal เพื่อ reopen browser
+1. `bunx remotion studio --no-open` or `bun run dev`
+2. `bunx remotion preview` is deprecated — use `remotion studio` only
+3. press `s` in the terminal to reopen the browser
 
 ### 4. Verify
 
-> Goal: smoke test render แรก
+> Goal: smoke test the first render
 
-1. Studio เปิดและ composition render ใน preview ถูกต้อง
-2. ทดสอบ render จริง: `bunx remotion render MyComp out/video.mp4`
-3. ตรวจ output file ถูกสร้างและเล่นได้
-4. ถ้าพัง → ทำ `/resolve-errors` max 3 รอบ แล้ว stop report
+1. the Studio opens and the composition renders correctly in the preview
+2. test a real render: `bunx remotion render MyComp out/video.mp4`
+3. check the output file is created and playable
+4. if it breaks → run `/resolve-errors` max 3 rounds, then stop and report
 
 ## Rules
 
-- ใช้ `create-video` scaffolding เสมอสำหรับ project ใหม่ — อย่า config เองจากศูนย์
-- `useCurrentFrame()` เป็น source of truth ของ animation — ไม่ใช้ CSS animations/JS timers
-- แปลงวินาทีเป็น frames ด้วย `time * fps`
-- ใช้ `--no-open` สำหรับ remote/CI
-- ใช้ `/follow-lib-remotion` สำหรับ full reference และ cloud rendering
+- Always use `create-video` scaffolding for new projects — don't hand-config from scratch
+- `useCurrentFrame()` is the source of truth for animation — no CSS animations/JS timers
+- Convert seconds to frames with `time * fps`
+- Use `--no-open` for remote/CI
+- Use `/follow-lib-remotion` for the full reference and cloud rendering
 
 ## Expected Outcome
 
-- Remotion project scaffold สำเร็จและ Studio เปิดได้
-- Composition render ใน preview ถูกต้อง
-- First render ผ่าน CLI สร้าง output ได้
+- The Remotion project scaffolds successfully and the Studio opens
+- The composition renders correctly in the preview
+- The first render via the CLI produces an output

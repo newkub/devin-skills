@@ -1,6 +1,6 @@
 ---
 name: idea-devin-global-skills-from-session
-description: Mine session ปัจจุบันหา workflow ที่ทำซ้ำหรือ manual แล้วเสนอเป็น skill candidates
+description: Mine the current session for repeated or manual workflows, then propose skill candidates
 argument-hint: "[min-candidates]"
 related:
   - idea
@@ -13,71 +13,71 @@ related:
 
 ## Goal
 
-วิเคราะห์ session ปัจจุบันหา patterns ที่ทำซ้ำหรือทำมือหลายขั้นตอน แล้วเสนอเป็น skill candidates — เปลี่ยนงาน ad-hoc ที่พิสูจน์แล้วว่าใช้ได้เป็น reusable workflows
+Analyze the current session for repeated or multi-step manual patterns, then propose them as skill candidates — turn proven ad-hoc work into reusable workflows
 
 ## Scope
 
-- ใช้เมื่อ session มีงานที่ทำหลายขั้นตอน ซ้ำกัน หรือน่าจะมีประโยชน์ซ้ำ — เช่น การสร้าง skills เป็นชุด, git workflow เฉพาะ, manual checklist
-- วิเคราะห์จาก: user requests, command sequences, file edit patterns, fixes ที่ทำซ้ำ
-- เสนอเป็น proposals เท่านั้น — ไม่สร้าง skills โดยไม่ confirm
+- Use when the session has work that is multi-step, repeated, or likely useful again — e.g. creating skills in batches, specific git workflows, manual checklists
+- Analyze from: user requests, command sequences, file edit patterns, repeated fixes
+- Proposals only — never create skills without confirm
 
 ## Execute
 
 ### 1. Mine Session Activity
 
-> Goal: รวบรวมสิ่งที่ทำใน session
+> Goal: collect what was done in the session
 
-1. ทบทวน user requests และงานที่ทำจริงใน session — ใช้ `/list-request-devin-session` ถ้าต้องการ list
-2. หา command sequences ที่ทำซ้ำ (git workflows, validation scripts, batch operations)
-3. หา manual multi-step processes ที่ควรเป็น workflow เดียว
+1. Review user requests and the work actually done in the session — use `/list-request-devin-session` if a list is needed
+2. Find repeated command sequences (git workflows, validation scripts, batch operations)
+3. Find manual multi-step processes that should become a single workflow
 
 ### 2. Identify Candidates
 
-> Goal: แยกสิ่งที่ควรเป็น skill ออกจากงานครั้งเดียว
+> Goal: separate skill-worthy patterns from one-time work
 
-1. Skill-worthy: ทำซ้ำได้ใน project อื่น, มี clear trigger, มีหลายขั้นตอน, มี rules/gotchas
-2. Not skill-worthy: งานเฉพาะครั้ง, one-off fixes, สิ่งที่ skill เดิมครอบแล้ว
-3. เทียบกับ skills ที่มี — เสนอขยายของเดิมแทนสร้างใหม่ถ้าซ้อน
+1. Skill-worthy: repeatable in other projects, has a clear trigger, multiple steps, has rules/gotchas
+2. Not skill-worthy: one-time work, one-off fixes, things an existing skill already covers
+3. Compare against existing skills — propose extending an existing one instead of creating a new one when they overlap
 
 ### 3. Draft Proposals
 
-> Goal: สร้าง proposal ต่อ candidate
+> Goal: create a proposal per candidate
 
-แต่ละตัวระบุ:
-- `name` kebab-case ตาม prefix conventions
-- `description` ≤100 ตัวอักษร
-- `trigger` เมื่อไหร่ควรใช้
-- `related` skills ที่มีจริง
-- Evidence จาก session: ขั้นตอน/commands ที่ทำจริงที่ skill จะครอบ
+For each, state:
+- `name` kebab-case per prefix conventions
+- `description` ≤100 characters
+- `trigger` when it should be used
+- `related` skills that actually exist
+- Evidence from the session: the steps/commands actually performed that the skill would cover
 
 ### 4. Present
 
-> Goal: ให้ user เลือก
+> Goal: let the user choose
 
-1. ใช้ `/report table` ตาราง: `No.`, `Skill`, `Solves`, `Session Evidence`, `Related`
-2. จัดลำดับตาม reusability × frequency ที่เห็นใน session
-3. ถ้ามี action ต่อเนื่องจาก idea ก่อนหน้า → ใช้ `/follow-your-suggestion`
-4. ถาม user เลือกตัวที่จะสร้าง — ไม่สร้างเอง
+1. Use `/report table` with columns: `No.`, `Skill`, `Solves`, `Session Evidence`, `Related`
+2. Order by reusability × frequency observed in the session
+3. If there's a follow-on action from a previous idea → use `/follow-your-suggestion`
+4. Ask the user to pick which to create — don't create on your own
 
 ## Rules
 
 ### 1. Session Evidence Only
 
-- เสนอเฉพาะ patterns ที่เห็นจริงใน session — ไม่เดา hypothetical needs
-- อ้างอิงขั้นตอน/คำสั่งจริงที่ทำเป็น evidence
+- Propose only patterns actually seen in the session — never guess hypothetical needs
+- Cite the real steps/commands performed as evidence
 
 ### 2. No Duplicates
 
-- เช็ค skills ที่มีก่อนเสนอ — ใช้ `/idea` flow สำหรับ gap analysis ทั่วไป
-- ถ้าซ้อนกับที่มี → เสนอขยาย skill นั้น
+- Check existing skills before proposing — use the `/idea` flow for general gap analysis
+- If it overlaps with an existing one → propose extending that skill
 
 ### 3. User-Driven
 
-- ไม่สร้าง skill โดยไม่ได้รับเลือกจาก user
-- proposals ต้องชัดพอให้ตัดสินใจ — name + description + trigger
+- Never create a skill the user hasn't selected
+- Proposals must be clear enough to decide — name + description + trigger
 
 ## Expected Outcome
 
-- รายการ skill candidates ที่มี evidence จาก session จริง
-- แต่ละตัวพร้อม name, description, trigger, related
-- User เลือกสร้างต่อผ่าน `/update-devin-global-skills` หรือ `/add-context-to-devin-global-skills`
+- A list of skill candidates with evidence from the real session
+- Each ready with name, description, trigger, related
+- User picks and continues creation via `/update-devin-global-skills` or `/add-context-to-devin-global-skills`

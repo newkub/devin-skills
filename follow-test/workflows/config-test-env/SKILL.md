@@ -1,6 +1,6 @@
 ---
 name: follow-test-config-test-env
-description: ตั้งค่า test environment — env vars, fixtures, test db และ CI test env
+description: Configure the test environment — env vars, fixtures, test db and CI test env
 argument-hint: "[scope]"
 related:
   - follow-test
@@ -17,70 +17,69 @@ related:
 
 ## Goal
 
-ตั้งค่า test environment ให้ tests รันได้ deterministic — env vars, fixtures dir, test database และ CI test env ครบและ merge กับ config เดิม
+Set up the test environment so tests run deterministically — env vars, fixtures dir, test database, and the CI test env complete and merged with the existing config
 
 ## Scope
 
-- ใช้เมื่อต้อง config environment สำหรับ testing — หลังเลือก strategy level ใน `/follow-test`
-- ครอบคลุม: test env vars, fixtures/helpers directories, test database/services, CI test environment
-- ไม่ครอบคลุมการเขียน tests (ใช้ `/update-tests`) หรือ coverage tooling (ใช้ `/implement-to-production setup-coverage`)
+- use when the environment must be configured for testing — after choosing the strategy level in `/follow-test`
+- covers: test env vars, fixtures/helpers directories, test database/services, CI test environment
+- does not cover writing tests (use `/update-tests`) or coverage tooling (use `/implement-to-production setup-coverage`)
 
 ## Execute
 
 ### 1. Read Current Test Config
 
-> Goal: รู้ config เดิมก่อนแก้ — ห้าม clobber
+> Goal: know the existing config before editing — never clobber
 
-1. ตรวจ test config ที่มี: `vitest.config.*`, `pytest.ini`, `Cargo.toml`, CI workflows
-2. ทำ `/check-secrets env-vars` — vars ที่ tests ต้องใช้ vs ที่ define
-3. ถ้า monorepo → ทำ `/follow-monorepo` เพื่อระบุ test env ต่อ workspace
-4. ถ้าไม่พบ test config เลย → กลับไปทำ `/follow-test` setup flow ก่อน
+1. check the existing test config: `vitest.config.*`, `pytest.ini`, `Cargo.toml`, CI workflows
+2. run `/check-secrets env-vars` — vars the tests need vs those defined
+3. if monorepo → run `/follow-monorepo` to identify the test env per workspace
+4. if no test config is found at all → go back through the `/follow-test` setup flow first
 
 ### 2. Configure Test Env Vars
 
-> Goal: test env แยกจาก dev/prod ชัดเจน
+> Goal: the test env is clearly separate from dev/prod
 
-1. สร้าง/อัปเดต `.env.test` หรือ test env file ตาม framework convention — merge กับของเดิม
-2. test vars ต้องชี้ test resources เท่านั้น — ห้ามชี้ production db/services
-3. secrets ที่ tests ต้องใช้ → `/follow-secret-manager`; CI secrets ตั้งใน repo settings ไม่ใช่ในไฟล์
-4. เพิ่ม `.env.test` pattern ใน `.gitignore` ถ้ามีค่าจริง — เก็บ `.env.test.example` เป็น placeholder
+1. create/update `.env.test` or the test env file per framework convention — merge with the existing one
+2. test vars must point only at test resources — never at production db/services
+3. secrets the tests need → `/follow-secret-manager`; CI secrets go in repo settings, not files
+4. add the `.env.test` pattern to `.gitignore` if it holds real values — keep `.env.test.example` as a placeholder
 
 ### 3. Setup Fixtures And Test Database
 
-> Goal: test data และ db isolation พร้อม
+> Goal: test data and db isolation are ready
 
-1. สร้าง `tests/fixtures/` และ `tests/helpers/` ตาม structure ของ parent — หรือตาม convention ที่ project ใช้
-2. test database: แยก db name/schema จาก dev — ใช้ ephemeral option (container, in-memory, per-run db) ตาม stack
-3. seed/migration strategy สำหรับ test db — deterministic และ reset ระหว่าง runs
-4. ทำ `/deep-review-codebase` — tests ไม่ share state และไม่ depend กัน
+1. create `tests/fixtures/` and `tests/helpers/` per the parent's structure — or the convention the project uses
+2. test database: separate db name/schema from dev — use an ephemeral option (container, in-memory, per-run db) per the stack
+3. seed/migration strategy for the test db — deterministic and reset between runs
+4. run `/deep-review-codebase` — tests share no state and do not depend on each other
 
 ### 4. Configure CI Test Env
 
-> Goal: CI รัน tests ได้เหมือน local
+> Goal: CI runs tests the same way as local
 
-1. เพิ่ม test env vars/secrets ใน CI workflow — อ่านจาก CI secrets ไม่ hardcode
-2. เพิ่ม services ที่ tests ต้องการใน CI (เช่น database service container)
-3. ถ้ายังไม่มี CI test step → ทำ `/setup-cicd`
+1. add the test env vars/secrets to the CI workflow — read from CI secrets, never hardcode
+2. add the services the tests need in CI (e.g. a database service container)
+3. if there is no CI test step yet → run `/setup-cicd`
 
 ### 5. Verify
 
-> Goal: tests รันได้ทั้ง local และ CI
+> Goal: tests run in both local and CI
 
-1. ทำ `/run-test` — suite ผ่านด้วย test env ใหม่
-2. ทดสอบ missing var → error ชัดเจน ไม่ใช่ silent fallback
-3. ถ้า fail → revert keys ที่เพิ่งแก้แล้ว report diff — หรือ `/resolve-errors` max 3 รอบ
-4. report before/after config สั้นๆ ให้ user
+1. run `/run-test` — the suite passes with the new test env
+2. test a missing var → a clear error, not a silent fallback
+3. if it fails → revert the keys just edited and report the diff — or `/resolve-errors` max 3 rounds
+4. report the before/after config briefly to the user
 
 ## Rules
 
-- merge กับ config เดิม — ห้าม overwrite test config/env ทั้งไฟล์ถ้าไม่จำเป็น
-- test env ต้องแยกจาก dev/prod — ห้าม tests แตะ production resources
-- ห้าม commit secrets หรือค่าจริง — placeholder เท่านั้นใน example files
-- tests ต้อง deterministic — fixtures fixed, db reset ระหว่าง runs
+- merge with the existing config — never overwrite the whole test config/env file unless necessary
+- the test env must be separate from dev/prod — tests must never touch production resources
+- never commit secrets or real values — placeholders only in example files
+- tests must be deterministic — fixed fixtures, db reset between runs
 
 ## Expected Outcome
 
-- test env vars ครบและแยกจาก dev/prod
-- fixtures/helpers structure ตาม convention และ test db isolate ได้
-- CI รัน tests ผ่านด้วย env เดียวกัน
-
+- test env vars complete and separate from dev/prod
+- fixtures/helpers structure per convention, test db isolated
+- CI runs the tests passing with the same env

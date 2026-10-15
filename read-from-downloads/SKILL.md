@@ -1,6 +1,6 @@
 ---
 name: read-from-downloads
-description: อ่านและ list ไฟล์จาก home downloads folder
+description: Read and list files from the home downloads folder
 argument-hint: "[pattern-or-filename]"
 allowed-tools:
   - read
@@ -21,63 +21,63 @@ related:
 
 ## Goal
 
-อ่านและ list ไฟล์จาก home downloads folder สำหรับนำไปใช้ใน workflow อื่น
+Read and list files from the home downloads folder for use in other workflows
 
 ## Scope
 
-ใช้กับไฟล์ทีอยู่ใน `~/Downloads` เช่น screenshots, images, documents, archives โดย list, filter และ read ไฟล์ทีเลือก
+Use with files located in `~/Downloads` such as screenshots, images, documents, archives — by listing, filtering and reading the chosen files
 
-ดูเพิ่มเติม: /check-screenshots-dir, /use-agents-capture, /deep-review-codebase, /open-in-explorer
+See also: /check-screenshots-dir, /use-agents-capture, /deep-review-codebase, /open-in-explorer
 
 ## Execute
 
 ### 1. Resolve Downloads Path
 
-> Goal: แก้ไข Downloads Path
+> Goal: Resolve Downloads Path
 1. Windows: `C:\Users\<username>\Downloads`
 2. macOS: `~/Downloads`
 3. Linux: `~/Downloads`
-4. ถ้า user ระบุ path อื่น → ใช้ค่านั้น
+4. If the user gives another path → use that one
 
 ### 2. List Files
 
-> Goal: รายการ Files
-1. ใช้ `/find_file_by_name` ด้วย pattern `*` บน downloads path
-2. ถ้า user ระบุ pattern → ใช้ pattern นั้น
-3. เรียงลำดับตามชื่อไฟล์ หรือ last modified
-4. ถ้าไม่พบไฟล์ → stop และ report
+> Goal: List Files
+1. Use `/find_file_by_name` with pattern `*` on the downloads path
+2. If the user gives a pattern → use that pattern
+3. Sort by file name or last modified
+4. If no files found → stop and report
 
 ### 3. Filter And Select
 
-> Goal: กรอง And Select
-1. ถ้ามีไฟล์มาก → ถาม user ว่าต้องการไฟล์ไหน
-2. ถ้า user ระบุชื่อไฟล์ชัดเจน → เลือกไฟล์นั้น
-3. รองรับ glob pattern เช่น `*.png`, `screenshot*`
+> Goal: Filter And Select
+1. If there are many files → ask the user which files they want
+2. If the user names files clearly → pick those files
+3. Support glob patterns like `*.png`, `screenshot*`
 
 ### 4. Read File
 
-> Goal: อ่าน File
-1. ถ้าเป็น image (png, jpg, jpeg, gif, webp, bmp, svg) → ใช้ `/read`
-2. ถ้าเป็น text (txt, md, json, csv, yml, yaml) → ใช้ `/read`
-3. ถ้าเป็น binary ที read ไม่ได้ → รายงานขนาดและประเภท
+> Goal: Read File
+1. If it's an image (png, jpg, jpeg, gif, webp, bmp, svg) → use `/read`
+2. If it's text (txt, md, json, csv, yml, yaml) → use `/read`
+3. If it's a binary that can't be read → report its size and type
 
 ### 5. Report
 
-> Goal: รายงาน Report
-1. ทำ `/report` แสดงไฟล์ทีพบ: No, Name, Size, Type, Modified
-2. ทำ `/report` สำหรับไฟล์ทีเลือก
-3. ทำ `/suggest-next-action`
+> Goal: Produce the Report
+1. Run `/report` showing the files found: No, Name, Size, Type, Modified
+2. Run `/report` for the chosen files
+3. Run `/suggest-next-action`
 
 ## Rules
 
-- ไม่อ่านไฟล์ทีอาจมี secrets หรือ credentials โดยอัตโนมัติ
-- ถ้าไฟล์ดู sensitive → ถาม user ก่อน
-- ไม่ move หรือ delete ไฟล์ใน Downloads โดยไม่ได้รับอนุญาต
-- ใช้ `/find_file_by_name` สำหรับ list ไฟล์
-- รองรับทั้ง Windows, macOS, Linux
+- Never auto-read files that may contain secrets or credentials
+- If a file looks sensitive → ask the user first
+- Do not move or delete files in Downloads without permission
+- Use `/find_file_by_name` for listing files
+- Supports Windows, macOS and Linux
 
 ## Expected Outcome
 
-- รายการไฟล์ใน downloads folder
-- ไฟล์ทีเลือกถูกอ่านหรือ report
-- ข้อมูลพร้อมใช้งานต่อใน workflow อื่น
+- A listing of the files in the downloads folder
+- The chosen files read or reported
+- Information ready for use in other workflows

@@ -10,7 +10,7 @@ related:
 
 ## Goal
 
-จัดการ async data ใน SolidJS — `createResource` fetch/track/mutate, `Suspense` boundaries, `lazy` code-split, SSR streaming
+Handle async data in SolidJS — `createResource` fetch/track/mutate, `Suspense` boundaries, `lazy` code-split, SSR streaming
 
 ## Scope
 
@@ -22,54 +22,54 @@ async lifecycle — `createResource`, `Suspense`, `ErrorBoundary` integration, `
 
 ```ts
 const [data, { refetch, mutate }] = createResource(userId, fetchUser)
-// userId() เปลี่ยน → auto refetch (source signal)
+// userId() changes → auto refetch (source signal)
 data()           // value | undefined
 data.loading     // boolean
 data.error       // thrown error
-data.latest      // last resolved (ไม่ reset ตอน refetch)
+data.latest      // last resolved (not reset on refetch)
 mutate(newData)  // manual update cache
 refetch()        // re-fetch
 ```
 
-- Source signal = reactive dependency — เปลี่ยน → fetch ใหม่อัตโนมัติ
+- The source signal = a reactive dependency — it changes → an automatic re-fetch
 - Options: `{ initialValue }`, `{ storage: createSignal }`, `{ deferStream }`
 
 ### 2. Suspense And Boundaries
 
 ```tsx
 <Suspense fallback={<Spinner />}>
-  <Profile />         {/* ใช้ data() — suspend จน resolve */}
+  <Profile />         {/* uses data() — suspends until resolved */}
 </Suspense>
 <ErrorBoundary fallback={err => <Error err={err} />}>...</ErrorBoundary>
 ```
 
-- `Suspense` catch pending resources — nested boundaries สำหรับ granular fallbacks
-- `<SuspenseList>` สำหรับ SSR ordered reveal (revealOrder/collapsible/tail)
+- `Suspense` catches pending resources — nested boundaries for granular fallbacks
+- `<SuspenseList>` for SSR ordered reveal (revealOrder/collapsible/tail)
 
 ### 3. Transitions And Deferred
 
 ```ts
 const [pending, start] = useTransition()
-start(() => setTab('heavy'))    // เก็บ UI เก่าจน branch ใหม่ resolve
+start(() => setTab('heavy'))    // keeps the old UI until the new branch resolves
 ```
 
 - `useTransition` — non-blocking updates (stale-while-loading UI)
-- `createDeferred` — defer expensive computed (debounce-like)
+- `createDeferred` — defer an expensive computed (debounce-like)
 
 ### 4. Code Split And SSR
 
 - `const Heavy = lazy(() => import('./Heavy'))` — component code split + Suspense-ready
-- SSR: `Suspense` streaming — หน้า render ก่อน, pending chunks stream ตามหลัง (SolidStart)
-- `isServer`/`onMount` — client-only code paths (`onMount` ไม่ run บน server)
+- SSR: `Suspense` streaming — the page renders first, pending chunks stream in after (SolidStart)
+- `isServer`/`onMount` — client-only code paths (`onMount` does not run on the server)
 
 ## Rules
 
-- `createResource` = async canonical — อย่า manual `useEffect`-style fetch ใน `createEffect` (race conditions)
-- Wrap `Suspense` รอบ suspended branches — ไม่ครอบ = crash บน SSR paths
-- `mutate`/`refetch` สำหรับ cache updates — ไม่ใช่ re-create resource
-- SSR streaming ใช้ `SuspenseList` เมื่อต้อง ordering — ดู SolidStart docs สำหรับ SSR deploys
+- `createResource` = the canonical async — don't do manual `useEffect`-style fetching in `createEffect` (race conditions)
+- Wrap `Suspense` around suspended branches — without it = crash on SSR paths
+- `mutate`/`refetch` for cache updates — not re-creating the resource
+- Use `SuspenseList` for SSR streaming when ordering is needed — see the SolidStart docs for SSR deploys
 
 ## Expected Outcome
 
-- Async data tracked + refetched ผ่าน `createResource` ถูกต้อง
-- Suspense/ErrorBoundary ครบ ทุก pending branch
+- Async data tracked + refetched correctly via `createResource`
+- Suspense/ErrorBoundary complete on every pending branch

@@ -11,7 +11,7 @@ related:
 
 ## Goal
 
-ตั้งค่า oRPC client — `createRouterClient`, link transports (RPC/OpenAPI), headers/context, TanStack Query hooks
+Set up the oRPC client — `createRouterClient`, link transports (RPC/OpenAPI), headers/context, TanStack Query hooks
 
 ## Scope
 
@@ -34,8 +34,8 @@ export const client: ContractRouterClient<typeof contract> = createORPCClient(li
 ```
 
 - `RPCLink` — compact RPC protocol (POST, batching-friendly)
-- `OpenAPILink` — REST-style calls (ต้อง `.route()` metadata ใน contract)
-- `headers` async fn — auth tokens ต่อ request; `fetch` override สำหรับ custom transport
+- `OpenAPILink` — REST-style calls (requires `.route()` metadata in the contract)
+- `headers` async fn — auth tokens per request; `fetch` override for custom transport
 
 ### 2. Call Procedures
 
@@ -50,7 +50,7 @@ const user = await client.getUser({ id })
 ### 3. TanStack Query Integration
 
 ```ts
-import { createORPCReactQueryUtils } from '@orpc/tanstack-query'  // หรือ orpc helper ล่าสุด
+import { createORPCReactQueryUtils } from '@orpc/tanstack-query'  // or the latest orpc helper
 
 const orpc = createORPCReactQueryUtils(client)
 useQuery(orpc.getUser.queryOptions({ input: { id } }))
@@ -58,21 +58,21 @@ useMutation(orpc.createUser.mutationOptions())
 ```
 
 - `@orpc/tanstack-query` — `queryOptions`/`mutationOptions`/`infiniteOptions` per proc
-- `queryKey` deterministic จาก procedure path + input — `client.key()`/`orpc.key()` invalidation
-- React/Vue/Solid variants available (`@orpc/react-query`, `@orpc/vue-query`, `@orpc/solid-query` legacy paths — เช็ค docs ล่าสุด)
+- `queryKey` deterministic from the procedure path + input — `client.key()`/`orpc.key()` invalidation
+- React/Vue/Solid variants available (`@orpc/react-query`, `@orpc/vue-query`, `@orpc/solid-query` legacy paths — check the latest docs)
 
 ### 4. Server-Side Client
 
-- `createRouterClient(router)` — call router in-process (SSR/tests/edge) โดยไม่มี HTTP hop
+- `createRouterClient(router)` — call the router in-process (SSR/tests/edge) without an HTTP hop
 
 ## Rules
 
-- Client type จาก contract: `ContractRouterClient<typeof contract>` — ห้าม `any`
-- Auth headers ผ่าน `headers` async fn — ไม่ bake token ตอน create
-- TanStack Query = canonical reactive layer — อย่า manual state wrap client calls
-- `RPCLink` default; `OpenAPILink` เมื่อต้องการ REST-compat/debuggable URLs
+- Client type comes from the contract: `ContractRouterClient<typeof contract>` — never `any`
+- Auth headers go through the `headers` async fn — never bake the token at create time
+- TanStack Query = the canonical reactive layer — don't manually wrap client calls in state
+- `RPCLink` default; `OpenAPILink` when you need REST-compat/debuggable URLs
 
 ## Expected Outcome
 
-- Client typed E2E, auth header flow ถูก
-- TanStack Query options generated ทุก proc
+- Client typed E2E, auth header flow correct
+- TanStack Query options generated for every proc

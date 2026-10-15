@@ -1,6 +1,6 @@
 ---
 name: follow-lib-openai-optimize tokens
-description: ลด token usage และ cost — prompt sizing, caching, model selection
+description: Reduce token usage and cost — prompt sizing, caching, model selection
 argument-hint: "[scope]"
 related:
   - follow-lib-openai
@@ -9,66 +9,66 @@ related:
 
 ## Goal
 
-ลด token usage และ cost ของ OpenAI API calls — prompt sizing, context trimming, caching, model selection และ usage tracking
+Reduce token usage and cost of OpenAI API calls — prompt sizing, context trimming, caching, model selection, and usage tracking
 
 ## Scope
 
-ใช้เมื่อต้อง optimize cost/latency ของ OpenAI usage ที่มีอยู่ — ครอบคลุม baseline usage, prompt/context reduction, model routing และ verification (ต้องวัดผลก่อนและหลัง)
+Use when optimizing cost/latency of existing OpenAI usage — covers baseline usage, prompt/context reduction, model routing, and verification (must measure before and after)
 
 ## Execute
 
 ### 1. Baseline Usage
 
-> Goal: เก็บ token/cost baseline ก่อน optimize
+> Goal: capture the token/cost baseline before optimizing
 
-1. Log `usage` field จากทุก response (`prompt_tokens`, `completion_tokens`, `total_tokens`) — ถ้ายังไม่ได้ log → เพิ่มก่อนเพื่อมี baseline
-2. ระบุ calls ที่แพงสุด — model × tokens × frequency คือ cost drivers จริง ทำ `/deep-optimize`
-3. คำนวณ cost จาก pricing ปัจจุบันของ model ที่ใช้ — ดู `https://openai.com/api/pricing` (อย่าเดาราคา)
+1. Log the `usage` field from every response (`prompt_tokens`, `completion_tokens`, `total_tokens`) — if not logged yet → add it first to have a baseline
+2. Identify the most expensive calls — model × tokens × frequency are the real cost drivers; run `/deep-optimize`
+3. Compute cost from the current pricing of the models in use — see `https://openai.com/api/pricing` (never guess prices)
 
 ### 2. Reduce Prompt And Context Size
 
-> Goal: ตัด tokens ที่ไม่จำเป็นออกจาก inputs
+> Goal: cut unnecessary tokens from inputs
 
-1. Trim system prompts — เอาเฉพาะ instructions ที่เปลี่ยน output จริง
-2. ลด context: summarize history แทนส่ง full conversation, retrieve เฉพาะ relevant chunks (RAG) แทนส่งทั้ง document
-3. ใช้ `max_completion_tokens` cap output — กัน runaway generations
-4. Structured output ด้วย `zodResponseFormat` — output สั้นและตรง schema กว่า free-form text
+1. Trim system prompts — keep only instructions that actually change the output
+2. Reduce context: summarize history instead of sending the full conversation, retrieve only relevant chunks (RAG) instead of whole documents
+3. Use `max_completion_tokens` to cap output — prevents runaway generations
+4. Structured output via `zodResponseFormat` — output is shorter and more schema-conformant than free-form text
 
 ### 3. Cache And Reuse
 
-> Goal: ลด repeated input tokens
+> Goal: reduce repeated input tokens
 
-1. ใช้ prompt caching — static prefix (system prompt, shared context) วางก่อน dynamic parts เพื่อให้ cache hit (ดู official docs สำหรับ cache requirements)
-2. Cache responses ฝั่ง app — identical requests ไม่ต้องเรียกซ้ำ
-3. Batch API สำหรับงานที่ไม่ต้อง real-time — ถูกกว่า sync calls (ดู official docs)
+1. Use prompt caching — put the static prefix (system prompt, shared context) before dynamic parts to get cache hits (see the official docs for cache requirements)
+2. Cache responses app-side — identical requests need not be re-called
+3. Batch API for non-real-time work — cheaper than sync calls (see the official docs)
 
 ### 4. Route Models
 
-> Goal: ใช้ model ที่ถูกพอสำหรับงาน
+> Goal: use a model just good enough for the job
 
-1. งานง่าย (classification, extraction, short answers) → ใช้ mini/nano tier แทน flagship
-2. Route ตาม complexity — flagship เฉพาะงานที่ต้อง reasoning หนัก
-3. ทดสอบ quality หลัง downgrade — cost saving ต้องไม่ทำ output แย่ลงเกินรับได้
+1. Simple tasks (classification, extraction, short answers) → use the mini/nano tier instead of the flagship
+2. Route by complexity — flagship only for heavy reasoning work
+3. Test quality after downgrading — cost savings must not degrade output beyond what is acceptable
 
 ### 5. Verify And Compare
 
-> Goal: วัดผลหลังแก้เทียบ baseline
+> Goal: measure after the change vs the baseline
 
-1. Compare `usage` tokens และ cost ก่อน/หลัง ด้วย `/report-before-after`
-2. ตรวจ output quality ไม่ degrade — run existing evals/tests ถ้ามี
-3. ถ้าไม่ดีขึ้นหรือ quality regression → revert จุดนั้นแล้ว report
+1. Compare `usage` tokens and cost before/after with `/report-before-after`
+2. Check output quality has not degraded — run existing evals/tests if present
+3. If there is no improvement or a quality regression → revert that point and report
 
 ## Rules
 
-- Log `usage` เสมอ — ห้าม optimize โดยไม่มีข้อมูล consumption
-- แก้ทีละจุด — แยกผลของ prompt trim vs caching vs model routing ได้
-- preserve output quality — ต้องมีเกณฑ์ยอมรับชัดเจนก่อน downgrade model
-- อย่าเดาราคา/limits — ดู official pricing และ model docs เสมอ
-- ใช้ `/follow-lib-openai` สำหรับ API reference
+- Always log `usage` — never optimize without consumption data
+- Change one point at a time — keep prompt trim vs caching vs model routing effects separable
+- Preserve output quality — set an acceptance threshold clearly before downgrading a model
+- Never guess prices/limits — always check the official pricing and model docs
+- Use `/follow-lib-openai` for the API reference
 
 ## Expected Outcome
 
-- Token usage และ cost ลดลงเทียบ baseline ด้วยตัวเลขจริง
-- Model routing ใช้ tier ที่เหมาะกับงาน
-- Output quality ไม่ degrade เกินเกณฑ์
-- Usage logging ครบสำหรับ monitor ต่อเนื่อง
+- Token usage and cost reduced vs the baseline with real numbers
+- Model routing uses the tier suited to each task
+- Output quality not degraded beyond the threshold
+- Usage logging complete for continuous monitoring

@@ -8,21 +8,21 @@ related:
 
 ## Goal
 
-Alias ของ `/deep-research dependencies` — research dependencies/libraries: analyze manifest, เปรียบเทียบ alternatives, หา fast/modern deps
+Alias of `/deep-research dependencies` — research dependencies/libraries: analyze manifest, compare alternatives, find fast/modern deps
 
 ## Scope
 
-ใช้เมื่อ user เรียก `/research-dependencies` — skill นี้เป็น alias stub เท่านั้น workflow จริงอยู่ใน `deep-research/workflows/dependencies/`
+Use when the user calls `/research-dependencies` — this skill is an alias stub only; the real workflow lives in `deep-research/workflows/dependencies/`
 
 ## Execute
 
-ทำ `/deep-research dependencies` เต็ม workflow
+Run the full `/deep-research dependencies` workflow
 
 ## Rules
 
-- ห้าม duplicate workflow ของ `/deep-research dependencies` ในไฟล์นี้
-- ถ้า alias ขาด steps → อ่าน `deep-research/workflows/dependencies/SKILL.md` เสมอ
+- Never duplicate the `/deep-research dependencies` workflow in this file
+- If the alias lacks steps → always read `deep-research/workflows/dependencies/SKILL.md`
 
 ## Expected Outcome
 
-- `/deep-research dependencies` ถูก execute ครบทุก step
+- `/deep-research dependencies` is executed completely, every step

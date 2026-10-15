@@ -1,6 +1,6 @@
 ---
 name: follow-lib-postgres-setup-postgres
-description: ติดตั้ง postgres.js driver และตั้งค่า connection string/client ให้พร้อมใช้งาน
+description: Install the postgres.js driver and set up the connection string/client until usable
 argument-hint: "[database-url-or-scope]"
 related:
   - follow-lib-postgres
@@ -12,68 +12,68 @@ related:
 
 ## Goal
 
-ติดตั้ง `postgres` (postgres.js) driver, ตั้งค่า connection string และสร้าง client ให้ query ได้จริง — first-time setup เท่านั้น
+Install the `postgres` (postgres.js) driver, set up the connection string, and create a client that can actually query — first-time setup only
 
 ## Scope
 
-- ใช้เมื่อ project ยังไม่มี postgres.js (ถ้ามีอยู่แล้ว → verify เท่านั้น)
-- ครอบคลุม: install, `DATABASE_URL`, `postgres()` client, basic queries/transactions
-- ไม่ครอบคลุม pool tuning — ทำ `workflows/optimize-pool/SKILL.md` แทน
+- use when the project has no postgres.js yet (if it exists already → verify only)
+- covers: install, `DATABASE_URL`, the `postgres()` client, basic queries/transactions
+- does not cover pool tuning — use `workflows/optimize-pool/SKILL.md` instead
 
 ## Execute
 
 ### 1. Check Precondition
 
-> Goal: ตรวจสอบ environment ก่อน setup
+> Goal: check the environment before setup
 
-1. อ่าน `package.json` — ถ้ามี `postgres` แล้ว → skip ไป verify
-2. ยืนยัน PostgreSQL server เข้าถึงได้ (host, port, credentials)
-3. ตรวจ `DATABASE_URL` — ถ้าขาด → stop และแจ้ง user; เก็บผ่าน `/follow-secret-manager` ห้าม commit
-4. ตรวจ runtime — postgres.js ต้อง TCP; บน Cloudflare Workers ใช้ Hyperdrive หรือ driver อื่น (ดู official docs)
+1. read `package.json` — if `postgres` is already present → skip to verify
+2. confirm the PostgreSQL server is reachable (host, port, credentials)
+3. check `DATABASE_URL` — if missing → stop and tell the user; store it via `/follow-secret-manager`, never commit
+4. check the runtime — postgres.js needs TCP; on Cloudflare Workers use Hyperdrive or another driver (see the official docs)
 
 ### 2. Install
 
-> Goal: ติดตั้ง postgres เป็น runtime dependency
+> Goal: install postgres as a runtime dependency
 
-1. รัน `bun add postgres` (หรือ package manager ตาม lockfile)
-2. ยืนยัน `postgres` อยู่ใน `dependencies`
-3. ถ้าใช้คู่ Drizzle → ทำ `/follow-lib-drizzle` (drizzle ใช้ postgres.js เป็น driver)
+1. run `bun add postgres` (or the package manager per the lockfile)
+2. confirm `postgres` lands in `dependencies`
+3. if used with Drizzle → run `/follow-lib-drizzle` (drizzle uses postgres.js as its driver)
 
 ### 3. Create Client
 
-> Goal: client เดียวที่ export ใช้ร่วมทั้ง app
+> Goal: one exported client shared across the whole app
 
-1. สร้าง `src/db/index.ts` (หรือตาม structure เดิม): `import postgres from "postgres"` แล้ว `const sql = postgres(process.env.DATABASE_URL)`
-2. Default options เพียงพอตอน setup — pool sizing/`prepare` tuning ทำใน `optimize pool`
-3. Export `sql` instance เดียว — ห้ามสร้าง client ใหม่ต่อ request/module
-4. บน serverless: ใช้ Hyperdrive/PgBouncer pooling — อย่าเปิด connection ต่อ request
+1. create `src/db/index.ts` (or follow the existing structure): `import postgres from "postgres"` then `const sql = postgres(process.env.DATABASE_URL)`
+2. default options are enough at setup — pool sizing/`prepare` tuning belongs in `optimize pool`
+3. export the single `sql` instance — never create a new client per request/module
+4. on serverless: use Hyperdrive/PgBouncer pooling — don't open a connection per request
 
 ### 4. Basic Usage
 
-> Goal: query ด้วย tagged template ที่ปลอดภัย
+> Goal: query with safe tagged templates
 
-1. ใช้ tagged template `` sql`SELECT * FROM t WHERE id = ${id}` `` — parameterized อัตโนมัติ
-2. `sql.begin()` สำหรับ transactions
-3. `sql.listen(channel, onnotify)` สำหรับ LISTEN/NOTIFY (เพิ่มเมื่อจำเป็น)
-4. ปิดด้วย `sql.end()` ใน teardown/graceful shutdown
+1. use tagged templates `` sql`SELECT * FROM t WHERE id = ${id}` `` — automatically parameterized
+2. `sql.begin()` for transactions
+3. `sql.listen(channel, onnotify)` for LISTEN/NOTIFY (add when needed)
+4. close with `sql.end()` in teardown/graceful shutdown
 
 ### 5. Verify
 
-> Goal: smoke query ผ่านจริง
+> Goal: a smoke query really passes
 
-1. รัน `` sql`SELECT 1` `` หรือ query เล็กๆ เป็น smoke test
-2. รัน lint/typecheck ของ project
-3. ถ้า verify ไม่ผ่าน → ทำ `/resolve-errors` max 3 รอบ แล้ว stop report; ผ่าน → `/suggest-next-action`
+1. run `` sql`SELECT 1` `` or a small query as a smoke test
+2. run the project's lint/typecheck
+3. if verify fails → run `/resolve-errors` max 3 rounds, then stop and report; passing → `/suggest-next-action`
 
 ## Rules
 
-- Idempotent — ถ้า setup ไปแล้วให้ verify เท่านั้น ห้ามสร้าง client ซ้ำ
-- ห้าม string-concat queries — tagged template เสมอ; `sql.unsafe()` เฉพาะ dynamic queries ที่ parameterized ไม่ได้
-- Connection string จาก env เสมอ — ห้าม hardcode host/credentials
-- Client instance เดียวต่อ process — ถ้าไม่แน่ใจ options → ดู official docs (github.com/porsager/postgres)
+- Idempotent — if already set up, verify only; never create a duplicate client
+- Never string-concat queries — always tagged templates; use `sql.unsafe()` only for dynamic queries that cannot be parameterized
+- Connection string always from env — never hardcode host/credentials
+- One client instance per process — if unsure about options → check the official docs (github.com/porsager/postgres)
 
 ## Expected Outcome
 
-- `postgres` ติดตั้ง, `DATABASE_URL` ถูกตั้งค่าผ่าน env
-- `sql` client เดียว export ใช้ร่วม, smoke query ผ่าน
-- พร้อมทำ `workflows/optimize-pool/SKILL.md` ถ้าต้อง tuning
+- `postgres` installed, `DATABASE_URL` set via env
+- a single exported `sql` client shared across the app, smoke query passes
+- ready for `workflows/optimize-pool/SKILL.md` if tuning is needed

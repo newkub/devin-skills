@@ -11,42 +11,42 @@ related:
 
 ## Goal
 
-จัดการ UnoCSS theme แบบ end-to-end — `theme.css` เป็น single source of truth ของ design tokens → `uno.config.ts` map token ตาม `theme.css` (nested `DEFAULT`/`hover`/`active`/`foreground`) → ทุก UI ใช้ theme utility จาก `uno.config.ts` theme ตรง ๆ (ไม่มี `dark:` variant, ไม่มี palette hardcode, ไม่มี shortcut layer) → enforce ด้วย Biome plugin + theme lint script
+Manage the UnoCSS theme end-to-end — `theme.css` is the single source of truth for design tokens → `uno.config.ts` maps tokens per `theme.css` (nested `DEFAULT`/`hover`/`active`/`foreground`) → all UI uses theme utilities straight from the `uno.config.ts` theme (no `dark:` variant, no hardcoded palette, no shortcut layer) → enforced with a Biome plugin + a theme lint script
 
 ## Scope
 
-ใช้ทุก theme task ใน UnoCSS project (v66+/`presetWind4`) — first-time token layer, เพิ่ม/ปรับ tokens, dark mode, และ enforce ว่า UI ใช้ theme tokens เสมอ — workflow เดียว branch ตาม state (`theme.css` มีอยู่หรือไม่); setup UnoCSS ครั้งแรก → `/follow-lib-unocss` ก่อน
+Use for every theme task in a UnoCSS project (v66+/`presetWind4`) — first-time token layer, adding/adjusting tokens, dark mode, and enforcing that the UI always uses theme tokens — one workflow that branches by state (whether `theme.css` exists); first-time UnoCSS setup → run `/follow-lib-unocss` first
 
 ## Execute
 
 ### 1. Prerequisite And Detect State
 
-> Goal: UnoCSS พร้อมและรู้ว่าต้อง create, modify หรือ lint
+> Goal: UnoCSS is ready, and know whether to create, modify, or lint
 
-1. ต้องมี `uno.config.*` กับ `presetWind4()` — ไม่มี → ทำ `/follow-lib-unocss` ให้เสร็จก่อน
-2. ระบุ CSS entry point และ linter ของ project (`biome.jsonc` → Biome path; `eslint.config.*` → ESLint path)
-3. มี `theme.css`/CSS variables + `theme.colors` map อยู่แล้ว → `### 4. Modify Path`; ไม่มี → `### 2-3. Create Path`; argument `lint` → `### 6. Lint`
+1. `uno.config.*` with `presetWind4()` is required — if missing → finish `/follow-lib-unocss` first
+2. identify the CSS entry point and the project's linter (`biome.jsonc` → Biome path; `eslint.config.*` → ESLint path)
+3. `theme.css`/CSS variables + a `theme.colors` map already exist → `### 4. Modify Path`; missing → `### 2-3. Create Path`; argument `lint` → `### 6. Lint`
 
 ### 2. Create Path — Token Structure
 
-> Goal: token model ชัดเจนก่อนเขียน CSS
+> Goal: the token model is clear before writing CSS
 
-1. ใช้ semantic tokens เท่านั้น — component ใช้ `bg-primary`/`text-muted-foreground` ไม่ใช่ `bg-blue-500`
-2. ทุก surface token มี sub-keys ครบตามบทบาท: `DEFAULT`, `hover`, `active`, `foreground` — ขาด `foreground` = contrast พังใน dark mode
-3. ตั้งชื่อเต็ม ห้ามตัวย่อ (`--color-background` ไม่ใช่ `--bg`; `--color-muted-foreground` ไม่ใช่ `--mut`) — อ่านรู้เรื่องและ grep ได้
-4. ค่าเก็บเป็น **channel components** (`--color-primary: 221 83% 53%`) แล้ว config ห่อด้วย `hsl(var(--color-primary))` → ใช้ `bg-primary/50` (opacity modifier) ได้
-5. Non-color tokens: `--radius-*`, `--shadow-*`, `--font-*` — map เข้า theme keys `fontFamily`/`radius`/`shadow`; อย่างอื่น (maxWidth, minHeight, fontSize, zIndex, gridTemplateColumns) ใส่ตรงใน `theme` ได้
-6. Token set มาตรฐาน + ตัวอย่างเต็มใน `references/tokens.md` — surface set: `background`, `foreground`, `surface{DEFAULT,elevated,foreground}`, `muted{DEFAULT,foreground}`, `border{DEFAULT,hover}`, `accent{DEFAULT,hover,foreground}`, `primary`, `secondary`, `success`, `warning`, `destructive`, `focus`, `overlay`, `skeleton{DEFAULT,shine}`
+1. use semantic tokens only — components use `bg-primary`/`text-muted-foreground`, never `bg-blue-500`
+2. every surface token has the full sub-keys per role: `DEFAULT`, `hover`, `active`, `foreground` — a missing `foreground` = broken contrast in dark mode
+3. full names, no abbreviations (`--color-background` not `--bg`; `--color-muted-foreground` not `--mut`) — readable and greppable
+4. store values as **channel components** (`--color-primary: 221 83% 53%`), then the config wraps them with `hsl(var(--color-primary))` → enables `bg-primary/50` (opacity modifier)
+5. non-color tokens: `--radius-*`, `--shadow-*`, `--font-*` — map into the theme keys `fontFamily`/`radius`/`shadow`; others (maxWidth, minHeight, fontSize, zIndex, gridTemplateColumns) can go directly into `theme`
+6. the standard token set + full examples in `references/tokens.md` — surface set: `background`, `foreground`, `surface{DEFAULT,elevated,foreground}`, `muted{DEFAULT,foreground}`, `border{DEFAULT,hover}`, `accent{DEFAULT,hover,foreground}`, `primary`, `secondary`, `success`, `warning`, `destructive`, `focus`, `overlay`, `skeleton{DEFAULT,shine}`
 
 ### 3. Create Path — theme.css And Config Map
 
-> Goal: `theme.css` เป็น source of truth + `uno.config.ts` map ครบ
+> Goal: `theme.css` is the source of truth + `uno.config.ts` maps everything
 
-1. สร้าง `theme.css` — light + dark + media fallback (template ใน `references/tokens.md`)
-   - ไม่ต้องใส่ reset: `presetWind4({ preflights: { reset: true } })` (default) ให้ `*{box-sizing}`, `body{margin:0}` และ element normalize มาแล้ว — ใส่ซ้ำ = CSS ซ้ำซ้อน
-   - เก็บเฉพาะ tokens, `@font-face`, keyframes, typography scale, link/form-control look
-2. `uno.config.ts` — presets/transformers/theme ตามตัวอย่างใน `references/tokens.md`: `presetWind4({ dark: 'class' })`, `presetIcons({ scale, extraProperties })`, `presetTypography()`, `transformerDirectives()`, `transformerVariantGroup()`
-3. ตั้ง `content.filesystem` เมื่อ class/icon ถูกประกอบแบบ dynamic — ใช้ `globSync` จาก `node:fs`:
+1. create `theme.css` — light + dark + media fallback (template in `references/tokens.md`)
+   - no reset needed: `presetWind4({ preflights: { reset: true } })` (default) already provides `*{box-sizing}`, `body{margin:0}`, and element normalization — repeating it = duplicated CSS
+   - keep only tokens, `@font-face`, keyframes, typography scale, link/form-control look
+2. `uno.config.ts` — presets/transformers/theme per the examples in `references/tokens.md`: `presetWind4({ dark: 'class' })`, `presetIcons({ scale, extraProperties })`, `presetTypography()`, `transformerDirectives()`, `transformerVariantGroup()`
+3. set `content.filesystem` when classes/icons are assembled dynamically — use `globSync` from `node:fs`:
 
    ```ts
    import { globSync } from "node:fs"
@@ -54,80 +54,80 @@ related:
    export default defineConfig({ content: { filesystem: sources } })
    ```
 
-4. import `theme.css` ตาม framework: Vite `main.ts`/root route, Next.js `app/layout.tsx`, Nuxt `nuxt.config` css array, Astro layout
+4. import `theme.css` per framework: Vite `main.ts`/root route, Next.js `app/layout.tsx`, Nuxt `nuxt.config` css array, Astro layout
 
 ### 4. Modify Path — Update Existing Theme
 
-> Goal: ปรับ theme ที่มีอยู่โดยไม่ clobber
+> Goal: adjust the existing theme without clobbering
 
-1. อ่าน `uno.config.*` เดิม — merge `theme`/`rules`/`variants` กับของเดิม ห้าม overwrite ทั้งไฟล์
-2. ใช้ wind4 theme keys: `font`, `radius`, `shadow`, `breakpoint`, `ease`, `spacing`, `colors` (+ `fontFamily`/`maxWidth`/`zIndex`/`animation` ได้); หลีกเลี่ยงชื่อ wind3 ที่ถูก rename
-3. Token ใหม่ต้องเพิ่มทั้ง light และ dark block พร้อมกัน + map ใน `theme.colors`
-4. UI ใช้ **theme utility ตรง ๆ** — `bg-surface`, `text-muted-foreground`, `border-border`, `rounded-md`, `shadow-lg`, `ring-focus/40`, `bg-primary-hover` … ไม่มี shortcut layer ใน config
-   - ค่าที่เป็น layout/ขนาดให้ใช้ utility ปกติของ wind4 (`p-6`, `gap-3`, `max-w-content`)
-   - สี/spacing ที่ซ้ำบ่อยให้ **เพิ่ม token** ใน `theme` ไม่ใช่สร้าง shortcut
-5. `rules`/`variants` เป็น last resort เท่านั้น — ใช้ theme ก่อน
+1. read the existing `uno.config.*` — merge `theme`/`rules`/`variants` with what is there; never overwrite the whole file
+2. use wind4 theme keys: `font`, `radius`, `shadow`, `breakpoint`, `ease`, `spacing`, `colors` (+ `fontFamily`/`maxWidth`/`zIndex`/`animation` allowed); avoid renamed wind3 names
+3. a new token must be added to both the light and dark blocks at once + mapped in `theme.colors`
+4. the UI uses **theme utilities directly** — `bg-surface`, `text-muted-foreground`, `border-border`, `rounded-md`, `shadow-lg`, `ring-focus/40`, `bg-primary-hover` … no shortcut layer in the config
+   - for layout/sizing values use the normal wind4 utilities (`p-6`, `gap-3`, `max-w-content`)
+   - for frequently repeated colors/spacing, **add a token** in `theme`, do not create a shortcut
+5. `rules`/`variants` are the last resort only — use the theme first
 
 ### 5. Dark Mode
 
-> Goal: dark mode ทำงานผ่าน CSS variables — UI ไม่ต้องมี `dark:` variant
+> Goal: dark mode works through CSS variables — the UI needs no `dark:` variant
 
-1. Dark mode switch ที่ CSS variable layer (`theme.css`) ไม่ใช่ utility layer — เลือก selector: `.dark` class (คู่กับ `presetWind4({ dark: 'class' })`), `[data-theme="dark"]`, หรือ `prefers-color-scheme`
-2. ถ้าใช้ `dark: 'class'` → toggle `.dark` บน `<html>`; ถ้าใช้ `[data-theme]` → set attribute บน `:root` — **อย่าตั้ง `dark: 'media'` พร้อม `.dark` selector** (selector จะไม่ถูก apply)
-3. เพราะ tokens เปลี่ยนค่าเอง → **UI ห้ามเขียน `dark:` variant กับ theme colors**; `dark:` ใช้ได้เฉพาะ non-theme edge case (เช่น media asset)
-4. Toggle/persist/FOUC guard — inline script ก่อน CSS, `localStorage`, แล้ว set class/attribute; snippets ใน `references/tokens.md`
+1. the dark mode switch lives at the CSS variable layer (`theme.css`), not the utility layer — choose a selector: `.dark` class (paired with `presetWind4({ dark: 'class' })`), `[data-theme="dark"]`, or `prefers-color-scheme`
+2. with `dark: 'class'` → toggle `.dark` on `<html>`; with `[data-theme]` → set the attribute on `:root` — **never set `dark: 'media'` together with a `.dark` selector** (the selector would never apply)
+3. because tokens change value on their own → **the UI must not write `dark:` variants with theme colors**; `dark:` is allowed only for non-theme edge cases (e.g. a media asset)
+4. toggle/persist/FOUC guard — inline script before CSS, `localStorage`, then set the class/attribute; snippets in `references/tokens.md`
 
 ### 6. Lint — Enforce Theme Usage
 
-> Goal: ทุก UI ใช้ theme tokens ตรงกับ `uno.config.ts` — deterministic + linter
+> Goal: all UI uses theme tokens matching `uno.config.ts` — deterministic + linter
 
-1. รัน theme lint preset (รันเสมอเมื่อมี theme layer):
+1. run the theme lint preset (always run when a theme layer exists):
 
    ```bash
    bun "<skills>/follow-unocss-theme/scripts/theme-lint.ts" <project-root>
    ```
 
-   `--json` สำหรับ report/CI — exit `1` เมื่อมี Critical/High; checks: token parity (light↔dark), config-map orphans/missing, foreground pairs, palette hardcode, `dark:` redundant, undefined tokens, dark wiring
-2. ตั้ง linter enforcement:
-   - **Biome** → `.grit` plugin ตาม `references/biome-plugin.md` (ห้าม `dark:` + palette classes) และ restrict scope ด้วย `overrides` ใน `biome.jsonc`
-   - **ESLint** → `@unocss/eslint-plugin` flat config (`unocss.configs.flat`) ได้ `unocss/order` autofix + `unocss/blocklist`
-3. Class checks เสริม: dynamic class template literals ต้องเป็น full class name ที่ scanner มองเห็น; conflicting utilities (`p-2 p-4`); `content.filesystem` ครอบ extensions จริง; class ที่ไม่มี CSS เลย → `scripts/check-dead-classes.ts`
+   `--json` for report/CI — exit `1` on Critical/High; checks: token parity (light↔dark), config-map orphans/missing, foreground pairs, palette hardcode, `dark:` redundant, undefined tokens, dark wiring
+2. set up linter enforcement:
+   - **Biome** → a `.grit` plugin per `references/biome-plugin.md` (forbid `dark:` + palette classes), with scope restricted via `overrides` in `biome.jsonc`
+   - **ESLint** → `@unocss/eslint-plugin` flat config (`unocss.configs.flat`) gives `unocss/order` autofix + `unocss/blocklist`
+3. extra class checks: dynamic class template literals must be full class names the scanner can see; conflicting utilities (`p-2 p-4`); `content.filesystem` must cover the real extensions; classes with no CSS at all → `scripts/check-dead-classes.ts`
 
 ### 7. Verify And Fix
 
-> Goal: theme ครบ ทุก UI ผ่าน lint ไม่มี regression
+> Goal: the theme is complete, all UI passes lint, no regression
 
-1. รัน `/run-dev` ทดสอบ `bg-background`/`bg-surface`/`text-foreground`/`border-border` — utilities generate ใน output
-2. Toggle dark → ทุก color เปลี่ยนตาม dark block โดยไม่มี `dark:` class; reload ไม่มี FOUC
-3. Contrast — `*-foreground` บน base ผ่าน WCAG AA ทั้งสอง mode
-4. Radius consistency — ค่า `rounded-[Npx]` ควร snap เข้า theme scale (`scripts/normalize-radius.ts`)
-5. Icon/asset ที่ประกอบชื่อแบบ dynamic ต้องทำให้ scanner เห็น (เขียน full class `i-mdi:x` ในที่ที่ประกาศชื่อ) แล้ว verify ว่า CSS ถูก generate
-6. ทำ `/run-lint` — theme lint + biome/eslint plugin ผ่าน; ถ้าพัง → `/resolve-errors` max 3 รอบแล้ว stop report
-7. Theme findings → `/apply` mode `validate`; palette hardcode → map เข้า semantic token ที่ตรง intent เท่านั้น ห้ามเปลี่ยนสีเอง
-8. ทำ `/report` table: `No. | Area | Check | Findings | Status`
+1. run `/run-dev` and test `bg-background`/`bg-surface`/`text-foreground`/`border-border` — the utilities generate in the output
+2. toggle dark → every color changes with the dark block with no `dark:` class; reload with no FOUC
+3. contrast — `*-foreground` on its base passes WCAG AA in both modes
+4. radius consistency — `rounded-[Npx]` values should snap into the theme scale (`scripts/normalize-radius.ts`)
+5. icons/assets whose names are assembled dynamically must be visible to the scanner (write the full class `i-mdi:x` where the name is declared), then verify the CSS is generated
+6. run `/run-lint` — theme lint + biome/eslint plugin pass; if broken → `/resolve-errors` max 3 rounds, then stop and report
+7. theme findings → `/apply` mode `validate`; palette hardcode → map to the semantic token matching the intent only; never change the color itself
+8. run `/report` table: `No. | Area | Check | Findings | Status`
 
 ## Rules
 
-- `theme.css` เป็น single source of truth — ห้าม hardcode ค่าสีใน `uno.config.ts` (map ผ่าน `hsl(var(--*))` / `var(--*)` เท่านั้น) และห้าม hardcode ใน UI
-- ชื่อ token ต้องตรงกันระหว่าง `theme.css` และ `uno.config.ts` ทุกตัว; ใช้ชื่อเต็ม ห้ามตัวย่อ
-- **ห้ามเขียนซ้ำกับ UnoCSS reset** — `presetWind4` preflights จัดการ `*{box-sizing}`, `body{margin:0}` และ normalize ของ `button`/`input`/`select`/`textarea` แล้ว
-- UI ใช้ **theme utility** จาก `uno.config.ts` theme เท่านั้น — ห้าม palette classes (`bg-blue-500`, `text-gray-600`) ยกเว้น `black`/`white`/`transparent`; ไม่มี shortcut layer
-- **ห้าม `dark:` variant ใน UI** — tokens สลับผ่าน CSS variables อยู่แล้ว
-- tokens ทั้ง light และ dark block ต้องครบชุดเดียวกัน (ยกเว้น non-color tokens ที่ไม่เปลี่ยน)
-- ทุก surface token ต้องมี `*-foreground` pair
-- ชื่อ class/icon ที่ประกอบจากตัวแปรต้องเป็น full name ที่ UnoCSS scanner มองเห็น — ห้ามพึ่ง safelist ที่ hand-maintain
-- Biome plugin ต้อง restrict scope ด้วย `overrides.includes` ตามไฟล์ UI จริง — ห้ามรันบน generated files/config
-- รัน `scripts/theme-lint.ts` ก่อนเสมอ — deterministic ไม่ต้องเดา; ใช้ linter ที่ project มีอยู่ ห้ามติดตั้ง ESLint ถ้า project ใช้ Biome
-- ใช้ /follow-lib-unocss ถ้าจำเป็น
-- ใช้ /follow-lib-css ถ้าจำเป็น
-- ใช้ /run-lint ถ้าจำเป็น
+- `theme.css` is the single source of truth — never hardcode color values in `uno.config.ts` (map through `hsl(var(--*))` / `var(--*)` only) and never hardcode in the UI
+- token names must match exactly between `theme.css` and `uno.config.ts`, all of them; use full names, no abbreviations
+- **never duplicate the UnoCSS reset** — `presetWind4` preflights already handle `*{box-sizing}`, `body{margin:0}`, and normalization of `button`/`input`/`select`/`textarea`
+- the UI uses **theme utilities** from the `uno.config.ts` theme only — no palette classes (`bg-blue-500`, `text-gray-600`) except `black`/`white`/`transparent`; no shortcut layer
+- **no `dark:` variant in the UI** — tokens already switch through CSS variables
+- the light and dark blocks must carry the identical token set (except non-color tokens that do not change)
+- every surface token must have a `*-foreground` pair
+- class/icon names assembled from variables must be full names visible to the UnoCSS scanner — never rely on a hand-maintained safelist
+- the Biome plugin must restrict scope via `overrides.includes` to the real UI files — never run it on generated files/config
+- always run `scripts/theme-lint.ts` first — deterministic, no guessing; use the linter the project already has — never install ESLint when the project uses Biome
+- Use /follow-lib-unocss if needed
+- Use /follow-lib-css if needed
+- Use /run-lint if needed
 
 ## Expected Outcome
 
-- `theme.css` มี semantic tokens ชื่อเต็ม ครบทั้ง light และ dark พร้อม foreground pairs เป็น single source of truth (ไม่มี reset ซ้ำ)
-- `uno.config.ts` map `theme.colors`/non-color keys ตรงกับ `theme.css` ทุก token ด้วย `hsl(var(--*))`/`var(--*)` + `content.filesystem` จาก `globSync`
-- UI ใช้ theme utility จาก `uno.config.ts` theme โดยตรง — ไม่มี palette hardcode, ไม่มี `dark:` variant, ไม่มี shortcut layer
-- ชื่อ class/icon ทุกตัวที่ประกอบแบบ dynamic ปรากฏเป็น full name ใน source → scanner generate CSS ให้ครบ
-- Biome plugin (scoped ด้วย `overrides`) หรือ ESLint plugin enforce rules ใน linter ของ project
-- `theme-lint.ts` + `/run-lint` ผ่าน — token parity, pairs, wiring, undefined tokens ครบ
-- Dark mode toggle ทำงาน + persist + ไม่มี FOUC; radius ใช้ theme scale สม่ำเสมอ
+- `theme.css` holds full-named semantic tokens, complete in both light and dark with foreground pairs, as the single source of truth (no duplicated reset)
+- `uno.config.ts` maps `theme.colors`/non-color keys exactly to `theme.css` for every token, via `hsl(var(--*))`/`var(--*)` + `content.filesystem` from `globSync`
+- the UI uses theme utilities straight from the `uno.config.ts` theme — no palette hardcoding, no `dark:` variants, no shortcut layer
+- every dynamically-assembled class/icon name appears as a full name in source → the scanner generates all CSS
+- the Biome plugin (scoped via `overrides`) or the ESLint plugin enforces the rules in the project's linter
+- `theme-lint.ts` + `/run-lint` pass — token parity, pairs, wiring, and undefined tokens all clean
+- dark mode toggle works + persists + no FOUC; radius values consistently use the theme scale

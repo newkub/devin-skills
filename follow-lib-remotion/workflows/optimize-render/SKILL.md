@@ -11,69 +11,69 @@ related:
 
 ## Goal
 
-ปรับปรุง Remotion render performance — ลด render time, เลือก codec/flags ที่เหมาะ และ cloud rendering notes
+Improve Remotion render performance — cut render time, pick suitable codecs/flags, and cloud rendering notes
 
 ## Scope
 
-ใช้เมื่อ render ช้าหรือต้องการ render ที่ scale — ครอบคลุม baseline timing, component optimization, CLI flags และ Lambda/Cloud Run notes (ต้องวัดผลก่อนและหลัง)
+Use when rendering is slow or scalable renders are needed — covers baseline timing, component optimization, CLI flags, and Lambda/Cloud Run notes (must measure before and after)
 
 ## Execute
 
 ### 1. Baseline
 
-> Goal: วัด render time ปัจจุบันก่อน optimize
+> Goal: measure the current render time before optimizing
 
-1. จับเวลา render ปัจจุบัน: `bunx remotion render MyComp` — บันทึก duration และ output size
-2. ระบุ bottleneck: composition complexity, assets ขนาดใหญ่, codec, concurrency — ทำ `/deep-optimize`
-3. ใช้ `--log=verbose` ดู render phases ถ้าต้องเจาะลึก
+1. time the current render: `bunx remotion render MyComp` — record duration and output size
+2. identify the bottleneck: composition complexity, large assets, codec, concurrency — run `/deep-optimize`
+3. use `--log=verbose` to inspect render phases if more detail is needed
 
 ### 2. Optimize Composition
 
-> Goal: ลด per-frame cost ใน components
+> Goal: reduce per-frame cost in components
 
-1. หลีกเลี่ยง expensive computation ใน render body — precompute นอก component หรือ memoize
-2. ใช้ `<OffthreadVideo>` สำหรับวิดีโอขนาดใหญ่ — extract frames แบบ offthread ไม่ block
-3. optimize assets ก่อน render — compress images/videos, resize ให้พอดี output resolution
-4. ใช้ `lazyComponent` สำหรับ compositions ที่ไม่ต้อง render ตอนนี้
-5. หลีกเลี่ยง `defaultProps` payload ใหญ่ — props ถูก serialize ทุก render
+1. avoid expensive computation in the render body — precompute outside the component or memoize
+2. use `<OffthreadVideo>` for large videos — extracts frames offthread without blocking
+3. optimize assets before rendering — compress images/videos, resize to fit the output resolution
+4. use `lazyComponent` for compositions that don't need to render now
+5. avoid large `defaultProps` payloads — props are serialized on every render
 
 ### 3. Tune Render Flags
 
-> Goal: เลือก codec และ concurrency ที่เหมาะ
+> Goal: pick suitable codec and concurrency
 
-1. `--codec`: `h264` (default, balanced), `h265` (เล็กกว่า แต่ช้ากว่า), `vp9` (web), `gif`, `png` sequence
-2. `--concurrency` ปรับตาม CPU cores ที่มี — default ค่อนข้างดี ลองเพิ่มถ้า render ช้า
-3. `--every-nth-frame` สำหรับ GIF/draft renders — ลด frames ที่ต้อง render
-4. `--scale` ลด output resolution สำหรับ preview/draft renders
-5. ดู flags เต็มที่ official docs `https://remotion.dev/docs/cli/render` — อย่าเดา flag names
+1. `--codec`: `h264` (default, balanced), `h265` (smaller but slower), `vp9` (web), `gif`, `png` sequence
+2. adjust `--concurrency` to the available CPU cores — the default is fairly good; try raising it if rendering is slow
+3. `--every-nth-frame` for GIF/draft renders — fewer frames to render
+4. `--scale` to lower output resolution for preview/draft renders
+5. see the full flags in the official docs `https://remotion.dev/docs/cli/render` — never guess flag names
 
 ### 4. Cloud Rendering Notes
 
-> Goal: เลือก cloud option เมื่อ local render ไม่พอ
+> Goal: choose a cloud option when local rendering isn't enough
 
-1. `@remotion/lambda` (AWS Lambda) — scale สูงสุด, render แบบ parallel ข้ามหลาย functions; เหมาะกับ volume ใหญ่
-2. `@remotion/cloudrun` (Google Cloud Run) — container-based, control มากกว่า lambda
-3. `@remotion/vercel` — integrate กับ Vercel
-4. Cloud rendering ต้อง setup credentials/infrastructure — ดู official docs และ `/follow-secret-manager` สำหรับ keys ห้าม commit
+1. `@remotion/lambda` (AWS Lambda) — highest scale, renders in parallel across many functions; suits large volume
+2. `@remotion/cloudrun` (Google Cloud Run) — container-based, more control than lambda
+3. `@remotion/vercel` — integrates with Vercel
+4. cloud rendering requires credentials/infrastructure setup — see the official docs and `/follow-secret-manager` for keys; never commit them
 
 ### 5. Verify And Compare
 
-> Goal: วัดผลหลัง optimize เทียบ baseline
+> Goal: measure after optimizing vs the baseline
 
-1. Render ซ้ำด้วย settings ใหม่ — compare duration และ output size กับ baseline ด้วย `/report-before-after`
-2. ตรวจ output quality — optimize ต้องไม่ลด quality เกินที่ยอมรับ
-3. ถ้าไม่ดีขึ้น → revert จุดนั้นแล้ว report
+1. re-render with the new settings — compare duration and output size against the baseline with `/report-before-after`
+2. check output quality — optimization must not drop quality beyond what is acceptable
+3. if there is no improvement → revert that point and report
 
 ## Rules
 
-- วัด baseline ก่อนเสมอ — ห้าม optimize โดยไม่มีตัวเลขเดิม
-- แก้ทีละจุด — แยกผลของแต่ละ optimization ได้
-- preserve output quality — ตรวจ output หลังทุกการเปลี่ยน
-- `--concurrency` สูงเกิน = memory pressure — ขึ้นทีละน้อย
-- ใช้ `/follow-lib-remotion` สำหรับ full reference
+- Measure the baseline first, always — never optimize without the original numbers
+- Change one point at a time — keep each optimization's effect separable
+- Preserve output quality — inspect the output after every change
+- `--concurrency` too high = memory pressure — raise it gradually
+- Use `/follow-lib-remotion` for the full reference
 
 ## Expected Outcome
 
-- Render time ลดลงเทียบ baseline ด้วยตัวเลขจริง
-- Codec/flags เหมาะกับ use case (draft vs production)
-- Cloud rendering option ระบุชัดเจนถ้าต้อง scale
+- Render time reduced vs the baseline with real numbers
+- Codec/flags suited to the use case (draft vs production)
+- Cloud rendering option clearly stated if scaling is needed

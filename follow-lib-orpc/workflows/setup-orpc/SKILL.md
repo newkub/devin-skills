@@ -1,6 +1,6 @@
 ---
 name: follow-lib-orpc-setup-orpc
-description: ติดตั้ง oRPC, router/procedure basics, zod integration และ server handler
+description: Install oRPC, router/procedure basics, zod integration, and the server handler
 argument-hint: "[runtime-or-scope]"
 related:
   - follow-lib-orpc
@@ -12,67 +12,67 @@ related:
 
 ## Goal
 
-ติดตั้ง oRPC และสร้าง router/procedure พร้อม Zod validation + server handler ให้ API call ได้จริง — first-time setup เท่านั้น
+Install oRPC and create a router/procedure with Zod validation + a server handler so API calls actually work — first-time setup only
 
 ## Scope
 
-- ใช้เมื่อ project ยังไม่มี oRPC (ถ้ามีอยู่แล้ว → verify เท่านั้น)
-- ครอบคลุม: install, `os` builder, procedures + zod `.input()`/`.output()`, `RPCHandler` mounting
-- ไม่ครอบคลุม client, middleware, OpenAPI, TanStack Query — ดู parent `SKILL.md`
+- use when the project has no oRPC yet (if it exists already → verify only)
+- covers: install, the `os` builder, procedures + zod `.input()`/`.output()`, `RPCHandler` mounting
+- does not cover client, middleware, OpenAPI, TanStack Query — see the parent `SKILL.md`
 
 ## Execute
 
 ### 1. Check Precondition
 
-> Goal: ตรวจสอบ environment ก่อน setup
+> Goal: check the environment before setup
 
-1. อ่าน `package.json` — ถ้ามี `@orpc/server` แล้ว → skip ไป verify; ตรวจ version (v1 stable vs v2 beta ต่างกัน — ดู Version Notes ใน parent)
-2. ระบุ runtime/framework (Bun, Node, TanStack Start, Next.js) — เลือก handler package ให้ตรง
-3. ถ้าไม่มี `zod` → ทำ `/follow-lib-zod` ก่อน (oRPC ใช้ Zod เป็น validator หลัก)
+1. read `package.json` — if `@orpc/server` is already present → skip to verify; check the version (v1 stable vs v2 beta differ — see Version Notes in the parent)
+2. identify the runtime/framework (Bun, Node, TanStack Start, Next.js) — pick the matching handler package
+3. if there is no `zod` → run `/follow-lib-zod` first (oRPC uses Zod as its primary validator)
 
 ### 2. Install
 
-> Goal: ติดตั้ง packages ขั้นต่ำ
+> Goal: install the minimum packages
 
-1. รัน `bun add @orpc/server` (เพิ่ม `@orpc/client` ถ้า same-repo client ต้องใช้)
-2. ยืนยันอยู่ใน `dependencies`; `zod` ต้องมีอยู่แล้ว
+1. run `bun add @orpc/server` (add `@orpc/client` if a same-repo client needs it)
+2. confirm it lands in `dependencies`; `zod` must already be present
 
 ### 3. Define Procedures And Router
 
-> Goal: router พร้อม zod-validated procedures
+> Goal: a router with zod-validated procedures
 
-1. สร้าง `os` builder: `import { os } from "@orpc/server"` — เพิ่ม `.$context<{ headers: Headers }>()` ถ้าต้องการ initial context
-2. Procedure: `.input(zodSchema).handler(async ({ input }) => { ... })` — ทำ `/follow-lib-zod` สำหรับ schemas
-3. เพิ่ม `.output(zodSchema)` เมื่อต้อง validate response; `.errors({...})` เมื่อต้องการ type-safe errors
-4. รวม procedures เป็น router: `{ users: { list, create } }` แล้ว `export type Router = typeof router`
+1. create the `os` builder: `import { os } from "@orpc/server"` — add `.$context<{ headers: Headers }>()` if initial context is needed
+2. procedure: `.input(zodSchema).handler(async ({ input }) => { ... })` — run `/follow-lib-zod` for schemas
+3. add `.output(zodSchema)` when the response must be validated; `.errors({...})` when type-safe errors are needed
+4. combine procedures into a router: `{ users: { list, create } }`, then `export type Router = typeof router`
 
 ### 4. Setup Server Handler
 
-> Goal: handler ตอบ request ได้
+> Goal: the handler can answer requests
 
-1. ใช้ `RPCHandler` จาก `@orpc/server/fetch` (edge/fetch runtimes) หรือ `@orpc/server/node` (Node.js)
-2. Mount ที่ route เช่น `/rpc/*` แล้วเรียก `handler.handle(request, { prefix: "/rpc", context: { headers: request.headers } })`
-3. เช็ค `matched` — ถ้า false → return `404`/next handler
-4. ตั้ง `interceptors: [onError((error) => console.error(error))]` สำหรับ error logging
+1. use `RPCHandler` from `@orpc/server/fetch` (edge/fetch runtimes) or `@orpc/server/node` (Node.js)
+2. mount at a route such as `/rpc/*`, then call `handler.handle(request, { prefix: "/rpc", context: { headers: request.headers } })`
+3. check `matched` — if false → return `404`/the next handler
+4. set `interceptors: [onError((error) => console.error(error))]` for error logging
 
 ### 5. Verify
 
-> Goal: call procedure จริงผ่าน HTTP
+> Goal: call a procedure for real over HTTP
 
-1. Smoke: call procedure ผ่าน HTTP request หรือ test client — input ถูก validate, output ถูกต้อง
-2. Invalid input → error response ชัดเจน (zod validation)
-3. รัน `bunx tsc --noEmit` + lint — ถ้าไม่ผ่าน → ทำ `/resolve-errors` max 3 รอบ แล้ว stop report; ผ่าน → `/suggest-next-action`
+1. Smoke: call a procedure via an HTTP request or test client — input is validated, output is correct
+2. Invalid input → a clear error response (zod validation)
+3. run `bunx tsc --noEmit` + lint — if it fails → run `/resolve-errors` max 3 rounds, then stop and report; passing → `/suggest-next-action`
 
 ## Rules
 
-- Idempotent — ถ้า setup ไปแล้วให้ verify เท่านั้น
-- `.input()` ทุก procedure ที่รับ input — Zod เป็น validator หลัก
-- Export `type Router` เสมอ — client type inference ขึ้นกับมัน
-- เลือก handler package ตาม runtime (`/fetch` vs `/node`) — ถ้าไม่แน่ใจ → ดู official docs (orpc.unnoq.com)
-- ตรวจ version ก่อนเลือก API — v2 beta มี breaking changes (`isDefinedError` → `isInferableError` ฯลฯ)
+- Idempotent — if already set up, verify only
+- `.input()` on every procedure that takes input — Zod is the primary validator
+- Always export `type Router` — client type inference depends on it
+- Pick the handler package by runtime (`/fetch` vs `/node`) — if unsure → check the official docs (orpc.unnoq.com)
+- Check the version before choosing APIs — v2 beta has breaking changes (`isDefinedError` → `isInferableError`, etc.)
 
 ## Expected Outcome
 
-- `@orpc/server` ติดตั้ง, router + procedures พร้อม zod validation
-- `RPCHandler` mount ถูก route — smoke call ผ่าน
-- พร้อมทำ client/middleware ต่อตาม parent `SKILL.md`
+- `@orpc/server` installed, router + procedures with zod validation
+- `RPCHandler` mounted at the right route — smoke call passes
+- ready to continue with client/middleware per the parent `SKILL.md`

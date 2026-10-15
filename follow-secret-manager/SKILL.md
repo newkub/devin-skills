@@ -1,6 +1,6 @@
 ---
 name: follow-secret-manager
-description: จัดการ secrets และ environment variables อย่างปลอดภัยด้วย secret manager (Infisical เป็น default)
+description: Manage secrets and environment variables safely with a secret manager (Infisical default)
 argument-hint: "[scope]"
 related:
   - open-web-for-config-secret
@@ -15,87 +15,87 @@ related:
 ---
 ## Goal
 
-ตั้งค่าและใช้งาน secret manager สำหรับจัดการ secrets และ environment variables ในโปรเจกต์อย่างปลอดภัย โดยไม่ให้ AI หรือ codebase ต้องรู้ค่า secrets จริง
+Set up and use a secret manager to handle secrets and environment variables in the project safely, without letting the AI or the codebase know the real secret values
 
 ## Scope
 
-ใช้สำหรับทุก workspace ที่ต้องการ secrets management ทั้ง local development, CI/CD และ production รองรับ secret manager หลายตัวแต่แนะนำ Infisical เป็น default
+Use for every workspace that needs secrets management — local development, CI/CD, and production. Supports several secret managers, but Infisical is the recommended default
 
 ## Execute
 
 ### 1. Choose Secret Manager
 
-> Goal: เลือก secret manager ทีเหมาะสม
+> Goal: pick the right secret manager
 
 Latest: `@infisical/cli@0.43.136`, `@infisical/sdk@5.0.2` (verified 2026-09-24)
 
-1. Default: ใช้ Infisical ตาม [references/infisical.md](references/infisical.md)
-2. Self-hosted: ใช้ Infisical self-hosted หรือ HashiCorp Vault
+1. Default: use Infisical per [references/infisical.md](references/infisical.md)
+2. Self-hosted: use Infisical self-hosted or HashiCorp Vault
 3. Cloud-native: AWS Secrets Manager, Azure Key Vault, GCP Secret Manager, Cloudflare Secrets
-4. ถ้า user ไม่ระบุ → ใช้ Infisical เพราะฟรี tier ใช้งานได้ดี มี CLI/SDK ครบ และรองรับ OIDC
+4. if the user does not specify → use Infisical: its free tier works well, has a full CLI/SDK, and supports OIDC
 
 ### 2. Install And Authenticate
 
-> Goal: ติดตั้ง CLI และ authenticate
+> Goal: install the CLI and authenticate
 
-1. ติดตั้ง CLI ตาม secret manager ทีเลือก
-2. สำหรับ Infisical:
-   - `bun add -g @infisical/cli` หรือ `brew install infisical` หรือ `scoop install infisical`
-   - ล็อกอิน: `infisical login`
-3. สำหรับ CI/CD ใช้ machine identity / OIDC แทน personal token
-4. ตรวจสอบสิทธิ์ด้วย `infisical secrets` หรือคำสั่งเทียบเท่า
+1. install the CLI per the chosen secret manager
+2. for Infisical:
+   - `bun add -g @infisical/cli` or `brew install infisical` or `scoop install infisical`
+   - log in: `infisical login`
+3. for CI/CD use machine identity / OIDC instead of personal tokens
+4. verify access with `infisical secrets` or the equivalent command
 
 ### 3. Initialize Project
 
-> Goal: เชื่อมโยง project กับ secret manager
+> Goal: link the project to the secret manager
 
-1. รัน `infisical init` ใน project root
-2. เลือก project และ default environment (dev, staging, prod)
-3. ตั้งค่า `.infisical.json` ด้วย `workspaceId` และ `defaultEnvironment`
-4. Monorepo: รัน `infisical init` ในแต่ละ workspace ที่ต้องการ
-5. Commit `.infisical.json` ได้ (ไม่มี sensitive data)
+1. run `infisical init` in the project root
+2. select the project and the default environment (dev, staging, prod)
+3. set `.infisical.json` with `workspaceId` and `defaultEnvironment`
+4. monorepo: run `infisical init` in each workspace that needs it
+5. `.infisical.json` can be committed (no sensitive data)
 
 ### 4. Collect Secrets Without AI Reading Values
 
-> Goal: ระบุ secrets ทีต้องการและชี้ user ไปกรอกเอง
+> Goal: identify the needed secrets and point the user to fill them in personally
 
-1. อ่าน `.env.example` หรือ project requirements
-2. ใช้ `/open-web-for-config-secret` เพื่อเปิด:
-   - URLs ของ external services (Stripe, OpenAI, Cloudflare, ฯลฯ) สำหรับสร้าง API keys
-   - URL ของ secret manager dashboard สำหรับ paste ค่า
-3. ให้ user copy API keys จาก service dashboard แล้ว paste ลง secret manager เอง
-4. AI ไม่รับค่า secrets จาก user โดยตรง ยกเว้น user ต้องการป้อนใน dashboard เอง
+1. read `.env.example` or the project requirements
+2. use `/open-web-for-config-secret` to open:
+   - external service URLs (Stripe, OpenAI, Cloudflare, etc.) for creating API keys
+   - the secret manager dashboard URL for pasting values
+3. have the user copy API keys from the service dashboard and paste them into the secret manager themselves
+4. the AI never receives secret values directly from the user, unless the user wants to enter them in the dashboard themselves
 
 ### 5. Store Secrets In Secret Manager
 
-> Goal: เก็บ secrets ในตัวจัดการ secrets
+> Goal: store the secrets in the secret manager
 
-1. Local/CLI: `infisical secrets set KEY=value --env=dev`
-2. File-based: `infisical secrets set CERT=@/path/to/cert.pem --env=dev`
-3. Dashboard: เปิดหน้า secret manager แล้วกรอกค่าเอง
-4. จัดระเบียบด้วย `--path` และ `--tags`
-5. ใช้ secret referencing: `${KEY}` สำหรับค่าทีอ้างอิงกัน
+1. local/CLI: `infisical secrets set KEY=value --env=dev`
+2. file-based: `infisical secrets set CERT=@/path/to/cert.pem --env=dev`
+3. dashboard: open the secret manager page and fill in the values yourself
+4. organize with `--path` and `--tags`
+5. use secret referencing: `${KEY}` for values that reference each other
 
 ### 6. Use In Local Development
 
-> Goal: inject secrets สำหรับ local dev โดยไม่ต้องมี `.env` และ verify ว่าค่าจริงถูกใช้ ไม่ถูก local files override
+> Goal: inject secrets for local dev without a `.env`, and verify the real values are used and not overridden by local files
 
-1. รัน `infisical run --env=dev -- <command>` — dev: `bun run dev`, auto-reload: `--watch`, หลาย commands: `--command="bun run build && bun run start"`
-2. ถ้า project ใช้ npm เป็นหลัก → แทนด้วย `npm run`; monorepo ใช้ root scripts: `"secrets:dev": "infisical run --env=dev -- turbo run dev"`, `"secrets:build": "infisical run --env=prod -- turbo run build"`
-3. verify: รัน `infisical export --env=dev` เทียบกับ required keys (เช็คเฉพาะ key names ไม่ print values)
-4. ตรวจ local files ที่อาจชนะ injected env — `.dev.vars`, `wrangler.toml`/`wrangler.jsonc` `[vars]`, `.env`/`.env.local` — ถ้ามี placeholder/localhost values → แจ้ง user ให้แก้หรือลบ
-5. รัน dev command จริงแล้วเช็ค startup log ว่า required keys report เป็น set — ถ้าขาด → `/open-web-for-config-secret`
-6. ผล verify รายงานเป็นตาราง `| No. | Key | Source ที่ชนะ | Status | Action |`
+1. run `infisical run --env=dev -- <command>` — dev: `bun run dev`, auto-reload: `--watch`, multiple commands: `--command="bun run build && bun run start"`
+2. if the project primarily uses npm → substitute `npm run`; monorepo root scripts: `"secrets:dev": "infisical run --env=dev -- turbo run dev"`, `"secrets:build": "infisical run --env=prod -- turbo run build"`
+3. verify: run `infisical export --env=dev` against the required keys (check key names only, never print values)
+4. check local files that may win over the injected env — `.dev.vars`, `wrangler.toml`/`wrangler.jsonc` `[vars]`, `.env`/`.env.local` — if they hold placeholder/localhost values → tell the user to fix or remove them
+5. run the real dev command and check the startup log reports the required keys as set — if any are missing → `/open-web-for-config-secret`
+6. report the verification result as a table `| No. | Key | Winning Source | Status | Action |`
 
 ### 7. CI/CD Without Long-Lived Tokens
 
-> Goal: ใช้ OIDC หรือ machine identity ใน CI/CD
+> Goal: use OIDC or machine identity in CI/CD
 
-1. GitHub Actions: ใช้ `Infisical/secrets-action` ด้วย OIDC
-2. สร้าง machine identity ใน Infisical
-3. ตั้งค่า OIDC Discovery URL: `https://token.actions.githubusercontent.com`
-4. ตั้งค่า Subject: `repo:<owner>/<repo>:<context>`
-5. Workflow example:
+1. GitHub Actions: use `Infisical/secrets-action` with OIDC
+2. create a machine identity in Infisical
+3. set the OIDC Discovery URL: `https://token.actions.githubusercontent.com`
+4. set the Subject: `repo:<owner>/<repo>:<context>`
+5. workflow example:
    ```yaml
    permissions:
      id-token: write
@@ -112,86 +112,86 @@ Latest: `@infisical/cli@0.43.136`, `@infisical/sdk@5.0.2` (verified 2026-09-24)
              project-slug: <project-slug>
              env-slug: dev
    ```
-6. CI/CD อื่นๆ: ใช้ `INFISICAL_TOKEN` สั้น ๆ ชั่วคราว แล้ว revoke หลังใช้
+6. other CI/CD: use a short-lived temporary `INFISICAL_TOKEN`, then revoke it after use
 
 ### 8. Platform Integrations
 
-> Goal: ให้ทุก platform ดึง secrets จาก secret manager
+> Goal: every platform pulls secrets from the secret manager
 
-- Cloudflare: `infisical run --env=prod -- wrangler deploy` — ไม่ต้องเก็บ `CLOUDFLARE_API_TOKEN` ใน repo
-- Vercel: sync ด้วย Infisical Vercel integration หรือ inject ผ่าน CI
-- Railway: ใช้ `infisical run` ก่อน `railway up`
-- GitHub: sync หรือ OIDC
-- Docker: ติดตั้ง Infisical CLI ใน image แล้ว `infisical run` ใน `CMD`
-- Kubernetes: Infisical Operator หรือ sync ไป Kubernetes secrets
+- Cloudflare: `infisical run --env=prod -- wrangler deploy` — no need to keep `CLOUDFLARE_API_TOKEN` in the repo
+- Vercel: sync with the Infisical Vercel integration or inject via CI
+- Railway: use `infisical run` before `railway up`
+- GitHub: sync or OIDC
+- Docker: install the Infisical CLI in the image, then `infisical run` in `CMD`
+- Kubernetes: Infisical Operator or sync into Kubernetes secrets
 
 ### 9. SDK For Production
 
-> Goal: programmatic access โดยไม่ hardcode credentials
+> Goal: programmatic access without hardcoded credentials
 
-- ติดตั้ง SDK: `bun add @infisical/sdk` (ถ้า project ใช้ npm เป็นหลัก ให้ใช้ `npm install @infisical/sdk`)
-- Authenticate: `client.auth().universalAuth.login({ clientId, clientSecret })`
-- ดึง secret: `client.secrets().getSecret({ environment, projectId, secretName })`
-- ดึงทั้งหมด: `client.secrets().listSecrets({ environment, projectId, expandSecretReferences: true })`
-- อย่า hardcode `clientId`/`clientSecret` — ใช้ env var หรือ OIDC
+- install the SDK: `bun add @infisical/sdk` (if the project primarily uses npm, use `npm install @infisical/sdk`)
+- authenticate: `client.auth().universalAuth.login({ clientId, clientSecret })`
+- fetch one secret: `client.secrets().getSecret({ environment, projectId, secretName })`
+- fetch all: `client.secrets().listSecrets({ environment, projectId, expandSecretReferences: true })`
+- never hardcode `clientId`/`clientSecret` — use env vars or OIDC
 
 ### 10. Rotate And Audit
 
-> Goal: ดูแล secrets ระยะยาว
+> Goal: care for the secrets long term
 
-- Dual-phase rotation สำหรับ zero-downtime
-- Rotation schedule: Database 30-90 วัน, API keys 60-90 วัน, Cloud 90 วัน
-- ใช้ dynamic secrets ถ้าเป็นไปได้
-- ตรวจ audit logs ทุกเดือน
-- ตั้ง alerts สำหรับ unauthorized access
-- ใช้ secret scanning เพื่อตรวจ leak ใน Git
+- dual-phase rotation for zero downtime
+- rotation schedule: database 30-90 days, API keys 60-90 days, cloud 90 days
+- use dynamic secrets where possible
+- review audit logs every month
+- set alerts for unauthorized access
+- use secret scanning to detect leaks in git
 
 ## Rules
 
 ### 1. Security First
 
-- ห้าม hardcode secrets ใน codebase
-- ห้าม commit `.env` หรือ `.env.local` ทีมีค่าจริง
-- AI ไม่ควรรู้ค่า secrets ถ้าไม่จำเป็น
-- สำหรับ secrets ที sensitive มาก ให้ user กรอกเองใน dashboard
+- never hardcode secrets in the codebase
+- never commit `.env` or `.env.local` with real values
+- the AI should not know secret values unless necessary
+- for very sensitive secrets, have the user fill values into the dashboard themselves
 
 ### 2. Prefer OIDC
 
-- CI/CD ใช้ OIDC แทน long-lived token เสมอ
-- สร้าง machine identity แยกตาม environment
-- ใช้ least privilege access
+- CI/CD always uses OIDC instead of long-lived tokens
+- create separate machine identities per environment
+- use least-privilege access
 
 ### 3. Local Development
 
-- ใช้ `infisical run` แทน `.env` files
-- `.infisical.json` commit ได้ แต่ไม่มี secrets
-- ถ้าต้องมี `.env.example` ให้มีแค่ key names ไม่มี values
+- use `infisical run` instead of `.env` files
+- `.infisical.json` is committable but holds no secrets
+- if `.env.example` is needed, keep only key names, no values
 
 ### 4. Onboarding Flow
 
-- ใช้ `/open-web-for-config-secret` สำหรับชี้ user ไปยัง URLs ทีถูกต้อง
-- ไม่เปิดให้ user paste ค่าให้ AI
-- ให้ user paste ค่าลง secret manager dashboard โดยตรง
+- use `/open-web-for-config-secret` to point the user to the right URLs
+- never let the user paste values to the AI
+- have the user paste values directly into the secret manager dashboard
 
 ### 5. When Not To Use
 
-- ถ้า project มี secrets น้อยมากและทีมเล็กมาก อาจใช้ `.env` ผ่าน USB/secure channel แล้วไม่ commit ก็ยังพอรับได้
-- ถ้า secret manager ล่มแล้ว production ได้รับผลกระทบ → วางแผน fallback
+- if a project has very few secrets and a very small team, a `.env` carried via USB/secure channel and never committed is still acceptable
+- if the secret manager is down and production is affected → plan a fallback
 
-- ใช้ /deploy-to-cloudflare ถ้าจำเป็น
-- ใช้ /deploy-to-vercel ถ้าจำเป็น
-- ใช้ /deploy-to-railway ถ้าจำเป็น
-- ใช้ /follow-deploy ถ้าจำเป็น
-- ใช้ /deep-review-codebase ถ้าจำเป็น
-- ใช้ /follow-tool-github-actions ถ้าจำเป็น (secret manager)
-- ใช้ /run-audit ถ้าจำเป็น
+- Use /deploy-to-cloudflare if needed
+- Use /deploy-to-vercel if needed
+- Use /deploy-to-railway if needed
+- Use /follow-deploy if needed
+- Use /deep-review-codebase if needed
+- Use /follow-tool-github-actions if needed (secret manager)
+- Use /run-audit if needed
 
 ## Expected Outcome
 
-- มี secret manager ตั้งค่าครบถ้วน
-- Secrets ไม่อยู่ใน repo หรือเครื่อง developer โดยตรง
-- Local dev ใช้ `infisical run` หรือเทียบเท่า
-- CI/CD ใช้ OIDC หรือ machine identity
-- ทุก platform ดึง secrets จาก secret manager
-- AI ไม่จำเป็นต้องเห็นค่า secrets จริง
-- Audit logs และ rotation ใช้งานได้
+- a secret manager fully configured
+- secrets are not in the repo or directly on developer machines
+- local dev uses `infisical run` or the equivalent
+- CI/CD uses OIDC or machine identity
+- every platform pulls secrets from the secret manager
+- the AI does not need to see real secret values
+- audit logs and rotation are in use

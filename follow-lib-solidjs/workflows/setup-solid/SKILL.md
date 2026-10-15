@@ -1,6 +1,6 @@
 ---
 name: follow-lib-solidjs-setup-solid
-description: ติดตั้ง SolidJS — vite plugin, JSX/TS config, render root, dev/build setup
+description: Install SolidJS — vite plugin, JSX/TS config, render root, dev/build setup
 argument-hint: "[template]"
 related:
   - follow-lib-solidjs
@@ -12,11 +12,11 @@ related:
 
 ## Goal
 
-ติดตั้ง SolidJS app — vite + babel-preset-solid, tsconfig JSX config, render root, dev/build pipeline
+Install a SolidJS app — vite + babel-preset-solid, tsconfig JSX config, render root, dev/build pipeline
 
 ## Scope
 
-first-time SolidJS setup — SolidStart (SSR framework) เป็นตัวเลือกอื่น; การเขียน components → `build-components`
+first-time SolidJS setup — SolidStart (SSR framework) is the alternative; writing components → `build-components`
 
 ## Execute
 
@@ -27,7 +27,7 @@ bun create solid my-app          # official templates (vite + solid-ts / solid-j
 cd my-app && bun i
 ```
 
-หรือเพิ่มเข้า vite project เดิม:
+or add into an existing vite project:
 
 ```bash
 bun i solid-js && bun i -D vite-plugin-solid
@@ -51,7 +51,7 @@ export default defineConfig({ plugins: [solid()] })
 }
 ```
 
-- `jsx: "preserve"` + `jsxImportSource: "solid-js"` — vite-plugin-solid transform ผ่าน babel
+- `jsx: "preserve"` + `jsxImportSource: "solid-js"` — vite-plugin-solid transforms via babel
 
 ### 3. Entry Point
 
@@ -62,28 +62,28 @@ import App from './App'
 render(() => <App />, document.getElementById('root')!)
 ```
 
-- `render(() => <App/>, root)` — mount once; ไม่มี re-render root pattern แบบ React
+- `render(() => <App/>, root)` — mounts once; there is no React-style root re-render pattern
 
 ### 4. Dev And Build
 
 1. `bun run dev` — vite dev + solid HMR
 2. `bun run build` — production bundle
-3. `/run-dev` verify; fail → `/resolve-errors` max 3 รอบ
+3. `/run-dev` verify; fail → `/resolve-errors` max 3 rounds
 
 ### 5. Ecosystem Add-ons (optional)
 
 - `@solidjs/router` — file/app routing; `@solidjs/meta` — head management
 - `@solid-primitives/*` — utility primitives; `@tanstack/solid-query` — data fetching
-- SolidStart เมื่อต้องการ SSR/SSR+streaming (แยก framework)
+- SolidStart when SSR/SSR+streaming is needed (a separate framework)
 
 ## Rules
 
-- `jsxImportSource: "solid-js"` ทุก tsconfig — ไม่งั้น JSX compile เป็น React
-- เลือก `solid-js` core หรือ `solid-start` (app framework) — ห้ามปนกัน
-- `solid()` vite plugin บังคับ — JSX transform ของ solid ผ่าน babel เท่านั้น
-- Component file `.tsx`; `entry server` ใช้ `renderToString` เฉพาะ SSR
+- `jsxImportSource: "solid-js"` in every tsconfig — otherwise JSX compiles as React
+- Choose `solid-js` core or `solid-start` (app framework) — never mix them
+- The `solid()` vite plugin is mandatory — solid's JSX transform goes through babel only
+- Component files are `.tsx`; `entry server` uses `renderToString` for SSR only
 
 ## Expected Outcome
 
-- `bun run dev` ขึ้น, JSX compile ถูก, HMR ทำงาน
-- Build ออก bundle พร้อม deploy
+- `bun run dev` starts, JSX compiles correctly, HMR works
+- build outputs a deploy-ready bundle

@@ -12,32 +12,32 @@ related:
 
 ## Goal
 
-ตั้งค่า `openai` SDK กับ providers ต่างๆ — `baseURL` สำหรับ OpenAI-compatible endpoints, org/project keys และ env config
+Configure the `openai` SDK with different providers — `baseURL` for OpenAI-compatible endpoints, org/project keys, and env config
 
 ## Scope
 
-ใช้เมื่อต้อง config `openai` client — ครอบคลุม `baseURL` override สำหรับ compatible providers (Azure, OpenRouter, Together, local LLMs), `organization`/`project` keys และ secrets handling
+Use when configuring the `openai` client — covers `baseURL` override for compatible providers (Azure, OpenRouter, Together, local LLMs), `organization`/`project` keys, and secrets handling
 
 ## Execute
 
 ### 1. Read Current Config
 
-> Goal: ตรวจ client config และ env vars ปัจจุบัน
+> Goal: inspect the current client config and env vars
 
-1. ตรวจว่ามี `new OpenAI(...)` อยู่แล้วหรือไม่ — merge เดิม ห้าม overwrite
-2. ทำ `/check-secrets env-vars` — ดู `OPENAI_API_KEY`, `OPENAI_BASE_URL`, `OPENAI_ORG_ID`, `OPENAI_PROJECT_ID` ที่ตั้งไว้
-3. ระบุ provider ที่ใช้จริง — OpenAI official หรือ compatible endpoint
+1. check whether a `new OpenAI(...)` already exists — merge with the original, never overwrite
+2. run `/check-secrets env-vars` — see which of `OPENAI_API_KEY`, `OPENAI_BASE_URL`, `OPENAI_ORG_ID`, `OPENAI_PROJECT_ID` are set
+3. identify the provider actually used — official OpenAI or a compatible endpoint
 
 ### 2. Configure Client Options
 
-> Goal: ตั้งค่า client options ตาม provider
+> Goal: set client options per provider
 
 ```ts
 import OpenAI from 'openai'
 
 const client = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,   // default: env OPENAI_API_KEY
-  baseURL: process.env.OPENAI_BASE_URL, // override สำหรับ compatible providers
+  baseURL: process.env.OPENAI_BASE_URL, // override for compatible providers
   organization: process.env.OPENAI_ORG_ID,
   project: process.env.OPENAI_PROJECT_ID,
   timeout: 60_000,
@@ -45,40 +45,40 @@ const client = new OpenAI({
 })
 ```
 
-1. `apiKey` — อ่านจาก env `OPENAI_API_KEY` (default) หรือ env ของ provider นั้น
-2. `baseURL` — ตั้งสำหรับ OpenAI-compatible providers เช่น OpenRouter `https://openrouter.ai/api/v1`, Azure endpoint, local LLM servers (Ollama `http://localhost:11434/v1`, LM Studio) — ดู provider docs สำหรับ URL ที่ถูกต้อง
-3. `organization`/`project` — จำเป็นสำหรับ OpenAI accounts ที่มีหลาย orgs/projects; ใช้ env `OPENAI_ORG_ID`/`OPENAI_PROJECT_ID`
-4. ตั้ง `timeout` และ `maxRetries` เสมอ — default อาจไม่พอสำหรับ long requests
-5. บาง providers ต้องการ extra headers (เช่น OpenRouter `HTTP-Referer`) — ใช้ `defaultHeaders` option; ดู provider docs
+1. `apiKey` — read from env `OPENAI_API_KEY` (default) or that provider's env var
+2. `baseURL` — set for OpenAI-compatible providers such as OpenRouter `https://openrouter.ai/api/v1`, Azure endpoints, local LLM servers (Ollama `http://localhost:11434/v1`, LM Studio) — see the provider docs for the correct URL
+3. `organization`/`project` — needed for OpenAI accounts with multiple orgs/projects; use env `OPENAI_ORG_ID`/`OPENAI_PROJECT_ID`
+4. always set `timeout` and `maxRetries` — the defaults may not suffice for long requests
+5. some providers need extra headers (e.g. OpenRouter `HTTP-Referer`) — use the `defaultHeaders` option; see the provider docs
 
 ### 3. Verify Provider Compatibility
 
-> Goal: ยืนยันว่า endpoint รองรับ API ที่ใช้
+> Goal: confirm the endpoint supports the APIs used
 
-1. Compatible providers รองรับ Chat Completions API เกือบทั้งหมด — แต่ Responses API, structured output, tools อาจไม่รองรับทุก provider
-2. ทดสอบ call ง่ายๆ ก่อน: `client.chat.completions.create({ model, messages })`
-3. ตรวจ model name ตรงกับ provider — model names ต่างกันระหว่าง providers
-4. ถ้า provider ไม่รองรับ feature ที่ต้องการ → report ข้อจำกัดให้ user
+1. Compatible providers support nearly all of the Chat Completions API — but the Responses API, structured output, and tools may not be supported by every provider
+2. test a simple call first: `client.chat.completions.create({ model, messages })`
+3. check the model name matches the provider — model names differ across providers
+4. if the provider lacks a needed feature → report the limitation to the user
 
 ### 4. Verify
 
-> Goal: smoke test client call จริง
+> Goal: smoke test a real client call
 
-1. ทดสอบ request จริง 1 ครั้ง — response ถูกต้องไม่มี auth/URL errors
-2. ทำ `/run-verify` สำหรับ lint/typecheck
-3. ถ้าพัง → ทำ `/resolve-errors` max 3 รอบ แล้ว stop report
+1. test one real request — the response is correct with no auth/URL errors
+2. run `/run-verify` for lint/typecheck
+3. if it breaks → run `/resolve-errors` max 3 rounds, then stop and report
 
 ## Rules
 
-- ห้าม hardcode API keys — env vars เท่านั้น; secrets ผ่าน `/follow-secret-manager`
-- ห้ามเรียก provider จาก client-side code — proxy ผ่าน server เสมอ
-- ตั้ง `timeout` + `maxRetries` เสมอ — handle 429 backoff
-- `openai@7.x` ต้อง Node.js 22+ — ตรวจ runtime ก่อน
-- ใช้ `/follow-lib-openai` สำหรับ full reference
+- Never hardcode API keys — env vars only; secrets through `/follow-secret-manager`
+- Never call the provider from client-side code — always proxy through the server
+- Always set `timeout` + `maxRetries` — handle 429 backoff
+- `openai@7.x` requires Node.js 22+ — check the runtime first
+- Use `/follow-lib-openai` for the full reference
 
 ## Expected Outcome
 
-- Client config ชี้ provider ที่ถูกต้องผ่าน `baseURL`/env
-- Org/project keys และ timeout/retry ตั้งครบ
-- Smoke test call ผ่าน — ไม่มี auth/URL errors
-- Secrets ไม่ leak ใน code
+- Client config points at the right provider via `baseURL`/env
+- Org/project keys and timeout/retry fully set
+- Smoke test call passes — no auth/URL errors
+- No secrets leaked in code

@@ -36,7 +36,7 @@ export const router = pub.router({
 
 - `implement(contract)` — builder bound to contract (types enforce handler signature)
 - `errors.NOT_FOUND({ data })` — typed error throw matching contract `.errors()` map
-- `os` (non-contract) — procedure builder โดยไม่ต้อง contract: `os.input().output().handler()`
+- `os` (non-contract) — procedure builder without a contract: `os.input().output().handler()`
 
 ### 2. Context And Middleware
 
@@ -51,7 +51,7 @@ const authed = pub.use(requireAuth)
 
 - `context` injected per-request — typed via `$context<Context>()`
 - `.use(middleware)` — compose; middleware can extend context + short-circuit
-- `onError`, `onSuccess`, `onFinish` interceptors ใน middleware options
+- `onError`, `onSuccess`, `onFinish` interceptors in middleware options
 
 ### 3. Router Composition
 
@@ -61,18 +61,18 @@ const authed = pub.use(requireAuth)
 
 ### 4. Handler Utilities
 
-- `input`/`output` auto-validated ตาม contract schemas
+- `input`/`output` auto-validated per the contract schemas
 - `event`/`signal` — request signal, headers access via context adapter
 - Streaming: `eventIterator` types (`@orpc/server` event iterator responses)
 
 ## Rules
 
-- Typed errors throw via `errors.KEY` — ห้าม raw `throw` สำหรับ declared errors
-- Middleware extends context ผ่าน `next({ context })` — ไม่ mutate context ตรงๆ
-- Contract impl ต้องครบทุก proc — missing handler = type error (good)
-- `$context<Context>` กำหนดตอน implement — context shape ต้องตรง adapter ที่ serve
+- Typed errors throw via `errors.KEY` — never raw `throw` for declared errors
+- Middleware extends context through `next({ context })` — never mutate the context directly
+- Contract impl must cover every proc — a missing handler = type error (good)
+- `$context<Context>` is declared at implement time — the context shape must match the serving adapter
 
 ## Expected Outcome
 
-- Handlers implement contract ครบ, context/middleware typed
-- Errors declared+typed — client consume ได้ type-safe
+- Handlers fully implement the contract, context/middleware typed
+- Errors declared + typed — the client can consume them type-safely

@@ -1,6 +1,6 @@
 ---
 name: research-api-references
-description: alias → /deep-research api-references (ค้นหา API references จากหลายแหล่ง)
+description: alias → /deep-research api-references (search API references from multiple sources)
 argument-hint: "[api-or-library]"
 related:
   - deep-research
@@ -8,21 +8,21 @@ related:
 
 ## Goal
 
-Alias ของ `/deep-research api-references` — ค้นหา API references ที่น่าเชื่อถือสรุปพร้อมแหล่งอ้างอิง
+Alias of `/deep-research api-references` — find trustworthy API references summarized with cited sources
 
 ## Scope
 
-ใช้เมื่อ user เรียก `/research-api-references` — skill นี้เป็น alias stub เท่านั้น workflow จริงอยู่ใน `deep-research/workflows/api-references/`
+Use when the user calls `/research-api-references` — this skill is an alias stub only; the real workflow lives in `deep-research/workflows/api-references/`
 
 ## Execute
 
-ทำ `/deep-research api-references` เต็ม workflow
+Run the full `/deep-research api-references` workflow
 
 ## Rules
 
-- ห้าม duplicate workflow ของ `/deep-research api-references` ในไฟล์นี้
-- ถ้า alias ขาด steps → อ่าน `deep-research/workflows/api-references/SKILL.md` เสมอ
+- Never duplicate the `/deep-research api-references` workflow in this file
+- If the alias lacks steps → always read `deep-research/workflows/api-references/SKILL.md`
 
 ## Expected Outcome
 
-- `/deep-research api-references` ถูก execute ครบทุก step
+- `/deep-research api-references` is executed completely, every step

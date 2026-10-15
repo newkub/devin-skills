@@ -1,6 +1,6 @@
 ---
 name: research-setup-integrations
-description: ค้นหา setup integration จาก official sources — plugins, extensions, providers, adapters, marketplace items — ก่อนเลือกและติดตั้ง
+description: Find plugins, extensions, providers, marketplace integrations from official sources before setup
 argument-hint: "[tool-or-integration]"
 related:
   - deep-research
@@ -15,58 +15,58 @@ related:
 
 ## Goal
 
-ค้นหาและเปรียบเทียบ integration options ของ tool/service จาก official sources — plugins, extensions, providers, adapters, middleware, marketplace items — เพื่อเลือกตัวที่ official, maintained และ compatible ก่อน setup จริง
+Search and compare integration options of a tool/service from official sources — plugins, extensions, providers, adapters, middleware, marketplace items — to pick the official, maintained and compatible one before real setup
 
 ## Scope
 
-ใช้เมื่อต้องหา/เลือก integration ของ tool หรือ platform — editor extensions, framework plugins (vite/astro/nuxt), CI actions, deploy providers, database drivers, MCP servers, lint presets — ไม่ใช่ setup flow ทั้งตัว (general setup research → `/deep-research setup`) และไม่ใช่เลือก library dependency (`/deep-research dependencies`)
+Use when finding/choosing an integration of a tool or platform — editor extensions, framework plugins (vite/astro/nuxt), CI actions, deploy providers, database drivers, MCP servers, lint presets — not the whole setup flow (general setup research → `/deep-research setup`) and not picking a library dependency (`/deep-research dependencies`)
 
 ## Execute
 
 ### 1. Identify Integration Need
 
-> Goal: ระบุ host + integration type + version target
+> Goal: pin down host + integration type + version target
 
-1. ระบุ host tool/platform และ version ที่ติดตั้งอยู่ (อ่าน `package.json`/lockfile/`mise.toml` จริง ไม่เดา)
-2. ระบุ integration type: plugin, extension, provider, adapter, preset, middleware, driver, action
-3. ระบุ constraints: official-only หรือ community ได้, license, bundle/runtime cost
+1. Identify the host tool/platform and the installed version (read the real `package.json`/lockfile/`mise.toml`, don't guess)
+2. Identify the integration type: plugin, extension, provider, adapter, preset, middleware, driver, action
+3. Identify constraints: official-only or community ok, license, bundle/runtime cost
 
 ### 2. Search Official Sources
 
-> Goal: catalog จาก official sources ก่อน community
+> Goal: catalog from official sources before community
 
-1. Official integrations/plugins/extensions page ของ host (docs → `/learn-from-web`, `crw_scrape`, `context7`)
+1. The host's official integrations/plugins/extensions page (docs → `/learn-from-web`, `crw_scrape`, `context7`)
 2. Official registries/marketplaces: npm scoped orgs (`@vitejs`, `@astrojs`, `@clack`, `@biomejs`), VS Code/JetBrains/Chrome marketplaces, GitHub Actions marketplace, Terraform/Pulumi registry, MCP server lists
-3. Monorepo ของ host เอง — integrations มักอยู่ใน `packages/*` ของ repo เดียวกัน (DeepWiki/GitHub)
-4. เก็บ per candidate: name, type, maintainer (official/community), install command, config surface, version compat
+3. The host's own monorepo — integrations often live in `packages/*` of the same repo (DeepWiki/GitHub)
+4. Record per candidate: name, type, maintainer (official/community), install command, config surface, version compat
 
 ### 3. Verify Quality
 
-> Goal: เหลือเฉพาะ integration ที่ maintained และ compatible
+> Goal: keep only maintained and compatible integrations
 
-1. Official vs community — prefer official, community ต้องมี traction ชัด
-2. Maintenance: last release ≤ 6 เดือน, open issues, release cadence
-3. Compatibility: peer/version range เข้ากับ host version ที่ติดตั้งจริง — deprecated/abandoned ตัดออก + ระบุใน report
-4. ถ้า config surface ต้องเช็ค options/defaults → `/check-types-definition` บน type defs ของ integration
+1. Official vs community — prefer official; community must have clear traction
+2. Maintenance: last release ≤ 6 months, open issues, release cadence
+3. Compatibility: peer/version range fits the actually installed host version — cut deprecated/abandoned + note it in the report
+4. If the config surface needs its options/defaults checked → `/check-types-definition` on the integration's type defs
 
 ### 4. Synthesize And Report
 
-> Goal: recommendation พร้อม evidence
+> Goal: recommendation with evidence
 
-1. ทำ `/report` table: `No.`, `Integration`, `Type`, `Official`, `Latest`, `Compat`, `Install`, `Verdict`
-2. Primary recommendation + install command + config snippet ขั้นต่ำ
-3. ระบุ alternatives + เหตุผลที่ตัดออก (deprecated, incompatible, unmaintained)
-4. Report-only — ห้าม install/แก้ config เอง; เมื่อ user เลือกแล้วส่งต่อ `/update-config` หรือ setup skill ที่เกี่ยวข้อง
+1. Run `/report` table: `No.`, `Integration`, `Type`, `Official`, `Latest`, `Compat`, `Install`, `Verdict`
+2. Primary recommendation + install command + minimal config snippet
+3. State alternatives + reasons for exclusion (deprecated, incompatible, unmaintained)
+4. Report-only — never install/edit config yourself; once the user picks, hand off to `/update-config` or the related setup skill
 
 ## Rules
 
-- Official docs/registries เป็นแหล่งหลักเสมอ — blog/community เป็น fallback เท่านั้น
-- ทุก candidate ต้องมี source URL + version ที่เช็ค — ไม่เดา install command หรือ config key
-- แยก stable vs preview/experimental/deprecated ชัดเจนใน report
-- ใช้ `/deep-research` ถ้าจำเป็น (cross-check หลายแหล่งลึก)
-- ใช้ `/check-reference` ถ้าจำเป็น
+- Official docs/registries are always the primary source — blog/community are fallback only
+- Every candidate needs a source URL + the version checked — never guess an install command or config key
+- Clearly separate stable vs preview/experimental/deprecated in the report
+- Use /deep-research if needed (deep cross-check across multiple sources)
+- Use /check-reference if needed
 
 ## Expected Outcome
 
-- Integration catalog จาก official sources พร้อม quality/compatibility check
-- Recommendation + install + minimal config พร้อมใช้ — sources ครบ
+- Integration catalog from official sources with quality/compatibility checks
+- Recommendation + install + minimal config ready to use — sources complete

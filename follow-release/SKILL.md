@@ -1,6 +1,6 @@
 ---
 name: follow-release
-description: เลือกและตั้งค่า release strategy สำหรับ npm, crates, Docker, VSCode และ monorepo versioning
+description: Choose and set up a release strategy for npm, crates, Docker, VSCode and monorepo versioning
 argument-hint: "[crates|docker|vscode-marketplace] [scope]"
 related:
   - follow-tool-auto-it
@@ -17,85 +17,85 @@ related:
 
 ## Goal
 
-เลือกและตั้งค่า release strategy ทีเหมาะสมกับ project สำหรับ npm, crates.io, Docker, VS Code Marketplace, preview และ monorepo versioning พร้อม setup และ deploy บน platform ทีเลือก
+Choose and set up the release strategy that fits the project — for npm, crates.io, Docker, VS Code Marketplace, preview, and monorepo versioning — with setup and deploy on the chosen platform
 
 ## Scope
 
-ใช้เมื่อ project ต้อง release ไปยัง external platforms หรือต้องจัดการ versioning, changelog และ preview releases สำหรับ:
-- npm: ใช้ `auto`, `semantic-release` หรือ `release-it` สำหรับ automated npm publish
-- crates.io: ใช้ `release-plz` หรือ `cargo-release` สำหรับ Rust crates
-- Docker: ใช้ Docker Hub หรือ GHCR สำหรับ container images
-- VS Code Marketplace: ใช้ `vsce` สำหรับ extension publish
-- Preview: ใช้ `pkg.pr.new` หรือ Changesets Snapshot
-- Monorepo: ใช้ Changesets สำหรับ versioning และ changelogs
+Use when a project must release to external platforms or needs versioning, changelog, and preview releases for:
+- npm: use `auto`, `semantic-release` or `release-it` for automated npm publish
+- crates.io: use `release-plz` or `cargo-release` for Rust crates
+- Docker: use Docker Hub or GHCR for container images
+- VS Code Marketplace: use `vsce` for extension publish
+- Preview: use `pkg.pr.new` or Changesets Snapshot
+- Monorepo: use Changesets for versioning and changelogs
 
 ## Execute
 
 ### 1. Detect Release Targets
 
-> Goal: ระบุ platforms ที project จะ release
+> Goal: identify the platforms the project will release to
 
-1. อ่าน `package.json` ตรวจสอบ `private`, `publisher`, `workspaces`
-2. อ่าน `Cargo.toml` ถ้ามี Rust crate
-3. อ่าน `Dockerfile` ถ้ามี container image
-4. อ่าน `package.json` ตรวจสอบ `publisher` และ `engines.vscode` สำหรับ VS Code extension
-5. ถาม user ถ้าไม่แน่ใจว่าต้องการ release แบบไหน
+1. Read `package.json` — check `private`, `publisher`, `workspaces`
+2. Read `Cargo.toml` if a Rust crate exists
+3. Read `Dockerfile` if a container image exists
+4. Read `package.json` — check `publisher` and `engines.vscode` for a VS Code extension
+5. Ask the user if it is unclear which release is wanted
 
 ### 2. Choose Release Strategy
 
-> Goal: เลือก strategy ทีเหมาะสม
+> Goal: pick the appropriate strategy
 
-ถ้าต้องการ release ไปยัง platform จริง:
-- npm/bun: ทำ `/follow-tool-auto-it`, `/follow-tool-semantic-release` หรือ `/follow-tool-release-it`
-- Rust: ทำ Step 3 (crates)
-- Docker: ทำ Step 4 (Docker)
-- VS Code: ทำ Step 5 (VS Code)
+For releasing to a real platform:
+- npm/bun: run `/follow-tool-auto-it`, `/follow-tool-semantic-release` or `/follow-tool-release-it`
+- Rust: do Step 3 (crates)
+- Docker: do Step 4 (Docker)
+- VS Code: do Step 5 (VS Code)
 
-ถ้าต้องการ preview ทุก PR/commit:
-- ทำ `/follow-tool-pkg-new` สำหรับ continuous preview releases
+For previewing every PR/commit:
+- run `/follow-tool-pkg-new` for continuous preview releases
 
-ถ้าต้องการ versioning/changelog ใน monorepo:
-- ทำ `/follow-tool-changesets` สำหรับ manage versioning และ changelogs
+For monorepo versioning/changelog:
+- run `/follow-tool-changesets` to manage versioning and changelogs
 
 ### 3. Release To crates.io
 
-> Goal: ตั้งค่า Cargo สำหรับ automated releases ลง crates.io
+> Goal: configure Cargo for automated releases to crates.io
 
-1. ตรวจสอบ `Cargo.toml` มี `name`, `version`, `authors`, `description`, `license`, `repository`, `homepage`, `keywords`, `categories`
-2. ติดตั้ง `cargo install release-plz` หรือ `cargo install cargo-release` และ setup release-plz action
-3. สร้าง config ใน `release-plz.toml` หรือ `.release.toml` กำหนด `changelog_config` แบบ conventional และ `release_branch: main`
-4. เพิ่ม API token จาก crates.io เป็น `CARGO_REGISTRY_TOKEN` ใน GitHub secrets
-5. สร้าง `.github/workflows/release.yml` กำหนด `permissions: contents write, pull-requests: write`, `fetch-depth: 0`, `persist-credentials: false` และ jobs `release-plz-release` + `release-plz-pr`
+1. check `Cargo.toml` has `name`, `version`, `authors`, `description`, `license`, `repository`, `homepage`, `keywords`, `categories`
+2. install `cargo install release-plz` or `cargo install cargo-release` and set up the release-plz action
+3. create config in `release-plz.toml` or `.release.toml` — set `changelog_config` to conventional and `release_branch: main`
+4. add the API token from crates.io as `CARGO_REGISTRY_TOKEN` in GitHub secrets
+5. create `.github/workflows/release.yml` — set `permissions: contents write, pull-requests: write`, `fetch-depth: 0`, `persist-credentials: false`, and jobs `release-plz-release` + `release-plz-pr`
 
 ### 4. Release To Docker
 
-> Goal: ตั้งค่า Docker images สำหรับ automated releases ลง Docker Hub หรือ GHCR
+> Goal: configure Docker images for automated releases to Docker Hub or GHCR
 
-1. ตรวจสอบ `Dockerfile` มี base image, labels, multi-stage build และ `.dockerignore`
-2. เลือก repository ระหว่าง Docker Hub กับ GitHub Container Registry แล้วกำหนด image name และ tags
-3. สร้าง access token จาก Docker Hub หรือใช้ `GITHUB_TOKEN` สำหรับ GHCR
-4. เพิ่ม `DOCKER_USERNAME`, `DOCKER_PASSWORD` เป็น environment variables
-5. สร้าง `.github/workflows/release.yml` กำหนด `permissions: contents write, packages: write` และ trigger จาก push ไปยัง `main`
+1. check `Dockerfile` has a base image, labels, multi-stage build, and `.dockerignore`
+2. choose between Docker Hub and GitHub Container Registry, then define the image name and tags
+3. create an access token from Docker Hub or use `GITHUB_TOKEN` for GHCR
+4. add `DOCKER_USERNAME`, `DOCKER_PASSWORD` as environment variables
+5. create `.github/workflows/release.yml` — set `permissions: contents write, packages: write` and trigger from push to `main`
 
 ### 5. Release To VS Code Marketplace
 
-> Goal: ตั้งค่า VS Code extensions สำหรับ automated releases ลง Marketplace
+> Goal: configure the VS Code extension for automated releases to the Marketplace
 
-1. ตรวจสอบ `package.json` มี `publisher`, `name`, `version`, `displayName`, `description`, `repository`, `bugs`, `homepage`, `engines.vscode`, `categories`, `keywords`
-Latest: `@vscode/vsce@4.0.0` (verified 2026-09-16) — package `vsce` เดิม rename เป็น `@vscode/vsce`
+1. check `package.json` has `publisher`, `name`, `version`, `displayName`, `description`, `repository`, `bugs`, `homepage`, `engines.vscode`, `categories`, `keywords`
+Latest: `@vscode/vsce@4.0.0` (verified 2026-09-16) — the original `vsce` package was renamed to `@vscode/vsce`
 
-2. ติดตั้ง `bun add -D @vscode/vsce` และใช้ `bunx vsce` ใน scripts
-3. สร้าง publisher บน `marketplace.visualstudio.com` แล้วระบุใน `package.json`
-4. สร้าง PAT token จาก Azure DevOps เป็น `VSCE_PAT` ใน environment variables แล้วรัน `vsce login publisher-name`
-5. สร้าง `.github/workflows/release.yml` กำหนด `permissions: contents: write`, `VSCE_PAT` env และ trigger จาก push ไปยัง `main`
+2. install `bun add -D @vscode/vsce` and use `bunx vsce` in scripts
+3. create a publisher on `marketplace.visualstudio.com` and set it in `package.json`
+4. create a PAT token from Azure DevOps as `VSCE_PAT` in environment variables, then run `vsce login publisher-name`
+5. create `.github/workflows/release.yml` — set `permissions: contents: write`, the `VSCE_PAT` env, and trigger from push to `main`
 
 ### 6. Combine Changesets And pkg.pr.new
 
-> Goal: ใช้งานคู่กันได้อย่างปลอดภัย
+> Goal: use both together safely
 
-- ใช้ `pkg.pr.new` สำหรับ preview ทุก PR/Commit โดยไม่กระทบ npm
-- ใช้ `Changesets` เมื่อ merge เข้า `main` เพื่อ release จริงลง npm
-- ถ้าต้องการ snapshot release ด้วย Changesets เพิ่ม script:
+- use `pkg.pr.new` for previews on every PR/Commit without touching npm
+- use `Changesets` when merging into `main` for real releases to npm
+- if you want a Changesets snapshot release, add a script:
   ```json
   {
     "scripts": {
@@ -106,82 +106,82 @@ Latest: `@vscode/vsce@4.0.0` (verified 2026-09-16) — package `vsce` เดิ�
 
 ### 7. Compare Preview Options
 
-> Goal: เลือก preview release tool ทีถูกต้อง
+> Goal: choose the right preview release tool
 
-| คุณสมบัติ | `Changesets Snapshot` | `pkg.pr.new` |
+| Capability | `Changesets Snapshot` | `pkg.pr.new` |
 | --- | --- | --- |
-| ทีเก็บแพ็กเกจ | Publish ลง `npm Registry` จริง | ฝากไว้บน `CDN` ของ StackBlitz |
-| วิธีติดตั้ง | `bun add package-name@0.0.0-snapshot-...` | `bun add https://pkg.pr.new/owner/repo` |
-| ความสะอาด | เปรอะ `version history` บน npm | ไม่กระทบ `npm Registry` |
-| การตั้งค่า | ต้องมี `NPM_TOKEN` และ Snapshot script | Zero Config ไม่ต้องใช้ Token |
+| Package storage | Publishes to the real `npm Registry` | Hosted on StackBlitz's `CDN` |
+| Install method | `bun add package-name@0.0.0-snapshot-...` | `bun add https://pkg.pr.new/owner/repo` |
+| Cleanliness | Pollutes the `version history` on npm | Does not touch the `npm Registry` |
+| Setup | Requires an `NPM_TOKEN` and a snapshot script | Zero config, no token needed |
 
 ### 8. Run Release
 
-> Goal: Release ให้สำเร็จ
+> Goal: complete the release successfully
 
-1. ตรวจสอบ tokens/permissions ก่อน release (`NPM_TOKEN`, `CARGO_REGISTRY_TOKEN`, `VSCE_PAT`, `DOCKER_PASSWORD`)
-2. ทำ `/run-release` สำหรับ multi-platform release อัตโนมัติ
-3. ตรวจสอบ tags, changelogs และ published artifacts
+1. verify tokens/permissions before releasing (`NPM_TOKEN`, `CARGO_REGISTRY_TOKEN`, `VSCE_PAT`, `DOCKER_PASSWORD`)
+2. run `/run-release` for automated multi-platform release
+3. verify tags, changelogs, and published artifacts
 
 ### Workflows
 
-> Goal: dispatch ไปยัง workflow ตาม release target
+> Goal: dispatch to the workflow per release target
 
 | Target/Argument | Workflow |
 |-----------------|----------|
-| `crates`, `cargo` | `workflows/deploy-crates/SKILL.md` — `cargo publish` ไป crates.io |
-| `docker`, `image` | `workflows/deploy-docker/SKILL.md` — build/tag/push Docker image |
-| `vscode-marketplace`, `vsce`, `extension` | `workflows/deploy-vscode-marketplace/SKILL.md` — `vsce publish` ไป Marketplace |
+| `crates`, `cargo` | `workflows/deploy-crates/SKILL.md` — `cargo publish` to crates.io |
+| `docker`, `image` | `workflows/deploy-docker/SKILL.md` — build/tag/push the Docker image |
+| `vscode-marketplace`, `vsce`, `extension` | `workflows/deploy-vscode-marketplace/SKILL.md` — `vsce publish` to the Marketplace |
 
-1. ถ้า argument ระบุ target → อ่าน `workflows/deploy-<target>/SKILL.md` แล้วทำตาม flow ในนั้น — ไม่ execute จากตารางนี้โดยตรง
-2. ถ้าไม่ระบุ → ทำตาม steps 1-8 เพื่อเลือก release strategy ก่อน
+1. if the argument names a target → read `workflows/deploy-<target>/SKILL.md` and follow the flow there — do not execute directly from this table
+2. if no target is given → follow steps 1-8 to choose the release strategy first
 
 ## Rules
 
 ### 1. Strategy Selection
 
-- ใช้ `pkg.pr.new` สำหรับ preview ทุก Commit/PR
-- ใช้ `Changesets` สำหรับ release จริงและ changelog
-- ใช้ `semantic-release` หรือ `auto` สำหรับ conventional commit based release
+- use `pkg.pr.new` for previews of every commit/PR
+- use `Changesets` for real releases and changelogs
+- use `semantic-release` or `auto` for conventional-commit-based releases
 
 ### 2. Package Configuration
 
-- npm: ตรวจสอบ `name`, `description`, `version`, `author`, `private: false`, `publishConfig.access: public`
-- crates: ตรวจสอบ `name`, `version`, `authors`, `description`, `license`, `repository`, `homepage`, `keywords`, `categories`
-- Docker: ตรวจสอบ `Dockerfile` valid, base image, labels, multi-stage build, `.dockerignore`
-- VS Code: ตรวจสอบ `publisher`, `name`, `version`, `displayName`, `description`, `engines.vscode`, `repository`, `categories`, `keywords`
+- npm: check `name`, `description`, `version`, `author`, `private: false`, `publishConfig.access: public`
+- crates: check `name`, `version`, `authors`, `description`, `license`, `repository`, `homepage`, `keywords`, `categories`
+- Docker: check the `Dockerfile` is valid — base image, labels, multi-stage build, `.dockerignore`
+- VS Code: check `publisher`, `name`, `version`, `displayName`, `description`, `engines.vscode`, `repository`, `categories`, `keywords`
 
 ### 3. Authentication
 
-- npm: ตรวจสอบ `NPM_TOKEN` ใน GitHub secrets หรือ `GITHUB_TOKEN`
-- crates: ตรวจสอบ `CARGO_REGISTRY_TOKEN` ใน secrets หรือ trusted publishing
-- Docker: ตรวจสอบ `DOCKER_USERNAME`, `DOCKER_PASSWORD` หรือ `GITHUB_TOKEN` สำหรับ GHCR
-- VS Code: ตรวจสอบ `VSCE_PAT` จาก Azure DevOps ด้วย `vsce login`
+- npm: check `NPM_TOKEN` in GitHub secrets or `GITHUB_TOKEN`
+- crates: check `CARGO_REGISTRY_TOKEN` in secrets or trusted publishing
+- Docker: check `DOCKER_USERNAME`, `DOCKER_PASSWORD` or `GITHUB_TOKEN` for GHCR
+- VS Code: check `VSCE_PAT` from Azure DevOps via `vsce login`
 
 ### 4. GitHub Workflow
 
-- กำหนด `permissions` ให้ตรงกับ platform
-- ใช้ trigger จาก push ไปยัง `main` branch
-- crates: ใช้ `fetch-depth: 0`, `persist-credentials: false`, `concurrency` สำหรับ release-pr job
+- set `permissions` matching the platform
+- use the trigger from push to the `main` branch
+- crates: use `fetch-depth: 0`, `persist-credentials: false`, `concurrency` for the release-pr job
 
 ### 5. Safety
 
-- แยก workflow preview กับ release จริง
-- ไม่ publish preview ลง npm จริงโดยไม่ตั้งใจ
-- ตรวจสอบ tokens ก่อนรัน
-- ใช้ `Changesets Snapshot` ต้องระวัง `version history` เปรอะ
-- `pkg.pr.new` เหมาะกับ PR preview ไม่กระทบ npm Registry
-- ใช้ /run-check ถ้าจำเป็น
-- ใช้ /run-build ถ้าจำเป็น
-- ใช้ /run-test all ถ้าจำเป็น
-- ใช้ /run-verify ถ้าจำเป็น
+- keep preview workflows separate from real releases
+- never accidentally publish a preview to the real npm
+- verify tokens before running
+- with `Changesets Snapshot`, beware of polluting the `version history`
+- `pkg.pr.new` suits PR previews without touching the npm Registry
+- Use /run-check if needed
+- Use /run-build if needed
+- Use /run-test all if needed
+- Use /run-verify if needed
 
 ## Expected Outcome
 
-- Release strategy เหมาะสมกับ project
-- npm, crates.io, Docker, VS Code Marketplace setup ถูกต้อง
-- Tools ติดตั้งและตั้งค่าครบถ้วน
-- Authentication tokens พร้อมใช้
-- GitHub workflows ทำงานได้บน platform ทีเลือก
-- Preview และ release จริงทำงานตาม flow
-- ไม่มี conflict ระหว่าง snapshot กับ official versions
+- a release strategy that fits the project
+- npm, crates.io, Docker, VS Code Marketplace set up correctly
+- tools installed and fully configured
+- authentication tokens ready to use
+- GitHub workflows working on the chosen platform
+- preview and real releases follow their flows
+- no conflict between snapshot and official versions

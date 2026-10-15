@@ -1,50 +1,50 @@
 # Best Practices: postgres.js (postgres Driver)
 
-แนวทางใช้ `postgres` driver ให้ปลอดภัยจาก injection, pool ไม่ล้น และ transaction ถูกต้อง
+Guidelines for using the `postgres` driver safely against injection, without overflowing the pool, and with correct transactions
 
 ## Recommended Patterns
 
-- สร้าง client ครั้งเดียว `postgres(url, {max, prepare, idle_timeout})` ต่อ app — pool จัดการเอง
-- Query ด้วย tagged template เสมอ `` sql`SELECT * FROM t WHERE id = ${id}` `` — parameterized อัตโนมัติ กัน SQL injection
-- Transaction ด้วย `sql.begin(async sql => {...})` — callback ได้ tx-scoped `sql`; error = rollback อัตโนมัติ
-- Insert/update helper: `sql(table).insert({...})` หรือ `sql([{...}])` สำหรับ bulk — ลด dynamic SQL
-- LISTEN/NOTIFY ผ่าน `sql.listen(channel, cb)` / `sql.notify(channel, payload)` — realtime ง่ายๆ ไม่ต้อง pub/sub แยก
-- `sql.subscribe(pattern, cb)` สำหรับ row-change events — สร้าง dedicated connection ให้เอง
-- ปิด pool ด้วย `await sql.end()` ใน shutdown — graceful drain
+- Create the client once per app — `postgres(url, {max, prepare, idle_timeout})` — the pool manages itself
+- Always query with tagged templates `` sql`SELECT * FROM t WHERE id = ${id}` `` — automatically parameterized, prevents SQL injection
+- Transact with `sql.begin(async sql => {...})` — the callback gets a tx-scoped `sql`; an error = automatic rollback
+- Insert/update helpers: `sql(table).insert({...})` or `sql([{...}])` for bulk — reduces dynamic SQL
+- LISTEN/NOTIFY via `sql.listen(channel, cb)` / `sql.notify(channel, payload)` — simple realtime without a separate pub/sub
+- `sql.subscribe(pattern, cb)` for row-change events — it creates a dedicated connection for you
+- Close the pool with `await sql.end()` in shutdown — graceful drain
 
 ## Do / Don't
 
 | Do | Don't |
 |---|---|
-| ใช้ tagged template ทุก query | concatenate string เข้า SQL (injection) |
-| `sql.unsafe(str, params)` เมื่อ dynamic identifiers จริงๆ | ใช้ `sql.unsafe` กับ user input ดิบ |
-| ตั้ง `max` pool ตาม DB capacity + app concurrency | เปิด connection ต่อ request (serverless) — ใช้ pooler |
-| `sql.begin` สำหรับ multi-statement atomicity | เรียก `BEGIN`/`COMMIT` เองผ่าน `sql.unsafe` |
-| Handle `error` event + connection retry | assume pool heal เองเสมอ |
-| `sql.end()` ใน graceful shutdown | kill process ทิ้ง connections ค้าง |
+| Use tagged templates for every query | concatenate strings into SQL (injection) |
+| `sql.unsafe(str, params)` only for genuinely dynamic identifiers | use `sql.unsafe` with raw user input |
+| Set pool `max` per DB capacity + app concurrency | open a connection per request (serverless) — use a pooler |
+| `sql.begin` for multi-statement atomicity | issue `BEGIN`/`COMMIT` yourself through `sql.unsafe` |
+| Handle the `error` event + connection retry | assume the pool always heals itself |
+| `sql.end()` in graceful shutdown | kill the process leaving connections hanging |
 
 ## Common Pitfalls
 
-- String concat `` `WHERE id = ${id}` `` (ไม่ใช่ tagged template) = injection — template tag ต้องเป็น `sql` prefix เสมอ
-- `sql.unsafe` กับ dynamic table/column names — whitelist identifiers เอง; อย่าส่ง user input ตรงๆ
-- Pool exhaust: `max` สูงเกิน Postgres `max_connections` → connection refused; นับรวมทุก instance
-- Transaction callback ที่ throw — rollback เกิดอัตโนมัติ แต่ swallow error ใน callback ทำให้ silent fail
-- LISTEN บน pooled connection — `sql.listen` ใช้ dedicated conn; อย่า assume listener อยู่ใน pool เดียวกับ queries
-- Prepared statement name collision ข้าม session — `prepare: false` เมื่อ debug หรือ dynamic shape บ่อย
-- `sql.end({timeout})` ไม่รอ — ตั้ง timeout ให้ pending queries จบ
+- String concat `` `WHERE id = ${id}` `` (not a tagged template) = injection — the template tag must always be the `sql` prefix
+- `sql.unsafe` with dynamic table/column names — whitelist identifiers yourself; never pass user input directly
+- Pool exhaustion: `max` set above Postgres's `max_connections` → connection refused; count across every instance
+- A transaction callback that throws — rollback happens automatically, but swallowing the error inside the callback causes a silent failure
+- LISTEN on a pooled connection — `sql.listen` uses a dedicated conn; don't assume the listener shares the query pool
+- Prepared statement name collisions across sessions — `prepare: false` when debugging or with frequent dynamic shapes
+- `sql.end({timeout})` doesn't wait — set a timeout so pending queries finish
 
 ## Performance Notes
 
-- `max` pool size ~10-20 ต่อ instance พอ — มากไป thrash; ขึ้นกับ query latency และ DB size
-- `prepare: true` (default) cache statements — query shape ซ้ำเร็วขึ้น; dynamic IN clause ใหญ่ๆ อาจ invalidate
-- `idle_timeout` + `connect_timeout` กัน zombie connections บน serverless/spotty network
-- Serverless (Lambda, Workers): อย่าเปิด pool ต่อ invocation — ใช้ PgBouncer, RDS Proxy หรือ Hyperdrive
-- Batch ด้วย `sql([{...}]).insert` / unnest arrays แทน loop insert
-- LISTEN/NOTIFY payload limit ~8KB — ส่ง id/key ไม่ใช่ payload เต็ม
+- A `max` pool size of ~10-20 per instance is enough — more thrashes; it depends on query latency and DB size
+- `prepare: true` (default) caches statements — repeating query shapes get faster; large dynamic IN clauses may invalidate
+- `idle_timeout` + `connect_timeout` prevent zombie connections on serverless/spotty networks
+- Serverless (Lambda, Workers): never open a pool per invocation — use PgBouncer, RDS Proxy, or Hyperdrive
+- Batch with `sql([{...}]).insert` / unnest arrays instead of insert loops
+- LISTEN/NOTIFY payload limit ~8KB — send an id/key, not the full payload
 
 ## Ecosystem / Integration
 
-- ORM layer → `/follow-lib-drizzle` (drizzle ใช้ postgres.js เป็น driver)
-- Bun-only project พิจารณา `Bun.sql` built-in — แต่ postgres.js portable กว่า
-- Migration tooling แยก (drizzle-kit, หรือ sql files) — driver ไม่มี migration
-- PgBouncer/Hyperdrive สำหรับ serverless pooling; connection string ต่อ pooler endpoint
+- ORM layer → `/follow-lib-drizzle` (drizzle uses postgres.js as its driver)
+- Bun-only projects: consider the built-in `Bun.sql` — but postgres.js is more portable
+- Separate migration tooling (drizzle-kit, or sql files) — the driver has no migrations
+- PgBouncer/Hyperdrive for serverless pooling; connection string points at the pooler endpoint

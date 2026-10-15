@@ -1,86 +1,86 @@
-# SolidJS — Reactivity และ Render-Once Mental Model
+# SolidJS — Reactivity and the Render-Once Mental Model
 
-Best practices สำหรับ signals, stores, effects และ props ใน Solid.js — จุดที่คนจาก React พลาดบ่อยสุด
+Best practices for signals, stores, effects, and props in Solid.js — where React migrants trip up most
 
 ## Recommended Patterns
 
 ### Render-Once Components
 
-- Component function รันครั้งเดียวเพื่อ setup view — ไม่มี re-render เหมือน React; ทุกอย่างที่ต้อง reactive ต้องอยู่ใน JSX, `createMemo`, หรือ `createEffect`
-- อ่าน signal ใน JSX เสมอ: `<div>{count()}</div>` — อ่านนอก JSX จะได้ snapshot ค่า ณ ตอนนั้น ไม่ reactive
-- code ที่เขียนใน component body = init logic เท่านั้น — ห้ามเขียน logic ที่คาดว่าจะ re-run
+- The component function runs once to set up the view — there is no re-render like React; anything reactive must live in JSX, `createMemo`, or `createEffect`
+- Always read signals in JSX: `<div>{count()}</div>` — reading outside JSX yields a snapshot at that moment, not reactive
+- Code written in the component body = init logic only — never write logic expected to re-run
 
-### Props — ห้าม Destructure
+### Props — Never Destructure
 
 ```tsx
-// ผิด — ทำลาย reactivity เพราะ destructure ตอน init
+// wrong — destroys reactivity by destructuring at init
 const { title } = props
 
-// ถูก — preserve getter chain
+// correct — preserves the getter chain
 const { local, others } = splitProps(props, ['local'])
 const merged = mergeProps({ size: 'md' }, props)
 ```
 
-- ใช้ `mergeProps` สำหรับ default props, `splitProps` เมื่อต้องแยก props ส่งต่อ
-- access `props.title` ใน JSX/scope โดยตรง — props เป็น proxy object ที่ reactive อยู่แล้ว
+- Use `mergeProps` for default props, `splitProps` when props must be split and forwarded
+- Access `props.title` directly in JSX/scope — props is already a reactive proxy object
 
 ### Signals vs Stores
 
-| สถานการณ์ | ใช้ |
+| Situation | Use |
 |---|---|
 | primitive, flat state | `createSignal` |
-| nested object/tree ที่ update เจาะจง field | `createStore` จาก `solid-js/store` |
-| interop กับ lib ภายนอกที่ mutate โดยตรง | `createMutable` (ระวัง — ทุก mutation reactive) |
+| nested object/tree updated at specific fields | `createStore` from `solid-js/store` |
+| interop with external libs that mutate directly | `createMutable` (careful — every mutation is reactive) |
 
-- store update ด้วย path syntax: `setState('users', 0, 'name', 'x')` หรือ `produce(draft => ...)`
-- signal setter ใช้ function form `setCount(c => c + 1)` เมื่ออ้างถึงค่าเดิม — ไม่ต้องอ่าน signal ภายนอก setter
+- Update stores with path syntax: `setState('users', 0, 'name', 'x')` or `produce(draft => ...)`
+- Use the signal setter's function form `setCount(c => c + 1)` when referencing the previous value — no need to read the signal outside the setter
 
-### Derived State — อย่าใช้ Effect
+### Derived State — Don't Use Effects
 
 ```ts
-// ผิด — effect ไม่ใช่ที่ sync derived state
+// wrong — an effect is not where derived state gets synced
 createEffect(() => setFullName(`${first()} ${last()}`))
 
-// ถูก — memo หรือ plain function ใน JSX
+// correct — a memo or a plain function in JSX
 const fullName = createMemo(() => `${first()} ${last()}`)
 ```
 
-- simple derived value → plain function ก็พอ (Solid track ใน reactive scope ให้เอง)
-- `createMemo` เฉพาะ computation ที่แพงจริงๆ — memo cache มี overhead เล็กน้อย
-- `createEffect` สำหรับ side effects เท่านั้น: DOM mutation, third-party lib, logging, sync กับ external system
+- Simple derived values → a plain function suffices (Solid tracks it inside the reactive scope automatically)
+- `createMemo` only for genuinely expensive computations — memo caching has slight overhead
+- `createEffect` is for side effects only: DOM mutation, third-party libs, logging, syncing with external systems
 
 ## Common Pitfalls
 
-- destructure props → UI ไม่ update แบบเงียบๆ — bug ที่เจอบ่อยสุดจากคนย้ายมาจาก React
-- อ่าน signal ใน component body นอก reactive scope → ได้ค่าเดิมตลอด
-- ใส่ `setState` ใน `createEffect` ที่อ่าน state เดียวกัน → infinite loop (ใช้ `untrack` หรือย้ายไป event handler)
-- fetch data ใน `createEffect` → ใช้ `createResource` แทนเสมอ
-- ใช้ `createMemo` ทุกที่ "เผื่อ" → derived ธรรมดาไม่ต้อง memo
-- nested reactivity ผ่าน function components ที่ wrap children → children re-run ทุกครั้งที่ parent signal เปลี่ยนถ้าไม่แยก scope
+- Destructuring props → the UI silently stops updating — the most common bug from React migrants
+- Reading a signal in the component body outside a reactive scope → the value never changes
+- Calling `setState` in a `createEffect` that reads the same state → infinite loop (use `untrack` or move it to an event handler)
+- Fetching data in `createEffect` → always use `createResource` instead
+- Using `createMemo` everywhere "just in case" — plain derived values need no memo
+- Nested reactivity through function components wrapping children — children re-run every time a parent signal changes if the scope isn't separated
 
 ## Do / Don't
 
 | Do | Don't |
 |---|---|
-| อ่าน signals ใน JSX/`createMemo`/`createEffect` | อ่าน signals ใน component body นอก reactive scope |
-| ใช้ `batch` รวมหลาย updates เป็น tick เดียว | set signals ต่อเนื่องหลายครั้งใน handler โดยไม่ batch |
-| ใช้ `on(deps, fn)` เมื่อต้องการ explicit deps | หวังว่า auto-tracking จะถูกเสมอใน callback ซับซ้อน |
-| ใช้ `untrack` อ่านค่าโดยไม่สร้าง dependency | ปิด tracking ด้วยการ copy ค่าไปตัวแปรธรรมดา |
-| เก็บ non-serializable objects (DOM, class instances) ใน plain variable | ใส่ใน signal/store โดยไม่จำเป็น |
-| ใช้ `createRoot` + `dispose` เมื่อสร้าง reactive scope นอก component | สร้าง effects นอก root แล้วลืม dispose |
+| Read signals in JSX/`createMemo`/`createEffect` | Read signals in the component body outside a reactive scope |
+| Use `batch` to merge many updates into one tick | Set signals repeatedly in a handler without batching |
+| Use `on(deps, fn)` when explicit deps are needed | Hope auto-tracking is always right in complex callbacks |
+| Use `untrack` to read without creating a dependency | Kill tracking by copying the value into a plain variable |
+| Keep non-serializable objects (DOM, class instances) in plain variables | Put them in a signal/store unnecessarily |
+| Use `createRoot` + `dispose` when creating a reactive scope outside components | Create effects outside a root and forget to dispose |
 
 ## Performance Notes
 
-- fine-grained updates = ไม่มี VDOM diff — แต่ reactive graph ใหญ่เกินก็มีต้นทุน; แยก stores ตาม feature อย่าทำ global mega-store
-- `batch` ลดจำนวน propagation rounds เมื่อ update หลาย signals พร้อมกัน
-- `untrack` กัน dependency ที่ไม่ตั้งใจใน memo/effect — ช่วยตัด recompute ที่ไม่จำเป็น
-- `createDeferred` สำหรับ defer updates ที่ไม่ urgent (เช่น search results, heavy lists)
-- reactive reads ใน loop ใหญ่ → hoist ออกมาเป็น memo เดียวหรือใช้ `mapArray`/`indexArray` helpers
+- Fine-grained updates = no VDOM diff — but an oversized reactive graph has a cost too; split stores per feature, don't build a global mega-store
+- `batch` cuts propagation rounds when several signals update together
+- `untrack` prevents unintended dependencies in memos/effects — it skips needless recomputes
+- `createDeferred` defers non-urgent updates (e.g. search results, heavy lists)
+- Reactive reads inside big loops → hoist them into one memo or use the `mapArray`/`indexArray` helpers
 
 ## Ecosystem / Integration
 
-- router: `@solidjs/router` มี primitives ของตัวเอง (`createAsync`, cache) — ใช้ร่วมกับ `createResource` ได้
-- TanStack Query มี `@tanstack/solid-query` — ใช้แทน `createResource` เมื่อต้องการ caching/devtools ขั้นสูง
-- SSR/SolidStart: reactivity ทำงานเหมือนกันแต่ `onMount` ไม่รันบน server — ใส่ browser-only code ใน `onMount` เสมอ
-- three.js/D3: เก็บ instance ใน closure + `onCleanup` dispose — ห้ามใส่ใน store (proxy พัง class internals)
-- testing: `@solidjs/testing-library` + `renderHook`/`testEffect` — wrap ด้วย `createRoot` เมื่อ test primitives นอก component
+- Router: `@solidjs/router` has its own primitives (`createAsync`, cache) — usable alongside `createResource`
+- TanStack Query offers `@tanstack/solid-query` — use it instead of `createResource` when advanced caching/devtools are needed
+- SSR/SolidStart: reactivity behaves the same but `onMount` doesn't run on the server — keep browser-only code in `onMount` always
+- three.js/D3: keep instances in a closure + dispose via `onCleanup` — never store them in a store (the proxy breaks class internals)
+- Testing: `@solidjs/testing-library` + `renderHook`/`testEffect` — wrap with `createRoot` when testing primitives outside components

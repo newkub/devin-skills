@@ -1,6 +1,6 @@
 ---
 name: read-related
-description: อ่านและสรุป skills ที่เกี่ยวข้องแบบ recursive
+description: Read and summarize related skills recursively
 argument-hint: "[skill-name]"
 related:
   - idea-use-skills-relations
@@ -12,46 +12,46 @@ related:
 
 ## Goal
 
-อ่านและสรุป skills ที่เกี่ยวข้องกับงานปัจจุบันแบบ recursive เพื่อเข้าใจ dependencies และหลีกเลี่ยงการซ้ำซ้อน
+Read and summarize the skills related to the current work recursively, to understand dependencies and avoid duplication
 
 ## Scope
 
-ใช้ก่อนเขียนหรือแก้ไข skill เพื่อรวบรวม context ที่จำเป็น
+Use before writing or editing a skill, to gather the needed context
 
 ## Execute
 
 ### 1. Read Related Skills
 
-> Goal: อ่าน skills ที่เกี่ยวข้อง
+> Goal: read the related skills
 
-1. ทำ `/review-devin-global-harness` เพื่อสร้าง dependency graph และสรุป skills
+1. Run `/review-devin-global-harness` to build the dependency graph and summarize skills
 
 ### 2. Synthesize And Report
 
-> Goal: รวมผลลัพธ์และรายงาน
+> Goal: merge results and report
 
-1. รวบรวม guidelines และ instructions จาก skills ที่อ่าน
-2. ระบุสิ่งที่ซ้ำซ้อนหรือขัดแย้งกัน
-3. ทำ `/report` เพื่อจัดรูปแบบ output
-4. ทำ `/suggest-next-action` เพื่อแนะนำ step ถัดไป
+1. Collect guidelines and instructions from the skills read
+2. Identify what is duplicated or conflicting
+3. Run `/report` to format the output
+4. Run `/suggest-next-action` to recommend the next step
 
 ## Rules
 
 ### 1. Orchestration Only
 
-- เป็น orchestrator เรียก `/review-devin-global-harness` โดยตรง — ไม่ทำงานซ้ำ
-- ไม่ใช้ `/deep-review-codebase` เพราะจะซ้ำซ้อนกับการอ่าน related context
-- ไม่ duplicate เนื้อหาของ `/review-devin-global-harness`
+- Act as an orchestrator calling `/review-devin-global-harness` directly — do not redo the work
+- Do not use `/deep-review-codebase` — it would duplicate the related-context reading
+- Do not duplicate the content of `/review-devin-global-harness`
 
 ### 2. Output
 
-- แสดง dependency graph แบบ tree structure
-- ระบุ tasks ที่ต้องทำตามลำดับ
-- ระบุสิ่งที่ซ้ำซ้อนหรือขัดแย้ง
+- Show the dependency graph as a tree structure
+- List the tasks that must be done in order
+- Point out what is duplicated or conflicting
 
 ## Expected Outcome
 
-- Dependency graph ของ skills ที่เกี่ยวข้อง
-- สรุป tasks และ guidelines ที่ต้องปฏิบัติ
-- ระบุสิ่งที่ซ้ำซ้อนหรือขัดแย้งระหว่าง skills
-- แนะนำ action ถัดไป
+- Dependency graph of the related skills
+- Summary of the tasks and guidelines to follow
+- Identified duplicates or conflicts between skills
+- Recommended next action

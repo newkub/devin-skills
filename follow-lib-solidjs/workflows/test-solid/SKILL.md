@@ -1,6 +1,6 @@
 ---
 name: follow-lib-solidjs-test-solid
-description: Test SolidJS — @solidjs/testing-library, vitest config, user-event, assertions บน fine-grained DOM
+description: Test SolidJS — @solidjs/testing-library, vitest config, user-event, assertions on fine-grained DOM
 argument-hint: "[scope]"
 related:
   - follow-lib-solidjs
@@ -11,11 +11,11 @@ related:
 
 ## Goal
 
-เขียน tests สำหรับ SolidJS — `@solidjs/testing-library`, vitest browser/jsdom setup, user interactions, async assertions
+Write tests for SolidJS — `@solidjs/testing-library`, vitest browser/jsdom setup, user interactions, async assertions
 
 ## Scope
 
-component + signal testing — vitest + `@solidjs/testing-library` + jsdom/happy-dom; e2e → Playwright skill
+component + signal testing — vitest + `@solidjs/testing-library` + jsdom/happy-dom; e2e → the Playwright skill
 
 ## Execute
 
@@ -34,7 +34,7 @@ export default defineConfig({
 })
 ```
 
-- `conditions: ['development', 'browser']` — solid ต้องเลือก entry (web) ใน test env
+- `conditions: ['development', 'browser']` — solid must pick the (web) entry in the test env
 - jest-dom setup file: `import '@testing-library/jest-dom/vitest'`
 
 ### 2. Render And Assert
@@ -50,9 +50,9 @@ it('increments', () => {
 })
 ```
 
-- `render(() => <Comp />)` — ต้องเป็น function (render-once semantics)
+- `render(() => <Comp />)` — must be a function (render-once semantics)
 - `screen` queries — `getByRole`/`getByText`/`findBy*` (async); `container` direct access
-- `fireEvent` / `user-event` — interactions; async updates flush อัตโนมัติ (ไม่มี act() แบบ React)
+- `fireEvent` / `user-event` — interactions; async updates flush automatically (no React-style act())
 
 ### 3. Testing Signals And Stores
 
@@ -66,23 +66,23 @@ it('signal', () => createRoot(dispose => {
 }))
 ```
 
-- Primitives ต้องอยู่ใน `createRoot` หรือ component — test โดยตรงผ่าน root wrapper
-- Store tests: assert ผ่าน proxy reads; async resources: trigger `refetch`/`mutate` แล้ว assert state
+- Primitives must live inside `createRoot` or a component — test directly through a root wrapper
+- Store tests: assert through proxy reads; async resources: trigger `refetch`/`mutate` then assert state
 
 ### 4. Async And Boundaries
 
-- `await screen.findByText(...)` — resources resolve
-- Suspense tests: assert fallback → content; `ErrorBoundary` — throw ใน component แล้ว assert fallback
+- `await screen.findByText(...)` — resources resolving
+- Suspense tests: assert fallback → content; `ErrorBoundary` — throw inside a component then assert the fallback
 - `vi.useFakeTimers()` — debounce/async timing
 
 ## Rules
 
-- `render(() => <X/>)` — function wrapper บังคับ (ไม่ใช่ `<X/>` ตรง)
-- `conditions` ใน vite config สำคัญ — ไม่ใส่จะ resolve เป็น node/SSR entry → tests พัง
-- ไม่มี `act()` — Solid updates synchronous; `await` เฉพาะ async finders/microtask
-- Primitives test ผ่าน `createRoot` — อย่าสร้าง signals นอก reactive root ใน tests
+- `render(() => <X/>)` — the function wrapper is mandatory (not a bare `<X/>`)
+- `conditions` in the vite config matters — without it, resolution picks the node/SSR entry → tests break
+- There is no `act()` — Solid updates are synchronous; `await` only for async finders/microtasks
+- Test primitives through `createRoot` — don't create signals outside a reactive root in tests
 
 ## Expected Outcome
 
-- Component tests render + interact + assert ผ่าน testing-library
-- Signals/stores/resources testable ผ่าน `createRoot` และ async finders
+- Component tests render + interact + assert through testing-library
+- Signals/stores/resources testable via `createRoot` and async finders

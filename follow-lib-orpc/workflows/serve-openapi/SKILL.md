@@ -38,14 +38,14 @@ Bun.serve({
 })
 ```
 
-- `RPCHandler` — protocol endpoint (`/rpc/*`); `OpenAPIHandler` — REST endpoints จาก `.route()` metadata
+- `RPCHandler` — protocol endpoint (`/rpc/*`); `OpenAPIHandler` — REST endpoints from `.route()` metadata
 - Adapters: fetch (Bun/Deno/CF workers), Node http, Hono, Elysia, Next.js, Express, Fastify — pick per host
-- `context` passed ที่ handle-time: `{ context: buildContext(req) }` — per-request context factory
+- `context` passed at handle-time: `{ context: buildContext(req) }` — per-request context factory
 
 ### 2. CORS And Middleware Bridge
 
 - `CORSPlugin` — `new RPCHandler(router, { plugins: [new CORSPlugin()] })`
-- Request headers → context factory (`createContext({ headers })`) — auth/session extraction ตรงนี้
+- Request headers → context factory (`createContext({ headers })`) — auth/session extraction happens here
 
 ### 3. OpenAPI Spec + Docs
 
@@ -63,17 +63,17 @@ const spec = await generator.generate(contract, { info: { title, version } })
 ### 4. Deploy Notes
 
 - Edge/serverless OK (fetch adapter); Bun/Node canonical dev path
-- SSE/event iterators ต้อง connection-per-client infra (Workers durable, Node streams)
-- Same router serve RPC + REST พร้อมกัน — dual handler pattern above
+- SSE/event iterators require connection-per-client infra (Workers durable, Node streams)
+- The same router serves RPC + REST simultaneously — the dual handler pattern above
 
 ## Rules
 
-- Dual handlers เมื่อต้องการทั้ง RPC client + public REST — `.route()` metadata ครบเท่านั้น
-- Context factory per-request — ห้าม share mutable context ข้าม requests
-- Schema converters ต้องตรง lib ที่ใช้ (`ZodToJsonSchemaConverter` v3/v4 variant, `ValibotToJsonSchemaConverter`)
-- `prefix` routes ชัดเจน (`/rpc`, `/api`) — ห้ามทับ static routes ของ host framework
+- Dual handlers when you need both an RPC client + public REST — only with complete `.route()` metadata
+- Context factory per-request — never share mutable context across requests
+- Schema converters must match the lib in use (`ZodToJsonSchemaConverter` v3/v4 variants, `ValibotToJsonSchemaConverter`)
+- Clear `prefix` routes (`/rpc`, `/api`) — never collide with the host framework's static routes
 
 ## Expected Outcome
 
-- Router served ผ่าน adapter ที่ตรง runtime
-- OpenAPI spec + docs UI เปิดใช้, CORS ตาม policy
+- Router served through the adapter matching the runtime
+- OpenAPI spec + docs UI live, CORS per policy

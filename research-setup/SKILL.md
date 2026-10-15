@@ -1,6 +1,6 @@
 ---
 name: research-setup
-description: alias → /deep-research setup (research setup/config/CI ของ tool/service จากหลายแหล่ง)
+description: alias → /deep-research setup (research setup/config/CI of a tool/service from multiple sources)
 argument-hint: "[tool-or-service]"
 related:
   - deep-research
@@ -8,21 +8,21 @@ related:
 
 ## Goal
 
-Alias ของ `/deep-research setup` — ค้นหาและสรุป setup, config, CI/CD และ boilerplate โดย cross-check หลายแหล่ง
+Alias of `/deep-research setup` — find and summarize setup, config, CI/CD and boilerplate by cross-checking multiple sources
 
 ## Scope
 
-ใช้เมื่อ user เรียก `/research-setup` — skill นี้เป็น alias stub เท่านั้น workflow จริงอยู่ใน `deep-research/workflows/setup/` — integrations/plugins/extensions → `/research-setup-integrations`
+Use when the user calls `/research-setup` — this skill is an alias stub only; the real workflow lives in `deep-research/workflows/setup/` — integrations/plugins/extensions → `/research-setup-integrations`
 
 ## Execute
 
-ทำ `/deep-research setup` เต็ม workflow
+Run the full `/deep-research setup` workflow
 
 ## Rules
 
-- ห้าม duplicate workflow ของ `/deep-research setup` ในไฟล์นี้
-- ถ้า alias ขาด steps → อ่าน `deep-research/workflows/setup/SKILL.md` เสมอ
+- Never duplicate the `/deep-research setup` workflow in this file
+- If the alias lacks steps → always read `deep-research/workflows/setup/SKILL.md`
 
 ## Expected Outcome
 
-- `/deep-research setup` ถูก execute ครบทุก step
+- `/deep-research setup` is executed completely, every step

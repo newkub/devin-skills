@@ -1,6 +1,6 @@
 ---
 name: review-github-issue
-description: Review GitHub issue — metadata, clarity, completeness, readiness ก่อน implementation
+description: Review GitHub issue — metadata, clarity, completeness, readiness before implementation
 argument-hint: "[issue-number-or-url]"
 related:
   - deep-review-codebase
@@ -22,83 +22,83 @@ related:
 
 ## Goal
 
-Review GitHub issue ก่อน implement — ตรวจ metadata (title, labels, assignee, milestone, linked PRs) และ content quality (clarity, completeness, acceptance criteria, scope) แล้วให้ readiness verdict — report-only ไม่แก้ issue เว้นแต่ user confirm
+Review a GitHub issue before implement — check metadata (title, labels, assignee, milestone, linked PRs) and content quality (clarity, completeness, acceptance criteria, scope), then give a readiness verdict — report-only, do not edit the issue unless the user confirms
 
 ## Scope
 
-ใช้สำหรับ review GitHub issue รายการเดียวหรือหลายรายการ — issue อยู่บน GitHub repo (ใช้ `gh` CLI หรือ github-mcp tools) — ถ้าเป็น issue ทั่วไป (ไฟล์, chat, tracker อื่น) → ใช้ `/deep-review-codebase`
+Use for reviewing one or many GitHub issues — the issue lives on a GitHub repo (use the `gh` CLI or github-mcp tools) — for a generic issue (files, chat, other tracker) → use `/deep-review-codebase`
 
-- quality dimensions (completeness, quality, rating) reuse checklists ของ `/deep-review-codebase` → `deep-review-codebase` — ห้าม duplicate checklists ใน skill นี้
+- quality dimensions (completeness, quality, rating) reuse the checklists of `/deep-review-codebase` → `deep-review-codebase` — never duplicate checklists in this skill
 
 ## Execute
 
-ทุกรอบเริ่มด้วย deep pre-pass — ทำ `/deep-thinking` → `/deep-analyze` → `/deep-validate` ก่อน fetch/review ใดๆ (convention: `update-devin-global-skills` `## Conventions → Templates` row `review-*`)
+Every round starts with the deep pre-pass — run `/deep-thinking` → `/deep-analyze` → `/deep-validate` before any fetch/review (convention: `update-devin-global-skills` `## Conventions → Templates` row `review-*`)
 
 ### 1. Fetch Issue Context
 
-> Goal: ดึง issue พร้อม context ครบ
+> Goal: pull the issue with full context
 
-1. รับ issue number หรือ URL จาก argument — ไม่ระบุ → `/list-github-issue` ให้ user เลือก
-2. ดึง issue ด้วย `gh issue view <n> --json title,body,state,labels,assignees,milestone,comments,projectItems` หรือ github-mcp `get_issue`
-3. ดึง linked PRs/branches: `gh issue view <n> --json closedByPullRequestsReferences` (หรือ `gh issue develop --list`)
-4. ถ้า repo มี issue templates → เทียบ required fields กับ Forms YAML ใน `create-github-issue/templates/forms/`
+1. Take the issue number or URL from the argument — not given → `/list-github-issue` lets the user choose
+2. Fetch the issue with `gh issue view <n> --json title,body,state,labels,assignees,milestone,comments,projectItems` or github-mcp `get_issue`
+3. Fetch linked PRs/branches: `gh issue view <n> --json closedByPullRequestsReferences` (or `gh issue develop --list`)
+4. If the repo has issue templates → compare required fields against the Forms YAML in `create-github-issue/templates/forms/`
 
 ### 2. Review Issue Metadata
 
-> Goal: metadata ถูกต้องและจัดการได้
+> Goal: metadata correct and manageable
 
-1. title — สื่อ scope/type ชัดเจน (bug/feat/chore prefix ตาม conventions)
-2. labels — มี type + area + priority ตาม repo conventions; missing → finding
-3. assignee/milestone — assigned หรือ triaged หรือยัง
-4. state — open/closed consistency (closed แต่ยังมี work → finding)
-5. linked PRs — issue ที่มี PR แล้วตรวจว่า link ถูกต้อง
+1. title — clearly conveys scope/type (bug/feat/chore prefix per conventions)
+2. labels — has type + area + priority per repo conventions; missing → finding
+3. assignee/milestone — assigned or triaged yet
+4. state — open/closed consistency (closed but work remains → finding)
+5. linked PRs — an issue with a PR already: check the link is correct
 
 ### 3. Review Content Quality
 
-> Goal: issue ชัดพอให้ implement ได้ — ทำตาม checklists ของ `/deep-review-codebase`
+> Goal: the issue is clear enough to implement — follow the checklists of `/deep-review-codebase`
 
-1. dispatch `deep-review-codebase` ผ่าน `/use-subagents` ส่ง `scope`, `dimensions` (`completeness`, `quality`, `rating`), `findings-file` = issue content จาก Step 1
-2. ตรวจเพิ่มเติมเฉพาะ GitHub: reproduction steps/expected vs actual (bug), acceptance criteria checklist, linked context (discussions/PRs), screenshots/logs ที่ referenced ยังเข้าถึงได้
-3. findings ≤ 2 → parent วิเคราะห์เอง ไม่ต้อง spawn
+1. dispatch `deep-review-codebase` via `/use-subagents` passing `scope`, `dimensions` (`completeness`, `quality`, `rating`), `findings-file` = issue content from Step 1
+2. Check additionally GitHub-specific: reproduction steps/expected vs actual (bug), acceptance criteria checklist, linked context (discussions/PRs), referenced screenshots/logs still accessible
+3. findings ≤ 2 → the parent analyzes itself, no spawn needed
 
 ### 4. Rate Readiness
 
-> Goal: readiness verdict ที่ actionable
+> Goal: an actionable readiness verdict
 
-1. classify: `ready` (implement ได้ทันที), `needs-clarification` (ระบุ missing fields), `blocked` (dependency/conflict), `not-ready` (scope ไม่ชัด)
-2. scoring — ทำตาม `deep-review-codebase`
-3. ระบุ missing info ที่ต้องถาม (ผ่าน comment บน issue เมื่อ user confirm)
+1. classify: `ready` (implement immediately), `needs-clarification` (list missing fields), `blocked` (dependency/conflict), `not-ready` (unclear scope)
+2. scoring — follow `deep-review-codebase`
+3. List the missing info that must be asked (via a comment on the issue when the user confirms)
 
 ### 5. Score And Report
 
-> Goal: รายงานผลพร้อม next actions
+> Goal: report with next actions
 
-1. ทำ `/report-review` (ตารางในแชท ไม่สร้างไฟล์) — ตาราง `No.`, `Action`, `Dimension`, `Severity`, `Evidence`, `Owner skill` + score/readiness verdict
-2. ระบุ recommended actions: update issue (`/update-github-issue`), implement (`/resolve-github-issue-by-me` → `/implement-to-production`), หรือ cleanup (`/cleanup-github-issue`)
-3. ทำ `/suggest-next-action`
+1. Run `/report-review` (table in chat, no files) — table `No.`, `Action`, `Dimension`, `Severity`, `Evidence`, `Owner skill` + score/readiness verdict
+2. State recommended actions: update issue (`/update-github-issue`), implement (`/resolve-github-issue-by-me` → `/implement-to-production`), or cleanup (`/cleanup-github-issue`)
+3. Run `/suggest-next-action`
 
 ## Rules
 
-- Review เท่านั้น — ห้ามแก้ issue title/body/labels หรือ comment โดยไม่มี user confirm
-- Focus เฉพาะ issue ที่ระบุ — ไม่ sweep ทั้ง tracker
-- ทุก finding ต้องมี evidence: quote จาก body/comments หรือ field ที่ขาด
-- issue ที่ already closed → review เฉพาะ closure quality (close reason, resolution reference)
-- ใช้ /list-github-issue ถ้าจำเป็น
-- ใช้ /create-github-issue (issue forms) ถ้าจำเป็น
-- ใช้ /deep-review-codebase ถ้าจำเป็น (generic issue นอก GitHub)
+- Review only — never edit issue title/body/labels or comment without user confirm
+- Focus only on the specified issue — no sweeping the whole tracker
+- Every finding must have evidence: a quote from the body/comments or the missing field
+- An already-closed issue → review closure quality only (close reason, resolution reference)
+- Use /list-github-issue if needed
+- Use /create-github-issue (issue forms) if needed
+- Use /deep-review-codebase if needed (generic issue outside GitHub)
 
 ## Fix
 
-> เมื่อ user confirm ให้แก้ findings บน issue จริง
+> When the user confirms fixing the findings on the real issue
 
-1. แก้ metadata (title, labels, milestone) → ทำ `/update-github-issue`
-2. เพิ่ม missing context → comment ผ่าน `gh issue comment` เมื่อ confirm แล้ว
-3. issue พร้อมแล้ว → `/resolve-github-issue-by-me` หรือ `/implement-to-production`
-4. issue ซ้ำ/ไม่ใช้แล้ว → `/cleanup-github-issue`
+1. Fix metadata (title, labels, milestone) → run `/update-github-issue`
+2. Add missing context → comment via `gh issue comment` once confirmed
+3. The issue is ready → `/resolve-github-issue-by-me` or `/implement-to-production`
+4. Duplicate/unused issue → `/cleanup-github-issue`
 
 ## Expected Outcome
 
 - Issue metadata review: title, labels, assignee, milestone, linked PRs
-- Content quality findings ตาม completeness/quality/rating dimensions พร้อม evidence
-- Readiness verdict (`ready`/`needs-clarification`/`blocked`/`not-ready`) พร้อม missing info
-- Recommended actions ถัดไปชัดเจน
+- Content quality findings per completeness/quality/rating dimensions with evidence
+- Readiness verdict (`ready`/`needs-clarification`/`blocked`/`not-ready`) with missing info
+- Clear recommended next actions

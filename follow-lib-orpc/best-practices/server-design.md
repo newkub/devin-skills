@@ -1,47 +1,47 @@
 # Best Practices: oRPC Server Design
 
-แนวทางออกแบบ procedures, middleware, context และ router ฝั่ง server ให้ type-safe และ maintainable
+Guidelines for designing procedures, middleware, context, and routers on the server side to be type-safe and maintainable
 
 ## Recommended Patterns
 
-- สร้าง base builder `os` ครั้งเดียวต่อ app แล้ว derive procedure builders ตาม concern เช่น `pub` (public), `authed` (ผ่าน auth middleware)
-- ใช้ `.$context<T>()` ระบุ initial context ตั้งแต่ base — ทำให้ type dependency ชัดตั้งแต่ต้นสาย
-- Validate ทุก input ด้วย `.input(zodSchema)` — ไม่ trust client data แม้ type ตรงกัน
-- ใช้ `.output(zodSchema)` เมื่อต้องการ contract ที่ชัด + OpenAPI spec ที่ถูกต้อง
-- Group procedures เป็น nested router ตาม domain (`router.user.list`, `router.order.create`) แทน flat list ยาว
-- Middleware แบบ named function (`.use(authMiddleware)`) สำหรับ logic ที่ reuse; inline middleware เฉพาะเคสเดียวจบ
-- ใช้ `next({ context: {...} })` inject เฉพาะค่าที่ handler ต้องใช้จริง — context เป็น typed contract
-- Guard ด้วย `throw new ORPCError('UNAUTHORIZED')` ใน middleware ก่อนถึง handler
+- Create the base builder `os` once per app, then derive procedure builders per concern, e.g. `pub` (public), `authed` (passed the auth middleware)
+- Use `.$context<T>()` to declare the initial context at the base — makes the type dependency clear from the start of the chain
+- Validate every input with `.input(zodSchema)` — never trust client data even when the types match
+- Use `.output(zodSchema)` when you want a clear contract + a correct OpenAPI spec
+- Group procedures into nested routers by domain (`router.user.list`, `router.order.create`) instead of a long flat list
+- Use named-function middleware (`.use(authMiddleware)`) for reused logic; inline middleware only for one-off cases
+- Use `next({ context: {...} })` to inject only the values the handler actually needs — context is a typed contract
+- Guard with `throw new ORPCError('UNAUTHORIZED')` in middleware before reaching the handler
 
 ## Do / Don't
 
 | Do | Don't |
 |---|---|
-| Export `type Router` สำหรับ client inference | export router instance ให้ client import โดยตรง |
-| ใช้ `.errors()` สำหรับ domain errors เฉพาะทาง | define error schema สำหรับ common codes ทุก procedure |
-| เลือก handler ตาม runtime (`/fetch`, `/node`) | import handler ผิด runtime แล้ว debug type error |
-| ตรวจ `matched` ก่อนส่ง response | assume handler match ทุก request |
-| Dedup resource init ใน middleware (เช็ค context ก่อน) | สร้าง db connection ใหม่ทุก procedure call |
-| แยก initial context (env, headers) จาก execution context (auth, db) | ใส่ทุกอย่างใน initial context |
+| Export `type Router` for client inference | export the router instance for the client to import directly |
+| Use `.errors()` for specific domain errors | define error schemas for common codes on every procedure |
+| Pick the handler per runtime (`/fetch`, `/node`) | import the wrong-runtime handler then debug type errors |
+| Check `matched` before sending the response | assume the handler matches every request |
+| Dedup resource init in middleware (check context first) | create a new db connection on every procedure call |
+| Separate initial context (env, headers) from execution context (auth, db) | put everything into the initial context |
 
 ## Common Pitfalls
 
-- ลืม `.$context` ก่อน `.use()` — middleware ที่ต้องการ context ใหม่จะ type error หรือได้ `unknown`
-- ใส่ sensitive data (secrets, internal errors) ใน `ORPCError` message/data — ถูก serialize ส่งไป client
-- Middleware order ผิด — auth ต้องมาก่อน procedure ที่ใช้ `context.user`; เรียง `.use()` ให้ถูก
-- Rebuild router object ใน request handler — router ควรสร้างครั้งเดียวตอน boot
-- ใช้ `.errors()` กับทุก common case — `UNAUTHORIZED`, `NOT_FOUND` ใช้ common codes ได้เลยไม่ต้อง define schema
+- Forgetting `.$context` before `.use()` — middleware needing the new context gets a type error or `unknown`
+- Putting sensitive data (secrets, internal errors) in the `ORPCError` message/data — it gets serialized and sent to the client
+- Wrong middleware order — auth must come before procedures using `context.user`; arrange `.use()` correctly
+- Rebuilding the router object inside the request handler — the router should be created once at boot
+- Using `.errors()` for every common case — `UNAUTHORIZED`, `NOT_FOUND` are common codes and need no defined schema
 
 ## Performance Notes
 
-- Middleware ทำงานทุก request — งานหนัก (db connect, token verify) ควร cache/dedup หรือ lazy-init
-- Zod validation มี cost — schema ใหญ่มากใน hot path ควร measure; `z.lazy`/precompiled schema ช่วยได้
-- Context object ใหญ่ถูก clone ผ่าน `next({context})` — เก็บเฉพาะ reference (db client) ไม่ใช่ data payload
-- ใช้ `interceptors` สำหรับ logging/error reporting รวมศูนย์ แทน try/catch ทุก handler
+- Middleware runs on every request — heavy work (db connect, token verify) should be cached/deduped or lazy-init
+- Zod validation has a cost — very large schemas in hot paths should be measured; `z.lazy`/precompiled schemas help
+- A large context object is cloned through `next({context})` — store only references (db client), not data payloads
+- Use `interceptors` for centralized logging/error reporting instead of try/catch in every handler
 
 ## Ecosystem / Integration
 
 - Zod schemas → `/follow-lib-zod`
 - Contract-first: `@orpc/contract` define contract → implement router → `ContractRouterClient`
-- OpenAPI spec จาก `OpenAPIGenerator` ใช้กับ `/run-api-docs` และ `/deep-test api`
-- TanStack Start integration ผ่าน `server.handlers` ใน route definition
+- The OpenAPI spec from `OpenAPIGenerator` is used with `/run-api-docs` and `/deep-test api`
+- TanStack Start integration via `server.handlers` in the route definition

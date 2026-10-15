@@ -1,48 +1,48 @@
 # Best Practices: openai SDK
 
-แนวทางใช้ `openai` SDK ฝั่ง server ให้ถูกต้อง ปลอดภัย และคุ้ม cost
+Guidelines for using the `openai` SDK server-side correctly, securely, and cost-effectively
 
 ## Recommended Patterns
 
-- สร้าง client ครั้งเดียวแล้ว reuse — `new OpenAI()` อ่าน `OPENAI_API_KEY` จาก env อัตโนมัติ อย่าสร้างใหม่ทุก request
-- ใช้ Responses API (`client.responses.create`/`parse`) เป็น default สำหรับงานใหม่ — รองรับ tools, structured output และ stateful conversation ดีกว่า Chat Completions
-- Structured output ใช้ `zodResponseFormat` จาก `openai/helpers/zod` คู่กับ `.parse()` — ได้ typed result พร้อม validation ในคำสั่งเดียว
-- Streaming ใช้ `stream: true` แล้ว iterate ด้วย `for await` — เก็บ `tool_calls` deltas ต่อเนื่องกันก่อน parse arguments
-- Retry ด้วย exponential backoff สำหรับ `429`/`5xx` — SDK มี built-in retry แต่ควรตั้ง `maxRetries` และ `timeout` ให้ชัดเจน
-- ตั้ง `timeout` ต่อ request และใช้ `AbortSignal` เมื่อ user cancel — กัน request ค้างกิน resource
-- Log `usage` (prompt/completion tokens) ทุก call เพื่อ cost tracking และ detect prompt bloat
+- Create the client once and reuse it — `new OpenAI()` reads `OPENAI_API_KEY` from env automatically; never create a new one per request
+- Use the Responses API (`client.responses.create`/`parse`) as the default for new work — it handles tools, structured output, and stateful conversations better than Chat Completions
+- For structured output, use `zodResponseFormat` from `openai/helpers/zod` with `.parse()` — a typed result with validation in one call
+- For streaming, use `stream: true` then iterate with `for await` — accumulate `tool_calls` deltas continuously before parsing arguments
+- Retry with exponential backoff for `429`/`5xx` — the SDK has built-in retry, but set `maxRetries` and `timeout` explicitly
+- Set a per-request `timeout` and use `AbortSignal` when the user cancels — prevents hung requests eating resources
+- Log `usage` (prompt/completion tokens) on every call for cost tracking and prompt-bloat detection
 
 ## Do / Don't
 
 | Do | Don't |
 |---|---|
-| เรียก API ฝั่ง server เท่านั้น (proxy ผ่าน backend) | ใส่ `apiKey` ใน client-side code หรือ bundle |
-| ใช้ zod schema กับ `.parse()` สำหรับ structured output | parse JSON จาก free-form text ด้วย `JSON.parse` ล้วนๆ |
-| ตั้ง `maxRetries` + backoff สำหรับ rate limit | retry ทันทีแบบ tight loop เมื่อเจอ 429 |
-| ตั้ง `timeout` และ `AbortSignal` | ปล่อย request ไม่มี timeout |
-| เก็บ conversation history แบบจำกัด (truncate/summarize) | ส่ง history ทั้งหมดทุก request จน token พุ่ง |
-| ใช้ prompt caching (`prompt_cache_key` / cache-friendly prompt ordering) | สลับลำดับ system/context ทุกครั้งจน cache miss |
+| Call the API server-side only (proxy through the backend) | put `apiKey` in client-side code or bundles |
+| Use zod schemas with `.parse()` for structured output | parse JSON from free-form text with raw `JSON.parse` |
+| Set `maxRetries` + backoff for rate limits | retry immediately in a tight loop on 429 |
+| Set `timeout` and `AbortSignal` | leave requests without a timeout |
+| Keep conversation history bounded (truncate/summarize) | send the entire history every request until tokens spike |
+| Use prompt caching (`prompt_cache_key` / cache-friendly prompt ordering) | reshuffle system/context order every time until the cache misses |
 
 ## Common Pitfalls
 
-- Structured output ไม่ใช่ guarantee 100% — `.parse()` throw เมื่อ model output ไม่ตรง schema; ต้องมี fallback หรือ retry logic
-- `stream: true` ทำให้ error มาช้า — HTTP 200 แล้วค่อย error กลาง stream; wrap iterator ด้วย try/catch เสมอ
-- Token counting ต่างจากที่คิด — นับด้วย `tiktoken` หรืออ่าน `usage` จริงจาก response อย่า hardcode ประมาณการ
-- `baseURL` สำหรับ compatible providers (Azure, OpenRouter, Ollama) — API surface ไม่เหมือนกัน 100% (เช่น structured output บาง provider ไม่รองรับ)
-- Embedding batch — `input` รับ array ได้ อย่า loop เรียกทีละ item (ช้า + โดน rate limit)
-- Function/tool calling — validate `arguments` JSON ก่อน execute; model อาจ hallucinate args
+- Structured output is not a 100% guarantee — `.parse()` throws when the model output does not match the schema; keep a fallback or retry logic
+- `stream: true` delays errors — HTTP 200 first, then an error mid-stream; always wrap the iterator in try/catch
+- Token counting differs from what you think — count with `tiktoken` or read the real `usage` from the response; never hardcode estimates
+- `baseURL` for compatible providers (Azure, OpenRouter, Ollama) — the API surface is not 100% identical (e.g. structured output is unsupported by some providers)
+- Embedding batches — `input` accepts an array; don't loop calling one item at a time (slow + rate-limited)
+- Function/tool calling — validate the `arguments` JSON before executing; the model may hallucinate args
 
 ## Performance Notes
 
-- เลือก model ตามงาน — อย่าใช้ flagship model กับงาน classification/extraction ง่ายๆ
-- ใช้ prompt caching: วาง static prefix (system prompt, docs) ไว้ต้น prompt เสมอ
-- Batch non-urgent work ผ่าน Batch API สำหรับ cost saving เมื่อ latency ไม่สำคัญ
-- Streaming ไม่ได้เร็วกว่าในแง่ total latency แต่ลด time-to-first-token — ใช้เมื่อ UX ต้องการ progressive output
-- จำกัด `max_tokens`/`max_output_tokens` ให้สมเหตุสมผล — กัน cost overrun จาก generation ยาวเกิน
+- Pick the model per task — never use a flagship model for simple classification/extraction
+- Use prompt caching: always place the static prefix (system prompt, docs) at the start of the prompt
+- Batch non-urgent work through the Batch API for cost saving when latency does not matter
+- Streaming is not faster in total latency but cuts time-to-first-token — use it when the UX needs progressive output
+- Cap `max_tokens`/`max_output_tokens` sensibly — prevents cost overrun from over-long generations
 
 ## Ecosystem / Integration
 
-- Zod สำหรับ schemas → `/follow-lib-zod`
-- API key management → `/follow-secret-manager` ห้าม commit key ลง repo
-- Compatible providers (Azure/OpenRouter/Ollama) ผ่าน `baseURL` → ดู `workflows/config-providers/SKILL.md`
-- Observability: log request id + token usage ต่อ call เพื่อ debug cost spike
+- Zod for schemas → `/follow-lib-zod`
+- API key management → `/follow-secret-manager`; never commit keys to the repo
+- Compatible providers (Azure/OpenRouter/Ollama) via `baseURL` → see `workflows/config-providers/SKILL.md`
+- Observability: log the request id + token usage per call to debug cost spikes
