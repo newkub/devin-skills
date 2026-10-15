@@ -1,6 +1,6 @@
 # Web Vite SPA File Structure
 
-Canonical file structure สำหรับ Vite SPA (React/Vue/Solid client-only) — flat type-grouped layered, ไม่มี server side
+Canonical file structure for a Vite SPA (React/Vue/Solid client-only) — flat type-grouped layered, no server side
 
 ## File Structure
 
@@ -20,7 +20,7 @@ project/
 │  │  ├─ index.tsx                          # route tree
 │  │  └─ guards.ts
 │  │
-│  ├─ pages/                                # page components ต่อ route (presentation)
+│  ├─ pages/                                # page components per route (presentation)
 │  │  ├─ home.tsx
 │  │  └─ dashboard.tsx
 │  │
@@ -51,7 +51,7 @@ project/
 │  ├─ lib/                                  # third-party singleton clients (data)
 │  │  └─ query-client.ts
 │  │
-│  ├─ utils/                                # pure helpers — ไม่มี IO (shared leaf)
+│  ├─ utils/                                # pure helpers — no IO (shared leaf)
 │  │  └─ date.ts
 │  │
 │  ├─ types/                                # shared types (shared leaf)
@@ -79,16 +79,16 @@ project/
 | No. | Layer | Folder | Contains | Deps |
 |-----|-------|--------|----------|------|
 | 1 | presentation | `routes/`+`pages/` | route tree + page components | → `components/`, `hooks/`, `usecases/` (+ leaves) |
-| 2 | presentation | `components/`+`hooks/` | UI + view logic | → `usecases/` (+ leaves) — ห้ามเรียก `infra/` ตรง |
+| 2 | presentation | `components/`+`hooks/` | UI + view logic | → `usecases/` (+ leaves) — never call `infra/` directly |
 | 3 | domain | `usecases/` | orchestration entry | → `services/`, `stores/`, `infra/` (+ leaves) |
 | 4 | domain | `services/`+`stores/` | business rules + client state | → `infra/` (+ leaves) |
 | 5 | data | `infra/`+`lib/` | API calls, storage, third-party clients | leaf (+ leaves) |
-| 6 | shared leaf | `utils/`+`types/`+`constants/`+`config/`+`styles/` | pure/shared | leaf — ทุก layer ใช้ได้ ห้าม import กลับ |
+| 6 | shared leaf | `utils/`+`types/`+`constants/`+`config/`+`styles/` | pure/shared | leaf — usable by every layer, no imports back |
 
 ## Rules
 
-- Dependencies ชี้ลง: presentation → domain → data — ห้าม bypass/ชี้ขึ้น
-- `utils/`, `types/` ต้อง pure — ไม่มี IO/framework side effects
-- ไม่มี server code — API calls ทั้งหมดอยู่ `infra/`; env secrets ห้ามอยู่ฝั่ง client
-- Public API ผ่าน barrel `index.ts` ต่อ folder — ห้าม deep imports ข้าม layer
-- ใช้ path alias (`@/`) แทน relative imports ข้าม folder
+- Dependencies point downward: presentation → domain → data — no bypassing/upward imports
+- `utils/`, `types/` must be pure — no IO/framework side effects
+- No server code — all API calls live in `infra/`; env secrets never on the client side
+- Public API through the per-folder barrel `index.ts` — no deep imports across layers
+- Use path aliases (`@/`) instead of relative imports across folders

@@ -1,6 +1,6 @@
 ---
 name: follow-tool-vite-optimize build
-description: ปรับ Vite build — chunk splitting, minify options, sourcemap strategy
+description: Tune the Vite build — chunk splitting, minify options, sourcemap strategy
 argument-hint: "[target-area]"
 related:
   - follow-tool-vite
@@ -11,75 +11,75 @@ related:
 
 ## Goal
 
-ลด production bundle size และเวลา build ของ Vite project ด้วย chunk splitting, minify options และ sourcemap strategy ที่เหมาะสม — วัดผลก่อนและหลังเสมอ
+Reduce the production bundle size and build time of a Vite project with appropriate chunk splitting, minify options, and sourcemap strategy — always measuring before and after
 
 ## Scope
 
-- ครอบคลุม `build.rolldownOptions.output` (`advancedChunks`, `minify`), `build.sourcemap`, `build.reportCompressedSize`, `chunkSizeWarningLimit`
-- ใช้กับ Vite 8+ (Rolldown bundler) — ถ้า project ยังเป็น Vite ≤7 ดู official docs สำหรับ `rollupOptions` equivalents
-- config structure พื้นฐาน → ใช้ `workflows/config-vite/SKILL.md`
+- Covers `build.rolldownOptions.output` (`advancedChunks`, `minify`), `build.sourcemap`, `build.reportCompressedSize`, `chunkSizeWarningLimit`
+- Applies to Vite 8+ (Rolldown bundler) — if the project is still Vite ≤7, see the official docs for the `rollupOptions` equivalents
+- Basic config structure → use `workflows/config-vite/SKILL.md`
 
 ## Execute
 
 ### 1. Baseline
 
-> Goal: เก็บตัวเลขก่อนแก้ ห้ามเดา bottleneck
+> Goal: capture the numbers before editing; never guess the bottleneck
 
-1. รัน `bunx vite build` เก็บ build time และขนาด output ต่อ chunk
-2. เปิด `build.reportCompressedSize` เพื่อดู gzip size ใน output (หรือใช้ bundle visualizer — ดู official docs)
-3. ทำ `/deep-optimize` ถ้าต้องหา chunk ที่ใหญ่ผิดปกติ
+1. Run `bunx vite build`, recording the build time and per-chunk output sizes
+2. Enable `build.reportCompressedSize` to see gzip sizes in the output (or use a bundle visualizer — see official docs)
+3. Do `/deep-optimize` when hunting for abnormally large chunks
 
 ### 2. Chunk Splitting
 
-> Goal: แยก vendor/route chunks อย่างมีเหตุผล
+> Goal: split vendor/route chunks with a reason
 
-1. ใช้ `build.rolldownOptions.output.advancedChunks` สำหรับ grouping เช่น แยก `vendor` สำหรับ `node_modules`
-2. แยกตาม route ผ่าน dynamic `import()` ใน source — config splitting ไม่แทน lazy loading
-3. หลีกเลี่ยง chunk เล็กเกิน — request overhead มากกว่าประโยชน์
-4. ปรับ `chunkSizeWarningLimit` ให้สอดคล้อง budget ของ project — ไม่ใช่แค่ปิด warning
+1. Use `build.rolldownOptions.output.advancedChunks` for grouping, e.g. a separate `vendor` for `node_modules`
+2. Split per route via dynamic `import()` in the source — config splitting never replaces lazy loading
+3. Avoid too-small chunks — request overhead outweighs the benefit
+4. Tune `chunkSizeWarningLimit` to match the project budget — don't just silence the warning
 
 ### 3. Minify Options
 
-> Goal: minify โดยไม่เปลี่ยน behavior
+> Goal: minify without changing behavior
 
-1. Vite 8 ใช้ Oxc minifier ผ่าน `build.rolldownOptions.output.minify` — options ใน `minify.compress` เช่น `dropConsole`, `dropDebugger`
-2. เปิด `dropConsole`/`dropDebugger` เฉพาะ production ผ่าน conditional config by `mode`
-3. ห้ามเปิด compress options ที่เปลี่ยน semantics โดยไม่ test — ดู official docs ต่อ option
+1. Vite 8 uses the Oxc minifier via `build.rolldownOptions.output.minify` — options under `minify.compress` such as `dropConsole`, `dropDebugger`
+2. Enable `dropConsole`/`dropDebugger` only for production via conditional config by `mode`
+3. Never enable compress options that change semantics without testing — see official docs per option
 
 ### 4. Sourcemap Strategy
 
-> Goal: เลือก sourcemap ตาม use case
+> Goal: pick the sourcemap per use case
 
-1. `build.sourcemap: true` → external `.map` — ใช้กับ staging/internal tools
-2. `build.sourcemap: 'hidden'` → สร้าง map แต่ไม่ใส่ comment — ใช้กับ error reporting เช่น Sentry
-3. เก็บ default `false` สำหรับ public production ถ้าไม่ต้องการ expose source
+1. `build.sourcemap: true` → external `.map` — use for staging/internal tools
+2. `build.sourcemap: 'hidden'` → generates maps without the comment — use for error reporting like Sentry
+3. Keep the default `false` for public production when source exposure isn't wanted
 
 ### 5. Measure Again
 
-> Goal: compare กับ baseline
+> Goal: compare with the baseline
 
-1. รัน `bunx vite build` ซ้ำ — compare bundle size, chunk count, build time
-2. ถ้า regression หรือ behavior เปลี่ยน → revert จุดนั้นแล้ว report
-3. รัน `vite preview` + smoke test หน้าเว็บจริง
-4. report ตัวเลขด้วย `/report-before-after`
+1. Re-run `bunx vite build` — compare bundle size, chunk count, build time
+2. If there's a regression or behavior change → revert that point and report
+3. Run `vite preview` + a smoke test on the real pages
+4. Report the numbers with `/report-before-after`
 
 ## Rules
 
 ### 1. Behavior Preservation
 
-- optimize ≠ เปลี่ยน output — runtime behavior ต้องเหมือนเดิม
-- แก้ทีละจุด วัดทีละจุด — ห้ามแก้หลาย options พร้อมกันถ้าแยกผลไม่ได้
+- optimize ≠ change the output — runtime behavior must stay the same
+- Change one point and measure one point — never change several options at once if results can't be separated
 
 ### 2. Options
 
-- ใช้เฉพาะ options ใน official docs (`vite.dev`, `rolldown.rs`) — ห้ามเดา
-- `esbuild.*` options deprecated ใน Vite 8 — ใช้ `oxc`/`rolldownOptions` แทน
+- Use only options in the official docs (`vite.dev`, `rolldown.rs`) — never guess
+- `esbuild.*` options are deprecated in Vite 8 — use `oxc`/`rolldownOptions` instead
 
-- ใช้ /follow-tool-vite ถ้าจำเป็น
-- ใช้ /run-bench ถ้าจำเป็น
-- ใช้ /deep-review ถ้าจำเป็น
+- Use /follow-tool-vite if needed
+- Use /run-bench if needed
+- Use /deep-review if needed
 
 ## Expected Outcome
 
-- bundle size/build time ดีขึ้นเทียบ baseline ที่วัดได้
-- chunk layout สมเหตุสมผล sourcemap ตรง deployment strategy
+- Measurably better bundle size/build time versus the baseline
+- A sensible chunk layout with sourcemaps matching the deployment strategy
