@@ -1,6 +1,6 @@
 ---
 name: follow-service-instantdb
-description: ติดตั้งและใช้งาน InstantDB เป็น real-time backend สำหรับ frontend apps
+description: Install and use InstantDB as a real-time backend for frontend apps
 argument-hint: "[scope]"
 related:
   - follow-lib-react
@@ -15,43 +15,43 @@ related:
 
 ## Goal
 
-ติดตั้งและใช้งาน InstantDB เป็น real-time backend สำหรับ frontend apps พร้อม schema, queries, transactions, auth, permissions, storage, และ streams
+Install and use InstantDB as a real-time backend for frontend apps with schema, queries, transactions, auth, permissions, storage, and streams
 
 ## Scope
 
-ใช้สำหรับ:
-- สร้างหรือ integrate InstantDB ใน project ที่มี React, Next.js, SolidJS, Svelte, Vue, TanStack Start, หรือ Python
-- กำหนด schema, permissions, และ client configuration
-- Implement real-time queries, transactions, auth, storage, presence, streams
-- ใช้งาน `instant-cli` สำหรับ push/pull schema และ manage apps
+Used for:
+- Creating or integrating InstantDB in a project with React, Next.js, SolidJS, Svelte, Vue, TanStack Start, or Python
+- Defining schema, permissions, and client configuration
+- Implementing real-time queries, transactions, auth, storage, presence, streams
+- Using `instant-cli` for push/pull schema and managing apps
 
-ไม่รวม:
-- สร้าง UI component ตาม framework (ให้ใช้ `follow-lib-react`, `follow-create-web` (nextjs), ฯลฯ)
-- Self-hosting (ให้ดู official docs)
+Not included:
+- Creating UI components per framework (use `follow-lib-react`, `follow-create-web` (nextjs), etc.)
+- Self-hosting (see official docs)
 
 ## Execute
 
 ### Workflows
 
-> Goal: dispatch ไปยัง workflow ที่ตรงกับ topic
+> Goal: dispatch to the workflow matching the topic
 
-- Setup: SDK install ตาม framework, `instant-cli init`, db client → `## Merged Details → setup-instantdb`
+- Setup: SDK install per framework, `instant-cli init`, db client → `## Merged Details → setup-instantdb`
 - Config: `instant.schema.ts`, `instant.perms.ts`, env vars, push/pull → `## Merged Details → config-instantdb`
-- Verify: app id valid, query ตอบกลับ, schema sync → `## Merged Details → verify-connection`
+- Verify: app id valid, query responds, schema sync → `## Merged Details → verify-connection`
 
 ### 1. Detect Project
 
-> Goal: รู้ framework และ dependencies ปัจจุบัน
+> Goal: Know the current framework and dependencies
 
-1. อ่าน `package.json` เพื่อระบุ framework และ package manager
-2. ตรวจสอบว่า project ใช้ `bun`, `npm`, `pnpm`, หรือ `yarn`
-3. ถ้าไม่มี `package.json` → stop และ report
+1. Read `package.json` to identify the framework and package manager
+2. Check whether the project uses `bun`, `npm`, `pnpm`, or `yarn`
+3. If there is no `package.json` → stop and report
 
 ### 2. Install InstantDB
 
-> Goal: ติดตั้ง dependencies ที่ถูกต้องตาม framework
+> Goal: Install the correct dependencies per framework
 
-1. ติดตั้ง client SDK ตาม framework:
+1. Install the client SDK per framework:
    - React: `bun add @instantdb/react`
    - Next.js: `bun add @instantdb/react`
    - SolidJS: `bun add @instantdb/solid`
@@ -59,36 +59,36 @@ related:
    - Vue: `bun add @instantdb/vue`
    - TanStack Start: `bun add @instantdb/react`
    - Vanilla JS: `bun add @instantdb/core`
-   - Python: `pip install instantdb` (ใช้งานร่วมกับ `follow-lang-python`)
-Latest: `@instantdb/react@1.0.67` (verified 2026-09-12); CLI package ชื่อ `instant-cli` (ไม่ใช่ `@instantdb/cli` ซึ่งไม่มีใน npm)
+   - Python: `pip install instantdb` (used together with `follow-lang-python`)
+Latest: `@instantdb/react@1.0.67` (verified 2026-09-12); the CLI package is named `instant-cli` (not `@instantdb/cli`, which does not exist on npm)
 
-2. ติดตั้ง CLI สำหรับ dev: `bun add -D instant-cli` หรือใช้ `npx instant-cli@latest`
-3. ยืนยันว่า dependencies อยู่ใน `package.json`
+2. Install the CLI for dev: `bun add -D instant-cli` or use `npx instant-cli@latest`
+3. Confirm the dependencies are in `package.json`
 
 ### 3. Initialize App
 
-> Goal: สร้าง schema, perms, และ env config เริ่มต้น
+> Goal: Create the starting schema, perms, and env config
 
-1. รัน `npx instant-cli@latest init` (หรือ `bunx instant-cli init`)
-2. เลือก Instant app หรือสร้างใหม่ผ่าน CLI
-3. ตรวจสอบ `instant.schema.ts`, `instant.perms.ts`, `.env.local` ถูกสร้าง
-4. ยืนยันว่า `NEXT_PUBLIC_INSTANT_APP_ID` หรือ `VITE_INSTANT_APP_ID` ถูก set
+1. Run `npx instant-cli@latest init` (or `bunx instant-cli init`)
+2. Select an Instant app or create a new one via the CLI
+3. Check that `instant.schema.ts`, `instant.perms.ts`, `.env.local` were created
+4. Confirm `NEXT_PUBLIC_INSTANT_APP_ID` or `VITE_INSTANT_APP_ID` is set
 
 ### 4. Define Schema
 
-> Goal: สร้าง data model ทีถูกต้องและ type-safe
+> Goal: Create a correct, type-safe data model
 
-1. อ่าน [## Merged Details → `### references/instantdb-api`](## Merged Details → `### references/instantdb-api`) และ [## Merged Details → `### references/instantdb-configuration`](## Merged Details → `### references/instantdb-configuration`)
-2. แก้ไข `instant.schema.ts` เพื่อเพิ่ม entities, fields, links, rooms
-3. ใช้ `i.entity({ ... })`, `i.string()`, `i.boolean()`, `i.date()` ตาม docs
-4. ระบุ `unique`, `indexed`, `optional` ตามที่จำเป็น
-5. รัน `npx instant-cli@latest push schema` เพื่อ push ขึ้น production
+1. Read [## Merged Details → `### references/instantdb-api`](## Merged Details → `### references/instantdb-api`) and [## Merged Details → `### references/instantdb-configuration`](## Merged Details → `### references/instantdb-configuration`)
+2. Edit `instant.schema.ts` to add entities, fields, links, rooms
+3. Use `i.entity({ ... })`, `i.string()`, `i.boolean()`, `i.date()` per the docs
+4. Mark `unique`, `indexed`, `optional` as needed
+5. Run `npx instant-cli@latest push schema` to push to production
 
 ### 5. Create Client
 
-> Goal: สร้าง db client ทีใช้งานได้ใน project
+> Goal: Create a usable db client in the project
 
-1. สร้าง `src/lib/instant.ts` (หรือ path ทีเหมาะสมกับ project):
+1. Create `src/lib/instant.ts` (or a path suited to the project):
    ```ts
    import { init } from "@instantdb/react";
    import schema from "../../instant.schema";
@@ -98,78 +98,78 @@ Latest: `@instantdb/react@1.0.67` (verified 2026-09-12); CLI package ชื่�
      useDateObjects: true,
    });
    ```
-2. เปลี่ยน `@instantdb/react` ให้ตรงกับ framework ทีใช้
-3. อย่า hardcode app ID หรือ secrets ใน source code
+2. Change `@instantdb/react` to match the framework in use
+3. Never hardcode app IDs or secrets in source code
 
 ### 6. Query And Transact
 
-> Goal: อ่านและเขียนข้อมูลแบบ real-time
+> Goal: Read and write data in real time
 
-1. ใช้ `db.useQuery({ todos: {} })` เพื่อ read real-time data
-2. ใช้ `db.transact(db.tx.todos[id()].update({ ... }))` เพื่อ write
-3. ใช้ `db.tx.<entity>[id()].delete()` สำหรับ delete
-4. จัดการ `isLoading`, `error`, `data` จาก `useQuery`
-5. ดู patterns เพิ่มเติมใน [## Merged Details → `### references/instantdb-api`](## Merged Details → `### references/instantdb-api`)
+1. Use `db.useQuery({ todos: {} })` to read real-time data
+2. Use `db.transact(db.tx.todos[id()].update({ ... }))` to write
+3. Use `db.tx.<entity>[id()].delete()` for delete
+4. Handle `isLoading`, `error`, `data` from `useQuery`
+5. See more patterns in [## Merged Details → `### references/instantdb-api`](## Merged Details → `### references/instantdb-api`)
 
 ### 7. Setup Auth And Permissions
 
-> Goal: ป้องกันข้อมูลด้วย auth และ rules
+> Goal: Protect data with auth and rules
 
-1. ถ้าใช้ built-in auth: อ่าน [## Merged Details → `### references/instantdb-configuration`](## Merged Details → `### references/instantdb-configuration`) เรื่อง magic codes, OAuth
-2. ตั้งค่า `instant.perms.ts` ด้วย `allow`/`bind` rules
-3. ใช้ `auth.id`, `auth.email` ใน permission rules
-4. รัน `npx instant-cli@latest push perms` เมื่อแก้ permissions
-5. ถ้าใช้ Clerk/Firebase Auth → follow คู่มือ official docs
+1. If using built-in auth: read [## Merged Details → `### references/instantdb-configuration`](## Merged Details → `### references/instantdb-configuration`) about magic codes and OAuth
+2. Configure `instant.perms.ts` with `allow`/`bind` rules
+3. Use `auth.id`, `auth.email` in permission rules
+4. Run `npx instant-cli@latest push perms` when permissions change
+5. If using Clerk/Firebase Auth → follow the official docs guides
 
 ### 8. Use Advanced Features
 
-> Goal: ใช้ features เสริมของ InstantDB
+> Goal: Use InstantDB's extra features
 
-1. Storage: ใช้ `$files` entity และ `db.storage.uploadFile`
-2. Presence: ใช้ `db.rooms.usePresence`
-3. Streams: ใช้ `db.rooms.useStream`
-4. Admin HTTP API สำหรับ server-side operations
-5. ถ้าไม่ใช้ในขอบเขตนี้ → ข้ามขั้นตอนนี้
+1. Storage: use the `$files` entity and `db.storage.uploadFile`
+2. Presence: use `db.rooms.usePresence`
+3. Streams: use `db.rooms.useStream`
+4. Admin HTTP API for server-side operations
+5. If not used in this scope → skip this step
 
 ### 9. Validate
 
-> Goal: ยืนยันว่า implementation ทำงานได้
+> Goal: Confirm the implementation works
 
-1. รัน `bunx tsc --noEmit` หรือ `bun run build` เพื่อ typecheck
-2. รัน dev server และทดสอบ CRUD real-time
-3. รัน `npx instant-cli@latest status` เพื่อตรวจสอบ app connection
-4. ถ้ามี errors → ทำ `resolve-errors` แล้ว revalidate
+1. Run `bunx tsc --noEmit` or `bun run build` to typecheck
+2. Run the dev server and test real-time CRUD
+3. Run `npx instant-cli@latest status` to check the app connection
+4. If errors occur → do `resolve-errors` then revalidate
 
 ### 10. Update References
 
-> Goal: อัปเดต references และสรุป next action
+> Goal: Update references and summarize the next action
 
-1. ถ้ามีการเพิ่ม links/rooms → อัปเดต [## Merged Details → `### references/instantdb-configuration`](## Merged Details → `### references/instantdb-configuration`)
-2. ทำ `update-references` สำหรับ skills ทีเกี่ยวข้อง
-3. ทำ `suggest-next-action` เพื่อแนะนำ step ถัดไป
+1. If links/rooms were added → update [## Merged Details → `### references/instantdb-configuration`](## Merged Details → `### references/instantdb-configuration`)
+2. Do `update-references` for related skills
+3. Do `suggest-next-action` to recommend the next step
 
 ## Rules
 
 ### 1. Source Of Truth
-- ใช้ official docs ที่ `https://www.instantdb.com/docs` เป็นแหล่งหลัก
-- ถ้า official docs ขัดแย้งกับ training data → ใช้ official docs
-- ระบุ version ทีติดตั้งใน `package.json` เสมอ
+- Use official docs at `https://www.instantdb.com/docs` as the primary source
+- If official docs conflict with training data → use the official docs
+- Always state the installed version in `package.json`
 
 ### 2. Security
-- อย่า hardcode `INSTANT_APP_ID`, API keys, tokens ใน source code
-- ใช้ environment variables หรือ secret manager
-- กำหนด permissions ก่อน expose ข้อมูล sensitive
-- อย่า push schema/perms โดยไม่ตรวจสอบ dry-run
+- Never hardcode `INSTANT_APP_ID`, API keys, or tokens in source code
+- Use environment variables or a secret manager
+- Define permissions before exposing sensitive data
+- Never push schema/perms without reviewing a dry run
 
 ### 3. Type Safety
-- ใช้ `schema` parameter ใน `init({ schema })` เสมอ
-- ใช้ generated types จาก `InstaQLEntity<typeof schema, "...">`
-- ใช้ `useDateObjects: true` ถ้าต้องการ `Date` objects
+- Always use the `schema` parameter in `init({ schema })`
+- Use generated types from `InstaQLEntity<typeof schema, "...">`
+- Use `useDateObjects: true` when `Date` objects are wanted
 
 ### 4. Minimal Changes
-- ไม่ rewrite ทั้ง project ถ้าแค่ integrate InstantDB
-- ใช้ config files ที project มีอยู่แล้ว
-- ถ้าต้องแก้ >10 ไฟล์ → ทำ `use-scripts`
+- Do not rewrite the whole project just to integrate InstantDB
+- Use the config files the project already has
+- If more than 10 files must change → do `use-scripts`
 
 ## Merged Details
 
@@ -177,117 +177,117 @@ Latest: `@instantdb/react@1.0.67` (verified 2026-09-12); CLI package ชื่�
 
 ##### Goal
 
-ตั้งค่า/แก้ไข InstantDB configuration — `instant.schema.ts`, `instant.perms.ts`, env vars และ push/pull — โดยไม่ clobber schema เดิม
+Set/edit InstantDB configuration — `instant.schema.ts`, `instant.perms.ts`, env vars, and push/pull — without clobbering the existing schema
 
 ##### Scope
 
-- แก้ entities, fields, links, rooms ใน `instant.schema.ts`
-- กำหนด `allow`/`bind` rules ใน `instant.perms.ts`
-- จัดการ env app id และ `instant-cli push/pull`
-- ไม่ครอบคลุม SDK install/init → ใช้ `## Merged Details → setup-instantdb`
+- Edit entities, fields, links, rooms in `instant.schema.ts`
+- Define `allow`/`bind` rules in `instant.perms.ts`
+- Manage the env app id and `instant-cli push/pull`
+- Does not cover SDK install/init → use `## Merged Details → setup-instantdb`
 
 ##### Execute
 
 ###### 1. Read Current Config
 
-> Goal: รู้ schema/perms ปัจจุบันก่อนแก้
+> Goal: Know the current schema/perms before editing
 
-1. อ่าน `instant.schema.ts` และ `instant.perms.ts` ที่มีอยู่
-2. ทำ `/check-secrets env-vars` เพื่อระบุ app id var ที่ขาดหรือผิด prefix
-3. รัน `npx instant-cli@latest pull` ถ้าต้อง sync config ล่าสุดจาก server ก่อนแก้
-4. ถ้าไม่มี config files เลย → ทำ `## Merged Details → setup-instantdb` แทน
+1. Read the existing `instant.schema.ts` and `instant.perms.ts`
+2. Do `/check-secrets env-vars` to identify missing or wrongly prefixed app id vars
+3. Run `npx instant-cli@latest pull` if the latest config must be synced from the server before editing
+4. If no config files exist at all → do `## Merged Details → setup-instantdb` instead
 
 ###### 2. Update Schema
 
-> Goal: เพิ่ม/แก้ data model แบบ type-safe
+> Goal: Add/edit the data model type-safely
 
-1. แก้ `instant.schema.ts` เพิ่ม entities, fields, links, rooms เฉพาะส่วนที่ต้องการ — merge ห้าม rewrite ทั้งไฟล์
-2. ใช้ `i.entity({ ... })`, `i.string()`, `i.number()`, `i.boolean()`, `i.date()` และ `i.any()` ตาม docs
-3. ระบุ `.unique()`, `.indexed()`, `.optional()` ตามความจำเป็น
-4. กำหนด links ด้วย `forward`/`reverse` labels ให้ชัดเจน
+1. Edit `instant.schema.ts` adding entities, fields, links, rooms only where needed — merge, never rewrite the whole file
+2. Use `i.entity({ ... })`, `i.string()`, `i.number()`, `i.boolean()`, `i.date()`, and `i.any()` per the docs
+3. Mark `.unique()`, `.indexed()`, `.optional()` as required
+4. Define links with explicit `forward`/`reverse` labels
 
 ###### 3. Update Permissions
 
-> Goal: ป้องกัน data access ด้วย rules
+> Goal: Protect data access with rules
 
-1. แก้ `instant.perms.ts` ด้วย `allow`/`bind` rules ต่อ entity และ action (`view`, `create`, `update`, `delete`)
-2. ใช้ `auth.id`, `auth.email` ใน rules — deny by default สำหรับ data sensitive
-3. ผูก rules กับ links เช่น `data.user` เมื่อต้องเช็ค ownership
-4. Review rules ก่อน push — ห้าม expose data โดยไม่ตั้งใจ
+1. Edit `instant.perms.ts` with per-entity, per-action `allow`/`bind` rules (`view`, `create`, `update`, `delete`)
+2. Use `auth.id`, `auth.email` in rules — deny by default for sensitive data
+3. Bind rules to links such as `data.user` when checking ownership
+4. Review rules before push — never expose data accidentally
 
 ###### 4. Push And Verify
 
-> Goal: apply config และยืนยัน typecheck ผ่าน
+> Goal: apply config and confirm typecheck passes
 
-1. รัน `npx instant-cli@latest push schema` เมื่อแก้ schema
-2. รัน `npx instant-cli@latest push perms` เมื่อแก้ permissions
-3. รัน `bunx tsc --noEmit` หรือ `bun run build` เพื่อ typecheck schema types
-4. รัน `npx instant-cli@latest status` ยืนยัน connection — ถ้า fail → `resolve-errors` max 3 รอบ
-5. ถ้ามี links/rooms ใหม่ → อัปเดต references ของ parent และทำ `/update-references`
+1. Run `npx instant-cli@latest push schema` when the schema changes
+2. Run `npx instant-cli@latest push perms` when permissions change
+3. Run `bunx tsc --noEmit` or `bun run build` to typecheck schema types
+4. Run `npx instant-cli@latest status` to confirm the connection — if it fails → `resolve-errors` max 3 rounds
+5. If new links/rooms exist → update the parent's references and do `/update-references`
 
 ##### Rules
 
-- Merge เฉพาะ keys ที่จำเป็น — ห้าม overwrite schema/perms ทั้งไฟล์
-- อย่า push schema/perms โดยไม่ review diff ก่อน
-- ใช้ generated types จาก `InstaQLEntity<typeof schema, "...">` สำหรับ type safety
-- ห้าม hardcode app id/secrets — ใช้ env vars ตาม framework prefix
-- ถ้า field type/rule syntax ไม่แน่ใจ → ดู official docs `https://www.instantdb.com/docs`
+- Merge only the necessary keys — never overwrite whole schema/perms files
+- Never push schema/perms without reviewing the diff first
+- Use generated types from `InstaQLEntity<typeof schema, "...">` for type safety
+- Never hardcode app id/secrets — use env vars with the framework prefix
+- If unsure about a field type/rule syntax → check official docs `https://www.instantdb.com/docs`
 
 ##### Expected Outcome
 
-- `instant.schema.ts` และ `instant.perms.ts` ถูก merge และ push สำเร็จ
-- Typecheck ผ่านและ rules ป้องกัน data sensitive ถูกต้อง
-- Env vars ถูกต้องตาม framework
+- `instant.schema.ts` and `instant.perms.ts` merged and pushed successfully
+- Typecheck passes and rules protect sensitive data correctly
+- Env vars correct per framework
 
 ### setup-instantdb
 
 ##### Goal
 
-ติดตั้ง InstantDB SDK ตาม framework, รัน `instant-cli init` เพื่อผูก app และสร้าง `db` client ให้พร้อม query/transact — first-time setup เท่านั้น
+Install the InstantDB SDK per framework, run `instant-cli init` to link the app, and create the `db` client ready for query/transact — first-time setup only
 
 ##### Scope
 
-- ติดตั้ง `@instantdb/<framework>` และ `instant-cli`
-- สร้าง `instant.schema.ts`, `instant.perms.ts`, env app id
-- Init typed `db` client จาก env
-- ไม่ครอบคลุม schema/permissions config ละเอียด → ใช้ `## Merged Details → config-instantdb`
+- Install `@instantdb/<framework>` and `instant-cli`
+- Create `instant.schema.ts`, `instant.perms.ts`, env app id
+- Init the typed `db` client from env
+- Does not cover detailed schema/permissions config → use `## Merged Details → config-instantdb`
 
 ##### Execute
 
 ###### 1. Detect Project
 
-> Goal: รู้ framework และ package manager ปัจจุบัน
+> Goal: Know the current framework and package manager
 
-1. อ่าน `package.json` เพื่อระบุ framework (React, Next.js, SolidJS, Svelte, Vue, vanilla)
-2. ระบุ package manager (`bun`, `npm`, `pnpm`, `yarn`)
-3. ตรวจว่ามี `instant.schema.ts` หรือ `@instantdb/*` อยู่แล้ว → ถ้ามี skip ไป verify
-4. ถ้าไม่มี `package.json` → stop และ report
+1. Read `package.json` to identify the framework (React, Next.js, SolidJS, Svelte, Vue, vanilla)
+2. Identify the package manager (`bun`, `npm`, `pnpm`, `yarn`)
+3. Check whether `instant.schema.ts` or `@instantdb/*` already exists → if so, skip to verify
+4. If there is no `package.json` → stop and report
 
 ###### 2. Install SDK And CLI
 
-> Goal: ติดตั้ง dependencies ที่ถูกต้องตาม framework
+> Goal: Install the correct dependencies per framework
 
-1. ติดตั้ง client SDK ตาม framework:
+1. Install the client SDK per framework:
    - React/Next.js/TanStack Start: `bun add @instantdb/react`
    - SolidJS: `bun add @instantdb/solid`, Svelte: `bun add @instantdb/svelte`, Vue: `bun add @instantdb/vue`
-   - Vanilla JS: `bun add @instantdb/core` — ภาษาอื่นดู official docs
-2. ติดตั้ง CLI ด้วย `bun add -D instant-cli` (package ชื่อ `instant-cli` ไม่ใช่ `@instantdb/cli`)
-3. ยืนยัน dependencies อยู่ใน `package.json`
+   - Vanilla JS: `bun add @instantdb/core` — for other languages check official docs
+2. Install the CLI with `bun add -D instant-cli` (the package is named `instant-cli`, not `@instantdb/cli`)
+3. Confirm the dependencies are in `package.json`
 
 ###### 3. Initialize App
 
-> Goal: ผูก Instant app และสร้าง config files
+> Goal: Link the Instant app and create config files
 
-1. รัน `npx instant-cli@latest init` (หรือ `bunx instant-cli init`)
-2. เลือก Instant app เดิมหรือสร้างใหม่ผ่าน CLI — ถ้าไม่มี account → stop และแจ้ง user
-3. ตรวจว่า `instant.schema.ts`, `instant.perms.ts`, `.env.local` ถูกสร้าง
-4. ยืนยัน env app id ถูก set — `NEXT_PUBLIC_INSTANT_APP_ID` หรือ `VITE_INSTANT_APP_ID` ตาม framework
+1. Run `npx instant-cli@latest init` (or `bunx instant-cli init`)
+2. Pick an existing Instant app or create a new one via the CLI — if there is no account → stop and tell the user
+3. Check that `instant.schema.ts`, `instant.perms.ts`, `.env.local` were created
+4. Confirm the env app id is set — `NEXT_PUBLIC_INSTANT_APP_ID` or `VITE_INSTANT_APP_ID` per framework
 
 ###### 4. Create Client And Verify
 
-> Goal: สร้าง typed db client และ smoke check
+> Goal: Create the typed db client and smoke check it
 
-1. สร้าง `src/lib/instant.ts` (หรือ path ที่เหมาะสม):
+1. Create `src/lib/instant.ts` (or a suitable path):
    ```ts
    import { init } from "@instantdb/react";
    import schema from "../../instant.schema";
@@ -297,69 +297,69 @@ Latest: `@instantdb/react@1.0.67` (verified 2026-09-12); CLI package ชื่�
      useDateObjects: true,
    });
    ```
-2. เปลี่ยน import ให้ตรง framework ที่ใช้ — ห้าม hardcode app id
-3. รัน dev server และทดสอบ `db.useQuery` เบื้องต้น
-4. ทำ `/run-verify` — ถ้า fail → `resolve-errors` max 3 รอบ
+2. Change the import to match the framework in use — never hardcode the app id
+3. Run the dev server and test basic `db.useQuery`
+4. Do `/run-verify` — if it fails → `resolve-errors` max 3 rounds
 
 ##### Rules
 
-- ใช้ official docs `https://www.instantdb.com/docs` เป็นแหล่งหลัก
-- ห้าม hardcode `INSTANT_APP_ID` หรือ secrets ใน source code
-- ใช้ `schema` parameter ใน `init({ schema })` เสมอเพื่อ type safety
-- ไม่ rewrite project — integrate เข้า structure เดิม
-- เสร็จแล้วทำ `/suggest-next-action`
+- Use official docs `https://www.instantdb.com/docs` as the primary source
+- Never hardcode `INSTANT_APP_ID` or secrets in source code
+- Always use the `schema` parameter in `init({ schema })` for type safety
+- Do not rewrite the project — integrate into the existing structure
+- When done, do `/suggest-next-action`
 
 ##### Expected Outcome
 
-- SDK ตาม framework + `instant-cli` ติดตั้งครบ
-- `instant.schema.ts`, `instant.perms.ts`, env app id ถูกสร้าง
-- `db` client พร้อมใช้งานและ query ผ่าน verify
+- Framework SDK + `instant-cli` fully installed
+- `instant.schema.ts`, `instant.perms.ts`, env app id created
+- `db` client ready to use and query — verify passed
 
 ### verify-connection
 
 ##### Goal
 
-ยืนยันหลัง setup/config ว่า InstantDB เชื่อมต่อได้จริง — `INSTANT_APP_ID` valid, client query ตอบกลับ, admin token ถ้ามีใช้ได้
+Confirm after setup/config that InstantDB really connects — `INSTANT_APP_ID` valid, client query responds, admin token usable when present
 
 ##### Scope
 
-- ใช้เมื่อ `/follow-service-instantdb` dispatch มาที่ `verify`/`verify-connection`
-- Read-only: ตรวจสอบ — ไม่ push schema หรือ transact จริง
+- Used when `/follow-service-instantdb` dispatches to `verify`/`verify-connection`
+- Read-only: check only — do not push schema or transact for real
 
 ##### Execute
 
 ###### 1. Check App Credentials
 
-> Goal: app id และ tokens มีครบ
+> Goal: app id and tokens are complete
 
-1. ตรวจ `INSTANT_APP_ID` มีค่า (ไม่ print ค่า)
-2. ถ้าใช้ admin SDK → ตรวจ `INSTANT_APP_ADMIN_TOKEN` มี
-3. ถ้าใช้ CLI → `instant-cli whoami` ยืนยัน login
+1. Check `INSTANT_APP_ID` has a value (do not print it)
+2. If the admin SDK is used → check `INSTANT_APP_ADMIN_TOKEN` exists
+3. If using the CLI → `instant-cli whoami` confirms login
 
 ###### 2. Smoke Test Query
 
-> Goal: client เชื่อม backend ได้
+> Goal: the client reaches the backend
 
-1. init client ด้วย app id → รัน query ว่าง `db.useQuery({})` หรือ `db.queryOnce`
-2. ตรวจ response ไม่ใช่ auth error — invalid app id จะ fail ตรงนี้
-3. ถ้ามี schema → ตรวจ `instant.schema.ts` sync กับ backend (`instant-cli pull` dry check)
+1. Init the client with the app id → run an empty query `db.useQuery({})` or `db.queryOnce`
+2. Confirm the response is not an auth error — an invalid app id fails here
+3. If a schema exists → check `instant.schema.ts` is synced with the backend (`instant-cli pull` dry check)
 
 ###### 3. Report
 
-> Goal: สรุป connection status
+> Goal: Summarize connection status
 
-1. ใช้ `/report` คอลัมน์: `No.`, `Check`, `Result`, `Evidence`
+1. Use `/report` columns: `No.`, `Check`, `Result`, `Evidence`
 2. Verdict: `connected` / `invalid-app-id` / `auth-failed` / `schema-drift`
 
 ##### Rules
 
-- ใช้ read queries เท่านั้น — ห้าม transact
-- ไม่ print admin token
-- schema drift → รายงานให้ `## Merged Details → config-instantdb` จัดการ
+- Use read queries only — never transact
+- Do not print the admin token
+- Schema drift → report it so `## Merged Details → config-instantdb` handles it
 
 ##### Expected Outcome
 
-- Verdict connection พร้อม app-id evidence
+- Connection verdict with app-id evidence
 
 ### references/apis
 
@@ -732,8 +732,8 @@ bun add @instantdb/react
 
 ## Expected Outcome
 
-- Project ติดตั้ง InstantDB client ตาม framework
-- `instant.schema.ts` และ `instant.perms.ts` ถูกต้องและถูก push
-- `db` client พร้อมใช้งาน query และ transaction
-- Type-safe real-time CRUD ทำงานได้
-- Auth และ permissions ถูกกำหนดตาม scope (ถ้ามี)
+- Project has the InstantDB client installed per framework
+- `instant.schema.ts` and `instant.perms.ts` are correct and pushed
+- The `db` client is ready for queries and transactions
+- Type-safe real-time CRUD works
+- Auth and permissions defined per scope (if used)

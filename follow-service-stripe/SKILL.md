@@ -1,6 +1,6 @@
 ---
 name: follow-service-stripe
-description: ใช้ Stripe สำหรับ payments, subscriptions, checkout, customer portal และ webhooks
+description: Use Stripe for payments, subscriptions, checkout, customer portal, and webhooks
 argument-hint: "[project-path]"
 related:
   - follow-secret-manager
@@ -17,155 +17,155 @@ related:
 
 ## Goal
 
-ติดตั้งและใช้งาน Stripe สำหรับ product โดยครอบคลุม pricing, checkout, subscriptions, customer portal, และ webhook handling
+Install and use Stripe for a product, covering pricing, checkout, subscriptions, customer portal, and webhook handling
 
 ## Scope
 
-- รองรับ one-time payments, recurring subscriptions, และ usage-based pricing
-- สร้าง `/pricing`, `/user/billing`, `/dashboard` pages
-- จัดการ customer portal และ webhook events
-- ใช้ Stripe test mode ก่อนสลับไป live
+- Supports one-time payments, recurring subscriptions, and usage-based pricing
+- Create `/pricing`, `/user/billing`, `/dashboard` pages
+- Handle customer portal and webhook events
+- Use Stripe test mode before switching to live
 
 ## Execute
 
 ### Workflows
 
-> Goal: dispatch ไปยัง workflow ที่ตรงกับ topic
+> Goal: dispatch to the workflow matching the topic
 
 - Setup: SDK/CLI install, API keys, webhook signing → `## Merged Details → setup-stripe`
 - Config: products, prices, webhook endpoints, customer portal, test→live → `## Merged Details → config-stripe`
-- Verify: keys valid, mode ถูก (test/live), webhook secret พร้อม → `## Merged Details → verify-connection`
+- Verify: keys valid, correct mode (test/live), webhook secret ready → `## Merged Details → verify-connection`
 
 ### 1. Setup Credentials
 
-> Goal: เตรียม Stripe SDK และ API keys
+> Goal: Prepare the Stripe SDK and API keys
 
 Latest: `stripe@22.6.2` (server), `@stripe/stripe-js@9.17.0` (client) (verified 2026-09-24)
 
-1. ติดตั้ง Stripe SDK ด้วย `bun add stripe` สำหรับ server
-2. ติดตั้ง client SDK ด้วย `bun add @stripe/stripe-js`
-3. สร้าง Stripe account และเปิด Developers > API keys
-4. เก็บ `STRIPE_SECRET_KEY` และ `STRIPE_PUBLISHABLE_KEY` ใน `/follow-secret-manager` ไม่ใช่ `.env` จริง
-5. ติดตั้ง Stripe CLI สำหรับ webhook forwarding ด้วย `mise use -g stripe` หรือ `scoop install stripe`
+1. Install the Stripe SDK with `bun add stripe` for the server
+2. Install the client SDK with `bun add @stripe/stripe-js`
+3. Create a Stripe account and open Developers > API keys
+4. Store `STRIPE_SECRET_KEY` and `STRIPE_PUBLISHABLE_KEY` in `/follow-secret-manager`, not the real `.env`
+5. Install the Stripe CLI for webhook forwarding with `mise use -g stripe` or `scoop install stripe`
 
 ### 2. Define Products And Prices
 
-> Goal: กำหนด pricing model
+> Goal: Define the pricing model
 
-1. สร้าง products ใน Stripe dashboard หรือด้วย API
-2. สร้าง prices สำหรับ one-time, monthly, yearly, usage-based
-3. บันทึก `price_id` แต่ละแผนไว้ใน config
-4. ระบุ default plan และ featured plan สำหรับหน้า `/pricing`
+1. Create products in the Stripe dashboard or via the API
+2. Create prices for one-time, monthly, yearly, usage-based
+3. Save each plan's `price_id` in config
+4. Specify the default plan and featured plan for the `/pricing` page
 
 ### 3. Build Pricing Page
 
-> Goal: สร้างหน้า `/pricing` ทีดึงดูด
+> Goal: Create an attractive `/pricing` page
 
-1. ทำ `/follow-lib-unocss` สำหรับ UnoCSS และ HSL theme tokens
-2. ออกแบบ cards สำหรับแต่ละ plan พร้อม price, features, CTA
-3. เรียก `/deep-review` ก่อน deploy หน้า pricing
-4. ส่ง price_id ไปยัง checkout session
+1. Do `/follow-lib-unocss` for UnoCSS and HSL theme tokens
+2. Design cards for each plan with price, features, CTA
+3. Call `/deep-review` before deploying the pricing page
+4. Pass the price_id to the checkout session
 
 ### 4. Implement Checkout
 
-> Goal: สร้าง checkout session และ redirect
+> Goal: Create the checkout session and redirect
 
-1. สร้าง server route `/api/checkout` ด้วย `stripe.checkout.sessions.create`
-2. ส่ง `price_id`, `customer_email`, `success_url`, `cancel_url`
-3. เรียก session จาก client และ redirect ไป `session.url`
-4. บันทึก `session_id` และ `customer_id` ใน database
+1. Create server route `/api/checkout` with `stripe.checkout.sessions.create`
+2. Pass `price_id`, `customer_email`, `success_url`, `cancel_url`
+3. Call the session from the client and redirect to `session.url`
+4. Save `session_id` and `customer_id` in the database
 
 ### 5. Manage Subscriptions
 
-> Goal: จัดการ subscription lifecycle
+> Goal: Manage the subscription lifecycle
 
-1. สร้าง subscription ด้วย `stripe.subscriptions.create` หรือผ่าน checkout
-2. ตรวจสอบสถานะ `active`, `past_due`, `canceled`
-3. สร้าง route `/api/subscriptions/update` สำหรับ upgrade/downgrade
-4. สร้าง route `/api/subscriptions/cancel` พร้อม `cancel_at_period_end`
+1. Create subscriptions with `stripe.subscriptions.create` or via checkout
+2. Check the `active`, `past_due`, `canceled` statuses
+3. Create route `/api/subscriptions/update` for upgrade/downgrade
+4. Create route `/api/subscriptions/cancel` with `cancel_at_period_end`
 
 ### 6. Customer Portal
 
-> Goal: เปิดให้ user จัดการ billing เอง
+> Goal: Let users manage their own billing
 
-1. ตั้งค่า customer portal ใน Stripe settings
-2. สร้าง route `/api/billing/portal-session` ด้วย `stripe.billingPortal.sessions.create`
-3. ระบุ `return_url` ไปยัง `/user/billing`
-4. เพิ่มปุ่ม "Manage billing" ในหน้า `/user/billing`
+1. Configure the customer portal in Stripe settings
+2. Create route `/api/billing/portal-session` with `stripe.billingPortal.sessions.create`
+3. Set `return_url` pointing to `/user/billing`
+4. Add a "Manage billing" button on the `/user/billing` page
 
 ### 7. Webhook Handling
 
-> Goal: รับและตอบสนอง Stripe events อย่างปลอดภัย
+> Goal: Receive and respond to Stripe events securely
 
-1. สร้าง route `/api/webhooks/stripe`
-2. ใช้ `stripe.webhooks.constructEvent` ตรวจ signature
-3. จัดการ events สำคัญ:
+1. Create route `/api/webhooks/stripe`
+2. Use `stripe.webhooks.constructEvent` to verify the signature
+3. Handle the key events:
    - `checkout.session.completed`
    - `invoice.paid`
    - `customer.subscription.updated`
    - `customer.subscription.deleted`
-4. บันทึก event ลง database ด้วย idempotency key
-5. รัน `stripe listen --forward-to http://localhost:3000/api/webhooks/stripe` เมื่อ local dev
+4. Save the event in the database with an idempotency key
+5. Run `stripe listen --forward-to http://localhost:3000/api/webhooks/stripe` during local dev
 
 ### 8. User And Dashboard Pages
 
-> Goal: เชื่อม Stripe กับหน้า user
+> Goal: Connect Stripe with the user pages
 
-1. สร้าง `/user/billing` แสดง subscription status, payment method, invoice list
-2. สร้าง `/dashboard` แสดง usage, plan limits, upgrade CTA
-3. ดึงข้อมูลจาก `stripe.customers.retrieve` และ `stripe.subscriptions.list`
-4. ใช้ `/follow-service-workos` หรือ `/follow-lib-better-auth` สำหรับ user auth
+1. Create `/user/billing` showing subscription status, payment method, invoice list
+2. Create `/dashboard` showing usage, plan limits, upgrade CTA
+3. Fetch data from `stripe.customers.retrieve` and `stripe.subscriptions.list`
+4. Use `/follow-service-workos` or `/follow-lib-better-auth` for user auth
 
 ### 9. Test
 
-> Goal: ทดสอบ flow ทั้งหมดใน test mode
+> Goal: Test all flows in test mode
 
-1. ใช้ Stripe test card `4242 4242 4242 4242`
-2. ทดสอบ checkout, subscription, cancel, portal
-3. ทดสอบ webhook events และ database updates
-4. ทดสอบ edge cases เช่น payment failed, incomplete subscription
+1. Use Stripe test card `4242 4242 4242 4242`
+2. Test checkout, subscription, cancel, portal
+3. Test webhook events and database updates
+4. Test edge cases such as payment failed, incomplete subscription
 
 ### 10. Go Live
 
-> Goal: สลับไป production
+> Goal: Switch to production
 
-1. แทนที API keys ด้วย live keys
-2. ตั้งค่า webhook endpoint บน production domain ใน Stripe dashboard
-3. ตรวจสอบ webhook endpoint ใช้ HTTPS
-4. ทำ `/deploy-to-vercel` หรือ `/deploy-to-cloudflare`
-5. ทดสอบ live checkout ด้วย real card ขั้นต่ำ
+1. Replace the API keys with live keys
+2. Configure the webhook endpoint on the production domain in the Stripe dashboard
+3. Verify the webhook endpoint uses HTTPS
+4. Do `/deploy-to-vercel` or `/deploy-to-cloudflare`
+5. Test live checkout with a real card at minimum
 
 ## Rules
 
 ### 1. Security
 
-- ไม่ hardcode Stripe keys
-- เก็บ `STRIPE_SECRET_KEY`, `STRIPE_PUBLISHABLE_KEY`, และ `STRIPE_WEBHOOK_SECRET` ใน `/follow-secret-manager`
-- ตรวจสอบ webhook signature ทุกครั้ง
-- ใช้ HTTPS สำหรับ webhooks ใน production
+- Never hardcode Stripe keys
+- Store `STRIPE_SECRET_KEY`, `STRIPE_PUBLISHABLE_KEY`, and `STRIPE_WEBHOOK_SECRET` in `/follow-secret-manager`
+- Verify the webhook signature every time
+- Use HTTPS for webhooks in production
 
 ### 2. Idempotency
 
-- จัดการ duplicate webhook events ด้วย event id
-- บันทึก event ที่ประมวลผลแล้ว
-- ส่ง response `200` ทันทีหลังจากยืนยัน event แม่จะ processing ไม่สำเร็จ
+- Handle duplicate webhook events with the event id
+- Record processed events
+- Respond `200` immediately after acknowledging an event even if processing did not succeed
 
 ### 3. Data Flow
 
-- `price_id` ต้องตรงกับ products ใน Stripe dashboard
-- ใช้ `customer_id` จาก Stripe ผูกกับ user ใน app
-- ใช้ `subscription.status` ควบคุม feature access
+- `price_id` must match the products in the Stripe dashboard
+- Use Stripe's `customer_id` linked to the app's user
+- Use `subscription.status` to gate feature access
 
 ### 4. UX
 
-- แสดง loading state เมื่อกด subscribe
-- แสดง error ทีชัดเจนถ้า payment fail
-- ให้ user สามารถ manage billing เองได้
+- Show a loading state when pressing subscribe
+- Show a clear error if payment fails
+- Let users manage billing themselves
 
-- ใช้ /open-web-for-config-secret ถ้าจำเป็น (service stripe)
-- ใช้ /follow-create-product ถ้าจำเป็น
-- ใช้ /follow-create-web ถ้าจำเป็น
-- ใช้ /follow-lib-zod ถ้าจำเป็น
+- Use /open-web-for-config-secret if needed (service stripe)
+- Use /follow-create-product if needed
+- Use /follow-create-web if needed
+- Use /follow-lib-zod if needed
 
 ## Merged Details
 
@@ -173,194 +173,194 @@ Latest: `stripe@22.6.2` (server), `@stripe/stripe-js@9.17.0` (client) (verified 
 
 ##### Goal
 
-ตั้งค่า/แก้ไข Stripe configuration — products, prices, webhook endpoints, customer portal และ mode (test/live) — โดยไม่ clobber settings เดิม
+Set/edit Stripe configuration — products, prices, webhook endpoints, customer portal, and mode (test/live) — without clobbering existing settings
 
 ##### Scope
 
-- สร้าง/แก้ products และ prices แล้วบันทึก `price_id` ลง config
-- ตั้งค่า webhook endpoint และ events ที่ subscribe
-- ตั้งค่า customer portal และสลับ test → live mode
-- ไม่ครอบคลุม SDK install/keys → ใช้ `## Merged Details → setup-stripe`
+- Create/edit products and prices, then save `price_id` into config
+- Configure the webhook endpoint and subscribed events
+- Configure the customer portal and switch test → live mode
+- Does not cover SDK install/keys → use `## Merged Details → setup-stripe`
 
 ##### Execute
 
 ###### 1. Read Current Config
 
-> Goal: รู้สถานะปัจจุบันก่อนแก้
+> Goal: Know the current state before editing
 
-1. อ่าน pricing config, `.env*` และ routes ที่เกี่ยวกับ Stripe ใน project
-2. ทำ `/check-secrets env-vars` เพื่อระบุ keys ที่ขาด
-3. ตรวจ products/prices/webhooks ที่มีอยู่ใน dashboard — ใช้ `/open-web-for-config-secret` (service stripe)
-4. ถ้ายังไม่มี SDK/keys → ทำ `## Merged Details → setup-stripe` แทน
+1. Read the pricing config, `.env*`, and Stripe-related routes in the project
+2. Do `/check-secrets env-vars` to identify missing keys
+3. Check existing products/prices/webhooks in the dashboard — use `/open-web-for-config-secret` (service stripe)
+4. If there is no SDK/keys yet → do `## Merged Details → setup-stripe` instead
 
 ###### 2. Configure Products And Prices
 
-> Goal: กำหนด pricing model ให้ตรงกับ product
+> Goal: Define the pricing model matching the product
 
-1. สร้าง products ใน dashboard หรือผ่าน `stripe.products.create`
-2. สร้าง prices สำหรับ one-time, monthly, yearly, usage-based ด้วย `stripe.prices.create`
-3. บันทึก `price_id` แต่ละแผนไว้ใน config file ของ project (ไม่ใช่ hardcode ใน component)
-4. ระบุ default plan และ featured plan — merge กับ config เดิม ห้ามลบ plans ที่มีอยู่
+1. Create products in the dashboard or via `stripe.products.create`
+2. Create prices for one-time, monthly, yearly, usage-based with `stripe.prices.create`
+3. Save each plan's `price_id` in the project's config file (not hardcoded in a component)
+4. Specify the default plan and featured plan — merge with the existing config, never delete existing plans
 
 ###### 3. Configure Webhook Endpoint
 
-> Goal: รับ events อย่างปลอดภัยและ idempotent
+> Goal: Receive events securely and idempotently
 
-1. สร้าง route `/api/webhooks/stripe` ที่ verify ด้วย `stripe.webhooks.constructEvent`
-2. เพิ่ม endpoint ใน dashboard (Developers > Webhooks) พร้อม URL production
-3. Subscribe เฉพาะ events ที่ใช้จริง เช่น `checkout.session.completed`, `invoice.paid`, `customer.subscription.updated`, `customer.subscription.deleted`
-4. เก็บ `STRIPE_WEBHOOK_SECRET` ของแต่ละ environment ใน `/follow-secret-manager`
-5. บันทึก event id ที่ประมวลผลแล้วเพื่อกัน duplicate
+1. Create route `/api/webhooks/stripe` that verifies with `stripe.webhooks.constructEvent`
+2. Add the endpoint in the dashboard (Developers > Webhooks) with the production URL
+3. Subscribe only to events actually used, e.g. `checkout.session.completed`, `invoice.paid`, `customer.subscription.updated`, `customer.subscription.deleted`
+4. Store each environment's `STRIPE_WEBHOOK_SECRET` in `/follow-secret-manager`
+5. Record processed event ids to prevent duplicates
 
 ###### 4. Configure Portal And Mode
 
-> Goal: ตั้งค่า customer portal และเตรียม go live
+> Goal: Set up the customer portal and prepare for go live
 
-1. เปิด customer portal ใน dashboard settings และกำหนด features ที่อนุญาต (cancel, update payment method)
-2. ตั้ง `return_url` ไปยังหน้า billing ของ app
-3. ก่อน go live: แทน test keys ด้วย live keys, ยืนยัน webhook endpoint เป็น HTTPS
-4. ทำ `/deep-review` domain `review-config` ระหว่าง test/live config ถ้าจำเป็น
+1. Enable the customer portal in dashboard settings and define the allowed features (cancel, update payment method)
+2. Set `return_url` to the app's billing page
+3. Before go live: replace test keys with live keys, confirm the webhook endpoint is HTTPS
+4. Do `/deep-review` domain `review-config` across test/live configs if needed
 
 ###### 5. Verify
 
-> Goal: ยืนยัน config ทำงานได้ end-to-end
+> Goal: Confirm the config works end-to-end
 
-1. ทดสอบ checkout ด้วย test card `4242 4242 4242 4242`
-2. Trigger events ด้วย `stripe trigger <event>` และตรวจ handler
-3. ทำ `/run-verify` — ถ้า fail → revert keys ที่แก้ ทำ `resolve-errors` แล้ว report diff
+1. Test checkout with test card `4242 4242 4242 4242`
+2. Trigger events with `stripe trigger <event>` and check the handler
+3. Do `/run-verify` — if it fails → revert the keys just changed, do `resolve-errors`, then report the diff
 
 ##### Rules
 
-- `price_id` ต้องตรงกับ products ใน dashboard ของ environment นั้น
-- Secrets/keys ผ่าน `/follow-secret-manager` เท่านั้น ห้าม commit
-- Webhook endpoint production ต้องเป็น HTTPS และ verify signature ทุกครั้ง
-- Merge config เดิม — ห้าม overwrite products/prices ที่ใช้งานอยู่
-- ถ้า API field/option ไม่แน่ใจ → ดู official docs หรือ `learn` (web)
+- `price_id` must match the products in that environment's dashboard
+- Secrets/keys only through `/follow-secret-manager` — never commit
+- The production webhook endpoint must be HTTPS and verify the signature every time
+- Merge the existing config — never overwrite live products/prices
+- If unsure about an API field/option → check official docs or `learn` (web)
 
 ##### Expected Outcome
 
-- Products/prices ถูกต้องและ `price_id` บันทึกใน config
-- Webhook endpoint ปลอดภัย, idempotent และ subscribe events ที่จำเป็น
-- Portal config พร้อมและ test → live checklist ผ่าน
+- Products/prices correct and `price_id` saved in config
+- Webhook endpoint secure, idempotent, and subscribed to the needed events
+- Portal config ready and the test → live checklist passed
 
 ### setup-stripe
 
 ##### Goal
 
-ติดตั้ง Stripe SDK (server/client), เตรียม API keys จาก dashboard และตั้งค่า webhook signing สำหรับ local dev — first-time setup เท่านั้น
+Install the Stripe SDK (server/client), prepare API keys from the dashboard, and set up webhook signing for local dev — first-time setup only
 
 ##### Scope
 
-- ติดตั้ง `stripe`, `@stripe/stripe-js` และ Stripe CLI
-- สร้างและเก็บ `STRIPE_SECRET_KEY`, `STRIPE_PUBLISHABLE_KEY`, `STRIPE_WEBHOOK_SECRET`
-- Init server client และ webhook forwarding
-- ไม่ครอบคลุม products/prices/webhook endpoints config → ใช้ `## Merged Details → config-stripe`
+- Install `stripe`, `@stripe/stripe-js`, and the Stripe CLI
+- Create and store `STRIPE_SECRET_KEY`, `STRIPE_PUBLISHABLE_KEY`, `STRIPE_WEBHOOK_SECRET`
+- Init the server client and webhook forwarding
+- Does not cover products/prices/webhook endpoint config → use `## Merged Details → config-stripe`
 
 ##### Execute
 
 ###### 1. Check Prerequisites
 
-> Goal: ยืนยันสถานะปัจจุบันก่อนติดตั้ง (idempotent)
+> Goal: Confirm the current state before installing (idempotent)
 
-1. อ่าน `package.json` เพื่อระบุ runtime และ package manager
-2. ตรวจว่ามี `stripe`/`@stripe/stripe-js` ติดตั้งแล้ว → ถ้ามี skip ไป verify
-3. ทำ `/check-secrets env-vars` เพื่อดูว่า Stripe keys มีอยู่หรือยัง
-4. ถ้าไม่มี Stripe account → stop และแจ้ง user สร้างจาก dashboard
+1. Read `package.json` to identify runtime and package manager
+2. Check whether `stripe`/`@stripe/stripe-js` are already installed → if so, skip to verify
+3. Do `/check-secrets env-vars` to see whether Stripe keys already exist
+4. If there is no Stripe account → stop and tell the user to create one from the dashboard
 
 ###### 2. Install SDKs And CLI
 
-> Goal: ติดตั้ง dependencies ที่จำเป็น
+> Goal: Install the needed dependencies
 
-1. ติดตั้ง server SDK ด้วย `bun add stripe`
-2. ติดตั้ง client SDK ด้วย `bun add @stripe/stripe-js` ถ้าฝั่ง client ต้องเรียก Stripe.js
-3. ติดตั้ง Stripe CLI ด้วย `mise use -g stripe` หรือ `scoop install stripe`
-4. Login CLI ด้วย `stripe login`
+1. Install the server SDK with `bun add stripe`
+2. Install the client SDK with `bun add @stripe/stripe-js` if the client side must call Stripe.js
+3. Install the Stripe CLI with `mise use -g stripe` or `scoop install stripe`
+4. Log in the CLI with `stripe login`
 
 ###### 3. Store Keys And Init Client
 
-> Goal: เตรียม keys อย่างปลอดภัยและ init client
+> Goal: Prepare keys securely and init the client
 
-1. เปิด Developers > API keys ใน dashboard — ใช้ `/open-web-for-config-secret` (service stripe)
-2. เก็บ `STRIPE_SECRET_KEY`, `STRIPE_PUBLISHABLE_KEY` ใน `/follow-secret-manager` ไม่ใช่ `.env` จริง
-3. เริ่มด้วย test mode keys — ห้ามใช้ live keys ใน dev
-4. Init server client ด้วย `new Stripe(process.env.STRIPE_SECRET_KEY!)` — ถ้าต้อง pin `apiVersion` ให้ดู official docs
+1. Open Developers > API keys in the dashboard — use `/open-web-for-config-secret` (service stripe)
+2. Store `STRIPE_SECRET_KEY` and `STRIPE_PUBLISHABLE_KEY` in `/follow-secret-manager`, not the real `.env`
+3. Start with test mode keys — never use live keys in dev
+4. Init the server client with `new Stripe(process.env.STRIPE_SECRET_KEY!)` — if pinning `apiVersion` is needed, check official docs
 
 ###### 4. Setup Webhook Signing
 
-> Goal: ตั้งค่า webhook secret สำหรับ local dev
+> Goal: Configure the webhook secret for local dev
 
-1. รัน `stripe listen --forward-to http://localhost:<port>/api/webhooks/stripe`
-2. คัดลอก `whsec_...` จาก output ไปเป็น `STRIPE_WEBHOOK_SECRET` ใน `/follow-secret-manager`
-3. Verify events ด้วย `stripe.webhooks.constructEvent(rawBody, signature, secret)` — ต้องใช้ raw request body
-4. ทำ `/run-verify` และ trigger test event ด้วย `stripe trigger <event>` — ถ้า fail → `resolve-errors` max 3 รอบ
+1. Run `stripe listen --forward-to http://localhost:<port>/api/webhooks/stripe`
+2. Copy `whsec_...` from the output into `STRIPE_WEBHOOK_SECRET` in `/follow-secret-manager`
+3. Verify events with `stripe.webhooks.constructEvent(rawBody, signature, secret)` — the raw request body is required
+4. Do `/run-verify` and trigger a test event with `stripe trigger <event>` — if it fails → `resolve-errors` max 3 rounds
 
 ##### Rules
 
-- ห้าม hardcode keys หรือ commit secrets — ใช้ `/follow-secret-manager` เสมอ
-- `STRIPE_SECRET_KEY` ใช้ฝั่ง server เท่านั้น — client ใช้ publishable key
-- Webhook ต้อง verify signature ด้วย raw body เสมอ
-- ใช้ test mode ก่อนเสมอ — live keys เฉพาะตอน go live
-- ถ้า API/option ไม่แน่ใจ → ดู official docs หรือ `learn` (web)
+- Never hardcode keys or commit secrets — always use `/follow-secret-manager`
+- `STRIPE_SECRET_KEY` is server-side only — the client uses the publishable key
+- Webhooks must always verify the signature with the raw body
+- Always use test mode first — live keys only at go live
+- If unsure about an API/option → check official docs or `learn` (web)
 
 ##### Expected Outcome
 
-- Stripe SDKs และ CLI ติดตั้งพร้อมใช้งาน
-- Keys ทั้งสามปลอดภัยและ inject ถูกต้อง
-- Webhook forwarding + signature verification ทำงานใน local
+- Stripe SDKs and CLI installed and ready
+- All three keys secure and correctly injected
+- Webhook forwarding + signature verification working locally
 
 ### verify-connection
 
 ##### Goal
 
-ยืนยันหลัง setup/config ว่า Stripe เชื่อมต่อได้จริง — secret key valid, mode ตรงที่คาด, webhook secret มี
+Confirm after setup/config that Stripe really connects — secret key valid, expected mode, webhook secret present
 
 ##### Scope
 
-- ใช้เมื่อ `/follow-service-stripe` dispatch มาที่ `verify`/`verify-connection`
-- Read-only: ตรวจสอบ — ไม่สร้าง charges/customers
+- Used when `/follow-service-stripe` dispatches to `verify`/`verify-connection`
+- Read-only: check only — do not create charges/customers
 
 ##### Execute
 
 ###### 1. Check Keys Present
 
-> Goal: keys ครบและ mode สอดคล้อง
+> Goal: keys complete and mode consistent
 
-1. ตรวจ `STRIPE_SECRET_KEY`, `STRIPE_PUBLISHABLE_KEY`, `STRIPE_WEBHOOK_SECRET` มี (ไม่ print ค่า)
-2. ตรวจ key prefix: `sk_test_`/`pk_test_` vs `sk_live_`/`pk_live_` — secret/publishable ต้อง mode เดียวกัน
-3. flag test keys ใน production config (หรือกลับกัน)
+1. Check `STRIPE_SECRET_KEY`, `STRIPE_PUBLISHABLE_KEY`, `STRIPE_WEBHOOK_SECRET` exist (do not print values)
+2. Check key prefixes: `sk_test_`/`pk_test_` vs `sk_live_`/`pk_live_` — secret/publishable must be the same mode
+3. Flag test keys in production config (or vice versa)
 
 ###### 2. Smoke Test API Call
 
-> Goal: API ตอบกลับด้วย key นี้
+> Goal: the API responds with this key
 
-1. `stripe balance retrieve` (CLI) หรือ `stripe.balance.retrieve()` (SDK)
+1. `stripe balance retrieve` (CLI) or `stripe.balance.retrieve()` (SDK)
 2. 200 = key valid; 401 = invalid/revoked
-3. บันทึก mode ที่ API confirm (test vs live)
+3. Record the mode the API confirms (test vs live)
 
 ###### 3. Check Webhook Readiness
 
-> Goal: webhook endpoint พร้อมรับ events
+> Goal: the webhook endpoint is ready to receive events
 
-1. ตรวจ `STRIPE_WEBHOOK_SECRET` format (`whsec_...`)
-2. local dev → `stripe listen` รันได้และ forward URL ถูก
-3. production → webhook endpoint ใน dashboard ชี้ production URL (HTTPS)
+1. Check `STRIPE_WEBHOOK_SECRET` format (`whsec_...`)
+2. Local dev → `stripe listen` runs and forwards to the correct URL
+3. Production → the dashboard webhook endpoint points at the production URL (HTTPS)
 
 ###### 4. Report
 
-> Goal: สรุป connection status
+> Goal: Summarize connection status
 
-1. ใช้ `/report` คอลัมน์: `No.`, `Check`, `Result`, `Evidence`
+1. Use `/report` columns: `No.`, `Check`, `Result`, `Evidence`
 2. Verdict: `connected` / `auth-failed` / `mode-mismatch` / `webhook-not-ready`
 
 ##### Rules
 
-- ใช้ read calls เท่านั้น — ห้ามสร้าง checkout/charge
-- ไม่ print key values — แสดงแค่ prefix/mode
-- mode mismatch = flag เสมอ (test key ใน prod = critical)
+- Use read calls only — never create a checkout/charge
+- Do not print key values — show only prefix/mode
+- Mode mismatch = always flag (test key in prod = critical)
 
 ##### Expected Outcome
 
-- Verdict พร้อม mode + account evidence
+- Verdict with mode + account evidence
 
 ### references/package-manifest
 
@@ -404,10 +404,10 @@ bun add stripe
 
 ## Expected Outcome
 
-- Stripe SDK ติดตั้งและกำหนดค่าถูกต้อง
-- `/pricing` page พร้อม CTA ที่ชัดเจน
-- Checkout session ทำงานได้
-- Subscriptions และ customer portal จัดการได้
-- Webhook events ถูกต้องและปลอดภัย
-- `/user/billing` และ `/dashboard` แสดงข้อมูล Stripe ได้
-- พร้อม deploy ไป production
+- Stripe SDK installed and configured correctly
+- `/pricing` page with a clear CTA
+- Checkout session working
+- Subscriptions and customer portal manageable
+- Webhook events correct and secure
+- `/user/billing` and `/dashboard` display Stripe data
+- Ready to deploy to production
