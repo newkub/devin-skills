@@ -1,6 +1,6 @@
 ---
 name: follow-tool-semantic-release-config-semantic-release
-description: ตั้งค่า semantic-release config — branches, plugins, tagFormat, changelog
+description: Configure semantic-release — branches, plugins, tagFormat, changelog
 argument-hint: "[scope]"
 related:
   - follow-tool-github-actions
@@ -10,81 +10,81 @@ related:
 
 ## Goal
 
-ตั้งค่า release config ของ semantic-release — `branches`, `plugins`, `tagFormat`, plugin options — ให้ตรง branching และ publishing policy
+Configure the semantic-release release config — `branches`, `plugins`, `tagFormat`, plugin options — to match the branching and publishing policy
 
 ## Scope
 
-ใช้เมื่อต้อง define/แก้ release config — install/auth อยู่ใน `workflows/setup-semantic-release/SKILL.md`
+Use when defining/editing the release config — install/auth live in `workflows/setup-semantic-release/SKILL.md`
 
 ## Execute
 
 ### 1. Read Current Config
 
-> Goal: อ่าน config เดิมก่อนแก้
+> Goal: Read the existing config before editing
 
-1. หา config ที่มีอยู่: `.releaserc`, `release.config.cjs`/`release.config.mjs`, หรือ `"release"` field ใน `package.json`
-2. อ่าน plugins ที่ติดตั้งใน devDependencies
-3. ถ้าไม่มี config → สร้าง `release.config.cjs` (หรือ `.releaserc`) ที่ root
+1. Find the existing config: `.releaserc`, `release.config.cjs`/`release.config.mjs`, or the `"release"` field in `package.json`
+2. Read the plugins installed in devDependencies
+3. If no config exists → create `release.config.cjs` (or `.releaserc`) at the root
 
 ### 2. Configure Branches
 
-> Goal: กำหนด branches ที่ release ได้
+> Goal: Define the branches that can release
 
-1. `branches` — ระบุ release branches เช่น `["main"]` หรือ `["main", { name: "beta", prerelease: true }]`
-2. เพิ่ม prerelease channels (`beta`, `alpha`, `next`) ตาม release policy — ใช้ `{ name, prerelease: true }` object form
-3. ระบุเฉพาะ branches ที่อนุญาต release — branch อื่นจะ dry-run/skip โดย default
+1. `branches` — list the release branches, e.g. `["main"]` or `["main", { name: "beta", prerelease: true }]`
+2. Add prerelease channels (`beta`, `alpha`, `next`) per the release policy — use the `{ name, prerelease: true }` object form
+3. List only the branches allowed to release — other branches dry-run/skip by default
 
 ### 3. Configure Plugins
 
-> Goal: ตั้งค่า plugin pipeline
+> Goal: Set the plugin pipeline
 
-1. Default plugins (มากับ semantic-release): `@semantic-release/commit-analyzer`, `@semantic-release/release-notes-generator`, `@semantic-release/npm`, `@semantic-release/github`
-2. เพิ่มตามต้องการ:
-   - `@semantic-release/changelog` — เขียน `CHANGELOG.md` (options: `changelogFile`)
-   - `@semantic-release/git` — commit changelog/package.json กลับเข้า repo (options: `assets`, `message`)
-   - `@semantic-release/exec` — custom commands ใน lifecycle (ดู official docs)
-3. ใช้ plugin object form `["@semantic-release/npm", { "npmPublish": false }]` เมื่อต้องปรับ options
-4. อย่าใส่ plugin ที่ไม่ได้ติดตั้ง — จะ fail ตอน load
+1. Default plugins (ship with semantic-release): `@semantic-release/commit-analyzer`, `@semantic-release/release-notes-generator`, `@semantic-release/npm`, `@semantic-release/github`
+2. Add as needed:
+   - `@semantic-release/changelog` — writes `CHANGELOG.md` (options: `changelogFile`)
+   - `@semantic-release/git` — commits the changelog/package.json back to the repo (options: `assets`, `message`)
+   - `@semantic-release/exec` — custom commands in the lifecycle (see official docs)
+3. Use the plugin object form `["@semantic-release/npm", { "npmPublish": false }]` when adjusting options
+4. Don't add a plugin that isn't installed — it fails at load
 
 ### 4. Tag And Other Options
 
-> Goal: ตั้งค่า tag format และ options เสริม
+> Goal: Set the tag format and extra options
 
-1. `tagFormat` — default `v${version}`; สำหรับ monorepo อาจใช้ `${name}@${version}` ตาม convention ที่มีอยู่ — ห้ามเปลี่ยนบน repo ที่มี tags เดิมโดยไม่ตรวจ
-2. `repositoryUrl` — override เฉพาะเมื่อ auto-detect ผิด
-3. `preset`/`parserOpts`/`releaseRules` — ปรับ commit analysis ถ้าไม่ใช้ conventional commits มาตรฐาน (ดู official docs)
+1. `tagFormat` — default `v${version}`; for a monorepo `${name}@${version}` may fit an existing convention — never change it on a repo with existing tags without checking
+2. `repositoryUrl` — override only when auto-detect is wrong
+3. `preset`/`parserOpts`/`releaseRules` — tune commit analysis when not using standard conventional commits (see official docs)
 
 ### 5. Verify
 
-> Goal: ตรวจ config ด้วย dry run
+> Goal: Check the config with a dry run
 
-1. รัน `bunx semantic-release --dry-run --debug` — ตรวจ branch check, plugin load, version ที่จะได้
-2. ตรวจว่า changelog และ git commit steps ทำงานใน plan
-3. ถ้าพัง → revert keys ที่แก้แล้ว report diff ด้วย `/report-before-after`
+1. Run `bunx semantic-release --dry-run --debug` — check the branch check, plugin loading, and the resulting version
+2. Check that the changelog and git commit steps run in the plan
+3. If it breaks → revert the changed keys, then report the diff with `/report-before-after`
 
 ## Rules
 
 ### 1. Config Discipline
 
-- ใช้ `release.config.cjs` หรือ `.releaserc` ที่ชัดเจน — อย่า scatter config หลายที่
-- ไม่ hard-code tokens หรือ secrets ใน config — auth ผ่าน env vars
-- merge กับ config เดิม ห้าม overwrite ถ้าไม่จำเป็น
+- Use a clear `release.config.cjs` or `.releaserc` — don't scatter config across places
+- Never hard-code tokens or secrets in the config — auth goes through env vars
+- Merge with the existing config, never overwrite unless necessary
 
 ### 2. Branches
 
-- ระบุ `branches` ชัดเจน — ไม่ release บน branch ที่ไม่ได้อนุญาต
-- prerelease branches ใช้ `{ name, prerelease: true }`
+- Define `branches` explicitly — never release on a branch that wasn't allowed
+- Prerelease branches use `{ name, prerelease: true }`
 
 ### 3. Plugins
 
-- plugin order มีผลต่อ lifecycle — commit/git plugin ควรอยู่ท้าย pipeline
-- ทุก plugin ใน config ต้องติดตั้งใน devDependencies
+- Plugin order affects the lifecycle — the commit/git plugins belong at the end of the pipeline
+- Every plugin in the config must be installed in devDependencies
 
-- ใช้ /follow-tool-git ถ้าจำเป็น
-- ใช้ /run-release ถ้าจำเป็น
+- Use /follow-tool-git if needed
+- Use /run-release if needed
 
 ## Expected Outcome
 
-- Release config ถูกต้องตาม branching/publishing policy
-- Plugins load และ lifecycle ทำงานครบ
-- `--dry-run` แสดง plan ถูกต้อง
+- A release config matching the branching and publishing policy
+- Plugins load and the lifecycle works completely
+- `--dry-run` shows the correct plan

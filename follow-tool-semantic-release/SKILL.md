@@ -1,6 +1,6 @@
 ---
 name: follow-tool-semantic-release
-description: ใช้ Semantic Release สำหรับ automated version management และ package publishing
+description: Use Semantic Release for automated version management and package publishing
 argument-hint: "[scope]"
 related:
   - follow-release
@@ -16,16 +16,16 @@ related:
 
 ## Goal
 
-ใช้งาน Semantic Release สำหรับ automated version management, changelog generation และ package publishing ตาม semantic versioning
+Use Semantic Release for automated version management, changelog generation, and package publishing per semantic versioning
 
 ## Scope
 
-ใช้สำหรับ projects ที่ใช้ conventional commits และต้องการ automate release, changelog, npm/GitHub publish
+For projects using conventional commits that want to automate release, changelog, and npm/GitHub publish
 
-- `semantic-release` เหมาะกับ fully automated release — version ถูก derive จาก conventional commits โดยไม่มี manual step
-- ใช้ `follow-tool-release-it` เมื่อต้องการ interactive/manual release ทีเลือก version และ hooks ได้เอง
-- ใช้ `follow-tool-changesets` สำหรับ monorepo/workspaces ทีต้องการ version หลาย packages พร้อมกัน
-- ใช้ `follow-tool-changelogen` เมื่อต้องการ generate changelog เท่านั้น ไม่ต้อง publish
+- `semantic-release` suits a fully automated release — the version is derived from conventional commits with no manual step
+- Use `follow-tool-release-it` when you want an interactive/manual release where you pick the version and hooks yourself
+- Use `follow-tool-changesets` for monorepo/workspaces that need to version several packages at once
+- Use `follow-tool-changelogen` when you only want to generate a changelog without publishing
 
 - Latest: `semantic-release@25.0.9` (verified 2026-09-13) — requires Node.js `^22.14.0 | >=24.10.0`
 
@@ -36,95 +36,95 @@ related:
 | Topic | Workflow |-------|----------| Install, CI auth tokens, workflow integration | `workflows/setup-semantic-release/SKILL.md` | `branches`, `plugins`, `tagFormat` config | `workflows/config-semantic-release/SKILL.md` 
 ### 1. Installation
 
-> Goal: ติดตั้ง semantic-release ใน project
+> Goal: Install semantic-release in the project
 
-1. ตรวจสอบ `package.json` และ repository URL
-2. ติดตั้งด้วย `bun add -D semantic-release`
-3. ติดตั้ง additional plugins ถ้าจำเป็น เช่น `bun add -D @semantic-release/changelog @semantic-release/git`
-4. ดู plugin list ใน 
+1. Check `package.json` and the repository URL
+2. Install with `bun add -D semantic-release`
+3. Install additional plugins when needed, e.g. `bun add -D @semantic-release/changelog @semantic-release/git`
+4. See the plugin list in 
 
 ### 2. Configuration
 
-> Goal: ตั้งค่า release config ตาม project needs
+> Goal: Set the release config per the project needs
 
-1. สร้าง `.releaserc` หรือ `release.config.cjs` หรือ `release` field ใน `package.json`
-2. กำหนด `branches`, `tagFormat`, `plugins`
-3. ตั้งค่า plugin options เช่น `changelogFile`, `assets`
-4. ตรวจสอบ authentication tokens (`GITHUB_TOKEN`, `NPM_TOKEN`)
-5. ดู config options ใน 
+1. Create `.releaserc`, `release.config.cjs`, or a `release` field in `package.json`
+2. Define `branches`, `tagFormat`, `plugins`
+3. Set plugin options such as `changelogFile`, `assets`
+4. Verify the authentication tokens (`GITHUB_TOKEN`, `NPM_TOKEN`)
+5. See the config options in 
 
 ### 3. Local Dry Run
 
-> Goal: ทดสอบ release โดยไม่ publish จริง
+> Goal: Test the release without publishing for real
 
-1. รัน `bunx semantic-release --dry-run`
-2. ตรวจสอบ version ทีจะได้ และ release notes
-3. แก้ไข conventional commits ถ้า version ไม่ตรงคาด
-4. ใช้ `--debug` ถ้าต้องการ verbose output
+1. Run `bunx semantic-release --dry-run`
+2. Check the version that would be produced and the release notes
+3. Fix the conventional commits if the version is not as expected
+4. Use `--debug` when you need verbose output
 
 ### 4. CI Integration
 
-> Goal: รัน semantic-release ใน CI/CD
+> Goal: Run semantic-release in CI/CD
 
-1. สร้าง GitHub Actions workflow สำหรับ verify และ release
-2. กำหนด permissions `contents: write`, `pull-requests: write`, `id-token: write`
-3. รัน `bunx semantic-release` ใน release job หลังจาก tests ผ่าน
-4. ใช้ trusted publishing (OIDC) สำหรับ npm ถ้าได้
-5. ดู CI example ใน 
+1. Create a GitHub Actions workflow for verify and release
+2. Set permissions `contents: write`, `pull-requests: write`, `id-token: write`
+3. Run `bunx semantic-release` in the release job after tests pass
+4. Use trusted publishing (OIDC) for npm when possible
+5. See the CI example in 
 
 ### 5. Validate and Monitor
 
-> Goal: ตรวจสอบว่า release ทำงานถูกต้อง
+> Goal: Verify the release works correctly
 
-1. ตรวจสอบ version bump, git tag, GitHub release, npm package
-2. ตรวจสอบ changelog ถูกอัปเดต
-3. ตรวจสอบว่า publish ไม่ duplicate
-4. ทำ `/follow-release` เพื่อติดตามกระบวนการ release
+1. Check the version bump, git tag, GitHub release, and npm package
+2. Check the changelog was updated
+3. Check that the publish is not duplicated
+4. Run `/follow-release` to follow the release process
 
 ## Rules
 
 ### 1. Commits
 
-- ใช้ conventional commits สำหรับทุก commit
-- ตรวจสอบ commit history ก่อน release
-- ใช้ `feat`, `fix`, `BREAKING CHANGE` ให้ถูกต้อง
+- Use conventional commits for every commit
+- Check the commit history before a release
+- Use `feat`, `fix`, `BREAKING CHANGE` correctly
 
 ### 2. Configuration
 
-- ใช้ `release.config.cjs` หรือ `.releaserc` ทีชัดเจน
-- ไม่ hard-code tokens หรือ secrets
-- ระบุ branches ที release อนุญาต
+- Use a clear `release.config.cjs` or `.releaserc`
+- Never hard-code tokens or secrets
+- Declare the branches allowed to release
 
 ### 3. CI/CD
 
-- รัน release ใน CI เท่านั้น ยกเว้น local dry run
-- ใช้ `dry-run` สำหรับ validate ก่อน publish
-- ตั้ง permissions ให้ถูกต้อง
+- Run the release in CI only, except local dry runs
+- Use `dry-run` to validate before publishing
+- Set the permissions correctly
 
 ### 4. Publishing
 
-- ใช้ trusted publishing ถ้าได้
-- ตรวจสอบว่า package ผ่าน tests และ lint ก่อน publish
-- ไม่ publish บน branch ทีไม่ได้รับอนุญาต
+- Use trusted publishing when possible
+- Check that the package passes tests and lint before publishing
+- Never publish from a branch that is not allowed
 
-- ใช้ /follow-tool-github-actions ถ้าจำเป็น (tool semantic release)
-- ใช้ /follow-tool-changesets ถ้าจำเป็น
-- ใช้ /follow-tool-git ถ้าจำเป็น
-- ใช้ /follow-test ถ้าจำเป็น
-- ใช้ /fix ถ้าจำเป็น (เช่น release ล้มเหลวจาก config หรือ commits)
+- Use /follow-tool-github-actions if needed (tool semantic release)
+- Use /follow-tool-changesets if needed
+- Use /follow-tool-git if needed
+- Use /follow-test if needed
+- Use /fix if needed (e.g. the release failed from config or commits)
 
 ## References
 
 - [CLI reference](references/cli.md)
 
-- ใช้ /run-release ถ้าจำเป็น
+- Use /run-release if needed
 
-- ดู best-practices/ สำหรับ recommended patterns และ pitfalls
+- See best-practices/ for recommended patterns and pitfalls
 
 ## Expected Outcome
 
-- Version management เป็นไปโดยอัตโนมัติ
-- Changelog สร้างถูกต้อง
-- GitHub release และ npm publish ทำงาน
-- Release process ปลอดภัยและ reproducible
+- Version management is fully automated
+- The changelog is generated correctly
+- GitHub release and npm publish work
+- The release process is safe and reproducible
 

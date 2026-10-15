@@ -1,36 +1,36 @@
 # Sonda — Best Practices
 
-Bundle analyzer ที่อ่าน final source maps — สะท้อน tree-shaking/minification จริง ไม่ใช่ pre-build estimate
+Bundle analyzer that reads the final source maps — reflects real tree-shaking/minification, not a pre-build estimate
 
 ## Recommended Patterns
 
-- เปิด `sourcemap: true` ใน build config ก่อนเสมอ — Sonda ไม่ทำงานถ้าไม่มี source maps
-- `format: ['html', 'json']` — html สำหรับคนดู, json เป็น input ให้ scripts/CI และ `/report-bundle`
-- `gzip: true` + `brotli: true` เมื่อเทียบขนาดที่ user โหลดจริง — ตัวเลข raw บอกเล่าไม่ครบ
-- `deep: true` เมื่อต้องแตก dependencies เป็น source files ต้นทาง — หา dep ตัวใหญ่จริงใน vendor chunk
-- `open: false` ใน CI/headless; เก็บ JSON report เป็น artifact เพื่อ diff ข้าม commits
-- ใช้ `include`/`exclude` scope report เมื่อ monorepo output เยอะ — เช่น `include: [/\.js$/]`
+- Always enable `sourcemap: true` in the build config first — Sonda doesn't work without source maps
+- `format: ['html', 'json']` — html for humans to view, json as input for scripts/CI and `/report-bundle`
+- `gzip: true` + `brotli: true` when comparing the sizes users actually download — raw numbers don't tell the full story
+- `deep: true` when you need dependencies broken down into original source files — find the real big dep in a vendor chunk
+- `open: false` in CI/headless; keep the JSON report as an artifact to diff across commits
+- Use `include`/`exclude` to scope the report when a monorepo has lots of output — e.g. `include: [/\.js$/]`
 
 ## Common Pitfalls
 
-- Vite CSS: Vite ไม่ generate source maps สำหรับ CSS → CSS ไม่โผล่ใน Sonda report (limitation, ไม่ใช่ bug config)
-- `sources: true` embed source code เต็มใน report — report ใหญ่มากและรั่วโค้ดถ้า share ออกนอก
-- `deep`/`sources`/`gzip`/`brotli` ทุกตัวเพิ่ม build time — อย่าเปิดหมดใน dev loop ที่ iterate บ่อย
-- ค่า gzip/brotli เป็น estimate — เทียบ trend ข้าม builds ได้ แต่อย่าเอาไปเคลมเลข absolute กับ infra จริง
-- Report ไม่เทียบ historical เอง — เก็บ JSON ต่อ commit/tag แล้ว diff เองถ้าต้องการ regression tracking
+- Vite CSS: Vite doesn't generate source maps for CSS → CSS never appears in the Sonda report (a limitation, not a config bug)
+- `sources: true` embeds the full source code in the report — the report gets very large and leaks code if shared externally
+- `deep`/`sources`/`gzip`/`brotli` all add build time — don't enable everything in a frequently iterating dev loop
+- The gzip/brotli values are estimates — fine for comparing trends across builds, but don't claim absolute numbers against real infra
+- The report doesn't compare against history on its own — store JSON per commit/tag and diff yourself if you want regression tracking
 
 ## Bundle Report Workflow
 
-- `/report-bundle` ใช้ JSON output เป็น source of truth สำหรับตาราง chunks/dependencies — แม่นกว่า `du`
-- Treemap view → หา chunk ใหญ่ผิดปกติ; dependency tree → trace ว่า dep เข้า bundle ผ่าน path ไหน
-- Pair กับ `/follow-tool-node-modules-inspector` — Sonda บอกอะไรอยู่ใน bundle, inspector บอก versions/duplicates ใน `node_modules`
+- `/report-bundle` uses the JSON output as the source of truth for chunk/dependency tables — more accurate than `du`
+- Treemap view → find abnormally large chunks; dependency tree → trace which path pulled a dep into the bundle
+- Pair with `/follow-tool-node-modules-inspector` — Sonda says what's in the bundle, the inspector says versions/duplicates in `node_modules`
 
 ## Do / Don't
 
 | Do | Don't |
 |----|-------|
-| enable sourcemaps ก่อนใช้ Sonda | expect report โดยไม่มี source maps |
-| `format: 'json'` + `open: false` ใน CI | auto-open browser บน CI |
-| scope ด้วย `include`/`exclude` | analyze ทุก asset ใน monorepo ใหญ่ |
-| เก็บ JSON reports เป็น artifacts | rely on memory/eyeball ระหว่าง builds |
-| share report หลังเช็ค `sources` ปิด | share report ที่ embed source code |
+| Enable sourcemaps before using Sonda | expect a report without source maps |
+| `format: 'json'` + `open: false` in CI | Auto-open a browser on CI |
+| Scope with `include`/`exclude` | Analyze every asset in a big monorepo |
+| Keep JSON reports as artifacts | Rely on memory/eyeballing between builds |
+| Share the report after checking `sources` is off | Share a report that embeds source code |

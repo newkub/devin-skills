@@ -1,6 +1,6 @@
 ---
 name: follow-tool-semgrep
-description: ใช้ Semgrep สแกน code patterns และ security rules ที่ linter/ast-grep ไม่ครอบ
+description: Use Semgrep to scan code patterns and security rules that linters/ast-grep don't cover
 argument-hint: "[ruleset-or-path]"
 related:
   - use-astgrep
@@ -10,13 +10,13 @@ related:
 
 ## Goal
 
-ใช้ Semgrep ติดตั้งและรัน pattern-based scanning — security rules, custom rules และ registry rulesets — เมื่อต้องการ semantic analysis ที่เกิน text/AST matching ธรรมดา
+Use Semgrep to install and run pattern-based scanning — security rules, custom rules, and registry rulesets — when you need semantic analysis beyond plain text/AST matching
 
 ## Scope
 
-- ใช้เมื่อ: security scanning (`p/security-audit`, `p/owasp-top-ten`), framework-specific rules, custom org rules, taint tracking
-- เปรียบเทียบ: `use-astgrep` เหมาะกับ structural patterns ง่ายๆ, Semgrep เหมาะกับ dataflow/taint และ rulesets สำเร็จรูป
-- Scan-only ใน skill นี้ — fix ผ่าน `/deep-review` หรือ `/fix`
+- Use when: security scanning (`p/security-audit`, `p/owasp-top-ten`), framework-specific rules, custom org rules, taint tracking
+- Comparison: `use-astgrep` suits simple structural patterns; Semgrep suits dataflow/taint and ready-made rulesets
+- Scan-only in this skill — fixes via `/deep-review-codebase` or `/fix`
 
 - Latest: `semgrep@1.177.0` (pipx/brew/mise) (verified 2026-09-13)
 - References: [apis](references/apis.md) | [cli](references/cli.md) 
@@ -24,75 +24,75 @@ related:
 
 ### Workflows
 
-> Goal: dispatch ไปยัง workflow ที่ตรง topic
+> Goal: Dispatch to the workflow matching the topic
 
 | Topic | Workflow |-------|----------| config | `workflows/config-rules/SKILL.md` — custom rules, registry rulesets, CI gating 
-1. ถ้า argument ตรง topic → อ่านและทำตาม `workflows/<name>/SKILL.md` แทน steps ด้านล่าง
-2. ถ้าไม่ตรง → ทำตาม steps ด้านล่างตามปกติ
+1. If the argument matches a topic → read and follow `workflows/<name>/SKILL.md` instead of the steps below
+2. If not → follow the steps below normally
 
 ### 1. Ensure Semgrep Available
 
-> Goal: มี semgrep พร้อมใช้
+> Goal: Have semgrep ready to use
 
-1. เช็ค `semgrep --version` — ถ้าไม่มีติดตั้ง: `pipx install semgrep`, `mise use -g semgrep` หรือ `brew install semgrep`
-2. หรือรันผ่าน container/CI image ถ้าไม่อยากติดตั้ง local
+1. Check `semgrep --version` — if not installed: `pipx install semgrep`, `mise use -g semgrep`, or `brew install semgrep`
+2. Or run via a container/CI image if you don't want to install locally
 
 ### 2. Choose Rules
 
-> Goal: เลือก ruleset ตามเป้าหมาย
+> Goal: Choose the ruleset by goal
 
 1. Registry rulesets: `p/default`, `p/security-audit`, `p/owasp-top-ten`, `p/<language>`, `p/<framework>`
-2. Custom rules: `.semgrep/` หรือ `semgrep.yml` ใน repo — เขียน YAML rules สำหรับ project-specific patterns
-3. เลือกให้แคบพอ — `p/default` อาจ noisy; เริ่มจาก ruleset เฉพาะทาง
+2. Custom rules: `.semgrep/` or `semgrep.yml` in the repo — write YAML rules for project-specific patterns
+3. Choose narrowly enough — `p/default` can be noisy; start with a specialized ruleset
 
 ### 3. Run Scan
 
-> Goal: สแกนพร้อม config ที่ถูก
+> Goal: Scan with the right config
 
-1. `semgrep scan --config=<ruleset> <path>` — เช่น `semgrep scan --config=p/security-audit src/` (`--config` โดยไม่มี subcommand ยังใช้ได้)
-2. Output options: `--json` สำหรับ processing, `--sarif` สำหรับ CI/GitHub code scanning
-3. ใช้ `--exclude`/`--include` จำกัด scope — ข้าม tests, generated, vendored
-4. `--baseline` สำหรับ existing codebases — เห็นเฉพาะ findings ใหม่
+1. `semgrep scan --config=<ruleset> <path>` — e.g. `semgrep scan --config=p/security-audit src/` (`--config` without a subcommand still works)
+2. Output options: `--json` for processing, `--sarif` for CI/GitHub code scanning
+3. Use `--exclude`/`--include` to limit scope — skip tests, generated, vendored
+4. `--baseline` for existing codebases — see only new findings
 
 ### 4. Triage Findings
 
-> Goal: จัดการผลลัพธ์
+> Goal: Handle the results
 
-1. จัดกลุ่มตาม rule severity และ confidence — semgrep มีทั้ง false positives
-2. ใช้ `// nosemgrep` สำหรับ intentional patterns พร้อม comment เหตุผล
-3. ใช้ `/report` คอลัมน์: `No.`, `Rule`, `File:Line`, `Severity`, `Confidence`, `Action`
-4. ส่งต่อ `/deep-review` หรือ `/fix` สำหรับ remediation
+1. Group by rule severity and confidence — semgrep has false positives too
+2. Use `// nosemgrep` for intentional patterns with a comment stating the reason
+3. Use `/report` columns: `No.`, `Rule`, `File:Line`, `Severity`, `Confidence`, `Action`
+4. Route to `/deep-review-codebase` or `/fix` for remediation
 
-### 5. Integrate (ถ้าต้องการถาวร)
+### 5. Integrate (if you want it permanent)
 
-> Goal: ทำ semgrep เป็นส่วนของ workflow
+> Goal: Make semgrep part of the workflow
 
-1. CI step หรือ pre-commit hook — repo ที่มี `.moon/workspace.yml` → `vcs.hooks` ของ moon (`/follow-tool-moonrepo` Step 7); repo อื่น → `/follow-tool-hk`; ใช้ `semgrep ci` + `semgrep login` ถ้า integrate กับ Semgrep AppSec Platform
-2. Commit custom rules ใน `.semgrep/` พร้อม tests (`semgrep --test`)
-3. Baseline strategy สำหรับ legacy code
+1. CI step or pre-commit hook — a repo with `.moon/workspace.yml` → moon's `vcs.hooks` (`/follow-tool-moonrepo` Step 7); other repos → `/follow-tool-hk`; use `semgrep ci` + `semgrep login` if integrating with Semgrep AppSec Platform
+2. Commit custom rules in `.semgrep/` with tests (`semgrep --test`)
+3. Baseline strategy for legacy code
 
 ## Rules
 
 ### 1. Right Tool For Job
 
-- structural patterns ง่ายๆ → `use-astgrep` ก่อน (เร็วกว่า ไม่ต้อง install)
-- ใช้ semgrep เมื่อต้องการ dataflow/taint หรือ rulesets สำเร็จรูป
+- Simple structural patterns → `use-astgrep` first (faster, no install)
+- Use semgrep when you need dataflow/taint or ready-made rulesets
 
 ### 2. Noise Management
 
-- ไม่ dump findings ดิบทั้งหมด — triage severity/confidence ก่อน
-- baseline สำหรับ legacy — อย่าให้ signal จมใน noise
+- Don't dump all raw findings — triage severity/confidence first
+- Baseline for legacy — don't let signal drown in noise
 
 ### 3. Versioned Config
 
-- custom rules ต้องอยู่ใน repo พร้อม tests
-- pin ruleset versions ใน CI — ruleset เปลี่ยน = findings เปลี่ยน
-- ใช้ /run-scan ถ้าจำเป็น
+- Custom rules must live in the repo with tests
+- Pin ruleset versions in CI — ruleset change = findings change
+- Use /run-scan if needed
 
-- ดู best-practices/ สำหรับ recommended patterns และ pitfalls
+- See best-practices/ for recommended patterns and pitfalls
 
 ## Expected Outcome
 
-- Scan สำเร็จพร้อม findings ที่ triaged
-- Custom rules ใน `.semgrep/` ถ้าสร้าง
-- CI/pre-commit integration ถ้า user ต้องการ
+- A successful scan with triaged findings
+- Custom rules in `.semgrep/` if created
+- CI/pre-commit integration if the user wants it

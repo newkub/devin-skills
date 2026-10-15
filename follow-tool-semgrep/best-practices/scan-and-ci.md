@@ -2,46 +2,46 @@
 
 ## Recommended Patterns
 
-- เริ่มจาก ruleset เฉพาะทาง (`p/security-audit`, `p/owasp-top-ten`, `p/<language>`) — ค่อยขยายเมื่อ signal-to-noise ดีแล้ว
-- ใช้ `--baseline` บน legacy codebase — เห็นเฉพาะ findings ใหม่ ไม่จมใน backlog เก่า
-- ใช้ `--exclude`/`--include` หรือ `.semgrepignore` ข้าม `tests/`, `*.generated.*`, `vendor/`, `dist/` — ลด noise และเวลา scan
-- output `--sarif` สำหรับ GitHub code scanning integration, `--json` สำหรับ custom tooling
-- ใช้ `semgrep ci` + `semgrep login` เมื่อ integrate กับ Semgrep AppSec Platform — ได้ diff-aware scan, triage UI, policy management
-- diff-aware scanning: scan เฉพาะ code ที่เปลี่ยนใน PR — full scan ทำ scheduled/nightly
-- gate CI ด้วย severity threshold — เริ่ม fail เฉพาะ `ERROR` findings ใหม่ แล้วค่อยเข้มขึ้น
-- triage ก่อน report: จัดกลุ่มตาม severity/confidence, mark false positives ด้วย `// nosemgrep` พร้อมเหตุผล
+- Start from specialized rulesets (`p/security-audit`, `p/owasp-top-ten`, `p/<language>`) — expand once the signal-to-noise ratio is good
+- Use `--baseline` on legacy codebases — see only new findings, don't drown in the old backlog
+- Use `--exclude`/`--include` or `.semgrepignore` to skip `tests/`, `*.generated.*`, `vendor/`, `dist/` — cuts noise and scan time
+- Output `--sarif` for GitHub code scanning integration, `--json` for custom tooling
+- Use `semgrep ci` + `semgrep login` when integrating with Semgrep AppSec Platform — get diff-aware scan, triage UI, policy management
+- Diff-aware scanning: scan only the code changed in the PR — run full scans scheduled/nightly
+- Gate CI with a severity threshold — start by failing only new `ERROR` findings, then tighten
+- Triage before reporting: group by severity/confidence, mark false positives with `// nosemgrep` plus the reason
 
 ## Common Pitfalls
 
-- รัน `p/default` บน codebase ใหญ่ครั้งแรก — findings เป็นพัน ไม่มีใครอ่าน; เริ่มแคบก่อน
-- scan `node_modules`/`dist`/generated files — เสียเวลา + noise สูง
-- ไม่มี baseline สำหรับ legacy — CI fail ทันทีจาก findings เก่า ทีม ignore ทั้งระบบ
-- `// nosemgrep` โดยไม่ใส่เหตุผล — ไม่รู้ว่า intentional หรือขี้เกียจแก้
-- ruleset ไม่ pin — findings เปลี่ยนเองเมื่อ registry update; reproducibility หาย
-- findings dump ดิบเป็น CI log — ใช้ `--sarif`/`--json` + report formatter แทน
+- Running `p/default` on a large codebase for the first time — thousands of findings, nobody reads them; start narrow
+- Scanning `node_modules`/`dist`/generated files — wasted time + high noise
+- No baseline for legacy — CI fails immediately from old findings and the team ignores the whole system
+- `// nosemgrep` without a reason — impossible to tell intentional from lazy
+- Rulesets not pinned — findings change on their own when the registry updates; reproducibility lost
+- Dumping raw findings into the CI log — use `--sarif`/`--json` + a report formatter instead
 
 ## Do / Don't
 
 | Do | Don't |
 |----|-------|
-| baseline ก่อนเปิด CI gate | block merge ด้วย findings เก่าทั้งหมด |
-| pin ruleset/commit hash ใน CI | ดึง `latest` ruleset ทุก run |
-| ใช้ `--sarif` สำหรับ GitHub code scanning | parse text output ด้วย regex |
-| ใส่เหตุผลข้าง `// nosemgrep` | suppress โดยไม่มี context |
-| scan เฉพาะ diff ใน PR, full scan เป็น schedule | full scan ทุก commit บน monorepo ใหญ่ |
+| Baseline before enabling the CI gate | Block merges with all the old findings |
+| Pin the ruleset/commit hash in CI | Pull the `latest` ruleset every run |
+| Use `--sarif` for GitHub code scanning | Parse text output with regex |
+| Add a reason next to `// nosemgrep` | Suppress without context |
+| Scan only the PR diff, run full scans on a schedule | Full scan every commit on a big monorepo |
 
 ## Config Guidance
 
-- local dev: `semgrep scan --config=p/security-audit --config=.semgrep src/` — รวม registry + custom rules
-- CI: pin config ผ่าน `--config` ที่ชี้ไปยัง fileใน repo หรือ ruleset ที่ lock ไว้
-- ใช้ `--metrics=off` ใน CI ถ้าไม่ต้องการส่ง telemetry
-- `--max-target-bytes` ข้ามไฟล์ใหญ่ผิดปกติ (bundled output, minified files)
-- `--jobs` ปรับ parallelism ตาม CI runner cores — default auto-detect มักพอ
+- Local dev: `semgrep scan --config=p/security-audit --config=.semgrep src/` — combines registry + custom rules
+- CI: pin the config via `--config` pointing to a file in the repo or a locked ruleset
+- Use `--metrics=off` in CI if you don't want to send telemetry
+- `--max-target-bytes` skips abnormally large files (bundled output, minified files)
+- `--jobs` tunes parallelism to the CI runner cores — the default auto-detect is usually enough
 
 ## Performance & CI
 
-- scan เวลาส่วนใหญ่ไปกับไฟล์จำนวนมาก — `.semgrepignore` เป็น optimization แรกเสมอ
-- cache semgrep binary/semgrep-core ใน CI image หรือ setup action — อย่า install ใหม่ทุก run
-- แยก jobs: fast pattern rules ใน PR check, taint/dataflow rules ใน nightly — ประหยัดเวลา PR
-- findings ที่ survived triage → ส่ง `/deep-review` หรือ `/fix` สำหรับ remediation — semgrep เป็น detection tool ไม่ใช่ fixer
-- track findings trend — เพิ่มขึ้นเรื่อยๆ = rules หรือ codebase ต้องทบทวน
+- Most scan time goes to the file count — `.semgrepignore` is always the first optimization
+- Cache the semgrep binary/semgrep-core in the CI image or setup action — don't reinstall every run
+- Split jobs: fast pattern rules in PR checks, taint/dataflow rules in nightly — saves PR time
+- Findings that survive triage → route to `/deep-review-codebase` or `/fix` for remediation — semgrep is a detection tool, not a fixer
+- Track the findings trend — a steadily rising count = the rules or the codebase need a review
