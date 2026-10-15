@@ -1,34 +1,34 @@
 # usage — Best Practices
 
-CLI spec DSL — generate completions, docs, SDKs จาก spec เดียว
+CLI spec DSL — generate completions, docs, SDKs from one spec
 
 ## Recommended Patterns
 
-- `usage.kdl` spec file = single source — commands, args, flags, help text; generate completions/docs/manpages/SDK จากมัน
-- Declare args/flags typed (`flag "name" { help "..."; default "..." }`) — types → validation + completion ฟรี
-- Help text เขียนให้ผู้ใช้ — สั้น, actionable, examples; generated docs ดีเท่า spec
-- Pair กับ mise tasks — usage เป็น mise task spec backend; `mise tasks` integration
-- Version spec กับ CLI — spec drift = broken completions; spec tests ใน CI
+- `usage.kdl` spec file = single source — commands, args, flags, help text; generate completions/docs/manpages/SDKs from it
+- Declare args/flags typed (`flag "name" { help "..."; default "..." }`) — types → free validation + completion
+- Write help text for the user — short, actionable, with examples; the generated docs are only as good as the spec
+- Pair with mise tasks — usage as the mise task spec backend; `mise tasks` integration
+- Version the spec with the CLI — spec drift = broken completions; spec tests in CI
 
 ## Common Pitfalls
 
-- Spec ไม่ enforce runtime behavior — validate logic ใน code ต้อง mirror spec constraints
-- Completions generated ต้อง install ลง shell — docs step ในติดตั้งไม่ใช่ assume
+- The spec doesn't enforce runtime behavior — the validation logic in code must mirror the spec constraints
+- Generated completions must be installed into the shell — a docs step in install, not an assumption
 - Breaking spec changes = breaking CLI — rename/remove flags = major bump discipline
-- หลาย spec files ต่อ CLI = แยก subcommand trees; shared types/args ใน common sections
-- Positional vs flags: required positionals ทำ completion ยาก — flags เมื่อ optional, positionals เมื่อ core
+- Multiple spec files per CLI = split subcommand trees; shared types/args in common sections
+- Positional vs flags: required positionals make completion hard — flags when optional, positionals when core
 
 ## Generation Targets
 
-- Shell completions: bash/zsh/fish — test install script จริงทุก shell
-- Markdown docs → commit ลง docs/ หรือ generated site
+- Shell completions: bash/zsh/fish — test the install script for real in every shell
+- Markdown docs → commit into docs/ or the generated site
 - JSON spec → SDK/tooling consumers
 
 ## Do / Don't
 
 | Do | Don't |
 |----|-------|
-| spec = source of truth | hand-write completions แยก |
-| typed args + defaults | untyped strings ทุกอย่าง |
+| spec = source of truth | hand-write separate completions |
+| typed args + defaults | untyped strings for everything |
 | test generated completions | assume generation correct |
-| version spec changes เหมือน API | silent spec drift |
+| version spec changes like API changes | silent spec drift |

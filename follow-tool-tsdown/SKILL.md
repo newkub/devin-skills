@@ -1,6 +1,6 @@
 ---
 name: follow-tool-tsdown
-description: ตั้งค่า tsdown เป็น library bundler สำหรับ TypeScript ด้วย Rolldown
+description: Set up tsdown as a library bundler for TypeScript with Rolldown
 argument-hint: "[scope]"
 related:
   - follow-tool-rolldown
@@ -15,116 +15,116 @@ related:
 
 ## Goal
 
-ตั้งค่า tsdown เป็น library bundler สำหรับ TypeScript ด้วย Rolldown รองรับ type declarations และ multiple output formats
+Set up tsdown as a TypeScript library bundler on Rolldown, with type declarations and multiple output formats
 
 ## Scope
 
-ใช้สำหรับ TypeScript library projects ที่ต้องการ bundle ไปยัง ESM/CJS/IIFE พร้อม `.d.ts` generation
+Use for TypeScript library projects that need bundling to ESM/CJS/IIFE with `.d.ts` generation
 
-- Boundary: ใช้ tsdown เมื่อ bundle library (publish ไป registry) — app bundling/dev server ใช้ `/follow-tool-vite`; raw bundler tuning ใช้ `/follow-tool-rolldown`; alternative library bundler ดู `/follow-tool-bunup`; migrate จาก `tsup` ดู `workflows/migrate-from-tsup`
-- Latest: `tsdown@0.23.0` (verified 2026-09-13) — requires Node.js `^22.18.0 | ^24.11.0 | >=26.0.0` ตอน build (output target ต่ำกว่าได้ผ่าน `target`)
+- Boundary: use tsdown when bundling a library (publish to a registry) — app bundling/dev server → `/follow-tool-vite`; raw bundler tuning → `/follow-tool-rolldown`; an alternative library bundler → `/follow-tool-bunup`; migrating from `tsup` → `workflows/migrate-from-tsup`
+- Latest: `tsdown@0.23.0` (verified 2026-09-13) — requires Node.js `^22.18.0 | ^24.11.0 | >=26.0.0` at build time (output target can be lower via `target`)
 
 ## Execute
 
 ### 1. Project Analysis
 
-> Goal: ตรวจสอบว่า project เหมาะกับ tsdown
+> Goal: Confirm the project fits tsdown
 
-1. ยืนยันว่าเป็น TypeScript library project
-2. ตรวจสอบ `package.json` และ Node.js version `^22.18.0 | ^24.11.0 | >=26.0.0`
-3. ระบุ output formats ทีต้องการ
-4. ตรวจสอบ `src/index.ts` หรือ entry files
+1. Confirm it is a TypeScript library project
+2. Check `package.json` and the Node.js version `^22.18.0 | ^24.11.0 | >=26.0.0`
+3. Identify the wanted output formats
+4. Check `src/index.ts` or the entry files
 
 ### 2. Installation
 
-> Goal: ติดตั้ง tsdown
+> Goal: Install tsdown
 
-1. ติดตั้งด้วย `bun add -D tsdown` หรือ scaffold project ใหม่ด้วย `bun create tsdown@latest`
-2. ตรวจสอบ version ด้วย `bunx tsdown --version`
-3. ใช้ `bunx tsdown --help` ดู CLI options
-4. ดูรายละเอียดใน 
+1. Install with `bun add -D tsdown`, or scaffold a new project with `bun create tsdown@latest`
+2. Verify the version with `bunx tsdown --version`
+3. Use `bunx tsdown --help` to see CLI options
+4. See details in 
 
 ### 3. Configuration
 
-> Goal: สร้าง `tsdown.config.ts` สำหรับ project
+> Goal: Create `tsdown.config.ts` for the project
 
-1. สร้าง `tsdown.config.ts` ที root
-2. ใช้ `defineConfig` จาก `tsdown`
-3. กำหนด `entry`, `format`, `dts`, `outDir`, `clean`
-4. ตั้งค่า `platform` เป็น `node`, `browser`, หรือ `neutral`
-5. ดู config options ใน 
+1. Create `tsdown.config.ts` at the root
+2. Use `defineConfig` from `tsdown`
+3. Set `entry`, `format`, `dts`, `outDir`, `clean`
+4. Configure `platform` as `node`, `browser`, or `neutral`
+5. See config options in 
 
 ### 4. Build Scripts
 
-> Goal: เพิ่ม package scripts สำหรับ build
+> Goal: Add package scripts for building
 
-1. เพิ่ม `"build": "tsdown"` ใน `package.json`
-2. เพิ่ม `"build:watch": "tsdown --watch"`
-3. เพิ่ม `"dev": "tsdown --watch"` ถ้าจำเป็น
-4. ตรวจสอบว่า scripts ทำงานบน Bun
+1. Add `"build": "tsdown"` to `package.json`
+2. Add `"build:watch": "tsdown --watch"`
+3. Add `"dev": "tsdown --watch"` if needed
+4. Verify the scripts work on Bun
 
 ### 5. Plugins and Validation
 
-> Goal: เพิ่ม plugins และ validate package
+> Goal: Add plugins and validate the package
 
-1. เพิ่ม Rolldown/Rollup/unplugin plugins ใน `plugins` array
-2. เปิดใช้ `publint: true` และ `attw: true` ถ้าต้องการ validate
-3. รัน `bun run build` แล้วตรวจสอบ `dist/`
-4. ตรวจสอบ `.d.ts` files สร้างครบถ้วน
+1. Add Rolldown/Rollup/unplugin plugins to the `plugins` array
+2. Enable `publint: true` and `attw: true` when validation is wanted
+3. Run `bun run build`, then check `dist/`
+4. Verify the `.d.ts` files are all generated
 
 ### 6. Validate Output
 
-> Goal: ตรวจสอบ output และ watch mode
+> Goal: Check the output and watch mode
 
-1. ตรวจสอบ `dist/*.mjs`, `dist/*.cjs`, `dist/*.d.ts`
-2. รัน `bunx tsdown --watch` เพื่อทดสอบ watch mode
-3. ทดสอบ import output ใน project อื่น
-4. ทำ `/follow-test` เพื่อรัน tests หลัง build
+1. Check `dist/*.mjs`, `dist/*.cjs`, `dist/*.d.ts`
+2. Run `bunx tsdown --watch` to test watch mode
+3. Test importing the output in another project
+4. Do `/follow-test` to run tests after build
 
 ### Workflows
 
-> Goal: dispatch งานเฉพาะทางไป workflow ที่เหมาะสม
+> Goal: Dispatch specialized work to the right workflow
 
-| Topic | Workflow |-------|----------| first-time setup (install, config, entry/dts/sourcemap) | `workflows/setup-tsdown/SKILL.md` | migrate จาก tsup | `workflows/migrate-from-tsup/SKILL.md` 
+| Topic | Workflow |-------|----------| first-time setup (install, config, entry/dts/sourcemap) | `workflows/setup-tsdown/SKILL.md` | migrate from tsup | `workflows/migrate-from-tsup/SKILL.md` 
 ## Rules
 
 ### 1. Installation
 
-- ใช้ `bun add -D tsdown` สำหรับ local install
-- ตรวจสอบ Node.js version ก่อน
-- ใช้ `bunx tsdown` สำหรับ one-off
+- Use `bun add -D tsdown` for a local install
+- Check the Node.js version first
+- Use `bunx tsdown` for one-off runs
 
 ### 2. Configuration
 
-- ใช้ `tsdown.config.ts` และ `defineConfig`
-- ระบุ `entry` เป็น array หรือ string
-- กำหนด `format` เป็น `['esm', 'cjs']` ถ้าต้องการทั้งสอง
+- Use `tsdown.config.ts` with `defineConfig`
+- Specify `entry` as an array or a string
+- Set `format` to `['esm', 'cjs']` when both are wanted
 
 ### 3. Build
 
-- เปิดใช้ `clean: true`
-- เปิดใช้ `treeshake` ตามค่าเริ่มต้น
-- ตรวจสอบ `dist/` output หลัง build
+- Enable `clean: true`
+- `treeshake` is enabled by default
+- Check the `dist/` output after building
 
 ### 4. Type Declarations
 
-- เปิดใช้ `dts: true`
-- ใช้ `vue` หรือ `react` dts option ถ้าใช้ framework
-- ตรวจสอบ `.d.ts` สร้างครบ
+- Enable `dts: true`
+- Use the `vue` or `react` dts option when working with a framework
+- Verify all `.d.ts` files are generated
 
 ### 5. Migration
 
-- ใช้ `bunx tsdown-migrate` สำหรับ migrate จาก `tsup`
-- ตรวจสอบว่า output เหมือนเดิมหลัง migrate
-- แก้ config ที่ incompatible
+- Use `bunx tsdown-migrate` to migrate from `tsup`
+- Verify the output stays the same after migration
+- Fix incompatible config
 
-- ใช้ /follow-tool-rolldown ถ้าจำเป็น
-- ใช้ /follow-tool-vite ถ้าจำเป็น
-- ใช้ /follow-tool-bunup ถ้าจำเป็น
-- ใช้ /follow-create-plugins (vite) ถ้าจำเป็น (tool tsdown)
-- ใช้ /follow-tool-turborepo ถ้าจำเป็น
-- ใช้ /follow-lang-typescript ถ้าจำเป็น
-- ใช้ /follow-tool-vitest ถ้าจำเป็น
+- Use /follow-tool-rolldown if needed
+- Use /follow-tool-vite if needed
+- Use /follow-tool-bunup if needed
+- Use /follow-create-plugins (vite) if needed (tool tsdown)
+- Use /follow-tool-turborepo if needed
+- Use /follow-lang-typescript if needed
+- Use /follow-tool-vitest if needed
 
 ## References
 
@@ -135,13 +135,13 @@ related:
 
 Canonical file structure + layer table: [templates/file-structure-lib.md](templates/file-structure-lib.md)
 
-- ดู best-practices/ สำหรับ recommended patterns และ pitfalls
+- See best-practices/ for recommended patterns and pitfalls
 
 ## Expected Outcome
 
-- `tsdown.config.ts` ถูกต้อง
-- package.json มี build scripts
-- `dist/` มี bundled files และ `.d.ts`
-- Watch mode ทำงาน
-- Validation (`publint`, `attw`) ผ่าน
+- Correct `tsdown.config.ts`
+- package.json has build scripts
+- `dist/` contains bundled files and `.d.ts`
+- Watch mode works
+- Validation (`publint`, `attw`) passes
 

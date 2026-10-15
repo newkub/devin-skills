@@ -11,76 +11,76 @@ related:
 
 ## Goal
 
-ย้าย tsup config ไป tsdown โดย output เทียบเท่าเดิม — ใช้ migration tool ก่อนแล้วแก้ส่วนที่เหลือด้วยมือ, rollback ได้
+Move a tsup config to tsdown with equivalent output — use the migration tool first, fix the rest manually, with a rollback path
 
 ## Scope
 
-- ใช้กับ library projects ที่มี `tsup.config.*` หรือ `tsup` ใน `package.json`
-- ครอบคลุม `tsdown-migrate`, config option mapping, verify output
-- project ใหม่ที่ไม่เคยใช้ tsup → ใช้ `workflows/setup-tsdown/SKILL.md`
+- Applies to library projects with `tsup.config.*` or `tsup` in `package.json`
+- Covers `tsdown-migrate`, config option mapping, output verification
+- New projects that never used tsup → use `workflows/setup-tsdown/SKILL.md`
 
 ## Execute
 
 ### 1. Baseline And Plan
 
-> Goal: เก็บ state เดิมก่อนย้าย
+> Goal: capture the original state before migrating
 
-1. อ่าน `tsup.config.*` / `tsup` field ใน `package.json` — list `entry`, `format`, `dts`, `external`, `esbuildOptions`, `onSuccess`, hooks
-2. รัน `tsup` build เก็บ `dist/` file list + sizes เป็น baseline
-3. อ่าน official migration guide ใน tsdown docs — ทำ `/learn` (web) ถ้าไม่แน่ใจ
-4. commit state ก่อนเริ่ม — rollback path ต้องพร้อม
+1. Read `tsup.config.*` / the `tsup` field in `package.json` — list `entry`, `format`, `dts`, `external`, `esbuildOptions`, `onSuccess`, hooks
+2. Run the `tsup` build and save the `dist/` file list + sizes as the baseline
+3. Read the official migration guide in the tsdown docs — do `/learn` (web) if unsure
+4. Commit the state before starting — the rollback path must be ready
 
 ### 2. Run tsdown-migrate
 
-> Goal: ใช้ official migration tool ก่อน manual edit
+> Goal: use the official migration tool before manual edits
 
-1. รัน `bunx tsdown-migrate` — tool แปลง `tsup.config.*` → `tsdown.config.ts` และปรับ `package.json`
-2. review diff ทั้งหมดที่ tool ทำ — อย่า trust โดยไม่ตรวจ
-3. ติดตั้ง `tsdown` ตามที่ tool ระบุ (`bun add -D tsdown`)
+1. Run `bunx tsdown-migrate` — the tool converts `tsup.config.*` → `tsdown.config.ts` and adjusts `package.json`
+2. Review the whole diff the tool made — don't trust it unverified
+3. Install `tsdown` as the tool specifies (`bun add -D tsdown`)
 
 ### 3. Manual Config Translation
 
-> Goal: options ที่ tool ไม่ครอบคลุม
+> Goal: options the tool didn't cover
 
-1. map options เหลือ: `esbuildOptions` → rolldown/hooks equivalents ตาม docs, `onSuccess` → hook ที่ tsdown รองรับ, `define`/`env` → ตรวจ counterpart
-2. esbuild plugins ของ tsup → ต้องเป็น Rolldown/unplugin plugins — ดู official docs
-3. options ที่ไม่มี counterpart → flag ชัดเจนใน report
+1. Map the remaining options: `esbuildOptions` → rolldown/hooks equivalents per docs, `onSuccess` → a hook tsdown supports, `define`/`env` → check counterparts
+2. tsup's esbuild plugins → must become Rolldown/unplugin plugins — see official docs
+3. Options with no counterpart → flag them clearly in the report
 
 ### 4. Update Package Metadata
 
-> Goal: scripts/exports ชี้ tsdown
+> Goal: scripts/exports point at tsdown
 
 1. scripts: `tsup` → `tsdown`, `tsup --watch` → `tsdown --watch`
-2. ตรวจ `exports`/`main`/`types` ตรง output ที่ tsdown สร้าง — naming อาจต่างจาก tsup
-3. ลบ `tsup` dep หลัง verify ผ่านเท่านั้น
+2. Check `exports`/`main`/`types` match the output tsdown produces — naming may differ from tsup
+3. Remove the `tsup` dep only after verification passes
 
 ### 5. Verify Output
 
-> Goal: output เทียบเท่า tsup build
+> Goal: output equivalent to the tsup build
 
-1. รัน `bun run build` → ผ่าน
-2. compare `dist/` กับ baseline: file list, formats, `.d.ts` ครบ
-3. import/require ทุก entry ใน consumer + รัน tests
-4. ผ่าน → ลบ tsup config + dep, แยก commit, report `/report-before-after`
-5. ไม่ผ่านใน 3 รอบ → rollback (tsup setup ยังอยู่ใน git history) แล้ว report
+1. Run `bun run build` → passes
+2. Compare `dist/` with the baseline: file list, formats, `.d.ts` complete
+3. import/require every entry in a consumer + run tests
+4. Passes → delete the tsup config + dep in a separate commit, report via `/report-before-after`
+5. Fails within 3 rounds → rollback (the tsup setup is still in git history), then report
 
 ## Rules
 
 ### 1. Safety
 
-- ใช้ `tsdown-migrate` ก่อน manual edit เสมอ
-- migration แยก commit — ห้ามผสม feature work
+- Always use `tsdown-migrate` before manual edits
+- Keep the migration in its own commit — never mix in feature work
 
 ### 2. Fidelity
 
-- output formats/`.d.ts`/sourcemap ต้องเทียบเท่า tsup เดิม
-- esbuild plugins ไม่ทำงานบน tsdown โดยตรง — ต้อง map ไม่ใช่ copy
+- Output formats/`.d.ts`/sourcemap must equal the original tsup ones
+- esbuild plugins don't work on tsdown directly — map them, don't copy
 
-- ใช้ /follow-tool-tsdown ถ้าจำเป็น
-- ใช้ /follow-tool-rolldown ถ้าจำเป็น
-- ใช้ /deep-review ถ้าจำเป็น
+- Use /follow-tool-tsdown if needed
+- Use /follow-tool-rolldown if needed
+- Use /deep-review-codebase if needed
 
 ## Expected Outcome
 
-- `tsdown.config.ts` แทน tsup config, build ผ่าน output เทียบเท่า
-- `tsup` dep ถูกลบ, scripts ชี้ tsdown
+- `tsdown.config.ts` replaces the tsup config, build passes with equivalent output
+- The `tsup` dep is removed, scripts point at tsdown

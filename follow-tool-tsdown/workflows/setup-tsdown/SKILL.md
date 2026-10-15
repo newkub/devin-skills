@@ -1,6 +1,6 @@
 ---
 name: follow-tool-tsdown-setup-tsdown
-description: ติดตั้ง tsdown และสร้าง tsdown.config.ts — entry/dts/sourcemap
+description: Install tsdown and create tsdown.config.ts — entry/dts/sourcemap
 argument-hint: "[project-path]"
 related:
   - follow-tool-tsdown
@@ -10,75 +10,75 @@ related:
 
 ## Goal
 
-ติดตั้ง tsdown และตั้งค่า `tsdown.config.ts` พื้นฐานสำหรับ TypeScript library — entry, formats, dts, sourcemap, package scripts
+Install tsdown and set up a basic `tsdown.config.ts` for a TypeScript library — entry, formats, dts, sourcemap, package scripts
 
 ## Scope
 
-- first-time setup ของ tsdown ใน TypeScript library project
-- ครอบคลุม install, `tsdown.config.ts`, `entry`/`format`/`dts`/`sourcemap`, build scripts
-- migration จาก tsup → `workflows/migrate-from-tsup/SKILL.md`
+- First-time tsdown setup in a TypeScript library project
+- Covers install, `tsdown.config.ts`, `entry`/`format`/`dts`/`sourcemap`, build scripts
+- Migration from tsup → `workflows/migrate-from-tsup/SKILL.md`
 
 ## Execute
 
 ### 1. Prerequisites
 
-> Goal: project พร้อมสำหรับ tsdown
+> Goal: the project is ready for tsdown
 
-1. ยืนยันว่าเป็น TypeScript library project — มี `tsconfig.json` และ entry ใน `src/`
-2. ตรวจ Node.js version ตาม requirement ใน parent skill หรือ official docs
-3. ถ้ามี tsdown setup อยู่แล้ว → verify เท่านั้น ข้ามไป step 5
+1. Confirm it is a TypeScript library project — with `tsconfig.json` and entries in `src/`
+2. Check the Node.js version against the requirement in the parent skill or official docs
+3. If a tsdown setup already exists → verify only, skip to step 5
 
 ### 2. Install
 
-> Goal: ติดตั้ง tsdown
+> Goal: Install tsdown
 
-1. `bun add -D tsdown` หรือ scaffold project ใหม่ด้วย `bun create tsdown@latest`
-2. verify ด้วย `bunx tsdown --version`
+1. `bun add -D tsdown`, or scaffold a new project with `bun create tsdown@latest`
+2. Verify with `bunx tsdown --version`
 
 ### 3. Create Config
 
-> Goal: `tsdown.config.ts` ขั้นต่ำที่จำเป็น
+> Goal: the minimal `tsdown.config.ts` needed
 
-1. สร้าง `tsdown.config.ts` ที่ root ใช้ `defineConfig` จาก `tsdown`
-2. กำหนด `entry` — string/array/object ชี้ไป entry files เช่น `src/index.ts`
-3. กำหนด `format: ['esm', 'cjs']` ตาม consumers และ `platform` (`node`/`browser`/`neutral`)
-4. เปิด `dts: true` สำหรับ `.d.ts` generation และ `sourcemap` ถ้าต้องการ
-5. options อื่น (`clean`, `minify`, `external`, `publint`, `attw`) → เพิ่มตาม need ดู official docs
+1. Create `tsdown.config.ts` at the root using `defineConfig` from `tsdown`
+2. Set `entry` — a string/array/object pointing to entry files such as `src/index.ts`
+3. Set `format: ['esm', 'cjs']` per the consumers, and `platform` (`node`/`browser`/`neutral`)
+4. Enable `dts: true` for `.d.ts` generation, and `sourcemap` when wanted
+5. Other options (`clean`, `minify`, `external`, `publint`, `attw`) → add per need, see official docs
 
 ### 4. Package Scripts And Exports
 
-> Goal: build runnable และ package ชี้ output ถูก
+> Goal: build is runnable and the package points to the right output
 
-1. เพิ่ม `"build": "tsdown"` และ `"dev": "tsdown --watch"` ใน `package.json`
-2. ตรวจ `exports`/`main`/`module`/`types` ชี้ไป `dist/` files ที่ tsdown สร้าง — ดู official docs สำหรับ pattern
+1. Add `"build": "tsdown"` and `"dev": "tsdown --watch"` to `package.json`
+2. Check `exports`/`main`/`module`/`types` point at the `dist/` files tsdown produces — see official docs for the pattern
 
 ### 5. Verify
 
-> Goal: build ผ่าน output ครบ
+> Goal: build passes with complete output
 
-1. รัน `bun run build` → ไม่มี error
-2. ตรวจ `dist/`: `.mjs`/`.cjs` ตาม formats, `.d.ts`/`.d.cts` ครบ, sourcemaps ถ้าเปิด
-3. ถ้าเปิด `publint`/`attw` → ผลต้องผ่าน
-4. ถ้า verify ไม่ผ่าน → `/resolve-errors` max 3 รอบ แล้ว report
+1. Run `bun run build` → no errors
+2. Check `dist/`: `.mjs`/`.cjs` per the formats, `.d.ts`/`.d.cts` complete, sourcemaps if enabled
+3. If `publint`/`attw` are enabled → their results must pass
+4. If verification fails → `/resolve-errors` max 3 rounds, then report
 
 ## Rules
 
 ### 1. Setup
 
-- ใช้ `defineConfig` เสมอ, config ขั้นต่ำก่อนแล้วค่อยเพิ่ม
-- ใช้เฉพาะ options จาก official docs — ห้ามเดา
+- Always use `defineConfig`, start with a minimal config and add more later
+- Use only options from official docs — never guess
 
 ### 2. Package Hygiene
 
-- `exports` ต้องตรง output files จริง — mismatch = consumers import ไม่ได้
-- `files` ใน `package.json` ต้องรวม `dist`
+- `exports` must match the real output files — a mismatch = consumers can't import
+- `files` in `package.json` must include `dist`
 
-- ใช้ /follow-tool-tsdown ถ้าจำเป็น
-- ใช้ /follow-tool-rolldown ถ้าจำเป็น
-- ใช้ /follow-lang-typescript ถ้าจำเป็น
+- Use /follow-tool-tsdown if needed
+- Use /follow-tool-rolldown if needed
+- Use /follow-lang-typescript if needed
 
 ## Expected Outcome
 
-- tsdown ติดตั้ง `tsdown.config.ts` ถูกต้อง
-- `bun run build` สร้าง `dist/` พร้อม JS + `.d.ts` ครบ
-- `package.json` exports ชี้ output ถูก
+- tsdown installed with a correct `tsdown.config.ts`
+- `bun run build` produces `dist/` with complete JS + `.d.ts`
+- `package.json` exports point to the right output

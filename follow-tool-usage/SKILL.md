@@ -1,6 +1,6 @@
 ---
 name: follow-tool-usage
-description: สร้าง CLI spec ด้วย usage เพื่อ generate completions/docs/SDK
+description: Define a CLI spec with usage to generate completions/docs/SDKs
 argument-hint: "[scope]"
 related:
   - report-usage
@@ -16,64 +16,64 @@ related:
 
 ## Goal
 
-ใช้ usage spec (KDL) กำหนด CLI แล้ว generate completions, docs, manpages, และ type-safe SDK
+Use a usage spec (KDL) to define a CLI, then generate completions, docs, manpages, and a type-safe SDK
 
 ## Scope
 
-ครอบคลุม installation, KDL spec, `usage generate` subcommands, integrations, และ validation
+Covers installation, the KDL spec, `usage generate` subcommands, integrations, and validation
 
-- Boundary: ใช้ usage เมื่อต้องการ spec-driven CLI (single `usage.kdl` → completions/docs/SDK); ถ้า project ใช้ framework-native spec อยู่แล้ว (clap/cobra/commander) ให้ generate integration แทนเขียน parser เอง — ไม่ใช่ npm package `usage` (ตัวจริงคือ `usage-cli` บน crates.io)
-- Latest: `usage@6.12.0` (usage CLI โดย jdx — usage-rs/usage-go + spec + generators, verified 2026-10-02)
+- Boundary: use usage when you want a spec-driven CLI (a single `usage.kdl` → completions/docs/SDK); if the project already uses a framework-native spec (clap/cobra/commander), generate the integration instead of hand-writing a parser — not the npm package `usage` (the real one is `usage-cli` on crates.io)
+- Latest: `usage@6.12.0` (the usage CLI by jdx — usage-rs/usage-go + spec + generators, verified 2026-10-02)
 
 ## Execute
 
 ### 1. Install
 
-> Goal: มี usage CLI พร้อมใช้
+> Goal: have the usage CLI ready
 
-1. แนะนำติดตั้งผ่าน mise: `mise use -g usage` หรือ `mise use usage`
-2. ทางเลือก: `cargo install usage-cli`, `brew install usage`
-3. ถ้า project ไม่มี mise ให้ทำ `/follow-tool-mise` ก่อน
-4. ยืนยันด้วย `usage --version`
+1. Install through mise is recommended: `mise use -g usage` or `mise use usage`
+2. Alternatives: `cargo install usage-cli`, `brew install usage`
+3. If the project has no mise, do `/follow-tool-mise` first
+4. Confirm with `usage --version`
 
 ### 2. Define Spec
 
-> Goal: กำหนด CLI ด้วย KDL
+> Goal: Define the CLI with KDL
 
-1. สร้าง `usage.kdl` หรือ `cli.usage.kdl` ใน project
-2. กำหนด metadata: `name`, `bin`, `about`, `version`, `author`, `license`
-3. กำหนด `flag`, `arg`, `cmd` พร้อม `help`
-4. ใช้ `effect` เช่น `read`, `write`, `destructive` สำหรับ commands และ flags
-5. ใช้ `config_file` และ `env` เพื่อ bind config/env/defaults
-6. ใช้ `global=#true` สำหรับ global flags
-7. ใช้ `min_usage_version "6.x"` เพื่อ pin minimum CLI version ที่ spec ต้องการ
-8. ใช้ `clause` สำหรับ repeatable positional groups พร้อม scoped flags (usage 6.5+)
+1. Create `usage.kdl` or `cli.usage.kdl` in the project
+2. Define the metadata: `name`, `bin`, `about`, `version`, `author`, `license`
+3. Define `flag`, `arg`, `cmd` with `help`
+4. Use `effect` such as `read`, `write`, `destructive` for commands and flags
+5. Use `config_file` and `env` to bind config/env/defaults
+6. Use `global=#true` for global flags
+7. Use `min_usage_version "6.x"` to pin the minimum CLI version the spec requires
+8. Use `clause` for repeatable positional groups with scoped flags (usage 6.5+)
 
 ### 3. Generate Outputs
 
-> Goal: สร้าง artifacts จาก spec
+> Goal: Produce artifacts from the spec
 
-1. `usage generate completion <shell> <bin> -f usage.kdl` สำหรับ bash/zsh/fish/pwsh/nushell
-2. `usage generate completion-init <shell>` สำหรับ shell init script
-3. `usage generate markdown` สำหรับ markdown docs (ใช้ `--link-extension .html` ถ้า serve เป็น HTML)
-4. `usage generate manpage` สำหรับ manpages
-5. `usage generate sdk <language>` สำหรับ type-safe SDK
-6. `usage generate json` สำหรับ consume โดย framework
-7. `usage generate fig` สำหรับ Fig completions
+1. `usage generate completion <shell> <bin> -f usage.kdl` for bash/zsh/fish/pwsh/nushell
+2. `usage generate completion-init <shell>` for the shell init script
+3. `usage generate markdown` for markdown docs (use `--link-extension .html` when serving as HTML)
+4. `usage generate manpage` for manpages
+5. `usage generate sdk <language>` for a type-safe SDK
+6. `usage generate json` for consumption by a framework
+7. `usage generate fig` for Fig completions
 
 ### 4. Validate and Scripts
 
-> Goal: ตรวจสอบ spec และใช้ scripts
+> Goal: Check the spec and use scripts
 
-1. รัน `usage lint` เพื่อตรวจสอบ spec
-2. ใช้ `usage exec` สำหรับ execute spec-based scripts
-3. ใช้ `usage bash|zsh|fish|powershell <script>` เพื่อรัน shebang scripts ที่มี arg parsing จาก spec
+1. Run `usage lint` to validate the spec
+2. Use `usage exec` to execute spec-based scripts
+3. Use `usage bash|zsh|fish|powershell <script>` to run shebang scripts with spec-based arg parsing
 
 ### 5. Framework Integrations
 
-> Goal: integrate กับ CLI frameworks ทีมีอยู่
+> Goal: Integrate with the existing CLI frameworks
 
-1. clap (Rust) — ดู `spec/integrations/clap`
+1. clap (Rust) — see `spec/integrations/clap`
 2. cobra, kong, urfave/cli (Go)
 3. commander.js, oclif, yargs (Node.js)
 4. argparse, typer, click (Python)
@@ -84,13 +84,13 @@ related:
 
 ### 1. Spec Conventions
 
-- ใช้ KDL format
-- ใช้ `flag "-f --force"` สำหรับ short/long flags
-- ใช้ `arg "<required>"` สำหรับ required positional
-- ใช้ `arg "[optional]"` สำหรับ optional positional
-- กำหนด `effect` สำหรับ commands ที่เปลี่ยน state
-- ใช้ `global=#true` สำหรับ global flags
-- ใช้ `hide=#true` สำหรับ hide command/alias จาก docs
+- Use the KDL format
+- Use `flag "-f --force"` for short/long flags
+- Use `arg "<required>"` for a required positional
+- Use `arg "[optional]"` for an optional positional
+- Define an `effect` for commands that change state
+- Use `global=#true` for global flags
+- Use `hide=#true` to hide a command/alias from docs
 
 ### 2. Example usage.kdl
 
@@ -126,31 +126,31 @@ cmd "deploy" help="Deploy to production" effect="destructive" {
 
 ### 4. Integration Pattern
 
-- generate JSON spec ด้วย `usage generate json -f usage.kdl`
-- consume JSON ใน CLI framework หรือ build pipeline
-- keep `usage.kdl` เป็น single source of truth
-- regenerate completions/docs ใน CI ถ้ามีการเปลี่ยน spec
+- Generate the JSON spec with `usage generate json -f usage.kdl`
+- Consume the JSON in the CLI framework or build pipeline
+- Keep `usage.kdl` as the single source of truth
+- Regenerate completions/docs in CI whenever the spec changes
 
-- ใช้ /report-usage ถ้าจำเป็น
-- ใช้ /deep-review ถ้าจำเป็น
-- ใช้ /follow-best-practice ถ้าจำเป็น
-- ใช้ /setup-cicd ถ้าจำเป็น
-- ใช้ /resolve-errors ถ้าจำเป็น
+- Use /report-usage if needed
+- Use /deep-review-codebase if needed
+- Use /follow-best-practice if needed
+- Use /setup-cicd if needed
+- Use /resolve-errors if needed
 
 ## References
 
 - [CLI reference](references/cli.md)
 
-- ใช้ /research-setup-integrations ถ้าจำเป็น (shell completions/framework integrations ของ usage)
+- Use /research-setup-integrations if needed (usage shell completions/framework integrations)
 
 
-- ดู best-practices/ สำหรับ recommended patterns และ pitfalls
+- See best-practices/ for recommended patterns and pitfalls
 
 ## Expected Outcome
 
-- มี `usage.kdl` ที่ครบถ้วน
-- สามารถ generate completions สำหรับ bash/zsh/fish/pwsh/nushell
-- สามารถ generate markdown docs/manpages
-- สามารถ generate type-safe SDK สำหรับ multiple languages
-- สามารถ integrate กับ CLI frameworks ทีมีอยู่
-- `usage lint` ผ่าน
+- A complete `usage.kdl`
+- Able to generate completions for bash/zsh/fish/pwsh/nushell
+- Able to generate markdown docs/manpages
+- Able to generate a type-safe SDK for multiple languages
+- Able to integrate with the existing CLI frameworks
+- `usage lint` passes

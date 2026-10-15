@@ -1,34 +1,34 @@
 # Unlighthouse — Best Practices
 
-Site-wide Lighthouse audits — crawl ทั้ง site แทนหน้าเดียว
+Site-wide Lighthouse audits — crawl the whole site instead of one page
 
 ## Recommended Patterns
 
-- `unlighthouse --site <url>` — auto-discovers pages ผ่าน sitemap/crawl; scan ทั้ง site ไม่ใช่ page เดียว
-- CI mode: `--ci` + `--budget` assertions — fail เมื่อ scores/metrics ต่ำกว่า threshold
-- `--routerPrefix`/`--scanner` config สำหรับ SPA paths — SPA sites ต้อง route discovery
-- Report: HTML output เจาะ per-page + aggregated scores — trend over runs
-- `unlighthouse.config.ts` สำหรับ persistent config — URLs, budgets, scanner options
+- `unlighthouse --site <url>` — auto-discovers pages via sitemap/crawl; scans the whole site, not a single page
+- CI mode: `--ci` + `--budget` assertions — fails when scores/metrics fall below the threshold
+- `--routerPrefix`/`--scanner` config for SPA paths — SPA sites need route discovery
+- Report: HTML output drills into per-page + aggregated scores — trend over runs
+- `unlighthouse.config.ts` for persistent config — URLs, budgets, scanner options
 
 ## Common Pitfalls
 
-- Large sites = scan time นาน — `--maxRoutes`/sitemap filters scope; sampling acceptable สำหรับ monitoring
-- Auth-required pages — unlighthouse ไม่ login เอง; pre-auth cookies หรือ public-only scope
-- Lab data เท่านั้น — combine กับ RUM (`/follow-lib-web-vitals`) สำหรับภาพจริง
-- Throttling consistency: keep default simulated เทียบ runs ข้ามเวลา — machine load affects scores
-- Score variance ±5-10 — budgets ต่ำกว่าจุดนั้น = flaky CI; use threshold margins
+- Large sites = long scan time — `--maxRoutes`/sitemap filters scope it; sampling is acceptable for monitoring
+- Auth-required pages — unlighthouse won't log in itself; use pre-auth cookies or a public-only scope
+- Lab data only — combine with RUM (`/follow-lib-web-vitals`) for the real picture
+- Throttling consistency: keep the default simulated throttling to compare runs over time — machine load affects scores
+- Score variance ±5-10 — budgets below that margin = flaky CI; use threshold margins
 
 ## CI Integration
 
-- Nightly/weekly jobs มากกว่า per-PR — site-wide audit นานเกิน PR gate
-- Budgets per-category (perf, a11y, seo, best-practices) — assert แยกกัน
-- Trend tracking: store JSON results เป็น artifacts → diff over time
+- Nightly/weekly jobs rather than per-PR — a site-wide audit is too slow for a PR gate
+- Budgets per category (perf, a11y, seo, best-practices) — assert them separately
+- Trend tracking: store JSON results as artifacts → diff over time
 
 ## Do / Don't
 
 | Do | Don't |
 |----|-------|
-| site-wide audits periodic | audit เฉพาะ homepage |
-| `--ci` + budgets ใน pipelines | eyeball scores manually |
+| site-wide audits periodic | audit only the homepage |
+| `--ci` + budgets in pipelines | eyeball scores manually |
 | scope discovery (sitemap/filters) | unbounded crawls |
-| pair กับ RUM data | trust lab scores เดี่ยวๆ |
+| pair with RUM data | trust lab scores alone |

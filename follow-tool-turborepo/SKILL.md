@@ -1,6 +1,6 @@
 ---
 name: follow-tool-turborepo
-description: ตั้งค่าและใช้ Turborepo v2.x สำหรับ monorepo task orchestration
+description: Set up and use Turborepo v2.x for monorepo task orchestration
 argument-hint: "[scope]"
 related:
   - follow-monorepo
@@ -16,15 +16,15 @@ related:
 
 ## Goal
 
-ตั้งค่าและใช้ Turborepo v2.x สำหรับ task orchestration, caching และ build pipeline ใน monorepo
+Set up and use Turborepo v2.x for task orchestration, caching, and build pipelines in a monorepo
 
 ## Scope
 
-ใช้สำหรับ monorepos ที่ต้องการ orchestrate tasks, cache outputs, remote cache, package boundaries
+Use for monorepos that need to orchestrate tasks, cache outputs, use remote cache, and enforce package boundaries
 
-- package build pipeline ดู `references/apis.md`
+- Package build pipeline: see `references/apis.md`
 
-- Boundary: ใช้ Turborepo สำหรับ JS/TS monorepo task orchestration; ถ้า project ใช้ Moon ให้ใช้ `/follow-tool-moonrepo` แทน; สำหรับ dependency updates ข้าม workspace ใช้ `/follow-tool-taze`
+- Boundary: use Turborepo for JS/TS monorepo task orchestration; if the project uses Moon, use `/follow-tool-moonrepo` instead; for dependency updates across workspaces, use `/follow-tool-taze`
 - Latest: `turbo@2.11.4` (verified 2026-09-26)
 
 ## Execute
@@ -34,114 +34,114 @@ related:
 | Topic | Workflow |-------|----------| Install, `turbo.json` init, workspace layout | `workflows/setup-turborepo/SKILL.md` | `tasks`, `dependsOn`, `inputs`/`outputs`, env, package overrides | `workflows/config-pipeline/SKILL.md` | Remote cache, `--filter`, `--affected`, cache hit tuning | `workflows/optimize-cache/SKILL.md` 
 ### 1. Repository Structure
 
-> Goal: จัดโครงสร้าง workspace สำหรับ Turborepo
+> Goal: Arrange the workspace structure for Turborepo
 
-1. ใช้ `bun` หรือ package manager ที project ใช้
-2. ตั้งค่า root `package.json` ด้วย `private`, `packageManager`, `workspaces`
-3. จัด directory ด้วย `apps/*` และ `packages/*`
-4. หลีกเลี่ยง nested packages
-5. ตรวจสอบแต่ละ package มี `package.json` พร้อม `exports`
+1. Use `bun` or the package manager the project uses
+2. Set up the root `package.json` with `private`, `packageManager`, `workspaces`
+3. Organize directories with `apps/*` and `packages/*`
+4. Avoid nested packages
+5. Verify each package has a `package.json` with `exports`
 
 ### 2. Install Turbo
 
-> Goal: ติดตั้ง turbo CLI
+> Goal: Install the turbo CLI
 
-1. ติดตั้งด้วย `bun add -D turbo`
-2. ตรวจสอบ version ด้วย `bunx turbo --version`
-3. ดูรายละเอียด CLI ใน 
+1. Install with `bun add -D turbo`
+2. Verify the version with `bunx turbo --version`
+3. See CLI details in 
 
 ### 3. Configure turbo.json
 
-> Goal: สร้าง `turbo.json` ที root
+> Goal: Create `turbo.json` at the root
 
-1. สร้าง `turbo.json` ที root พร้อม `$schema`
-2. กำหนด `tasks` สำหรับ build, test, lint, dev
-3. ตั้งค่า `dependsOn`, `inputs`, `outputs`, `cache`
-4. ตั้งค่า `env` และ `passThroughEnv`
-5. เปิดใช้ `futureFlags.globalConfiguration` เพื่อย้าย global keys ไปยัง `global`
-6. ดู config details ใน 
+1. Create `turbo.json` at the root with `$schema`
+2. Define `tasks` for build, test, lint, dev
+3. Set `dependsOn`, `inputs`, `outputs`, `cache`
+4. Configure `env` and `passThroughEnv`
+5. Enable `futureFlags.globalConfiguration` to move global keys into `global`
+6. See config details in 
 
 ### 4. Package-Level Config
 
-> Goal: override หรือ extend root config ในแต่ละ package
+> Goal: override or extend the root config per package
 
-1. สร้าง `turbo.json` ใน package ถ้าต้องการ override
-2. ใช้ `"extends": ["//"]` เพื่อ inherit จาก root
-3. ใช้ `$TURBO_EXTENDS$` เพื่อ append แทน replace
-4. ระบุ `outputs` และ `dependsOn` เฉพาะ package
+1. Create a `turbo.json` in the package when an override is needed
+2. Use `"extends": ["//"]` to inherit from the root
+3. Use `$TURBO_EXTENDS$` to append instead of replace
+4. Specify package-specific `outputs` and `dependsOn`
 
 ### 5. Task Filtering and Watch
 
-> Goal: ใช้ filter และ watch mode
+> Goal: Use filters and watch mode
 
-1. รัน `bunx turbo run <task>`
-2. ใช้ `--filter` สำหรับ package เฉพาะ
-3. ใช้ `--affected` สำหรับ changed packages
-4. ใช้ `bunx turbo watch <task>` สำหรับ development
-5. ใช้ `--dry=json` เพื่อ inspect task graph
+1. Run `bunx turbo run <task>`
+2. Use `--filter` for specific packages
+3. Use `--affected` for changed packages
+4. Use `bunx turbo watch <task>` for development
+5. Use `--dry=json` to inspect the task graph
 
 ### 6. Boundaries and Remote Cache
 
-> Goal: enforce package isolation และ remote cache
+> Goal: Enforce package isolation and remote cache
 
-1. ใช้ `bunx turbo boundaries` เพื่อตรวจ package isolation
-2. กำหนด `tags` และ `boundaries` rules ใน `turbo.json`
-3. ตั้งค่า remote cache ด้วย `bunx turbo link --yes`
-4. ใช้ `TURBO_TOKEN` และ `TURBO_TEAM` สำหรับ authentication
-5. ตั้งค่า `cacheMaxSize` และ `cacheMaxAge`
+1. Use `bunx turbo boundaries` to check package isolation
+2. Define `tags` and `boundaries` rules in `turbo.json`
+3. Set up the remote cache with `bunx turbo link --yes`
+4. Use `TURBO_TOKEN` and `TURBO_TEAM` for authentication
+5. Configure `cacheMaxSize` and `cacheMaxAge`
 
 ## Rules
 
 ### 1. Configuration
 
-- ใช้ `turbo.json` ที root พร้อม `$schema`
-- ใช้ `futureFlags.globalConfiguration: true`
-- กำหนด `inputs` และ `outputs` ให้ชัดเจน
+- Use `turbo.json` at the root with `$schema`
+- Use `futureFlags.globalConfiguration: true`
+- Define `inputs` and `outputs` explicitly
 
 ### 2. Task Dependencies
 
-- ใช้ `^task` สำหรับ upstream dependencies
-- ใช้ `task` สำหรับ same package
-- ระบุ `dependsOn` ตาม task graph
+- Use `^task` for upstream dependencies
+- Use `task` for the same package
+- Specify `dependsOn` per the task graph
 
 ### 3. Caching
 
-- เปิด `cache: true` สำหรับ deterministic tasks
-- ปิด `cache` สำหรับ dev servers และ side-effect tasks
-- ใช้ `persistent: true` สำหรับ long-running tasks
+- Enable `cache: true` for deterministic tasks
+- Disable `cache` for dev servers and side-effect tasks
+- Use `persistent: true` for long-running tasks
 
 ### 4. Environment Variables
 
-- ใช้ `env` สำหรับ variables ที affect cache hash (ไม่มี `$` prefix)
-- ใช้ `passThroughEnv` สำหรับ secrets
-- ไม่ hard-code secrets
+- Use `env` for variables that affect the cache hash (no `$` prefix)
+- Use `passThroughEnv` for secrets
+- Never hard-code secrets
 
 ### 5. Boundaries
 
-- ใช้ `turbo boundaries` ตรวจ package isolation
-- กำหนด `tags` และ `boundaries` rules
-- หลีกเลี่ยง imports ข้าม package boundaries
+- Use `turbo boundaries` to check package isolation
+- Define `tags` and `boundaries` rules
+- Avoid imports that cross package boundaries
 
-- ใช้ /follow-monorepo ถ้าจำเป็น
-- ใช้ /follow-tasks ถ้าจำเป็น
-- ใช้ /follow-tool-taze ถ้าจำเป็น
-- ใช้ /follow-tool-vite ถ้าจำเป็น
-- ใช้ /follow-tool-vitest ถ้าจำเป็น
-- ใช้ /follow-tool-moonrepo ถ้าจำเป็น
-- ใช้ /run-build ถ้าจำเป็น
-- ใช้ /run-test all ถ้าจำเป็น
+- Use /follow-monorepo if needed
+- Use /follow-tasks if needed
+- Use /follow-tool-taze if needed
+- Use /follow-tool-vite if needed
+- Use /follow-tool-vitest if needed
+- Use /follow-tool-moonrepo if needed
+- Use /run-build if needed
+- Use /run-test all if needed
 
 ## References
 
 - [CLI reference](references/cli.md)
 
-- ดู best-practices/ สำหรับ recommended patterns และ pitfalls
+- See best-practices/ for recommended patterns and pitfalls
 
 ## Expected Outcome
 
-- `turbo.json` ถูกต้อง
-- Tasks รันและ cache ได้
-- Watch mode และ filter ทำงาน
-- Remote cache ตั้งค่าได้
-- Package isolation enforce ด้วย boundaries
+- Correct `turbo.json`
+- Tasks run and cache properly
+- Watch mode and filters work
+- Remote cache is configured
+- Package isolation enforced with boundaries
 
