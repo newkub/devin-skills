@@ -1,6 +1,6 @@
 ---
 name: follow-service-supabase
-description: ใช้งาน Supabase สำหรับ build backend ด้วย PostgreSQL, Auth, Edge Functions, Realtime และ CLI
+description: Use Supabase to build backends with PostgreSQL, Auth, Edge Functions, Realtime, CLI
 argument-hint: "[scope]"
 related:
   - follow-service-aws-sdk
@@ -15,177 +15,177 @@ related:
 
 ## Goal
 
-ใช้งาน Supabase สำหรับ build backend ด้วย PostgreSQL, Auth, Edge Functions, Realtime และจัดการ local development, migrations, deploy ผ่าน Supabase CLI
+Use Supabase to build backends with PostgreSQL, Auth, Edge Functions, and Realtime, and manage local development, migrations, and deploy via the Supabase CLI
 
 ## Scope
 
-ใช้สำหรับ:
-- Build backend ด้วย PostgreSQL, Auth, Edge Functions, Realtime
-- Database management ด้วย PostgreSQL
-- Authentication และ authorization
+Used for:
+- Building backends with PostgreSQL, Auth, Edge Functions, Realtime
+- Database management with PostgreSQL
+- Authentication and authorization
 - Realtime subscriptions
-- Edge functions ด้วย Deno
-- Local development ด้วย Supabase CLI
-- Database migrations และ type generation
-- Secrets, storage, branches และ CI/CD integration
+- Edge functions with Deno
+- Local development with the Supabase CLI
+- Database migrations and type generation
+- Secrets, storage, branches, and CI/CD integration
 
 ## Execute
 
 ### Workflows
 
-> Goal: dispatch ไปยัง workflow ที่ตรงกับ topic
+> Goal: dispatch to the workflow matching the topic
 
 - Setup: CLI install/login, `supabase init`, `link`, local stack, client init → `## Merged Details → setup-supabase`
 - Config: env vars, `config.toml`, RLS policies, client options → `## Merged Details → config-supabase`
-- Verify: URL/keys valid, auth health, query ตอบกลับ → `## Merged Details → verify-connection`
+- Verify: URL/keys valid, auth healthy, queries respond → `## Merged Details → verify-connection`
 
 ### 1. Install And Authenticate
 
-> Goal: ติดตั้งและตั้งค่า Supabase CLI
+> Goal: Install and set up the Supabase CLI
 
 Latest: `supabase` CLI `2.118.0`, `@supabase/supabase-js@2.117.2` (verified 2026-09-26)
 
-1. ติดตั้ง Supabase CLI ด้วย `bun add -D supabase` หรือ Homebrew/Scoop/standalone binary
-2. ตรวจสอบ version ด้วย `supabase --version`
-3. Login ด้วย `supabase login` เพื่อเชื่อมต่อกับ Supabase account
-4. ตรวจสอบ authentication ด้วย `supabase projects list`
-5. ติดตั้ง Docker สำหรับ local development
+1. Install the Supabase CLI with `bun add -D supabase` or Homebrew/Scoop/standalone binary
+2. Check the version with `supabase --version`
+3. Log in with `supabase login` to connect your Supabase account
+4. Verify authentication with `supabase projects list`
+5. Install Docker for local development
 
 ### 2. Initialize Project
 
-> Goal: สร้างและตั้งค่าโปรเจกต์
+> Goal: Create and set up the project
 
-1. Initialize project ด้วย `supabase init`
-2. สร้าง `supabase/config.toml` config file
-3. Link ไปยัง remote project ด้วย `supabase link --project-ref <project-id>`
-4. ตั้งค่า project ID และ database URL
-5. ตรวจสอบ project status ด้วย `supabase status`
+1. Initialize the project with `supabase init`
+2. Create the `supabase/config.toml` config file
+3. Link to the remote project with `supabase link --project-ref <project-id>`
+4. Set the project ID and database URL
+5. Check project status with `supabase status`
 
 ### 3. Local Development
 
-> Goal: พัฒนาและทดสอบใน local environment
+> Goal: Develop and test in the local environment
 
-1. Start local stack ด้วย `supabase start`
-2. Stop local stack ด้วย `supabase stop`
-3. ตรวจสอบ status ด้วย `supabase status`
-4. Access local database ผ่าน Studio ที่ `http://127.0.0.1:54323`
-5. Test migrations และ seed data ใน local
+1. Start the local stack with `supabase start`
+2. Stop the local stack with `supabase stop`
+3. Check status with `supabase status`
+4. Access the local database via Studio at `http://127.0.0.1:54323`
+5. Test migrations and seed data locally
 
 ### 4. Database Migrations
 
-> Goal: จัดการ database migrations
+> Goal: Manage database migrations
 
-1. Create migration ด้วย `supabase migration new migration_name`
-2. List migrations ด้วย `supabase migration list`
-3. Apply migrations ด้วย `supabase migration up`
-4. Rollback migrations ด้วย `supabase migration down`
-5. Fetch remote migrations ด้วย `supabase migration fetch`
+1. Create a migration with `supabase migration new migration_name`
+2. List migrations with `supabase migration list`
+3. Apply migrations with `supabase migration up`
+4. Roll back migrations with `supabase migration down`
+5. Fetch remote migrations with `supabase migration fetch`
 
 ### 5. Database Operations
 
-> Goal: จัดการ database operations
+> Goal: Manage database operations
 
-1. Pull schema จาก remote ด้วย `supabase db pull`
-2. Push schema ไป remote ด้วย `supabase db push`
-3. Reset database ด้วย `supabase db reset`
-4. Dump database ด้วย `supabase db dump`
-5. Diff schemas ด้วย `supabase db diff`
+1. Pull the schema from remote with `supabase db pull`
+2. Push the schema to remote with `supabase db push`
+3. Reset the database with `supabase db reset`
+4. Dump the database with `supabase db dump`
+5. Diff schemas with `supabase db diff`
 
 ### 6. Type Generation
 
-> Goal: สร้าง TypeScript types จาก database schema
+> Goal: Generate TypeScript types from the database schema
 
-1. Generate types ด้วย `supabase gen types typescript --local`
-2. Generate types สำหรับ specific schema ด้วย `--schema public --schema auth`
-3. Output types ไปยัง file ด้วย `--output`
-4. Integrate types กับ ORM หรือ client libraries
-5. Regenerate types เมื่อ schema เปลี่ยน
+1. Generate types with `supabase gen types typescript --local`
+2. Generate types for a specific schema with `--schema public --schema auth`
+3. Output types to a file with `--output`
+4. Integrate types with ORM or client libraries
+5. Regenerate types whenever the schema changes
 
 ### 7. Edge Functions
 
-> Goal: จัดการ Edge Functions
+> Goal: Manage Edge Functions
 
-1. Create function ด้วย `supabase functions new function_name`
-2. List functions ด้วย `supabase functions list`
-3. Serve locally ด้วย `supabase functions serve`
-4. Deploy function ด้วย `supabase functions deploy`
-5. Delete function ด้วย `supabase functions delete`
+1. Create a function with `supabase functions new function_name`
+2. List functions with `supabase functions list`
+3. Serve locally with `supabase functions serve`
+4. Deploy a function with `supabase functions deploy`
+5. Delete a function with `supabase functions delete`
 
 ### 8. Secrets And Storage
 
-> Goal: จัดการ secrets และ storage
+> Goal: Manage secrets and storage
 
-1. Set secret ด้วย `supabase secrets set KEY=value`
-2. List secrets ด้วย `supabase secrets list`
-3. Delete secret ด้วย `supabase secrets unset KEY`
-4. List storage ด้วย `supabase storage ls`
-5. Copy/move/remove files ด้วย `supabase storage cp/mv/rm`
+1. Set a secret with `supabase secrets set KEY=value`
+2. List secrets with `supabase secrets list`
+3. Delete a secret with `supabase secrets unset KEY`
+4. List storage with `supabase storage ls`
+5. Copy/move/remove files with `supabase storage cp/mv/rm`
 
 ### 9. Branches And Inspection
 
-> Goal: จัดการ branches และตรวจสอบ database health
+> Goal: Manage branches and inspect database health
 
-1. Create branch ด้วย `supabase branches create`
+1. Create a branch with `supabase branches create`
 2. List/switch/pause/delete branches
-3. Inspect bloat ด้วย `supabase inspect db bloat`
-4. Inspect blocking และ long-running queries
-5. Generate report ด้วย `supabase inspect report`
+3. Inspect bloat with `supabase inspect db bloat`
+4. Inspect blocking and long-running queries
+5. Generate a report with `supabase inspect report`
 
 ### 10. Configuration And API Reference
 
-> Goal: อ่าน configuration และ API reference
+> Goal: Read configuration and API references
 
-1. อ่าน [## Merged Details → `### references/supabase-cli`](## Merged Details → `### references/supabase-cli`) สำหรับ CLI commands
-2. อ่าน [## Merged Details → `### references/supabase-config`](## Merged Details → `### references/supabase-config`) สำหรับ configuration reference
-3. อ่าน [## Merged Details → `### references/supabase-client-api`](## Merged Details → `### references/supabase-client-api`) สำหรับ Client SDK API reference
-4. อ่าน [## Merged Details → `### references/official-resources`](## Merged Details → `### references/official-resources`) สำหรับ official links และ resources
+1. Read [## Merged Details → `### references/supabase-cli`](## Merged Details → `### references/supabase-cli`) for CLI commands
+2. Read [## Merged Details → `### references/supabase-config`](## Merged Details → `### references/supabase-config`) for the configuration reference
+3. Read [## Merged Details → `### references/supabase-client-api`](## Merged Details → `### references/supabase-client-api`) for the Client SDK API reference
+4. Read [## Merged Details → `### references/official-resources`](## Merged Details → `### references/official-resources`) for official links and resources
 
 ## Rules
 
 ### 1. Configuration Management
 
-- ใช้ `supabase/config.toml` เป็น single source of truth
-- ตั้งค่า `project_id` และ `api_url` อย่างถูกต้อง
-- ไม่ commit sensitive data ไปยัง version control
-- ใช้ environment-specific configs สำหรับ dev/staging/prod
-- ใช้ `.env` files สำหรับ local development
+- Use `supabase/config.toml` as the single source of truth
+- Set `project_id` and `api_url` correctly
+- Never commit sensitive data to version control
+- Use environment-specific configs for dev/staging/prod
+- Use `.env` files for local development
 
 ### 2. Migration Best Practices
 
-- Create migrations สำหรับทุก schema changes
-- ใช้ descriptive names สำหรับ migrations
-- Test migrations ใน local ก่อน deploy
-- ไม่ edit migrations ที่ deploy แล้ว
-- ใช้ `supabase db diff` สำหรับ review changes
+- Create migrations for every schema change
+- Use descriptive names for migrations
+- Test migrations locally before deploy
+- Never edit migrations already deployed
+- Use `supabase db diff` to review changes
 
 ### 3. Type Safety
 
-- Generate types อัตโนมัติด้วย `supabase gen types`
-- Regenerate types เมื่อ schema เปลี่ยน
-- Integrate types กับ ORM หรือ client libraries
-- ใช้ strict type checking
+- Generate types automatically with `supabase gen types`
+- Regenerate types whenever the schema changes
+- Integrate types with ORM or client libraries
+- Use strict type checking
 
 ### 4. Secret Security
 
-- ไม่ commit secrets ไปยัง version control
-- ใช้ `supabase secrets set` แทนการแก้ config
-- Rotate secrets อย่างสม่ำเสมอ
-- ใช้ environment-specific secrets
+- Never commit secrets to version control
+- Use `supabase secrets set` instead of editing config
+- Rotate secrets regularly
+- Use environment-specific secrets
 
 ### 5. CI/CD Integration
 
-- ใช้ `SUPABASE_ACCESS_TOKEN` สำหรับ authentication
-- ใช้ `supabase db push` ใน CI สำหรับ migrations
-- ใช้ `supabase functions deploy` สำหรับ functions
-- Test ก่อน deploy ด้วย `supabase db diff`
+- Use `SUPABASE_ACCESS_TOKEN` for authentication
+- Use `supabase db push` in CI for migrations
+- Use `supabase functions deploy` for functions
+- Test before deploy with `supabase db diff`
 
-- ใช้ /follow-service-aws-sdk ถ้าจำเป็น
-- ใช้ /follow-service-cloudflare ถ้าจำเป็น
-- ใช้ /follow-secret-manager ถ้าจำเป็น
-- ใช้ /follow-best-practice ถ้าจำเป็น
-- ใช้ /learn-from-web ถ้าจำเป็น
-- ใช้ /setup-cicd ถ้าจำเป็น
-- ใช้ /run-drizzle-studio ถ้าจำเป็น
+- Use /follow-service-aws-sdk if needed
+- Use /follow-service-cloudflare if needed
+- Use /follow-secret-manager if needed
+- Use /follow-best-practice if needed
+- Use /learn-from-web if needed
+- Use /setup-cicd if needed
+- Use /run-drizzle-studio if needed
 
 ## Merged Details
 
@@ -193,185 +193,185 @@ Latest: `supabase` CLI `2.118.0`, `@supabase/supabase-js@2.117.2` (verified 2026
 
 ##### Goal
 
-ตั้งค่า/แก้ไข Supabase configuration — env vars, `supabase/config.toml`, RLS policies และ client options — โดยไม่ overwrite config เดิม
+Set/edit Supabase configuration — env vars, `supabase/config.toml`, RLS policies, and client options — without overwriting the existing config
 
 ##### Scope
 
-- จัดการ env vars (`SUPABASE_URL`, keys) ผ่าน secret manager
-- แก้ `supabase/config.toml` (auth, storage, edge runtime)
-- เปิด/แก้ RLS policies บน tables
-- ไม่ครอบคลุม first-time install → ใช้ `## Merged Details → setup-supabase`
+- Manage env vars (`SUPABASE_URL`, keys) via a secret manager
+- Edit `supabase/config.toml` (auth, storage, edge runtime)
+- Enable/edit RLS policies on tables
+- Does not cover first-time install → use `## Merged Details → setup-supabase`
 
 ##### Execute
 
 ###### 1. Read Current Config
 
-> Goal: รู้สถานะ config ปัจจุบันก่อนแก้
+> Goal: Know the current config state before editing
 
-1. อ่าน `supabase/config.toml` และ `.env*` ที่มีอยู่
-2. ทำ `/check-secrets env-vars` เพื่อระบุ vars ที่ขาดหรือซ้ำ
-3. ทำ `/deep-review` domain `review-config` ถ้าสงสัยว่า local config ต่างจาก remote
-4. ถ้าไม่มี `supabase/config.toml` เลย → ทำ `## Merged Details → setup-supabase` แทน
+1. Read the existing `supabase/config.toml` and `.env*`
+2. Do `/check-secrets env-vars` to identify missing or duplicated vars
+3. Do `/deep-review` domain `review-config` if the local config is suspected to differ from remote
+4. If there is no `supabase/config.toml` at all → do `## Merged Details → setup-supabase` instead
 
 ###### 2. Configure Env Vars
 
-> Goal: ตั้งค่า environment variables ให้ครบและปลอดภัย
+> Goal: Set environment variables completely and securely
 
-1. กำหนด `SUPABASE_URL` และ `SUPABASE_ANON_KEY` สำหรับ client (public)
-2. กำหนด `SUPABASE_SERVICE_ROLE_KEY` สำหรับ server เท่านั้น — เก็บใน `/follow-secret-manager`
-3. ใช้ `NEXT_PUBLIC_`/`VITE_` prefix ตาม framework สำหรับค่าที่ expose ไป client
-4. ห้ามแก้ config เดิมโดยไม่จำเป็น — merge เฉพาะ keys ที่ต้องการ
+1. Define `SUPABASE_URL` and `SUPABASE_ANON_KEY` for the client (public)
+2. Define `SUPABASE_SERVICE_ROLE_KEY` for server-side only — store it in `/follow-secret-manager`
+3. Use the `NEXT_PUBLIC_`/`VITE_` prefix per framework for values exposed to the client
+4. Never edit the existing config unnecessarily — merge only the needed keys
 
 ###### 3. Configure Auth And Services
 
-> Goal: แก้ `config.toml` เฉพาะ section ที่ต้องการ
+> Goal: Edit only the needed `config.toml` sections
 
-1. แก้ `[auth]` section — `site_url`, `additional_redirect_urls`, providers ตามที่ใช้
-2. แก้ `[storage]`, `[edge_runtime]` หรือ section อื่นเฉพาะ keys ที่จำเป็น
-3. อ้างอิง `## Merged Details → references/supabase-config` ของ parent หรือ official docs สำหรับ key names
+1. Edit the `[auth]` section — `site_url`, `additional_redirect_urls`, providers per use
+2. Edit `[storage]`, `[edge_runtime]`, or other sections only for the necessary keys
+3. Reference the parent's `## Merged Details → references/supabase-config` or official docs for key names
 
 ###### 4. Configure RLS And Client Options
 
-> Goal: ป้องกัน data access และตั้ง client options ถูกต้อง
+> Goal: Guard data access and set client options correctly
 
-1. เปิด RLS บนทุก table ที่ expose ผ่าน API — `alter table <name> enable row level security`
-2. สร้าง policies ด้วย `create policy` ผ่าน migration ไม่ใช่แก้ใน dashboard โดยตรง
-3. ตั้ง client options เช่น `auth: { persistSession, autoRefreshToken }` ตาม use case
-4. รัน `supabase db diff` ก่อน push เพื่อ review changes
+1. Enable RLS on every table exposed via the API — `alter table <name> enable row level security`
+2. Create policies with `create policy` through a migration, not by editing the dashboard directly
+3. Set client options such as `auth: { persistSession, autoRefreshToken }` per the use case
+4. Run `supabase db diff` before push to review changes
 
 ###### 5. Verify
 
-> Goal: ยืนยันว่า config ใหม่ทำงานได้
+> Goal: Confirm the new config works
 
-1. รัน `supabase start`/`supabase status` เพื่อยืนยัน local stack รับ config ใหม่
-2. ทำ `/run-verify` และทดสอบ query/auth flow เบื้องต้น
-3. ถ้า fail → revert keys ที่แก้ ทำ `resolve-errors` max 3 รอบ แล้ว report diff
+1. Run `supabase start`/`supabase status` to confirm the local stack picks up the new config
+2. Do `/run-verify` and test a basic query/auth flow
+3. If it fails → revert the keys just changed, do `resolve-errors` max 3 rounds, then report the diff
 
 ##### Rules
 
-- Merge กับ config เดิม — ห้าม overwrite `config.toml` ทั้งไฟล์
-- Secrets ผ่าน `/follow-secret-manager` เท่านั้น ห้ามใส่ใน `config.toml` หรือ commit
-- ทุก table ที่ client เข้าถึงต้องมี RLS enabled + explicit policies
-- Test config ใน local ก่อน push remote
-- ถ้า key name/option ไม่แน่ใจ → ดู official docs หรือ `learn` (web)
+- Merge with the existing config — never overwrite the whole `config.toml`
+- Secrets only through `/follow-secret-manager` — never put them in `config.toml` or commit
+- Every table the client accesses must have RLS enabled + explicit policies
+- Test the config locally before pushing to remote
+- If unsure about a key name/option → check official docs or `learn` (web)
 
 ##### Expected Outcome
 
-- Env vars ครบ ปลอดภัย และแยก client/server ชัดเจน
-- `config.toml` ถูก merge โดยไม่ clobber settings เดิม
-- RLS enabled พร้อม policies ผ่าน migration
-- Verify ผ่านและ report before/after สั้นๆ
+- Env vars complete, secure, and clearly separated client vs server
+- `config.toml` merged without clobbering existing settings
+- RLS enabled with policies delivered via migration
+- Verify passes and a short before/after report is produced
 
 ### setup-supabase
 
 ##### Goal
 
-ติดตั้ง Supabase CLI, สร้าง local project, link กับ remote project และ init `@supabase/supabase-js` client ให้พร้อมใช้งาน — first-time setup เท่านั้น
+Install the Supabase CLI, create the local project, link it to the remote project, and init the `@supabase/supabase-js` client ready to use — first-time setup only
 
 ##### Scope
 
-- ติดตั้งและ authenticate Supabase CLI
-- `supabase init`, `supabase link`, `supabase start` สำหรับ local development
-- สร้าง client จาก env vars
-- ไม่ครอบคลุม env/RLS/config ขั้นสูง → ใช้ `## Merged Details → config-supabase`
+- Install and authenticate the Supabase CLI
+- `supabase init`, `supabase link`, `supabase start` for local development
+- Create the client from env vars
+- Does not cover advanced env/RLS/config → use `## Merged Details → config-supabase`
 
 ##### Execute
 
 ###### 1. Check Prerequisites
 
-> Goal: ยืนยัน prerequisites ก่อนติดตั้ง (idempotent)
+> Goal: Confirm prerequisites before installing (idempotent)
 
-1. อ่าน `package.json` เพื่อระบุ package manager (`bun`, `npm`, `pnpm`)
-2. ตรวจว่ามี `supabase/config.toml` หรือ `supabase/` directory อยู่แล้ว → ถ้ามี skip ไป verify
-3. ตรวจ Docker สำหรับ local stack — ถ้าไม่มี → stop และแจ้ง user ติดตั้ง
-4. ถ้าไม่มี Supabase account/project → stop และแจ้ง user สร้างจาก dashboard
+1. Read `package.json` to identify the package manager (`bun`, `npm`, `pnpm`)
+2. Check whether `supabase/config.toml` or a `supabase/` directory already exists → if so, skip to verify
+3. Check Docker for the local stack — if absent → stop and tell the user to install it
+4. If there is no Supabase account/project → stop and tell the user to create one from the dashboard
 
 ###### 2. Install And Authenticate CLI
 
-> Goal: ติดตั้งและ login Supabase CLI
+> Goal: Install and log in the Supabase CLI
 
-1. ติดตั้ง CLI ด้วย `bun add -D supabase` หรือ package manager ของระบบ (`brew`, `scoop`)
-2. ตรวจสอบ version ด้วย `supabase --version`
-3. Login ด้วย `supabase login` หรือตั้ง `SUPABASE_ACCESS_TOKEN` สำหรับ CI
-4. ยืนยัน authentication ด้วย `supabase projects list`
+1. Install the CLI with `bun add -D supabase` or the system package manager (`brew`, `scoop`)
+2. Check the version with `supabase --version`
+3. Log in with `supabase login` or set `SUPABASE_ACCESS_TOKEN` for CI
+4. Confirm authentication with `supabase projects list`
 
 ###### 3. Initialize And Link Project
 
-> Goal: สร้าง local project และเชื่อมกับ remote
+> Goal: Create the local project and connect it to remote
 
-1. Initialize ด้วย `supabase init` → สร้าง `supabase/config.toml`
-2. Link remote ด้วย `supabase link --project-ref <project-ref>`
-3. Start local stack ด้วย `supabase start`
-4. รัน `supabase status` เพื่ออ่าน local `API URL`, `anon key`, `service_role key`
+1. Initialize with `supabase init` → creates `supabase/config.toml`
+2. Link remote with `supabase link --project-ref <project-ref>`
+3. Start the local stack with `supabase start`
+4. Run `supabase status` to read the local `API URL`, `anon key`, `service_role key`
 
 ###### 4. Install Client And Verify
 
-> Goal: สร้าง client ที่อ่านค่าจาก env และทดสอบ connection
+> Goal: Create a client that reads from env and test the connection
 
-1. ติดตั้ง client SDK ด้วย `bun add @supabase/supabase-js`
-2. เก็บ `SUPABASE_URL`, `SUPABASE_ANON_KEY`, `SUPABASE_SERVICE_ROLE_KEY` ใน `/follow-secret-manager` แล้ว inject เข้า `.env`
-3. สร้าง client ด้วย `createClient(url, anonKey)` ใน `src/lib/supabase.ts` (หรือ path ที่เหมาะสม)
-4. ทำ `/run-verify` และทดสอบ query เบื้องต้น — ถ้า fail → ทำ `resolve-errors` max 3 รอบ
+1. Install the client SDK with `bun add @supabase/supabase-js`
+2. Store `SUPABASE_URL`, `SUPABASE_ANON_KEY`, `SUPABASE_SERVICE_ROLE_KEY` in `/follow-secret-manager`, then inject them into `.env`
+3. Create the client with `createClient(url, anonKey)` in `src/lib/supabase.ts` (or a suitable path)
+4. Do `/run-verify` and test a basic query — if it fails → do `resolve-errors` max 3 rounds
 
 ##### Rules
 
-- ใช้ `supabase/config.toml` เป็น single source of truth
-- ห้าม hardcode keys หรือ commit secrets — ใช้ `/follow-secret-manager` เสมอ
-- `SUPABASE_SERVICE_ROLE_KEY` ใช้ฝั่ง server เท่านั้น ห้าม expose ไป client
-- ถ้า command/API ไม่แน่ใจ → ดู official docs หรือทำ `learn` (web) ก่อน
-- เสร็จแล้วทำ `/suggest-next-action`
+- Use `supabase/config.toml` as the single source of truth
+- Never hardcode keys or commit secrets — always use `/follow-secret-manager`
+- `SUPABASE_SERVICE_ROLE_KEY` is server-side only — never expose it to the client
+- If unsure about a command/API → check official docs or do `learn` (web) first
+- When done, do `/suggest-next-action`
 
 ##### Expected Outcome
 
-- Supabase CLI ติดตั้ง, login, link project สำเร็จ
-- Local stack รันได้และ `supabase status` แสดงค่าครบ
-- Client พร้อมใช้งานและ query ผ่าน verify
+- Supabase CLI installed, logged in, and project linked successfully
+- Local stack runs and `supabase status` shows all values
+- Client ready to use and a query passes verify
 
 ### verify-connection
 
 ##### Goal
 
-ยืนยันหลัง setup/config ว่า Supabase เชื่อมต่อได้จริง — URL/anon/service keys valid, project healthy, query ตอบกลับ
+Confirm after setup/config that Supabase really connects — URL/anon/service keys valid, project healthy, queries respond
 
 ##### Scope
 
-- ใช้เมื่อ `/follow-service-supabase` dispatch มาที่ `verify`/`verify-connection`
-- Read-only: ตรวจสอบ — ไม่แก้ schema/RLS
+- Used when `/follow-service-supabase` dispatches to `verify`/`verify-connection`
+- Read-only: check only — do not change schema/RLS
 
 ##### Execute
 
 ###### 1. Check Credentials
 
-> Goal: URL และ keys ครบ format ถูก
+> Goal: URL and keys complete with correct format
 
-1. ตรวจ `SUPABASE_URL` (หรือ `NEXT_PUBLIC_SUPABASE_URL`) + `SUPABASE_ANON_KEY` มี
-2. ถ้าใช้ server-side → `SUPABASE_SERVICE_ROLE_KEY` มี — flag ถ้าหลุดไป client bundle
-3. local dev → `supabase status` ดู local stack รันอยู่
+1. Check `SUPABASE_URL` (or `NEXT_PUBLIC_SUPABASE_URL`) + `SUPABASE_ANON_KEY` exist
+2. If server-side is used → `SUPABASE_SERVICE_ROLE_KEY` exists — flag it if it leaks into the client bundle
+3. Local dev → `supabase status` shows the local stack running
 
 ###### 2. Smoke Test
 
-> Goal: API ตอบกลับจริง
+> Goal: the API really responds
 
 1. `curl <SUPABASE_URL>/auth/v1/health` → 200 = project up
-2. init client → query `select 1` หรือ read table ที่มีอยู่
-3. flag: 401 (invalid key), 404 (wrong URL/ref), RLS block ที่ไม่คาด
+2. Init the client → query `select 1` or read an existing table
+3. Flag: 401 (invalid key), 404 (wrong URL/ref), unexpected RLS blocks
 
 ###### 3. Report
 
-> Goal: สรุป connection status
+> Goal: Summarize connection status
 
-1. ใช้ `/report` คอลัมน์: `No.`, `Check`, `Result`, `Evidence`
+1. Use `/report` columns: `No.`, `Check`, `Result`, `Evidence`
 2. Verdict: `connected` / `auth-failed` / `project-down` / `rls-blocked`
 
 ##### Rules
 
-- ใช้ read calls เท่านั้น — ห้าม insert/update/delete
-- ไม่ print service role key — แสดงแค่ key type ที่พบ
-- service key ใน client-side code = Critical finding
+- Use read calls only — never insert/update/delete
+- Do not print the service role key — show only the key type found
+- A service key in client-side code = a Critical finding
 
 ##### Expected Outcome
 
-- Verdict พร้อม project-ref + health evidence
+- Verdict with project-ref + health evidence
 
 ### references/apis
 
@@ -481,7 +481,7 @@ Supabase CLI:
 
 ##### Purpose
 
-Official links และ resources สำหรับ Supabase
+Official links and resources for Supabase
 
 ##### Official Resources
 
@@ -868,7 +868,7 @@ scoop update supabase             # Scoop
 
 ##### Purpose
 
-Programmatic API reference สำหรับ Supabase client libraries
+Programmatic API reference for Supabase client libraries
 
 ##### Scope
 
@@ -1111,7 +1111,7 @@ const { data, error } = await supabase.functions
 
 ##### Purpose
 
-Configuration options reference สำหรับ Supabase CLI
+Configuration options reference for the Supabase CLI
 
 ##### Scope
 
@@ -1278,11 +1278,11 @@ INSERT INTO profiles (display_name) VALUES ('Admin');
 
 ## Expected Outcome
 
-- Supabase CLI ติดตั้งและตั้งค่าอย่างถูกต้อง
-- Local development environment ทำงานได้
-- Database migrations จัดการอย่างเป็นระบบ
-- TypeScript types สร้างอัตโนมัติ
-- Edge functions deploy ได้อย่างราบรื่น
-- Secrets จัดการอย่างปลอดภัย
-- CI/CD integration ทำงานได้อัตโนมัติ
-- Backend ที่ built ด้วย Supabase พร้อม PostgreSQL, Auth, Realtime
+- Supabase CLI installed and configured correctly
+- Local development environment working
+- Database migrations managed systematically
+- TypeScript types generated automatically
+- Edge functions deployed smoothly
+- Secrets managed securely
+- CI/CD integration working automatically
+- A backend built with Supabase using PostgreSQL, Auth, and Realtime
