@@ -1,6 +1,6 @@
 ---
 name: follow-lib-shadcn-solid-config-tokens
-description: ปรับ theme tokens ของ shadcn-solid — colors, radius, variants, cva
+description: Tune shadcn-solid theme tokens — colors, radius, variants, cva
 argument-hint: "[scope]"
 related:
   - follow-lib-shadcn-solid
@@ -12,67 +12,67 @@ related:
 
 ## Goal
 
-ปรับแต่ง theme tokens ของ shadcn-solid — color palette, radius, component variants ด้วย `cva` และ tokens ใหม่
+Tune shadcn-solid's theme tokens — color palette, radius, component variants with `cva`, and new tokens
 
 ## Scope
 
-ใช้เมื่อต้องแก้ไข theme tokens ที่ setup แล้ว — ครอบคลุม CSS variables, base color, component variants ใน `src/components/ui/` และ token naming consistency
+Use when editing theme tokens of an existing setup — covers CSS variables, base color, component variants in `src/components/ui/`, and token naming consistency
 
 ## Execute
 
 ### 1. Read Current Tokens
 
-> Goal: อ่าน theme tokens และ components ปัจจุบัน
+> Goal: read the current theme tokens and components
 
-1. เปิด global CSS file — ดู CSS variables ชุดปัจจุบันใน `:root` และ dark block
-2. เปิด `components.json` — ดู base color และ aliases
-3. ถ้ายังไม่มี theme → ทำ workflow `setup-theme` ก่อน; merge เดิมเสมอ ห้าม overwrite
+1. Open the global CSS file — review the current CSS variable sets in `:root` and the dark block
+2. Open `components.json` — review the base color and aliases
+3. If there's no theme yet → run the `setup-theme` workflow first; always merge with the original, never overwrite
 
 ### 2. Adjust Color And Radius Tokens
 
-> Goal: เปลี่ยน palette และ radius ให้ตรง design
+> Goal: change the palette and radius to match the design
 
-1. แก้ค่า variables ใน `:root` และ dark block พร้อมกัน — ทุก token ที่แก้ต้องมีทั้งสอง mode
-2. ปรับ `--radius` เป็น single source ของ corner radius — components ใช้ `rounded-md` ฯลฯ ที่ derive จากมัน
-3. เพิ่ม semantic tokens ใหม่ (เช่น `success`, `warning`) โดยตั้งชื่อตาม convention เดิม แล้ว map เข้า utility ของ CSS framework
-4. ทำ `/deep-review` domain `review-config` ถ้าไม่แน่ใจว่า tokens ตรงกับที่ components อ้างถึง
+1. Edit the variable values in `:root` and the dark block together — every changed token must exist in both modes
+2. Make `--radius` the single source of corner radius — components use `rounded-md` etc. derived from it
+3. Add new semantic tokens (e.g. `success`, `warning`) named per the existing convention, then map them into the CSS framework's utilities
+4. Run `/deep-review` domain `review-config` if unsure the tokens match what components reference
 
 ### 3. Customize Component Variants
 
-> Goal: ปรับ variants ใน copied components ด้วย `cva`
+> Goal: adjust variants in the copied components with `cva`
 
-1. เปิด component ใน `src/components/ui/` — variants นิยามด้วย `cva` เช่น `buttonVariants`
-2. เพิ่ม/แก้ variants (`variant`, `size`) ใน `cva` definition — ห้าม hard-code class ใน JSX ซ้ำ
-3. variant classes ต้องอ้าง tokens เช่น `bg-primary text-primary-foreground` — ไม่ใช่ `bg-blue-500`
-4. update `defaultVariants` ให้ตรง design intent
+1. Open the component in `src/components/ui/` — variants are defined with `cva`, e.g. `buttonVariants`
+2. Add/edit variants (`variant`, `size`) in the `cva` definition — don't repeat hard-coded classes in JSX
+3. Variant classes must reference tokens like `bg-primary text-primary-foreground` — not `bg-blue-500`
+4. Update `defaultVariants` to match the design intent
 
 ### 4. Sync With CSS Framework
 
-> Goal: ให้ tokens ใช้ผ่าน utilities ได้จริง
+> Goal: make the tokens actually usable through utilities
 
-1. Tailwind: ตรวจ `tailwind.config`/`@theme` block map variables เข้า color names (`primary`, `muted`, ฯลฯ)
-2. UnoCSS: map เข้า `theme.colors` ตาม `/follow-lib-unocss theme`
-3. ทดสอบ utilities ใหม่ เช่น `bg-success`, `text-warning-foreground`
+1. Tailwind: check the `tailwind.config`/`@theme` block maps the variables to color names (`primary`, `muted`, etc.)
+2. UnoCSS: map into `theme.colors` per `/follow-lib-unocss theme`
+3. Test the new utilities, e.g. `bg-success`, `text-warning-foreground`
 
 ### 5. Verify
 
-> Goal: ตรวจสอบ tokens ใหม่และของเดิมไม่พัง
+> Goal: confirm the new and existing tokens don't break
 
-1. รัน dev — ทดสอบ components ทุก variant ที่แก้ ทั้ง light/dark
-2. ใช้ `bunx shadcn-solid@latest diff <component>` เช็คว่าแก้เฉพาะจุดที่ตั้งใจ
-3. ถ้าพัง → revert keys ที่เพิ่งแก้ แล้ว report diff
+1. Run dev — test every changed component variant in both light/dark
+2. Use `bunx shadcn-solid@latest diff <component>` to check only the intended spots were changed
+3. If it breaks → revert the just-edited keys, then report the diff
 
 ## Rules
 
-- แก้ tokens ใน CSS variables จุดเดียว — components อ้างผ่าน tokens เท่านั้น
-- `:root` และ dark block ต้องครบชุดเดียวกันเสมอ
-- เพิ่ม variants ผ่าน `cva` เท่านั้น — ห้าม inline class overrides ใน JSX
-- ห้ามแก้ Kobalte primitives source — customize ที่ copied components เท่านั้น
-- ใช้ `/follow-lib-shadcn-solid` สำหรับ full reference
+- Edit tokens in one place — the CSS variables; components reference tokens only
+- `:root` and the dark block must always carry the same complete set
+- Add variants through `cva` only — no inline class overrides in JSX
+- Never modify the Kobalte primitives source — customize at the copied components only
+- Use `/follow-lib-shadcn-solid` for the full reference
 
 ## Expected Outcome
 
-- Theme tokens ปรับตาม design — palette, radius, semantic colors ครบ
-- Component variants เพิ่ม/แก้ผ่าน `cva` อย่าง type-safe
-- Dark mode ครอบคลุม tokens ใหม่ทั้งหมด
-- Tokens consistent ระหว่าง CSS variables, framework config และ components
+- Theme tokens tuned to the design — palette, radius, semantic colors complete
+- Component variants added/edited through `cva` in a type-safe way
+- Dark mode covers all the new tokens
+- Tokens stay consistent across CSS variables, framework config, and components

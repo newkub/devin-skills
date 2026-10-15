@@ -12,66 +12,66 @@ related:
 
 ## Goal
 
-Setup theme ของ shadcn-solid — `components.json`, global CSS variables และ dark mode หลัง init components
+Set up the shadcn-solid theme — `components.json`, global CSS variables, and dark mode after initializing components
 
 ## Scope
 
-ใช้เมื่อต้อง setup theme ครั้งแรกหลัง `shadcn-solid init` — ครอบคลุม `components.json` config, CSS variables ใน global CSS, `cn` helper และ dark mode ด้วย `data-kb-theme`
+Use when setting up the theme for the first time after `shadcn-solid init` — covers `components.json` config, CSS variables in global CSS, the `cn` helper, and dark mode via `data-kb-theme`
 
 ## Execute
 
 ### 1. Prerequisite
 
-> Goal: project init shadcn-solid แล้ว
+> Goal: the project has already initialized shadcn-solid
 
-1. รัน `bunx shadcn-solid@latest init` ถ้ายังไม่มี `components.json` — ทำ `/follow-lib-shadcn-solid` step 1
-2. ตรวจ `components.json`: base color, global CSS file path, aliases (`@/components`, `@/lib/utils`)
-3. ตรวจว่าเลือก TailwindCSS หรือ UnoCSS — theme setup ต่างกันเล็กน้อย
+1. Run `bunx shadcn-solid@latest init` if there's no `components.json` yet — follow `/follow-lib-shadcn-solid` step 1
+2. Check `components.json`: base color, global CSS file path, aliases (`@/components`, `@/lib/utils`)
+3. Confirm whether TailwindCSS or UnoCSS was chosen — theme setup differs slightly
 
 ### 2. Configure Global CSS Variables
 
-> Goal: กำหนด theme CSS variables ใน global CSS file
+> Goal: define the theme CSS variables in the global CSS file
 
-1. เปิด global CSS file ตาม `components.json` (เช่น `src/app.css` หรือ `src/styles/globals.css`)
-2. กำหนด CSS variables ชุดมาตรฐานใน `:root` — `background`, `foreground`, `primary`, `secondary`, `muted`, `accent`, `destructive`, `border`, `input`, `ring`, `radius` (ดูชุดเต็มใน official docs ที่ `https://shadcn-solid.com/docs`)
-3. ใส่ dark theme variables ใน `.dark` หรือ `[data-kb-theme="dark"]` block — ครบชุดเดียวกันกับ `:root`
-4. ใช้ format ตาม CSS framework ที่ project ใช้ (Tailwind `hsl(var(--x))` pattern หรือ UnoCSS `hsl(var(--color-x))` — ดู official docs)
+1. Open the global CSS file named in `components.json` (e.g. `src/app.css` or `src/styles/globals.css`)
+2. Set the standard CSS variable set in `:root` — `background`, `foreground`, `primary`, `secondary`, `muted`, `accent`, `destructive`, `border`, `input`, `ring`, `radius` (see the full set in the official docs at `https://shadcn-solid.com/docs`)
+3. Put the dark theme variables in the `.dark` or `[data-kb-theme="dark"]` block — the same complete set as `:root`
+4. Use the format matching the project's CSS framework (Tailwind `hsl(var(--x))` pattern or UnoCSS `hsl(var(--color-x))` — see the official docs)
 
 ### 3. Setup cn Helper And Utils
 
-> Goal: ยืนยัน `cn` helper และ utils พร้อมใช้
+> Goal: confirm the `cn` helper and utils are ready
 
-1. ตรวจ `src/lib/utils.ts` มี `cn` ที่ merge `clsx` + `tailwind-merge` (หรือ equivalent)
-2. ตั้งค่า path alias `@/` ใน `tsconfig.json` และ Vite config ให้ตรง `components.json` aliases
+1. Check `src/lib/utils.ts` has a `cn` merging `clsx` + `tailwind-merge` (or the equivalent)
+2. Set the `@/` path alias in `tsconfig.json` and the Vite config to match the `components.json` aliases
 
 ### 4. Configure Dark Mode
 
-> Goal: ตั้งค่า dark mode ด้วย Kobalte theme attribute
+> Goal: set up dark mode with the Kobalte theme attribute
 
-1. ใช้ `data-kb-theme="dark"` attribute บน `<html>` สำหรับ Kobalte dark mode
-2. เพิ่ม toggle ที่ set/remove attribute และ persist ด้วย `localStorage`
-3. ถ้าใช้ class-based dark mode ของ CSS framework คู่กัน — sync ทั้งสองใน toggle เดียว
+1. Use the `data-kb-theme="dark"` attribute on `<html>` for Kobalte dark mode
+2. Add a toggle that sets/removes the attribute and persists it with `localStorage`
+3. If the CSS framework's class-based dark mode is used alongside — sync both in one toggle
 
 ### 5. Verify
 
-> Goal: smoke test theme และ components
+> Goal: smoke test the theme and components
 
-1. รัน `/run-dev` — add `button` component (`bunx shadcn-solid@latest add button`) แล้วทดสอบ variants
-2. toggle dark mode — colors ต้องเปลี่ยนตาม variables
-3. รัน build — ไม่มี error จาก missing variables/aliases
-4. ถ้าพัง → ทำ `/resolve-errors` max 3 รอบ แล้ว stop report
+1. Run `/run-dev` — add the `button` component (`bunx shadcn-solid@latest add button`) and test the variants
+2. Toggle dark mode — colors must change with the variables
+3. Run build — no errors from missing variables/aliases
+4. If it breaks → run `/resolve-errors` max 3 rounds, then stop and report
 
 ## Rules
 
-- ใช้ CSS variables เสมอ — ห้าม hard-code colors ใน components
-- ชื่อ variables ต้องตรงกับที่ components ใน `src/components/ui/` อ้างถึง
-- `:root` และ dark block ต้องมี tokens ครบชุดเดียวกัน
-- `components.json` aliases ต้องตรงกับ `tsconfig.json` paths
-- ใช้ `/follow-lib-shadcn-solid` สำหรับ full reference
+- Always use CSS variables — never hard-code colors in components
+- Variable names must match what the components in `src/components/ui/` reference
+- `:root` and the dark block must carry the exact same complete token set
+- `components.json` aliases must match the `tsconfig.json` paths
+- Use `/follow-lib-shadcn-solid` for the full reference
 
 ## Expected Outcome
 
-- `components.json` และ global CSS variables ตั้งค่าครบ
-- Components render ด้วย theme colors ถูกต้องทั้ง light/dark
-- `cn` helper และ path aliases ทำงาน
-- Build ผ่านโดยไม่มี error
+- `components.json` and the global CSS variables fully configured
+- Components render with the correct theme colors in both light/dark
+- The `cn` helper and path aliases work
+- Build passes with no errors
