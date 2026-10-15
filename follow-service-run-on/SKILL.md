@@ -1,6 +1,6 @@
 ---
 name: follow-service-run-on
-description: ติดตั้ง กำหนดค่า และ validate self-hosted GitHub Actions runners บน AWS ด้วย RunsOn
+description: Install, configure, and validate self-hosted GitHub Actions runners on AWS with RunsOn
 argument-hint: "[scope]"
 related:
   - ask-me
@@ -10,16 +10,16 @@ related:
 
 ## Goal
 
-ติดตั้งและกำหนดค่า self-hosted GitHub Actions runners บน AWS ด้วย RunsOn ตั้งแต่ AWS stack, IAM, GitHub App, `.github/runs-on.yml` จนถึง validation
+Install and configure self-hosted GitHub Actions runners on AWS with RunsOn — from the AWS stack, IAM, GitHub App, `.github/runs-on.yml` through validation
 
 ## Scope
 
-ใช้สำหรับ:
-- ติดตั้ง RunsOn stack บน AWS ด้วย CloudFormation หรือ Terraform
-- กำหนดค่า IAM, VPC, GitHub App
-- สร้าง/แก้ไข `.github/runs-on.yml` และ `.github/workflows/*.yml`
-- validate ว่า runner รันได้จริง
-ไม่รวม: การสร้าง AWS account, การซื้อ license, หรือการ commit/push อัตโนมัติ
+Used for:
+- Installing the RunsOn stack on AWS with CloudFormation or Terraform
+- Configuring IAM, VPC, GitHub App
+- Creating/editing `.github/runs-on.yml` and `.github/workflows/*.yml`
+- Validating that runners really work
+Not included: creating an AWS account, purchasing a license, or automatic commit/push
 
 ## Execute
 
@@ -29,47 +29,47 @@ related:
 |--------|----------|
 | Setup  | `## Merged Details → setup-run-on` — AWS stack, GitHub App registration |
 | Config | `## Merged Details → config-run-on` — `runs-on.yml` runner definitions, workflow labels |
-| Verify | `## Merged Details → verify-connection` — stack healthy, runners register, labels ตรง |
+| Verify | `## Merged Details → verify-connection` — stack healthy, runners register, labels match |
 
-อ่าน `workflows/<name>/SKILL.md` ตาม topic แล้วทำตาม flow ในนั้น — ไม่ execute จากตารางนี้โดยตรง
+Read `workflows/<name>/SKILL.md` per topic and follow the flow there — do not execute from this table directly
 
 ### 1. Prepare Context
 
-> Goal: ตรวจสอบ context และสิทธิ์ก่อนติดตั้ง
+> Goal: Check context and permissions before installing
 
-1. ตรวจสอบ `aws --version` และ AWS credentials ที่มีสิทธิ์สร้าง CloudFormation stack
-2. ยืนยัน GitHub organization/personal account และ RunsOn license key
-3. เลือก AWS region เช่น `us-east-1`, `us-west-2`, `eu-west-1`
-4. ถ้า context ไม่พร้อม → หยุดและ `/ask-me`
+1. Check `aws --version` and AWS credentials with permission to create a CloudFormation stack
+2. Confirm the GitHub organization/personal account and the RunsOn license key
+3. Pick an AWS region such as `us-east-1`, `us-west-2`, `eu-west-1`
+4. If context is not ready → stop and `/ask-me`
 
 ### 2. Deploy RunsOn Stack
 
-> Goal: ติดตั้ง AWS infrastructure สำหรับ RunsOn
+> Goal: Install the AWS infrastructure for RunsOn
 
-หมายเหตุ: template version `v3.3.1` เป็น pinned snapshot — ตรวจ latest template ที่ `https://runs-on.com/installation/` ก่อนใช้งาน (verified 2026-09-12)
+Note: template version `v3.3.1` is a pinned snapshot — check the latest template at `https://runs-on.com/installation/` before use (verified 2026-09-12)
 
-1. ใช้ CloudFormation quick-create URL:
+1. Use the CloudFormation quick-create URL:
    `https://<region>.console.aws.amazon.com/cloudformation/home?region=<region>#/stacks/quickcreate?templateUrl=https://runs-on.s3.eu-west-1.amazonaws.com/cloudformation/template-v3.3.1.yaml&stackName=runs-on`
-2. กรอก parameters หลัก: GitHub org, `LicenseKey`, email สำหรับ cost alerts, `Environment` (optional)
-3. ถ้า stack fail ด้วย `Unable to assume the service linked role` ให้รัน:
+2. Fill in the main parameters: GitHub org, `LicenseKey`, email for cost alerts, `Environment` (optional)
+3. If the stack fails with `Unable to assume the service linked role`, run:
    `aws iam create-service-linked-role --aws-service-name ecs.amazonaws.com`
-4. รอ stack status `CREATE_COMPLETE` แล้วบันทึก `RunsOnEntryPoint` output URL
-5. ถ้าต้องการ Terraform: ใช้ module `runs-on/runs-on/aws//flex` version `v3.3.1`
+4. Wait for stack status `CREATE_COMPLETE`, then save the `RunsOnEntryPoint` output URL
+5. If Terraform is wanted: use module `runs-on/runs-on/aws//flex` version `v3.3.1`
 
 ### 3. Register GitHub App And Repository
 
-> Goal: เชื่อมต่อ GitHub repo กับ RunsOn
+> Goal: Connect the GitHub repo with RunsOn
 
-1. เปิด `RunsOnEntryPoint` URL แล้วกด `Register app` เพื่อสร้าง private GitHub App
-2. เลือก repositories ที่ให้ app เข้าถึง
-3. เปิด `https://github.com/organizations/<org>/settings/actions` เพื่อ enable repository-level self-hosted runners
-4. ถ้าต้องการ warm pools หรือ shared runner definitions ให้สร้าง `.github-private/.github/runs-on.yml` ใน org (ไม่บังคับ)
+1. Open the `RunsOnEntryPoint` URL and press `Register app` to create a private GitHub App
+2. Select the repositories the app may access
+3. Open `https://github.com/organizations/<org>/settings/actions` to enable repository-level self-hosted runners
+4. For warm pools or shared runner definitions, create `.github-private/.github/runs-on.yml` in the org (optional)
 
 ### 4. Configure Runners
 
-> Goal: กำหนดค่า custom runners และ workflow labels
+> Goal: Configure custom runners and workflow labels
 
-1. สร้าง/แก้ไข `.github/runs-on.yml` ใน repository (Flex) สำหรับ custom runner definitions:
+1. Create/edit `.github/runs-on.yml` in the repository (Flex) for custom runner definitions:
    ```yaml
    runners:
      gpu-type1:
@@ -79,52 +79,52 @@ related:
        spot: price-capacity-optimized
        extras: ["s3-cache"]
    ```
-2. แก้ไข `.github/workflows/<file>.yml` ให้ใช้ `runs-on` label:
+2. Edit `.github/workflows/<file>.yml` to use `runs-on` labels:
    ```yaml
    jobs:
      build:
        runs-on: runs-on=${{ github.run_id }}/runner=gpu-type1
    ```
-3. ถ้าไม่ใช้ `.github/runs-on.yml` ให้ระบุ labels ตรงในค่า `runs-on:`:
-   - `runs-on=${{ github.run_id }}` เพื่อป้องกัน runner ถูกยึด
-   - `runner=2cpu-linux-x64` หรือ `cpu=`, `ram=`, `family=`, `image=`, `volume=`, `spot=`, `extras=`
-4. สำหรับ Fleet ให้ใช้ `runs-on: runs-on/fleet=<fleet-name>/env=<env>`
+3. If `.github/runs-on.yml` is not used, specify labels directly in the `runs-on:` value:
+   - `runs-on=${{ github.run_id }}` to prevent the runner from being claimed
+   - `runner=2cpu-linux-x64` or `cpu=`, `ram=`, `family=`, `image=`, `volume=`, `spot=`, `extras=`
+4. For Fleet, use `runs-on: runs-on/fleet=<fleet-name>/env=<env>`
 
 ### 5. Validate Deployment
 
-> Goal: ยืนยันว่า runner ทำงานได้
+> Goal: Confirm the runner works
 
-1. push commit หรือ trigger `workflow_dispatch`
-2. ตรวจสอบ GitHub Actions logs ว่างานรันอยู่บน `runs-on` runner
-3. ดู AWS EC2 console / CloudWatch logs ว่า instance ถูก launch และ terminate ถูกต้อง
-4. ยืนยัน email สำหรับ SNS cost/alert subscription
-5. ถ้า workflow fail ให้ทำ `/deep-validate` แล้ว `/ask-me`
+1. Push a commit or trigger `workflow_dispatch`
+2. Check GitHub Actions logs that the job runs on a `runs-on` runner
+3. Watch the AWS EC2 console / CloudWatch logs that the instance launches and terminates correctly
+4. Confirm the email for the SNS cost/alert subscription
+5. If the workflow fails, run `/deep-validate` then `/ask-me`
 
 ## Rules
 
 ### 1. AWS And IAM
 
-- ติดตั้ง RunsOn ใน dedicated AWS sub-account เพื่อแยก isolations
-- CloudFormation จะสร้าง IAM role ที่จำกัดสิทธิ์สำหรับ service โดยอัตโนมัติ
-- ห้าม hardcode `LicenseKey` ลงในไฟล์ skill หรือ source code
+- Install RunsOn in a dedicated AWS sub-account for isolation
+- CloudFormation automatically creates IAM roles with limited permissions for the service
+- Never hardcode `LicenseKey` in skill files or source code
 
 ### 2. GitHub Actions Integration
 
-- ใช้ `runs-on=${{ github.run_id }}` เป็น routing key ทุกครั้ง
-- ใช้ `runner=<name>` เมื่อมี `.github/runs-on.yml`
-- ใช้ backticks สำหรับ `commands`, `paths`, และ runner labels
+- Always use `runs-on=${{ github.run_id }}` as the routing key
+- Use `runner=<name>` when `.github/runs-on.yml` exists
+- Use backticks for `commands`, `paths`, and runner labels
 
 ### 3. Configuration Files
 
-- `.github/runs-on.yml` ใช้สำหรับ custom runners ใน Flex
-- `.github-private/.github/runs-on.yml` ใช้สำหรับ warm pools และ org-wide runner definitions
-- แก้ไข `.github/workflows/*.yml` ด้วย `edit` หรือ `write` ตามสถานการณ์
+- `.github/runs-on.yml` is for custom runners in Flex
+- `.github-private/.github/runs-on.yml` is for warm pools and org-wide runner definitions
+- Edit `.github/workflows/*.yml` with `edit` or `write` as appropriate
 
 ### 4. Safety
 
-- ถาม user ก่อน deploy stack หรือเปลี่ยนแปลง repo สำคัญ
-- ไม่ commit/push อัตโนมัติ ให้ user รันหรือใช้ `git-commit` ตามต้องการ
-- ถ้าขาดข้อมูลหรือสิทธิ์ → หยุดและรายงาน
+- Ask the user before deploying the stack or changing important repos
+- No automatic commit/push — the user runs it or uses `git-commit` as desired
+- If data or permissions are missing → stop and report
 
 ## Merged Details
 
@@ -132,29 +132,29 @@ related:
 
 ##### Goal
 
-ตั้งค่า/แก้ไข RunsOn runner configuration — `.github/runs-on.yml` runner definitions และ `runs-on:` labels ใน workflows — โดย merge กับ config เดิม
+Set/edit RunsOn runner configuration — `.github/runs-on.yml` runner definitions and `runs-on:` labels in workflows — merging with the existing config
 
 ##### Scope
 
-- ครอบคลุม `.github/runs-on.yml`, `.github-private/.github/runs-on.yml` และ `.github/workflows/*.yml`
-- ถ้ายังไม่ได้ deploy stack → ทำ `## Merged Details → setup-run-on` ก่อน
-- ไม่รวม commit/push อัตโนมัติ
+- Covers `.github/runs-on.yml`, `.github-private/.github/runs-on.yml`, and `.github/workflows/*.yml`
+- If the stack is not deployed yet → do `## Merged Details → setup-run-on` first
+- Does not include automatic commit/push
 
 ##### Execute
 
 ###### 1. Read Current Config
 
-> Goal: รู้ runner config ปัจจุบันก่อนแก้
+> Goal: Know the current runner config before editing
 
-1. อ่าน `.github/runs-on.yml` และ workflows ที่ใช้ `runs-on:` อยู่แล้ว
-2. ทำ `/deep-review` domain `review-config` ถ้าต้องเทียบ config กับ stack ที่ deploy จริง
-3. ถ้าไม่พบ config → ทำ `## Merged Details → setup-run-on` ก่อน
+1. Read `.github/runs-on.yml` and workflows that already use `runs-on:`
+2. Do `/deep-review` domain `review-config` if the config must be compared with the deployed stack
+3. If no config is found → do `## Merged Details → setup-run-on` first
 
 ###### 2. Define Runners
 
-> Goal: runner definitions ตรง workload
+> Goal: runner definitions match the workload
 
-1. สร้าง/แก้ `.github/runs-on.yml` ใน repo (Flex) เช่น:
+1. Create/edit `.github/runs-on.yml` in the repo (Flex), e.g.:
    ```yaml
    runners:
      gpu-type1:
@@ -164,149 +164,149 @@ related:
        spot: price-capacity-optimized
        extras: ["s3-cache"]
    ```
-2. สำหรับ org-wide definitions/warm pools → ใช้ `.github-private/.github/runs-on.yml`
-3. เลือก `family`, `image`, `cpu`, `ram`, `spot`, `extras` ตาม workload — ดู official docs ถ้าไม่แน่ใจ
+2. For org-wide definitions/warm pools → use `.github-private/.github/runs-on.yml`
+3. Pick `family`, `image`, `cpu`, `ram`, `spot`, `extras` per workload — check official docs if unsure
 
 ###### 3. Update Workflow Labels
 
-> Goal: jobs route ไป runner ที่ถูกต้อง
+> Goal: jobs route to the right runners
 
-1. แก้ `runs-on:` ใน `.github/workflows/<file>.yml` เช่น `runs-on: runs-on=${{ github.run_id }}/runner=gpu-type1`
-2. ถ้าไม่ใช้ `runs-on.yml` → ระบุ labels ตรง เช่น `runner=2cpu-linux-x64`, `cpu=`, `ram=`, `image=`, `spot=`
-3. ใช้ `runs-on=${{ github.run_id }}` เป็น routing key ทุกครั้งเพื่อกัน runner ถูกยึด
-4. ถ้าสร้าง workflow ใหม่ → ทำตาม `/follow-create-github-action`
+1. Edit `runs-on:` in `.github/workflows/<file>.yml`, e.g. `runs-on: runs-on=${{ github.run_id }}/runner=gpu-type1`
+2. If `runs-on.yml` is not used → specify labels directly, e.g. `runner=2cpu-linux-x64`, `cpu=`, `ram=`, `image=`, `spot=`
+3. Always use `runs-on=${{ github.run_id }}` as the routing key to prevent the runner from being claimed
+4. If creating a new workflow → follow `/follow-create-github-action`
 
 ###### 4. Validate
 
-> Goal: config ทำงานบน runner จริง
+> Goal: the config really works on the runner
 
-1. trigger `workflow_dispatch` หรือ push commit แล้วดู Actions logs
-2. ยืนยัน instance launch ตาม labels และ cost/spot behavior ถูกต้อง
-3. ถ้า fail → ทำ `/deep-validate` แล้ว `/ask-me`
+1. Trigger `workflow_dispatch` or push a commit, then watch Actions logs
+2. Confirm the instance launches per labels and cost/spot behavior is correct
+3. If it fails → run `/deep-validate` then `/ask-me`
 
 ##### Rules
 
-- แก้เฉพาะ runner definitions/labels ที่จำเป็น — ห้าม rewrite workflows ทั้งไฟล์
-- ใช้ `runs-on=${{ github.run_id }}` เสมอใน routing key
-- ไม่ commit/push อัตโนมัติ — ให้ user ยืนยัน
+- Edit only the necessary runner definitions/labels — never rewrite whole workflows
+- Always use `runs-on=${{ github.run_id }}` in the routing key
+- No automatic commit/push — let the user confirm
 
 ##### Expected Outcome
 
-- `.github/runs-on.yml` และ workflow labels ถูกต้องตาม Flex/Fleet mode
-- workflow รันบน runner ที่กำหนดสำเร็จ
+- `.github/runs-on.yml` and workflow labels correct for the chosen Flex/Fleet mode
+- The workflow runs successfully on the specified runner
 
 ### setup-run-on
 
 ##### Goal
 
-ติดตั้ง RunsOn stack บน AWS (CloudFormation/Terraform), register GitHub App และเปิด self-hosted runners ให้ repo — first-time setup
+Install the RunsOn stack on AWS (CloudFormation/Terraform), register the GitHub App, and enable self-hosted runners for the repo — first-time setup
 
 ##### Scope
 
-- ครอบคลุม AWS stack, GitHub App registration และ org settings
-- ไม่รวมการสร้าง AWS account, การซื้อ license หรือ commit/push อัตโนมัติ
-- config runner labels/workflows → `## Merged Details → config-run-on`
+- Covers the AWS stack, GitHub App registration, and org settings
+- Does not include creating an AWS account, purchasing a license, or automatic commit/push
+- Runner label/workflow config → `## Merged Details → config-run-on`
 
 ##### Execute
 
 ###### 1. Check Prerequisites
 
-> Goal: context และสิทธิ์พร้อมก่อน deploy stack
+> Goal: context and permissions ready before deploying the stack
 
-1. ตรวจ `aws --version` และ AWS credentials ว่ามีสิทธิ์สร้าง CloudFormation stack
-2. ยืนยัน GitHub organization/account และ RunsOn license key กับ user
-3. เลือก AWS region เช่น `us-east-1`
-4. ถ้าขาด context → หยุดและทำ `/ask-me`
+1. Check `aws --version` and AWS credentials have permission to create a CloudFormation stack
+2. Confirm the GitHub organization/account and the RunsOn license key with the user
+3. Pick an AWS region such as `us-east-1`
+4. If context is missing → stop and run `/ask-me`
 
 ###### 2. Deploy AWS Stack
 
-> Goal: RunsOn infrastructure ทำงานบน AWS
+> Goal: RunsOn infrastructure running on AWS
 
-1. ใช้ CloudFormation quick-create URL จาก https://runs-on.com/installation/ — ตรวจ latest template ก่อนใช้เสมอ
-2. กรอก parameters: GitHub org, `LicenseKey`, email สำหรับ cost alerts
-3. ถ้า fail ด้วย `Unable to assume the service linked role` → รัน `aws iam create-service-linked-role --aws-service-name ecs.amazonaws.com`
-4. รอ stack status `CREATE_COMPLETE` แล้วบันทึก `RunsOnEntryPoint` output URL
-5. เก็บ `LicenseKey` ผ่าน `/follow-secret-manager` — ห้าม commit
+1. Use the CloudFormation quick-create URL from https://runs-on.com/installation/ — always check the latest template before use
+2. Fill in parameters: GitHub org, `LicenseKey`, email for cost alerts
+3. If it fails with `Unable to assume the service linked role` → run `aws iam create-service-linked-role --aws-service-name ecs.amazonaws.com`
+4. Wait for stack status `CREATE_COMPLETE`, then save the `RunsOnEntryPoint` output URL
+5. Store `LicenseKey` via `/follow-secret-manager` — never commit it
 
 ###### 3. Register GitHub App
 
-> Goal: repo เชื่อมกับ RunsOn
+> Goal: repo connected to RunsOn
 
-1. เปิด `RunsOnEntryPoint` URL แล้วกด `Register app` เพื่อสร้าง private GitHub App
-2. เลือก repositories ที่ให้ app เข้าถึง
-3. เปิด org settings → Actions เพื่อ enable repository-level self-hosted runners
+1. Open the `RunsOnEntryPoint` URL and press `Register app` to create a private GitHub App
+2. Select the repositories the app may access
+3. Open org settings → Actions to enable repository-level self-hosted runners
 
 ###### 4. Validate
 
-> Goal: runner รันได้จริง
+> Goal: the runner really works
 
-1. สร้าง workflow ทดสอบหรือ trigger `workflow_dispatch` ด้วย `runs-on:` label
-2. ตรวจ GitHub Actions logs ว่ารันบน `runs-on` runner และ EC2 instance launch/terminate ถูกต้อง
-3. ถ้า fail → ทำ `/deep-validate` แล้ว `/ask-me`
+1. Create a test workflow or trigger `workflow_dispatch` with a `runs-on:` label
+2. Check GitHub Actions logs that it runs on a `runs-on` runner and the EC2 instance launches/terminates correctly
+3. If it fails → run `/deep-validate` then `/ask-me`
 
 ##### Rules
 
-- ถาม user ก่อน deploy stack — เป็น infrastructure change ที่มี cost
-- ติดตั้งใน dedicated AWS sub-account เพื่อ isolation
-- ห้าม hardcode `LicenseKey` ในไฟล์ใดๆ
-- ใช้ official docs https://runs-on.com เป็นแหล่งหลัก
+- Ask the user before deploying the stack — it is an infrastructure change with cost
+- Install in a dedicated AWS sub-account for isolation
+- Never hardcode `LicenseKey` in any file
+- Use official docs https://runs-on.com as the primary source
 
 ##### Expected Outcome
 
-- RunsOn stack `CREATE_COMPLETE` และ GitHub App register แล้ว
-- workflow ทดสอบรันบน self-hosted runner สำเร็จ
-- พร้อมไป `## Merged Details → config-run-on`
+- RunsOn stack `CREATE_COMPLETE` and GitHub App registered
+- The test workflow runs successfully on a self-hosted runner
+- Ready for `## Merged Details → config-run-on`
 
 ### verify-connection
 
 ##### Goal
 
-ยืนยันหลัง setup/config ว่า RunsOn (self-hosted GitHub runners บน AWS) ทำงานจริง — stack healthy, runners register กับ repo/org, workflow labels ตรง
+Confirm after setup/config that RunsOn (self-hosted GitHub runners on AWS) really works — stack healthy, runners registered with the repo/org, workflow labels match
 
 ##### Scope
 
-- ใช้เมื่อ `/follow-service-run-on` dispatch มาที่ `verify`/`verify-connection`
-- Read-only: ตรวจสอบ — ไม่แก้ stack หรือ workflows
+- Used when `/follow-service-run-on` dispatches to `verify`/`verify-connection`
+- Read-only: check only — do not change the stack or workflows
 
 ##### Execute
 
 ###### 1. Check AWS Stack
 
-> Goal: RunsOn CloudFormation stack สุขภาพดี
+> Goal: the RunsOn CloudFormation stack is healthy
 
 1. `aws cloudformation describe-stacks --stack-name runs-on` — status `CREATE_COMPLETE`/`UPDATE_COMPLETE`
-2. flag stack ที่อยู่ใน `*_FAILED` หรือ `ROLLBACK_*` state
+2. Flag stacks in `*_FAILED` or `ROLLBACK_*` state
 
 ###### 2. Check Runner Registration
 
-> Goal: runners register กับ GitHub ได้
+> Goal: runners register with GitHub
 
-1. `gh api repos/{owner}/{repo}/actions/runners` — มี runners online
-2. flag: ไม่มี runner, runners offline ทั้งหมด, runner labels ไม่ตรง `runs-on.yml`
+1. `gh api repos/{owner}/{repo}/actions/runners` — runners are online
+2. Flag: no runners, all runners offline, runner labels not matching `runs-on.yml`
 
 ###### 3. Check Workflow Labels
 
-> Goal: workflows ใช้ labels ที่ runners รองรับ
+> Goal: workflows use labels the runners support
 
-1. เทียบ `runs-on:` labels ใน workflows กับ runner definitions ใน `runs-on.yml`
-2. flag label ที่ไม่มี runner definition — job จะค้างไม่รัน
+1. Compare `runs-on:` labels in workflows with runner definitions in `runs-on.yml`
+2. Flag labels with no runner definition — the job will hang unrun
 
 ###### 4. Report
 
-> Goal: สรุป connection status
+> Goal: Summarize connection status
 
-1. ใช้ `/report` คอลัมน์: `No.`, `Check`, `Result`, `Evidence`
+1. Use `/report` columns: `No.`, `Check`, `Result`, `Evidence`
 2. Verdict: `connected` / `stack-unhealthy` / `no-runners` / `label-mismatch`
 
 ##### Rules
 
-- ใช้ describe/list calls เท่านั้น — ห้ามแก้ stack
-- label mismatch = common silent failure — flag เสมอ
-- stack issues → รายงานให้ setup workflow จัดการ
+- Use describe/list calls only — never modify the stack
+- Label mismatch = common silent failure — always flag
+- Stack issues → report for the setup workflow to handle
 
 ##### Expected Outcome
 
-- Verdict พร้อม stack status + runner count + label evidence
+- Verdict with stack status + runner count + label evidence
 
 ### references/package-manifest
 
@@ -352,7 +352,7 @@ related:
 
 ## Expected Outcome
 
-- RunsOn stack ทำงานบน AWS และ GitHub App ลงทะเบียนเรียบร้อย
-- `.github/runs-on.yml` และ workflow ถูกต้องตาม Flex/Fleet mode ที่เลือก
-- Workflow รันบน self-hosted runner บน EC2 สำเร็จ
-- validation logs แสดง instance launch ตาม labels ที่กำหนด
+- RunsOn stack running on AWS and GitHub App registered
+- `.github/runs-on.yml` and workflows correct for the chosen Flex/Fleet mode
+- The workflow runs successfully on a self-hosted runner on EC2
+- Validation logs show the instance launches per the specified labels

@@ -1,6 +1,6 @@
 ---
 name: follow-service-signoz
-description: เชื่อมต่อ SigNoz observability สำหรับ Node/Bun/TypeScript ผ่าน OpenTelemetry
+description: Connect SigNoz observability for Node/Bun/TypeScript via OpenTelemetry
 argument-hint: "[scope]"
 related:
   - follow-service-aws-sdk
@@ -14,123 +14,123 @@ related:
 
 ## Goal
 
-เพิ่ม observability ให้แอป Bun/Node/TypeScript ด้วย SigNoz ผ่าน OpenTelemetry — ครอบคลุม traces, metrics และ logs
+Add observability to Bun/Node/TypeScript apps with SigNoz via OpenTelemetry — covering traces, metrics, and logs
 
 ## Scope
 
-- ตั้งค่า SigNoz Cloud หรือ self-hosted ผ่าน Docker
-- ใช้ OpenTelemetry auto-instrumentation สำหรับ Node.js และ Bun
-- ส่ง traces, logs, metrics พร้อมตั้งค่า alerts และ dashboards
-- ไม่ครอบคลุม infrastructure monitoring นอก scope นี้ เช่น Kubernetes operator
+- Set up SigNoz Cloud or self-hosted via Docker
+- Use OpenTelemetry auto-instrumentation for Node.js and Bun
+- Send traces, logs, and metrics with alerts and dashboards configured
+- Does not cover infrastructure monitoring outside this scope such as Kubernetes operators
 
 ## Execute
 
 ### Workflows
 
-> Goal: dispatch ไปยัง workflow ที่ตรงกับ topic
+> Goal: dispatch to the workflow matching the topic
 
 - Setup: SigNoz endpoint, OTel SDK install, instrumentation → `## Merged Details → setup-signoz`
 - Config: `OTEL_*` env vars, service name, traces/metrics/logs exporters → `## Merged Details → config-signoz`
-- Verify: endpoint reachable, telemetry ไหลเข้า, service ปรากฏ → `## Merged Details → verify-connection`
+- Verify: endpoint reachable, telemetry flowing, service visible → `## Merged Details → verify-connection`
 
 ### 1. Assess Project And Prepare SigNoz
 
-> Goal: ตรวจ runtime, endpoint และ ingestion key ก่อนติดตั้ง
+> Goal: Check runtime, endpoint, and ingestion key before installing
 
-ตรวจสอบว่าโปรเจกต์เป็น backend แบบใดและ runtime อะไร
+Determine what kind of backend the project is and which runtime it uses.
 
-1. อ่าน `package.json` เพื่อระบุ runtime เช่น `bun`, `node` หรือ TypeScript
-2. ตัดสินใจว่าจะใช้ `SigNoz Cloud` หรือ `self-hosted`
-3. ถ้าใช้ `self-hosted` ให้ `webfetch` อ่าน `https://signoz.io/docs/install/docker/`
-4. ติดตั้ง SigNoz self-hosted ผ่าน Foundry:
-   - รัน `curl -fsSL https://signoz.io/foundry.sh | bash`
-   - สร้าง `casting.yaml` โดยระบุ `flavor: compose` และ `mode: docker`
-   - รัน `foundryctl cast -f casting.yaml`
-5. ระบุ endpoint ที่ถูกต้อง เช่น `http://localhost:4318` สำหรับ self-hosted หรือ `https://ingest.<region>.signoz.cloud:443` สำหรับ cloud
-6. ถ้าใช้ SigNoz Cloud ให้เตรียม ingestion key ไว้ใช้งาน
+1. Read `package.json` to identify the runtime such as `bun`, `node`, or TypeScript
+2. Decide whether to use `SigNoz Cloud` or `self-hosted`
+3. For `self-hosted`, use `webfetch` to read `https://signoz.io/docs/install/docker/`
+4. Install SigNoz self-hosted via Foundry:
+   - Run `curl -fsSL https://signoz.io/foundry.sh | bash`
+   - Create `casting.yaml` with `flavor: compose` and `mode: docker`
+   - Run `foundryctl cast -f casting.yaml`
+5. Identify the correct endpoint, e.g. `http://localhost:4318` for self-hosted or `https://ingest.<region>.signoz.cloud:443` for cloud
+6. For SigNoz Cloud, prepare the ingestion key for use
 
 ### 2. Instrument The Application
 
-> Goal: ติดตั้ง telemetry ให้ SigNoz รับข้อมูลได้
+> Goal: Install telemetry so SigNoz can receive data
 
-ติดตั้ง OpenTelemetry instrumentation ที่จำเป็น
+Install the required OpenTelemetry instrumentation.
 
 Latest: `@opentelemetry/auto-instrumentations-node@0.80.0` (verified 2026-09-12)
 
-1. ติดตั้ง package ที่จำเป็น:
+1. Install the required packages:
    - `bun add @opentelemetry/api @opentelemetry/auto-instrumentations-node`
-   - สำหรับ Bun ใช้ `bun add @opentelemetry/api @opentelemetry/auto-instrumentations-node`
-2. ตั้งค่า environment variables ใน `.env` หรือ shell:
+   - For Bun use `bun add @opentelemetry/api @opentelemetry/auto-instrumentations-node`
+2. Set environment variables in `.env` or the shell:
    - `OTEL_TRACES_EXPORTER=otlp`
    - `OTEL_EXPORTER_OTLP_ENDPOINT=<your-endpoint>`
    - `OTEL_SERVICE_NAME=<service-name>`
    - `OTEL_RESOURCE_ATTRIBUTES=service.version=<version>`
-   - `OTEL_EXPORTER_OTLP_HEADERS=signoz-ingestion-key=<key>` สำหรับ cloud
+   - `OTEL_EXPORTER_OTLP_HEADERS=signoz-ingestion-key=<key>` for cloud
    - `NODE_OPTIONS=--require @opentelemetry/auto-instrumentations-node/register`
-3. สำหรับ Bun ให้ตั้ง `OTEL_EXPORTER_OTLP_PROTOCOL=http/protobuf` เสมอ
-4. รัน `bun run src/index.ts` หรือ `node app.js` พร้อม instrumentation
-5. ถ้า TypeScript entry มีปัญหาให้เปลี่ยนเป็น `import '@opentelemetry/auto-instrumentations-node/register'` แทน `require(...)` เพราะ require hook อาจไม่ทำงาน
+3. For Bun, always set `OTEL_EXPORTER_OTLP_PROTOCOL=http/protobuf`
+4. Run `bun run src/index.ts` or `node app.js` with instrumentation
+5. If the TypeScript entry has problems, switch to `import '@opentelemetry/auto-instrumentations-node/register'` instead of `require(...)` because the require hook may not work
 
 ### 3. Send Logs, Metrics, And Traces
 
-> Goal: ส่ง traces, logs, metrics ไป SigNoz UI
+> Goal: Send traces, logs, and metrics to the SigNoz UI
 
-ตั้งค่า telemetry ให้ครบทั้งสามอย่าง
+Configure all three telemetry signals.
 
-1. ใช้ `webfetch` อ่าน `https://signoz.io/docs/instrumentation/opentelemetry-nodejs/` เพื่อดู environment variables เพิ่มเติม
-2. ตั้งค่า `OTEL_METRICS_EXPORTER=otlp` เพื่อส่ง metrics
-3. ส่ง logs ผ่าน OTLP logs exporter หรือ OpenTelemetry Collector ตาม architecture
-4. ตรวจสอบ console ว่ามี error หรือ exporter ทำงานถูกต้องหรือไม่
-5. ถ้า telemetry ไม่ขึ้น ให้ตั้ง `OTEL_LOG_LEVEL=debug` เพื่อ debug
+1. Use `webfetch` to read `https://signoz.io/docs/instrumentation/opentelemetry-nodejs/` for additional environment variables
+2. Set `OTEL_METRICS_EXPORTER=otlp` to send metrics
+3. Send logs via the OTLP logs exporter or an OpenTelemetry Collector per the architecture
+4. Check the console for errors and confirm exporters work correctly
+5. If telemetry does not appear, set `OTEL_LOG_LEVEL=debug` to debug
 
 ### 4. Verify Data In SigNoz
 
-> Goal: ยืนยันว่าข้อมูลเข้าระบบจริง
+> Goal: Confirm data really enters the system
 
-ตรวจสอบ telemetry ผ่าน SigNoz UI
+Inspect telemetry through the SigNoz UI.
 
-1. เปิด UI ที่ `http://localhost:8080` หรือ URL ของ SigNoz Cloud
-2. ตรวจสอบ service name ภายใต้ Services และ Traces
-3. ดู logs ภายใต้ Logs Explorer
-4. ดู metrics ภายใต้ Metrics Explorer หรือ Dashboards
-5. ถ้าข้อมูลไม่เข้าใน 5 นาที ให้ตรวจ ingestion key, endpoint, และ firewall
+1. Open the UI at `http://localhost:8080` or the SigNoz Cloud URL
+2. Check the service name under Services and Traces
+3. View logs under Logs Explorer
+4. View metrics under Metrics Explorer or Dashboards
+5. If no data arrives within 5 minutes, check the ingestion key, endpoint, and firewall
 
 ### 5. Configure Dashboards And Alerts
 
-> Goal: ตั้งค่า monitor ให้ใช้งานจริง
+> Goal: Set up monitors for real use
 
-สร้าง dashboard และ alert ที่จำเป็น
+Create the needed dashboards and alerts.
 
-1. ใช้ `webfetch` อ่าน `https://signoz.io/docs/userguide/alerts-management/`
-2. สร้าง dashboard พร้อม panels เช่น request rate, latency, error rate
-3. ตั้ง alert rule ตามเกณฑ์ที่เหมาะสม เช่น `p95 latency > 500ms` หรือ `error rate > 5%`
-4. ตั้งค่า notification channel ผ่าน SigNoz ที่ต้องการ
-5. บันทึก configuration ลง reference ถ้าจำเป็น
+1. Use `webfetch` to read `https://signoz.io/docs/userguide/alerts-management/`
+2. Create a dashboard with panels such as request rate, latency, error rate
+3. Set alert rules with suitable thresholds such as `p95 latency > 500ms` or `error rate > 5%`
+4. Configure the desired notification channel through SigNoz
+5. Save the configuration into references if needed
 
 ## Rules
 
 ### 1. General Safety
 
-- เก็บ ingestion key และ secrets ห่างจาก code
-- ตั้งค่า endpoint และ key ใน `.env` หรือ secret manager
-- ทดสอบ observability ก่อน deploy ไป production
+- Keep the ingestion key and secrets away from code
+- Put the endpoint and key in `.env` or a secret manager
+- Test observability before deploying to production
 
 ### 2. Documentation And Verification
 
-- ใช้ `webfetch` หรือ `learn` (web) เพื่อดูเอกสารล่าสุดของ SigNoz
-- ตรวจสอบเสมอว่า traces และ logs ขึ้นใน UI จริง
-- ใช้ backticks สำหรับ `commands`, `paths`, `skills`, และ `environment variables`
+- Use `webfetch` or `learn` (web) to check the latest SigNoz docs
+- Always verify that traces and logs really appear in the UI
+- Use backticks for `commands`, `paths`, `skills`, and `environment variables`
 
 ### 3. Scope And Exit
 
-- จำกัด scope ที่ Bun/Node/TypeScript เท่านั้น
-- ถ้าไม่สามารถยืนยัน telemetry ได้ใน 3 รอบ ให้หยุดและรายงาน
+- Limit the scope to Bun/Node/TypeScript only
+- If telemetry cannot be confirmed within 3 rounds, stop and report
 
-- ใช้ /follow-service-aws-sdk ถ้าจำเป็น
-- ใช้ /follow-service-cloudflare ถ้าจำเป็น
-- ใช้ /follow-secret-manager ถ้าจำเป็น
-- ใช้ /follow-best-practice ถ้าจำเป็น
-- ใช้ /setup-cicd ถ้าจำเป็น
+- Use /follow-service-aws-sdk if needed
+- Use /follow-service-cloudflare if needed
+- Use /follow-secret-manager if needed
+- Use /follow-best-practice if needed
+- Use /setup-cicd if needed
 
 ## Merged Details
 
@@ -138,175 +138,175 @@ Latest: `@opentelemetry/auto-instrumentations-node@0.80.0` (verified 2026-09-12)
 
 ##### Goal
 
-ตั้งค่า/แก้ไข OpenTelemetry configuration สำหรับ SigNoz — service name, resource attributes, traces/metrics/logs exporters และ headers — โดยไม่ clobber env เดิม
+Set/edit OpenTelemetry configuration for SigNoz — service name, resource attributes, traces/metrics/logs exporters, and headers — without clobbering the existing env
 
 ##### Scope
 
-- แก้ `OTEL_*` env vars สำหรับ Bun/Node/TypeScript
-- แยก config ตาม environment (dev/staging/prod)
-- ตั้ง headers (`signoz-ingestion-key`), protocol และ resource attributes
-- ไม่ครอบคลุม first-time install → ใช้ `## Merged Details → setup-signoz`
+- Edit `OTEL_*` env vars for Bun/Node/TypeScript
+- Separate config per environment (dev/staging/prod)
+- Set headers (`signoz-ingestion-key`), protocol, and resource attributes
+- Does not cover first-time install → use `## Merged Details → setup-signoz`
 
 ##### Execute
 
 ###### 1. Read Current Config
 
-> Goal: รู้ env vars ปัจจุบันก่อนแก้
+> Goal: Know the current env vars before editing
 
-1. อ่าน `.env*`, start scripts และ instrumentation entry ที่มีอยู่
-2. ทำ `/check-secrets env-vars` เพื่อระบุ `OTEL_*` vars ที่ขาดหรือซ้ำ
-3. ทำ `/deep-review` domain `review-config` ระหว่าง environments ถ้าจำเป็น
-4. ถ้ายังไม่มี OTel packages → ทำ `## Merged Details → setup-signoz` แทน
+1. Read `.env*`, start scripts, and existing instrumentation entries
+2. Do `/check-secrets env-vars` to identify missing or duplicated `OTEL_*` vars
+3. Do `/deep-review` domain `review-config` across environments if needed
+4. If there are no OTel packages yet → do `## Merged Details → setup-signoz` instead
 
 ###### 2. Configure Service Identity
 
-> Goal: ตั้ง service name และ resource attributes ให้ค้นใน UI ได้
+> Goal: Set service name and resource attributes so it is searchable in the UI
 
-1. ตั้ง `OTEL_SERVICE_NAME=<service-name>` ให้ตรงกับชื่อ service จริง
-2. ตั้ง `OTEL_RESOURCE_ATTRIBUTES=service.version=<version>` และ attributes เพิ่มเติม เช่น `deployment.environment=<env>`
-3. ใช้ชื่อเดียวกันข้ามทุก instance ของ service เดียวกัน — merge เฉพาะ keys ที่จำเป็น
+1. Set `OTEL_SERVICE_NAME=<service-name>` matching the real service name
+2. Set `OTEL_RESOURCE_ATTRIBUTES=service.version=<version>` and additional attributes such as `deployment.environment=<env>`
+3. Use the same name across all instances of one service — merge only the necessary keys
 
 ###### 3. Configure Exporters
 
-> Goal: ส่ง traces, metrics, logs ครบสาม signal
+> Goal: Send all three signals — traces, metrics, logs
 
-1. ตั้ง `OTEL_TRACES_EXPORTER=otlp`, `OTEL_METRICS_EXPORTER=otlp`, `OTEL_LOGS_EXPORTER=otlp` ตาม signals ที่ต้องการ
-2. ตั้ง `OTEL_EXPORTER_OTLP_ENDPOINT=<endpoint>` — แยก per-signal endpoint ถ้าจำเป็น
-3. Cloud: ตั้ง `OTEL_EXPORTER_OTLP_HEADERS=signoz-ingestion-key=<key>` — key จาก `/follow-secret-manager`
-4. สำหรับ Bun ตั้ง `OTEL_EXPORTER_OTLP_PROTOCOL=http/protobuf` เสมอ
-5. Logs: ใช้ OTLP logs exporter หรือ route ผ่าน OpenTelemetry Collector ตาม architecture — ดู official docs
+1. Set `OTEL_TRACES_EXPORTER=otlp`, `OTEL_METRICS_EXPORTER=otlp`, `OTEL_LOGS_EXPORTER=otlp` per the wanted signals
+2. Set `OTEL_EXPORTER_OTLP_ENDPOINT=<endpoint>` — separate per-signal endpoints if needed
+3. Cloud: set `OTEL_EXPORTER_OTLP_HEADERS=signoz-ingestion-key=<key>` — key from `/follow-secret-manager`
+4. For Bun, always set `OTEL_EXPORTER_OTLP_PROTOCOL=http/protobuf`
+5. Logs: use the OTLP logs exporter or route through an OpenTelemetry Collector per the architecture — see official docs
 
 ###### 4. Verify
 
-> Goal: ยืนยัน telemetry ทั้งสาม signal ขึ้น UI จริง
+> Goal: Confirm all three telemetry signals really reach the UI
 
-1. Restart app ด้วย env ใหม่แล้วยิง traffic ทดสอบ
-2. ตรวจ Traces, Logs Explorer, Metrics Explorer ใน SigNoz UI
-3. ถ้าไม่ขึ้น → ตั้ง `OTEL_LOG_LEVEL=debug` ดู exporter errors, ตรวจ headers/endpoint/protocol
-4. ทำ `/run-verify` — ถ้า fail → revert keys ที่แก้ ทำ `resolve-errors` แล้ว report diff
+1. Restart the app with the new env and send test traffic
+2. Check Traces, Logs Explorer, and Metrics Explorer in the SigNoz UI
+3. If nothing appears → set `OTEL_LOG_LEVEL=debug` to see exporter errors, check headers/endpoint/protocol
+4. Do `/run-verify` — if it fails → revert the keys just changed, do `resolve-errors`, then report the diff
 
 ##### Rules
 
-- Merge เฉพาะ `OTEL_*` keys ที่จำเป็น — ห้าม overwrite `.env` ทั้งไฟล์
-- เก็บ ingestion key ใน `/follow-secret-manager` ห้ามใส่ config file ที่ commit
-- `service.name` ต้องสม่ำเสมอข้าม environments (แยกด้วย `deployment.environment`)
-- ใช้ official docs เป็นแหล่งหลัก — ทำ `learn` (web) ถ้าไม่แน่ใจ
-- ถ้ายืนยัน telemetry ไม่ได้ใน 3 รอบ → stop และ report
+- Merge only the necessary `OTEL_*` keys — never overwrite the whole `.env`
+- Store the ingestion key in `/follow-secret-manager` — never in a committed config file
+- `service.name` must stay consistent across environments (separate with `deployment.environment`)
+- Use official docs as the primary source — do `learn` (web) if unsure
+- If telemetry cannot be confirmed within 3 rounds → stop and report
 
 ##### Expected Outcome
 
-- `OTEL_*` config ครบและแยกตาม environment ชัดเจน
-- Traces, metrics, logs ขึ้น SigNoz UI ภายใต้ service name ที่ถูกต้อง
-- ไม่มี secrets รั่วใน config files
+- `OTEL_*` config complete and clearly separated per environment
+- Traces, metrics, and logs appear in the SigNoz UI under the correct service name
+- No secrets leaking into config files
 
 ### setup-signoz
 
 ##### Goal
 
-เตรียม SigNoz backend (cloud หรือ self-hosted), ติดตั้ง OpenTelemetry SDK และ instrument app Bun/Node/TypeScript ให้ส่ง telemetry ได้ — first-time setup เท่านั้น
+Prepare the SigNoz backend (cloud or self-hosted), install the OpenTelemetry SDK, and instrument the Bun/Node/TypeScript app so it can send telemetry — first-time setup only
 
 ##### Scope
 
-- เลือกและเตรียม SigNoz Cloud หรือ self-hosted ผ่าน Docker/Foundry
-- ติดตั้ง `@opentelemetry/api`, `@opentelemetry/auto-instrumentations-node`
-- ตั้ง endpoint และ ingestion key ขั้นต่ำให้ telemetry ส่งได้
-- ไม่ครอบคลุม service name, exporters, dashboards ละเอียด → ใช้ `## Merged Details → config-signoz`
+- Choose and prepare SigNoz Cloud or self-hosted via Docker/Foundry
+- Install `@opentelemetry/api` and `@opentelemetry/auto-instrumentations-node`
+- Set the minimum endpoint and ingestion key so telemetry can send
+- Does not cover detailed service name, exporters, dashboards → use `## Merged Details → config-signoz`
 
 ##### Execute
 
 ###### 1. Check Prerequisites
 
-> Goal: ระบุ runtime และเลือก deployment mode (idempotent)
+> Goal: Identify the runtime and pick the deployment mode (idempotent)
 
-1. อ่าน `package.json` เพื่อระบุ runtime (`bun`, `node`, TypeScript)
-2. ตรวจว่ามี OTel packages หรือ instrumentation อยู่แล้ว → ถ้ามี skip ไป verify
-3. ตัดสินใจ `SigNoz Cloud` หรือ `self-hosted` — ถ้า self-hosted ต้องมี Docker
-4. ถ้าไม่มี SigNoz account/endpoint → stop และแจ้ง user
+1. Read `package.json` to identify the runtime (`bun`, `node`, TypeScript)
+2. Check whether OTel packages or instrumentation already exist → if so, skip to verify
+3. Decide `SigNoz Cloud` or `self-hosted` — self-hosted requires Docker
+4. If there is no SigNoz account/endpoint → stop and tell the user
 
 ###### 2. Prepare SigNoz Endpoint
 
-> Goal: ได้ endpoint และ ingestion key ที่ถูกต้อง
+> Goal: Get the correct endpoint and ingestion key
 
-1. Cloud: เตรียม `https://ingest.<region>.signoz.cloud:443` และ ingestion key จาก dashboard
-2. Self-hosted: ติดตั้งผ่าน Foundry หรือ Docker ตาม `https://signoz.io/docs/install/docker/` — endpoint local เช่น `http://localhost:4318`
-3. เก็บ ingestion key ใน `/follow-secret-manager` แล้ว inject เข้า env
-4. ยืนยัน endpoint reachable ก่อน instrument
+1. Cloud: prepare `https://ingest.<region>.signoz.cloud:443` and the ingestion key from the dashboard
+2. Self-hosted: install via Foundry or Docker per `https://signoz.io/docs/install/docker/` — a local endpoint such as `http://localhost:4318`
+3. Store the ingestion key in `/follow-secret-manager`, then inject it into env
+4. Confirm the endpoint is reachable before instrumenting
 
 ###### 3. Install OTel SDK
 
-> Goal: ติดตั้ง auto-instrumentation
+> Goal: Install auto-instrumentation
 
-1. ติดตั้งด้วย `bun add @opentelemetry/api @opentelemetry/auto-instrumentations-node`
-2. ตั้ง `NODE_OPTIONS=--require @opentelemetry/auto-instrumentations-node/register` สำหรับ Node
-3. สำหรับ Bun/TS entry ที่ require hook ไม่ทำงาน → ใช้ `import '@opentelemetry/auto-instrumentations-node/register'` บรรทัดแรกของ entry แทน
-4. ตั้ง env ขั้นต่ำ: `OTEL_TRACES_EXPORTER=otlp`, `OTEL_EXPORTER_OTLP_ENDPOINT=<endpoint>`, `OTEL_SERVICE_NAME=<name>`
+1. Install with `bun add @opentelemetry/api @opentelemetry/auto-instrumentations-node`
+2. Set `NODE_OPTIONS=--require @opentelemetry/auto-instrumentations-node/register` for Node
+3. For Bun/TS entries where the require hook does not work → use `import '@opentelemetry/auto-instrumentations-node/register'` as the first line of the entry instead
+4. Set the minimum env: `OTEL_TRACES_EXPORTER=otlp`, `OTEL_EXPORTER_OTLP_ENDPOINT=<endpoint>`, `OTEL_SERVICE_NAME=<name>`
 
 ###### 4. Verify Telemetry
 
-> Goal: ยืนยัน traces เข้า SigNoz UI จริง
+> Goal: Confirm traces really reach the SigNoz UI
 
-1. รัน app พร้อม instrumentation แล้วยิง request ทดสอบ
-2. เปิด SigNoz UI ตรวจ Services/Traces ว่ามี service name ขึ้น
-3. ถ้าไม่ขึ้นใน 5 นาที → ตรวจ endpoint, ingestion key, protocol แล้วตั้ง `OTEL_LOG_LEVEL=debug`
-4. ถ้ายัง fail → ทำ `resolve-errors` max 3 รอบ แล้ว stop report
+1. Run the app with instrumentation and send test requests
+2. Open the SigNoz UI and check Services/Traces for the service name
+3. If it does not appear within 5 minutes → check endpoint, ingestion key, protocol, then set `OTEL_LOG_LEVEL=debug`
+4. If it still fails → do `resolve-errors` max 3 rounds, then stop and report
 
 ##### Rules
 
-- จำกัด scope ที่ Bun/Node/TypeScript เท่านั้น — runtime อื่นดู official docs
-- เก็บ ingestion key ใน `/follow-secret-manager` ห้าม hardcode หรือ commit
-- ใช้ official docs (`learn` (web)/`webfetch`) เป็นแหล่งหลักถ้า env var ไม่แน่ใจ
-- ถ้ายืนยัน telemetry ไม่ได้ใน 3 รอบ → stop และ report
+- Limit the scope to Bun/Node/TypeScript only — for other runtimes check official docs
+- Store the ingestion key in `/follow-secret-manager` — never hardcode or commit
+- Use official docs (`learn` (web)/`webfetch`) as the primary source when unsure about an env var
+- If telemetry cannot be confirmed within 3 rounds → stop and report
 
 ##### Expected Outcome
 
-- OTel SDK ติดตั้งและ app รันพร้อม instrumentation
-- Endpoint/ingestion key ถูกต้องและปลอดภัย
-- Traces ขึ้นใน SigNoz UI จริง
+- OTel SDK installed and the app runs with instrumentation
+- Endpoint/ingestion key correct and secure
+- Traces really appear in the SigNoz UI
 
 ### verify-connection
 
 ##### Goal
 
-ยืนยันหลัง setup/config ว่า OTel telemetry ไหลเข้า SigNoz จริง — endpoint reachable, ingestion key valid, service ปรากฏใน SigNoz
+Confirm after setup/config that OTel telemetry really flows into SigNoz — endpoint reachable, ingestion key valid, service visible in SigNoz
 
 ##### Scope
 
-- ใช้เมื่อ `/follow-service-signoz` dispatch มาที่ `verify`/`verify-connection`
-- Read-only: ตรวจสอบ — ไม่แก้ instrumentation
+- Used when `/follow-service-signoz` dispatches to `verify`/`verify-connection`
+- Read-only: check only — do not change instrumentation
 
 ##### Execute
 
 ###### 1. Check Endpoint Config
 
-> Goal: OTel env vars ครบและ endpoint ถูก
+> Goal: OTel env vars complete and endpoint correct
 
-1. ตรวจ `OTEL_EXPORTER_OTLP_ENDPOINT`, `OTEL_SERVICE_NAME`, ingestion key/`SIGNOZ_INGESTION_KEY` มี
-2. `curl -sI <endpoint>` หรือ health endpoint — endpoint reachable
+1. Check `OTEL_EXPORTER_OTLP_ENDPOINT`, `OTEL_SERVICE_NAME`, and the ingestion key/`SIGNOZ_INGESTION_KEY` exist
+2. `curl -sI <endpoint>` or the health endpoint — endpoint reachable
 
 ###### 2. Check Telemetry Flow
 
-> Goal: data เข้า SigNoz จริง
+> Goal: data really enters SigNoz
 
-1. รัน app ชั่วคราวหรือส่ง test span — ตรวจ SDK ไม่ throw connection errors
-2. เช็คใน SigNoz UI/API ว่า `OTEL_SERVICE_NAME` ปรากฏใน services list
-3. flag: endpoint reachable แต่ไม่มี data → ingestion key ผิดหรือ exporter misconfig
+1. Run the app briefly or send a test span — confirm the SDK throws no connection errors
+2. Check in the SigNoz UI/API that `OTEL_SERVICE_NAME` appears in the services list
+3. Flag: endpoint reachable but no data → wrong ingestion key or misconfigured exporter
 
 ###### 3. Report
 
-> Goal: สรุป connection status
+> Goal: Summarize connection status
 
-1. ใช้ `/report` คอลัมน์: `No.`, `Check`, `Result`, `Evidence`
+1. Use `/report` columns: `No.`, `Check`, `Result`, `Evidence`
 2. Verdict: `connected` / `endpoint-down` / `auth-failed` / `no-data-flowing`
 
 ##### Rules
 
-- ไม่ print ingestion key
-- `no-data-flowing` = endpoint OK แต่ไม่มี telemetry — flag แยกจาก endpoint-down
-- ระบุ service name ที่เห็นใน SigNoz เป็น evidence
+- Do not print the ingestion key
+- `no-data-flowing` = endpoint OK but no telemetry — flag separately from endpoint-down
+- Record the service name seen in SigNoz as evidence
 
 ##### Expected Outcome
 
-- Verdict พร้อม endpoint/service evidence
+- Verdict with endpoint/service evidence
 
 ### references/apis
 
@@ -659,7 +659,7 @@ export OTEL_METRICS_EXPORTER="otlp"
 
 ## Expected Outcome
 
-- แอป Bun/Node/TypeScript ส่ง traces, metrics, logs ไป SigNoz สำเร็จ
-- ตรวจสอบข้อมูลผ่าน SigNoz UI ได้
-- มี dashboard และ alert ที่ตั้งค่าเรียบร้อย
-- ไม่มี configuration หรือ secrets รั่วไหลใน code
+- The Bun/Node/TypeScript app successfully sends traces, metrics, and logs to SigNoz
+- Data is verifiable through the SigNoz UI
+- Dashboards and alerts are configured
+- No configuration or secrets leaking into code
