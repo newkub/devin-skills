@@ -5,33 +5,33 @@ description: Script command lookup tables for Minimal, Standard, and Complete te
 
 # Package Scripts by Tech Stack
 
-ตัวอย่าง `package.json` เพิ่มเติมดู [package-json-examples.md](package-json-examples.md)
+For more `package.json` examples see [package-json-examples.md](package-json-examples.md)
 
 ## Script Mechanism
 
-`Cargo.toml`, Python และ Go **ไม่มี script runner ในตัว** — ใช้ task runner แทน:
+`Cargo.toml`, Python, and Go **have no built-in script runner** — use a task runner instead:
 
 | Ecosystem | Mechanism |
 |-----------|-----------|
-| Rust | `justfile` (`just`), `cargo-make` (`makers`), หรือ `cargo-xtask` — ห้ามใส่ใน `Cargo.toml` |
-| Python | `Makefile`, `justfile`, `poe` (poethepoet), หรือ `nox`/`tox` sessions |
-| Go | `Makefile`, `justfile`, หรือ `Taskfile.yml` (go-task) |
-| JS/Bun | `package.json` scripts โดยตรง |
+| Rust | `justfile` (`just`), `cargo-make` (`makers`), or `cargo-xtask` — never put scripts in `Cargo.toml` |
+| Python | `Makefile`, `justfile`, `poe` (poethepoet), or `nox`/`tox` sessions |
+| Go | `Makefile`, `justfile`, or `Taskfile.yml` (go-task) |
+| JS/Bun | `package.json` scripts directly |
 
 ## Bun-Native Alternatives
 
-Bun 1.4 มีคำสั่งในตัวที่แทน external tools ได้ — ใช้เมื่อ project ไม่ต้องการ vitest/biome stack:
+Bun 1.4 has built-in commands that can replace external tools — use when the project doesn't want a vitest/biome stack:
 
 | Task | Bun-Native |
 |------|-----------|
-| test | `bun test` (หรือ `bun test --coverage` สำหรับ coverage) |
-| security | `bun audit` (มี `bun audit fix`) |
-| CI install | `bun ci` (frozen lockfile, เทียบ `npm ci`) |
-| Monorepo tasks | `bun run --workspaces <script>` หรือ `bun --filter '<name>' <script>` |
+| test | `bun test` (or `bun test --coverage` for coverage) |
+| security | `bun audit` (has `bun audit fix`) |
+| CI install | `bun ci` (frozen lockfile, equivalent of `npm ci`) |
+| Monorepo tasks | `bun run --workspaces <script>` or `bun --filter '<name>' <script>` |
 
 ## Required Scripts
 
-Scripts พื้นฐานที่ทุกโปรเจกต์ต้องมีเพื่อรับประกันคุณภาพโค้ด:
+The baseline scripts every project must have to guarantee code quality:
 
 | Task | Bun | Nuxt | Next.js | Solid Start | SvelteKit | Tauri | Rust | Python | Go |
 |------|-----|------|---------|------------|----------|-------|------|--------|----|
@@ -50,7 +50,7 @@ Scripts พื้นฐานที่ทุกโปรเจกต์ต้อ
 | ci | `format:check && lint && typecheck && scan && test && build` | `format:check && lint && typecheck && scan && test && build` | `format:check && lint && typecheck && scan && test && build` | `format:check && lint && typecheck && scan && test && build` | `format:check && lint && typecheck && scan && test && build` | `format:check && lint && typecheck && scan && test && build` | `cargo fmt --check && cargo clippy && cargo check && cargo nextest run && cargo build` | `ruff format --check && ruff check && mypy src && pytest && python -m build` | `test -z "$(gofmt -l .)" && golangci-lint run && go vet ./... && go test ./... && go build .` |
 | verify:full | `ci && test:integration && test:e2e` | `ci && test:integration && test:e2e` | `ci && test:integration && test:e2e` | `ci && test:integration && test:e2e` | `ci && test:integration && test:e2e` | `ci && test:integration && test:e2e` | `ci && cargo nextest run --test-dir integration && cargo nextest run --test-dir e2e` | `ci && pytest tests/integration && pytest tests/e2e` | `ci && go test ./tests/integration/... && go test ./tests/e2e/...` |
 
-`check` ใช้ `format` (write) สำหรับ local dev — `ci` ใช้ `format:check` (read-only) เพื่อไม่ mutate files ใน pipeline
+`check` uses `format` (write) for local dev — `ci` uses `format:check` (read-only) so files aren't mutated in the pipeline
 
 ## Watch Mode Scripts
 
@@ -76,7 +76,7 @@ Scripts พื้นฐานที่ทุกโปรเจกต์ต้อ
 | deps:analyze | `bunx depcheck` | `bunx depcheck` | `bunx depcheck` | `bunx depcheck` | `bunx depcheck` | `bunx depcheck` | `cargo outdated` | `pip-audit` | `go mod verify` |
 | deps:update | `taze -r -w -i` | `taze -r -w -i` | `taze -r -w -i` | `taze -r -w -i` | `taze -r -w -i` | `taze -r -w -i` | `cargo update` | `pip install -U -r requirements.txt` | `go get -u ./... && go mod tidy` |
 
-`deps:update` ใช้ `-i` (interactive) ได้เพราะรันด้วยมือ — `prepare` ห้ามใช้ `-i` เพราะจะ hang ใน CI
+`deps:update` may use `-i` (interactive) because it's run manually — `prepare` must never use `-i` or it hangs in CI
 
 ## Database Scripts
 
@@ -96,7 +96,7 @@ Scripts พื้นฐานที่ทุกโปรเจกต์ต้อ
 | bench:server | `bunx autocannon` | `bunx autocannon` | `bunx autocannon` | `bunx autocannon` | `bunx autocannon` | `bunx autocannon` | - | - | - |
 | bench:memory | `bunx clinic` | `bunx clinic` | `bunx clinic` | `bunx clinic` | `bunx clinic` | `bunx clinic` | - | `memory_profiler` | `pprof` |
 
-- `release` ไม่อยู่ใน package manifest — release ทำผ่าน CI/CD workflow บน tag หรือ `/run-release`
+- `release` doesn't belong in the package manifest — release via CI/CD workflow on a tag or `/run-release`
 
 ## Security Scripts
 
@@ -118,11 +118,11 @@ Scripts พื้นฐานที่ทุกโปรเจกต์ต้อ
 |------|-----|------|---------|------------|----------|-------|------|--------|----|
 | docs | `vitepress dev` | `vitepress dev` | `vitepress dev` | `vitepress dev` | `vitepress dev` | `vitepress dev` | `mdbook serve` | `mkdocs serve` | `godoc` |
 
-ใช้เฉพาะ project ที่มี docs site — ไม่ใช่ required
+Use only for projects with a docs site — not required
 
 ## Secrets Scripts (Infisical)
 
-เพิ่มที่ root `package.json` เมื่อ project ใช้ `.infisical.json` / secret manager:
+Add to the root `package.json` when the project uses `.infisical.json` / a secret manager:
 
 | Task | Command |
 |------|---------|
@@ -133,7 +133,7 @@ Scripts พื้นฐานที่ทุกโปรเจกต์ต้อ
 
 ## Monorepo Scripts (Bun Workspaces)
 
-เพิ่มที่ root `package.json` สำหรับ run ทุก workspace:
+Add to the root `package.json` to run across every workspace:
 
 | Task | Command |
 |------|---------|
@@ -144,7 +144,7 @@ Scripts พื้นฐานที่ทุกโปรเจกต์ต้อ
 
 ## Review CLI Scripts
 
-ถ้า project ใช้ `tools/review-codebase` workspace:
+If the project uses a `tools/review-codebase` workspace:
 
 | Task | Bun |
 |------|-----|
@@ -153,7 +153,7 @@ Scripts พื้นฐานที่ทุกโปรเจกต์ต้อ
 
 ## Other Ecosystems
 
-Coverage สำหรับภาษาที่มี `follow-lang-*` skill แต่ไม่มีคอลัมน์ข้างบน — Minimal level เท่านั้น:
+Coverage for languages that have a `follow-lang-*` skill but no column above — Minimal level only:
 
 | Task | Kotlin (Gradle) | PHP (Composer) | Swift (SPM) | Zig | Lua | C# (.NET) |
 |------|-----------------|----------------|-------------|-----|-----|-----------|

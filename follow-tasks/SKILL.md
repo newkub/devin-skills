@@ -1,6 +1,6 @@
 ---
 name: follow-tasks
-description: ตั้งค่า scripts ใน package.json, Cargo.toml หรือ moon.yml ตามมาตรฐาน
+description: Set up scripts in package.json, Cargo.toml, or moon.yml per the standard
 argument-hint: "[scope]"
 related:
   - follow-secret-manager
@@ -14,130 +14,130 @@ related:
   - use-scripts
   - follow-monorepo
   - follow-tool-moonrepo
-  - deep-review
+  - deep-review-codebase
   - update-version-to-latest
 
 ---
 ## Goal
 
-ตั้งค่า scripts ใน `package.json` หรือ `Cargo.toml` ตามมาตรฐาน Minimal, Standard, Complete
+Set up scripts in `package.json` or `Cargo.toml` per the Minimal, Standard, Complete tiers
 
 ## Scope
 
-ตั้งค่า scripts สำหรับ packages และ workspaces ใน monorepo ไม่รวมการเขียน config files เอง (ใช้ `/deep-review`); ประสานงานกับ `/run-scan`, `/run-lint`, `/run-typecheck`, `/run-build`, `/run-test` (coverage) เพื่อรัน scripts ที่ตั้งค่า
+Setting up scripts for packages and workspaces in a monorepo; excludes hand-writing config files (use `/deep-review-codebase`); coordinates with `/run-scan`, `/run-lint`, `/run-typecheck`, `/run-build`, `/run-test` (coverage) to execute the configured scripts
 
 ## Execute
 
 ### 1. Check Prerequisites
 
-> Goal: ตรวจสอบ project structure และ tools ก่อนเริ่มตั้งค่า scripts
+> Goal: check the project structure and tools before configuring scripts
 
-1. ตรวจสอบ `package.json` หรือ `Cargo.toml` ว่ามีอยู่ — ถ้าไม่มี → stop และ report
-2. ตรวจสอบ monorepo (หลาย `package.json`, workspace config, git submodules) — ถ้าเป็น monorepo ทำ `/follow-monorepo` ก่อน
-   - ถ้ามี `.moon/workspace.yml` หรือ `moon.yml` → ทำ `/follow-tool-moonrepo` ก่อน แล้วใช้ moonrepo mode (ดู Rules §3)
-3. ยืนยัน tools ติดตั้งแล้ว: Node.js/Bun (`biome`, `vitest` หรือ `bun test`), Rust (`cargo-nextest`, `cargo-llvm-cov`), Python (`pytest`, `ruff`), Go (`go test`, `golangci-lint`)
-4. ถ้า tool จำเป็นไม่มี → stop และ report
+1. Confirm `package.json` or `Cargo.toml` exists — missing → stop and report
+2. Check for a monorepo (multiple `package.json`, workspace config, git submodules) — if it's a monorepo, run `/follow-monorepo` first
+   - If `.moon/workspace.yml` or `moon.yml` exists → run `/follow-tool-moonrepo` first, then use moonrepo mode (see Rules §3)
+3. Confirm the tools are installed: Node.js/Bun (`biome`, `vitest` or `bun test`), Rust (`cargo-nextest`, `cargo-llvm-cov`), Python (`pytest`, `ruff`), Go (`go test`, `golangci-lint`)
+4. If a required tool is missing → stop and report
 
 ### 2. Update Dependencies
 
-> Goal: ตรวจสอบ package manager และ update dependencies ตาม ecosystem
+> Goal: identify the package manager and update dependencies per ecosystem
 
-1. ตรวจสอบ package manager (`bun`, `npm`, `pnpm`, `yarn`, `cargo`, `pip`, `go`)
+1. Identify the package manager (`bun`, `npm`, `pnpm`, `yarn`, `cargo`, `pip`, `go`)
 Latest: `taze@21.1.0`, `lefthook@2.1.14` (verified 2026-09-16)
 
-2. สำหรับ Node.js/Bun → ทำ `/follow-tool-taze` เพื่อตั้งค่า Taze สำหรับ dependency updates
-3. สำหรับ tools ที่จัดการด้วย mise → รัน `mise upgrade` เพื่ออัปเดต dev tools (เช่น `bun`, `gitleaks`, `hk`); ถ้าต้องการ bump version ใน `mise.toml` ด้วย → ใช้ `mise upgrade --bump`
-4. Update ตาม ecosystem: Node.js/Bun ใช้ `taze` (Root Only), Rust ใช้ `cargo update`, Python ใช้ `pip install -U`, Go ใช้ `go get -u ./... && go mod tidy`
-5. หลังตั้งค่าเสร็จ → ทำ `/update-version-to-latest` เพื่อ bump dependencies ทั้งหมดเป็น latest เสมอ
-6. สำหรับ monorepo ที่ใช้ Bun: `taze` และ `lefthook install` ต้องอยู่เฉพาะ root `package.json` — workspace packages ไม่มี `prepare` script — root: `"prepare": "bunx taze -r -w && bunx lefthook install"` (ห้าม `-i` ใน `prepare` — interactive จะ hang ใน CI; ใช้ `-i` เฉพาะ `deps:update` ที่รันด้วยมือ)
-7. ถ้า update fail → retry (max 3 → stop/report)
+2. For Node.js/Bun → run `/follow-tool-taze` to set up Taze for dependency updates
+3. For tools managed by mise → run `mise upgrade` to update dev tools (e.g. `bun`, `gitleaks`, `hk`); to also bump versions in `mise.toml` → use `mise upgrade --bump`
+4. Update per ecosystem: Node.js/Bun uses `taze` (Root Only), Rust uses `cargo update`, Python uses `pip install -U`, Go uses `go get -u ./... && go mod tidy`
+5. After setup → run `/update-version-to-latest` to always bump all dependencies to latest
+6. For Bun monorepos: `taze` and `lefthook install` must live only in the root `package.json` — workspace packages have no `prepare` script — root: `"prepare": "bunx taze -r -w && bunx lefthook install"` (never `-i` in `prepare` — interactive mode hangs in CI; use `-i` only in the manually run `deps:update`)
+7. If the update fails → retry (max 3 → stop/report)
 
 ### 3. Select Template Level
 
-> Goal: เลือกระดับ scripts ตามขนาดและความซับซ้อนของโปรเจกต์
+> Goal: pick the scripts tier by project size and complexity
 
-1. ประเมินขนาดโปรเจกต์และความต้องการ testing/deployment
-2. เลือกระดับตาม Rules section 1: Minimal (ทุกโปรเจกต์), Standard (testing + deps management), Complete (infra/tooling team)
-3. ถ้าไม่แน่ใจ → เริ่มด้วย Minimal และขยายภายหลัง
+1. Assess the project size and testing/deployment needs
+2. Choose the tier per Rules section 1: Minimal (every project), Standard (testing + deps management), Complete (infra/tooling team)
+3. If unsure → start with Minimal and extend later
 
 ### 4. Apply Scripts
 
-> Goal: ตั้งค่า scripts ในทุก workspace ตาม tech stack และ template level ที่เลือก
+> Goal: configure scripts in every workspace per the chosen tech stack and template level
 
-1. เลือก command จาก [references/scripts-tables.md](references/scripts-tables.md) ตาม tech stack — JS/Bun แก้ `package.json` โดยตรง; Rust/Python/Go ใช้ task runner ตาม Script Mechanism (`justfile`, `cargo-make`, `xtask`, `Makefile`, `poe`, `Taskfile.yml`)
-2. ทำ `/use-scripts` สำหรับ apply — Single workspace แก้ไข manifest/task file โดยตรง; Multiple workspaces ทำ `/follow-monorepo` ก่อน
-3. ถ้า operations > 10 ไฟล์ → ใช้ `/use-scripts` เพื่อ batch update
-4. ถ้า apply fail → retry (max 3 → stop/report)
+1. Pick commands from [references/scripts-tables.md](references/scripts-tables.md) per tech stack — JS/Bun edits `package.json` directly; Rust/Python/Go use a task runner per the Script Mechanism (`justfile`, `cargo-make`, `xtask`, `Makefile`, `poe`, `Taskfile.yml`)
+2. Run `/use-scripts` to apply — single workspace: edit the manifest/task file directly; multiple workspaces: run `/follow-monorepo` first
+3. If the operation touches > 10 files → use `/use-scripts` for the batch update
+4. If applying fails → retry (max 3 → stop/report)
 
 ### 5. Setup Config And Secrets
 
-> Goal: ตั้งค่า config files, ตั้งค่า secrets management ไปพร้อมกัน
+> Goal: configure config files and secrets management together
 
-1. `/deep-review` ตาม tech stack ที่ detect ได้, ตรวจสอบ `.infisical.json` ว่ามีหรือไม่
-2. ถ้ามี `.infisical.json` หรือใช้ secret manager → ทำ `/follow-secret-manager` เพื่อตั้งค่า secrets scripts
-3. ตรวจสอบว่า scripts ที่ต้องการ secrets (`dev`, `build`, `deploy`) ใช้ `infisical run -- <command>` ครอบ — เพิ่ม root scripts `secrets:dev`, `secrets:build`, `secrets:export`, `secrets:run` (ตารางใน reference)
-4. ตรวจสอบว่า `INFISICAL_TOKEN` ตั้งค่าใน CI/CD แล้ว — ถ้าไม่มี → report และขอให้ตั้งค่า
-5. รันเฉพาะ workflows ที่จำเป็น ไม่รันทุก workflow — ถ้า config fail → retry (max 3 → stop/report)
+1. `/deep-review-codebase` per the detected tech stack; check whether `.infisical.json` exists
+2. If `.infisical.json` exists or a secret manager is in use → run `/follow-secret-manager` to set up secrets scripts
+3. Ensure scripts that need secrets (`dev`, `build`, `deploy`) are wrapped with `infisical run -- <command>` — add root scripts `secrets:dev`, `secrets:build`, `secrets:export`, `secrets:run` (table in the reference)
+4. Confirm `INFISICAL_TOKEN` is set in CI/CD — if missing → report and request it be set
+5. Run only the necessary workflows, not every one — if the config fails → retry (max 3 → stop/report)
 
 ### 6. Validate
 
-> Goal: ตรวจสอบ scripts syntax และยืนยัน commands ทำงานได้จริง
+> Goal: check scripts syntax and confirm the commands really run
 
-1. ตรวจสอบ scripts syntax ใน `package.json` หรือ task runner file — ถ้า syntax invalid → fix และ recheck (max 3 → stop)
-2. ยืนยัน `check` script = `format && lint && typecheck && scan` (format ก่อน lint) และ `verify` = `check && test && build` สำหรับ project เล็ก; project ใหญ่ `verify` อย่างน้อย `check && test` — `ci` ต้อง read-only ผ่าน `format:check` ไม่ใช่ `format`
-3. ทำ `/run-test all` เพื่อรัน unit, integration, e2e, coverage
-4. ทดสอบรัน `bun run verify` — ถ้า fail → แก้ไขและ retry (max 3 → stop/report)
-5. ถ้า project มี `tools/review-codebase` workspace → รัน `bun run review-codebase` เพื่อ review codebase ครั้งแรก — ถ้า fail → ใช้ `/deep-review` เพื่อสร้าง/อัปเดต CLI แล้ว retry
+1. Check the scripts syntax in `package.json` or the task runner file — invalid syntax → fix and recheck (max 3 → stop)
+2. Confirm `check` script = `format && lint && typecheck && scan` (format before lint) and `verify` = `check && test && build` for small projects; large projects' `verify` at least `check && test` — `ci` must be read-only via `format:check`, not `format`
+3. Run `/run-test all` to execute unit, integration, e2e, coverage
+4. Test-run `bun run verify` — if it fails → fix and retry (max 3 → stop/report)
+5. If the project has a `tools/review-codebase` workspace → run `bun run review-codebase` for a first codebase review — if it fails → use `/deep-review-codebase` to create/update the CLI, then retry
 
 ## Rules
 
 ### 1. Scripts Levels And Root Only
 
-เลือกระดับตามขนาดและความซับซ้อนของโปรเจกต์
-- Minimal (Default): dev, build, typecheck, lint, format, test, scan, check, verify, ci - เหมาะสำหรับโปรเจกต์ส่วนใหญ่
-- Standard: Minimal + test:watch, test:coverage, deps:analyze, clean, security, db scripts, predeploy, deploy:staging - เหมาะสำหรับโปรเจกต์ที่ต้องการ testing และ dependency management เพิ่มเติม
-- Complete: Standard + build:watch, typecheck:watch, test:integration, test:e2e, benchmarks, prerelease, db:studio - เหมาะสำหรับ infra/tooling team
+Pick the tier by project size and complexity
+- Minimal (Default): dev, build, typecheck, lint, format, test, scan, check, verify, ci - fits most projects
+- Standard: Minimal + test:watch, test:coverage, deps:analyze, clean, security, db scripts, predeploy, deploy:staging - fits projects needing extra testing and dependency management
+- Complete: Standard + build:watch, typecheck:watch, test:integration, test:e2e, benchmarks, prerelease, db:studio - fits infra/tooling teams
 
-สำหรับ monorepo ที่ใช้ Bun:
-- `taze` และ `lefthook install` ต้องอยู่เฉพาะ root `package.json` เท่านั้น
-- Workspace packages ไม่มี `prepare` script
-- Root `package.json`: `"prepare": "bunx taze -r -w && bunx lefthook install"` — ห้าม `-i` ใน `prepare` (interactive hang ใน CI); `-i` ใช้เฉพาะ `deps:update` ที่รันด้วยมือ
+For Bun monorepos:
+- `taze` and `lefthook install` must live only in the root `package.json`
+- Workspace packages have no `prepare` script
+- Root `package.json`: `"prepare": "bunx taze -r -w && bunx lefthook install"` — never `-i` in `prepare` (interactive hangs in CI); `-i` only in the manually run `deps:update`
 
 ### 2. Script Tables
 
-ตาราง command lookup ทั้งหมดอยู่ที่ [references/scripts-tables.md](references/scripts-tables.md) — single source of truth ครอบ:
+All command-lookup tables live in [references/scripts-tables.md](references/scripts-tables.md) — the single source of truth covering:
 
-- `Script Mechanism` — `Cargo.toml`/Python/Go ไม่มี script runner ในตัว → ใช้ `justfile`, `cargo-make`, `xtask`, `Makefile`, `poe`, `nox`, `Taskfile.yml` (ห้ามใส่ scripts ใน `Cargo.toml`)
+- `Script Mechanism` — `Cargo.toml`/Python/Go have no built-in script runner → use `justfile`, `cargo-make`, `xtask`, `Makefile`, `poe`, `nox`, `Taskfile.yml` (never put scripts in `Cargo.toml`)
 - `Bun-Native Alternatives` — `bun test`, `bun audit`, `bun ci`, `bun run --workspaces`, `bun --filter`
-- `Required / Watch / Testing / Deps / Database / Prerelease+Bench / Security / Deploy / Docs` — ครบทุก stack: Bun, Nuxt (`nuxi` commands), Next.js, Solid Start, SvelteKit, Tauri, Rust, Python, Go
+- `Required / Watch / Testing / Deps / Database / Prerelease+Bench / Security / Deploy / Docs` — every stack covered: Bun, Nuxt (`nuxi` commands), Next.js, Solid Start, SvelteKit, Tauri, Rust, Python, Go
 - `Secrets, Monorepo, Review CLI, Other Ecosystems` (Kotlin, PHP, Swift, Zig, Lua, C#)
 
-กฎสำคัญที่ผูกกับตาราง:
-- `check` = `format && lint && typecheck && scan` (format write — local dev)
-- `ci` = `format:check && lint && typecheck && scan && test && build` (read-only — ไม่ mutate files ใน pipeline)
-- `verify` = `check && test && build` (project เล็ก); project ใหญ่อย่างน้อย `check && test`
-- `release` ไม่อยู่ใน package manifest — release ทำผ่าน CI/CD workflow บน tag หรือ `/run-release`
-- ถ้ามี `tools/review-codebase` workspace → เพิ่ม `review-codebase` scripts (ตารางใน reference) แล้วรัน `bun run review-codebase` ครั้งแรก — ถ้า fail ใช้ `/deep-review`
+Key rules tied to the tables:
+- `check` = `format && lint && typecheck && scan` (format writes — local dev)
+- `ci` = `format:check && lint && typecheck && scan && test && build` (read-only — no file mutation in the pipeline)
+- `verify` = `check && test && build` (small projects); large projects at least `check && test`
+- `release` does not belong in the package manifest — release via CI/CD workflows on a tag or `/run-release`
+- If a `tools/review-codebase` workspace exists → add the `review-codebase` scripts (table in the reference) and run `bun run review-codebase` once — if it fails, use `/deep-review-codebase`
 
 ### 3. Moonrepo Mode
 
-ถ้า project ใช้ moonrepo (มี `.moon/workspace.yml` หรือ `moon.yml`):
+If the project uses moonrepo (has `.moon/workspace.yml` or `moon.yml`):
 
-- ใช้ `moon.yml` แทน `package.json` scripts ทั่วไป — แก้ไขเพิ่มเติม `.moon/tasks/all.yml` สำหรับ shared tasks เช่น `build`, `test`, `typecheck`, `lint`
-- แต่ละ workspace `moon.yml` กำหนดเฉพาะ project-specific tasks — ไม่ต้องกำหนด `project` ซ้ำทุกไฟล์ ใช้ `id` และ `.moon/tasks/all.yml` เป็นหลัก
-- กำหนด `package.json` scripts ให้ชี้ไปที่ `moon run <task>` เฉพาะที่จำเป็น
-- ห้ามนิยาม task เดียวกันทั้งใน `moon.yml` และ `package.json` scripts — `package.json` มีเฉพาะ scripts ที่ไม่อยู่ใน `moon.yml`
-- Validate ด้วย `moon run :check`
-- รายละเอียดเต็มทำตาม `/follow-tool-moonrepo`
+- Use `moon.yml` instead of plain `package.json` scripts — edit `.moon/tasks/all.yml` for shared tasks such as `build`, `test`, `typecheck`, `lint`
+- Each workspace's `moon.yml` defines only project-specific tasks — don't repeat `project` in every file; rely on `id` and `.moon/tasks/all.yml`
+- Have `package.json` scripts point at `moon run <task>` only where necessary
+- Never define the same task in both `moon.yml` and `package.json` scripts — `package.json` holds only scripts not in `moon.yml`
+- Validate with `moon run :check`
+- For full details follow `/follow-tool-moonrepo`
 
-- ใช้ /open-web-for-config-secret ถ้าจำเป็น (tasks)
-- ใช้ /run-check ถ้าจำเป็น
-- ใช้ /run-verify ถ้าจำเป็น
+- Use /open-web-for-config-secret if needed (tasks)
+- Use /run-check if needed
+- Use /run-verify if needed
 
 ## Expected Outcome
 
-- `package.json` หรือ task runner file มี scripts ตาม template ที่เลือก (state change)
-- Scripts สอดคล้องกับ tech stack (ตารางใน [references/scripts-tables.md](references/scripts-tables.md))
-- `verify` และ `ci` pipeline ทำงานได้ถูกต้อง — `bun run verify` ผ่าน, `ci` read-only
-- ถ้ามี `tools/review-codebase` รัน `bun run review-codebase` ผ่านหรือทราบสาเหตุที่ยังไม่ผ่าน
-- ถ้ามี Infisical: root `package.json` มี `secrets:*` scripts และ `INFISICAL_TOKEN` ตั้งค่าใน CI/CD
+- `package.json` or the task runner file carries the scripts of the chosen template (state change)
+- Scripts match the tech stack (tables in [references/scripts-tables.md](references/scripts-tables.md))
+- The `verify` and `ci` pipelines work correctly — `bun run verify` passes, `ci` is read-only
+- If `tools/review-codebase` exists, `bun run review-codebase` passes or the failure cause is known
+- With Infisical: root `package.json` has the `secrets:*` scripts and `INFISICAL_TOKEN` is set in CI/CD

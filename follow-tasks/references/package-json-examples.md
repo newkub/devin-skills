@@ -5,7 +5,7 @@ description: Example package.json scripts for Minimal, Standard, Complete templa
 
 # package.json Script Examples
 
-ตัวอย่างด้านล่างใช้ `bun` เป็น default สำหรับ JS/TS ถ้า project ใช้ stack อื่นให้ดูที [scripts-tables.md](scripts-tables.md)
+The examples below default to `bun` for JS/TS; if the project uses another stack, see [scripts-tables.md](scripts-tables.md)
 
 ## Minimal (Default)
 
@@ -99,4 +99,4 @@ description: Example package.json scripts for Minimal, Standard, Complete templa
 }
 ```
 
-หมายเหตุ: `prepare` ใช้เฉพาะ root `package.json` ใน monorepo สำหรับ `taze` และ `lefthook install` — workspace packages ไม่ควรมี `prepare` script
+Note: `prepare` is for the root `package.json` in a monorepo only, for `taze` and `lefthook install` — workspace packages should not have a `prepare` script
