@@ -1,6 +1,6 @@
 ---
 name: follow-tool-dprint
-description: ตั้งค่าและใช้งาน dprint สำหรับ formatting code หลายภาษาด้วย pluggable architecture
+description: Set up and use dprint for multi-language code formatting with a pluggable architecture
 argument-hint: "[scope]"
 related:
   - use-agent-browser
@@ -16,39 +16,39 @@ related:
 
 ## Goal
 
-ตั้งค่าและใช้งาน dprint สำหรับ formatting code หลายภาษาด้วย pluggable architecture
+Set up and use dprint for formatting code in many languages with its pluggable architecture
 
 ## Scope
 
-ใช้สำหรับ project ที่ต้องการ code formatting หลายภาษา
+Use for projects that need multi-language code formatting
 
-- Boundary: dprint เป็น formatter-only แบบ pluggable (TS/JS, JSON, markdown, toml, yaml, CSS, HTML, Python, Go, PHP) — ไม่มี linting; ถ้าต้องการ lint+format สำหรับ JS/TS ใน tool เดียวใช้ `/follow-tool-biome` แทน (หรือใช้ dprint เฉพาะภาษาที่ Biome ไม่ครอบคลุม)
-- Latest: `dprint@0.57.4` (verified 2026-09-24) — ตั้งแต่ 0.56.0 แนะนำใช้ plugins จาก npm registry (`npm:@dprint/...`)
+- Boundary: dprint is a formatter-only, pluggable tool (TS/JS, JSON, markdown, toml, yaml, CSS, HTML, Python, Go, PHP) — no linting; when one tool should lint+format JS/TS, use `/follow-tool-biome` instead (or use dprint only for languages Biome does not cover)
+- Latest: `dprint@0.57.4` (verified 2026-09-24) — since 0.56.0, plugins from the npm registry (`npm:@dprint/...`) are recommended
 - References: [apis](references/apis.md) | [cli](references/cli.md) 
 ## Execute
 
 ### 1. Precondition Check
 
-> Goal: ตรวจสอบ environment ก่อนเริ่มติดตั้ง
+> Goal: check the environment before installing
 
-- ตรวจสอบว่ามี Bun ติดตั้งแล้ว
-- ตรวจสอบว่ามี package.json อยู่แล้ว
-- ตรวจสอบว่า project มี structure ที่ถูกต้อง
+- Check that Bun is installed
+- Check that package.json already exists
+- Check that the project has a correct structure
 
 ### 2. Install Dprint
 
-> Goal: ติดตั้ง dprint ด้วย Bun
+> Goal: install dprint with Bun
 
-- รันคำสั่ง `bun add -D dprint` เพื่อติดตั้ง dprint เป็น dev dependency
-- ตรวจสอบว่า installation สำเร็จโดยตรวจสอบ bun.lock และ package.json
-- ตรวจสอบว่าสามารถรัน `dprint --version` ได้
+- Run `bun add -D dprint` to install dprint as a dev dependency
+- Verify the installation succeeded by checking bun.lock and package.json
+- Verify that `dprint --version` runs
 
 ### 3. Create Configuration File
 
-> Goal: สร้าง dprint.json config file
+> Goal: create the dprint.json config file
 
-- ดาวน์โหลด config จาก reference repository ด้วย `gh download https://github.com/newkub/my-config/blob/main/dprint.json`
-- หรือสร้าง dprint.json ใหม่ด้วย configuration พื้นฐาน:
+- Download the config from the reference repository with `gh download https://github.com/newkub/my-config/blob/main/dprint.json`
+- Or create a new dprint.json with the basic configuration:
 
 ```json [dprint.json]
 {
@@ -76,14 +76,14 @@ related:
 }
 ```
 
-- ตรวจสอบว่า dprint.json ถูกสร้างขึ้นอย่างถูกต้อง
-- ปรับแต่ง configuration ตามความต้องการของ project (ถ้าจำเป็น)
+- Verify that dprint.json was created correctly
+- Adjust the configuration to the project's needs (if necessary)
 
 ### 4. Add Format Scripts
 
-> Goal: เพิ่ม scripts ใน package.json
+> Goal: add scripts to package.json
 
-- เพิ่ม script `format` สำหรับ format files อัตโนมัติ
+- Add a `format` script to format files automatically
 
 ```json [package.json]
 {
@@ -93,48 +93,48 @@ related:
 }
 ```
 
-- ตรวจสอบว่า scripts ถูกเพิ่มเข้าไปใน package.json อย่างถูกต้อง
-- ตรวจสอบว่าไม่มี conflict กับ scripts ที่มีอยู่แล้ว
+- Verify the scripts were added to package.json correctly
+- Verify there is no conflict with existing scripts
 
 ### 5. Verify Installation
 
-> Goal: ทดสอบการทำงานของ dprint
+> Goal: test that dprint works
 
-- รัน `bun run format` เพื่อ format files ทั้งหมด
-- ตรวจสอบว่า dprint ทำงานได้ถูกต้องกับทุก file types ที่ระบุ
-- ตรวจสอบว่า plugins ถูก download และใช้งานได้
+- Run `bun run format` to format all files
+- Verify dprint works correctly with every stated file type
+- Verify the plugins are downloaded and functional
 
 ## Rules
 
-ต้องปฏิบัติตามกฏและข้อกำหนดเหล่านี้เสมอ
+Always follow these rules and requirements
 
-- ต้องใช้ Bun เป็น package manager เสมอสำหรับการติดตั้ง dprint
-- ต้องติดตั้ง dprint เป็น dev dependency เสมอด้วย flag -D
-- ต้องดาวน์โหลด config จาก reference repository ก่อน ถ้ามี
-- ต้องระบุ plugins สำหรับทุกภาษาที่ต้องการรองรับ
-- ต้องกำหนด excludes patterns สำหรับ node_modules, dist, .git เสมอ
-- ต้องเพิ่ม format script ใน package.json
-- ใช้ `dprint add <plugin>` เพื่อเพิ่ม plugin และ `dprint config update` เพื่ออัปเดต plugin versions ใน config
-- ต้องใช้ indentWidth: 2 สำหรับ TypeScript และ JSON
-- ต้องใช้ lineWidth: 100 สำหรับ TypeScript
-- ต้องใช้ quoteStyle: alwaysSingle สำหรับ TypeScript
-- ต้องใช้ semiColons: asi สำหรับ TypeScript
+- Always use Bun as the package manager for installing dprint
+- Always install dprint as a dev dependency with the -D flag
+- Download the config from the reference repository first, when it exists
+- Specify plugins for every language you want to support
+- Always define excludes patterns for node_modules, dist, and .git
+- Add a format script in package.json
+- Use `dprint add <plugin>` to add a plugin and `dprint config update` to update plugin versions in the config
+- Always use indentWidth: 2 for TypeScript and JSON
+- Always use lineWidth: 100 for TypeScript
+- Always use quoteStyle: alwaysSingle for TypeScript
+- Always use semiColons: asi for TypeScript
 
-- ใช้ /use-agent-browser ถ้าจำเป็น
-- ใช้ /use-astgrep ถ้าจำเป็น
-- ใช้ /follow-tool-aube ถ้าจำเป็น
-- ใช้ /follow-tool-usage ถ้าจำเป็น
-- ใช้ /follow-best-practice ถ้าจำเป็น
-- ใช้ /setup-cicd ถ้าจำเป็น
-- ใช้ /follow-tool-biome ถ้าจำเป็น
-- ใช้ /run-lint ถ้าจำเป็น
-- ใช้ /run-format ถ้าจำเป็น
+- Use /use-agent-browser if needed
+- Use /use-astgrep if needed
+- Use /follow-tool-aube if needed
+- Use /follow-tool-usage if needed
+- Use /follow-best-practice if needed
+- Use /setup-cicd if needed
+- Use /follow-tool-biome if needed
+- Use /run-lint if needed
+- Use /run-format if needed
 
-- ดู best-practices/ สำหรับ recommended patterns และ pitfalls
+- See best-practices/ for recommended patterns and pitfalls
 
 ## Expected Outcome
 
-- dprint ติดตั้งและกำหนดค่าใน project
-- รองรับหลายภาษาด้วย pluggable architecture
-- มี `dprint.json` พร้อม plugins และ config
-- มี format script ใน package.json
+- dprint installed and configured in the project
+- Multiple languages supported via the pluggable architecture
+- A `dprint.json` ready with plugins and config
+- A format script present in package.json

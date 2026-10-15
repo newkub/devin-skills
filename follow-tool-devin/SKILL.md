@@ -1,6 +1,6 @@
 ---
 name: follow-tool-devin
-description: Devin/Cascade AI coding assistant สำหรับ autonomous software engineering
+description: Devin/Cascade AI coding assistant for autonomous software engineering
 argument-hint: "[scope]"
 related:
   - follow-create-plugins
@@ -9,119 +9,119 @@ related:
   - follow-tool-usage
   - follow-best-practice
   - setup-cicd
-  - deep-review
+  - deep-review-codebase
   - run-verify
 ---
 
 ## Goal
 
-ใช้ skill นี้เพื่อเข้าใจและใช้งาน Devin/Cascade AI coding assistant สำหรับ autonomous software development, code generation, debugging, และ testing
+Use this skill to understand and operate the Devin/Cascade AI coding assistant for autonomous software development, code generation, debugging, and testing
 
 ## Scope
 
-ใช้สำหรับ:
-- ใช้งาน Devin Desktop และ Cascade ใน Windsurf IDE
-- เข้าใจ AI models (SWE-2, SWE-1.7, SWE-1.6, SWE-1-mini, swe-grep, swe-check)
-- ใช้งาน Spaces และ Agent Client Protocol (ACP)
-- เขียน prompts ที่มีประสิทธิภาพสำหรับ coding agents
-- Debug และ review code ที่ agents สร้าง
-- จัดการ fleets ของ local และ cloud agents
+Use for:
+- Operating Devin Desktop and Cascade in the Windsurf IDE
+- Understanding the AI models (SWE-2, SWE-1.7, SWE-1.6, SWE-1-mini, swe-grep, swe-check)
+- Using Spaces and the Agent Client Protocol (ACP)
+- Writing effective prompts for coding agents
+- Debugging and reviewing code produced by agents
+- Managing fleets of local and cloud agents
 
-- Boundary: skill นี้ครอบคลุมการใช้งาน Devin/Cascade ฝั่ง user — สำหรับอัปเดต Devin CLI/skills ของเครื่องใช้ `/update-devin`; สำหรับกฎและ conventions ของ global skills ดู `/follow-devin-global-skills`
-- Latest model: `SWE-2` (released 2026-09-10, post-trained จาก Kimi K3 2.8T params) (verified 2026-09-13)
+- Boundary: this skill covers using Devin/Cascade from the user side — for updating this machine's Devin CLI/skills use `/update-devin`; for global skills rules and conventions see `/follow-devin-global-skills`
+- Latest model: `SWE-2` (released 2026-09-10, post-trained from Kimi K3 2.8T params) (verified 2026-09-13)
 - References: [apis](references/apis.md) | [cli](references/cli.md) 
 ## Execute
 
 ### 1. Verify Installation
 
-> Goal: Devin CLI พร้อมใช้งานบนเครื่อง
+> Goal: the Devin CLI is ready to use on this machine
 
-1. รัน `devin --version` เพื่อตรวจสอบว่า CLI ติดตั้งแล้ว (ติดตั้งผ่าน Devin Desktop / Cognition distribution — ไม่มี public registry)
-2. รัน `devin --help` เพื่อดู command surface ที่ version ปัจจุบันรองรับ
-3. ถ้าไม่มี → ติดตั้งจาก https://devin.ai — npm package `devin` เป็น package อื่นที่ไม่เกี่ยวข้อง ห้าม install
-4. สำหรับอัปเดต CLI/skills ให้ใช้ `/update-devin`
+1. Run `devin --version` to confirm the CLI is installed (installed via Devin Desktop / Cognition distribution — there is no public registry)
+2. Run `devin --help` to see the command surface the current version supports
+3. If missing → install from https://devin.ai — the npm package `devin` is an unrelated package, do not install it
+4. For CLI/skills updates, use `/update-devin`
 
 ### 2. Start Session
 
-> Goal: เปิด session บน project/branch ที่ถูกต้อง
+> Goal: open a session on the right project/branch
 
-1. รัน `devin` เพื่อเริ่ม interactive session — ระบุ `--project`, `--branch`, `--issue` ตาม context ของ task
-2. ใช้ Spaces (shared context + Git worktrees) เมื่อต้องรัน agents หลายตัวพร้อมกัน
-3. ใช้ Agent Client Protocol (ACP) เมื่อต้อง integrate กับ editor/agent อื่น
+1. Run `devin` to start an interactive session — pass `--project`, `--branch`, `--issue` per the task context
+2. Use Spaces (shared context + Git worktrees) when running several agents concurrently
+3. Use the Agent Client Protocol (ACP) when integrating with other editors/agents
 
 ### 3. Select Model
 
-> Goal: เลือก model ให้เหมาะกับ task
+> Goal: pick the model that fits the task
 
-1. เลือกจาก Rules → Model Selection: `SWE-2` เป็น default สำหรับ coding tasks, `SWE-1-mini` สำหรับ autocomplete, `swe-grep`/`swe-check` สำหรับ retrieval และ quick review
-2. ใช้ `SWE-1.7 Lightning` เมื่อต้องการ latency ต่ำโดยไม่เสีย intelligence
+1. Choose from Rules → Model Selection: `SWE-2` is the default for coding tasks, `SWE-1-mini` for autocomplete, `swe-grep`/`swe-check` for retrieval and quick review
+2. Use `SWE-1.7 Lightning` when low latency is needed without losing intelligence
 
 ### 4. Write Effective Prompts
 
-> Goal: prompt ชัดเจนและแบ่งงานได้
+> Goal: prompts that are clear and divide the work
 
-1. เขียน prompt เฉพาะเจาะจงพร้อม context, requirements และ constraints
-2. แบ่ง task ซับซ้อนเป็น sub-tasks ที่ agents ทำทีละชิ้น
-3. แนบ examples/code snippets เมื่อต้องการ output format เฉพาะ
+1. Write specific prompts with context, requirements, and constraints
+2. Break complex tasks into sub-tasks agents can do one at a time
+3. Attach examples/code snippets when a specific output format is needed
 
 ### 5. Review And Verify Output
 
-> Goal: code จาก agents ปลอดภัยและทำงานจริง
+> Goal: agent-produced code is safe and actually works
 
-1. Review diff ที่ agents สร้าง — ใช้ `/deep-review` สำหรับการเปลี่ยนแปลงใหญ่
-2. ใช้ `swe-check` สำหรับ quick review ระหว่างทำงาน
-3. ทำ `/run-verify` (lint, typecheck, tests) ก่อน accept
-4. ตรวจ security issues และ secrets ก่อน deploy
+1. Review the diffs agents produce — use `/deep-review-codebase` for large changes
+2. Use `swe-check` for quick reviews while working
+3. Do `/run-verify` (lint, typecheck, tests) before accepting
+4. Check for security issues and secrets before deploying
 
 ## Rules
 
 ### 1. Model Selection
 
-- เลือก model ตาม task:
-  - `SWE-2`: Flagship ล่าสุด — frontier-level coding, cost-efficient (multi-effort reasoning)
-  - `SWE-1.7`: Previous flagship, software engineering agents
-  - `SWE-1.7 Lightning`: SWE-1.7 บน Cerebras — latency ต่ำกว่า intelligence เท่ากัน
-  - `SWE-1.6` / `SWE-1.6 Fast`: Generation ก่อนหน้า — general / speed priority
-  - `SWE-1-mini`: Real-time autocomplete (Tab), low latency
-  - `swe-grep`: Context retrieval และ Fast Context
-  - `swe-check`: Quick Review — lightweight code review
+- Pick the model by task:
+  - `SWE-2`: latest flagship — frontier-level coding, cost-efficient (multi-effort reasoning)
+  - `SWE-1.7`: previous flagship, software engineering agents
+  - `SWE-1.7 Lightning`: SWE-1.7 on Cerebras — lower latency, equal intelligence
+  - `SWE-1.6` / `SWE-1.6 Fast`: prior generation — general / speed priority
+  - `SWE-1-mini`: real-time autocomplete (Tab), low latency
+  - `swe-grep`: context retrieval and Fast Context
+  - `swe-check`: quick review — lightweight code review
 
 ### 2. Prompt Engineering
 
-- เขียน prompts ที่ชัดเจนและเฉพาะเจาะจง
-- ระบุ context และ requirements อย่างละเอียด
-- ใช้ examples และ code snippets เมื่อจำเป็น
-- แบ่ง tasks ที่ซับซ้อนเป็น sub-tasks
+- Write clear, specific prompts
+- State the context and requirements in detail
+- Use examples and code snippets when needed
+- Split complex tasks into sub-tasks
 
 ### 3. Code Review
 
-- Review code จาก agents อย่างใกล้ชิด
-- Test code ก่อน deploy
-- Check security vulnerabilities
-- Verify performance แล scalability
+- Review agent-produced code closely
+- Test code before deploying
+- Check for security vulnerabilities
+- Verify performance and scalability
 
 ### 4. Security
 
-- ไม่ใส่ sensitive data ใน prompts
-- Review code สำหรับ security issues
-- ใช้ environment variables สำหรับ secrets
+- Never put sensitive data in prompts
+- Review code for security issues
+- Use environment variables for secrets
 - Follow security best practices
 
-- ใช้ /follow-create-plugins (devin) ถ้าจำเป็น
-- ใช้ /update-devin-global-subagents ถ้าจำเป็น
-- ใช้ /follow-devin-global-skills ถ้าจำเป็น
-- ใช้ /follow-tool-usage ถ้าจำเป็น
-- ใช้ /follow-best-practice ถ้าจำเป็น
-- ใช้ /setup-cicd ถ้าจำเป็น
-- ใช้ /deep-review ถ้าจำเป็น
-- ใช้ /run-verify ถ้าจำเป็น
+- Use /follow-create-plugins (devin) if needed
+- Use /update-devin-global-subagents if needed
+- Use /follow-devin-global-skills if needed
+- Use /follow-tool-usage if needed
+- Use /follow-best-practice if needed
+- Use /setup-cicd if needed
+- Use /deep-review-codebase if needed
+- Use /run-verify if needed
 
-- ดู best-practices/ สำหรับ recommended patterns และ pitfalls
+- See best-practices/ for recommended patterns and pitfalls
 
 ## Expected Outcome
 
-- เข้าใจและใช้งาน Devin/Cascade ได้อย่างมีประสิทธิภาพ
-- เขียน prompts ที่ทำให้ agents ทำงานได้ดีขึ้น
-- Debug และ review code จาก agents ได้อย่างมั่นใจ
-- Deploy code ที่ agents สร้างได้อย่างปลอดภัย
-- Optimize performance ของ agent workflows
+- Devin/Cascade understood and used effectively
+- Prompts written that make agents work better
+- Agent code debugged and reviewed with confidence
+- Agent-produced code deployed safely
+- Agent workflow performance optimized

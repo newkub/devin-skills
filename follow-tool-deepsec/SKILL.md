@@ -1,6 +1,6 @@
 ---
 name: follow-tool-deepsec
-description: ใช้ deepsec ครบวงจร — AI security review ของ codebase — init/scan/process/revalidate/export, matcher generation, sandboxed runs, resume
+description: Use deepsec end to end — AI security review: init/scan/process/export, matchers, sandboxes, resume
 argument-hint: "[command] [--project-id <id>]"
 allowed-tools:
   - exec
@@ -11,99 +11,100 @@ allowed-tools:
   - find_file_by_name
 related:
   - check-secrets
-  - deep-review
+  - deep-review-codebase
+  - follow-tool-security-audit-skill
   - report
 ---
 
 ## Goal
 
-รัน deepsec (deepsec.sh — Vercel OSS) เพื่อ AI-driven security review ของ repo — pipeline: inventory codebase → fast pattern scan (free) → AI review ของ flagged files (paid) → findings ใน `.deepsec/` workspace ที่ resume ได้เสมอ
+Run deepsec (deepsec.sh — Vercel OSS) for an AI-driven security review of the repo — pipeline: inventory the codebase → fast pattern scan (free) → AI review of flagged files (paid) → findings in a `.deepsec/` workspace that is always resumable
 
 ## Scope
 
-ใช้เมื่อต้องการ security audit เชิงลึกของ codebase ด้วย AI agent — secrets hygiene ระดับ config/env → `/check-secrets`; general code review → `/deep-review`; deepsec = dedicated security pipeline ที่ track state, matchers และ findings ต่อ project
+Use when a deep AI-agent security audit of the codebase is needed — config/env-level secrets hygiene → `/check-secrets`; general code review → `/deep-review-codebase`; deepsec = the dedicated security pipeline tracking state, matchers, and findings per project; on-demand multi-phase audit inside the coding agent with independently verified `findings.json` → `/follow-tool-security-audit-skill`
 
-- Boundary: deepsec อ่าน source code ด้วย AI agent ที่ auth เข้า model provider — รันเฉพาะบน code ที่ trust ระดับนั้น; untrusted PRs → guarded CI mode หรือ sandboxes
+- Boundary: deepsec reads source code with an AI agent authenticated to a model provider — run it only on code trusted at that level; untrusted PRs → guarded CI mode or sandboxes
 
 ## Execute
 
 ### 1. Init
 
-> Goal: ตั้งค่า workspace และรัน scan แรก
+> Goal: set up the workspace and run the first scan
 
-1. `bunx deepsec init` ที่ repo root — เลือก model (ตาม DeepSecBench score/cost) + model access (Vercel AI Gateway default, own API key, หรือ local subscriptions)
-2. สร้าง `.deepsec/` (สิ่งเดียวที่เพิ่มใน repo) → inventory → pattern scan → AI review
-3. Headless/CI: `bunx deepsec init --yes --model-profile value --output jsonl` (profile: `best`/`value`/`budget`); preview: `--plan --output json`
-4. Scaffold เฉยๆ: `bunx deepsec init --scaffold-only` → review `.deepsec/` skeleton ก่อนรันจริง
+1. `bunx deepsec init` at the repo root — pick the model (per DeepSecBench score/cost) + model access (Vercel AI Gateway default, own API key, or local subscriptions)
+2. Creates `.deepsec/` (the only thing added to the repo) → inventory → pattern scan → AI review
+3. Headless/CI: `bunx deepsec init --yes --model-profile value --output jsonl` (profiles: `best`/`value`/`budget`); preview: `--plan --output json`
+4. Scaffold only: `bunx deepsec init --scaffold-only` → review the `.deepsec/` skeleton before a real run
 
 ### 2. Resume And Bound
 
-> Goal: คุมเวลา/ต้นทุนและต่อจากจุดเดิม
+> Goal: control time/cost and continue from the same point
 
-1. รัน command เดิมซ้ำ — finished steps ถูก skip อัตโนมัติ (หลัง Ctrl-C, cost limit, connection loss)
-2. Bound ด้วย `--max-cost-usd 100 --max-duration 2h` — duration ต้องมี unit (`ms`/`s`/`m`/`h`)
-3. Exit code `2` = ต้องการ input ที่ headless ให้ไม่ได้ (JSON output บอกวิธี resume); `3` = ถึง cost/duration limit
+1. Re-run the same command — finished steps are skipped automatically (after Ctrl-C, a cost limit, or connection loss)
+2. Bound with `--max-cost-usd 100 --max-duration 2h` — duration requires a unit (`ms`/`s`/`m`/`h`)
+3. Exit code `2` = input needed that headless cannot provide (JSON output explains how to resume); `3` = cost/duration limit reached
 
 ### 3. Everyday Commands
 
-> Goal: ทำงานใน `.deepsec/` workspace
+> Goal: work inside the `.deepsec/` workspace
 
 ```bash
 cd .deepsec
-bunx deepsec status       # สถานะ pipeline
+bunx deepsec status       # pipeline status
 bunx deepsec scan         # fast pattern scan — free, local
-bunx deepsec process      # AI review — ตัวเสียเงิน
-bunx deepsec revalidate   # re-check findings, ตัด false positives
+bunx deepsec process      # AI review — the paid part
+bunx deepsec revalidate   # re-check findings, drop false positives
 bunx deepsec export --format md-dir --out ./findings
-bunx deepsec report       # overview เร็ว
+bunx deepsec report       # quick overview
 ```
 
-- Multi-repo: `bunx deepsec init-project ../svc --id svc` + `bunx deepsec setup --project-id svc`; commands อื่นส่ง `--project-id`
+- Multi-repo: `bunx deepsec init-project ../svc --id svc` + `bunx deepsec setup --project-id svc`; pass `--project-id` to the other commands
 
 ### 4. Auth Options
 
-> Goal: เลือก credential route ให้ถูก
+> Goal: pick the right credential route
 
-1. **Vercel AI Gateway** (default): login Vercel อัตโนมัติ ระหว่าง init
-2. **Own key**: `MY_KEY=... bunx deepsec init --agent codex --model-auth direct --ai-provider openai --ai-api-key-env MY_KEY` — deepsec เก็บแค่ *ชื่อ* env var ไม่เก็บ key; ใส่ใน `.deepsec/.env.local` สำหรับรอบถัดไป
-3. **Local subscriptions**: `--model-auth local` ถ้า `claude`/`codex` CLI login อยู่แล้ว — ยกเว้น `sandbox` ที่ยังต้อง `AI_GATEWAY_API_KEY`
+1. **Vercel AI Gateway** (default): Vercel login happens automatically during init
+2. **Own key**: `MY_KEY=... bunx deepsec init --agent codex --model-auth direct --ai-provider openai --ai-api-key-env MY_KEY` — deepsec stores only the *name* of the env var, never the key; put it in `.deepsec/.env.local` for later runs
+3. **Local subscriptions**: `--model-auth local` when the `claude`/`codex` CLI is already logged in — except `sandbox`, which still requires `AI_GATEWAY_API_KEY`
 
 ### 5. Review Artifacts
 
-> Goal: ปรับคุณภาพ findings
+> Goal: tune finding quality
 
-1. `data/<project>/INFO.md` — คำอธิบาย codebase ที่ inject เข้าทุก AI investigation — แก้ให้แม่น = findings ดีขึ้น
-2. `.deepsec/generated-matchers.ts` — scan patterns ที่ deepsec gen เพื่อ cover gaps — review + commit
-3. Coverage pause (setup หยุดเพราะ inventory ไม่ครบ) → แก้ matchers แล้ว re-run (repair attempts ≤2)
+1. `data/<project>/INFO.md` — the codebase description injected into every AI investigation — making it accurate = better findings
+2. `.deepsec/generated-matchers.ts` — scan patterns deepsec generates to cover gaps — review + commit
+3. Coverage pause (setup stops because the inventory is incomplete) → fix the matchers and re-run (≤2 repair attempts)
 
-### 6. Sandboxes และ Report
+### 6. Sandboxes And Report
 
-> Goal: รันแบบ isolated / สรุปผล
+> Goal: run isolated / summarize results
 
-- `bunx deepsec sandbox process --project-id my-app --sandboxes 10 --concurrency 4` — isolated Vercel sandboxes, host เก็บ credentials (sandbox ไม่เห็น real keys)
-- สรุป findings ให้ user ด้วย `/report`; triage เข้า fix pipeline ผ่าน `/deep-review`
+- `bunx deepsec sandbox process --project-id my-app --sandboxes 10 --concurrency 4` — isolated Vercel sandboxes; the host keeps the credentials (sandboxes never see real keys)
+- Summarize findings for the user with `/report`; triage into the fix pipeline via `/deep-review-codebase`
 
 ## Rules
 
 ### 1. Trust Boundary
 
-- รันเฉพาะบน repo ที่ trust ให้ AI agent อ่าน — untrusted code → CI guarded mode หรือ `--sandboxes`
-- secrets ไม่ commit ลง `.deepsec` ที่ share กับคนอื่น — เก็บใน `.env.local`
+- Run only on repos you trust an AI agent to read — untrusted code → CI guarded mode or `--sandboxes`
+- Secrets are not committed into a `.deepsec` shared with others — keep them in `.env.local`
 
 ### 2. Cost Discipline
 
-- `scan` = free (local patterns); `process`/`revalidate`/`triage` = paid AI — bound ด้วย `--max-cost-usd` เสมอใน session แรก
-- Resume-friendly: ไม่ต้องกลัว interrupt — re-run command เดิมเสมอ
+- `scan` = free (local patterns); `process`/`revalidate`/`triage` = paid AI — always bound with `--max-cost-usd` in the first session
+- Resume-friendly: no need to fear interrupts — always re-run the same command
 
 ### 3. Own The Matchers
 
-- Review `generated-matchers.ts` ก่อน commit — มันกำหนด scan coverage
-- `INFO.md` stale = findings หลอก — อัปเดตเมื่อ codebase เปลี่ยนใหญ่
+- Review `generated-matchers.ts` before committing — it defines the scan coverage
+- A stale `INFO.md` = misleading findings — update it after major codebase changes
 
-- ใช้ /check-secrets ก่อน/หลัง scan สำหรับ hygiene ทั่วไป
-- ใช้ /report สำหรับสรุป findings
+- Use /check-secrets before/after scans for general hygiene
+- Use /report to summarize findings
 
 ## Expected Outcome
 
-- `.deepsec/` workspace พร้อม scan → AI review → exportable findings
-- ทุก run resume ได้, bounded cost, credentials ไม่ leak เข้า sandbox/report
+- `.deepsec/` workspace ready: scan → AI review → exportable findings
+- Every run is resumable, cost-bounded, and credentials never leak into sandboxes/reports

@@ -2,20 +2,20 @@
 
 ## Do
 
-- เริ่มด้วย `--scaffold-only` หรือ `--plan --output json` บน repo ใหม่ — review `.deepsec/` skeleton ก่อนเสียเงิน
-- ตั้ง `--max-cost-usd` + `--max-duration` เสมอในรอบแรก — AI review อาจใช้หลายชั่วโมงบน repo ใหญ่
-- แก้ `INFO.md` ให้แม่น (entry points, auth boundaries, risky areas) — คุณภาพ findings ขึ้นตรงๆ
-- Commit `generated-matchers.ts` หลัง review — มันคือ scan coverage ของ repo นั้น
-- Re-run command เดิมหลัง interrupt — state ใน `.deepsec/` ทำ resume ให้ฟรี
+- Start with `--scaffold-only` or `--plan --output json` on a new repo — review the `.deepsec/` skeleton before spending money
+- Always set `--max-cost-usd` + `--max-duration` on the first run — AI review can take hours on a large repo
+- Keep `INFO.md` accurate (entry points, auth boundaries, risky areas) — finding quality depends on it directly
+- Commit `generated-matchers.ts` after review — it is that repo's scan coverage
+- Re-run the same command after an interrupt — state in `.deepsec/` makes resume free
 
 ## Don't
 
-- อย่ารันบน untrusted PR/code แบบตรงๆ — ใช้ guarded CI mode หรือ `sandbox` (isolate บน Vercel, host เก็บ creds)
-- อย่าเก็บ API key ใน config — deepsec เก็บแค่ env var *name*; key อยู่ใน `.env.local` หรือ env
-- อย่าคาดหวัง `--model-auth local` กับ `sandbox` — machine login broker เข้า sandbox ไม่ได้ ต้อง `AI_GATEWAY_API_KEY`
-- อย่าเพิกเฉย coverage pause — เช็ค inventory state + repair `generated-matchers.ts` ก่อน process
+- Don't run directly on untrusted PR/code — use guarded CI mode or `sandbox` (isolated on Vercel, the host keeps credentials)
+- Don't keep API keys in the config — deepsec stores only the env var *name*; keys belong in `.env.local` or env
+- Don't expect `--model-auth local` with `sandbox` — a machine login can't be brokered into a sandbox; it needs `AI_GATEWAY_API_KEY`
+- Don't ignore a coverage pause — check the inventory state and repair `generated-matchers.ts` before processing
 
 ## Flow
 
-- `scan` (free) → ดู candidates → `process` (paid) → `revalidate` (cut FPs) → `export`/`report`
-- findings → triage เข้า `/deep-review` domain `review-security` หรือ fix pipeline ของ project
+- `scan` (free) → review candidates → `process` (paid) → `revalidate` (cut FPs) → `export`/`report`
+- findings → triage into the `/deep-review-codebase` `review-security` domain or the project's fix pipeline

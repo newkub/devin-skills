@@ -1,33 +1,33 @@
 # dprint — Best Practices
 
-Pluggable multi-language formatter — config discipline และ plugin hygiene
+Pluggable multi-language formatter — config discipline and plugin hygiene
 
 ## Recommended Patterns
 
-- `dprint.json` เดียวที่ root — plugins array ชี้ WASM plugin URLs (`plugins: ["https://plugins.dprint.dev/typescript-x.y.z.wasm", ...]`) พร้อม pin version
-- Pin plugin versions เสมอ — URL มี version อยู่แล้ว; floating = format drift ข้ามทีม/CI
-- Per-language config ภายใต้ language keys (`typescript`, `json`, `markdown`) — global options (`lineWidth`, `indentWidth`, `useTabs`) ที่ top-level
-- `includes`/`excludes` explicit — ไม่ format generated code, `node_modules`, dist, lockfiles
-- `dprint fmt` + `dprint check` (CI) + editor extension — format-on-save เดียวกับ CI gate
+- One `dprint.json` at the root — the plugins array points at WASM plugin URLs (`plugins: ["https://plugins.dprint.dev/typescript-x.y.z.wasm", ...]`) with pinned versions
+- Always pin plugin versions — the URLs already carry the version; floating refs = format drift across teams/CI
+- Per-language config under the language keys (`typescript`, `json`, `markdown`) — global options (`lineWidth`, `indentWidth`, `useTabs`) at the top level
+- Explicit `includes`/`excludes` — never format generated code, `node_modules`, dist, or lockfiles
+- `dprint fmt` + `dprint check` (CI) + the editor extension — format-on-save matches the CI gate
 
 ## Common Pitfalls
 
-- Editor integration: VS Code extension ชี้ `dprint.json` — ถ้า prettier extension ยังเปิด = format conflicts; disable formatter อื่น
-- `dprint config update` อัปเกรด plugin URLs — review diff ก่อน commit (format เปลี่ยน = mass diff)
-- Overlapping tools: dprint vs prettier/biome เลือกตัวเดียวต่อ language — running ทั้งคู่ = flip-flop diffs
-- Incremental cache: `dprint fmt` เร็วเพราะ cache — CI ที่ล้าง cache = ช้ากว่า local; ยอมรับ
-- Config JSON — comments ต้อง `//` ได้เพราะ jsonc support; แต่ JSON5 features อื่นไม่รองรับทั้งหมด
+- Editor integration: the VS Code extension points at `dprint.json` — if the prettier extension is still enabled = format conflicts; disable other formatters
+- `dprint config update` upgrades plugin URLs — review the diff before committing (a format change = a mass diff)
+- Overlapping tools: dprint vs prettier/biome — pick one per language — running both = flip-flopping diffs
+- Incremental cache: `dprint fmt` is fast because of the cache — CI that clears the cache = slower than local; accept it
+- The config is JSON — `//` comments work thanks to jsonc support, but other JSON5 features are not fully supported
 
 ## Perf Notes
 
-- WASM plugins เร็วมาก — อย่า spawn `dprint fmt` ต่อไฟล์; run ครั้งเดียวทั้ง repo
-- `dprint check` ใน CI แทน `fmt` + diff — fail fast ไม่ dirty working tree
+- WASM plugins are very fast — do not spawn `dprint fmt` per file; run once for the whole repo
+- Use `dprint check` in CI instead of `fmt` + diff — fails fast without dirtying the working tree
 
 ## Do / Don't
 
 | Do | Don't |
 |----|-------|
-| pin plugin versions ใน URLs | floating plugin refs |
-| `dprint check` ใน CI | `fmt` แล้ว hope clean |
-| excludes generated/vendor code | format lockfiles/dist |
-| formatter เดียวต่อ language | prettier+dprint ชนกัน |
+| pin plugin versions in the URLs | floating plugin refs |
+| `dprint check` in CI | `fmt` then hope it's clean |
+| exclude generated/vendor code | format lockfiles/dist |
+| one formatter per language | prettier+dprint clashing |
