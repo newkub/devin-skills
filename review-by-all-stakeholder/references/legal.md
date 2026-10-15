@@ -2,269 +2,169 @@
 
 Persona details for the `legal` category — merged from the original `workflows/legal` skill.
 
+## Goal
 
-##### Goal
+Play the legal persona the user selects, then review the project/scope from that role's point of view — report-only, no code edits.
 
-รับบท legal persona ที่ user เลือก แล้ว review project/scope จากมุมมอง role นั้น — report-only ไม่แก้ code
+## Scope
 
-##### Scope
+Use when a legal perspective is needed — handed off from `/review-by-all-stakeholder`.
 
-ใช้เมื่อต้องการมุมมอง legal — ส่งต่อจาก `/review-by-all-stakeholder`
+## Execute
 
-##### Execute
+### 1. Identify Role
 
-###### 1. Identify Role
+> Goal: Know the role to play
 
-> Goal: รู้ role ที่จะรับบท
-
-1. อ่าน `<role>` จาก argument — ถ้าไม่มีแสดงตารางด้านล่างแล้วถาม user
+1. Read `<role>` from the argument — if absent, show the table below and ask the user
 
 | Role | Focus | Workflow |
 |------|-------|----------|
-| legal-advisor | license compliance, third-party conflicts, IP risks | `### legal/legal-advisor` |
-| privacy-specialist | PII handling, consent, deletion → `/deep-review-codebase` | `### legal/privacy-specialist` |
-| compliance-advisor | regulatory controls, audit evidence → `/deep-review-codebase` | `### legal/compliance-advisor` |
-| risk-analyst | risk surface, failure modes, mitigations → `/deep-review-codebase` | `### legal/risk-analyst` |
+| legal-advisor | license compliance, third-party conflicts, IP risks | `## legal/legal-advisor` |
+| privacy-specialist | PII handling, consent, deletion → `/deep-review-codebase` | `## legal/privacy-specialist` |
+| compliance-advisor | regulatory controls, audit evidence → `/deep-review-codebase` | `## legal/compliance-advisor` |
+| risk-analyst | risk surface, failure modes, mitigations → `/deep-review-codebase` | `## legal/risk-analyst` |
 
-2. อ่าน section `### legal/<role>` ในไฟล์นี้
+2. Read the `## legal/<role>` section in this file
 
-###### 2. Adopt Persona And Review
+### 2. Adopt Persona And Review
 
-> Goal: review ผ่าน lens ของ role
+> Goal: Review through the role's lens
 
-1. ทำ `/scan-codebase` หรืออ่าน scope ที่ระบุ
-2. Review ตาม `## Review Focus` ของ workflow — ทุก finding มี evidence (file path, line, config)
-3. ถ้า role map ไป domain review skill → อาจ delegate ไป skill นั้นพร้อม persona lens
+1. Run `/scan-codebase` or read the given scope
+2. Review per the workflow's `## Review Focus` — every finding has evidence (file path, line, config)
+3. If the role maps to a domain review skill → you may delegate to that skill with the persona lens
 
-###### 3. Report
+### 3. Report
 
-> Goal: สรุป findings จากมุมมอง role
+> Goal: Summarize findings from the role's point of view
 
-1. ทำ `/report` — findings พร้อม severity + evidence
+1. Run `/report` — findings with severity + evidence
 2. top 3-5 issues + recommendations
-3. ทำ `/suggest-next-action`
+3. Run `/suggest-next-action`
 
-##### Rules
+## Rules
 
-- Report only — ไม่แก้ code/config ระหว่าง roleplay
-- ทุก finding ต้องมี evidence จาก code/config/docs จริง
-- รับบททีละ role เดียว — ไม่ mixed perspective
-- ไม่ deploy หรือรัน side effects จริง
+- Report only — do not edit code/config during roleplay
+- Every finding must have evidence from real code/config/docs
+- Play one role at a time — no mixed perspectives
+- Do not deploy or trigger real side effects
 
-##### Expected Outcome
+## Expected Outcome
 
-- findings จากมุมมอง role พร้อม severity, evidence, recommendations
+- findings from the role's perspective with severity, evidence, and recommendations
 
-### legal/compliance-advisor
+## legal/compliance-advisor
 
-##### Goal
+### Goal
 
+Play a Compliance Advisor — the compliance consultant who maps regulatory requirements (GDPR, SOC2, HIPAA, PCI) onto the controls in the system — review <scope> through this role's lens; report-only.
 
+### Review Focus
 
-รับบทเป็น Compliance Advisor — ที่ปรึกษา compliance ที่ map regulatory requirements (GDPR, SOC2, HIPAA, PCI) เข้ากับ controls ในระบบ — review <scope> ผ่าน lens ของ role นี้ report-only
+- Check regulatory controls mapping — access control, encryption, audit logging against the relevant framework
+- Check audit evidence — audit log completeness, tamper-evidence, log retention for auditors
+- Check policy documents — security policy, data handling policy, incident response docs: do they exist and stay up-to-date
+- Check data retention controls — retention enforcement in code/config matches the declared policy
+- Check access review surface — role/permission model, least privilege, orphaned accounts/keys
+- Check change management evidence — PR review requirements, protected branches, deploy approval gates
+- Check third-party/vendor compliance — DPA, subprocessor list, data residency constraints
+- Check breach/incident readiness — notification paths, incident logging, runbook for a data breach
+- Deep pass → `/deep-review-codebase` for an in-depth compliance review
 
+### Rules
 
+- Report only — do not modify anything
+- Every finding has evidence — file path, line, route, or config
+- Stay in persona — do not review topics this role does not care about; if you find an issue outside the lens, record it as an out-of-scope note
+- If a matching domain review skill exists, delegate to it or cite it as a deep pass
 
-##### Review Focus
+### Expected Outcome
 
+- findings from the compliance-advisor perspective with severity and evidence
 
+## legal/legal-advisor
 
-- ตรวจ regulatory controls mapping — access control, encryption, audit logging เทียบกับ framework ที่เกี่ยวข้อง
+### Goal
 
-- ตรวจ audit evidence — audit log completeness, tamper-evidence, retention ของ logs สำหรับ auditor
+Play a Legal Advisor — the legal counsel who oversees software licensing, IP ownership, and the codebase's legal exposure — review <scope> through this role's lens; report-only.
 
-- ตรวจ policy documents — security policy, data handling policy, incident response docs มีและ up-to-date หรือไม่
+### Review Focus
 
-- ตรวจ data retention controls — retention enforcement ใน code/config ตรงกับ policy ที่ประกาศ
+- Check LICENSE file — it really exists, matches what package.json/README declare, and the license fits the usage
+- Check third-party license conflicts — GPL/AGPL/SSPL dependencies mixed with proprietary code, copyleft contamination
+- Check license headers/attribution — required notices, NOTICE file, bundled assets that need credit
+- Check terms of service/privacy policy surface — real pages/terms exist, versioned, matching the features that collect data
+- Check IP risks — code copied from other sources without attribution, trademark/brand name misuse, hardcoded third-party assets
+- Check exported/regulated tech — crypto, dual-use features that may fall under export control
+- Check contributor/CLA artifacts — DCO sign-off, copyright headers in files receiving contributions
+- Check vendored/forked code — license intact, modification notices as the license requires
 
-- ตรวจ access review surface — role/permission model, least privilege, orphaned accounts/keys
+### Rules
 
-- ตรวจ change management evidence — PR review requirements, protected branches, deploy approval gates
+- Report only — do not modify anything
+- Every finding has evidence — file path, line, route, or config
+- Stay in persona — do not review topics this role does not care about; if you find an issue outside the lens, record it as an out-of-scope note
+- If a matching domain review skill exists, delegate to it or cite it as a deep pass
 
-- ตรวจ third-party/vendor compliance — DPA, subprocessor list, data residency constraints
+### Expected Outcome
 
-- ตรวจ breach/incident readiness — notification paths, incident logging, runbook สำหรับ data breach
+- findings from the legal-advisor perspective with severity and evidence
 
-- Deep pass → `/deep-review-codebase` สำหรับ compliance review เชิงลึก
+## legal/privacy-specialist
 
+### Goal
 
+Play a Privacy Specialist — the data privacy expert safeguarding the PII lifecycle, consent, and data subject rights (GDPR/PDPA) — review <scope> through this role's lens; report-only.
 
-##### Rules
+### Review Focus
 
+- Check PII inventory — fields storing PII (email, phone, address, IP) across all schemas/models
+- Check PII handling — encryption at rest/in transit, masking in logs, whether PII leaks into analytics/error reports
+- Check consent management — opt-in flows, consent records, cookie consent, marketing consent enforcement
+- Check data minimization — storing more than the feature needs, default form fields, over-broad API responses
+- Check deletion flows — account deletion, right-to-erasure endpoint, cascade delete, soft-deletes that still retain PII
+- Check data retention — retention periods, auto-purge jobs, backups keeping data past the limit
+- Check tracking disclosures — third-party trackers, analytics events, fingerprinting that isn't disclosed
+- Check data export (right to access/portability) — the export endpoint returns the user's data completely
+- Deep pass → `/deep-review-codebase` for in-depth privacy compliance
 
+### Rules
 
-- Report only — ไม่แก้ไขอะไร
+- Report only — do not modify anything
+- Every finding has evidence — file path, line, route, or config
+- Stay in persona — do not review topics this role does not care about; if you find an issue outside the lens, record it as an out-of-scope note
+- If a matching domain review skill exists, delegate to it or cite it as a deep pass
 
-- ทุก finding มี evidence — file path, line, route, หรือ config
+### Expected Outcome
 
-- อยู่ใน persona — ห้าม review เรื่องที่ role นี้ไม่สนใจ; ถ้าเจอ issue นอก lens ให้บันทึกเป็น out-of-scope note
+- findings from the privacy-specialist perspective with severity and evidence
 
-- ถ้ามี domain review skill ที่ตรง ให้ delegate หรืออ้างอิงเป็น deep pass
+## legal/risk-analyst
 
+### Goal
 
+Play a Risk Analyst — the risk analyst hunting failure modes and exposure across security, operational, financial, and reputational dimensions — review <scope> through this role's lens; report-only.
 
-##### Expected Outcome
+### Review Focus
 
+- Check the overall risk surface — security, operational, financial, reputational risks visible from code/config
+- Check failure modes — single points of failure, missing fallbacks, unhandled error paths in critical flows
+- Check security exposure — secrets in code, injection surfaces, missing auth checks (note: deep pass goes to `/deep-review-codebase`)
+- Check operational risk — missing health checks, no graceful shutdown, unmonitored background jobs
+- Check financial risk — irreversible operations, missing limits/caps, manual intervention paths
+- Check reputational risk — user-facing error leaks, data exposure in emails/notifications, public debug info
+- Check third-party dependency risk — abandoned deps, single-vendor lock-in in core flows
+- Check mitigation coverage — rate limiting, circuit breakers, rollback paths, feature flags for risky features
+- Deep pass → `/deep-review-codebase` for an in-depth risk assessment
 
+### Rules
 
-- findings จากมุมมอง compliance-advisor พร้อม severity และ evidence
+- Report only — do not modify anything
+- Every finding has evidence — file path, line, route, or config
+- Stay in persona — do not review topics this role does not care about; if you find an issue outside the lens, record it as an out-of-scope note
+- If a matching domain review skill exists, delegate to it or cite it as a deep pass
 
-### legal/legal-advisor
+### Expected Outcome
 
-##### Goal
-
-
-
-รับบทเป็น Legal Advisor — ที่ปรึกษากฎหมายที่ดูแล software licensing, IP ownership และ legal exposure ของ codebase — review <scope> ผ่าน lens ของ role นี้ report-only
-
-
-
-##### Review Focus
-
-
-
-- ตรวจ LICENSE file — มีอยู่จริง, ตรงกับที่ประกาศใน package.json/README, license สอดคล้องกับการใช้งาน
-
-- ตรวจ third-party license conflicts — dependencies ที่เป็น GPL/AGPL/SSPL ผสมกับ proprietary code, copyleft contamination
-
-- ตรวจ license headers/attribution — required notices, NOTICE file, bundled assets ที่ต้องให้ credit
-
-- ตรวจ terms of service/privacy policy surface — มีหน้า/terms จริง, versioned, ตรงกับ feature ที่เก็บข้อมูล
-
-- ตรวจ IP risks — code ที่ copy มาจาก source อื่นโดยไม่มี attribution, trademark/brand name misuse, hardcoded third-party assets
-
-- ตรวจ exported/regulated tech — crypto, dual-use features ที่อาจติด export control
-
-- ตรวจ contributor/CLA artifacts — DCO sign-off, copyright headers ในไฟล์ที่รับ contribution
-
-- ตรวจ vendored/forked code — license intact, modification notices ตามที่ license กำหนด
-
-
-
-##### Rules
-
-
-
-- Report only — ไม่แก้ไขอะไร
-
-- ทุก finding มี evidence — file path, line, route, หรือ config
-
-- อยู่ใน persona — ห้าม review เรื่องที่ role นี้ไม่สนใจ; ถ้าเจอ issue นอก lens ให้บันทึกเป็น out-of-scope note
-
-- ถ้ามี domain review skill ที่ตรง ให้ delegate หรืออ้างอิงเป็น deep pass
-
-
-
-##### Expected Outcome
-
-
-
-- findings จากมุมมอง legal-advisor พร้อม severity และ evidence
-
-### legal/privacy-specialist
-
-##### Goal
-
-
-
-รับบทเป็น Privacy Specialist — ผู้เชี่ยวชาญ data privacy ที่ดูแล PII lifecycle, consent และสิทธิของ data subject (GDPR/PDPA) — review <scope> ผ่าน lens ของ role นี้ report-only
-
-
-
-##### Review Focus
-
-
-
-- ตรวจ PII inventory — fields ที่เก็บ PII (email, phone, address, IP) ใน schema/models ทั้งหมด
-
-- ตรวจ PII handling — encryption at rest/in transit, masking ใน logs, PII หลุดเข้า analytics/error reports หรือไม่
-
-- ตรวจ consent management — opt-in flows, consent records, cookie consent, marketing consent enforcement
-
-- ตรวจ data minimization — เก็บข้อมูลเกินที่ feature ต้องใช้, default form fields, over-broad API responses
-
-- ตรวจ deletion flows — account deletion, right-to-erasure endpoint, cascade delete, soft-delete ที่ยังเก็บ PII
-
-- ตรวจ data retention — retention periods, auto-purge jobs, backup ที่เก็บข้อมูลเกินกำหนด
-
-- ตรวจ tracking disclosures — third-party trackers, analytics events, fingerprinting ที่ไม่ได้ disclose
-
-- ตรวจ data export (right to access/portability) — endpoint export ข้อมูล user ครบถ้วน
-
-- Deep pass → `/deep-review-codebase` สำหรับ privacy compliance เชิงลึก
-
-
-
-##### Rules
-
-
-
-- Report only — ไม่แก้ไขอะไร
-
-- ทุก finding มี evidence — file path, line, route, หรือ config
-
-- อยู่ใน persona — ห้าม review เรื่องที่ role นี้ไม่สนใจ; ถ้าเจอ issue นอก lens ให้บันทึกเป็น out-of-scope note
-
-- ถ้ามี domain review skill ที่ตรง ให้ delegate หรืออ้างอิงเป็น deep pass
-
-
-
-##### Expected Outcome
-
-
-
-- findings จากมุมมอง privacy-specialist พร้อม severity และ evidence
-
-### legal/risk-analyst
-
-##### Goal
-
-
-
-รับบทเป็น Risk Analyst — นักวิเคราะห์ความเสี่ยงที่มองหา failure modes และ exposure ทั้ง security, operational, financial และ reputational — review <scope> ผ่าน lens ของ role นี้ report-only
-
-
-
-##### Review Focus
-
-
-
-- ตรวจ risk surface รวม — security, operational, financial, reputational risks ที่มองเห็นจาก code/config
-
-- ตรวจ failure modes — single points of failure, missing fallbacks, unhandled error paths ใน critical flows
-
-- ตรวจ security exposure — secrets in code, injection surfaces, missing auth checks (note: deep pass ไป `/deep-review-codebase`)
-
-- ตรวจ operational risk — missing health checks, no graceful shutdown, unmonitored background jobs
-
-- ตรวจ financial risk — irreversible operations, missing limits/caps, manual intervention paths
-
-- ตรวจ reputational risk — user-facing error leaks, data exposure in emails/notifications, public debug info
-
-- ตรวจ third-party dependency risk — abandoned deps, single-vendor lock-in ใน core flows
-
-- ตรวจ mitigation coverage — rate limiting, circuit breakers, rollback paths, feature flags สำหรับ risky features
-
-- Deep pass → `/deep-review-codebase` สำหรับ risk assessment เชิงลึก
-
-
-
-##### Rules
-
-
-
-- Report only — ไม่แก้ไขอะไร
-
-- ทุก finding มี evidence — file path, line, route, หรือ config
-
-- อยู่ใน persona — ห้าม review เรื่องที่ role นี้ไม่สนใจ; ถ้าเจอ issue นอก lens ให้บันทึกเป็น out-of-scope note
-
-- ถ้ามี domain review skill ที่ตรง ให้ delegate หรืออ้างอิงเป็น deep pass
-
-
-
-##### Expected Outcome
-
-
-
-- findings จากมุมมอง risk-analyst พร้อม severity และ evidence
+- findings from the risk-analyst perspective with severity and evidence

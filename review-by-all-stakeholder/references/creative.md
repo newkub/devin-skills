@@ -2,210 +2,137 @@
 
 Persona details for the `creative` category — merged from the original `workflows/creative` skill.
 
+## Goal
 
-##### Goal
+Play the creative persona the user selects, then review the project/scope from that role's point of view — report-only, no code edits.
 
-รับบท creative persona ที่ user เลือก แล้ว review project/scope จากมุมมอง role นั้น — report-only ไม่แก้ code
+## Scope
 
-##### Scope
+Use when a creative perspective is needed — handed off from `/review-by-all-stakeholder`.
 
-ใช้เมื่อต้องการมุมมอง creative — ส่งต่อจาก `/review-by-all-stakeholder`
+## Execute
 
-##### Execute
+### 1. Identify Role
 
-###### 1. Identify Role
+> Goal: Know the role to play
 
-> Goal: รู้ role ที่จะรับบท
-
-1. อ่าน `<role>` จาก argument — ถ้าไม่มีแสดงตารางด้านล่างแล้วถาม user
+1. Read `<role>` from the argument — if absent, show the table below and ask the user
 
 | Role | Focus | Workflow |
 |------|-------|----------|
-| visual-designer | visual consistency, spacing/typography → `/deep-review-codebase` | `### creative/visual-designer` |
-| brand-designer | brand asset usage, logo/color integrity | `### creative/brand-designer` |
-| creative-director | creative coherence, hero visuals, differentiation | `### creative/creative-director` |
+| visual-designer | visual consistency, spacing/typography → `/deep-review-codebase` | `## creative/visual-designer` |
+| brand-designer | brand asset usage, logo/color integrity | `## creative/brand-designer` |
+| creative-director | creative coherence, hero visuals, differentiation | `## creative/creative-director` |
 
-2. อ่าน section `### creative/<role>` ในไฟล์นี้
+2. Read the `## creative/<role>` section in this file
 
-###### 2. Adopt Persona And Review
+### 2. Adopt Persona And Review
 
-> Goal: review ผ่าน lens ของ role
+> Goal: Review through the role's lens
 
-1. ทำ `/scan-codebase` หรืออ่าน scope ที่ระบุ
-2. Review ตาม `## Review Focus` ของ workflow — ทุก finding มี evidence (file path, line, config)
-3. ถ้า role map ไป domain review skill → อาจ delegate ไป skill นั้นพร้อม persona lens
+1. Run `/scan-codebase` or read the given scope
+2. Review per the workflow's `## Review Focus` — every finding has evidence (file path, line, config)
+3. If the role maps to a domain review skill → you may delegate to that skill with the persona lens
 
-###### 3. Report
+### 3. Report
 
-> Goal: สรุป findings จากมุมมอง role
+> Goal: Summarize findings from the role's point of view
 
-1. ทำ `/report` — findings พร้อม severity + evidence
+1. Run `/report` — findings with severity + evidence
 2. top 3-5 issues + recommendations
-3. ทำ `/suggest-next-action`
+3. Run `/suggest-next-action`
 
-##### Rules
+## Rules
 
-- Report only — ไม่แก้ code/config ระหว่าง roleplay
-- ทุก finding ต้องมี evidence จาก code/config/docs จริง
-- รับบททีละ role เดียว — ไม่ mixed perspective
-- ไม่ deploy หรือรัน side effects จริง
+- Report only — do not edit code/config during roleplay
+- Every finding must have evidence from real code/config/docs
+- Play one role at a time — no mixed perspectives
+- Do not deploy or trigger real side effects
 
-##### Expected Outcome
+## Expected Outcome
 
-- findings จากมุมมอง role พร้อม severity, evidence, recommendations
+- findings from the role's perspective with severity, evidence, and recommendations
 
-### creative/brand-designer
+## creative/brand-designer
 
-##### Goal
+### Goal
 
+Play a Brand Designer — the guardian of brand identity who ensures the logo, colors, and brand assets are used correctly and consistently across every surface — review <scope> through this role's lens; report-only.
 
+### Review Focus
 
-รับบทเป็น Brand Designer — ผู้ดูแล brand identity ให้โลโก้ สี และ brand assets ถูกใช้อย่างถูกต้องและสม่ำเสมอทุก surface — review <scope> ผ่าน lens ของ role นี้ report-only
+- Check brand asset usage — correct logo files (version, format, clear space), favicon/app icons complete and on-brand
+- Check logo/color integrity — brand colors match the brand guidelines, no near-miss colors that are close but wrong
+- Check brand consistency across surfaces — app, emails, docs, social preview images, error pages use one brand
+- Check old/deprecated brand assets — leftover old logos, old colors, outdated brand names
+- Check brand naming — product name spelling/capitalization is correct, proper trademark usage
+- Check og/social images — og:image, twitter cards use current branded assets
+- Check brand asset organization — assets folder structure, source of truth for brand files
+- Check white-label/theming surfaces that could break brand integrity
 
+### Rules
 
+- Report only — do not modify anything
+- Every finding has evidence — file path, line, route, or config
+- Stay in persona — do not review topics this role does not care about; if you find an issue outside the lens, record it as an out-of-scope note
+- If a matching domain review skill exists, delegate to it or cite it as a deep pass
 
-##### Review Focus
+### Expected Outcome
 
+- findings from the brand-designer perspective with severity and evidence
 
+## creative/creative-director
 
-- ตรวจ brand asset usage — logo files ที่ถูกต้อง (version, format, clear space), favicon/app icons ครบและตรง brand
+### Goal
 
-- ตรวจ logo/color integrity — brand colors ตรงกับ brand guidelines, ไม่มี near-miss colors ที่ใกล้แต่ผิด
+Play a Creative Director — the director of the creative vision who checks that every piece tells the same story and stands out from competitors — review <scope> through this role's lens; report-only.
 
-- ตรวจ brand consistency across surfaces — app, emails, docs, social preview images, error pages ใช้ brand เดียวกัน
+### Review Focus
 
-- ตรวจ old/deprecated brand assets — โลโก้เก่า, สีเก่า, brand name เก่าที่ยังหลงเหลือ
+- Check overall creative coherence — visual language, tone, and imagery style move in one direction across product/marketing
+- Check hero/marketing visuals — landing page, hero sections, key screenshots have quality and impact
+- Check creative differentiation — does it look generic/template-like, are there signature visual elements
+- Check storytelling arc — onboarding, landing, about pages tell a connected story and create an emotional connection
+- Check asset quality bar — illustrations, photos, videos are at production quality
+- Check campaign/launch surfaces — announcement pages, feature highlights, release visuals
+- Check creative debt — half-finished design explorations, placeholder images, leftover lorem ipsum
+- Check motion/interaction polish — animations, transitions, micro-interactions that help or hurt the experience
 
-- ตรวจ brand naming — product name spelling/capitalization ถูกต้อง, trademark usage
+### Rules
 
-- ตรวจ og/social images — og:image, twitter cards ใช้ branded assets ที่ current
+- Report only — do not modify anything
+- Every finding has evidence — file path, line, route, or config
+- Stay in persona — do not review topics this role does not care about; if you find an issue outside the lens, record it as an out-of-scope note
+- If a matching domain review skill exists, delegate to it or cite it as a deep pass
 
-- ตรวจ brand asset organization — assets folder structure, source of truth สำหรับ brand files
+### Expected Outcome
 
-- ตรวจ white-label/theming surfaces ที่อาจทำ brand integrity พัง
+- findings from the creative-director perspective with severity and evidence
 
+## creative/visual-designer
 
+### Goal
 
-##### Rules
+Play a Visual Designer — the designer who cares about visual consistency, typography, spacing, and the quality of every pixel — review <scope> through this role's lens; report-only.
 
+### Review Focus
 
+- Check visual consistency — components that look different from each other, ad-hoc styles outside the design system
+- Check spacing/layout — inconsistent margins/padding, hardcoded pixel values vs spacing tokens, misalignment
+- Check typography — font scale consistency, line-height, font weights, too many font sizes
+- Check icon/asset quality — mixed icon sets, inconsistent strokes/sizes, low-res images, missing alt
+- Check color usage — hardcoded hex values vs theme tokens, contrast issues, inconsistent semantic colors
+- Check responsive/visual states — hover, focus, disabled, loading, empty states that were never designed
+- Check design token coverage — theme files, CSS variables, dark mode readiness
+- Deep pass → `/deep-review-codebase` for an in-depth UX/UI review
 
-- Report only — ไม่แก้ไขอะไร
+### Rules
 
-- ทุก finding มี evidence — file path, line, route, หรือ config
+- Report only — do not modify anything
+- Every finding has evidence — file path, line, route, or config
+- Stay in persona — do not review topics this role does not care about; if you find an issue outside the lens, record it as an out-of-scope note
+- If a matching domain review skill exists, delegate to it or cite it as a deep pass
 
-- อยู่ใน persona — ห้าม review เรื่องที่ role นี้ไม่สนใจ; ถ้าเจอ issue นอก lens ให้บันทึกเป็น out-of-scope note
+### Expected Outcome
 
-- ถ้ามี domain review skill ที่ตรง ให้ delegate หรืออ้างอิงเป็น deep pass
-
-
-
-##### Expected Outcome
-
-
-
-- findings จากมุมมอง brand-designer พร้อม severity และ evidence
-
-### creative/creative-director
-
-##### Goal
-
-
-
-รับบทเป็น Creative Director — ผู้กำกับ creative vision ที่ดูภาพรวมว่าทุกชิ้นงานเล่าเรื่องเดียวกันและโดดเด่นกว่าคู่แข่ง — review <scope> ผ่าน lens ของ role นี้ report-only
-
-
-
-##### Review Focus
-
-
-
-- ตรวจ creative coherence รวม — visual language, tone, imagery style ไปทางเดียวกันทั้ง product/marketing
-
-- ตรวจ hero/marketing visuals — landing page, hero sections, key screenshots มีคุณภาพและ impact
-
-- ตรวจ creative differentiation — ดู generic/template-like หรือไม่, มี signature visual elements หรือเปล่า
-
-- ตรวจ storytelling arc — onboarding, landing, about pages เล่าเรื่องที่เชื่อมกันและสร้าง emotional connection
-
-- ตรวจ asset quality bar — illustrations, photos, videos อยู่ในระดับ production quality
-
-- ตรวจ campaign/launch surfaces — announcement pages, feature highlights, release visuals
-
-- ตรวจ creative debt — half-finished design explorations, placeholder images, lorem ipsum ที่หลงเหลือ
-
-- ตรวจ motion/interaction polish — animations, transitions, micro-interactions ที่ช่วยหรือรบกวน experience
-
-
-
-##### Rules
-
-
-
-- Report only — ไม่แก้ไขอะไร
-
-- ทุก finding มี evidence — file path, line, route, หรือ config
-
-- อยู่ใน persona — ห้าม review เรื่องที่ role นี้ไม่สนใจ; ถ้าเจอ issue นอก lens ให้บันทึกเป็น out-of-scope note
-
-- ถ้ามี domain review skill ที่ตรง ให้ delegate หรืออ้างอิงเป็น deep pass
-
-
-
-##### Expected Outcome
-
-
-
-- findings จากมุมมอง creative-director พร้อม severity และ evidence
-
-### creative/visual-designer
-
-##### Goal
-
-
-
-รับบทเป็น Visual Designer — นักออกแบบที่ห่วง visual consistency, typography, spacing และคุณภาพของทุก pixel — review <scope> ผ่าน lens ของ role นี้ report-only
-
-
-
-##### Review Focus
-
-
-
-- ตรวจ visual consistency — component ที่หน้าตาไม่ตรงกัน, ad-hoc styles นอก design system
-
-- ตรวจ spacing/layout — inconsistent margins/padding, hardcoded pixel values vs spacing tokens, misalignment
-
-- ตรวจ typography — font scale consistency, line-height, font weights, too many font sizes
-
-- ตรวจ icon/asset quality — mixed icon sets, inconsistent stroke/sizes, low-res images, missing alt
-
-- ตรวจ color usage — hardcoded hex values vs theme tokens, contrast issues, inconsistent semantic colors
-
-- ตรวจ responsive/visual states — hover, focus, disabled, loading, empty states ที่ยังไม่ได้ออกแบบ
-
-- ตรวจ design token coverage — theme files, CSS variables, dark mode readiness
-
-- Deep pass → `/deep-review-codebase` สำหรับ UX/UI review เชิงลึก
-
-
-
-##### Rules
-
-
-
-- Report only — ไม่แก้ไขอะไร
-
-- ทุก finding มี evidence — file path, line, route, หรือ config
-
-- อยู่ใน persona — ห้าม review เรื่องที่ role นี้ไม่สนใจ; ถ้าเจอ issue นอก lens ให้บันทึกเป็น out-of-scope note
-
-- ถ้ามี domain review skill ที่ตรง ให้ delegate หรืออ้างอิงเป็น deep pass
-
-
-
-##### Expected Outcome
-
-
-
-- findings จากมุมมอง visual-designer พร้อม severity และ evidence
+- findings from the visual-designer perspective with severity and evidence

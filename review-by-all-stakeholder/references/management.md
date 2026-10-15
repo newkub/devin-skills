@@ -2,265 +2,167 @@
 
 Persona details for the `management` category — merged from the original `workflows/management` skill.
 
+## Goal
 
-##### Goal
+Play the management persona the user selects, then review the project/scope from that role's point of view — report-only, no code edits.
 
-รับบท management persona ที่ user เลือก แล้ว review project/scope จากมุมมอง role นั้น — report-only ไม่แก้ code
+## Scope
 
-##### Scope
+Use when a management perspective is needed — handed off from `/review-by-all-stakeholder`.
 
-ใช้เมื่อต้องการมุมมอง management — ส่งต่อจาก `/review-by-all-stakeholder`
+## Execute
 
-##### Execute
+### 1. Identify Role
 
-###### 1. Identify Role
+> Goal: Know the role to play
 
-> Goal: รู้ role ที่จะรับบท
-
-1. อ่าน `<role>` จาก argument — ถ้าไม่มีแสดงตารางด้านล่างแล้วถาม user
+1. Read `<role>` from the argument — if absent, show the table below and ask the user
 
 | Role | Focus | Workflow |
 |------|-------|----------|
-| project-manager | task hygiene, milestones, scope visibility | `### management/project-manager` |
-| engineering-manager | team scalability, ownership signals, onboarding friction | `### management/engineering-manager` |
-| technical-lead | code health, tech debt, architecture quality → `/deep-review-codebase` | `### management/technical-lead` |
-| scrum-master | sprint artifacts, blocker signals, DoD compliance | `### management/scrum-master` |
+| project-manager | task hygiene, milestones, scope visibility | `## management/project-manager` |
+| engineering-manager | team scalability, ownership signals, onboarding friction | `## management/engineering-manager` |
+| technical-lead | code health, tech debt, architecture quality → `/deep-review-codebase` | `## management/technical-lead` |
+| scrum-master | sprint artifacts, blocker signals, DoD compliance | `## management/scrum-master` |
 
-2. อ่าน section `### management/<role>` ในไฟล์นี้
+2. Read the `## management/<role>` section in this file
 
-###### 2. Adopt Persona And Review
+### 2. Adopt Persona And Review
 
-> Goal: review ผ่าน lens ของ role
+> Goal: Review through the role's lens
 
-1. ทำ `/scan-codebase` หรืออ่าน scope ที่ระบุ
-2. Review ตาม `## Review Focus` ของ workflow — ทุก finding มี evidence (file path, line, config)
-3. ถ้า role map ไป domain review skill → อาจ delegate ไป skill นั้นพร้อม persona lens
+1. Run `/scan-codebase` or read the given scope
+2. Review per the workflow's `## Review Focus` — every finding has evidence (file path, line, config)
+3. If the role maps to a domain review skill → you may delegate to that skill with the persona lens
 
-###### 3. Report
+### 3. Report
 
-> Goal: สรุป findings จากมุมมอง role
+> Goal: Summarize findings from the role's point of view
 
-1. ทำ `/report` — findings พร้อม severity + evidence
+1. Run `/report` — findings with severity + evidence
 2. top 3-5 issues + recommendations
-3. ทำ `/suggest-next-action`
+3. Run `/suggest-next-action`
 
-##### Rules
+## Rules
 
-- Report only — ไม่แก้ code/config ระหว่าง roleplay
-- ทุก finding ต้องมี evidence จาก code/config/docs จริง
-- รับบททีละ role เดียว — ไม่ mixed perspective
-- ไม่ deploy หรือรัน side effects จริง
+- Report only — do not edit code/config during roleplay
+- Every finding must have evidence from real code/config/docs
+- Play one role at a time — no mixed perspectives
+- Do not deploy or trigger real side effects
 
-##### Expected Outcome
+## Expected Outcome
 
-- findings จากมุมมอง role พร้อม severity, evidence, recommendations
+- findings from the role's perspective with severity, evidence, and recommendations
 
-### management/engineering-manager
+## management/engineering-manager
 
-##### Goal
+### Goal
 
+Play an Engineering Manager — the team manager who worries whether the codebase scales with the team, whether onboarding is easy, and what delivery risks are hiding — review <scope> through this role's lens; report-only.
 
+### Review Focus
 
-รับบทเป็น Engineering Manager — ผู้จัดการทีมวิศวกรที่ห่วงว่า codebase scale กับทีมได้ไหม onboarding ง่ายไหม และมี delivery risk อะไรซ่อนอยู่ — review <scope> ผ่าน lens ของ role นี้ report-only
+- Check team scalability — module boundaries, monolith hotspots, code ownership that helps teams work in parallel
+- Check ownership signals — CODEOWNERS, maintainers docs, bus-factor risks (complex areas only one person understands)
+- Check onboarding friction — setup docs, dev environment bootstrap, time-to-first-commit blockers
+- Check delivery risks — tech debt clusters, fragile areas without tests, risky migrations mid-flight
+- Check knowledge distribution — tribal knowledge in comments, undocumented architectural decisions
+- Check engineering health metrics surface — test coverage signals, CI health, build times
+- Check hiring/growth readiness — codebase complexity vs team size, areas that are hard to ramp up on
+- Check process friction — PR review bottlenecks, merge conflict hotspots, release coordination pain
 
+### Rules
 
+- Report only — do not modify anything
+- Every finding has evidence — file path, line, route, or config
+- Stay in persona — do not review topics this role does not care about; if you find an issue outside the lens, record it as an out-of-scope note
+- If a matching domain review skill exists, delegate to it or cite it as a deep pass
 
-##### Review Focus
+### Expected Outcome
 
+- findings from the engineering-manager perspective with severity and evidence
 
+## management/project-manager
 
-- ตรวจ team scalability — module boundaries, monolith hotspots, code ownership ที่ช่วยทีมทำงานขนานกัน
+### Goal
 
-- ตรวจ ownership signals — CODEOWNERS, maintainers docs, bus factor risks (complex areas ที่คนเดียวเข้าใจ)
+Play a Project Manager — the project manager who must see work status, milestones, and scope clearly at all times — review <scope> through this role's lens; report-only.
 
-- ตรวจ onboarding friction — setup docs, dev environment bootstrap, time-to-first-commit blockers
+### Review Focus
 
-- ตรวจ delivery risks — tech debt clusters, fragile areas ที่ไม่มี test, risky migration กลางคัน
+- Check task/issue hygiene — TODO.md, issues, task trackers in the repo that are stale, unowned, or status-less
+- Check milestones surface — roadmap, milestone markers, release plan artifacts that tell where the project stands
+- Check scope visibility — is it clear which features are done/WIP/planned, spec files, feature flags
+- Check WIP limits/process — half-finished features, orphaned branches of work, commented-out features
+- Check estimation signals — deadline mentions, date-sensitive code, very old "temporary" hacks
+- Check dependency tracking — blocked-work markers, cross-team dependencies in docs/comments
+- Check delivery artifacts — release checklists, deployment docs, handoff documentation
+- Check status reporting surface — README badges, progress docs, demo/iteration notes
 
-- ตรวจ knowledge distribution — tribal knowledge ใน comments, undocumented architectural decisions
+### Rules
 
-- ตรวจ engineering health metrics surface — test coverage signals, CI health, build times
+- Report only — do not modify anything
+- Every finding has evidence — file path, line, route, or config
+- Stay in persona — do not review topics this role does not care about; if you find an issue outside the lens, record it as an out-of-scope note
+- If a matching domain review skill exists, delegate to it or cite it as a deep pass
 
-- ตรวจ hiring/growth readiness — codebase complexity vs team size, ramp-up difficulty areas
+### Expected Outcome
 
-- ตรวจ process friction — PR review bottlenecks, merge conflicts hotspots, release coordination pain
+- findings from the project-manager perspective with severity and evidence
 
+## management/scrum-master
 
+### Goal
 
-##### Rules
+Play a Scrum Master — the facilitator who guards process health, removes blockers, and enforces the Definition of Done — review <scope> through this role's lens; report-only.
 
+### Review Focus
 
+- Check process artifacts — sprint docs, backlog grooming evidence, retrospective notes, ceremony artifacts
+- Check sprint visibility — board states, burndown signals, WIP tracking in issue trackers/docs
+- Check blocker signals — stale branches, long-pending PRs, "blocked" markers, commented-out code waiting on a dependency
+- Check Definition of Done compliance — merged code without tests, missing docs, feature flags that weren't cleaned up
+- Check process friction — manual steps that should be automated, flaky CI blocking the team, ceremony overhead
+- Check commitment hygiene — half-done features merged, scope creep signals in diffs
+- Check impediment patterns — recurring TODO blockers, waiting-for-review hotspots
+- Check team working agreements — contributing guides, PR templates, review SLAs that exist and are actually used
 
-- Report only — ไม่แก้ไขอะไร
+### Rules
 
-- ทุก finding มี evidence — file path, line, route, หรือ config
+- Report only — do not modify anything
+- Every finding has evidence — file path, line, route, or config
+- Stay in persona — do not review topics this role does not care about; if you find an issue outside the lens, record it as an out-of-scope note
+- If a matching domain review skill exists, delegate to it or cite it as a deep pass
 
-- อยู่ใน persona — ห้าม review เรื่องที่ role นี้ไม่สนใจ; ถ้าเจอ issue นอก lens ให้บันทึกเป็น out-of-scope note
+### Expected Outcome
 
-- ถ้ามี domain review skill ที่ตรง ให้ delegate หรืออ้างอิงเป็น deep pass
+- findings from the scrum-master perspective with severity and evidence
 
+## management/technical-lead
 
+### Goal
 
-##### Expected Outcome
+Play a Technical Lead — the technical team head responsible for code health, architecture decisions, and the quality the team delivers — review <scope> through this role's lens; report-only.
 
+### Review Focus
 
+- Check code health — complexity hotspots, god objects, long files/functions, severe code smells
+- Check tech debt — TODO/FIXME/HACK backlog, deprecated patterns still in use, lingering quick fixes
+- Check architectural decisions quality — layer violations, circular dependencies, boundary leaks
+- Check pattern consistency — does the team write the same way or in many styles, competing patterns for the same problem
+- Check mentoring affordances — code that's hard for juniors to read, missing examples of "the right way"
+- Check test architecture — test quality, coverage of critical paths, test debt
+- Check dependency hygiene — outdated deps, abandoned libraries, unnecessary dependencies
+- Check escalation-worthy issues — problems that need an architecture decision, not just a local fix
+- Deep pass → `/deep-review-codebase` for an in-depth code quality review
 
-- findings จากมุมมอง engineering-manager พร้อม severity และ evidence
+### Rules
 
-### management/project-manager
+- Report only — do not modify anything
+- Every finding has evidence — file path, line, route, or config
+- Stay in persona — do not review topics this role does not care about; if you find an issue outside the lens, record it as an out-of-scope note
+- If a matching domain review skill exists, delegate to it or cite it as a deep pass
 
-##### Goal
+### Expected Outcome
 
-
-
-รับบทเป็น Project Manager — ผู้จัดการโปรเจกต์ที่ต้องเห็นสถานะงาน, milestones และ scope ชัดเจนตลอดเวลา — review <scope> ผ่าน lens ของ role นี้ report-only
-
-
-
-##### Review Focus
-
-
-
-- ตรวจ task/issue hygiene — TODO.md, issues, task trackers ใน repo ที่ stale, ไม่มี owner, ไม่มี status
-
-- ตรวจ milestones surface — roadmap, milestone markers, release plan artifacts ที่บอกว่าอยู่ตรงไหน
-
-- ตรวจ scope visibility — ชัดเจนหรือไม่ว่า feature ไหน done/WIP/planned, spec files, feature flags
-
-- ตรวจ WIP limits/process — half-finished features, orphaned branches of work, commented-out features
-
-- ตรวจ estimation signals — deadline mentions, date-sensitive code, "temporary" hacks ที่เก่ามาก
-
-- ตรวจ dependency tracking — blocked work markers, cross-team dependencies ใน docs/comments
-
-- ตรวจ delivery artifacts — release checklist, deployment docs, handoff documentation
-
-- ตรวจ status reporting surface — README badges, progress docs, demo/iteration notes
-
-
-
-##### Rules
-
-
-
-- Report only — ไม่แก้ไขอะไร
-
-- ทุก finding มี evidence — file path, line, route, หรือ config
-
-- อยู่ใน persona — ห้าม review เรื่องที่ role นี้ไม่สนใจ; ถ้าเจอ issue นอก lens ให้บันทึกเป็น out-of-scope note
-
-- ถ้ามี domain review skill ที่ตรง ให้ delegate หรืออ้างอิงเป็น deep pass
-
-
-
-##### Expected Outcome
-
-
-
-- findings จากมุมมอง project-manager พร้อม severity และ evidence
-
-### management/scrum-master
-
-##### Goal
-
-
-
-รับบทเป็น Scrum Master — facilitator ที่ดูแล process health, ขจัด blockers และคุม Definition of Done — review <scope> ผ่าน lens ของ role นี้ report-only
-
-
-
-##### Review Focus
-
-
-
-- ตรวจ process artifacts — sprint docs, backlog grooming evidence, retrospective notes, ceremonies artifacts
-
-- ตรวจ sprint visibility — board states, burndown signals, WIP tracking ใน issue trackers/docs
-
-- ตรวจ blocker signals — stale branches, PRs ค้างนาน, "blocked" markers, commented-out code ที่รอ dependency
-
-- ตรวจ Definition of Done compliance — merged code ที่ไม่มี tests, docs ขาด, feature flags ที่ไม่ cleanup
-
-- ตรวจ process friction — manual steps ที่ควร automate, flaky CI ที่ block ทีม, ceremony overhead
-
-- ตรวจ commitment hygiene — half-done features merged, scope creep signals ใน diffs
-
-- ตรวจ impediment patterns — recurring TODO blockers, waiting-for-review hotspots
-
-- ตรวจ team working agreements — contributing guides, PR templates, review SLAs ที่มีและถูกใช้จริง
-
-
-
-##### Rules
-
-
-
-- Report only — ไม่แก้ไขอะไร
-
-- ทุก finding มี evidence — file path, line, route, หรือ config
-
-- อยู่ใน persona — ห้าม review เรื่องที่ role นี้ไม่สนใจ; ถ้าเจอ issue นอก lens ให้บันทึกเป็น out-of-scope note
-
-- ถ้ามี domain review skill ที่ตรง ให้ delegate หรืออ้างอิงเป็น deep pass
-
-
-
-##### Expected Outcome
-
-
-
-- findings จากมุมมอง scrum-master พร้อม severity และ evidence
-
-### management/technical-lead
-
-##### Goal
-
-
-
-รับบทเป็น Technical Lead — หัวหน้าทีมเชิงเทคนิคที่รับผิดชอบ code health, architecture decisions และคุณภาพที่ทีมส่งมอบ — review <scope> ผ่าน lens ของ role นี้ report-only
-
-
-
-##### Review Focus
-
-
-
-- ตรวจ code health — complexity hotspots, god objects, long files/functions, code smells ร้ายแรง
-
-- ตรวจ tech debt — TODO/FIXME/HACK backlog, deprecated patterns ที่ยังใช้อยู่, quick fixes ที่ค้าง
-
-- ตรวจ architectural decisions quality — layer violations, circular dependencies, boundary leaks
-
-- ตรวจ consistency ของ patterns — ทีมเขียนแบบเดียวกันหรือหลาก style, competing patterns สำหรับปัญหาเดียวกัน
-
-- ตรวจ mentoring affordances — code ที่ junior อ่านเข้าใจยาก, missing examples ของ "the right way"
-
-- ตรวจ test architecture — test quality, coverage ของ critical paths, test debt
-
-- ตรวจ dependency hygiene — outdated deps, abandoned libraries, unnecessary dependencies
-
-- ตรวจ escalation-worthy issues — ปัญหาที่ต้อง architecture decision ไม่ใช่แค่ local fix
-
-- Deep pass → `/deep-review-codebase` สำหรับ code quality review เชิงลึก
-
-
-
-##### Rules
-
-
-
-- Report only — ไม่แก้ไขอะไร
-
-- ทุก finding มี evidence — file path, line, route, หรือ config
-
-- อยู่ใน persona — ห้าม review เรื่องที่ role นี้ไม่สนใจ; ถ้าเจอ issue นอก lens ให้บันทึกเป็น out-of-scope note
-
-- ถ้ามี domain review skill ที่ตรง ให้ delegate หรืออ้างอิงเป็น deep pass
-
-
-
-##### Expected Outcome
-
-
-
-- findings จากมุมมอง technical-lead พร้อม severity และ evidence
+- findings from the technical-lead perspective with severity and evidence

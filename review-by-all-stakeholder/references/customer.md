@@ -2,255 +2,162 @@
 
 Persona details for the `customer` category — merged from the original `workflows/customer` skill.
 
+## Goal
 
-##### Goal
+Play the customer persona the user selects, then review the project/scope from that role's point of view — report-only, no code edits.
 
-รับบท customer persona ที่ user เลือก แล้ว review project/scope จากมุมมอง role นั้น — report-only ไม่แก้ code
+## Scope
 
-##### Scope
+Use when a customer perspective is needed — handed off from `/review-by-all-stakeholder`.
 
-ใช้เมื่อต้องการมุมมอง customer — ส่งต่อจาก `/review-by-all-stakeholder`
+## Execute
 
-##### Execute
+### 1. Identify Role
 
-###### 1. Identify Role
+> Goal: Know the role to play
 
-> Goal: รู้ role ที่จะรับบท
-
-1. อ่าน `<role>` จาก argument — ถ้าไม่มีแสดงตารางด้านล่างแล้วถาม user
+1. Read `<role>` from the argument — if absent, show the table below and ask the user
 
 | Role | Focus | Workflow |
 |------|-------|----------|
-| customer-success | time-to-value, onboarding, adoption blockers | `### customer/customer-success` |
-| customer-support | error messages, self-serve troubleshooting, support surface | `### customer/customer-support` |
-| customer-advocate | promises vs implementation, reliability, cancellation flows | `### customer/customer-advocate` |
-| community-manager | contributor docs, community surface, feedback loops | `### customer/community-manager` |
+| customer-success | time-to-value, onboarding, adoption blockers | `## customer/customer-success` |
+| customer-support | error messages, self-serve troubleshooting, support surface | `## customer/customer-support` |
+| customer-advocate | promises vs implementation, reliability, cancellation flows | `## customer/customer-advocate` |
+| community-manager | contributor docs, community surface, feedback loops | `## customer/community-manager` |
 
-2. อ่าน section `### customer/<role>` ในไฟล์นี้
+2. Read the `## customer/<role>` section in this file
 
-###### 2. Adopt Persona And Review
+### 2. Adopt Persona And Review
 
-> Goal: review ผ่าน lens ของ role
+> Goal: Review through the role's lens
 
-1. ทำ `/scan-codebase` หรืออ่าน scope ที่ระบุ
-2. Review ตาม `## Review Focus` ของ workflow — ทุก finding มี evidence (file path, line, config)
-3. ถ้า role map ไป domain review skill → อาจ delegate ไป skill นั้นพร้อม persona lens
+1. Run `/scan-codebase` or read the given scope
+2. Review per the workflow's `## Review Focus` — every finding has evidence (file path, line, config)
+3. If the role maps to a domain review skill → you may delegate to that skill with the persona lens
 
-###### 3. Report
+### 3. Report
 
-> Goal: สรุป findings จากมุมมอง role
+> Goal: Summarize findings from the role's point of view
 
-1. ทำ `/report` — findings พร้อม severity + evidence
+1. Run `/report` — findings with severity + evidence
 2. top 3-5 issues + recommendations
-3. ทำ `/suggest-next-action`
+3. Run `/suggest-next-action`
 
-##### Rules
+## Rules
 
-- Report only — ไม่แก้ code/config ระหว่าง roleplay
-- ทุก finding ต้องมี evidence จาก code/config/docs จริง
-- รับบททีละ role เดียว — ไม่ mixed perspective
-- ไม่ deploy หรือรัน side effects จริง
+- Report only — do not edit code/config during roleplay
+- Every finding must have evidence from real code/config/docs
+- Play one role at a time — no mixed perspectives
+- Do not deploy or trigger real side effects
 
-##### Expected Outcome
+## Expected Outcome
 
-- findings จากมุมมอง role พร้อม severity, evidence, recommendations
+- findings from the role's perspective with severity, evidence, and recommendations
 
-### customer/community-manager
+## customer/community-manager
 
-##### Goal
+### Goal
 
+Play a Community Manager — the person who looks after the contributor experience and the channels where the community engages with the project, from first issue to first PR — review <scope> through this role's lens; report-only.
 
-
-รับบทเป็น Community Manager — คนที่ดูแล contributor experience และช่องทางที่ community มีส่วนร่วมกับ project ตั้งแต่ issue แรกจนถึง PR แรก — review <scope> ผ่าน lens ของ role นี้ report-only
-
-
-
-##### Review Focus
-
-
+### Review Focus
 
 - `CONTRIBUTING.md` completeness — dev setup steps, PR process, code style, review expectations, commit/branch conventions
-
-- Issue/PR surface — issue templates, PR template, labels (โดยเฉพาะ `good first issue`/`help wanted`), `CODEOWNERS`, triage process docs
-
-- Community channels — links ไป Discord/Slack/forum/Discussions, `CODE_OF_CONDUCT.md`, governance/maintainer docs
-
-- Contributor onboarding — dev setup reproducible จริงไหม: README dev section, setup scripts, devcontainer/docker-compose, seed/fixture data
-
+- Issue/PR surface — issue templates, PR template, labels (especially `good first issue`/`help wanted`), `CODEOWNERS`, triage process docs
+- Community channels — links to Discord/Slack/forum/Discussions, `CODE_OF_CONDUCT.md`, governance/maintainer docs
+- Contributor onboarding — is the dev setup actually reproducible: README dev section, setup scripts, devcontainer/docker-compose, seed/fixture data
 - Feedback loops — roadmap visibility, RFC/design docs, feature request channel, release notes/changelog cadence
-
 - Contributor health signals — response-time expectations, stale PR/issue policy, recognition mechanisms (contributors list, credits)
+- Docs hygiene — setup instructions that are outdated or no longer run, broken links, stale badges, dead community links
 
-- Docs hygiene — setup instructions ที่ outdated หรือ run ไม่ได้แล้ว, broken links, stale badges, dead community links
+### Rules
 
+- Report only — do not modify anything
+- Every finding has evidence — file path, line, route, or config
+- Stay in persona — do not review topics this role does not care about; if you find an issue outside the lens, record it as an out-of-scope note
+- If a matching domain review skill exists (e.g. `/deep-review-codebase`), delegate to it or cite it as a deep pass
 
+### Expected Outcome
 
-##### Rules
+- findings from the community-manager perspective with severity and evidence
 
+## customer/customer-advocate
 
+### Goal
 
-- Report only — ไม่แก้ไขอะไร
+Play a Customer Advocate — the person who checks that the product actually delivers what it promised to customers, and that customers are treated fairly including when they want to leave — review <scope> through this role's lens; report-only.
 
-- ทุก finding มี evidence — file path, line, route, หรือ config
+### Review Focus
 
-- อยู่ใน persona — ห้าม review เรื่องที่ role นี้ไม่สนใจ; ถ้าเจอ issue นอก lens ให้บันทึกเป็น out-of-scope note
-
-- ถ้ามี domain review skill ที่ตรง (เช่น `/deep-review-codebase`) ให้ delegate หรืออ้างอิงเป็น deep pass
-
-
-
-##### Expected Outcome
-
-
-
-- findings จากมุมมอง community-manager พร้อม severity และ evidence
-
-### customer/customer-advocate
-
-##### Goal
-
-
-
-รับบทเป็น Customer Advocate — คนที่ตรวจว่า product ทำตามที่ promise กับ customer จริง และ customer ได้รับการปฏิบัติอย่างยุติธรรมรวมถึงตอนอยากออกจาก product — review <scope> ผ่าน lens ของ role นี้ report-only
-
-
-
-##### Review Focus
-
-
-
-- Promise audit — claims ใน README/marketing/docs (`"easy"`, `"secure"`, `"one-click"`, uptime/SLA numbers) เทียบกับ implementation จริง
-
-- Reliability signals — retry/timeout handling, graceful degradation, data-loss risks ใน destructive ops ที่ไม่มี confirm/backup
-
-- Cancellation/refund path — account deletion, subscription cancel, billing flows มีและทำงานจริงไหม; ซ่อน, dead-end หรือต้องติดต่อคนเท่านั้น
-
+- Promise audit — claims in README/marketing/docs (`"easy"`, `"secure"`, `"one-click"`, uptime/SLA numbers) vs the real implementation
+- Reliability signals — retry/timeout handling, graceful degradation, data-loss risks in destructive ops without confirm/backup
+- Cancellation/refund path — account deletion, subscription cancel, billing flows: do they exist and actually work; or hidden, dead-end, or human-contact-only
 - Data ownership — export/backup paths, format portability, lock-in signals (proprietary-only formats, no export endpoint)
+- Limits honesty — rate limits, quotas, size limits that docs claim vs what the code/config actually enforces
+- Privacy promise vs reality — analytics/tracking calls, third-party requests, data actually sent out vs what the privacy copy says
+- Change handling — do breaking changes have notice/deprecation periods; do changelog/migration docs match real behavior
 
-- Limits honesty — rate limits, quotas, size limits ที่ docs claim vs ที่ enforce จริงใน code/config
+### Rules
 
-- Privacy promise vs reality — analytics/tracking calls, third-party requests, data ที่ส่งออกจริงเทียบกับที่ privacy copy บอก
+- Report only — do not modify anything
+- Every finding has evidence — file path, line, route, or config
+- Stay in persona — do not review topics this role does not care about; if you find an issue outside the lens, record it as an out-of-scope note
+- If a matching domain review skill exists (e.g. `/deep-review-codebase`, `/deep-review-codebase`), delegate to it or cite it as a deep pass
 
-- Change handling — breaking changes มี notice/deprecation period ไหม; changelog/migration docs ตรงกับ behavior จริง
+### Expected Outcome
 
+- findings from the customer-advocate perspective with severity and evidence
 
+## customer/customer-success
 
-##### Rules
+### Goal
 
+Play a Customer Success Manager — the person who owns that customers get value from the product as fast as possible and adopt it without needing to rely on a human — review <scope> through this role's lens; report-only.
 
+### Review Focus
 
-- Report only — ไม่แก้ไขอะไร
+- Time-to-value — how many steps from install/signup → first success; are there quickstarts, sample data, demo modes, or templates that cut the time
+- Onboarding completeness — getting-started docs, README quickstart, in-app onboarding, setup checklists; which steps customers would likely drop at
+- Adoption blockers — heavy setup before the product works: required env config, external accounts/keys, self-created seed data, manual steps that could be automated
+- Self-serve success paths — templates, examples, sensible defaults, sandbox/trial mode; or does everything require contacting a person
+- Activation instrumentation — is onboarding/activation milestone tracking in place (analytics events, progress state, health checks)
+- Stuck-state recovery — docs for people whose setup failed, migration/upgrade guides, version compatibility notes, rollback paths
+- Expansion visibility — features that exist but customers don't know about: undiscovered routes/pages, hidden settings, no in-product surfacing or upsell cues
 
-- ทุก finding มี evidence — file path, line, route, หรือ config
+### Rules
 
-- อยู่ใน persona — ห้าม review เรื่องที่ role นี้ไม่สนใจ; ถ้าเจอ issue นอก lens ให้บันทึกเป็น out-of-scope note
+- Report only — do not modify anything
+- Every finding has evidence — file path, line, route, or config
+- Stay in persona — do not review topics this role does not care about; if you find an issue outside the lens, record it as an out-of-scope note
+- If a matching domain review skill exists (e.g. `/deep-review-codebase`, `/deep-review-codebase`), delegate to it or cite it as a deep pass
 
-- ถ้ามี domain review skill ที่ตรง (เช่น `/deep-review-codebase`, `/deep-review-codebase`) ให้ delegate หรืออ้างอิงเป็น deep pass
+### Expected Outcome
 
+- findings from the customer-success perspective with severity and evidence
 
+## customer/customer-support
 
-##### Expected Outcome
+### Goal
 
+Play a Customer Support Engineer — the person handling real tickets every day, caring that users can solve problems before filing a ticket, and that support has enough information to diagnose when help is needed — review <scope> through this role's lens; report-only.
 
+### Review Focus
 
-- findings จากมุมมอง customer-advocate พร้อม severity และ evidence
-
-### customer/customer-success
-
-##### Goal
-
-
-
-รับบทเป็น Customer Success Manager — คนที่ own ว่า customer ได้ value จาก product เร็วที่สุดและ adopt ได้ด้วยตัวเองโดยไม่ต้องพึ่งคน — review <scope> ผ่าน lens ของ role นี้ report-only
-
-
-
-##### Review Focus
-
-
-
-- Time-to-value — path จาก install/signup → first success กี่ steps; มี quickstart, sample data, demo mode หรือ template ที่ลดเวลาไหม
-
-- Onboarding completeness — getting-started docs, README quickstart, in-app onboarding, setup checklist; step ไหนที่ customer น่าจะ drop
-
-- Adoption blockers — setup ที่หนักก่อนใช้งานได้: required env config, external accounts/keys, seed data ที่ต้องสร้างเอง, manual steps ที่ automate ได้
-
-- Self-serve success paths — templates, examples, sensible defaults, sandbox/trial mode; หรือทุกอย่างต้องติดต่อคน
-
-- Activation instrumentation — มี tracking ของ onboarding/activation milestones ไหม (analytics events, progress state, health checks)
-
-- Stuck-state recovery — docs สำหรับคนที่ setup ไม่ผ่าน, migration/upgrade guides, version compatibility notes, rollback paths
-
-- Expansion visibility — feature ที่มีแต่ customer ไม่รู้: undiscovered routes/pages, hidden settings, ไม่มี in-product surfacing หรือ upsell cues
-
-
-
-##### Rules
-
-
-
-- Report only — ไม่แก้ไขอะไร
-
-- ทุก finding มี evidence — file path, line, route, หรือ config
-
-- อยู่ใน persona — ห้าม review เรื่องที่ role นี้ไม่สนใจ; ถ้าเจอ issue นอก lens ให้บันทึกเป็น out-of-scope note
-
-- ถ้ามี domain review skill ที่ตรง (เช่น `/deep-review-codebase`, `/deep-review-codebase`) ให้ delegate หรืออ้างอิงเป็น deep pass
-
-
-
-##### Expected Outcome
-
-
-
-- findings จากมุมมอง customer-success พร้อม severity และ evidence
-
-### customer/customer-support
-
-##### Goal
-
-
-
-รับบทเป็น Customer Support Engineer — คนที่รับ ticket จริงทุกวัน สนใจว่า user แก้ปัญหาเองได้ก่อนส่ง ticket และ support มีข้อมูลพอจะ diagnose เมื่อต้องเข้าไปช่วย — review <scope> ผ่าน lens ของ role นี้ report-only
-
-
-
-##### Review Focus
-
-
-
-- Error message quality — user-facing errors บอก what happened + what to do next; ไม่ใช่ raw stack trace, error code ล้วน, หรือ `"Something went wrong"`
-
-- Error taxonomy — structured error codes/types ที่ docs หรือ support lookup ได้; error ที่ไม่มี classification เลย
-
+- Error message quality — user-facing errors state what happened + what to do next; not raw stack traces, bare error codes, or `"Something went wrong"`
+- Error taxonomy — structured error codes/types that docs or support can look up; errors with no classification at all
 - Self-serve troubleshooting — troubleshooting docs, FAQ, known-issues page, debug/`--verbose` modes, diagnostic commands
+- Supportability — log levels, correlation/request IDs, error context support can use to reproduce, diagnostic export/bundle
+- Support surface — contact/support links in the product, issue tracker link, status page, help menu, `SUPPORT.md`
+- Failure UX — retry guidance, offline/degraded states, rate-limit/quota messaging that says when it will be usable again
+- Docs accuracy — error strings and troubleshooting steps in docs match what the code actually emits (compare error strings in code vs docs)
 
-- Supportability — log levels, correlation/request IDs, error context ที่ support ใช้ reproduce ได้, diagnostic export/bundle
+### Rules
 
-- Support surface — contact/support links ใน product, issue tracker link, status page, help menu, `SUPPORT.md`
+- Report only — do not modify anything
+- Every finding has evidence — file path, line, route, or config
+- Stay in persona — do not review topics this role does not care about; if you find an issue outside the lens, record it as an out-of-scope note
+- If a matching domain review skill exists (e.g. `/deep-review-codebase`, `/deep-review-codebase`), delegate to it or cite it as a deep pass
 
-- Failure UX — retry guidance, offline/degraded states, rate-limit/quota messaging ที่บอกว่าเมื่อไหร่จะใช้ได้อีก
+### Expected Outcome
 
-- Docs accuracy — error strings และ troubleshooting steps ใน docs ตรงกับที่ code emit จริง (เทียบ error strings ใน code กับ docs)
-
-
-
-##### Rules
-
-
-
-- Report only — ไม่แก้ไขอะไร
-
-- ทุก finding มี evidence — file path, line, route, หรือ config
-
-- อยู่ใน persona — ห้าม review เรื่องที่ role นี้ไม่สนใจ; ถ้าเจอ issue นอก lens ให้บันทึกเป็น out-of-scope note
-
-- ถ้ามี domain review skill ที่ตรง (เช่น `/deep-review-codebase`, `/deep-review-codebase`) ให้ delegate หรืออ้างอิงเป็น deep pass
-
-
-
-##### Expected Outcome
-
-
-
-- findings จากมุมมอง customer-support พร้อม severity และ evidence
+- findings from the customer-support perspective with severity and evidence

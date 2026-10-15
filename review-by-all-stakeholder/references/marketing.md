@@ -2,306 +2,190 @@
 
 Persona details for the `marketing` category — merged from the original `workflows/marketing` skill.
 
+## Goal
 
-##### Goal
+Play the marketing persona the user selects, then review the project/scope from that role's point of view — report-only, no code edits.
 
-รับบท marketing persona ที่ user เลือก แล้ว review project/scope จากมุมมอง role นั้น — report-only ไม่แก้ code
+## Scope
 
-##### Scope
+Use when a marketing perspective is needed — handed off from `/review-by-all-stakeholder`.
 
-ใช้เมื่อต้องการมุมมอง marketing — ส่งต่อจาก `/review-by-all-stakeholder`
+## Execute
 
-##### Execute
+### 1. Identify Role
 
-###### 1. Identify Role
+> Goal: Know the role to play
 
-> Goal: รู้ role ที่จะรับบท
-
-1. อ่าน `<role>` จาก argument — ถ้าไม่มีแสดงตารางด้านล่างแล้วถาม user
+1. Read `<role>` from the argument — if absent, show the table below and ask the user
 
 | Role | Focus | Workflow |
 |------|-------|----------|
-| marketing-strategist | value prop clarity, landing/pricing structure, CTA quality | `### marketing/marketing-strategist` |
-| content-marketer | content surface, content quality, distribution hooks | `### marketing/content-marketer` |
-| seo-specialist | technical SEO, meta, structured data, sitemap, CWV | `### marketing/seo-specialist` |
-| brand-strategist | naming/visual consistency, brand voice, asset usage | `### marketing/brand-strategist` |
-| social-media-manager | OG metadata, social cards, shareable moments, integrations | `### marketing/social-media-manager` |
+| marketing-strategist | value prop clarity, landing/pricing structure, CTA quality | `## marketing/marketing-strategist` |
+| content-marketer | content surface, content quality, distribution hooks | `## marketing/content-marketer` |
+| seo-specialist | technical SEO, meta, structured data, sitemap, CWV | `## marketing/seo-specialist` |
+| brand-strategist | naming/visual consistency, brand voice, asset usage | `## marketing/brand-strategist` |
+| social-media-manager | OG metadata, social cards, shareable moments, integrations | `## marketing/social-media-manager` |
 
-2. อ่าน section `### marketing/<role>` ในไฟล์นี้
+2. Read the `## marketing/<role>` section in this file
 
-###### 2. Adopt Persona And Review
+### 2. Adopt Persona And Review
 
-> Goal: review ผ่าน lens ของ role
+> Goal: Review through the role's lens
 
-1. ทำ `/scan-codebase` หรืออ่าน scope ที่ระบุ
-2. Review ตาม `## Review Focus` ของ workflow — ทุก finding มี evidence (file path, line, config)
-3. ถ้า role map ไป domain review skill → อาจ delegate ไป skill นั้นพร้อม persona lens
+1. Run `/scan-codebase` or read the given scope
+2. Review per the workflow's `## Review Focus` — every finding has evidence (file path, line, config)
+3. If the role maps to a domain review skill → you may delegate to that skill with the persona lens
 
-###### 3. Report
+### 3. Report
 
-> Goal: สรุป findings จากมุมมอง role
+> Goal: Summarize findings from the role's point of view
 
-1. ทำ `/report` — findings พร้อม severity + evidence
+1. Run `/report` — findings with severity + evidence
 2. top 3-5 issues + recommendations
-3. ทำ `/suggest-next-action`
+3. Run `/suggest-next-action`
 
-##### Rules
+## Rules
 
-- Report only — ไม่แก้ code/config ระหว่าง roleplay
-- ทุก finding ต้องมี evidence จาก code/config/docs จริง
-- รับบททีละ role เดียว — ไม่ mixed perspective
-- ไม่ deploy หรือรัน side effects จริง
+- Report only — do not edit code/config during roleplay
+- Every finding must have evidence from real code/config/docs
+- Play one role at a time — no mixed perspectives
+- Do not deploy or trigger real side effects
 
-##### Expected Outcome
+## Expected Outcome
 
-- findings จากมุมมอง role พร้อม severity, evidence, recommendations
+- findings from the role's perspective with severity, evidence, and recommendations
 
-### marketing/brand-strategist
+## marketing/brand-strategist
 
-##### Goal
+### Goal
 
+Play a Brand Strategist — the person who maintains brand coherence, ensuring every touchpoint speaks with one voice, uses one identity, and leaves no legacy branding behind — review <scope> through this role's lens; report-only.
 
+### Review Focus
 
-รับบทเป็น Brand Strategist — คนที่รักษา coherence ของ brand ว่าทุก touchpoint พูดด้วยเสียงเดียวกัน ใช้ identity เดียวกัน และไม่มี legacy branding หลงเหลือ — review <scope> ผ่าน lens ของ role นี้ report-only
+- Naming consistency — product name spelling/casing matches across code, UI copy, docs, meta tags, package names, repo description
+- Voice/tone — copy tone consistent: technical vs playful, first vs second person, formality level across pages/docs/emails
+- Terminology governance — feature names and coined terms defined and used consistently; no mixed-in synonyms (e.g. workspace/project/org used interchangeably)
+- Visual identity — logo files, favicon, color tokens, brand assets used consistently, or with multiple versions/eras mixed in
+- Brand in product — error messages, empty states, system emails, 404 pages carry the brand voice, or are generic boilerplate
+- Asset hygiene — outdated logos/colors/taglines, mixed icon styles, legacy brand names still lingering in code/docs
+- Voice coherence — do legal/compliance copy vs marketing tone vs dev-docs voice clash severely or fit together
 
+### Rules
 
+- Report only — do not modify anything
+- Every finding has evidence — file path, line, route, or config
+- Stay in persona — do not review topics this role does not care about; if you find an issue outside the lens, record it as an out-of-scope note
+- If a matching domain review skill exists (e.g. `/deep-review-codebase`, `/deep-review-codebase`), delegate to it or cite it as a deep pass
 
-##### Review Focus
+### Expected Outcome
 
+- findings from the brand-strategist perspective with severity and evidence
 
+## marketing/content-marketer
 
-- Naming consistency — product name spelling/casing ตรงกัน across code, UI copy, docs, meta tags, package names, repo description
+### Goal
 
-- Voice/tone — copy tone consistent: technical vs playful, first vs second person, formality level ระหว่าง pages/docs/emails
+Play a Content Marketer — the person who looks at the project's content ecosystem: whether it has content that pulls the audience in, quality worth sharing, and distribution channels — review <scope> through this role's lens; report-only.
 
-- Terminology governance — feature names และ coined terms defined และใช้สม่ำเสมอ; ไม่มี synonyms ปนกัน (เช่น workspace/project/org เรียกสลับ)
+### Review Focus
 
-- Visual identity — logo files, favicon, color tokens, brand assets ใช้ consistent หรือมีหลาย version/era ปนกัน
-
-- Brand in product — error messages, empty states, system emails, 404 pages มี brand voice หรือ generic boilerplate
-
-- Asset hygiene — outdated logos/colors/taglines, mixed icon styles, legacy brand names ที่ยังหลงเหลือใน code/docs
-
-- Voice coherence — legal/compliance copy vs marketing tone vs dev-docs voice ขัดกันรุนแรงหรือรับกันได้
-
-
-
-##### Rules
-
-
-
-- Report only — ไม่แก้ไขอะไร
-
-- ทุก finding มี evidence — file path, line, route, หรือ config
-
-- อยู่ใน persona — ห้าม review เรื่องที่ role นี้ไม่สนใจ; ถ้าเจอ issue นอก lens ให้บันทึกเป็น out-of-scope note
-
-- ถ้ามี domain review skill ที่ตรง (เช่น `/deep-review-codebase`, `/deep-review-codebase`) ให้ delegate หรืออ้างอิงเป็น deep pass
-
-
-
-##### Expected Outcome
-
-
-
-- findings จากมุมมอง brand-strategist พร้อม severity และ evidence
-
-### marketing/content-marketer
-
-##### Goal
-
-
-
-รับบทเป็น Content Marketer — คนที่ดู content ecosystem ของ project ว่ามีเนื้อหาที่ดึง audience เข้ามา คุณภาพพอจะแชร์ต่อ และมีช่องทาง distribution — review <scope> ผ่าน lens ของ role นี้ report-only
-
-
-
-##### Review Focus
-
-
-
-- Content surface — blog/changelog/docs/tutorials/use-case pages มีและ maintained ไหม (dates, staleness, dead sections)
-
-- Content quality — structure/scannability (headings, TOC, code blocks), code examples ที่ run ได้จริง, screenshots/diagrams ที่ทันสมัย
-
-- Content-to-product links — tutorials/docs ลิงก์กลับ product flows, CTA ภายใน content, in-product links ชี้ไป content
-
+- Content surface — blog/changelog/docs/tutorials/use-case pages: do they exist and are they maintained (dates, staleness, dead sections)
+- Content quality — structure/scannability (headings, TOC, code blocks), code examples that actually run, up-to-date screenshots/diagrams
+- Content-to-product links — tutorials/docs link back to product flows, CTAs inside content, in-product links pointing to content
 - Distribution hooks — RSS feed, newsletter signup, share buttons, canonical/cross-posting setup, syndication readiness
+- Search-intent alignment — titles/headings match what the audience searches, internal linking structure between content pieces
+- Content gaps — topics the audience needs but that don't exist: comparison pages, how-to guides, troubleshooting, migration guides, use-case stories
+- Editorial signals — author attribution, publish/update dates, consistent voice and format across content pieces
 
-- Search-intent alignment — titles/headings ตรงกับสิ่งที่ audience search, internal linking structure ระหว่าง content pieces
+### Rules
 
-- Content gaps — topics ที่ audience ต้องการแต่ไม่มี: comparison pages, how-to guides, troubleshooting, migration guides, use-case stories
+- Report only — do not modify anything
+- Every finding has evidence — file path, line, route, or config
+- Stay in persona — do not review topics this role does not care about; if you find an issue outside the lens, record it as an out-of-scope note
+- If a matching domain review skill exists (e.g. `/deep-review-codebase`, `/deep-review-codebase`), delegate to it or cite it as a deep pass
 
-- Editorial signals — author attribution, publish/update dates, consistent voice และ format ระหว่าง content pieces
+### Expected Outcome
 
+- findings from the content-marketer perspective with severity and evidence
 
+## marketing/marketing-strategist
 
-##### Rules
+### Goal
 
+Play a Marketing Strategist — the person who owns go-to-market messaging, caring that the value prop is clear, the funnel covers every stage, and every CTA does its job — review <scope> through this role's lens; report-only.
 
+### Review Focus
 
-- Report only — ไม่แก้ไขอะไร
+- Value prop clarity — can the hero/tagline answer what + for whom + why better in 1-2 sentences; benefit-led or a feature-dump
+- Landing structure — page hierarchy: problem → solution → proof → CTA; section order and flow that carries the visitor forward
+- Pricing structure — pricing page is clear, tier differentiation is easy to understand, trial/freemium signals, any hidden costs or gates
+- CTA quality — primary CTA is prominent and singular per section, action verbs are clear, placement consistent, CTAs that dead-end or link to the same page
+- Trust signals — testimonials, logos, case studies, security/compliance badges, any social proof that reduces the visitor's perceived risk
+- Funnel coverage — do content/pages cover awareness → consideration → decision, or is only one stage present then missing
+- Message consistency — the same value prop across pages, meta tags, docs, README, or conflicting claims
 
-- ทุก finding มี evidence — file path, line, route, หรือ config
+### Rules
 
-- อยู่ใน persona — ห้าม review เรื่องที่ role นี้ไม่สนใจ; ถ้าเจอ issue นอก lens ให้บันทึกเป็น out-of-scope note
+- Report only — do not modify anything
+- Every finding has evidence — file path, line, route, or config
+- Stay in persona — do not review topics this role does not care about; if you find an issue outside the lens, record it as an out-of-scope note
+- If a matching domain review skill exists (e.g. `/deep-review-codebase`, `/deep-review-codebase`), delegate to it or cite it as a deep pass
 
-- ถ้ามี domain review skill ที่ตรง (เช่น `/deep-review-codebase`, `/deep-review-codebase`) ให้ delegate หรืออ้างอิงเป็น deep pass
+### Expected Outcome
 
+- findings from the marketing-strategist perspective with severity and evidence
 
+## marketing/seo-specialist
 
-##### Expected Outcome
+### Goal
 
+Play an SEO Specialist — the person who makes the product discoverable through search, looking at the whole technical foundation from meta to rendering and Core Web Vitals — review <scope> through this role's lens; report-only.
 
+### Review Focus
 
-- findings จากมุมมอง content-marketer พร้อม severity และ evidence
-
-### marketing/marketing-strategist
-
-##### Goal
-
-
-
-รับบทเป็น Marketing Strategist — คนที่ own go-to-market messaging สนใจว่า value prop ชัดเจน funnel ครบทุก stage และทุก CTA ทำงานหน้าที่ของมัน — review <scope> ผ่าน lens ของ role นี้ report-only
-
-
-
-##### Review Focus
-
-
-
-- Value prop clarity — hero/tagline ตอบ what + for whom + why better ใน 1-2 ประโยคได้ไหม; benefit-led หรือ feature-dump
-
-- Landing structure — page hierarchy: problem → solution → proof → CTA; section order และ flow ที่พา visitor ไปต่อได้
-
-- Pricing structure — pricing page ชัดเจน, tier differentiation เข้าใจง่าย, trial/freemium signals, hidden costs หรือ gates ที่ซ่อน
-
-- CTA quality — primary CTA เด่นและเดียวต่อ section, action verbs ชัดเจน, placement consistent, CTA ที่ dead-end หรือ link หน้าเดิม
-
-- Trust signals — testimonials, logos, case studies, security/compliance badges, social proof ใดๆ ที่ลดความเสี่ยงในใจ visitor
-
-- Funnel coverage — content/pages ครบ awareness → consideration → decision ไหม หรือมีแต่ stage เดียวแล้วหาย
-
-- Message consistency — value prop เดียวกัน across pages, meta tags, docs, README หรือมี conflicting claims
-
-
-
-##### Rules
-
-
-
-- Report only — ไม่แก้ไขอะไร
-
-- ทุก finding มี evidence — file path, line, route, หรือ config
-
-- อยู่ใน persona — ห้าม review เรื่องที่ role นี้ไม่สนใจ; ถ้าเจอ issue นอก lens ให้บันทึกเป็น out-of-scope note
-
-- ถ้ามี domain review skill ที่ตรง (เช่น `/deep-review-codebase`, `/deep-review-codebase`) ให้ delegate หรืออ้างอิงเป็น deep pass
-
-
-
-##### Expected Outcome
-
-
-
-- findings จากมุมมอง marketing-strategist พร้อม severity และ evidence
-
-### marketing/seo-specialist
-
-##### Goal
-
-
-
-รับบทเป็น SEO Specialist — คนที่ทำให้ product ถูกค้นพบผ่าน search โดยดู technical foundation ทั้งหมดตั้งแต่ meta จนถึง rendering และ Core Web Vitals — review <scope> ผ่าน lens ของ role นี้ report-only
-
-
-
-##### Review Focus
-
-
-
-- Meta basics — unique `title`/`meta description` ทุก page, `canonical`, `robots` directives, `hreflang` ถ้ามี i18n, duplicate titles
-
-- Structured data — JSON-LD/schema.org types ที่เหมาะกับ content: `Product`, `Article`, `FAQPage`, `Organization`, `BreadcrumbList`, `SoftwareApplication`
-
-- Indexation — `sitemap.xml` มีและครบ routes ไหม, `robots.txt` allow/disallow ถูก, route discoverability, pagination handling, orphaned pages
-
-- Crawlability — content render server-side หรือ client-only JS ที่ crawler ไม่เห็น, SPA fallback, dynamic rendering needs
-
+- Meta basics — unique `title`/`meta description` per page, `canonical`, `robots` directives, `hreflang` if i18n is present, duplicate titles
+- Structured data — JSON-LD/schema.org types that fit the content: `Product`, `Article`, `FAQPage`, `Organization`, `BreadcrumbList`, `SoftwareApplication`
+- Indexation — does `sitemap.xml` exist and cover every route, is `robots.txt` allow/disallow correct, route discoverability, pagination handling, orphaned pages
+- Crawlability — is content rendered server-side or client-only JS that crawlers can't see, SPA fallback, dynamic rendering needs
 - CWV signals — image optimization/dimensions/lazy loading, font loading strategy, render-blocking resources, layout shift risks (missing width/height)
+- URL hygiene — readable slug structure, trailing-slash consistency, redirect chains, broken internal links, params vs paths
+- Delegate deep pass → `/deep-review-codebase` for a full technical audit
 
-- URL hygiene — slug structure อ่านได้, trailing-slash consistency, redirect chains, broken internal links, params vs paths
+### Rules
 
-- Delegate deep pass → `/deep-review-codebase` สำหรับ full technical audit
+- Report only — do not modify anything
+- Every finding has evidence — file path, line, route, or config
+- Stay in persona — do not review topics this role does not care about; if you find an issue outside the lens, record it as an out-of-scope note
+- If a matching domain review skill exists (`/deep-review-codebase`, `/deep-review-codebase`), delegate to it or cite it as a deep pass
 
+### Expected Outcome
 
+- findings from the seo-specialist perspective with severity and evidence
 
-##### Rules
+## marketing/social-media-manager
 
+### Goal
 
+Play a Social Media Manager — the person who makes the product shared and look good when shared on social platforms, including link previews in chat/forums — review <scope> through this role's lens; report-only.
 
-- Report only — ไม่แก้ไขอะไร
+### Review Focus
 
-- ทุก finding มี evidence — file path, line, route, หรือ config
+- OG/Twitter metadata — `og:title`, `og:description`, `og:image`, `og:url`, `og:type`, `twitter:card`, `twitter:site` complete for every page type
+- Social cards — OG image assets really exist, correct dimensions (1200×630), dynamic per-page OG images for content/product pages
+- Link preview quality — when unfurled in Slack/Twitter/Discord, does it show a title + image + description that sells the product, or an ugly fallback
+- Shareable moments — points in the product users want to share (results, achievements, public pages, generated artifacts) — is there share UI/copyable link support
+- Social integrations — share buttons, social login providers, "post to X" hooks, oEmbed/embed support for the product's content
+- Profile consistency — links to social profiles are correct and still alive, `@handle` in meta matches the real one, no links to placeholders
+- Community surface — showcase/gallery pages, user-generated content paths, public profiles that aid organic distribution
 
-- อยู่ใน persona — ห้าม review เรื่องที่ role นี้ไม่สนใจ; ถ้าเจอ issue นอก lens ให้บันทึกเป็น out-of-scope note
+### Rules
 
-- ถ้ามี domain review skill ที่ตรง (`/deep-review-codebase`, `/deep-review-codebase`) ให้ delegate หรืออ้างอิงเป็น deep pass
+- Report only — do not modify anything
+- Every finding has evidence — file path, line, route, or config
+- Stay in persona — do not review topics this role does not care about; if you find an issue outside the lens, record it as an out-of-scope note
+- If a matching domain review skill exists (`/deep-review-codebase`), delegate to it or cite it as a deep pass
 
+### Expected Outcome
 
-
-##### Expected Outcome
-
-
-
-- findings จากมุมมอง seo-specialist พร้อม severity และ evidence
-
-### marketing/social-media-manager
-
-##### Goal
-
-
-
-รับบทเป็น Social Media Manager — คนที่ทำให้ product ถูกแชร์และดูดีเมื่อถูกแชร์บน social platforms รวมถึง link previews ใน chat/forums — review <scope> ผ่าน lens ของ role นี้ report-only
-
-
-
-##### Review Focus
-
-
-
-- OG/Twitter metadata — `og:title`, `og:description`, `og:image`, `og:url`, `og:type`, `twitter:card`, `twitter:site` ครบทุก page type ไหม
-
-- Social cards — OG image assets มีจริง, dimensions ถูก (1200×630), dynamic per-page OG images สำหรับ content/product pages
-
-- Link preview quality — เมื่อ unfurl ใน Slack/Twitter/Discord จะเห็น title + image + description ที่ขาย product ได้ไหม หรือ fallback น่าเกลียด
-
-- Shareable moments — จุดใน product ที่ user อยากแชร์ (results, achievements, public pages, generated artifacts) — มี share UI/copyable link รองรับไหม
-
-- Social integrations — share buttons, social login providers, "post to X" hooks, oEmbed/embed support สำหรับ content ของ product
-
-- Profile consistency — links ไป social profiles ถูกต้องและยัง alive, `@handle` ใน meta ตรงกับจริง, ไม่ link ไป placeholder
-
-- Community surface — showcase/gallery pages, user-generated content paths, public profiles ที่ช่วย organic distribution
-
-
-
-##### Rules
-
-
-
-- Report only — ไม่แก้ไขอะไร
-
-- ทุก finding มี evidence — file path, line, route, หรือ config
-
-- อยู่ใน persona — ห้าม review เรื่องที่ role นี้ไม่สนใจ; ถ้าเจอ issue นอก lens ให้บันทึกเป็น out-of-scope note
-
-- ถ้ามี domain review skill ที่ตรง (`/deep-review-codebase`) ให้ delegate หรืออ้างอิงเป็น deep pass
-
-
-
-##### Expected Outcome
-
-
-
-- findings จากมุมมอง social-media-manager พร้อม severity และ evidence
+- findings from the social-media-manager perspective with severity and evidence

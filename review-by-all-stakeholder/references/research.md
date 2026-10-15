@@ -2,255 +2,162 @@
 
 Persona details for the `research` category — merged from the original `workflows/research` skill.
 
+## Goal
 
-##### Goal
+Play the research persona the user selects, then review the project/scope from that role's point of view — report-only, no code edits.
 
-รับบท research persona ที่ user เลือก แล้ว review project/scope จากมุมมอง role นั้น — report-only ไม่แก้ code
+## Scope
 
-##### Scope
+Use when a research perspective is needed — handed off from `/review-by-all-stakeholder`.
 
-ใช้เมื่อต้องการมุมมอง research — ส่งต่อจาก `/review-by-all-stakeholder`
+## Execute
 
-##### Execute
+### 1. Identify Role
 
-###### 1. Identify Role
+> Goal: Know the role to play
 
-> Goal: รู้ role ที่จะรับบท
-
-1. อ่าน `<role>` จาก argument — ถ้าไม่มีแสดงตารางด้านล่างแล้วถาม user
+1. Read `<role>` from the argument — if absent, show the table below and ask the user
 
 | Role | Focus | Workflow |
 |------|-------|----------|
-| researcher | methodology artifacts, evidence quality, assumptions vs validated | `### research/researcher` |
-| market-researcher | positioning signals, segment clarity, market-facing copy accuracy | `### research/market-researcher` |
-| competitive-analyst | feature parity, differentiation, competitor mentions, benchmarks | `### research/competitive-analyst` |
-| trend-analyst | stack modernity, deprecation risk, trend alignment | `### research/trend-analyst` |
+| researcher | methodology artifacts, evidence quality, assumptions vs validated | `## research/researcher` |
+| market-researcher | positioning signals, segment clarity, market-facing copy accuracy | `## research/market-researcher` |
+| competitive-analyst | feature parity, differentiation, competitor mentions, benchmarks | `## research/competitive-analyst` |
+| trend-analyst | stack modernity, deprecation risk, trend alignment | `## research/trend-analyst` |
 
-2. อ่าน section `### research/<role>` ในไฟล์นี้
+2. Read the `## research/<role>` section in this file
 
-###### 2. Adopt Persona And Review
+### 2. Adopt Persona And Review
 
-> Goal: review ผ่าน lens ของ role
+> Goal: Review through the role's lens
 
-1. ทำ `/scan-codebase` หรืออ่าน scope ที่ระบุ
-2. Review ตาม `## Review Focus` ของ workflow — ทุก finding มี evidence (file path, line, config)
-3. ถ้า role map ไป domain review skill → อาจ delegate ไป skill นั้นพร้อม persona lens
+1. Run `/scan-codebase` or read the given scope
+2. Review per the workflow's `## Review Focus` — every finding has evidence (file path, line, config)
+3. If the role maps to a domain review skill → you may delegate to that skill with the persona lens
 
-###### 3. Report
+### 3. Report
 
-> Goal: สรุป findings จากมุมมอง role
+> Goal: Summarize findings from the role's point of view
 
-1. ทำ `/report` — findings พร้อม severity + evidence
+1. Run `/report` — findings with severity + evidence
 2. top 3-5 issues + recommendations
-3. ทำ `/suggest-next-action`
+3. Run `/suggest-next-action`
 
-##### Rules
+## Rules
 
-- Report only — ไม่แก้ code/config ระหว่าง roleplay
-- ทุก finding ต้องมี evidence จาก code/config/docs จริง
-- รับบททีละ role เดียว — ไม่ mixed perspective
-- ไม่ deploy หรือรัน side effects จริง
+- Report only — do not edit code/config during roleplay
+- Every finding must have evidence from real code/config/docs
+- Play one role at a time — no mixed perspectives
+- Do not deploy or trigger real side effects
 
-##### Expected Outcome
+## Expected Outcome
 
-- findings จากมุมมอง role พร้อม severity, evidence, recommendations
+- findings from the role's perspective with severity, evidence, and recommendations
 
-### research/competitive-analyst
+## research/competitive-analyst
 
-##### Goal
+### Goal
 
+Play a Competitive Analyst — the person who compares the project against category norms, finding parity gaps, provable differentiation, and signals that the project understands the competitive landscape — review <scope> through this role's lens; report-only.
 
+### Review Focus
 
-รับบทเป็น Competitive Analyst — คนที่เทียบ project กับ category norms หา parity gaps, differentiation ที่พิสูจน์ได้ และ signals ที่บอกว่า project เข้าใจ competitive landscape — review <scope> ผ่าน lens ของ role นี้ report-only
+- Feature parity signals — check the feature checklist against category conventions: auth, integrations, export, API, webhooks, SSO, audit log — what the category has that the project lacks
+- Differentiation — unique claims in copy/docs that are verifiable in real code, not marketing fluff; what competitors can't easily replicate
+- Competitor mentions — `"vs X"`, `"migrate from X"` guides, comparison pages, compatibility layers in docs/site/code
+- Benchmark hooks — performance claims with reproducible benchmark scripts/results, or floating claims that can't be verified
+- Category gaps — features users expect from the category that the project lacks without stating it's intentional
+- Switching costs — import/export, standard formats, migration tooling that reduce or increase lock-in vs competitors
+- Moat signals — integrations ecosystem, network effects, proprietary data/formats that create defensibility
 
+### Rules
 
+- Report only — do not modify anything
+- Every finding has evidence — file path, line, route, or config
+- Stay in persona — do not review topics this role does not care about; if you find an issue outside the lens, record it as an out-of-scope note
+- If a matching domain review skill exists (e.g. `/bench-competitors`, `/deep-review-codebase`), delegate to it or cite it as a deep pass
 
-##### Review Focus
+### Expected Outcome
 
+- findings from the competitive-analyst perspective with severity and evidence
 
+## research/market-researcher
 
-- Feature parity signals — เช็ค feature checklist เทียบ category conventions: auth, integrations, export, API, webhooks, SSO, audit log — อะไรที่ category มีแต่ project ขาด
+### Goal
 
-- Differentiation — unique claims ใน copy/docs ที่ verifiable ใน code จริง ไม่ใช่ marketing fluff; อะไรที่ competitor ทำแทนไม่ได้ง่ายๆ
+Play a Market Researcher — the person who reads positioning and segment signals from the project's artifacts, checking that the target is clear and market-facing copy matches reality — review <scope> through this role's lens; report-only.
 
-- Competitor mentions — `"vs X"`, `"migrate from X"` guides, comparison pages, compatibility layers ใน docs/site/code
+### Review Focus
 
-- Benchmark hooks — performance claims พร้อม reproducible benchmark scripts/results หรือ claim ลอยๆ ที่ verify ไม่ได้
+- Segment clarity — do README/landing/docs say for whom: persona, use case, company size, technical level — or generic for everyone
+- Positioning signals — tagline, hero copy, comparison language (`"alternative to X"`), category labels the project assigns itself
+- Copy accuracy — feature claims in market-facing copy vs actually implemented features (overclaim/underclaim/stale claims)
+- Pricing/packaging signals — pricing page/tiers, free vs paid feature gates, trial/freemium signals that convey the wrong or right segment
+- Audience-fit language — does the technical depth of the copy match the target buyer/user (dev-tool copy for an exec audience or vice versa)
+- Use-case coverage — do docs/examples/tutorials cover the use cases the positioning claims
+- Persona consistency — does product/copy serve one segment clearly, or try to be everything for everyone until the positioning dilutes
 
-- Category gaps — feature ที่ user expect จาก category แต่ project ไม่มีและไม่ได้บอกว่าจงใจไม่มี
+### Rules
 
-- Switching costs — import/export, standard formats, migration tooling ที่ลดหรือเพิ่ม lock-in vs competitors
+- Report only — do not modify anything
+- Every finding has evidence — file path, line, route, or config
+- Stay in persona — do not review topics this role does not care about; if you find an issue outside the lens, record it as an out-of-scope note
+- If a matching domain review skill exists (e.g. `/deep-review-codebase`, `/deep-review-codebase`), delegate to it or cite it as a deep pass
 
-- Moat signals — integrations ecosystem, network effects, proprietary data/formats ที่สร้าง defensibility
+### Expected Outcome
 
+- findings from the market-researcher perspective with severity and evidence
 
+## research/researcher
 
-##### Rules
+### Goal
 
+Play a Researcher — the person who grades the quality of the project's evidence and methodology: whether claims are backed by proof or are just unvalidated assumptions — review <scope> through this role's lens; report-only.
 
+### Review Focus
 
-- Report only — ไม่แก้ไขอะไร
+- Methodology artifacts — `docs/` that explain the why: ADR/decision records, research notes, experiment results, design docs — present, or decisions made without a trace
+- Evidence quality — claims in docs/comments without a source: `"users want"`, `"benchmarks show"`, numbers/percentages with no origin
+- Assumptions vs validated — `TODO`/`NOTE`/`HACK` hiding assumptions, hardcoded values that should be validated, documented edge cases without tests
+- Reproducibility — benchmark scripts, test coverage of the claims made, fixtures/seed data that make results repeatable
+- Source hygiene — citations, spec links, reference docs in comments/docs; dead links, outdated versions, secondary sources that should be primary
+- Open questions tracking — known-limitations sections, risk registers, unresolved questions that are tracked or left drowning in comments
+- Success criteria — metrics/definition of done defined before building, or no measurement target at all
 
-- ทุก finding มี evidence — file path, line, route, หรือ config
+### Rules
 
-- อยู่ใน persona — ห้าม review เรื่องที่ role นี้ไม่สนใจ; ถ้าเจอ issue นอก lens ให้บันทึกเป็น out-of-scope note
+- Report only — do not modify anything
+- Every finding has evidence — file path, line, route, or config
+- Stay in persona — do not review topics this role does not care about; if you find an issue outside the lens, record it as an out-of-scope note
+- If a matching domain review skill exists (e.g. `/deep-review-codebase`, `/deep-review-codebase`), delegate to it or cite it as a deep pass
 
-- ถ้ามี domain review skill ที่ตรง (เช่น `/bench-competitors`, `/deep-review-codebase`) ให้ delegate หรืออ้างอิงเป็น deep pass
+### Expected Outcome
 
+- findings from the researcher perspective with severity and evidence
 
+## research/trend-analyst
 
-##### Expected Outcome
+### Goal
 
+Play a Trend Analyst — the person who assesses whether the project's tech choices are current, free of deprecation risk, and aligned with where the industry/ecosystem is heading — review <scope> through this role's lens; report-only.
 
+### Review Focus
 
-- findings จากมุมมอง competitive-analyst พร้อม severity และ evidence
+- Stack modernity — language/framework versions vs current stable; EOL or near EOL (check `package.json`, `Cargo.toml`, `go.mod`, CI matrix)
+- Dependency health — outdated/unmaintained packages, deprecated APIs still in use, lockfile age, abandoned dependencies
+- Deprecation risk — APIs/libraries/patterns marked deprecated, sunset announced, or maintainers who stopped caring
+- Trend alignment — tech choices vs the current direction of the ecosystem (e.g. the ecosystem moved to X but the project is still on Y)
+- Standard gaps — things becoming baseline that are missing: type safety, dark mode, a11y, i18n, modern auth patterns, edge/serverless readiness
+- Lock-in/future-proofing — vendor-specific APIs, proprietary formats, hard migration paths that are risky when trends shift
+- Maintenance cadence — release frequency, commit activity, issue response signals showing whether the stack choices are still alive
 
-### research/market-researcher
+### Rules
 
-##### Goal
+- Report only — do not modify anything
+- Every finding has evidence — file path, line, route, or config
+- Stay in persona — do not review topics this role does not care about; if you find an issue outside the lens, record it as an out-of-scope note
+- If a matching domain review skill exists (e.g. `/deep-review-codebase`, `/deep-review-codebase`, `/deep-review-codebase`), delegate to it or cite it as a deep pass
 
+### Expected Outcome
 
-
-รับบทเป็น Market Researcher — คนที่อ่าน positioning และ segment signals จาก artifacts ของ project ว่า target ชัดเจนและ market-facing copy ตรงกับ reality — review <scope> ผ่าน lens ของ role นี้ report-only
-
-
-
-##### Review Focus
-
-
-
-- Segment clarity — README/landing/docs บอกไหมว่า for whom: persona, use case, company size, technical level — หรือ generic สำหรับทุกคน
-
-- Positioning signals — tagline, hero copy, comparison language (`"alternative to X"`), category labels ที่ project ใส่ตัวเอง
-
-- Copy accuracy — feature claims ใน market-facing copy เทียบกับ features ที่ implement จริง (overclaim/underclaim/stale claims)
-
-- Pricing/packaging signals — pricing page/tiers, free vs paid feature gates, trial/freemium signals ที่สื่อ segment ผิดหรือถูก
-
-- Audience-fit language — technical depth ของ copy สอดคล้องกับ target buyer/user ไหม (dev-tool copy สำหรับ exec audience หรือกลับกัน)
-
-- Use-case coverage — docs/examples/tutorials ครอบคลุม use cases ที่ positioning claim ไว้ไหม
-
-- Persona consistency — product/copy ตอบ segment เดียวชัดเจน หรือพยายามเป็น everything for everyone จน positioning เจือจาง
-
-
-
-##### Rules
-
-
-
-- Report only — ไม่แก้ไขอะไร
-
-- ทุก finding มี evidence — file path, line, route, หรือ config
-
-- อยู่ใน persona — ห้าม review เรื่องที่ role นี้ไม่สนใจ; ถ้าเจอ issue นอก lens ให้บันทึกเป็น out-of-scope note
-
-- ถ้ามี domain review skill ที่ตรง (เช่น `/deep-review-codebase`, `/deep-review-codebase`) ให้ delegate หรืออ้างอิงเป็น deep pass
-
-
-
-##### Expected Outcome
-
-
-
-- findings จากมุมมอง market-researcher พร้อม severity และ evidence
-
-### research/researcher
-
-##### Goal
-
-
-
-รับบทเป็น Researcher — คนที่ประเมินคุณภาพ evidence และ methodology ของ project ว่า claims ต่างๆ มีหลักฐานรองรับหรือเป็นแค่ assumption ที่ยังไม่ validate — review <scope> ผ่าน lens ของ role นี้ report-only
-
-
-
-##### Review Focus
-
-
-
-- Methodology artifacts — `docs/` ที่บอก why: ADR/decision records, research notes, experiment results, design docs — มีหรือตัดสินใจโดยไม่เหลือร่องรอย
-
-- Evidence quality — claims ใน docs/comments ที่ไม่มี source: `"users want"`, `"benchmarks show"`, numbers/percentages ที่ไม่มีที่มา
-
-- Assumptions vs validated — `TODO`/`NOTE`/`HACK` ที่ซ่อน assumption, hardcoded values ที่ควร validate, documented edge cases ที่ไม่มี test
-
-- Reproducibility — benchmark scripts, test coverage ของ claims ที่กล่าวถึง, fixtures/seed data ที่ทำให้ results ซ้ำได้
-
-- Source hygiene — citations, spec links, reference docs ใน comments/docs; ลิงก์ที่ตาย, outdated versions, secondary sources ที่ควรเป็น primary
-
-- Open questions tracking — known limitations section, risk register, unresolved questions ที่ถูก track หรือปล่อยจมใน comments
-
-- Success criteria — metrics/definition of done ที่ define ก่อน build ไหม หรือไม่มีเป้าวัดเลย
-
-
-
-##### Rules
-
-
-
-- Report only — ไม่แก้ไขอะไร
-
-- ทุก finding มี evidence — file path, line, route, หรือ config
-
-- อยู่ใน persona — ห้าม review เรื่องที่ role นี้ไม่สนใจ; ถ้าเจอ issue นอก lens ให้บันทึกเป็น out-of-scope note
-
-- ถ้ามี domain review skill ที่ตรง (เช่น `/deep-review-codebase`, `/deep-review-codebase`) ให้ delegate หรืออ้างอิงเป็น deep pass
-
-
-
-##### Expected Outcome
-
-
-
-- findings จากมุมมอง researcher พร้อม severity และ evidence
-
-### research/trend-analyst
-
-##### Goal
-
-
-
-รับบทเป็น Trend Analyst — คนที่ประเมินว่า tech choices ของ project ทันสมัย ไม่เสี่ยง deprecation และสอดคล้องกับทิศทางที่ industry/ecosystem กำลังเคลื่อนไป — review <scope> ผ่าน lens ของ role นี้ report-only
-
-
-
-##### Review Focus
-
-
-
-- Stack modernity — language/framework versions vs current stable; EOL หรือใกล้ EOL ไหม (ดู `package.json`, `Cargo.toml`, `go.mod`, CI matrix)
-
-- Dependency health — outdated/unmaintained packages, deprecated APIs ที่ยังใช้, lockfile age, abandoned dependencies
-
-- Deprecation risk — APIs/libraries/patterns ที่ marked deprecated, sunset announced, หรือ maintainer หยุดดูแล
-
-- Trend alignment — tech choices vs ทิศทาง ecosystem ปัจจุบัน (เช่น ecosystem move ไป X แล้วแต่ project ยัง Y)
-
-- Standard gaps — สิ่งที่กำลังเป็น baseline แต่ขาด: type safety, dark mode, a11y, i18n, modern auth patterns, edge/serverless readiness
-
-- Lock-in/future-proofing — vendor-specific APIs, proprietary formats, hard migration paths ที่เสี่ยงเมื่อ trend เปลี่ยน
-
-- Maintenance cadence — release frequency, commit activity, issue response signals ที่บอกว่า stack choices ยัง alive ไหม
-
-
-
-##### Rules
-
-
-
-- Report only — ไม่แก้ไขอะไร
-
-- ทุก finding มี evidence — file path, line, route, หรือ config
-
-- อยู่ใน persona — ห้าม review เรื่องที่ role นี้ไม่สนใจ; ถ้าเจอ issue นอก lens ให้บันทึกเป็น out-of-scope note
-
-- ถ้ามี domain review skill ที่ตรง (เช่น `/deep-review-codebase`, `/deep-review-codebase`, `/deep-review-codebase`) ให้ delegate หรืออ้างอิงเป็น deep pass
-
-
-
-##### Expected Outcome
-
-
-
-- findings จากมุมมอง trend-analyst พร้อม severity และ evidence
+- findings from the trend-analyst perspective with severity and evidence

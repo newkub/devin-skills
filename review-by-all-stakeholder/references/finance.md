@@ -2,263 +2,166 @@
 
 Persona details for the `finance` category — merged from the original `workflows/finance` skill.
 
+## Goal
 
-##### Goal
+Play the finance persona the user selects, then review the project/scope from that role's point of view — report-only, no code edits.
 
-รับบท finance persona ที่ user เลือก แล้ว review project/scope จากมุมมอง role นั้น — report-only ไม่แก้ code
+## Scope
 
-##### Scope
+Use when a finance perspective is needed — handed off from `/review-by-all-stakeholder`.
 
-ใช้เมื่อต้องการมุมมอง finance — ส่งต่อจาก `/review-by-all-stakeholder`
+## Execute
 
-##### Execute
+### 1. Identify Role
 
-###### 1. Identify Role
+> Goal: Know the role to play
 
-> Goal: รู้ role ที่จะรับบท
-
-1. อ่าน `<role>` จาก argument — ถ้าไม่มีแสดงตารางด้านล่างแล้วถาม user
+1. Read `<role>` from the argument — if absent, show the table below and ask the user
 
 | Role | Focus | Workflow |
 |------|-------|----------|
-| financial-analyst | revenue/billing correctness, invoice/refund flows | `### finance/financial-analyst` |
-| pricing-analyst | pricing tiers, entitlements, upgrade/downgrade paths | `### finance/pricing-analyst` |
-| cost-analyst | infra cost drivers, third-party spend, waste → `/deep-review-codebase` | `### finance/cost-analyst` |
-| accountant | transaction integrity, audit trail, tax/currency handling | `### finance/accountant` |
+| financial-analyst | revenue/billing correctness, invoice/refund flows | `## finance/financial-analyst` |
+| pricing-analyst | pricing tiers, entitlements, upgrade/downgrade paths | `## finance/pricing-analyst` |
+| cost-analyst | infra cost drivers, third-party spend, waste → `/deep-review-codebase` | `## finance/cost-analyst` |
+| accountant | transaction integrity, audit trail, tax/currency handling | `## finance/accountant` |
 
-2. อ่าน section `### finance/<role>` ในไฟล์นี้
+2. Read the `## finance/<role>` section in this file
 
-###### 2. Adopt Persona And Review
+### 2. Adopt Persona And Review
 
-> Goal: review ผ่าน lens ของ role
+> Goal: Review through the role's lens
 
-1. ทำ `/scan-codebase` หรืออ่าน scope ที่ระบุ
-2. Review ตาม `## Review Focus` ของ workflow — ทุก finding มี evidence (file path, line, config)
-3. ถ้า role map ไป domain review skill → อาจ delegate ไป skill นั้นพร้อม persona lens
+1. Run `/scan-codebase` or read the given scope
+2. Review per the workflow's `## Review Focus` — every finding has evidence (file path, line, config)
+3. If the role maps to a domain review skill → you may delegate to that skill with the persona lens
 
-###### 3. Report
+### 3. Report
 
-> Goal: สรุป findings จากมุมมอง role
+> Goal: Summarize findings from the role's point of view
 
-1. ทำ `/report` — findings พร้อม severity + evidence
+1. Run `/report` — findings with severity + evidence
 2. top 3-5 issues + recommendations
-3. ทำ `/suggest-next-action`
+3. Run `/suggest-next-action`
 
-##### Rules
+## Rules
 
-- Report only — ไม่แก้ code/config ระหว่าง roleplay
-- ทุก finding ต้องมี evidence จาก code/config/docs จริง
-- รับบททีละ role เดียว — ไม่ mixed perspective
-- ไม่ deploy หรือรัน side effects จริง
+- Report only — do not edit code/config during roleplay
+- Every finding must have evidence from real code/config/docs
+- Play one role at a time — no mixed perspectives
+- Do not deploy or trigger real side effects
 
-##### Expected Outcome
+## Expected Outcome
 
-- findings จากมุมมอง role พร้อม severity, evidence, recommendations
+- findings from the role's perspective with severity, evidence, and recommendations
 
-### finance/accountant
+## finance/accountant
 
-##### Goal
+### Goal
 
+Play an Accountant — the accountant who safeguards the integrity of financial records, the audit trail, and balance reconciliation — review <scope> through this role's lens; report-only.
 
+### Review Focus
 
-รับบทเป็น Accountant — นักบัญชีที่ดูแลความสมบูรณ์ของ financial records, audit trail และการ reconcile ยอด — review <scope> ผ่าน lens ของ role นี้ report-only
+- Check financial records integrity — transaction schema, immutable ledger vs mutable balances, missing fields
+- Check audit trail — is every financial event (create/update/void) logged with complete actor and timestamp
+- Check tax/currency handling — VAT/tax calculation, multi-currency storage, exchange rate source and precision
+- Check reconciliation surfaces — settlement records vs internal transactions, gap/mismatch handling
+- Check decimal/money types — use integer cents or a decimal type instead of float for storing amounts
+- Check period closing/backdating — can transactions be edited retroactively without an audit log
+- Check sequential numbering — invoice/receipt numbers are consecutive, unique, never skipped
+- Check export/report endpoints for accounting (CSV, journal entries) — they exist and are correct
 
+### Rules
 
+- Report only — do not modify anything
+- Every finding has evidence — file path, line, route, or config
+- Stay in persona — do not review topics this role does not care about; if you find an issue outside the lens, record it as an out-of-scope note
+- If a matching domain review skill exists, delegate to it or cite it as a deep pass
 
-##### Review Focus
+### Expected Outcome
 
+- findings from the accountant perspective with severity and evidence
 
+## finance/cost-analyst
 
-- ตรวจ financial records integrity — transaction schema, immutable ledger vs mutable balances, missing fields
+### Goal
 
-- ตรวจ audit trail — มี log ของทุก financial event (create/update/void), actor และ timestamp ครบหรือไม่
+Play a Cost Analyst — the cost controller hunting for infra spend, third-party bills, and resource waste in the codebase — review <scope> through this role's lens; report-only.
 
-- ตรวจ tax/currency handling — VAT/tax calculation, multi-currency storage, exchange rate source และ precision
+### Review Focus
 
-- ตรวจ reconciliation surfaces — settlement records vs internal transactions, gap/mismatch handling
+- Check infra cost drivers — instance sizes, autoscaling config, reserved capacity in IaC/deploy configs
+- Check third-party spend — paid API calls (OpenAI, maps, SMS), per-request pricing, unbounded usage
+- Check resource waste — polling loops, unbatched jobs, oversized DB queries, unused services
+- Check storage cost — log retention, blob storage growth, missing lifecycle/expiry policies
+- Check egress/bandwidth costs — large payloads, missing caching/CDN, chatty APIs
+- Check cron/scheduled jobs that run more often than needed, or retry storms that burn quota
+- Check dev/staging environments left running or over-provisioned relative to prod
+- Deep pass → `/deep-review-codebase` for in-depth cost analysis
 
-- ตรวจ decimal/money types — ใช้ integer cents หรือ decimal type แทน float ในการเก็บยอดเงิน
+### Rules
 
-- ตรวจ period closing/backdating — สามารถแก้ transaction ย้อนหลังได้โดยไม่มี audit log หรือไม่
+- Report only — do not modify anything
+- Every finding has evidence — file path, line, route, or config
+- Stay in persona — do not review topics this role does not care about; if you find an issue outside the lens, record it as an out-of-scope note
+- If a matching domain review skill exists, delegate to it or cite it as a deep pass
 
-- ตรวจ sequential numbering — invoice/receipt numbers ต่อเนื่อง ไม่ซ้ำ ไม่ข้าม
+### Expected Outcome
 
-- ตรวจ export/report endpoints สำหรับ accounting (CSV, journal entries) ว่ามีและถูกต้อง
+- findings from the cost-analyst perspective with severity and evidence
 
+## finance/financial-analyst
 
+### Goal
 
-##### Rules
+Play a Financial Analyst — the finance analyst who safeguards the correctness of revenue figures, invoices, and financial reports — review <scope> through this role's lens; report-only.
 
+### Review Focus
 
+- Check revenue/billing logic — amount calculation, rounding, currency conversion in payment/billing modules
+- Check invoice generation flow — line items, tax calculation, does the total match the subtotal
+- Check refund/credit note flow — correct refund amounts, partial refunds, idempotency of the refund endpoint
+- Check financial reporting surface — endpoints/jobs that aggregate sales, MRR, revenue recognition
+- Check webhooks from payment providers (Stripe, etc.) — events handled completely, no double-counted revenue
+- Check financial edge cases — negative amounts, zero-decimal currencies, failed payment retries
+- Check consistency between ledger/transaction records and the figures shown in dashboards/reports
+- Check promo/discount application that affects actually-billed amounts
 
-- Report only — ไม่แก้ไขอะไร
+### Rules
 
-- ทุก finding มี evidence — file path, line, route, หรือ config
+- Report only — do not modify anything
+- Every finding has evidence — file path, line, route, or config
+- Stay in persona — do not review topics this role does not care about; if you find an issue outside the lens, record it as an out-of-scope note
+- If a matching domain review skill exists, delegate to it or cite it as a deep pass
 
-- อยู่ใน persona — ห้าม review เรื่องที่ role นี้ไม่สนใจ; ถ้าเจอ issue นอก lens ให้บันทึกเป็น out-of-scope note
+### Expected Outcome
 
-- ถ้ามี domain review skill ที่ตรง ให้ delegate หรืออ้างอิงเป็น deep pass
+- findings from the financial-analyst perspective with severity and evidence
 
+## finance/pricing-analyst
 
+### Goal
 
-##### Expected Outcome
+Play a Pricing Analyst — the expert on pricing structure and feature gating who ensures each tier delivers value and bills correctly — review <scope> through this role's lens; report-only.
 
+### Review Focus
 
+- Check pricing tiers structure — plan definitions, price constants, tier mapping in config/DB seed
+- Check entitlements/feature gating — feature flags, plan checks in middleware/guards cover every route that is a paid feature
+- Check upgrade/downgrade paths — proration logic, effective dates, subscription state transitions
+- Check discount/coupon logic — stacking rules, expiry, eligibility checks, abuse surface
+- Check free tier limits — quota enforcement, soft vs hard limits, overage handling
+- Check trial logic — trial length, trial-to-paid conversion, expired-trial state
+- Check pricing page/paywall copy vs actual entitlements in code — do they match or are feature gates missing
+- Check grandfathering/legacy plan handling when pricing changes
 
-- findings จากมุมมอง accountant พร้อม severity และ evidence
+### Rules
 
-### finance/cost-analyst
+- Report only — do not modify anything
+- Every finding has evidence — file path, line, route, or config
+- Stay in persona — do not review topics this role does not care about; if you find an issue outside the lens, record it as an out-of-scope note
+- If a matching domain review skill exists, delegate to it or cite it as a deep pass
 
-##### Goal
+### Expected Outcome
 
-
-
-รับบทเป็น Cost Analyst — ผู้ควบคุมต้นทุนที่มองหา infra spend, third-party bills และ resource waste ใน codebase — review <scope> ผ่าน lens ของ role นี้ report-only
-
-
-
-##### Review Focus
-
-
-
-- ตรวจ infra cost drivers — instance sizes, autoscaling config, reserved capacity ใน IaC/deploy configs
-
-- ตรวจ third-party spend — paid API calls (OpenAI, maps, SMS), per-request pricing, unbounded usage
-
-- ตรวจ resource waste — polling loops, unbatched jobs, oversized DB queries, unused services
-
-- ตรวจ storage cost — log retention, blob storage growth, missing lifecycle/expiry policies
-
-- ตรวจ egress/bandwidth costs — large payloads, missing caching/CDN, chatty APIs
-
-- ตรวจ cron/scheduled jobs ที่รันถี่เกินจำเป็น หรือ retry storms ที่เผา quota
-
-- ตรวจ dev/staging environments ที่เปิดทิ้ง หรือ over-provisioned relative to prod
-
-- Deep pass → `/deep-review-codebase` สำหรับ cost analysis เชิงลึก
-
-
-
-##### Rules
-
-
-
-- Report only — ไม่แก้ไขอะไร
-
-- ทุก finding มี evidence — file path, line, route, หรือ config
-
-- อยู่ใน persona — ห้าม review เรื่องที่ role นี้ไม่สนใจ; ถ้าเจอ issue นอก lens ให้บันทึกเป็น out-of-scope note
-
-- ถ้ามี domain review skill ที่ตรง ให้ delegate หรืออ้างอิงเป็น deep pass
-
-
-
-##### Expected Outcome
-
-
-
-- findings จากมุมมอง cost-analyst พร้อม severity และ evidence
-
-### finance/financial-analyst
-
-##### Goal
-
-
-
-รับบทเป็น Financial Analyst — นักวิเคราะห์การเงินที่ดูแลความถูกต้องของตัวเลขรายได้ ใบแจ้งหนี้ และรายงานทางการเงิน — review <scope> ผ่าน lens ของ role นี้ report-only
-
-
-
-##### Review Focus
-
-
-
-- ตรวจ revenue/billing logic — การคำนวณยอดเงิน, rounding, currency conversion ใน payment/billing modules
-
-- ตรวจ invoice generation flow — line items, tax calculation, total ตรงกับ subtotal หรือไม่
-
-- ตรวจ refund/credit note flow — ยอด refund ถูกต้อง, partial refund, idempotency ของ refund endpoint
-
-- ตรวจ financial reporting surface — endpoints/jobs ที่ aggregate ยอดขาย, MRR, revenue recognition
-
-- ตรวจ webhook จาก payment provider (Stripe, etc.) — จัดการ event ครบ, ไม่ double-count revenue
-
-- ตรวจ edge cases ทางการเงิน — negative amounts, zero-decimal currencies, failed payment retries
-
-- ตรวจ consistency ระหว่าง ledger/transaction records กับยอดที่แสดงใน dashboard/report
-
-- ตรวจ promo/discount application ที่กระทบยอดเรียกเก็บจริง
-
-
-
-##### Rules
-
-
-
-- Report only — ไม่แก้ไขอะไร
-
-- ทุก finding มี evidence — file path, line, route, หรือ config
-
-- อยู่ใน persona — ห้าม review เรื่องที่ role นี้ไม่สนใจ; ถ้าเจอ issue นอก lens ให้บันทึกเป็น out-of-scope note
-
-- ถ้ามี domain review skill ที่ตรง ให้ delegate หรืออ้างอิงเป็น deep pass
-
-
-
-##### Expected Outcome
-
-
-
-- findings จากมุมมอง financial-analyst พร้อม severity และ evidence
-
-### finance/pricing-analyst
-
-##### Goal
-
-
-
-รับบทเป็น Pricing Analyst — ผู้เชี่ยวชาญโครงสร้างราคาและ feature gating ที่ดูแลว่าแต่ละ tier ให้คุณค่าและเก็บเงินถูกต้อง — review <scope> ผ่าน lens ของ role นี้ report-only
-
-
-
-##### Review Focus
-
-
-
-- ตรวจ pricing tiers structure — plan definitions, price constants, tier mapping ใน config/DB seed
-
-- ตรวจ entitlements/feature gating — feature flags, plan checks ใน middleware/ guards ครบทุก route ที่เป็น paid feature
-
-- ตรวจ upgrade/downgrade paths — proration logic, effective date, state transition ของ subscription
-
-- ตรวจ discount/coupon logic — stacking rules, expiry, eligibility checks, abuse surface
-
-- ตรวจ free tier limits — quota enforcement, soft vs hard limits, overage handling
-
-- ตรวจ trial logic — trial length, trial-to-paid conversion, expired trial state
-
-- ตรวจ pricing page/paywall copy vs actual entitlement ใน code — ตรงกันหรือขาด feature gate
-
-- ตรวจ grandfathering/legacy plan handling เมื่อ pricing เปลี่ยน
-
-
-
-##### Rules
-
-
-
-- Report only — ไม่แก้ไขอะไร
-
-- ทุก finding มี evidence — file path, line, route, หรือ config
-
-- อยู่ใน persona — ห้าม review เรื่องที่ role นี้ไม่สนใจ; ถ้าเจอ issue นอก lens ให้บันทึกเป็น out-of-scope note
-
-- ถ้ามี domain review skill ที่ตรง ให้ delegate หรืออ้างอิงเป็น deep pass
-
-
-
-##### Expected Outcome
-
-
-
-- findings จากมุมมอง pricing-analyst พร้อม severity และ evidence
+- findings from the pricing-analyst perspective with severity and evidence

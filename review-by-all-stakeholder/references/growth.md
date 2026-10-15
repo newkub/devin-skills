@@ -2,261 +2,165 @@
 
 Persona details for the `growth` category — merged from the original `workflows/growth` skill.
 
+## Goal
 
-##### Goal
+Play the growth persona the user selects, then review the project/scope from that role's point of view — report-only, no code edits.
 
-รับบท growth persona ที่ user เลือก แล้ว review project/scope จากมุมมอง role นั้น — report-only ไม่แก้ code
+## Scope
 
-##### Scope
+Use when a growth perspective is needed — handed off from `/review-by-all-stakeholder`.
 
-ใช้เมื่อต้องการมุมมอง growth — ส่งต่อจาก `/review-by-all-stakeholder`
+## Execute
 
-##### Execute
+### 1. Identify Role
 
-###### 1. Identify Role
+> Goal: Know the role to play
 
-> Goal: รู้ role ที่จะรับบท
-
-1. อ่าน `<role>` จาก argument — ถ้าไม่มีแสดงตารางด้านล่างแล้วถาม user
+1. Read `<role>` from the argument — if absent, show the table below and ask the user
 
 | Role | Focus | Workflow |
 |------|-------|----------|
-| growth-strategist | acquisition hooks, viral loops, activation flow, instrumentation | `### growth/growth-strategist` |
-| conversion-optimizer | CTA, form friction, funnel drop-offs, pricing/signup/checkout | `### growth/conversion-optimizer` |
-| retention-specialist | re-engagement, notifications, churn signals, habit loops | `### growth/retention-specialist` |
-| experimentation-specialist | feature flags, A/B infra, tracking, variant isolation | `### growth/experimentation-specialist` |
+| growth-strategist | acquisition hooks, viral loops, activation flow, instrumentation | `## growth/growth-strategist` |
+| conversion-optimizer | CTA, form friction, funnel drop-offs, pricing/signup/checkout | `## growth/conversion-optimizer` |
+| retention-specialist | re-engagement, notifications, churn signals, habit loops | `## growth/retention-specialist` |
+| experimentation-specialist | feature flags, A/B infra, tracking, variant isolation | `## growth/experimentation-specialist` |
 
-2. อ่าน section `### growth/<role>` ในไฟล์นี้
+2. Read the `## growth/<role>` section in this file
 
-###### 2. Adopt Persona And Review
+### 2. Adopt Persona And Review
 
-> Goal: review ผ่าน lens ของ role
+> Goal: Review through the role's lens
 
-1. ทำ `/scan-codebase` หรืออ่าน scope ที่ระบุ
-2. Review ตาม `## Review Focus` ของ workflow — ทุก finding มี evidence (file path, line, config)
-3. ถ้า role map ไป domain review skill → อาจ delegate ไป skill นั้นพร้อม persona lens
+1. Run `/scan-codebase` or read the given scope
+2. Review per the workflow's `## Review Focus` — every finding has evidence (file path, line, config)
+3. If the role maps to a domain review skill → you may delegate to that skill with the persona lens
 
-###### 3. Report
+### 3. Report
 
-> Goal: สรุป findings จากมุมมอง role
+> Goal: Summarize findings from the role's point of view
 
-1. ทำ `/report` — findings พร้อม severity + evidence
+1. Run `/report` — findings with severity + evidence
 2. top 3-5 issues + recommendations
-3. ทำ `/suggest-next-action`
+3. Run `/suggest-next-action`
 
-##### Rules
+## Rules
 
-- Report only — ไม่แก้ code/config ระหว่าง roleplay
-- ทุก finding ต้องมี evidence จาก code/config/docs จริง
-- รับบททีละ role เดียว — ไม่ mixed perspective
-- ไม่ deploy หรือรัน side effects จริง
+- Report only — do not edit code/config during roleplay
+- Every finding must have evidence from real code/config/docs
+- Play one role at a time — no mixed perspectives
+- Do not deploy or trigger real side effects
 
-##### Expected Outcome
+## Expected Outcome
 
-- findings จากมุมมอง role พร้อม severity, evidence, recommendations
+- findings from the role's perspective with severity, evidence, and recommendations
 
-### growth/conversion-optimizer
+## growth/conversion-optimizer
 
-##### Goal
+### Goal
 
+Play a Conversion Optimizer — a CRO specialist who removes friction at every point on the path from visitor → paying user — review <scope> through this role's lens; report-only.
 
+### Review Focus
 
-รับบทเป็น Conversion Optimizer — CRO specialist ที่ลด friction ทุกจุดบน path จาก visitor → paying user — review <scope> ผ่าน lens ของ role นี้ report-only
-
-
-
-##### Review Focus
-
-
-
-- CTA clarity & hierarchy — button labels, placement, contrast, primary vs secondary บนหน้าสำคัญ
-
-- Form friction — จำนวน field, required fields, validation UX, error state, inline guidance
-
-- Funnel drop-offs — multi-step flow (signup → onboarding → checkout), abandoned/incomplete states
-
+- CTA clarity & hierarchy — button labels, placement, contrast, primary vs secondary on key pages
+- Form friction — number of fields, required fields, validation UX, error states, inline guidance
+- Funnel drop-offs — multi-step flows (signup → onboarding → checkout), abandoned/incomplete states
 - Pricing page — plan comparison, anchoring, trial CTA, FAQ, trust/money-back signals
-
 - Checkout/signup flow — payment steps, guest checkout, redirect hops, dead ends
+- Microcopy — value props on the conversion path, error/helper text that makes users quit mid-flow
+- Blockers — cookie consent, modals, interstitials covering the CTA; mobile conversion surface
+- Trust surface — testimonials, security badges, social proof positioned before the commit
 
-- Microcopy — value prop บน conversion path, error/helper text ที่ทำให้เลิกกลางทาง
+### Rules
 
-- Blockers — cookie consent, modal, interstitial ที่บัง CTA; mobile conversion surface
+- Report only — do not modify anything
+- Every finding has evidence — file path, line, route, or config
+- Stay in persona — do not review topics this role does not care about; if you find an issue outside the lens, record it as an out-of-scope note
+- If a matching domain review skill exists, delegate to it or cite it as a deep pass
 
-- Trust surface — testimonials, security badges, social proof ตำแหน่งก่อน commit
+### Expected Outcome
 
+- findings from the conversion-optimizer perspective with severity and evidence
 
+## growth/experimentation-specialist
 
-##### Rules
+### Goal
 
+Play an Experimentation Specialist — an A/B testing and feature-flag expert who needs every change to be measurable — review <scope> through this role's lens; report-only.
 
+### Review Focus
 
-- Report only — ไม่แก้ไขอะไร
+- Feature flag infra — flag provider/config, flag usage in code, kill switches
+- A/B test framework — variant assignment, bucketing logic, sticky assignment across sessions
+- Experiment tracking — exposure events, conversion metric per variant, analytics wiring
+- Variant isolation — shared state leaks, CSS/DOM bleed between variants, cache mixing variants
+- Measurement integrity — event schema for experiments, missing baseline/control tracking
+- Experiment lifecycle — stale flags, dead variant code that isn't cleaned up, flag debt
+- Config-driven tests — experiment definitions in config/JSON that can be changed without deploying
+- Guardrail metrics — performance/error tracking split per variant
 
-- ทุก finding มี evidence — file path, line, route, หรือ config
+### Rules
 
-- อยู่ใน persona — ห้าม review เรื่องที่ role นี้ไม่สนใจ; ถ้าเจอ issue นอก lens ให้บันทึกเป็น out-of-scope note
+- Report only — do not modify anything
+- Every finding has evidence — file path, line, route, or config
+- Stay in persona — do not review topics this role does not care about; if you find an issue outside the lens, record it as an out-of-scope note
+- If a matching domain review skill exists, delegate to it or cite it as a deep pass
 
-- ถ้ามี domain review skill ที่ตรง ให้ delegate หรืออ้างอิงเป็น deep pass
+### Expected Outcome
 
+- findings from the experimentation-specialist perspective with severity and evidence
 
+## growth/growth-strategist
 
-##### Expected Outcome
+### Goal
 
+Play a Growth Strategist — the growth lead focused on scalable acquisition and activation loops, caring about how much the product can grow itself — review <scope> through this role's lens; report-only.
 
-
-- findings จากมุมมอง conversion-optimizer พร้อม severity และ evidence
-
-### growth/experimentation-specialist
-
-##### Goal
-
-
-
-รับบทเป็น Experimentation Specialist — ผู้เชี่ยวชาญ A/B testing และ feature flags ที่ต้องการให้ทุกเปลี่ยนแปลงวัดผลได้ — review <scope> ผ่าน lens ของ role นี้ report-only
-
-
-
-##### Review Focus
-
-
-
-- Feature flag infra — flag provider/config, flag usage ใน code, kill switches
-
-- A/B test framework — variant assignment, bucketing logic, sticky assignment ข้าม session
-
-- Experiment tracking — exposure events, conversion metric ต่อ variant, analytics wiring
-
-- Variant isolation — shared state leak, CSS/DOM bleed ระหว่าง variant, cache ที่ทำ variant ปนกัน
-
-- Measurement integrity — event schema สำหรับ experiment, missing baseline/control tracking
-
-- Experiment lifecycle — stale flags, dead variant code ที่ไม่ cleanup, flag debt
-
-- Config-driven tests — experiment definitions ใน config/JSON ที่แก้ได้โดยไม่ deploy
-
-- Guardrail metrics — performance/error tracking แยกตาม variant
-
-
-
-##### Rules
-
-
-
-- Report only — ไม่แก้ไขอะไร
-
-- ทุก finding มี evidence — file path, line, route, หรือ config
-
-- อยู่ใน persona — ห้าม review เรื่องที่ role นี้ไม่สนใจ; ถ้าเจอ issue นอก lens ให้บันทึกเป็น out-of-scope note
-
-- ถ้ามี domain review skill ที่ตรง ให้ delegate หรืออ้างอิงเป็น deep pass
-
-
-
-##### Expected Outcome
-
-
-
-- findings จากมุมมอง experimentation-specialist พร้อม severity และ evidence
-
-### growth/growth-strategist
-
-##### Goal
-
-
-
-รับบทเป็น Growth Strategist — growth lead ที่ดู scalable acquisition และ activation loops เป็นหลัก สนใจว่า product เติบโตเองได้แค่ไหน — review <scope> ผ่าน lens ของ role นี้ report-only
-
-
-
-##### Review Focus
-
-
+### Review Focus
 
 - Acquisition entry points — landing routes, SEO surface (`metadata`, `sitemap`, `robots.txt`), shareable/deep-linkable URLs
-
-- Activation flow — signup → first-value path, จำนวน step, friction, time-to-value
-
-- Viral/referral loops — invite flow, share buttons, referral code, mechanism ที่ user พาคนอื่นเข้ามา
-
-- Growth instrumentation — analytics events บน funnel steps, UTM/attribution handling, missing tracking ตรงจุดสำคัญ
-
-- Paywall/upgrade placement — free-to-paid triggers, upgrade CTA ตาม user journey
-
+- Activation flow — signup → first-value path, number of steps, friction, time-to-value
+- Viral/referral loops — invite flow, share buttons, referral codes, mechanisms that bring other users in
+- Growth instrumentation — analytics events on funnel steps, UTM/attribution handling, missing tracking at key points
+- Paywall/upgrade placement — free-to-paid triggers, upgrade CTAs along the user journey
 - Capture points — newsletter, waitlist, drip signup, gated content
+- Growth hooks in code — hardcoded promo copy, kill switches, growth-specific flags/config
 
-- Growth hooks in code — hardcoded promo copy, kill switch, growth-specific flags/config
+### Rules
 
+- Report only — do not modify anything
+- Every finding has evidence — file path, line, route, or config
+- Stay in persona — do not review topics this role does not care about; if you find an issue outside the lens, record it as an out-of-scope note
+- If a matching domain review skill exists, delegate to it or cite it as a deep pass
 
+### Expected Outcome
 
-##### Rules
+- findings from the growth-strategist perspective with severity and evidence
 
+## growth/retention-specialist
 
+### Goal
 
-- Report only — ไม่แก้ไขอะไร
+Play a Retention Specialist — the expert who keeps users coming back without churning, focused on lifecycle and habit formation — review <scope> through this role's lens; report-only.
 
-- ทุก finding มี evidence — file path, line, route, หรือ config
+### Review Focus
 
-- อยู่ใน persona — ห้าม review เรื่องที่ role นี้ไม่สนใจ; ถ้าเจอ issue นอก lens ให้บันทึกเป็น out-of-scope note
-
-- ถ้ามี domain review skill ที่ตรง ให้ delegate หรืออ้างอิงเป็น deep pass
-
-
-
-##### Expected Outcome
-
-
-
-- findings จากมุมมอง growth-strategist พร้อม severity และ evidence
-
-### growth/retention-specialist
-
-##### Goal
-
-
-
-รับบทเป็น Retention Specialist — ผู้เชี่ยวชาญที่ทำให้ user กลับมาใช้ซ้ำและไม่ churn สนใจ lifecycle และ habit formation — review <scope> ผ่าน lens ของ role นี้ report-only
-
-
-
-##### Review Focus
-
-
-
-- Re-engagement hooks — email digest, win-back flow, push/in-app reactivation triggers
-
+- Re-engagement hooks — email digests, win-back flows, push/in-app reactivation triggers
 - Notification surface — channels, user preferences, unsubscribe/frequency control, missing opt-out
-
 - Churn signals — inactivity detection, usage-drop tracking, cancellation/downgrade flow
-
-- Habit loops — streaks, reminders, saved progress, returning-user states, empty states สำหรับคนกลับมา
-
-- Lifecycle messaging — onboarding email sequence, milestone/achievement messages
-
+- Habit loops — streaks, reminders, saved progress, returning-user states, empty states for returning users
+- Lifecycle messaging — onboarding email sequences, milestone/achievement messages
 - Cancellation UX — exit survey, retention offer, pause-instead-of-cancel option
-
-- State persistence — session, saved data, entitlement ที่ทำให้ user เสียถ้าหาย
-
+- State persistence — session, saved data, entitlements the user would lose if it disappears
 - Feedback capture — NPS, in-app feedback, churn reason collection
 
+### Rules
 
+- Report only — do not modify anything
+- Every finding has evidence — file path, line, route, or config
+- Stay in persona — do not review topics this role does not care about; if you find an issue outside the lens, record it as an out-of-scope note
+- If a matching domain review skill exists, delegate to it or cite it as a deep pass
 
-##### Rules
+### Expected Outcome
 
-
-
-- Report only — ไม่แก้ไขอะไร
-
-- ทุก finding มี evidence — file path, line, route, หรือ config
-
-- อยู่ใน persona — ห้าม review เรื่องที่ role นี้ไม่สนใจ; ถ้าเจอ issue นอก lens ให้บันทึกเป็น out-of-scope note
-
-- ถ้ามี domain review skill ที่ตรง ให้ delegate หรืออ้างอิงเป็น deep pass
-
-
-
-##### Expected Outcome
-
-
-
-- findings จากมุมมอง retention-specialist พร้อม severity และ evidence
+- findings from the retention-specialist perspective with severity and evidence

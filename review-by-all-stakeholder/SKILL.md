@@ -16,7 +16,7 @@ related:
 
 ## Goal
 
-Play the persona or stakeholder the user selects, read the role details from `references/<category>.md` (section `### <category>/<role>`), then review the project from that point of view.
+Play the persona or stakeholder the user selects, read the role details from `references/<category>.md` (section `## <category>/<role>`), then review the project from that point of view.
 
 ## Scope
 
@@ -40,10 +40,10 @@ Every run starts with the deep pre-pass — run `/deep-thinking` → `/deep-anal
 
 > Goal: Find the right `references/<category>.md` and role section
 
-1. Use the Category Mapping table below — each category maps to `references/<category>.md`; role details are in the `### <category>/<role>` section inside that file
+1. Use the Category Mapping table below — each category maps to `references/<category>.md`; role details are in the `## <category>/<role>` section inside that file
 2. For roles in the security/compliance domain → hand off to `/deep-review-codebase` instead
 3. If a role falls under multiple categories → have the user confirm
-4. Open `references/<category>.md` → read the role table at the top + the `### <category>/<role>` section of the chosen role
+4. Open `references/<category>.md` → read the role table at the top + the `## <category>/<role>` section of the chosen role
 
 ### 3. Roleplay And Collect
 
@@ -63,7 +63,7 @@ Every run starts with the deep pre-pass — run `/deep-thinking` → `/deep-anal
 
 ## Category Mapping
 
-| No. | Category Reference | Roles (`### <category>/<role>`) |
+| No. | Category Reference | Roles (`## <category>/<role>`) |
 |----:|--------------------|--------------------------------|
 | 1 | `references/product.md` | product-manager, product-designer, business-analyst, product-analyst |
 | 2 | `references/engineering.md` | software-architect, frontend-developer, backend-developer, fullstack-developer, database-engineer, devops-engineer |
