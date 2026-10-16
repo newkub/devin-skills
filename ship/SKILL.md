@@ -8,6 +8,7 @@ triggers:
 related:
   - follow-agents-md
   - update-agents-md
+  - deep-review-ship
   - deep-review-codebase
   - deep-review-codebase-then-fix
   - deep-validate
@@ -58,9 +59,10 @@ The single ship command — run every verification gate first, then commit/push,
 
 > Goal: changes and `AGENTS.md` pass review before ship
 
-1. Run `/deep-review-codebase` on the changed scope + `AGENTS.md` only
-2. If there are findings → run `/deep-review-codebase-then-fix` until they all pass
-3. Add `/review-devin-global-harness` when changing the devin skills repo
+1. Run `/deep-review-ship` on the changed scope + `AGENTS.md` — it fans out `/use-subagents` reviewers per part (workspace/module/layer), aggregates findings, routes fixes via `/deep-review-codebase-then-fix`, and re-verifies until every part is clean; it returns a ship-readiness verdict here and never pushes or merges
+2. Small single-part scope (≤ 2 changed files) → run `/deep-review-codebase` + `/deep-review-codebase-then-fix` directly instead
+3. If there are still findings → run `/deep-review-codebase-then-fix` until they all pass
+4. Add `/review-devin-global-harness` when changing the devin skills repo
 
 ### 3. Validate
 

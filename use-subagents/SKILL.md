@@ -156,6 +156,7 @@ These skills have subagent profiles for parallel independent work — the profil
 | 17 | `review` | `SKILL.md ## Subagents` → `codebase-reviewer` (+ checklist/scoring/report in `references/`) | codebase-wide review per dimension |
 | 18 | `update-devin-global-skills` | `SKILL.md` (`## Conventions → Workflows And Subagents`, profile `skill-updater`) | update one skill per the instructions in a bulk update |
 | 19 | `report-not-implement` | `SKILL.md ## Subagents` → `gap-scanner` | inventory not-yet-implemented items in one directory/workspace (read-only) |
+| 20 | `deep-review-ship` | `SKILL.md ## Subagents` → `part-reviewer` | review one part (workspace/module/layer) of the changed pre-ship scope (read-only) |
 
 ## Expected Outcome
 
