@@ -5,6 +5,7 @@ argument-hint: "[scope]"
 related:
   - update-devin
   - update-devin-global-skills
+  - update-devin-global-rules
   - update-devin-global-subagents
   - list-devin
   - use-related-skills
@@ -46,7 +47,7 @@ Use when syncing all three layers of the devin ecosystem, especially after renam
 
 > Goal: update each layer
 
-1. Sync `global_rules.md` directly — read and edit the file to match the skills/subagents
+1. Run `/update-devin-global-rules` to edit `global_rules.md` — that skill owns rule content; harness only decides that a rules change is needed and verifies the layers agree
 2. Run `/update-devin-global-skills` to audit and update skills
 3. Run `/update-devin-global-subagents` to update subagents
 4. Record the output of each step

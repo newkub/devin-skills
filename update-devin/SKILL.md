@@ -4,6 +4,8 @@ description: Update Devin config — MCP, rules, subagents, hooks via top-level 
 argument-hint: "[domain]"
 related:
   - update-devin-global-skills
+  - update-devin-global-rules
+  - update-devin-harness
   - list-devin
   - use-subagents
   - update-references
@@ -29,7 +31,7 @@ Dispatch to the target skill by Devin config domain — the parent only does rou
 | Domain | Skill |
 |---|---|
 | `global-mcp` | /update-devin-global-mcp — global MCP server config |
-| `global-rules` | /update-devin-harness — global rules (`global_rules.md`) |
+| `global-rules` | /update-devin-global-rules — global rules (`global_rules.md`) |
 | `global-subagents` | /update-devin-global-subagents — global subagent profiles |
 | `harness` | /update-devin-harness — agent harness config |
 | `project-hooks` | /update-devin-project-hooks — project-level hooks |
