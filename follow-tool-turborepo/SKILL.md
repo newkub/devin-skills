@@ -9,9 +9,9 @@ related:
   - follow-tool-vite
   - follow-tool-vitest
   - follow-tool-moonrepo
+  - follow-tool-github-actions
   - run-build
   - run-test
-
 ---
 
 ## Goal
@@ -31,7 +31,14 @@ Use for monorepos that need to orchestrate tasks, cache outputs, use remote cach
 
 ### Workflows
 
-| Topic | Workflow |-------|----------| Install, `turbo.json` init, workspace layout | `workflows/setup-turborepo/SKILL.md` | `tasks`, `dependsOn`, `inputs`/`outputs`, env, package overrides | `workflows/config-pipeline/SKILL.md` | Remote cache, `--filter`, `--affected`, cache hit tuning | `workflows/optimize-cache/SKILL.md` 
+> Goal: dispatch specialized turborepo work to the matching workflow
+
+| Topic | Workflow |
+|-------|----------|
+| Install, `turbo.json` init, workspace layout | `workflows/setup-turborepo/SKILL.md` |
+| `tasks`, `dependsOn`, `inputs`/`outputs`, env, package overrides | `workflows/config-pipeline/SKILL.md` |
+| Remote cache, `--filter`, `--affected`, cache hit tuning | `workflows/optimize-cache/SKILL.md` |
+
 ### 1. Repository Structure
 
 > Goal: Arrange the workspace structure for Turborepo
@@ -48,7 +55,7 @@ Use for monorepos that need to orchestrate tasks, cache outputs, use remote cach
 
 1. Install with `bun add -D turbo`
 2. Verify the version with `bunx turbo --version`
-3. See CLI details in 
+3. See CLI details in `references/cli.md` and `workflows/setup-turborepo/SKILL.md`
 
 ### 3. Configure turbo.json
 
@@ -59,7 +66,7 @@ Use for monorepos that need to orchestrate tasks, cache outputs, use remote cach
 3. Set `dependsOn`, `inputs`, `outputs`, `cache`
 4. Configure `env` and `passThroughEnv`
 5. Enable `futureFlags.globalConfiguration` to move global keys into `global`
-6. See config details in 
+6. See config details in `references/apis.md` and `workflows/config-pipeline/SKILL.md`
 
 ### 4. Package-Level Config
 
@@ -89,6 +96,7 @@ Use for monorepos that need to orchestrate tasks, cache outputs, use remote cach
 3. Set up the remote cache with `bunx turbo link --yes`
 4. Use `TURBO_TOKEN` and `TURBO_TEAM` for authentication
 5. Configure `cacheMaxSize` and `cacheMaxAge`
+6. CI: use `/follow-tool-github-actions` to write the workflow running `bunx turbo run build lint test --filter=...` with `TURBO_TOKEN`/`TURBO_TEAM` secrets
 
 ## Rules
 
@@ -122,7 +130,12 @@ Use for monorepos that need to orchestrate tasks, cache outputs, use remote cach
 - Define `tags` and `boundaries` rules
 - Avoid imports that cross package boundaries
 
+### 6. Best Practices
+
+- See `best-practices/turborepo.md` for recommended patterns and pitfalls
+
 - Use /follow-monorepo if needed
+- Use /follow-tool-github-actions if needed
 - Use /follow-tasks if needed
 - Use /follow-tool-taze if needed
 - Use /follow-tool-vite if needed
@@ -134,8 +147,7 @@ Use for monorepos that need to orchestrate tasks, cache outputs, use remote cach
 ## References
 
 - [CLI reference](references/cli.md)
-
-- See best-practices/ for recommended patterns and pitfalls
+- [API reference](references/apis.md)
 
 ## Expected Outcome
 

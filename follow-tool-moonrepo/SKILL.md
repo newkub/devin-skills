@@ -4,6 +4,7 @@ description: Use moonrepo for monorepo builds, tasks, and project boundaries acr
 argument-hint: "[scope]"
 related:
   - follow-monorepo
+  - follow-tool-turborepo
   - follow-tool-mise
   - follow-tool-github-actions
   - use-subagents
@@ -30,7 +31,15 @@ For projects that choose moonrepo as the monorepo orchestrator instead of turbor
 
 ### Workflows
 
-| Topic | Workflow |-------|----------| Install moon, `moon init`, `.moon/` workspace layout | `workflows/setup-moonrepo/SKILL.md` | `tasks`, `deps`, `inputs`/`outputs`, `moon.yml` per project | `workflows/config-pipeline/SKILL.md` | Cache tuning, `--affected` targets | `workflows/optimize-cache/SKILL.md` | `moon ci` — CI pipeline, `runInCI`, sharding, reports | `workflows/run-ci/SKILL.md` 
+> Goal: dispatch specialized moonrepo work to the matching workflow
+
+| Topic | Workflow |
+|-------|----------|
+| Install moon, `moon init`, `.moon/` workspace layout | `workflows/setup-moonrepo/SKILL.md` |
+| `tasks`, `deps`, `inputs`/`outputs`, `moon.yml` per project | `workflows/config-pipeline/SKILL.md` |
+| Cache tuning, `--affected` targets | `workflows/optimize-cache/SKILL.md` |
+| `moon ci` — CI pipeline, `runInCI`, sharding, reports | `workflows/run-ci/SKILL.md` |
+
 ### Subagents
 
 - Use the `project-configurator` profile (inline below in the `## Subagents` section) when configuring/verifying `moon.yml` across many projects at once — spawn per `project-path` via `/use-subagents` with `mode` = `configure` or `verify`
@@ -48,7 +57,7 @@ For projects that choose moonrepo as the monorepo orchestrator instead of turbor
    - mise: `mise use -g moon` (if `mise` is in `.tool-versions` or `mise.toml`)
 2. Check the version with `moon --version` (latest `2.5.5`, verified 2026-09-16)
 3. To let other projects in this repo use moon → use the workspace package manager (default: `bun add -D @moonrepo/cli`)
-4. See more details in 
+4. See more details in `workflows/setup-moonrepo/SKILL.md` and `references/cli.md`
 
 ### 2. Identify Workspace
 
@@ -159,7 +168,12 @@ For projects that choose moonrepo as the monorepo orchestrator instead of turbor
 - In a moon repo → `vcs.hooks` is always the default, not `/follow-tool-hk` — see Step 7
 - Use `hk` only when: parallel staged-file linting moon commands can't do, hook steps that aren't moon tasks, or one hook config across non-moon repos
 
+### 5. Best Practices
+
+- See `best-practices/` (`task-graph.md`, `ci-and-hooks.md`) for recommended patterns and pitfalls
+
 - Use /follow-monorepo if needed
+- Use /follow-tool-turborepo if needed
 - Use /follow-tool-mise if needed
 - Use /follow-tool-github-actions if needed
 - Use /use-subagents if needed
@@ -173,7 +187,7 @@ For projects that choose moonrepo as the monorepo orchestrator instead of turbor
 ## References
 
 - [CLI reference](references/cli.md)
-- See best-practices/ for recommended patterns and pitfalls
+- [API reference](references/apis.md)
 
 ## Subagents
 

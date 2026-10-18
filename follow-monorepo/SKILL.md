@@ -3,28 +3,21 @@ name: follow-monorepo
 description: Check and follow monorepo conventions, workspace scripts, dependencies, and build pipelines
 argument-hint: "[workspace-or-command]"
 related:
-  - ship
-  - run-build
-  - run-verify
-  - follow-tool-vite
   - follow-tool-moonrepo
+  - follow-tool-turborepo
   - follow-tool-mise
   - follow-tool-mr-boxington
   - follow-tool-linter
   - follow-tool-formatter
-  - follow-tool-gitleaks
-  - update-license-md
-  - update-contributing
-  - update-astgrep-rules
-  - update-gitignore
-  - update-dot-vscode
-  - update-dot-devin
-  - improve
   - setup-cicd
+  - improve
   - deep-review-codebase
   - report
-  - suggest-next-action
+  - run-build
+  - run-verify
   - run-test
+  - resolve-errors
+  - update-version-to-latest
 ---
 
 ## Goal
@@ -36,6 +29,15 @@ Check and follow monorepo conventions, workspace scripts, dependencies, and buil
 Use with monorepos that use `moon`, `turbo`, `pnpm workspace`, `bun workspace`, or `nx` — detect the tool, verify workspace conventions, run commands, and manage dependencies
 
 ## Execute
+
+### Workflows
+
+> Goal: dispatch specialized work to a more detailed workflow
+
+| Topic | Workflow |
+|-------|----------|
+| Move a single repo → monorepo — workspace config, dep hoisting, git history | `workflows/migrate-to-monorepo/SKILL.md` |
+| Configure workspaces for bun/npm/pnpm + moon/turbo | `workflows/config-workspaces/SKILL.md` |
 
 ### 1. Detect Monorepo Tool
 
@@ -67,7 +69,7 @@ Use with monorepos that use `moon`, `turbo`, `pnpm workspace`, `bun workspace`, 
 5. Check `.vscode/` and `.devin/` in each workspace (settings, hooks, skills, MCP)
 6. Record workspaces missing conventions
 7. Sync convention layers when missing or drifted:
-   - `/follow-tool-moonrepo` (default orchestrator) or `/follow-tool-mr-boxington` per the tool used
+   - `/follow-tool-moonrepo` (default orchestrator), `/follow-tool-turborepo` (JS/TS monorepos), or `/follow-tool-mr-boxington` per the tool used
    - `/follow-tool-mise` for toolchain/runtime versions
    - `/follow-tool-linter` + `/follow-tool-formatter` for lint/format wiring
    - `/follow-tool-gitleaks` for the secrets scanning hook (e.g. pre-push)
@@ -114,15 +116,6 @@ Use with monorepos that use `moon`, `turbo`, `pnpm workspace`, `bun workspace`, 
 1. Run `/report table` with columns: `No.`, `Workspace`, `Type`, `Conventions`, `.vscode`, `.devin`, `Deps`, `Status`
 2. A workspace missing `.vscode` → run `/update-dot-vscode`; missing `.devin` → run `/update-dot-devin`
 3. Run `/suggest-next-action`
-
-### Workflows
-
-> Goal: dispatch specialized work to a more detailed workflow
-
-| Topic | Workflow |
-|-------|----------|
-| Move a single repo → monorepo — workspace config, dep hoisting, git history | `workflows/migrate-to-monorepo/SKILL.md` |
-| Configure workspaces for bun/npm/pnpm + moon/turbo | `workflows/config-workspaces/SKILL.md` |
 
 ## Rules
 
