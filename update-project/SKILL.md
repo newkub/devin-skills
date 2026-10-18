@@ -1,6 +1,6 @@
 ---
 name: update-project
-description: Update the root project by checking git log and sync project docs/config/rules/tooling
+description: Update root and workspace AGENTS.md by checking git log, syncing project docs/config/rules/tooling
 argument-hint: "[scope]"
 related:
   - follow-tasks
@@ -32,6 +32,8 @@ Update the root project by checking the latest git log of every workspace and sy
 
 Use after shipping every workspace — check each workspace's latest git log, restore the information into the root `AGENTS.md` and `README.md`, sync project files, update project skills and GitHub metadata. Do not modify workspace code. If dependencies, runtime, tools, or any versioned config need updating → run `/update-version-to-latest` before updating other config
 
+In a monorepo this covers the root project and every workspace — each workspace's `AGENTS.md` (Step 4) and its drifted config/docs. Submodule workspaces have their own remote and history → report them as `skipped` instead of editing them
+
 Boundary: a quick root sync — for a comprehensive pre-release update with a deep analysis baseline → front-load `/deep-analyze` + `/deep-review-codebase` before Step 1
 
 ## Execute
@@ -43,11 +45,11 @@ Boundary: a quick root sync — for a comprehensive pre-release update with a de
 1. Run `/check-monorepo` to confirm monorepo status and `/follow-monorepo` to sync conventions
 2. Run `/follow-tasks` to track the update checklist
 3. Run `/all-workspace` to identify every workspace
-3. For each workspace:
+4. For each workspace:
    - Run `git log --oneline -5` to see the latest commits
    - Run `git diff HEAD~1 --stat` to see changed files
    - Record commit hash, message, and changed files
-4. Consolidate data from all workspaces into a summary
+5. Consolidate data from all workspaces into a summary
 
 ### 2. Restore Changed Info
 
@@ -72,14 +74,13 @@ Boundary: a quick root sync — for a comprehensive pre-release update with a de
 5. Run updates in order:
    - `/deep-review-codebase` (must run if the project has CI/CD)
    - `/setup-cicd` (if the CI/CD config drifted or isn't ready)
-   - `/update-version-to-latest` (if all workspaces' dependencies need updating to latest)
-   - `/update-version-to-latest` (if runtime, deps, tools, and all versioned config need updating to latest)
+   - `/update-version-to-latest` (if runtime, deps, tools, or any versioned config need updating to latest)
    - `/update-config` to sync project config, shared config, and the dependencies catalog
    - `/update-dot-devin`
    - `/cleanup-files-in-project` (if needed)
-   - package manifest setup (merged `/setup-package`) — check required fields + scripts per `### setup-package` in `## Merged Details`
+   - package manifest setup (merged `/setup-package`) — check required fields + scripts per `references/setup-package.md`
    - `/update-readme-md`
-   - `/update-agents-md`
+   - `/update-agents-md` for the root `AGENTS.md` (each workspace's `AGENTS.md` → Step 4)
    - `/update-usage-md` to create/update `USAGE.md` at each workspace root
    - `/update-features-md` to create/update `FEATURES.md` at every workspace root
    - `/update-docs` (if there is a `docs/`)
@@ -93,11 +94,18 @@ Boundary: a quick root sync — for a comprehensive pre-release update with a de
    - `/deep-review-codebase` (if there is a `tools/review-codebase/`)
    - `/update-dot-vscode`
    - `/update-contributing`
-6. Run `/deep-review-codebase` to sync all config
-7. Run `/update-gitignore` to sync `.gitignore`
-8. Verify the scripts in `package.json` are consistent
+6. Verify the scripts in `package.json` are consistent
 
-### 4. Update Project Skills
+### 4. Update AGENTS.md For Every Workspace
+
+> Goal: Every workspace has a followable `AGENTS.md`
+
+1. Run `/check-monorepo` — not a monorepo → skip to Step 5
+2. Monorepo with several workspaces → spawn one `agents-md-updater` subagent per workspace via `/use-subagents` (see `## Subagents`), passing `workspace-path` + `shared-rules`
+3. Merge the subagent reports, then write the root `AGENTS.md` last so it lists every workspace and references each workspace `AGENTS.md`
+4. Submodule workspace (own remote/history) or a workspace without a manifest → report `skipped`, never edit it
+
+### 5. Update Project Skills
 
 > Goal: Project skills in `.devin/skills/` are current
 
@@ -105,7 +113,7 @@ Boundary: a quick root sync — for a comprehensive pre-release update with a de
 2. Verify the created skills pass `/deep-validate`
 3. Confirm the project `AGENTS.md` references all new skills
 
-### 5. Update GitHub Metadata And Settings
+### 6. Update GitHub Metadata And Settings
 
 > Goal: GitHub repo metadata and branch protection reflect the real project
 
@@ -113,7 +121,7 @@ Boundary: a quick root sync — for a comprehensive pre-release update with a de
 2. Run `/update-github-metadata` `### 6. Protect Branches` to set branch protection on `main` and the integration branch per project conventions (optional); `.github` templates come from `/follow-dot-github` (optional)
 3. Confirm metadata and branch protection match project conventions
 
-### 6. Validate And Report
+### 7. Validate And Report
 
 > Goal: The root project passes validation
 
@@ -124,6 +132,7 @@ Boundary: a quick root sync — for a comprehensive pre-release update with a de
    - workspace commits found
    - information restored
    - project files updated
+   - workspace `AGENTS.md` created or updated
    - project skills created or updated
    - GitHub metadata updated
 
@@ -135,11 +144,12 @@ Boundary: a quick root sync — for a comprehensive pre-release update with a de
 - Use `git log --oneline -5` and `git diff HEAD~1 --stat` as the baseline
 - Record commit hashes and changed files before updating
 
-### 2. Root Only
+### 2. Root Docs And Workspace AGENTS.md
 
-- Modify only root docs (`AGENTS.md`, `README.md`) and project config
-- Do not modify workspace code or workspace docs
-- If workspace docs need changes → use `/ship` in that workspace
+- Write only the root docs (`AGENTS.md`, `README.md`), project config, and — in a monorepo — each workspace's `AGENTS.md` plus its drifted config/docs
+- Never modify workspace source code
+- A submodule workspace (own remote/history) belongs to its own repo → report it instead of editing it
+- Workspace docs other than `AGENTS.md` → use `/ship` in that workspace
 
 ### 3. No Commit
 
@@ -162,30 +172,14 @@ Boundary: a quick root sync — for a comprehensive pre-release update with a de
 - Run validation after updates
 - Never claim a check passed if the command failed
 
-- Use /update-project if needed
-
 ## Merged Details
 
-### setup-package
-
-Package manifest setup (`package.json`, `Cargo.toml`, `pyproject.toml`, `go.mod`) — used once at project start or when the manifest isn't publish-ready — merged from `/setup-package`
-
-1. Detect ecosystems from manifest files — several ecosystems → handle one at a time; none → skip
-2. Required fields per ecosystem:
-   - Node/Bun `package.json`: `name`, `version`, `description`, `license`, `repository`, `homepage`, `files` (state what is published, e.g. `dist`, `README.md`, `LICENSE`), `exports`/`main` pointing at build output; if `private: true` → ask the user whether to release publicly
-   - Rust `Cargo.toml`: `package.name`, `version`, `description`, `license`, `repository`, `categories`, `keywords`, `edition`, `rust-version`; `[[bin]]`/`[lib]` per project type; monorepo → `workspace` + `/follow-monorepo`
-   - Python `pyproject.toml`: `project.name`, `version`, `description`, `license`, `readme`, `requires-python`, `classifiers`, `build-system` (setuptools/hatchling/flit), `project.scripts` if there is a CLI
-   - Go `go.mod`: `module` path, `go` version; no `LICENSE`/`README.md` → recommend adding them
-3. Scripts: must have `build`, `test:all`, `verify` (`verify` = `check && test` or `lint && typecheck && test`) — never add a `release` script (release goes through the `/setup-cicd` workflow or `/follow-tool-*`)
-4. Missing field → have the user fill it in or use the project's defaults; run `/follow-tasks` to complete the scripts
-5. Validate: `/deep-review-codebase` the manifest + `/run-verify` — fail → fix and retry ≤3
-6. Monorepo: `/follow-monorepo` first; workspace packages don't need `private: false` if publishing happens at the root
-7. Never publish yourself — publish via `/publish-package-to-registry` or `/run-release`
+- setup-package → `references/setup-package.md` — manifest completeness (`package.json`, `Cargo.toml`, `pyproject.toml`, `go.mod`) for the root and workspaces
 
 ## Subagents
 
 > Goal: independent work that can be spawned in parallel — short profiles in this section, full detail in the links
-> Delegate via `/use-subagents` — the parent keeps Step 2 (restore changed info needs the combined context) and Step 6 (validate/report) for itself; wait for all structured reports before entering Step 6; subagents must not commit — the parent owns the working rules and final report; `skipped`/`no-changes`/`blocked` reports → show them in the report instead of retrying; workspaces/domains sharing config/deps → run sequentially and pass `shared-rules` to every `project-updater`
+> Delegate via `/use-subagents` — the parent keeps Step 2 (restore changed info needs the combined context), the Step 4 merge and root `AGENTS.md`, and Step 7 (validate/report) for itself; wait for all structured reports before entering Step 7; subagents must not commit — the parent owns the working rules and final report; `skipped`/`no-changes`/`blocked` reports → show them in the report instead of retrying; workspaces/domains sharing config/deps → run sequentially and pass `shared-rules` to every `project-updater` and `agents-md-updater`
 
 ### git-log-collector — Collect git log and diff stat for one workspace (Step 1; 1 agent per workspace)
 
@@ -214,7 +208,16 @@ Package manifest setup (`package.json`, `Cargo.toml`, `pyproject.toml`, `go.mod`
 - **Constraints**: work only inside `project-path`, never modify the root or other sub-projects; no commits; deterministic; workspaces sharing config/deps → sequential + pass `shared-rules`
 - **Full detail**: `references/subagent-project-updater.md`
 
-### project-skills-updater — Update project skills in .devin/skills/ (Step 4; parallel with the Step 3 domains)
+### agents-md-updater — Write or refresh the `AGENTS.md` of one workspace (Step 4; 1 agent per workspace)
+
+- **Inputs**: `workspace-path`, `shared-rules` (optional — root conventions the workspace must reference instead of duplicating), `changed-info` (optional)
+- **Tools**: `read`, `grep`, `find_file_by_name`, `exec`, `edit`
+- **Execute**: detect the workspace manifest (none → `skipped`) → run `git log --oneline -5` + `git diff HEAD~1 --stat` to find stale sections → run `/update-agents-md` scoped to `workspace-path` (`### Follow Techstack Skills` table from the real manifest, `### Follow Architecture`, `### Ship`, accurate `uses:`) → validate with `/deep-validate`
+- **Output**: structured summary — `workspace-path`, sections written/updated with the reason, dependencies mapped, validation result, gaps the parent must fix (root workspace table row)
+- **Constraints**: write only `<workspace-path>/AGENTS.md`, never the root/other workspaces/source code; no commits; deterministic; submodule workspace (own remote) or no manifest → report `skipped`
+- **Full detail**: `references/subagent-agents-md-updater.md`
+
+### project-skills-updater — Update project skills in .devin/skills/ (Step 5; parallel with the Step 3 domains)
 
 - **Inputs**: `project-path`, `changed-info` (optional — identifies skills that need syncing)
 - **Tools**: `read`, `grep`, `find_file_by_name`, `exec`, `edit`
@@ -223,7 +226,7 @@ Package manifest setup (`package.json`, `Cargo.toml`, `pyproject.toml`, `go.mod`
 - **Constraints**: modify only `.devin/skills/`, never touch root docs/code (never edit `AGENTS.md` itself — the parent handles it); no commits; `.devin/skills/` missing/not needed → report `skipped`
 - **Full detail**: `references/subagent-project-skills-updater.md`
 
-### github-metadata-updater — Sync GitHub repo metadata and branch protection (Step 5; remote-only, never touches local files)
+### github-metadata-updater — Sync GitHub repo metadata and branch protection (Step 6; remote-only, never touches local files)
 
 - **Inputs**: `repo` (optional — owner/repo, default detected from the git remote), `check-protection` (optional, default true)
 - **Tools**: `exec` (`gh repo view`, `gh api`, `gh repo edit`, `git remote -v`), `read`
@@ -237,10 +240,11 @@ Package manifest setup (`package.json`, `Cargo.toml`, `pyproject.toml`, `go.mod`
 - Every workspace's git log was checked and recorded
 - Changed information was restored into the root docs
 - Root `AGENTS.md` and `README.md` were updated
+- Every workspace has a followable `AGENTS.md`, written 1 subagent per workspace via `/use-subagents`
 - Project docs, config, rules, and tooling are in sync
 - Project skills in `.devin/skills/` were updated via `/update-project-skills`
 - GitHub repo metadata was updated via `/update-github-metadata`
 - The root project passed `/deep-validate`
 - Dependencies and versioned items were updated if `/update-version-to-latest` was chosen
-- A complete summary report of workspace commits, project files, project skills, and GitHub metadata
+- A complete summary report of workspace commits, project files, workspace `AGENTS.md`, project skills, and GitHub metadata
 

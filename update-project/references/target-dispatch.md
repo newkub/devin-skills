@@ -24,6 +24,8 @@ Use when updating a target other than the root project — map the target type t
 
 After updating every target, run `/update-references` to sync all references
 
+In a monorepo, `/update-project` covers the root and every workspace — for the workspace `AGENTS.md` files it spawns 1 `agents-md-updater` subagent per workspace (see `## Subagents` in `/update-project`); submodule workspaces are reported as `skipped`, not edited
+
 ## Rules
 
 - Always determine the target type first — if unclear → run `/ask-me`
