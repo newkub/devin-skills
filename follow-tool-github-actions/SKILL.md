@@ -11,6 +11,12 @@ related:
   - run-deploy
   - follow-tool-renovate
   - follow-tool-release-it
+  - follow-tasks
+  - follow-monorepo
+  - follow-tool-moonrepo
+  - follow-tool-turborepo
+  - follow-release
+  - run-verify
 ---
 
 ## Goal
@@ -21,16 +27,23 @@ Set up GitHub Actions for complete CI/CD with security, testing, deployment, mon
 
 Configure GitHub Actions for projects and repositories
 
-- Boundary: GitHub Actions is a hosted platform (not an installable package) — companion tools are the `gh` CLI (`gh workflow`/`gh run`) and `actionlint` for local validation; secrets go through `/follow-secret-manager`
-- Latest: `gh@2.101.0`, `actionlint@1.7.12`, `actions/checkout@v7` (v7.0.1), `actions/setup-node@v7`, `actions/cache@v6` (v6.1.0), `actions/upload-artifact@v7` (v7.0.1) (verified 2026-09-26)
-- References: [cli](references/cli.md) | [apis](references/apis.md) 
+- Boundary: GitHub Actions is a hosted platform (not an installable package) — companion tools are the `gh` CLI (`gh workflow`/`gh run`) and `actionlint` for local validation; secrets go through `/follow-secret-manager`; task names/scripts are owned by `/follow-tasks` — this skill only writes the YAML that calls them
+- Versions: never trust pinned numbers — live-check `gh`, `actionlint`, and `actions/*` versions via `/deep-research` before writing YAML (principle: `/follow-up-to-date`)
+- References: [cli](references/cli.md) | [apis](references/apis.md)
 ## Execute
 
 ### 1. Pick Workflow
 
 > Goal: dispatch specialized work to the appropriate workflow
 
-| Topic | Workflow |-------|----------| workflow file structure, triggers, jobs, permissions | `workflows/setup-workflows/SKILL.md` | caching, matrix, concurrency groups, artifact reuse | `workflows/optimize-ci/SKILL.md` 
+| Topic | Workflow |
+|-------|----------|
+| First-time setup on a project — create `.github/workflows/` + starter | `workflows/setup-github-actions.md` |
+| Advanced config — permissions, hardening, production setup | `workflows/configure-github-actions.md` |
+| Automation patterns — caching, notifications, scheduled jobs | `workflows/use-github-actions.md` |
+| Workflow file structure, triggers, jobs, permissions | `workflows/setup-workflows/SKILL.md` |
+| Caching, matrix, concurrency groups, artifact reuse | `workflows/optimize-ci/SKILL.md` |
+
 ### 2. Select Workflows
 
 > Goal: pick the fitting workflows
@@ -46,6 +59,7 @@ Select workflows by the project's needs:
 - Advanced: `matrix.yml`, `parallel.yml`, `cache.yml` - projects needing optimization
 - Documentation: `deploy-docs.yml`, `changelog.yml`, `docusaurus.yml` - projects with documentation
 - Git Ops: `commitlint.yml`, `dependency-review.yml`, `auto-merge.yml` - team projects needing governance
+- Release: `release.yml` - tag-triggered, written via `/follow-release`; a release task never lives in the package manifest (`/follow-tasks`)
 
 ### 3. Basic Setup
 
@@ -54,7 +68,8 @@ Select workflows by the project's needs:
 1. Run `/follow-secret-manager` to set up CI/CD secrets with OIDC or machine identity
 2. Run `/follow-tool-renovate` to set up dependency updates
 3. Run `/follow-tool-release-it` to set up automated releases (if a monorepo)
-4. Create `.github/workflows/ci.yml` for lint, typecheck, test
+4. Run `/follow-release` to write `release.yml` (tag-triggered) when the project releases
+5. Create `.github/workflows/ci.yml` for lint, typecheck, test
 
 ### 4. Add Workflows As Needed
 
@@ -62,7 +77,7 @@ Select workflows by the project's needs:
 
 - Security: add `codeql.yml`, `dependabot.yml` for production
 - Testing: add `coverage.yml`, `e2e.yml` for quality assurance
-- Performance: add `lighthouse.yml` for web applications
+- Performance: add `lighthouse.yml` for web applications — use `/follow-tool-lighthouse` for the audit setup
 - Deployment: add workflows per platform in use (Docker, Cloudflare, Vercel)
 - Monitoring: add `slack-notify.yml` for team notifications
 - Git Ops: add `commitlint.yml`, `dependency-review.yml` for team collaboration
@@ -74,11 +89,24 @@ Select workflows by the project's needs:
 1. Run `/deep-analyze` to analyze structure and dependencies
 2. Read the `.github/workflows/` directory and analyze existing workflows
 3. Identify missing or duplicated workflows
-4. Write workflow YAML using `actions/checkout@v7`, caching, and safe permissions
+4. Write workflow YAML using the latest `actions/*` (live-checked), caching, and safe permissions
 5. Separate CI and CD workflows
 6. Use matrix strategy for multiple configurations
 7. Set up monitoring and notifications for failures
 8. Test syntax with `actionlint` (`mise use -g actionlint` then run `actionlint`) and verify permissions
+9. Harden: default `permissions: contents: read` at the top level, least-privilege per job, pin third-party actions to a full commit SHA, never expose secrets to fork PRs (be cautious with `pull_request_target`)
+
+### 6. Monorepo CI
+
+> Goal: one global CI that scopes work through the monorepo orchestrator
+
+1. Detect the orchestrator with `/follow-monorepo` (moon, turbo, pnpm/bun workspaces, nx)
+2. Write ONE global `ci.yml` — verify is a task the workflow calls, not a workflow file per workspace; keep task names from `/follow-tasks` (e.g. `bun run verify` → `/run-verify`)
+3. moonrepo → delegate to `/follow-tool-moonrepo` and call `moon ci` (affected detection, `runInCI`, sharding; requires full git history — never shallow clone, use `filter: 'blob:none'`)
+4. turborepo → delegate to `/follow-tool-turborepo` and call `bunx turbo run build lint test` with remote-cache secrets `TURBO_TOKEN`/`TURBO_TEAM` via `/follow-secret-manager`
+5. Split workflow files by concern (`ci.yml`, `release.yml`, `deploy.yml`, `security.yml`) — never one workflow file per workspace
+6. If a workspace needs bespoke CI steps → use a reusable workflow (`workflow_call`) + matrix, not a new top-level file
+7. Use `paths:` filters only on narrow-scope workflows (e.g. docs) — never on the main `ci.yml` (it would break the orchestrator's affected detection)
 
 ## Rules
 
