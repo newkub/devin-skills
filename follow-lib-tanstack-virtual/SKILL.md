@@ -92,6 +92,13 @@ return (
 3. 10k+ items stay smooth, dynamic heights don't jump
 4. If it fails → `/resolve-errors` max 3 rounds
 
+### Use Cases
+
+| Scenario | Use case |
+|----------|----------|
+| Virtualize a 10k-row list with dynamic heights | `usecases/virtualize-long-list.md` |
+| Infinite scroll feed on window scroll via Query | `usecases/infinite-scroll-feed.md` |
+
 ## Rules
 
 - The scroll container must have a fixed height + `overflow: auto`
@@ -99,6 +106,7 @@ return (
 - Use `vItem.key` as the React key — never `vItem.index` when items reorder
 - Items must not have margin — use the `gap` option or internal padding
 - `measureElement` must be paired with `data-index`
+- See best-practices/ for the pattern and pitfall checklist
 
 ## Expected Outcome
 

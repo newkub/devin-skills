@@ -8,7 +8,7 @@ related:
   - update-astgrep-rules
   - improve
   - check-code-structure
-  - deep-review-codebase
+  - deep-review
   - report
 ---
 
@@ -75,7 +75,7 @@ Run `ast-grep scan` against project rules and interpret the results correctly â€
 - CI: use `ast-grep/action@v1.5` in GitHub Actions or `scan --format github` in other CI
 - Use `/search-with-astgrep` if needed (ad-hoc patterns)
 - Use `/check-code-structure` if needed (structural metrics)
-- Use `/deep-review-codebase` if needed
+- Use `/deep-review` if needed
 
 ## Expected Outcome
 

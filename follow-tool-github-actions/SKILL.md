@@ -108,6 +108,13 @@ Select workflows by the project's needs:
 6. If a workspace needs bespoke CI steps → use a reusable workflow (`workflow_call`) + matrix, not a new top-level file
 7. Use `paths:` filters only on narrow-scope workflows (e.g. docs) — never on the main `ci.yml` (it would break the orchestrator's affected detection)
 
+### Use Cases
+
+| Scenario | Use case |
+|----------|----------|
+| PR pipeline: cache, matrix, concurrency, artifacts | `usecases/ci-pipeline-with-cache-and-matrix.md` |
+| Reusable `workflow_call` + tag-triggered release | `usecases/reusable-workflow-and-release.md` |
+
 ## Rules
 
 - Follow the project conventions and global rules (tool github actions)
@@ -119,6 +126,7 @@ Select workflows by the project's needs:
 - Use `/run-deploy` to trigger deployment
 
 - See best-practices/ for recommended patterns and pitfalls
+- See usecases/ for a complete pipeline and a reusable-workflow release flow
 
 ## Expected Outcome
 

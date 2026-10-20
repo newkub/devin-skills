@@ -25,7 +25,7 @@ Deploy the MVP to live — platform per the techstack catalog, env vars complete
 
 > Goal: platform matching the stack and cost
 
-1. Pick the platform per the `/deep-review-codebase` catalog (default: Cloudflare)
+1. Pick the platform per the `/deep-review` catalog (default: Cloudflare)
 2. If requirements don't match the default → `/ask-me` so the user chooses
 
 ### 2. Configure And Deploy

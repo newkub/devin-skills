@@ -78,7 +78,7 @@ Apply the patterns in the project:
 
 1. Run `/generalize` to make the pattern generic for reuse
 2. Adapt the pattern to the project context and conventions
-3. Implement it where appropriate, following `/deep-review-codebase`
+3. Implement it where appropriate, following `/deep-review`
 4. If more than 10 files must be edited, run `/use-scripts` for batch transformations
 5. Run `/run-verify` to check quality after implementing
 

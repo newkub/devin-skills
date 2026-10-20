@@ -3,7 +3,7 @@ name: follow-lang-rust
 description: Create or improve Rust projects with Clean Architecture and workspaces
 argument-hint: "[scope|setup-project]"
 related:
-  - deep-review-codebase
+  - deep-review
   - follow-tool-cargo
   - follow-test
   - follow-tool-mutants-rs
@@ -43,7 +43,7 @@ For creating or improving Rust projects, single crate and workspace. Package: `S
 1. New project → run the workflow `workflows/setup-project/SKILL.md` (argument `setup-project`): toolchain pin, `cargo new`, workspace choice, layout, quality gates from the first commit, verify
 2. Tool inventory (clippy, fmt, nextest, deny/audit, miri, bench/profiling) → `references/toolchain.md`
 3. Naming: files `snake_case`, types `PascalCase`; `mod.rs` as barrel exports only
-4. For Clean Architecture, separate layers: domain, application, infrastructure — then run `/deep-review-codebase`
+4. For Clean Architecture, separate layers: domain, application, infrastructure — then run `/deep-review`
 
 ### 3. Configuration
 

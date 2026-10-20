@@ -4,7 +4,7 @@ description: List packages owned by the user on a registry and install them into
 argument-hint: "[scope]"
 related:
   - list-my-npm-packages
-  - deep-review-codebase
+  - deep-review
   - use-bun-native-api
   - use-scripts
   - suggest-next-action
@@ -47,7 +47,7 @@ Use with projects that have a package manager (npm/bun, cargo, python) to list a
 > Goal: Select the packages to install
 
 1. Run `/ask-me`, or pick from `/report`, to decide which packages to install
-2. Use `/deep-review-codebase` to check whether each selected package fits the tech stack
+2. Use `/deep-review` to check whether each selected package fits the tech stack
 3. Mark whether it belongs in `dependencies`, `devDependencies`, or `peerDependencies`
 4. If there are several package managers → follow the order the user picks
 
@@ -86,7 +86,7 @@ Use with projects that have a package manager (npm/bun, cargo, python) to list a
 
 ### 2. Package Selection
 
-- Use `/deep-review-codebase` to check compatibility
+- Use `/deep-review` to check compatibility
 - Don't duplicate dependencies that already exist
 - If there are several package managers → let the user choose
 

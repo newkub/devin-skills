@@ -157,7 +157,18 @@ jobs:
 
 > Goal: dispatch specialized work to the right workflow
 
-| Topic | Workflow |-------|----------| first-time setup (install, biome.json, editor, CLI) | `workflows/setup-biome/SKILL.md` | migrate from ESLint/Prettier | `workflows/migrate-from-eslint-prettier/SKILL.md` 
+| Topic | Workflow |
+|-------|----------|
+| first-time setup (install, biome.json, editor, CLI) | `workflows/setup-biome/SKILL.md` |
+| migrate from ESLint/Prettier | `workflows/migrate-from-eslint-prettier/SKILL.md` |
+
+### Use Cases
+
+| Scenario | Use case |
+|----------|----------|
+| Lint + format gate in CI (no writes, changed files) | `usecases/lint-format-gate-in-ci.md` |
+| Monorepo root config + per-package overrides | `usecases/monorepo-overrides.md` |
+
 ## Rules
 
 ### 1. Installation
@@ -212,6 +223,7 @@ jobs:
 - Use /run-format if needed
 
 - See best-practices/ for recommended patterns and pitfalls
+- See usecases/ for end-to-end scenario recipes
 
 ## Expected Outcome
 

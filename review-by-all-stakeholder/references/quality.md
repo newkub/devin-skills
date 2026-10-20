@@ -78,7 +78,7 @@ Act as a Code Reviewer — the person who reads every line of the diff/code befo
 - Report only — no changes
 - Every finding has evidence — file path, line, route, or config
 - Stay in persona — never review topics this role does not care about; if you find an issue outside the lens, record it as an out-of-scope note
-- If a matching domain review skill exists (e.g. `/deep-review-codebase`, `/deep-review-codebase`, `/deep-review-codebase`, `/deep-review-codebase`, `/deep-review-codebase`, `/deep-review-codebase`, `/deep-review-codebase`, `/deep-review-codebase`), delegate to it or cite it as a deep pass — this role maps specifically to `/deep-review-codebase`
+- If a matching domain review skill exists (e.g. `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`), delegate to it or cite it as a deep pass — this role maps specifically to `/deep-review`
 
 ### Expected Outcome
 
@@ -106,7 +106,7 @@ Act as a Debugger — the person called when production breaks, focused on every
 - Report only — no changes
 - Every finding has evidence — file path, line, route, or config
 - Stay in persona — never review topics this role does not care about; if you find an issue outside the lens, record it as an out-of-scope note
-- If a matching domain review skill exists (e.g. `/deep-review-codebase`, `/deep-review-codebase`, `/deep-review-codebase`, `/deep-review-codebase`, `/deep-review-codebase`, `/deep-review-codebase`, `/deep-review-codebase`, `/deep-review-codebase`), delegate to it or cite it as a deep pass — this role maps specifically to `/deep-review-codebase`
+- If a matching domain review skill exists (e.g. `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`), delegate to it or cite it as a deep pass — this role maps specifically to `/deep-review`
 
 ### Expected Outcome
 
@@ -134,7 +134,7 @@ Act as a Performance Engineer — the person who owns speed and resource efficie
 - Report only — no changes
 - Every finding has evidence — file path, line, route, or config
 - Stay in persona — never review topics this role does not care about; if you find an issue outside the lens, record it as an out-of-scope note
-- If a matching domain review skill exists (e.g. `/deep-review-codebase`, `/deep-review-codebase`, `/deep-review-codebase`, `/deep-review-codebase`, `/deep-review-codebase`, `/deep-review-codebase`, `/deep-review-codebase`, `/deep-review-codebase`), delegate to it or cite it as a deep pass — this role maps specifically to `/deep-review-codebase`
+- If a matching domain review skill exists (e.g. `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`), delegate to it or cite it as a deep pass — this role maps specifically to `/deep-review`
 
 ### Expected Outcome
 
@@ -162,7 +162,7 @@ Act as a QA Engineer — the person who owns quality from the user's perspective
 - Report only — no changes
 - Every finding has evidence — file path, line, route, or config
 - Stay in persona — never review topics this role does not care about; if you find an issue outside the lens, record it as an out-of-scope note
-- If a matching domain review skill exists (e.g. `/deep-review-codebase`, `/deep-review-codebase`, `/deep-review-codebase`, `/deep-review-codebase`, `/deep-review-codebase`, `/deep-review-codebase`, `/deep-review-codebase`, `/deep-review-codebase`), delegate to it or cite it as a deep pass — this role maps specifically to `/deep-review-codebase`
+- If a matching domain review skill exists (e.g. `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`), delegate to it or cite it as a deep pass — this role maps specifically to `/deep-review`
 
 ### Expected Outcome
 
@@ -190,7 +190,7 @@ Play a Security Engineer — the person who owns the system's attack surface and
 - Report only — no changes
 - Every finding has evidence — file path, line, route, or config
 - Stay in persona — never review topics this role does not care about; if you find an issue outside the lens, record it as an out-of-scope note
-- If a matching domain review skill exists (e.g. `/deep-review-codebase`, `/deep-review-codebase`, `/deep-review-codebase`, `/deep-review-codebase`, `/deep-review-codebase`, `/deep-review-codebase`, `/deep-review-codebase`, `/deep-review-codebase`), delegate to it or cite it as a deep pass — this role maps specifically to `/deep-review-codebase`
+- If a matching domain review skill exists (e.g. `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`), delegate to it or cite it as a deep pass — this role maps specifically to `/deep-review`
 
 ### Expected Outcome
 
@@ -218,7 +218,7 @@ Play a Test Engineer — the person who owns test strategy and test infrastructu
 - Report only — no changes
 - Every finding has evidence — file path, line, route, or config
 - Stay in persona — never review topics this role does not care about; if you find an issue outside the lens, record it as an out-of-scope note
-- If a matching domain review skill exists (e.g. `/deep-review-codebase`, `/deep-review-codebase`, `/deep-review-codebase`, `/deep-review-codebase`, `/deep-review-codebase`, `/deep-review-codebase`, `/deep-review-codebase`, `/deep-review-codebase`), delegate to it or cite it as a deep pass — this role maps specifically to `/deep-test`
+- If a matching domain review skill exists (e.g. `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`), delegate to it or cite it as a deep pass — this role maps specifically to `/deep-test`
 
 ### Expected Outcome
 

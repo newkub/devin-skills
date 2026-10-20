@@ -5,7 +5,7 @@ argument-hint: "[scope]"
 related:
   - run-test
   - implement-to-production
-  - deep-review-codebase
+  - deep-review
   - report
 
 ---
@@ -41,7 +41,7 @@ Set up and use MSW to mock network requests at the real network layer — coveri
 
 > Goal: know the stack and test runner before installing
 
-1. Do `/deep-review-codebase`
+1. Do `/deep-review`
 2. Identify the environment: browser dev, Node tests, or both
 3. Identify the HTTP client in use (`fetch`, `axios`, `graphql-request`) — MSW intercepts everything at the network layer
 
@@ -86,6 +86,16 @@ Set up and use MSW to mock network requests at the real network layer — coveri
 
 1. Run `/report` with columns: `No.`, `Endpoint`, `Method`, `Handler File`, `Covered Cases`
 2. List endpoints still unhandled (`onUnhandledRequest: 'warn'` helps find them)
+
+### Use Cases
+
+| Scenario | Use case |
+|----------|----------|
+| Deterministic API mocks inside the test suite | `usecases/mock-api-in-tests.md` |
+| Opt-in mocking in browser dev behind an env flag | `usecases/browser-dev-mocking.md` |
+| GraphQL operations matched by name, with GraphQL errors | `usecases/graphql-handlers.md` |
+| Error statuses, network failures, delays, timeouts | `usecases/error-simulation-and-delays.md` |
+| Domain-split handlers, passthrough, and unhandled-request policy | `usecases/handler-organization-and-passthrough.md` |
 
 ## Rules
 

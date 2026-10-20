@@ -116,6 +116,13 @@ For Vue 3 projects on either Vite 8 or Nuxt 4 (Vue 3.5.43 is the latest stable, 
 
 - Migrate Vue 2 → Vue 3 — options→composition, breaking changes, `@vue/compat` → `workflows/migrate-vue2-to-3/SKILL.md`
 
+### Use Cases
+
+| Scenario | Use case |
+|----------|----------|
+| Extract logic into a composable with proper cleanup | `usecases/composable-with-effect-scope.md` |
+| Declare props/emits/model/slots with full types | `usecases/typed-sfc-contract.md` |
+
 ## Rules
 
 ### 1. Component Standards

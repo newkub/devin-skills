@@ -2,7 +2,7 @@
 
 > Multi-panel resizable workspaces with persistable layout and a source-code editor. Source: https://gpui-kit.com/component/dock, /component/editor (accessed 2026-10-20)
 
-## Dock — panel workspace (verified from docs)
+## 1. Dock — panel workspace (verified from docs)
 
 Draggable tab groups, nested splits, collapsible left/right/bottom docks. This is the layout foundation Longbridge uses in production; `gpui-base` owns model/layout/drag, `gpui-component` supplies chrome.
 
@@ -48,7 +48,7 @@ register_panel(cx, "FilesPanel", |state, window, cx| {
 - runnable reference: `cargo run -p example-dock` (`examples/dock/src/main.rs`)
 - keep a fallback layout for removed panels or deliberate schema bumps
 
-## Editor — source-code control (verified from docs)
+## 2. Editor — source-code control (verified from docs)
 
 Use `Input` for single-line, `Textarea` for plain multi-line, `Editor` for code.
 
@@ -92,3 +92,9 @@ set_language_config("rust", rules, cx); // replaces live; aliases share config (
 - depending on `gpui-pre` directly for base Dock types — use the `gpui_kit` re-exports (single-dependency rule)
 - expecting Tree-sitter `.scm` or Monaco JSON to load — only the `LanguageConfig` subset is supported; unknown languages fall back to `LanguageConfig::default()`
 - `not_in([SyntaxContext::...])` without a grammar feature — base editor reports everything as `Code`, so guards never fire
+
+## Related
+
+- `references/apis.md`
+- `best-practices/components.md`
+- `best-practices/state-model.md`

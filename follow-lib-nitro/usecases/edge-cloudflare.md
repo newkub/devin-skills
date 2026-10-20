@@ -2,9 +2,9 @@
 
 > Build to a Worker module with `cloudflare-module`, wire D1/KV/R2 bindings, and deploy with wrangler. Source: https://nitro.build/deploy/providers/cloudflare, /follow-service-cloudflare (accessed 2026-10-20)
 
-## Pick the preset
+## 1. Pick the preset
 
-Set the preset via env or `nitro.config.ts` — v3 `nitro()` does **not** accept a `preset` option, and never set both to conflicting values.
+Set the preset via env or `nitro.config.ts` — v3 `nitro()` does not accept a `preset` option, and never set both to conflicting values.
 
 ```bash
 NITRO_PRESET=cloudflare-module bun run build
@@ -12,7 +12,7 @@ NITRO_PRESET=cloudflare-module bun run build
 
 Output is a Worker module (not `.output/server/index.mjs`) — deploy with `wrangler deploy`.
 
-## Declare bindings
+## 2. Declare bindings
 
 ```jsonc [wrangler.jsonc]
 {
@@ -37,7 +37,7 @@ Generate types so bindings are typed in handlers:
 wrangler types   # → worker-configuration.d.ts (Env with DB, CACHE, ASSETS)
 ```
 
-## Read bindings in a handler
+## 3. Read bindings in a handler
 
 ```ts [server/routes/api/notes.get.ts]
 import { defineHandler } from "nitro";
@@ -52,7 +52,7 @@ export default defineHandler(async (event) => {
 - `Env` comes from the generated `worker-configuration.d.ts` — never hand-type binding shapes.
 - Map Nitro's storage/cache/database layers to CF primitives: KV binding → `cloudflare-kv-binding` driver, D1 → `cloudflare-d1` connector.
 
-## Storage + cache on KV
+## 4. Storage + cache on KV
 
 ```ts [nitro.config.ts]
 import { defineConfig } from "nitro";
@@ -65,7 +65,7 @@ export default defineConfig({
 });
 ```
 
-## SQL database on D1
+## 5. SQL database on D1
 
 ```ts [nitro.config.ts]
 export default defineConfig({
@@ -82,18 +82,18 @@ const db = useDatabase();
 const { rows } = await db.sql`SELECT * FROM notes`;
 ```
 
-## Secrets & env
+## 6. Secrets & env
 
 - Secrets: `wrangler secret put STRIPE_WEBHOOK_SECRET` — never in `vars` or committed config.
 - Non-secret vars: `vars` in `wrangler.jsonc`.
 - `runtimeConfig` overrides via `NITRO_*` env on the dashboard.
 - Follow `/follow-service-cloudflare` for deploy/secrets/rollback depth.
 
-## Scheduled tasks → Cron Triggers
+## 7. Scheduled tasks → Cron Triggers
 
 `scheduledTasks` in `nitro.config.ts` are compiled into native Cloudflare Cron Triggers at build time — no manual wrangler `triggers` needed (see `background-tasks.md`).
 
-## Verify
+## 8. Verify
 
 1. `wrangler deploy` → smoke-test a critical route on the Worker URL.
 2. Confirm a binding is present: log/handle `event.context.env.DB` — `undefined` = the binding isn't declared in `wrangler.jsonc`.
@@ -106,3 +106,10 @@ const { rows } = await db.sql`SELECT * FROM notes`;
 - `fs` storage/cache driver on Workers → not persistent; use the `kv`/binding drivers.
 - Passing `preset` into the `nitro()` vite plugin → v3 ignores/errors; use `NITRO_PRESET` or config.
 - Hardcoding a `database_id`/namespace `id` from another environment → point each env at its own resources.
+
+## Related
+
+- `references/apis.md`
+- `references/cli.md`
+- `best-practices/deploy.md`
+- `usecases/background-tasks.md`

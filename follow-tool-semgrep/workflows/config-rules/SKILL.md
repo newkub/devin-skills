@@ -18,7 +18,7 @@ Configure Semgrep rules as versioned config in the repo — custom YAML rules, r
 
 - Rule config for a Semgrep that is already installed (scan-only usage → parent skill)
 - Covers: `.semgrep/` custom rules, rule YAML anatomy, `p/*` registry rulesets, `--test`, CI gating
-- Does not cover: fixing findings (`/deep-review-codebase` or `/fix`)
+- Does not cover: fixing findings (`/deep-review` or `/fix`)
 
 ## Execute
 

@@ -28,7 +28,7 @@ Detect and report everything the codebase "claims to have but does not really ha
 - Use before `/implement-to-production` (needs a complete work list), before release (verify reality matches the ads), or when the user asks "what is not done / not implemented yet"
 - Argument is a path/glob/workspace → scan only that scope; unspecified → the whole codebase including monorepo workspaces
 - Scan only contracts that actually exist: half-written code, renderable UI, declared routes/schemas/specs, terms declared in docs — not an ideal feature list (net-new work never designed yet → `/idea-features`)
-- boundaries: code quality/security → `/deep-review-codebase`; dead code with no consumer → `/follow-tool-knip`; tests asserting nothing meaningful → `/deep-test test-correctness`; gap review with severity + confirm/fix (this report is its baseline) → `/review-gaps`; fix plan → `/create-plan-in-dot-devin`; doing the fix → `/implement-to-production`
+- boundaries: code quality/security → `/deep-review`; dead code with no consumer → `/follow-tool-knip`; tests asserting nothing meaningful → `/deep-test test-correctness`; gap review with severity + confirm/fix (this report is its baseline) → `/review-gaps`; fix plan → `/create-plan-in-dot-devin`; doing the fix → `/implement-to-production`
 
 ## Execute
 

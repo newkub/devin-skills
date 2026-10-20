@@ -7,7 +7,7 @@ related:
   - plan
   - scan-codebase
   - use-astgrep
-  - deep-review-codebase
+  - deep-review
   - run-typecheck
 ---
 
@@ -57,7 +57,7 @@ Migrate the codebase from Zod v3 to v4 safely — import paths, API renames, err
 
 1. Run `bun check` (do `/run-typecheck`) — type errors reveal the missed spots
 2. Run tests (do `/run-test`) — especially schema validation tests and error-shape assertions
-3. Do `/deep-review-codebase` — no v3 APIs left
+3. Do `/deep-review` — no v3 APIs left
 4. Runtime smoke: parse real input through the changed schemas — check the error output shape
 5. If stuck → build a TODO list; done → `/report-before-after` then `/ship`
 

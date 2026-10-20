@@ -4,7 +4,7 @@ description: List the issues of a given repository on GitHub
 argument-hint: "[repo]"
 related:
   - create-github
-  - deep-review-codebase
+  - deep-review
   - list-github
   - report
 ---
@@ -14,7 +14,7 @@ related:
 List the issues of the specified repository with key data
 
 ## Scope
-- For related skills: `open-github`, `create-github`, `deep-review-codebase`, `list-github`
+- For related skills: `open-github`, `create-github`, `deep-review`, `list-github`
 
 Use to view issues of any repository on GitHub that the authenticated user can access
 

@@ -4,7 +4,7 @@ description: Cloudflare security-audit skill — multi-phase agent security audi
 argument-hint: "[target-path-or-scope]"
 related:
   - follow-tool-deepsec
-  - deep-review-codebase
+  - deep-review
 ---
 
 ## Goal
@@ -15,7 +15,7 @@ Run structured, evidence-verified security audits with Cloudflare's `security-au
 
 Use for on-demand full-codebase or focused security review executed by the coding agent — the single-repo starting point of Cloudflare's vulnerability harness
 
-- CI-style recurring scan pipeline → `/follow-tool-deepsec` instead; general code review with a security slice → `/deep-review-codebase`
+- CI-style recurring scan pipeline → `/follow-tool-deepsec` instead; general code review with a security slice → `/deep-review`
 - Full audit mode for explicit audits/pen-test requests; guidance mode for security questions unless report artifacts are asked for
 - Requires: agent with tool use + parallel sub-agents, Node.js (validators), and an OS-enforced sandbox for anything the target controls
 
@@ -67,6 +67,7 @@ Use for on-demand full-codebase or focused security review executed by the codin
 
 - Recurring/CI scans → `/follow-tool-deepsec`; defense-in-depth absence where another layer prevents the attack → hardening note in the report, not a finding
 - Persist confirmed outcomes via `/update-devin-project-rules` / `/update-astgrep-rules` so the next audit builds on them
+- See references/ for the skill file, validator, and report artifact tables
 
 ## Expected Outcome
 

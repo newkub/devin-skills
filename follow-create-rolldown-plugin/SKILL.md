@@ -8,7 +8,7 @@ related:
   - follow-create-plugins
   - follow-lang-typescript
   - run-test
-  - deep-review-codebase
+  - deep-review
   - report
 
 ---
@@ -28,8 +28,8 @@ Use for building JavaScript/TypeScript plugins for Rolldown or Vite 8+, covering
 
 > Goal: Inspect the tech stack before creating
 
-1. Run `/deep-research` + `/follow-best-practice` to confirm the latest versions and patterns, then run `/deep-review-codebase` to summarize the tech stack
-2. Run `/deep-review-codebase` to review the tech stack, dependencies, and library design (create rolldown plugins)
+1. Run `/deep-research` + `/follow-best-practice` to confirm the latest versions and patterns, then run `/deep-review` to summarize the tech stack
+2. Run `/deep-review` to review the tech stack, dependencies, and library design (create rolldown plugins)
 3. Record the reasons for choosing the stack and libraries for later reference (create rolldown plugins)
 
 ### 2. Setup Project

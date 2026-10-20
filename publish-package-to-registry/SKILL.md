@@ -16,7 +16,7 @@ related:
   - follow-tool-semantic-release
   - follow-tool-changelogen
   - follow-tool-changesets
-  - deep-review-codebase
+  - deep-review
 ---
 
 ## Goal
@@ -137,7 +137,7 @@ Use to publish a single package to the registry detected from the project files
 - Use /follow-tool-semantic-release if needed (package to registry)
 - Use /follow-tool-changelogen if needed
 - Use /follow-tool-changesets if needed
-- Use /deep-review-codebase if needed
+- Use /deep-review if needed
 - Use /follow-tool-turborepo if needed
 - Use /follow-tool-pkg-new if needed
 

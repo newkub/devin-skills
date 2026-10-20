@@ -10,7 +10,7 @@ allowed-tools:
 related:
   - deep-analyze
   - use-astgrep
-  - deep-review-codebase
+  - deep-review
   - refactor
   - deep-validate
   - scan-codebase
@@ -25,7 +25,7 @@ Analyze and improve micro-level code structure with `sg outline` to fix top-leve
 
 Applies to source code that needs structural cleanup, such as `src/` or any single workspace. Covers top-level symbols, exports, imports, members, and code grouping patterns. It is a sub-step of `/deep-analyze` Step 3
 
-See more: /use-astgrep, /deep-review-codebase
+See more: /use-astgrep, /deep-review
 
 ## Execute
 
@@ -65,8 +65,8 @@ Goal: identify structure issues from `sg outline` output before starting any cle
 4. Check imports that cross a boundary or layer
 5. Check files that mix symbols from several domains or layers
 6. Use `/use-astgrep` for patterns `sg outline` doesn't cover, such as God classes
-7. If a filesystem review is also needed, run `/deep-review-codebase` separately
-8. For a deeper review of refactor opportunities, run `/deep-review-codebase` separately
+7. If a filesystem review is also needed, run `/deep-review` separately
+8. For a deeper review of refactor opportunities, run `/deep-review` separately
 
 ### 4. Validate Findings
 
@@ -85,7 +85,7 @@ Goal reminder: improve code structure according to the findings from Step 3
 
 1. Split files with more than 5 top-level symbols into smaller files by domain or responsibility
 2. Reduce public members in types/classes that exceed 10 by extracting them into a sub-type or helper
-3. Run `/deep-review-codebase` to handle barrel exports and import aliases — hide internal exports that needn't be public, replace convoluted relative paths
+3. Run `/deep-review` to handle barrel exports and import aliases — hide internal exports that needn't be public, replace convoluted relative paths
 4. Fix imports that cross a boundary or layer
 5. Separate files that hold symbols from multiple domains
 6. Use `/rename` to rename identifiers and `/update-references` after every split or rename
@@ -130,8 +130,8 @@ Goal reminder: improve code structure according to the findings from Step 3
 ### 3. Review Before Improve
 
 - Fully analyze and validate the findings before starting to improve
-- For a deep refactor, run `/deep-review-codebase` separately before improving
-- Keep the improvement process separate from other review processes such as `/deep-review-codebase`
+- For a deep refactor, run `/deep-review` separately before improving
+- Keep the improvement process separate from other review processes such as `/deep-review`
 
 ### 4. Follow Write Standards
 
@@ -147,11 +147,11 @@ See all flags and options in `## Sg Outline` below
 
 ### 6. Scope Boundaries
 
-- Don't improve the architecture that `/deep-review-codebase` handles
-- Don't improve the filesystem organization that `/deep-review-codebase` handles
+- Don't improve the architecture that `/deep-review` handles
+- Don't improve the filesystem organization that `/deep-review` handles
 - Don't do the deep separation-of-concerns refactoring that `/refactor` handles
 - Focus on code-level structure: symbols, exports, members, cohesion
-- For a system-wide view, run `/deep-review-codebase`
+- For a system-wide view, run `/deep-review`
 
 - Use /use-astgrep-programmatic if needed
 

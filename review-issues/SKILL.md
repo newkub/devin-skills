@@ -5,7 +5,7 @@ argument-hint: "[scope-or-area]"
 related:
   - review
   - review-gaps
-  - deep-review-codebase
+  - deep-review
   - report-review
   - create-plan-in-dot-devin
   - refactor
@@ -24,7 +24,7 @@ Review one dimension only: `issues` — behavior that is provably wrong in the s
 ## Scope
 
 - Use when the user asks specifically what is wrong/broken in an area, or from `/review` `### 2` as the issues dimension
-- Not missing-capability hunting (→ `/review-gaps`), not a full multi-dimension codebase scan (→ `/deep-review-codebase`), not debugging one known failure (→ `/deep-debug`)
+- Not missing-capability hunting (→ `/review-gaps`), not a full multi-dimension codebase scan (→ `/deep-review`), not debugging one known failure (→ `/deep-debug`)
 - If the user appends `and fix` → treat as confirmed; fix every finding without asking again (still report before fixing)
 
 ## Execute
@@ -73,7 +73,7 @@ Check the surface against this issue catalog:
 > Goal: fix only what was confirmed, correctly
 
 1. If the user did not append `and fix` → ask which items to fix and wait
-2. Route each confirmed finding to `/deep-review-codebase <scope> then-fix fix all` by matching domain (`fix all` because `and fix` already confirmed them); unmappable findings are fixed directly from the evidence
+2. Route each confirmed finding to `/deep-review <scope> then-fix fix all` by matching domain (`fix all` because `and fix` already confirmed them); unmappable findings are fixed directly from the evidence
 3. Behavior-preserving rule: fix the cause, never suppress the symptom (no ignore comments, no widened types, no try/catch that hides)
 4. Structural additions → `/create-plan-in-dot-devin` before implementing
 5. After fixes → `/refactor` (SRP split) on touched files (≤250 lines, 1 responsibility), then build/lint/test → `/suggest-next-action`

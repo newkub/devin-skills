@@ -12,7 +12,7 @@ Prepare the rollback procedure and check the backup strategy before deploy so re
 
 ### 1. Backup Strategy Review
 
-Run `/deep-review-codebase` to check the backup strategy before deploy:
+Run `/deep-review` to check the backup strategy before deploy:
 
 - Check the latest database backup
 - Check config backups (env vars, secrets)

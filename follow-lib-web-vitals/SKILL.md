@@ -59,6 +59,13 @@ Use when the task involves measuring Core Web Vitals with `web-vitals` — setup
 - Install + `on*` callbacks + reporting to an endpoint → `workflows/setup-vitals/SKILL.md`
 - Improve LCP/INP/CLS patterns → `workflows/optimize-vitals/SKILL.md`
 
+### Use Cases
+
+| Scenario | Use case |
+|----------|----------|
+| Report LCP/INP/CLS to an endpoint without blocking | `usecases/report-vitals-to-endpoint.md` |
+| Split a slow INP into input/processing/presentation | `usecases/debug-inp-with-attribution.md` |
+
 ## Rules
 
 - INP replaced FID since v3; `onFID` was removed since v5 — never use it

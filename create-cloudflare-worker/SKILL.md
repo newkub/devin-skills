@@ -6,7 +6,7 @@ related:
   - deploy-to-cloudflare
   - follow-secret-manager
   - open-web-for-config-secret
-  - deep-review-codebase
+  - deep-review
 
 ---
 ## Goal
@@ -27,7 +27,7 @@ Create a new Cloudflare Workers project and connect the Git repository automatic
 
 > Goal: Check which kind of Workers project this is and that it is ready to create and deploy
 
-1. Run `/deep-review-codebase` to summarize the stack
+1. Run `/deep-review` to summarize the stack
 2. Check for `wrangler.toml`, `wrangler.jsonc`, `wrangler.json`
 3. Check the `package.json` scripts and the build output
 4. If there is no `wrangler.toml` → create one with `name`, `main`, `compatibility_date`, and `[assets]` or `[site]`

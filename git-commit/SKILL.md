@@ -7,7 +7,7 @@ related:
   - run-verify
   - follow-tool-hk
   - refactor-commit
-  - deep-review-codebase
+  - deep-review
   - ship
 
 ---
@@ -146,7 +146,7 @@ Explain the reason and extra context
 - Use /follow-tool-hk if needed (only repos not using moonrepo — moon repos use `vcs.hooks`)
 - Use /list-git-commit if needed
 - Use /refactor-commit if needed
-- Use /deep-review-codebase if needed
+- Use /deep-review if needed
 - Use /ship if needed
 
 

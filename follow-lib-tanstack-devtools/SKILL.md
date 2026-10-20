@@ -56,8 +56,15 @@ Use when configuring devtools for TanStack libraries — Query devtools, Router 
 > Goal: confirm devtools works and doesn't leak into production
 
 1. Run the dev server — the devtools panel must open and show the cache/route state
-2. Run a production build and check the bundle — devtools code must not be in the output (do `/deep-review-codebase` if confirmation is needed)
+2. Run a production build and check the bundle — devtools code must not be in the output (do `/deep-review` if confirmation is needed)
 3. On failure → revert the part just changed, then do `/resolve-errors`
+
+### Use Cases
+
+| Scenario | Use case |
+|----------|----------|
+| Mount Query and Router devtools side by side | `usecases/query-and-router-devtools.md` |
+| Prove devtools never reach the production bundle | `usecases/keep-devtools-out-of-production.md` |
 
 ## Rules
 
@@ -65,6 +72,7 @@ Use when configuring devtools for TanStack libraries — Query devtools, Router 
 - Never render devtools in production — guard with an env check or a lazy import
 - Never overwrite unrelated existing config — merge only
 - The devtools must be positioned inside the provider it inspects (QueryClientProvider, RouterProvider)
+- See best-practices/ for the pattern and pitfall checklist
 - Use `/follow-lib-tanstack-ecosystem` for the overview
 
 ## Expected Outcome

@@ -76,7 +76,7 @@ Act as a Business Analyst — the person who translates business requirements in
 - Report only — no changes
 - Every finding has evidence — file path, line, route, or config
 - Stay in persona — never review topics this role does not care about; if you find an issue outside the lens, record it as an out-of-scope note
-- If a matching domain review skill exists (e.g. `/deep-review-codebase`, `/deep-review-codebase`, `/deep-review-codebase`, `/deep-review-codebase`, `/deep-review-codebase`, `/deep-review-codebase`, `/deep-review-codebase`, `/deep-review-codebase`), delegate to it or cite it as a deep pass
+- If a matching domain review skill exists (e.g. `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`), delegate to it or cite it as a deep pass
 
 ### Expected Outcome
 
@@ -104,7 +104,7 @@ Act as a Product Analyst — the person who owns product measurement, focused on
 - Report only — no changes
 - Every finding has evidence — file path, line, route, or config
 - Stay in persona — never review topics this role does not care about; if you find an issue outside the lens, record it as an out-of-scope note
-- If a matching domain review skill exists (e.g. `/deep-review-codebase`, `/deep-review-codebase`, `/deep-review-codebase`, `/deep-review-codebase`, `/deep-review-codebase`, `/deep-review-codebase`, `/deep-review-codebase`, `/deep-review-codebase`), delegate to it or cite it as a deep pass
+- If a matching domain review skill exists (e.g. `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`), delegate to it or cite it as a deep pass
 
 ### Expected Outcome
 
@@ -132,7 +132,7 @@ Act as a Product Designer — the person who owns the user experience, focused o
 - Report only — no changes
 - Every finding has evidence — file path, line, route, or config
 - Stay in persona — never review topics this role does not care about; if you find an issue outside the lens, record it as an out-of-scope note
-- If a matching domain review skill exists (e.g. `/deep-review-codebase`, `/deep-review-codebase`, `/deep-review-codebase`, `/deep-review-codebase`, `/deep-review-codebase`, `/deep-review-codebase`, `/deep-review-codebase`, `/deep-review-codebase`), delegate to it or cite it as a deep pass
+- If a matching domain review skill exists (e.g. `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`), delegate to it or cite it as a deep pass
 
 ### Expected Outcome
 
@@ -160,7 +160,7 @@ Act as a Product Manager — the person who owns product outcomes, focused on bu
 - Report only — no changes
 - Every finding has evidence — file path, line, route, or config
 - Stay in persona — never review topics this role does not care about; if you find an issue outside the lens, record it as an out-of-scope note
-- If a matching domain review skill exists (e.g. `/deep-review-codebase`, `/deep-review-codebase`, `/deep-review-codebase`, `/deep-review-codebase`, `/deep-review-codebase`, `/deep-review-codebase`, `/deep-review-codebase`, `/deep-review-codebase`), delegate to it or cite it as a deep pass
+- If a matching domain review skill exists (e.g. `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`, `/deep-review`), delegate to it or cite it as a deep pass
 
 ### Expected Outcome
 

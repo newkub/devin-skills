@@ -46,11 +46,19 @@ bun add -D @tanstack/intent
 2. Install in a test project, then discover the skill through intent tooling
 3. On failure → `/resolve-errors` max 3 rounds
 
+### Use Cases
+
+| Scenario | Use case |
+|----------|----------|
+| Publish a package with its agent skills in the tarball | `usecases/ship-skills-with-package.md` |
+| Consume a dependency's skills into the right store | `usecases/consume-skills-from-a-dependency.md` |
+
 ## Rules
 
 - Skills in the package must match the code version — no stale examples
 - `files` in `package.json` must cover the skills dir — otherwise they aren't published
 - For library authors only — app projects don't need it
+- See best-practices/ for the pattern and pitfall checklist
 
 ## Expected Outcome
 

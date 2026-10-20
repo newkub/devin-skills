@@ -32,11 +32,9 @@ Used for:
 
 ```bash
 bunx create-video@latest --yes --blank my-video
-# or skip TailwindCSS
-bunx create-video@latest --yes --blank --no-tailwind my-video
+bunx create-video@latest --yes --blank --no-tailwind my-video   # skip Tailwind
 
-cd my-video
-bun install
+cd my-video && bun install
 ```
 
 - `--yes` is non-interactive mode (requires a template flag and directory)
@@ -202,6 +200,9 @@ bunx remotion render MyComp --sequence
 - Setup project — `create-video`, Composition, Studio smoke test → `workflows/setup-remotion/SKILL.md`
 - Render performance, codecs/flags, Lambda notes → `workflows/optimize-render/SKILL.md`
 
+- `usecases/scene-sequence.md` — multi-scene composition with `Sequence` + `spring`
+- `usecases/render-in-ci.md` — headless render from a props file, artifact check
+
 ## Rules
 
 ### 1. Animation
@@ -243,8 +244,5 @@ bunx remotion render MyComp --sequence
 
 ## Expected Outcome
 
-- Programmatic videos built with React
-- Smooth and consistent animations
-- Automated and flexible programmatic video creation
-- Scalable cloud rendering
-- Type-safe components with Zod
+- Programmatic videos built with React and frame-accurate scenes
+- Type-safe props via Zod, rendered locally or at cloud scale

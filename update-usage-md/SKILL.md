@@ -5,7 +5,7 @@ argument-hint: "[scope]"
 related:
   - design-usage-with-me-first
   - update-docs
-  - deep-review-codebase
+  - deep-review
   - report-usage
   - report
   - suggest-next-action
@@ -33,7 +33,7 @@ Create or update `USAGE.md` at the workspace root to reflect real usage — publ
 > Goal: Understand the current state of `USAGE.md`
 
 1. Check whether `<workspace>/USAGE.md` exists
-2. If it does → run `/deep-review-codebase` to find gaps and stale content
+2. If it does → run `/deep-review` to find gaps and stale content
 3. If it doesn't → record status `missing` and prepare to create it
 4. Record the findings from the review
 

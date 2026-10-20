@@ -57,7 +57,7 @@ Use for data that needs multi-column comparison or a complete status view in one
 1. Check `No.` ordering
 2. Check grouping and sorting
 3. Check emoji follow the legend
-4. Run `/deep-review-codebase` if needed
+4. Run `/deep-review` if needed
 
 ## Rules
 

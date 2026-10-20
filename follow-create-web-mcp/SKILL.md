@@ -7,7 +7,7 @@ related:
   - follow-create-mcp
   - use-agent-browser
   - use-chrome-devtools
-  - deep-review-codebase
+  - deep-review
   - deep-research
   - follow-best-practice
   - deep-validate
@@ -88,7 +88,7 @@ Add WebMCP tools to a web page/web app (page-provided tools that agents discover
 
 > Goal: Review and validate before delivery
 
-1. Run `/deep-review-codebase` — the `review-frontend` and `review-mcp` domains have a `### WebMCP` checklist for reviewing this implementation
+1. Run `/deep-review` — the `review-frontend` and `review-mcp` domains have a `### WebMCP` checklist for reviewing this implementation
 2. Run `/deep-validate` then `/ship` per the project flow
 
 ## Rules
@@ -126,4 +126,4 @@ Add WebMCP tools to a web page/web app (page-provided tools that agents discover
 - `agent-browser webmcp invoke` works correctly across success, error, and cancel paths
 - The page is fully functional on browsers that don't support WebMCP
 - Consequential tools have `consequentialHint` + complete user confirmation
-- Passes `/deep-review-codebase` and `/deep-validate`
+- Passes `/deep-review` and `/deep-validate`

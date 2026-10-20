@@ -3,7 +3,7 @@ name: report-deep
 description: Create a detailed deep report across every dimension with a 7-column table and 4-part summary
 argument-hint: "[scope]"
 related:
-  - deep-review-codebase
+  - deep-review
   - deep-analyze
   - report
   - suggest-next-action
@@ -25,7 +25,7 @@ Use to create a deep report after reviewing a codebase or analyzing a system —
 
 > Goal: collect data from review workflows and codebase analysis
 
-1. Use `/deep-review-codebase` to analyze the codebase across every dimension
+1. Use `/deep-review` to analyze the codebase across every dimension
 2. Use `/deep-analyze` for deeper analysis if additional data is needed
 3. Gather findings from review results and codebase analysis
 > Goal: complete data from review workflows and codebase analysis

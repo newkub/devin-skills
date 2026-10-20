@@ -18,6 +18,7 @@ Use TanStack DB fully — a reactive client store: collections, live queries (fi
 Use when you need a local-first/reactive data layer that queries client-side like a DB — versus `follow-query` (plain server cache) — `0.x`: the API may change, check the latest docs before implementing
 
 - part of TanStack ecosystem — selection/dispatch lives in `/follow-lib-tanstack-ecosystem`
+- end-to-end usage recipes per application scenario (code verified against https://tanstack.com/db docs) are in `usecases/`: REST CRUD via Query, live queries/joins, aggregations & groupBy, optimistic mutations & transactions, ElectricSQL realtime sync, local-first collections, derived collections, non-hook usage & SSR hydration
 
 ## Execute
 
@@ -97,6 +98,21 @@ const { data, isLoading } = useLiveQuery((q) =>
 3. The live query re-renders when the collection changes; the multi-collection join updates correctly
 4. On failure → `/resolve-errors` max 3 rounds
 
+### Use Cases
+
+Building a whole feature (not just wiring one collection)? Start from the matching recipe below — it has the doc-verified code and pitfalls:
+
+| Scenario | Use case |
+|----------|----------|
+| REST API-backed collections + optimistic writes | `usecases/query-rest-crud.md` |
+| Filter/join/order across normalized collections | `usecases/live-queries-joins.md` |
+| Dashboards, counts/sums/averages via groupBy | `usecases/aggregations.md` |
+| Intent actions, manual transactions, rollback | `usecases/optimistic-mutations.md` |
+| Multi-user realtime collab (Postgres → clients) | `usecases/sync-engine-electric.md` |
+| Persisted prefs, ephemeral UI state, IndexedDB | `usecases/local-first-storage.md` |
+| Reusable materialized live views | `usecases/derived-collections.md` |
+| Vanilla/worker usage + SSR dehydration/hydration | `usecases/non-hook-and-ssr.md` |
+
 ## Rules
 
 - `getKey` must be stable + unique — never use the array index
@@ -105,6 +121,8 @@ const { data, isLoading } = useLiveQuery((q) =>
 - Use DB only for data needing live query/optimistic/local-first — plain fetching still uses `follow-query`
 - 0.x API — pin the version, read the changelog before upgrading
 - Use `/follow-lib-tanstack-ecosystem` for the overview
+- See best-practices/ for the pattern and pitfall checklist
+- See usecases/ for feature-level recipes with doc-verified code
 
 ## Expected Outcome
 

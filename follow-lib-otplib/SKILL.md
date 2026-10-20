@@ -45,6 +45,16 @@ Use when the task involves this library/tool — setup, usage, debugging, or bes
 2. Run `/run-test` if related tests exist
 3. Check the latest official docs before using an uncertain API (lib otplib)
 
+### Use Cases
+
+| Scenario | Use case |
+|----------|----------|
+| Enroll a user in TOTP 2FA with QR provisioning | `usecases/enroll-totp-2fa.md` |
+| Verify a login code with drift, rate limit and replay guard | `usecases/verify-login-token.md` |
+| HOTP with a stored counter and replay protection | `usecases/hotp-counter-and-replay.md` |
+| Sync API, crypto plugins, and typed error mapping | `usecases/sync-api-and-error-handling.md` |
+| Encrypt, rotate, and reset the stored secret | `usecases/secret-storage-and-rotation.md` |
+
 ## Rules
 
 - Prefer TOTP (time-based) — HOTP only for specific use cases

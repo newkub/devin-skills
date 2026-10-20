@@ -1,7 +1,7 @@
 
 # Package Manifest
 
-> Metadata of the primary package(s) this skill installs or covers. Update during `/update-devin-global-skills` or `/deep-review-codebase` runs.
+> Metadata of the primary package(s) this skill installs or covers. Update during `/update-devin-global-skills` or `/deep-review` runs.
 
 ## Primary Package
 

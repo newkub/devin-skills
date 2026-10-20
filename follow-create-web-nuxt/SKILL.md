@@ -5,7 +5,7 @@ argument-hint: "[scope]"
 related:
   - follow-best-practice
   - setup-cicd
-  - deep-review-codebase
+  - deep-review
   - follow-lib-vue
   - run-dev
 ---
@@ -214,7 +214,7 @@ Covers setup, directory structure, configuration, code standards, performance, p
 - Use /follow-create-mobile-cross-with-capacitor if needed (create web nuxt)
 - Use /follow-best-practice if needed
 - Use /setup-cicd if needed
-- Use /deep-review-codebase if needed
+- Use /deep-review if needed
 - Use /run-dev if needed
 
 ## File Structure

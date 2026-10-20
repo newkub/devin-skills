@@ -45,11 +45,19 @@ bun add -D @tanstack/config
 3. `bunx publint` passes
 4. On failure → `/resolve-errors` max 3 rounds
 
+### Use Cases
+
+| Scenario | Use case |
+|----------|----------|
+| Take a package from local build to publish-ready | `usecases/publish-ready-package.md` |
+| Diagnose import/require/types resolution failures | `usecases/fix-exports-resolution.md` |
+
 ## Rules
 
 - Use only for packages being published — apps are unrelated
 - The exports map must resolve for `import`/`require`/`types` conditions alike
 - Don't replace the project's existing build tool (tsdown/tsup) without reason — this config lib is optimized for TanStack-style publishing
+- See best-practices/ for the pattern and pitfall checklist
 
 ## Expected Outcome
 

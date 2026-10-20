@@ -1,9 +1,9 @@
 # Improve Scope Map (SSOT)
 
 The single mapping table of scope → review domain + ownership boundary — other skills must not copy this table; point to this file instead (`/follow-single-of-source`)
-Every scope is handled by the `/improve` thin entry (or `/optimize` for metric-driven scope): review → `/deep-review-codebase <dimension>` | fix → `/deep-review-codebase <scope> then-fix`
+Every scope is handled by the `/improve` thin entry (or `/optimize` for metric-driven scope): review → `/deep-review <dimension>` | fix → `/deep-review <scope> then-fix`
 
-**Label resolution (mandatory)** — the `Review domain(s)` column keeps the legacy `review-*` names; they are not skills. Resolve each label before dispatch: strip `review-`, then take the row(s) in `deep-review-codebase/references/dimension-matrix.md` whose `Aliases` column lists it (a label may map to several dimensions), plus the `always` tier. `review-issues` and `review-gaps` are the exceptions — they are real skills and may be called directly. A label on no row is a matrix gap: dispatch the `always` tier + the closest artifact-match rows and report the gap, never invent a dimension.
+**Label resolution (mandatory)** — every `review-*` name in the `Review domain(s)` column is a real thin skill (`review-<label>`) that delegates to `/deep-review`; invoke `/review-<label>` for one dimension. The skill resolves its label by stripping `review-` and taking the row(s) in `deep-review/references/dimension-matrix.md` whose `Aliases` column lists it (or whose row name equals it), plus the `always` tier. `review-issues` and `review-gaps` hold their own work and are called the same way. A label with no row and no skill is a matrix gap: dispatch the `always` tier + the closest artifact-match rows and report the gap, never invent a dimension.
 
 | Scope (`/improve <scope>`) | Review domain(s) | Ownership / boundary |
 |---|---|---|
@@ -33,7 +33,7 @@ Every scope is handled by the `/improve` thin entry (or `/optimize` for metric-d
 | `delivery` | review-delivery | release pipeline end-to-end |
 | `deps` | review-dependencies | versions, lockfile, supply chain |
 | `desktop-app` | review-desktop-app | windowing, IPC, packaging |
-| `devin-global-skills` | review-devin-global-harness | harness review (skills, subagents, hooks, MCP, global rules) — fix via `/deep-review-codebase <scope> then-fix`, standards via `/update-devin-global-skills` |
+| `devin-global-skills` | review-devin-global-harness | harness review (skills, subagents, hooks, MCP, global rules) — fix via `/deep-review <scope> then-fix`, standards via `/update-devin-global-skills` |
 | `docs` | review-docs | README/guides/structure; writing findings → `/improve writing` |
 | `dot-devin` | review-dot-devin | project devin config/assets |
 | `dx` | review-dx, review-bundle | tooling, onboarding; devtools dock/integrations → `/follow-tool-vite-devtools`, standalone devtool → `/follow-tool-devfra`; size → `/optimize bundle` |

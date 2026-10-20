@@ -22,7 +22,7 @@ related:
   - compare-competitors
   - apply
   - follow-best-practice
-  - deep-review-codebase
+  - deep-review
   - suggest-next-action
   - resolve-errors
 
@@ -36,7 +36,7 @@ Find and recommend better alternatives for whatever the user specifies.
 
 Use when the user asks about libraries, tools, frameworks, patterns, or other solutions.
 
-See also: /learn-from-web, /apply choose, /follow-best-practice, /deep-review-codebase, /suggest-next-action, /resolve-errors
+See also: /learn-from-web, /apply choose, /follow-best-practice, /deep-review, /suggest-next-action, /resolve-errors
 
 ## Execute
 

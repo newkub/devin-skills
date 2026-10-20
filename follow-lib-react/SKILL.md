@@ -125,6 +125,14 @@ Configure performance optimization
 
 - Render optimization — memo/useMemo/useCallback, React Compiler, profiling → `workflows/optimize-render/SKILL.md`
 
+### Use Cases
+
+| Scenario | Use case |
+|----------|----------|
+| Server Component fetch + `use()` + Suspense | `usecases/data-fetching-with-suspense.md` |
+| Forms with `useActionState` and `useFormStatus` | `usecases/forms-with-server-actions.md` |
+| Transitions, deferred values, React Compiler | `usecases/concurrent-ui-transitions.md` |
+
 ## Rules
 
 ### 1. Component Structure
@@ -185,6 +193,7 @@ Configure per the standard
 - Use `/setup-cicd` if needed
 
 - See best-practices/ for recommended patterns and pitfalls
+- See usecases/ for end-to-end scenario recipes
 
 ## Expected Outcome
 

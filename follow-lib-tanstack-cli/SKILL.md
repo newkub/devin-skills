@@ -53,11 +53,19 @@ bunx @tanstack/cli create my-app --add-ons clerk,drizzle,tanstack-query
 1. Do `/run-typecheck` + a smoke test of the first page
 2. On failure → `/resolve-errors` max 3 rounds
 
+### Use Cases
+
+| Scenario | Use case |
+|----------|----------|
+| Create an app with the add-ons the feature list needs | `usecases/scaffold-with-add-ons.md` |
+| Verify the scaffold's routes, versions, and unused add-ons | `usecases/audit-generated-project.md` |
+
 ## Rules
 
 - The CLI is a starting point — after scaffolding, keep customizing via the `setup-*` workflows
 - Pick only the add-ons you really use — adding later is easier than removing
 - Scaffold output may lag patch releases — check the versions in `package.json` after creation
+- See best-practices/ for the pattern and pitfall checklist
 
 ## Expected Outcome
 

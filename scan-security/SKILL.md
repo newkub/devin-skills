@@ -10,7 +10,7 @@ related:
   - follow-tool-semgrep
   - follow-tool-deepsec
   - analyze-attack-surface
-  - deep-review-codebase
+  - deep-review
   - report-review
   - resolve-errors
   - download-program
@@ -63,7 +63,7 @@ Scan a project for security issues across every domain — dependencies, secrets
 
 1. Run `/follow-tool-semgrep` for OWASP-class patterns (injection, XSS, SSRF, unsafe deserialization, path traversal)
 2. Run `/follow-tool-deepsec` for the AI-assisted multi-phase security audit when the scope warrants a deep pass
-3. Run `/deep-review-codebase` with the security dimension for issues tools cannot see (authz logic, race conditions, trust-boundary mistakes)
+3. Run `/deep-review` with the security dimension for issues tools cannot see (authz logic, race conditions, trust-boundary mistakes)
 4. Grep for common anti-patterns: `eval(`, `child_process` with template strings, `dangerouslySetInnerHTML`, unsanitized user input reaching sinks
 
 ### 5. Scan Attack Surface
@@ -96,7 +96,7 @@ Scan a project for security issues across every domain — dependencies, secrets
 
 1. Deduplicate and rank by severity: Critical/High → fix immediately; Medium → next sprint; Low/Info → record
 2. Validate every finding is real (false-positive check) before touching code — evidence `file:line` or advisory ID
-3. Fix via `/deep-review-codebase security then-fix` (or `/resolve-errors` for build/test breakage introduced by upgrades); never suppress with ignores/allowlists without a written reason
+3. Fix via `/deep-review security then-fix` (or `/resolve-errors` for build/test breakage introduced by upgrades); never suppress with ignores/allowlists without a written reason
 
 ### 9. Re-Scan And Report
 

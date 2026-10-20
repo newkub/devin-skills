@@ -6,7 +6,7 @@ related:
   - follow-create-web
   - follow-lib-unocss
   - report-git-diff
-  - deep-review-codebase
+  - deep-review
 ---
 
 ## Goal
@@ -142,7 +142,7 @@ Not supported:
 - /follow-create-web (solid-tanstack-router) for the stack
 - /open-web for opening a browser
 - /report-git-diff for producing a diff report
-- /deep-review-codebase for reviewing the diff
+- /deep-review for reviewing the diff
 
 ## Expected Outcome
 

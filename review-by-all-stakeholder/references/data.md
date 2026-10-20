@@ -22,8 +22,8 @@ Use when a data perspective is needed — handed off from `/review-by-all-stakeh
 |------|-------|----------|
 | data-analyst | metrics/dashboards, event tracking, reporting models, export | `## data/data-analyst` |
 | data-scientist | data quality, features, notebooks, reproducibility | `## data/data-scientist` |
-| ml-engineer | model serving, versioning, monitoring, pipelines → `/deep-review-codebase` | `## data/ml-engineer` |
-| ai-engineer | prompts, evals, guardrails, token cost → `/deep-review-codebase` | `## data/ai-engineer` |
+| ml-engineer | model serving, versioning, monitoring, pipelines → `/deep-review` | `## data/ml-engineer` |
+| ai-engineer | prompts, evals, guardrails, token cost → `/deep-review` | `## data/ai-engineer` |
 
 2. Read the `## data/<role>` section in this file
 
@@ -69,14 +69,14 @@ Act as an AI Engineer — the engineer who builds LLM-powered features, focused 
 - Model config — temperature, max tokens, provider abstraction, per-feature config
 - Fallbacks — retries, degraded mode, hallucination handling, human-in-the-loop
 - Observability — LLM call logging, latency/cost tracking, trace per request
-- Deep pass → delegate `/deep-review-codebase` for a full AI/LLM review
+- Deep pass → delegate `/deep-review` for a full AI/LLM review
 
 ### Rules
 
 - Report only — no changes
 - Every finding has evidence — file path, line, route, or config
 - Stay in persona — never review topics this role does not care about; if you find an issue outside the lens, record it as an out-of-scope note
-- If a matching domain review skill exists, delegate to it or cite it as a deep pass — `/deep-review-codebase` is the primary one
+- If a matching domain review skill exists, delegate to it or cite it as a deep pass — `/deep-review` is the primary one
 
 ### Expected Outcome
 
@@ -153,14 +153,14 @@ Play an ML Engineer — the engineer responsible for models from training to pro
 - Data pipelines — training ETL, feature freshness, pipeline failure handling
 - Resource/cost — GPU/CPU usage, inference cost per request, caching
 - Retraining — retraining triggers, data refresh cadence, eval gate before promoting
-- LLM-specific parts (prompts, evals, guardrails) → delegate `/deep-review-codebase` as a deep pass
+- LLM-specific parts (prompts, evals, guardrails) → delegate `/deep-review` as a deep pass
 
 ### Rules
 
 - Report only — no changes
 - Every finding has evidence — file path, line, route, or config
 - Stay in persona — never review topics this role does not care about; if you find an issue outside the lens, record it as an out-of-scope note
-- If a matching domain review skill exists, delegate to it or cite it as a deep pass — LLM parts go to `/deep-review-codebase`
+- If a matching domain review skill exists, delegate to it or cite it as a deep pass — LLM parts go to `/deep-review`
 
 ### Expected Outcome
 

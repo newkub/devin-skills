@@ -17,7 +17,7 @@ Report the project's bundle size: per chunk, per dependency, tree-shaking effect
 
 ## Scope
 
-Use for reporting bundle size after build — excludes build optimization (use `/deep-review-codebase` for optimization)
+Use for reporting bundle size after build — excludes build optimization (use `/deep-review` for optimization)
 
 ## Execute
 
@@ -95,7 +95,7 @@ Use for reporting bundle size after build — excludes build optimization (use `
 2. Identify chunks exceeding the threshold (e.g. > 100KB)
 3. Identify dependencies that should be dynamic imports
 4. Identify modules with side effects
-5. Recommend next steps: `/deep-review-codebase` for optimization
+5. Recommend next steps: `/deep-review` for optimization
 
 ## Rules
 
@@ -113,7 +113,7 @@ Use for reporting bundle size after build — excludes build optimization (use `
 ### Read-Only Report
 
 - Never optimize or modify build config — report only
-- Use `/deep-review-codebase` for optimization
+- Use `/deep-review` for optimization
 - Use `/run-build` for building
 
 ### Output Format
@@ -139,7 +139,7 @@ Use for reporting bundle size after build — excludes build optimization (use `
 
 ### Non-Redundancy
 
-- Build optimization already lives in `/deep-review-codebase`
+- Build optimization already lives in `/deep-review`
 - Building already lives in `/run-build`
 
 - Final report via `/report-review` — one chat table (No./Action/Evidence/Severity/Risk/Priority/Owner skill/Status), no report files

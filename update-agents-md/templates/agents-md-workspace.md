@@ -6,7 +6,7 @@ related:
   - follow-agents-md
   - follow-monorepo
   - deep-validate
-  - deep-review-codebase
+  - deep-review
 ---
 
 ## Goal
@@ -43,7 +43,7 @@ Map every dependency in the workspace manifest to its global skill — use `/use
 
 ### 4. Ship
 
-1. Run `/ship` — the canonical gate: verify (`/deep-review-codebase`, `/deep-validate`, `/run-check`, `/update-tests` + `/run-test all`, `/run-dev`, `/deep-test usage`), then commit/push, PR review gate, and merge into `main`.
+1. Run `/ship` — the canonical gate: verify (`/deep-review`, `/deep-validate`, `/run-check`, `/update-tests` + `/run-test all`, `/run-dev`, `/deep-test usage`), then commit/push, PR review gate, and merge into `main`.
 2. Run `/report` to summarize.
 
 ## Rules

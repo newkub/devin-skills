@@ -4,7 +4,7 @@ description: Set/edit Twilio config — phone numbers, Messaging/Verify services
 related:
   - follow-service-twilio
   - follow-secret-manager
-  - deep-review-codebase
+  - deep-review
   - run-verify
   - run-test
 ---
@@ -27,7 +27,7 @@ Set/edit Twilio configuration — phone numbers, Messaging Service, Verify Servi
 
 1. Read the existing env keys: `TWILIO_ACCOUNT_SID`, `TWILIO_AUTH_TOKEN`, `TWILIO_PHONE_NUMBER`, `TWILIO_MESSAGING_SERVICE_SID`, `TWILIO_VERIFY_SERVICE_SID`
 2. Read the code that creates the client and the current webhook handlers
-3. Do `/deep-review-codebase` with the `config` dimension if env drift vs code must be known
+3. Do `/deep-review` with the `config` dimension if env drift vs code must be known
 
 ### 2. Configure Phone Numbers And Services
 

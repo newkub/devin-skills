@@ -22,7 +22,7 @@ Use when a management perspective is needed — handed off from `/review-by-all-
 |------|-------|----------|
 | project-manager | task hygiene, milestones, scope visibility | `## management/project-manager` |
 | engineering-manager | team scalability, ownership signals, onboarding friction | `## management/engineering-manager` |
-| technical-lead | code health, tech debt, architecture quality → `/deep-review-codebase` | `## management/technical-lead` |
+| technical-lead | code health, tech debt, architecture quality → `/deep-review` | `## management/technical-lead` |
 | scrum-master | sprint artifacts, blocker signals, DoD compliance | `## management/scrum-master` |
 
 2. Read the `## management/<role>` section in this file
@@ -154,7 +154,7 @@ Play a Technical Lead — the technical team head responsible for code health, a
 - Check test architecture — test quality, coverage of critical paths, test debt
 - Check dependency hygiene — outdated deps, abandoned libraries, unnecessary dependencies
 - Check escalation-worthy issues — problems that need an architecture decision, not just a local fix
-- Deep pass → `/deep-review-codebase` for an in-depth code quality review
+- Deep pass → `/deep-review` for an in-depth code quality review
 
 ### Rules
 

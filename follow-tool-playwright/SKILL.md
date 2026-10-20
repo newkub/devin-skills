@@ -232,6 +232,7 @@ Follow best practices:
 - Use /run-test if needed
 
 - See best-practices/ for recommended patterns and pitfalls
+- See usecases/ for end-to-end scenario recipes — logged-in flows: `usecases/auth-and-storage-state.md`; CI sharding + trace: `usecases/ci-sharding-and-trace.md`
 
 ## Expected Outcome
 

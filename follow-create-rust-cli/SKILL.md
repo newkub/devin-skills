@@ -5,7 +5,7 @@ argument-hint: "[scope]"
 related:
   - follow-create-cli
   - follow-tool-cargo
-  - deep-review-codebase
+  - deep-review
   - flatten-directory
   - rethink
   - run-test
@@ -27,7 +27,7 @@ Use for building CLI applications with the Rust runtime — if Rust vs Bun is un
 
 > Goal: Inspect the tech stack before creating
 
-1. Run `/deep-research` + `/follow-best-practice` to confirm the latest versions and patterns, then run `/deep-review-codebase` to summarize the tech stack
+1. Run `/deep-research` + `/follow-best-practice` to confirm the latest versions and patterns, then run `/deep-review` to summarize the tech stack
 3. Record the reasons for choosing the stack and libraries for later reference (create rust cli)
 
 ### 2. Decide Architecture
@@ -35,7 +35,7 @@ Use for building CLI applications with the Rust runtime — if Rust vs Bun is un
 > Goal: Choose the architecture that fits the CLI
 
 1. If Rust vs Bun is unclear → run `/follow-create-cli` first
-2. Run `/deep-review-codebase` or `/deep-review-codebase` to assess the context
+2. Run `/deep-review` or `/deep-review` to assess the context
 3. Choose the architecture based on the workload:
    - Simple CLI with a few subcommands → Command/Handler split
    - Needs to support multiple output modes (TTY/JSON/agent) → Functional Core / Imperative Shell

@@ -3,7 +3,7 @@ name: run-docs
 description: Run a documentation site and fix errors
 argument-hint: "[scope]"
 related:
-  - deep-review-codebase
+  - deep-review
   - follow-tool-vitepress
   - update-vitepress-docs
   - deep-debug
@@ -20,11 +20,11 @@ Run the documentation site and fix any errors that occur
 
 Use for documentation sites built with VitePress, Docus, or other documentation frameworks.
 
-See also: /deep-review-codebase
+See also: /deep-review
 
 ## Execute
 
-> Pre-Run: Always run `/deep-review-codebase` first — `run-*` must be reviewed/assessed before the main work, never skip; if findings are blockers, fix or report before running (docs)
+> Pre-Run: Always run `/deep-review` first — `run-*` must be reviewed/assessed before the main work, never skip; if findings are blockers, fix or report before running (docs)
 
 ### 1. Check Documentation Setup
 
@@ -41,7 +41,7 @@ See also: /deep-review-codebase
 > Goal: Update Documentation
 
 1. Run `/update-vitepress-docs` to create and update the docs site (content + config) — or `/update-docs` if it is pure markdown
-2. Run `/deep-review-codebase` to improve SEO for the documentation site
+2. Run `/deep-review` to improve SEO for the documentation site
 3. Check that the documentation is built correctly
 
 ### 3. Run Dev Server
@@ -49,8 +49,8 @@ See also: /deep-review-codebase
 > Goal: Run Dev Server
 
 1. Run the dev server with the appropriate command for the documentation framework
-2. If there are errors, run `/deep-review-codebase` to analyze and prioritize them
-3. `/deep-review-codebase` decides which workflow to continue with:
+2. If there are errors, run `/deep-review` to analyze and prioritize them
+3. `/deep-review` decides which workflow to continue with:
    - If they are cascade issues → `/deep-debug` → `/resolve-errors`
    - If they are isolated errors → `/resolve-errors`
 4. Monitor and fix errors immediately until they pass

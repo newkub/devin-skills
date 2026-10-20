@@ -8,7 +8,7 @@ related:
   - follow-tool-github-actions
   - follow-secret-manager
   - follow-tasks
-  - deep-review-codebase
+  - deep-review
   - run-verify
   - run-test
   - ship
@@ -177,8 +177,8 @@ Check `vercel.json` and add a GitHub Actions workflow, or use Vercel Git Integra
 
 > Goal: Confirm the CI/CD config is correct
 
-1. Run `/deep-review-codebase` to check for drift and duplication
-2. Run `/deep-review-codebase` to check that the config covers security, testing, deployment
+1. Run `/deep-review` to check for drift and duplication
+2. Run `/deep-review` to check that the config covers security, testing, deployment
 3. Run a dry run if the platform supports it (e.g. `act` for GitHub Actions) — optional
 4. To validate the test suite locally → run `/run-test all` before going to CI
 5. If there are syntax errors → fix them before finishing

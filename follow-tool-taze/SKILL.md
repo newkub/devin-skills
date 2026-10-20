@@ -112,6 +112,15 @@ Use for projects or workspaces that need to keep dependencies up-to-date via the
 
 - See best-practices/ for recommended patterns and pitfalls
 
+### Use Cases
+
+| Scenario | Use case |
+|----------|----------|
+| Interactive dependency refresh | `usecases/interactive-dependency-refresh.md` |
+| Scheduled drift report in CI | `usecases/ci-drift-report.md` |
+
+- See usecases/ for end-to-end scenario recipes
+
 ## Expected Outcome
 
 - Dependencies update automatically

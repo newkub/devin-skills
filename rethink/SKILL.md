@@ -8,7 +8,7 @@ related:
   - plan
   - deep-analyze
   - deep-research
-  - deep-review-codebase
+  - deep-review
   - deep-validate
   - refactor
   - ask-me
@@ -129,11 +129,11 @@ Do not use rethink when:
 - Use `/update-references` if the structure changes
 
 - Use /deep-analyze if needed
-- Use /deep-review-codebase if needed
+- Use /deep-review if needed
 - Use /deep-validate if needed
-- Use /deep-review-codebase if needed
+- Use /deep-review if needed
 - Use /refactor if needed
-- Use /deep-review-codebase then-fix if needed
+- Use /deep-review then-fix if needed
 - Use /reframe if needed
 
 

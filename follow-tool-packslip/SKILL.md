@@ -31,7 +31,7 @@ Publish `packslip.sigstore.json` beside release artifacts — a signed manifest 
       man=archive:share/man/man1/mytool.1
 ```
 
-2. Grant the workflow the needed permissions (id-token for sigstore signing with the workflow identity)
+2. Grant `permissions: contents: write` (upload the bundle), `id-token: write` (sign with the workflow identity), `attestations: write` (attest the matched files) — the action does not upload the artifacts
 3. The `packslip.sigstore.json` manifest is published beside the artifacts automatically
 
 ### 2. Describe Artifacts
@@ -57,6 +57,8 @@ Publish `packslip.sigstore.json` beside release artifacts — a signed manifest 
 - A single manifest can't detect withdrawn/rollback releases — use signed release lists
 - A plain checksum beside the binary is not equivalent — signer verification is required
 - The spec version stays at v1 — pin `jdx/packslip@v1`
+- See references/ for the manifest fields and the CLI table
+- See best-practices/ for the pattern and pitfall checklist
 
 ## Expected Outcome
 

@@ -53,8 +53,8 @@ Every round starts with the deep pre-pass — run `/deep-thinking` → `/deep-an
 > Goal: check the PR's code changes
 
 1. Run `/run-verify` — lint, typecheck, scan — fail → report first, then continue
-2. Run `/deep-review-codebase` on changed files — with security-sensitive changes, test coverage and quality, docs/changelog/versioning/git hygiene
-3. Per the PR's domain → run `/deep-review-codebase` in the domains the diff touches (frontend, backend, api, auth)
+2. Run `/deep-review` on changed files — with security-sensitive changes, test coverage and quality, docs/changelog/versioning/git hygiene
+3. Per the PR's domain → run `/deep-review` in the domains the diff touches (frontend, backend, api, auth)
 - Severity: Critical = build fail, security risk, breaking change without migration; High = missing tests, lint fail, auth change unreviewed; Medium = missing docs/changelog, slight coverage drop; Low = formatting, cosmetic
 
 ### 4. Validate Findings
@@ -85,7 +85,7 @@ Every round starts with the deep pre-pass — run `/deep-thinking` → `/deep-an
 
 1. All CI checks pass: `gh pr checks <n>` — no `fail`/`pending` left; pending → `gh pr checks <n> --watch` or `/resolve-cicd` until green
 2. Run `/deep-validate` on the merge result (frontmatter, types, contract) — fail → do not recommend merge
-3. Run `/deep-review-codebase` per the PR's scope (domains the diff touches) — blocker findings → fix first, do not merge
+3. Run `/deep-review` per the PR's scope (domains the diff touches) — blocker findings → fix first, do not merge
 4. Only when all 3 items pass → verdict `ready-to-merge`; otherwise `blocked` naming the gate still open
 
 ### 7. Score And Report
@@ -158,7 +158,7 @@ Every round starts with the deep pre-pass — run `/deep-thinking` → `/deep-an
 ## Rules
 
 - Review only — do not modify source without permission
-- Never verdict `ready-to-merge` if Step 6 (Check Gate) doesn't fully pass — CI + `/deep-validate` + `/deep-review-codebase` are blocking gates
+- Never verdict `ready-to-merge` if Step 6 (Check Gate) doesn't fully pass — CI + `/deep-validate` + `/deep-review` are blocking gates
 - Focus on changed files — no need to review the whole codebase
 - If the PR is large → recommend split before detailed review
 - Title and commits must follow conventional commits
@@ -172,7 +172,7 @@ Every round starts with the deep pre-pass — run `/deep-thinking` → `/deep-an
 - Use /resolve-github-actions-fails if needed
 - Use /run-review if needed
 - Use /resolve-errors if needed
-- Use /deep-review-codebase if needed
+- Use /deep-review if needed
 
 - If pass → run `/merge-github-pr`; if fail → tell the author to fix per the findings
 
@@ -186,7 +186,7 @@ Every round starts with the deep pre-pass — run `/deep-thinking` → `/deep-an
 
 ## Fix
 
-> Follow `deep-review-codebase/SKILL.md` when the user confirms fixing findings
+> Follow `deep-review/SKILL.md` when the user confirms fixing findings
 
 ## Expected Outcome
 

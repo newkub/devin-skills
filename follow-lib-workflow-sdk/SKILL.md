@@ -92,6 +92,13 @@ const data = await webhook;
 2. `/run-dev` so the dev server runs real workflows → `/run-test` e2e through the workflow entry
 3. v4 → v5: `bunx skills add https://github.com/vercel/workflow --skill migrating-workflow-v4-to-v5`, then let the agent migrate (v5: inline steps, batched writes, compressed payloads — up to ~80% compute cost on Vercel)
 
+### Use Cases
+
+| Scenario | Use case |
+|----------|----------|
+| Durable multi-step order flow with idempotent steps | `usecases/durable-order-workflow.md` |
+| Suspend for days and resume from an approval webhook | `usecases/human-approval-with-webhook.md` |
+
 ## Rules
 
 ### 1. Determinism

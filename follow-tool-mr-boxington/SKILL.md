@@ -20,7 +20,8 @@ For Rust projects that want to reuse build artifacts across checkouts/worktrees/
 
 - Boundary: if you need to cache other compilers beyond Rust/C/C++ or distributed compilation → use `sccache`; mbx already defers to a `RUSTC_WRAPPER` pointing at another cache
 - Latest: `mbx@1.18.0` (verified 2026-09-26, GitHub `jdx/mr-boxington` releases) — crate name `mbx`, mise tool name `mr-boxington`
-- References: [cli](references/cli.md) 
+- References: [API + CLI tables](references/apis.md), [cli](references/cli.md)
+
 ## Execute
 
 ### 1. Install mbx
@@ -95,7 +96,7 @@ For Rust projects that want to reuse build artifacts across checkouts/worktrees/
 2. Unknown TOML keys are rejected — a typo errors immediately
 3. Common settings: `gc.max_size`, `target.max_size`/`target.max_age`, `scheduler.reserve_cpus`, `summary = "short"|"full"|"ci"|"off"`, `savings = "quips"|"plain"|"off"`, `[linker.profiles.*]`
 4. `[remote]` settings are accepted only in global config or `MBX_REMOTE_*` env — a repo `.mbx.toml` won't take them
-5. See all settings details in 
+5. See the configuration reference at https://github.com/jdx/mr-boxington/tree/main/docs
 
 ### 8. Set Up CI Sharing
 
@@ -141,7 +142,7 @@ For Rust projects that want to reuse build artifacts across checkouts/worktrees/
 - `mbx doctor` + a representative build before concluding the setup works — a binary merely installed is not proof cargo uses mbx
 - A repo `.mbx.toml` holds workspace settings only — never put remote URLs, credentials, or machine paths in it
 - Scope remote write credentials to trusted branches — PR jobs use a read-only role
-- Hit an error → do `/resolve-errors`; see [references/cli.md](references/cli.md) for debug commands (`explain`, `cache trace`, `cache verify`)
+- Hit an error → do `/resolve-errors`; see [references/cli.md](references/cli.md) and [references/apis.md](references/apis.md) for debug commands (`explain`, `cache trace`, `cache verify`)
 
 - Use `/follow-tool-mise` for installing/managing tool versions
 - Use `/follow-tool-cargo` for Cargo config and lint rules

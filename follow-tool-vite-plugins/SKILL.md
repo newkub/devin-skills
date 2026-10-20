@@ -71,6 +71,7 @@ Pick the Vite plugin that fits the job and set it up in `vite.config.ts` — the
 - Use `/follow-create-plugins` if you must write a plugin yourself
 
 - See best-practices/ for recommended patterns and pitfalls
+- See references/ for the plugin package and install tables
 
 ## Expected Outcome
 

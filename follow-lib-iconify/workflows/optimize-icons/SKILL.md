@@ -5,7 +5,7 @@ argument-hint: "[scope]"
 related:
   - follow-lib-iconify
   - run-bench
-  - deep-review-codebase
+  - deep-review
   - report-bundle
   - report-before-after
 ---
@@ -24,7 +24,7 @@ Use when optimizing icons that use Iconify — covers bundle analysis, convertin
 
 > Goal: measure the current icon cost before optimizing
 
-1. Do `/deep-review-codebase` or `/report-bundle` to see the size of icon-related code in the bundle
+1. Do `/deep-review` or `/report-bundle` to see the size of icon-related code in the bundle
 2. Check usage patterns: `import { Icon }`, `icon="..."` strings, `@iconify-json/*` imports — scan which sets and which icons are used
 3. Identify anti-patterns: importing the whole `icons.json`, dynamic icon names hitting the API at runtime, unused icons
 
@@ -57,7 +57,7 @@ Use when optimizing icons that use Iconify — covers bundle analysis, convertin
 
 > Goal: measure after optimizing, against the baseline
 
-1. Re-run `/report-bundle` or `/deep-review-codebase`, then compare with the baseline via `/report-before-after`
+1. Re-run `/report-bundle` or `/deep-review`, then compare with the baseline via `/report-before-after`
 2. Check that all icons still render correctly — no missing icon
 3. If the bundle didn't shrink or an icon disappeared → revert that point and report
 

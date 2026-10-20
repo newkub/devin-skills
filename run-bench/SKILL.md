@@ -3,10 +3,10 @@ name: run-bench
 description: Run benchmark tests to measure performance and compare implementations
 argument-hint: "[scope]"
 related:
-  - deep-review-codebase
+  - deep-review
   - run-install
 
-  - deep-review-codebase
+  - deep-review
   - report
 ---
 
@@ -20,7 +20,7 @@ Use for measuring function performance, comparing different implementations, det
 
 ## Execute
 
-> Pre-Run: always run `/deep-review-codebase` first — `run-*` skills must be reviewed/assessed before the main action, never skip; if findings are blockers, fix or report them before running (bench)
+> Pre-Run: always run `/deep-review` first — `run-*` skills must be reviewed/assessed before the main action, never skip; if findings are blockers, fix or report them before running (bench)
 
 ### 1. Setup Environment
 
@@ -45,7 +45,7 @@ Use for measuring function performance, comparing different implementations, det
 > Goal: Analyze Results
 
 1. Review each benchmark's result and identify the slow and fast benchmarks
-2. Run `/deep-review-codebase` per `deep-review-codebase/SKILL.md` to analyze whether empirical growth matches theoretical complexity
+2. Run `/deep-review` per `deep-review/SKILL.md` to analyze whether empirical growth matches theoretical complexity
 3. Find benchmarks with high variance or outliers
 4. Identify potential optimizations for slow benchmarks
 5. If variance is high, re-run to confirm the results

@@ -62,6 +62,13 @@ Use when the task involves manual passkeys/WebAuthn — setup, ceremonies, crede
 2. Run `/run-test` if related tests exist
 3. Check the latest official docs before using an uncertain API (lib simplewebauthn)
 
+### Use Cases
+
+| Scenario | Use case |
+|----------|----------|
+| Register a passkey and store the credential | `usecases/register-passkey.md` |
+| Log in with a passkey, counter update + autofill | `usecases/login-with-passkey.md` |
+
 ## Rules
 
 - The challenge must be random + one-time + short-lived — verify server-side

@@ -19,6 +19,7 @@ When a project needs:
 - Deploying to a provider via a preset — https://nitro.build/deploy
 - A server engine for a meta-framework (TanStack Start, Analog, Nuxt already use Nitro)
 
+- API and config tables are in `references/apis.md`; commands and flags are in `references/cli.md`
 - recommended patterns and pitfalls are in `best-practices/`
 - end-to-end usage recipes per application scenario (code verified against https://nitro.build docs) are in `usecases/`: REST API/CRUD, auth & middleware, webhook receiver, realtime WebSocket, SSE streaming, background tasks/cron, static/prerender & route rules, deploy to Cloudflare Workers
 
@@ -97,7 +98,7 @@ export default {
 
 ### Use Cases
 
-Building a whole feature (not just wiring one layer)? Start from the matching `usecases/<scenario>.md` — it has the doc-verified handler code and pitfalls:
+Building a whole feature (not just wiring one layer)? Start from the matching recipe below — it has the doc-verified handler code and pitfalls:
 
 | Scenario | Use case |
 |----------|----------|
@@ -116,6 +117,8 @@ Building a whole feature (not just wiring one layer)? Start from the matching `u
 - `.output/` is a generated artifact — never commit it
 - Secrets always via env/`wrangler secret` — never hardcode in config
 - Check https://nitro.build or `/deep-research` for the latest preset names and provider docs
+- Using the Vite plugin → drive dev/build with `vite dev` / `vite build` / `vite preview`; the Nitro dev server does not support the Vite builder
+- See references/ for the API, config, and CLI tables
 - See best-practices/ for recommended patterns and pitfalls
 - See usecases/ for feature-level recipes with doc-verified code
 

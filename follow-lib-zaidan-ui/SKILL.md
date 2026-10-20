@@ -112,6 +112,13 @@ Use for creating UI components with the Zaidan registry on SolidJS for Vite, Sol
 - Setup theme — registry config, Tailwind v4 variables, dark mode → `workflows/setup-theme/SKILL.md`
 - Tune theme tokens — colors, radius, Tailwind v4 mapping → `workflows/config-tokens/SKILL.md`
 
+### Use Cases
+
+| Scenario | Use case |
+|----------|----------|
+| Configure the Zaidan registry and add components | `usecases/configure-registry-and-add-components.md` |
+| Theme tokens and dark mode via `data-kb-theme` | `usecases/theme-tokens-and-dark-mode.md` |
+
 ## Rules
 
 - Use the `bunx shadcn@latest` CLI, not `shadcn-solid`

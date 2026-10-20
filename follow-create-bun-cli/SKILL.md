@@ -7,7 +7,7 @@ related:
   - follow-create-web
   - use-bun-native-api
   - follow-tool-bunup
-  - deep-review-codebase
+  - deep-review
   - flatten-directory
   - rethink
   - run-test
@@ -29,15 +29,15 @@ For building CLI applications with the Bun runtime — does not cover library bu
 
 > Goal: Verify the tech stack before building
 
-1. Run `/deep-review-codebase` to summarize the tech stack in use
-2. Run `/deep-review-codebase` to review the tech stack, dependencies, and library design (create bun cli)
+1. Run `/deep-review` to summarize the tech stack in use
+2. Run `/deep-review` to review the tech stack, dependencies, and library design (create bun cli)
 3. Record the reasons for choosing the stack and libraries as a reference for the next step (create bun cli)
 
 ### 2. Setup Project Structure
 
 > Goal: Create the project structure per a suitable architecture
 
-1. Run `/deep-review-codebase` or `/deep-review-codebase` to choose the architecture per context — scaffold with `bun init` or `bunx @bunup/cli@latest create` if you want a template
+1. Run `/deep-review` or `/deep-review` to choose the architecture per context — scaffold with `bun init` or `bunx @bunup/cli@latest create` if you want a template
 2. Pick the structure by workload:
    - Simple CLI → `src/cli/`, `src/commands/`, `src/index.ts`, `src/utils/`
    - Needs to support multiple outputs/consumers → `src/core/`, `src/shell/`, `src/cli/`, `src/index.ts`
@@ -178,7 +178,7 @@ export default defineConfig({
 
 ## Guide
 
-- `/deep-review-codebase` — architecture selection
+- `/deep-review` — architecture selection
 - `/use-bun-native-api` — Bun runtime setup, install, test, build
 - `/follow-tool-bunup` — Bunup bundler configuration
 - `/follow-tasks` — Scripts standards

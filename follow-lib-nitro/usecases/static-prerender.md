@@ -2,7 +2,7 @@
 
 > Ship a content site: build-time prerendering, config-driven caching, and redirects/headers — without touching handler code. Source: https://nitro.build/config (routeRules, prerender, static), /docs/cache (accessed 2026-10-20)
 
-## Build-time prerender
+## 1. Build-time prerender
 
 Any route listed is fetched during the build and copied into `.output/public/` as a static asset — served with no worker hit.
 
@@ -20,10 +20,10 @@ export default defineConfig({
 ```
 
 - Default `prerender` shape: `{ interval: 0, failOnError: false, crawlLinks: false, ignore: [], routes: [] }`.
-- `static: true` (top level) prerenders **every** route — good for a fully static site.
+- `static: true` (top level) prerenders every route — good for a fully static site.
 - Compress prerendered output with the `compressPublicAssets` option (gzip/brotli/zstd) for zero-overhead delivery without a CDN.
 
-## Route rules
+## 2. Route rules
 
 `routeRules` applies caching / SWR / static / headers / redirects per glob pattern:
 
@@ -44,7 +44,7 @@ export default defineConfig({
 - `swr: true | number` is a shortcut for `cache: { swr: true, maxAge: number }`.
 - Prefer route rules for a global strategy — they're declarative and don't couple caching into each handler.
 
-## On-demand revalidation with a cached function
+## 3. On-demand revalidation with a cached function
 
 Route rules / `defineCachedHandler` can't be purged per key on demand. When you need invalidation, move the expensive work into a `defineCachedFunction` and call `.expire()`/`.invalidate()`:
 
@@ -68,7 +68,7 @@ export default defineHandler(async (event) => {
 });
 ```
 
-## Global cache defaults
+## 4. Global cache defaults
 
 Set a baseline every route inherits, then override per rule:
 
@@ -86,8 +86,14 @@ export default defineConfig({
 
 ## Pitfalls
 
-- `maxAge` defaults to **1 second** — an unset/omitted value barely caches; set it explicitly.
+- `maxAge` defaults to 1 second — an unset/omitted value barely caches; set it explicitly.
 - `fs` cache driver on serverless/edge → not persisted/shared; use `kv` (or the platform binding) there.
 - `crawlLinks` without any seed route → only `/` is crawled; add `routes` for a sitemap-style seed.
 - `failOnError: false` (default) → a broken page silently ships instead of failing CI; set `true` for content sites.
 - Caching a per-user page → cached handlers strip cookies/headers unless `allowCookies`/`varies` list them; otherwise one variant replays to everyone.
+
+## Related
+
+- `references/apis.md`
+- `references/cli.md`
+- `best-practices/deploy.md`

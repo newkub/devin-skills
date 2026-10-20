@@ -17,7 +17,7 @@ Use `gitleaks` to prevent secrets (API keys, tokens, private keys) from entering
 - Wire into git hooks (`pre-commit`/`pre-push`) and CI jobs
 - Not for storing/loading secrets (use `/check-secrets` to inspect env + `fnox`/vault for secret management)
 
-- Latest: `gitleaks@v8` line (Gitleaks by Zachary Rice, OSS)
+- Latest: `gitleaks@v8` line (Gitleaks by Zachary Rice, OSS) — upstream is feature-complete, security patches only
 - Docs: https://github.com/gitleaks/gitleaks
 
 ## Execute
@@ -35,7 +35,7 @@ Use `gitleaks` to prevent secrets (API keys, tokens, private keys) from entering
 > Goal: scan current state and history
 
 1. Working tree: `gitleaks dir . -v`
-2. Staged (before commit): `gitleaks git --staged --redact`
+2. Staged (before commit): wire the pre-commit hook — `repo: https://github.com/gitleaks/gitleaks` + `id: gitleaks` in `.pre-commit-config.yaml`, or the example `pre-commit.py` in `.git/hooks`
 3. Full history: `gitleaks git . --redact -r gitleaks-report.json`
 4. If old findings are already rotated → create a baseline: `gitleaks git . -b .gitleaks-baseline.json` then keep scanning with `-b .gitleaks-baseline.json`
 
@@ -43,7 +43,7 @@ Use `gitleaks` to prevent secrets (API keys, tokens, private keys) from entering
 
 > Goal: rules match the project
 
-1. Start from the default config and add an `[allowlist]` for test fixtures, docs examples, placeholder tokens (`paths`, `regexes`, `commits`)
+1. Start from the default config and add `[[allowlists]]` (v8.25+; older `[allowlist]`) for test fixtures, docs examples, placeholder tokens (`paths`, `regexes`, `commits`)
 2. Add `[[rules]]` only when the project has its own secret format the default rules don't cover
 3. Commit `.gitleaks.toml` at the repo root
 
@@ -51,7 +51,7 @@ Use `gitleaks` to prevent secrets (API keys, tokens, private keys) from entering
 
 > Goal: block secrets before they reach the remote
 
-1. Git hooks: put `gitleaks protect --staged --no-banner --redact` in pre-commit/pre-push (this monorepo does it via `.moon/workspace.yml` `vcs.hooks`)
+1. Git hooks: the gitleaks pre-commit hook (`repo: gitleaks/gitleaks` + `id: gitleaks`) or the example `pre-commit.py` (this monorepo does it via `.moon/workspace.yml` `vcs.hooks`); `detect`/`protect` are deprecated since v8.19 — use `git`/`dir`/`stdin`
 2. CI: add a `gitleaks git . --redact` step or `gitleaks/gitleaks-action@v2`
 3. If there are findings → rotate the secret first, then add it to the baseline
 
@@ -61,6 +61,7 @@ Use `gitleaks` to prevent secrets (API keys, tokens, private keys) from entering
 - Always use `--redact` in CI/hooks output so secrets don't surface in logs
 - Use a baseline only for pre-existing findings that have been rotated — never use it to suppress new problems
 - Keep the allowlist as narrow as possible (specific path + regex)
+- See best-practices/ for the pattern and pitfall checklist
 
 ## Expected Outcome
 

@@ -20,10 +20,10 @@ Use when a content perspective is needed — handed off from `/review-by-all-sta
 
 | Role | Focus | Workflow |
 |------|-------|----------|
-| copywriter | microcopy, tone, error/empty-state copy → `/deep-review-codebase` | `## content/copywriter` |
+| copywriter | microcopy, tone, error/empty-state copy → `/deep-review` | `## content/copywriter` |
 | editor | grammar/style consistency, terminology alignment | `## content/editor` |
 | content-strategist | content architecture, docs/blog organization, lifecycle | `## content/content-strategist` |
-| technical-writer | docs accuracy, API docs sync, runnable examples → `/deep-review-codebase` | `## content/technical-writer` |
+| technical-writer | docs accuracy, API docs sync, runnable examples → `/deep-review` | `## content/technical-writer` |
 
 2. Read the `## content/<role>` section in this file
 
@@ -97,7 +97,7 @@ Play a Copywriter — the copy writer who cares about every word the user sees �
 - Check CTA wording — action-oriented, specific ("Start free trial" vs "Submit"), primary/secondary CTA hierarchy
 - Check confirmation/destructive copy — confirm dialogs clearly state what will happen, irreversible actions really warn
 - Check hardcoded strings scattered in code — duplication of the same copy, should live in one i18n/copy file
-- Deep pass → `/deep-review-codebase` for an in-depth writing review
+- Deep pass → `/deep-review` for an in-depth writing review
 
 ### Rules
 
@@ -154,7 +154,7 @@ Play a Technical Writer — the technical author who makes docs correct, complet
 - Check getting-started/onboarding docs — the quickstart actually works, prerequisites are complete, no missing steps
 - Check troubleshooting/FAQ — error messages have documenting pages, common pitfalls documented
 - Check doc structure — clear per-doc purpose, reference vs guide vs tutorial correctly separated
-- Deep pass → `/deep-review-codebase` for an in-depth documentation review
+- Deep pass → `/deep-review` for an in-depth documentation review
 
 ### Rules
 

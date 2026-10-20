@@ -16,7 +16,7 @@ triggers:
 related:
   - check-screenshots-dir
   - use-agents-capture
-  - deep-review-codebase
+  - deep-review
 ---
 
 ## Goal
@@ -27,7 +27,7 @@ Read and list files from the home downloads folder for use in other workflows
 
 Use with files located in `~/Downloads` such as screenshots, images, documents, archives — by listing, filtering and reading the chosen files
 
-See also: /check-screenshots-dir, /use-agents-capture, /deep-review-codebase, /open-in-explorer
+See also: /check-screenshots-dir, /use-agents-capture, /deep-review, /open-in-explorer
 
 ## Execute
 

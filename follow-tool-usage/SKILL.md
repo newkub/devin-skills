@@ -4,7 +4,7 @@ description: Define a CLI spec with usage to generate completions/docs/SDKs
 argument-hint: "[scope]"
 related:
   - report-usage
-  - deep-review-codebase
+  - deep-review
   - follow-best-practice
   - setup-cicd
   - resolve-errors
@@ -130,7 +130,7 @@ cmd "deploy" help="Deploy to production" effect="destructive" {
 - Regenerate completions/docs in CI whenever the spec changes
 
 - Use /report-usage if needed
-- Use /deep-review-codebase if needed
+- Use /deep-review if needed
 - Use /follow-best-practice if needed
 - Use /setup-cicd if needed
 - Use /resolve-errors if needed

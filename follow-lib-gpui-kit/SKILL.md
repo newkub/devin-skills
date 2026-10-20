@@ -22,7 +22,7 @@ When a project installs or develops the `gpui-kit` crate (Rust) — components, 
 - API reference: `docs.rs/gpui-kit` and `docs.rs/gpui-component`
 - full component catalog, feature flags, API tables, and platform requirements are in `references/apis.md`
 - recommended patterns and pitfalls are in `best-practices/components.md` and `best-practices/state-model.md`
-- end-to-end usage recipes per application domain (code verified against official docs) are in `usecases/`: app shell, forms/inputs, data tables & charts, chat UIs, overlays & command palette, dock + editor, settings/theme/i18n, async/streaming, testing/a11y, WebAssembly
+- end-to-end usage recipes per application domain (code verified against official docs) are in `usecases/` — see the Use Cases table at the end of `## Execute`
 
 ## Execute
 
@@ -59,7 +59,7 @@ When a project installs or develops the `gpui-kit` crate (Rust) — components, 
 > Goal: pick the right component and use its API correctly
 
 1. Choose from the catalog in `references/apis.md` — import pattern `use gpui_kit::component::<name>::<Type>;`
-2. Building a whole feature (sidebar shell, chat thread, DataTable, command palette, settings screen, dock workspace, streaming tasks)? Start from the matching `usecases/<domain>.md` — it has the verified wiring and pitfalls
+2. Building a whole feature (sidebar shell, chat thread, DataTable, command palette, settings screen, dock workspace, streaming tasks)? Start from the matching row in `### Use Cases` — it has the verified wiring and pitfalls
 3. Builder pattern: `Checkbox::new("id").label("...").checked(self.flag).on_change(cx.listener(|v, checked, _, cx| { v.flag = *checked; cx.notify(); }))`
 4. Shared traits: `Sizable` (`text_xs`/`text_sm`/`text_base`/`text_lg`) and `Disableable` (`disabled(bool)`) — import the trait with `use gpui_kit::component::Sizable as _;`
 5. Layout with `div()`/`v_flex()`/`h_flex()` + tailwind-style methods (`flex_col`, `size_full`, `gap_2`, `p_4`, `items_center`, `justify_center`)
@@ -81,6 +81,21 @@ When a project installs or develops the `gpui-kit` crate (Rust) — components, 
 1. `cargo build` — fix errors until it passes (GPUI needs platform deps: see `/docs/installation`)
 2. UI tests use the GPUI test harness (`#[gpui_kit::test]` + `test-support` dev-dep — levels, wiring, and gotchas in `usecases/testing-and-a11y.md`)
 3. Run `/deep-validate` before shipping
+
+### Use Cases
+
+| Scenario | Use case |
+|----------|----------|
+| App shell, sidebar, window chrome | `usecases/app-shell-and-chrome.md` |
+| Forms, inputs, validation, dialogs | `usecases/forms-and-inputs.md` |
+| Data tables, charts, scrollable lists | `usecases/data-and-charts.md` |
+| Chat threads and conversation UIs | `usecases/chat-and-conversations.md` |
+| Overlays, notifications, command palette | `usecases/overlays-and-feedback.md` |
+| IDE-style workspace: dock + code editor | `usecases/ide-style-workspace.md` |
+| Settings screen, theming, i18n | `usecases/settings-and-theming.md` |
+| Async work, cancellation, streaming | `usecases/async-and-streaming.md` |
+| Testing a GPUI app incl. accessibility | `usecases/testing-and-a11y.md` |
+| Running on WebAssembly and other targets | `usecases/other-targets.md` |
 
 ## Rules
 

@@ -3,7 +3,7 @@ name: update-tests
 description: Write/update tests across all layers — unit, integration, e2e, contract, visual — until green
 argument-hint: "[scope-or-files]"
 related:
-  - deep-review-codebase
+  - deep-review
   - run-test
   - follow-tool-playwright
   - follow-tool-vitest
@@ -25,9 +25,9 @@ Write and update tests to cover every test type and every layer — unit, integr
 
 Use when you want tests written/updated comprehensively — pick layers by scope: if files are given, check which layer they belong to and write every suitable type, not just unit
 
-- If the suite hasn't been reviewed → run `/deep-review-codebase` first
+- If the suite hasn't been reviewed → run `/deep-review` first
 - If you only want to run tests → `/run-test <domain>` matching the layer, or `/run-test all`
-- If you want to improve test suite quality → `/deep-review-codebase test then-fix`
+- If you want to improve test suite quality → `/deep-review test then-fix`
 - If the scope spans many modules → dispatch via `/use-subagents`
 
 ## Execute

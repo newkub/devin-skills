@@ -62,5 +62,5 @@ bun D:/newkub/agents-capture/src/presentation/cli.ts app --title "WezTerm" --out
 
 #### App — Expected Outcome
 
-- `public/screenshots/` contains complete images of every key route/component/view, ready for `/deep-review-codebase`
+- `public/screenshots/` contains complete images of every key route/component/view, ready for `/deep-review`
 - Or the OS window/screen image as specified by `--title`

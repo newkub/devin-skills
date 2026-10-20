@@ -47,6 +47,16 @@ Use when the task involves Iconify — icon components, `@iconify-json/*` offlin
 2. Run `/run-test` if related tests exist
 3. Check the latest official docs before using an uncertain API (lib iconify)
 
+### Use Cases
+
+| Scenario | Use case |
+|----------|----------|
+| Offline icon classes through UnoCSS presetIcons | `usecases/offline-icons-unocss.md` |
+| Runtime icon component for data-driven names | `usecases/runtime-icon-component.md` |
+| Tailwind plugin and the `iconify-icon` web component | `usecases/tailwind-plugin-and-web-component.md` |
+| Custom icon collections built from SVG files | `usecases/custom-icons-from-svg-files.md` |
+| Per-icon imports and a bundle budget | `usecases/per-icon-imports-and-bundle-budget.md` |
+
 ## Rules
 
 - Never import a whole icon set — always use per-icon

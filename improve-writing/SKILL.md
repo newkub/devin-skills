@@ -6,7 +6,7 @@ related:
   - improve
   - write-explicit
   - simplify
-  - deep-review-codebase
+  - deep-review
   - report-review
   - update-devin-global-skills
   - suggest-next-action
@@ -14,7 +14,7 @@ related:
 
 ## Goal
 
-Answer "what should improve in this writing" for any target (skill, doc, prompt, report, rules) — assess it against the canonical writing criteria below with evidence, report findings via `/report-review`, then fix every finding immediately through `/deep-review-codebase <target> writing then-fix`
+Answer "what should improve in this writing" for any target (skill, doc, prompt, report, rules) — assess it against the canonical writing criteria below with evidence, report findings via `/report-review`, then fix every finding immediately through `/deep-review <target> writing then-fix`
 
 ## Scope
 
@@ -48,13 +48,13 @@ Use when prose or instructions must be reviewed for quality before or after ship
 
 1. Report via `/report-review` — No., Criterion, Severity, Finding, Evidence, Action; no report files
 2. Order by impact on the reader: fail + blocks following > fail + confuses > weak > style
-3. Continue to fixing immediately — this family fixes without waiting for confirm (unless the user asked for confirm-first → `/deep-review-codebase <target> writing then-fix` directly)
+3. Continue to fixing immediately — this family fixes without waiting for confirm (unless the user asked for confirm-first → `/deep-review <target> writing then-fix` directly)
 
 ### 4. Fix All Findings
 
 > Goal: Every finding resolved in context
 
-1. Send findings to `/deep-review-codebase <target> writing then-fix fix all` (`fix all` = no per-finding confirm) — preserve intent and facts 1:1; never change meaning, numbers, commands, or skill names while rewording
+1. Send findings to `/deep-review <target> writing then-fix fix all` (`fix all` = no per-finding confirm) — preserve intent and facts 1:1; never change meaning, numbers, commands, or skill names while rewording
 2. Structural problems (sections out of order, mixed concerns) → reorder or split with `/refactor`, not rewording
 3. Re-read the fixed text against each criterion until all pass, max 3 rounds per finding
 4. Run `/deep-validate` for structure/links, then `/suggest-next-action`

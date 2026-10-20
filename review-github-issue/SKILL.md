@@ -3,7 +3,7 @@ name: review-github-issue
 description: Review GitHub issue — metadata, clarity, completeness, readiness before implementation
 argument-hint: "[issue-number-or-url]"
 related:
-  - deep-review-codebase
+  - deep-review
   - list-github-issue
   - create-github-issue
   - update-github-issue
@@ -26,9 +26,9 @@ Review a GitHub issue before implement — check metadata (title, labels, assign
 
 ## Scope
 
-Use for reviewing one or many GitHub issues — the issue lives on a GitHub repo (use the `gh` CLI or github-mcp tools) — for a generic issue (files, chat, other tracker) → use `/deep-review-codebase`
+Use for reviewing one or many GitHub issues — the issue lives on a GitHub repo (use the `gh` CLI or github-mcp tools) — for a generic issue (files, chat, other tracker) → use `/deep-review`
 
-- quality dimensions (completeness, quality, rating) reuse the checklists of `/deep-review-codebase` → `deep-review-codebase` — never duplicate checklists in this skill
+- quality dimensions (completeness, quality, rating) reuse the checklists of `/deep-review` → `deep-review` — never duplicate checklists in this skill
 
 ## Execute
 
@@ -55,9 +55,9 @@ Every round starts with the deep pre-pass — run `/deep-thinking` → `/deep-an
 
 ### 3. Review Content Quality
 
-> Goal: the issue is clear enough to implement — follow the checklists of `/deep-review-codebase`
+> Goal: the issue is clear enough to implement — follow the checklists of `/deep-review`
 
-1. dispatch `deep-review-codebase` via `/use-subagents` passing `scope`, `dimensions` (`completeness`, `quality`, `rating`), `findings-file` = issue content from Step 1
+1. dispatch `deep-review` via `/use-subagents` passing `scope`, `dimensions` (`completeness`, `quality`, `rating`), `findings-file` = issue content from Step 1
 2. Check additionally GitHub-specific: reproduction steps/expected vs actual (bug), acceptance criteria checklist, linked context (discussions/PRs), referenced screenshots/logs still accessible
 3. findings ≤ 2 → the parent analyzes itself, no spawn needed
 
@@ -66,7 +66,7 @@ Every round starts with the deep pre-pass — run `/deep-thinking` → `/deep-an
 > Goal: an actionable readiness verdict
 
 1. classify: `ready` (implement immediately), `needs-clarification` (list missing fields), `blocked` (dependency/conflict), `not-ready` (unclear scope)
-2. scoring — follow `deep-review-codebase`
+2. scoring — follow `deep-review`
 3. List the missing info that must be asked (via a comment on the issue when the user confirms)
 
 ### 5. Score And Report
@@ -85,7 +85,7 @@ Every round starts with the deep pre-pass — run `/deep-thinking` → `/deep-an
 - An already-closed issue → review closure quality only (close reason, resolution reference)
 - Use /list-github-issue if needed
 - Use /create-github-issue (issue forms) if needed
-- Use /deep-review-codebase if needed (generic issue outside GitHub)
+- Use /deep-review if needed (generic issue outside GitHub)
 
 ## Fix
 

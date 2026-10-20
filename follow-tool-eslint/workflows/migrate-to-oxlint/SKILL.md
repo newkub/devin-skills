@@ -5,7 +5,7 @@ argument-hint: "[project-path]"
 related:
   - follow-tool-eslint
   - run-lint
-  - deep-review-codebase
+  - deep-review
   - report-before-after
 ---
 

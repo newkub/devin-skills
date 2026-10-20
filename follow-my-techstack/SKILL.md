@@ -3,7 +3,7 @@ name: follow-my-techstack
 description: Use the canonical tech stack catalog as the default for dependency choices
 argument-hint: "[category-or-need]"
 related:
-  - deep-review-codebase
+  - deep-review
   - use-lib-effective
   - deep-research
   - list-raindrop-favorite
@@ -22,7 +22,7 @@ Select and use dependencies/tools per the user's canonical tech stack so every p
 Use when a task must pick a library/tool/service for one need (e.g. validator, HTTP client, ORM, testing, styling) — whether installing fresh or using what exists
 
 - Canonical catalog: `../follow-my-techstack/references/techstack-catalog.md` — the single source of truth, never copy its content here
-- Review a whole project's stack against the catalog → `/deep-review-codebase`
+- Review a whole project's stack against the catalog → `/deep-review`
 - Find packages not yet in the catalog → `/deep-research dependencies`
 - Install a package → `/run-install`
 

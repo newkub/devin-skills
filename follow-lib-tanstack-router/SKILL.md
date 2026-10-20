@@ -86,6 +86,14 @@ bun add -D @tanstack/router-plugin   # file-based routes + code splitting
 - Search params are the source of truth for UI state that can be shared in the URL (filters, tabs, page)
 - Loader data ≠ Query cache — data needing refetch/realtime should use `follow-query` in the component, not the loader
 - The `Register` interface is required — without it, type safety is lost across the whole app
+- See best-practices/ for the pattern and pitfall checklist
+
+### Use Cases
+
+| Scenario | Use case |
+|----------|----------|
+| Validated search params driving a loader | `usecases/validated-search-and-loaders.md` |
+| Auth guards with `beforeLoad` + redirect back | `usecases/auth-guards-with-beforeload.md` |
 
 ## Expected Outcome
 

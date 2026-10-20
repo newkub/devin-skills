@@ -4,7 +4,7 @@ description: Generate ideas for new devin global skills or improvements — refa
 argument-hint: "[scope]"
 related:
   - check-my-global-cli
-  - deep-review-codebase
+  - deep-review
   - follow-devin-global-skills
   - rethink
   - report
@@ -112,7 +112,7 @@ Use when you want to find ideas to improve the skills repo by analyzing duplicat
 - No more than 250 lines
 
 - Use `/follow-math-concepts` if necessary
-- Use /deep-review-codebase if necessary
+- Use /deep-review if necessary
 
 
 ## Expected Outcome

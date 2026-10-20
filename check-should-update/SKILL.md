@@ -9,7 +9,7 @@ allowed-tools:
   - find_file_by_name
   - read
 related:
-  - deep-review-codebase
+  - deep-review
   - follow-create-rust-cli
   - follow-tool-git
   - refactor
@@ -75,7 +75,7 @@ This skill ships a Rust CLI for fast checks and use outside Devin.
 - If `refs` is user-supplied and the git command fails → the CLI returns exit code 1
 - Use `-v` or `--verbose` to see the reasoning on `stderr`
 
-- Use /deep-review-codebase if needed
+- Use /deep-review if needed
 - Use /follow-create-rust-cli if needed
 - Use /follow-tool-git if needed
 - Use /refactor if needed

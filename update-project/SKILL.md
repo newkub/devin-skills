@@ -3,8 +3,6 @@ name: update-project
 description: Update root and workspace AGENTS.md by checking git log, syncing project docs/config/rules/tooling
 argument-hint: "[scope]"
 related:
-  - follow-tasks
-  - follow-monorepo
   - update-config
   - update-dot-devin
   - update-docs
@@ -17,7 +15,9 @@ related:
   - update-project-skills
   - update-version-to-latest
   - use-subagents
-  - deep-review-codebase
+  - deep-review
+  - update-review-cli
+  - run-review
 
 ---
 
@@ -31,7 +31,7 @@ Use after shipping every workspace — check each workspace's latest git log, re
 
 In a monorepo this covers the root project and every workspace — each workspace's `AGENTS.md` (Step 4) and its drifted config/docs. Submodule workspaces have their own remote and history → report them as `skipped` instead of editing them
 
-Boundary: a quick root sync — for a comprehensive pre-release update with a deep analysis baseline → front-load `/deep-analyze` + `/deep-review-codebase` before Step 1
+Boundary: a quick root sync — for a comprehensive pre-release update with a deep analysis baseline → front-load `/deep-analyze` + `/deep-review` before Step 1
 
 ## Execute
 
@@ -69,7 +69,7 @@ Boundary: a quick root sync — for a comprehensive pre-release update with a de
 3. Inspect `docs/`, `rules/`, `.devin/`, `.vscode/`
 4. Identify orchestration tools (moon, turbo)
 5. Run updates in order:
-   - `/deep-review-codebase` (must run if the project has CI/CD)
+   - `/deep-review` (must run if the project has CI/CD)
    - `/setup-cicd` (if the CI/CD config drifted or isn't ready)
    - `/update-version-to-latest` (if runtime, deps, tools, or any versioned config need updating to latest)
    - `/update-config` to sync project config, shared config, and the dependencies catalog
@@ -88,7 +88,7 @@ Boundary: a quick root sync — for a comprehensive pre-release update with a de
    - `/update-todo-md` (if there is a `TODO.md`)
    - `/update-references` to sync references
    - `/update-gitignore` to sync `.gitignore`
-   - `/deep-review-codebase` (if there is a `tools/review-codebase/`)
+   - `/update-review-cli` (if the project has or should have a `tools/review-codebase/` — it owns the analyzer behind every review) then `/run-review` to measure the result
    - `/update-dot-vscode`
    - `/update-contributing`
 6. Verify the scripts in `package.json` are consistent

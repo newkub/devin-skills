@@ -17,7 +17,7 @@ related:
   - deep-analyze
   - ask-me
   - check-reference
-  - deep-review-codebase
+  - deep-review
   - refactor
 
 ---
@@ -100,7 +100,7 @@ Use when checking or following the principles of a specific project, framework, 
 > Goal: check that a file matches the software engineering principle indicated by its file name
 
 1. Derive the principle from the file name: `single-responsibility.ts` → SRP, `open-closed.ts` → OCP, `dry-utils.ts` → DRY, `simple-component.ts` → KISS, `clean-architecture.ts` → Clean Architecture (principle names use kebab-case); doesn't match any principle → stop and report
-2. Read the target file; check structure, logic, and naming against the principle; gather objective evidence with `/deep-review-codebase` (function/SRP metrics, naming)
+2. Read the target file; check structure, logic, and naming against the principle; gather objective evidence with `/deep-review` (function/SRP metrics, naming)
 3. List violations ordered by severity: Critical (completely breaks the principle) / High (significant but still works) / Medium (should fix) / Low (minor)
 4. Report a table: No., Principle, Match Status, Violations (severity), Recommendations — recommend better patterns/examples present in the codebase; fixes needed → route to `/refactor`
 

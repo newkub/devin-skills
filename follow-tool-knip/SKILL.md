@@ -132,6 +132,15 @@ Use with any project that needs unused-code analysis — supports both single pr
 
 - See best-practices/ for recommended patterns and pitfalls
 
+### Use Cases
+
+| Scenario | Use case |
+|----------|----------|
+| Remove dead files/exports/deps safely | `usecases/remove-dead-code.md` |
+| Per-workspace dead-code gate | `usecases/monorepo-dead-code-gate.md` |
+
+- See usecases/ for end-to-end scenario recipes
+
 ## Expected Outcome
 
 - `knip.json` fully configured per official best practices

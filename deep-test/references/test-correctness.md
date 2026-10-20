@@ -6,7 +6,7 @@ Verify that test cases `assert what is truly correct`, not merely pass — expec
 - Covers: spec-first assertions, mock drift, vacuous/false-positive tests, name-vs-body, stale snapshots, floating async promises
 - Complementary to `references/mutation.md`: this domain reads the assertions, mutation proves them empirically
 
-> Pre-Run: run `/deep-review-codebase` (domain `review-test`) first for strategy/structure findings — never skip; blockers get fixed or reported before the audit
+> Pre-Run: run `/deep-review` (domain `review-test`) first for strategy/structure findings — never skip; blockers get fixed or reported before the audit
 
 ## Run Quick Path
 
@@ -52,7 +52,7 @@ Verify that test cases `assert what is truly correct`, not merely pass — expec
 
 1. Produce a `/report` table: No, File, Line, Test, Problem, Severity, Suggested Fix
 2. Severity: `high` (vacuous/false-positive — the test doesn't guard against bugs), `medium` (weak assertion/mock drift), `low` (naming mismatch)
-3. Route fixes → `/update-tests` or `/deep-review-codebase` for a redesign
+3. Route fixes → `/update-tests` or `/deep-review` for a redesign
 4. If there are no findings → report "test assertions verified" — confirm the suite is still green with `/run-test unit`
 5. Run `/suggest-next-action`
 
@@ -70,7 +70,7 @@ Verify that test cases `assert what is truly correct`, not merely pass — expec
 
 ### 3. Discipline
 
-- Check only, don't modify tests — fixes go through `/update-tests` or `/deep-review-codebase`
+- Check only, don't modify tests — fixes go through `/update-tests` or `/deep-review`
 - Don't flag a test intended as a smoke/contract test as vacuous when its intent is clear
 
 ### 4. Static Domain
@@ -82,4 +82,4 @@ Verify that test cases `assert what is truly correct`, not merely pass — expec
 
 - Every test in scope is verified as asserting the right thing, or marked unverified
 - A list of vacuous/false-positive/mock-drift tests with file:line
-- Routed to the correct fix skill (`/update-tests`, `/deep-review-codebase`)
+- Routed to the correct fix skill (`/update-tests`, `/deep-review`)

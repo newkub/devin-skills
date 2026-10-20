@@ -6,7 +6,7 @@ related:
   - use-astgrep
   - search-with-astgrep
   - update-astgrep-rules
-  - update-review-cli-then-run
+  - update-review-cli
   - use-bun-native-api
   - follow-create-bun-cli
   - scan-codebase
@@ -20,7 +20,7 @@ Use ast-grep programmatically via Bun scripts to automate code analysis and inte
 
 ## Scope
 
-Covers using ast-grep through napi bindings and the CLI inside Bun scripts, building programmatic analyzers, and integrating with the review CLI — excludes manual ast-grep CLI usage (see `/use-astgrep`) — excludes updating rules (see `/update-astgrep-rules`) or updating the review CLI (see `/update-review-cli-then-run`)
+Covers using ast-grep through napi bindings and the CLI inside Bun scripts, building programmatic analyzers, and integrating with the review CLI — excludes manual ast-grep CLI usage (see `/use-astgrep`) — excludes updating rules (see `/update-astgrep-rules`) or updating the review CLI (see `/update-review-cli`)
 
 ## Execute
 
@@ -108,7 +108,7 @@ Covers using ast-grep through napi bindings and the CLI inside Bun scripts, buil
 ### 4. Scope Boundary
 
 - Excludes updating rules — that lives in `/update-astgrep-rules`
-- Excludes updating review CLI analyzers — that lives in `/update-review-cli-then-run`
+- Excludes updating review CLI analyzers — that lives in `/update-review-cli`
 - Focused solely on using ast-grep programmatically via scripts
 
 ### 4. Formatting

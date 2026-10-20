@@ -1,10 +1,10 @@
 # Scope Map — signal → `/optimize <scope>` → review domain
 
 Table-only SSOT (`/follow-single-of-source`) — the canonical mapping that `/optimize` and callers use to route the scope. Do not copy this table elsewhere — reference back to this file.
-Every scope runs through `/optimize <scope>` (thin entry) — review → `/deep-review-codebase` dimension in the table | fix → `/deep-review-codebase <scope> then-fix`
-**Label resolution (mandatory)** — the `review-*` names are legacy labels, not skills: strip `review-` and take the row(s) in `deep-review-codebase/references/dimension-matrix.md` whose `Aliases` column lists it (plus the `always` tier); an unresolvable label is a matrix gap → dispatch the `always` tier + closest artifact-match rows and report the gap.
+Every scope runs through `/optimize <scope>` (thin entry) — review → `/deep-review` dimension in the table | fix → `/deep-review <scope> then-fix`
+**Label resolution (mandatory)** — every `review-*` name in the table is a real thin skill (`review-<label>`) that delegates to `/deep-review`; invoke `/review-<label>` for one dimension. The skill resolves its label by stripping `review-` and taking the row(s) in `deep-review/references/dimension-matrix.md` whose `Aliases` column lists it (or whose row name equals it), plus the `always` tier. A label with no row and no skill is a matrix gap → dispatch the `always` tier + closest artifact-match rows and report the gap.
 
-| Signal (measurable) | Scope (`/optimize <scope>`) | `/deep-review-codebase` domain(s) |
+| Signal (measurable) | Scope (`/optimize <scope>`) | `/deep-review` domain(s) |
 |-----------------|-----------------------------|--------------------------|
 | large bundle output, unbalanced chunks, slow build/time, broken toolchain cache | `bundle` | `review-bundle` (measurement layer → `/follow-tool-vite-devtools` Rolldown DevTools) |
 | long CI pipeline, no cache/parallelism | `ci` | `review-delivery` |

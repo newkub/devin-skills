@@ -6,7 +6,7 @@ related:
   - keepup-source-code
   - update-version-to-latest
   - check-should-update
-  - deep-review-codebase
+  - deep-review
   - update-devin-global-skills
   - follow-devin-global-skills
   - update-agents-md
@@ -47,7 +47,7 @@ Not the executor of fixes — project code → `/keepup-source-code`, deps/versi
 > Goal: have evidence before every fix
 
 1. Use `/check-should-update` to compare git changes and decide whether a target needs update, skip, or create
-2. Use `/deep-review-codebase` to find domain signals: deprecated APIs, versions older than latest, content/links not matching reality (scopes `deprecated-apis`, `content-outdate`)
+2. Use `/deep-review` to find domain signals: deprecated APIs, versions older than latest, content/links not matching reality (scopes `deprecated-apis`, `content-outdate`)
 3. Compare against external latest with `/deep-research` or `/learn-from-web` — official docs/registry/release tags only, never recall values from memory
 4. Consolidate into a list: `{domain, item, signal, severity}` — no signal = no change for that domain
 

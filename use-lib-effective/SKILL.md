@@ -4,7 +4,7 @@ description: Fully leverage existing dependencies and the preferred stack instea
 argument-hint: "[need-or-feature]"
 related:
   - follow-my-techstack
-  - deep-review-codebase
+  - deep-review
   - deep-research
   - follow-best-practice
   - learn-from-web
@@ -26,7 +26,7 @@ Reduce redundancy and reinvention — before writing new code or adding a depend
 Use when a task is about to: write a new utility/helper, implement a feature a lib likely already provides, add a dependency, or refactor code that an existing lib could replace — main callers: `/refactor`, `/implement-to-production`, general implementation work
 
 - Pick libs per the preferred stack → `/follow-my-techstack`
-- Audit deps (outdated, unused, vulnerabilities) → `/deep-review-codebase`
+- Audit deps (outdated, unused, vulnerabilities) → `/deep-review`
 - Reuse existing internal code before writing new code (DRY) → `### 5` (merged from `/follow-reusable`)
 
 ## Execute

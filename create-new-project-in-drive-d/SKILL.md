@@ -6,7 +6,7 @@ related:
   - follow-create-cli
   - follow-create-web
   - follow-create-sdk
-  - deep-review-codebase
+  - deep-review
   - follow-your-suggestion
   - follow-create-bot
 
@@ -62,7 +62,7 @@ Use when the user wants to start a new project on drive D, whether CLI, website,
 > Goal: Run Create Skill
 
 1. Pass `project-name` and `target-path` to the selected skill
-2. If the skill needs a stack, use `/deep-review-codebase` to confirm it
+2. If the skill needs a stack, use `/deep-review` to confirm it
 3. Follow through until the selected skill finishes creating the project
 
 ### 5. Validate And Ship

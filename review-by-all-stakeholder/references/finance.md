@@ -22,7 +22,7 @@ Use when a finance perspective is needed — handed off from `/review-by-all-sta
 |------|-------|----------|
 | financial-analyst | revenue/billing correctness, invoice/refund flows | `## finance/financial-analyst` |
 | pricing-analyst | pricing tiers, entitlements, upgrade/downgrade paths | `## finance/pricing-analyst` |
-| cost-analyst | infra cost drivers, third-party spend, waste → `/deep-review-codebase` | `## finance/cost-analyst` |
+| cost-analyst | infra cost drivers, third-party spend, waste → `/deep-review` | `## finance/cost-analyst` |
 | accountant | transaction integrity, audit trail, tax/currency handling | `## finance/accountant` |
 
 2. Read the `## finance/<role>` section in this file
@@ -97,7 +97,7 @@ Play a Cost Analyst — the cost controller hunting for infra spend, third-party
 - Check egress/bandwidth costs — large payloads, missing caching/CDN, chatty APIs
 - Check cron/scheduled jobs that run more often than needed, or retry storms that burn quota
 - Check dev/staging environments left running or over-provisioned relative to prod
-- Deep pass → `/deep-review-codebase` for in-depth cost analysis
+- Deep pass → `/deep-review` for in-depth cost analysis
 
 ### Rules
 

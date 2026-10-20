@@ -17,7 +17,7 @@ Use `gh issue` to create, search, view, edit, close, reopen, delete, and manage 
 
 ## Scope
 
-- Works with the skills: `/open-github`, `/list-github-issue`, `/follow-dot-github`, `/create-github-pr`, `/deep-review-codebase`, `/update-github-issue`
+- Works with the skills: `/open-github`, `/list-github-issue`, `/follow-dot-github`, `/create-github-pr`, `/deep-review`, `/update-github-issue`
 - Supports the current repo or `--repo owner/repo`
 - Not a full-featured project management tool
 

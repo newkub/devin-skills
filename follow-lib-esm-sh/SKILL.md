@@ -77,6 +77,16 @@ For `import`ing modules via `HTTPS URL` with automatic `tree-shaking`, `bundling
 4. Test the URL in the `browser` or `Deno` before deploying
 5. Follow the changelog at `https://github.com/esm-dev/esm.sh/releases` (latest build: v138, 2026-08-24 — verified 2026-09-13)
 
+### Use Cases
+
+| Scenario | Use case |
+|----------|----------|
+| Browser app with import maps and no bundler | `usecases/browser-modules-no-bundler.md` |
+| Pin versions and switch npm/JSR/GitHub sources | `usecases/pin-and-lock-dependencies.md` |
+| Bundle, target, and dev URL flags | `usecases/bundle-options-and-targets.md` |
+| Import maps and one shared dependency | `usecases/import-maps-and-shared-deps.md` |
+| Module workers and raw source assets | `usecases/workers-and-raw-assets.md` |
+
 ## Rules
 
 - Use the URL format `https://esm.sh/{package}@{version}/{subpath}`

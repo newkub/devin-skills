@@ -5,7 +5,7 @@ argument-hint: "[service-or-incident-type]"
 related:
   - learn
   - create-report-in-dot-devin
-  - deep-review-codebase
+  - deep-review
   - report-architecture-diagram
   - report
   - run-docs
@@ -35,7 +35,7 @@ Generate an operational runbook from the real codebase and config — a document
 
 > Goal: Collect how the system can break
 
-1. From `/deep-review-codebase` findings — error handling, resilience gaps
+1. From `/deep-review` findings — error handling, resilience gaps
 2. External dependencies: DB down, API limits, queue backlog, cert expiry, DNS issues
 3. App-level: memory leaks, deadlocks, bad deploys, config errors
 4. Group into incident types: `outage`, `degraded`, `data-issue`, `security`
@@ -89,7 +89,7 @@ Generate an operational runbook from the real codebase and config — a document
 
 1. Save with `/create-report-in-dot-devin` or `docs/runbook-<service>.md`
 2. Use `/report` to summarize: sections completed vs sections the user must fill
-3. Suggest `/deep-review-codebase` if diagnosis steps lack required signals
+3. Suggest `/deep-review` if diagnosis steps lack required signals
 
 ## Rules
 

@@ -3,7 +3,7 @@ name: run-lint
 description: Run lint and fix code to pass, without ignore patterns and without editing config files
 argument-hint: "[scope]"
 related:
-  - deep-review-codebase
+  - deep-review
   - resolve-errors
   - run-format
 ---
@@ -18,7 +18,7 @@ Run lint for all project types and handle errors/warnings from the linter
 
 ## Execute
 
-> Pre-Run: Always run `/deep-review-codebase` first — `run-*` must be reviewed/assessed before the main work, never skip; if findings are blockers, fix or report before running (lint)
+> Pre-Run: Always run `/deep-review` first — `run-*` must be reviewed/assessed before the main work, never skip; if findings are blockers, fix or report before running (lint)
 
 ### 1. Run Lint
 
@@ -34,7 +34,7 @@ Run lint for all project types and handle errors/warnings from the linter
 
 > Goal: Analyze Errors
 
-1. Run `/deep-review-codebase` to analyze and prioritize the errors produced by lint
+1. Run `/deep-review` to analyze and prioritize the errors produced by lint
 2. Check the types of errors:
    - config-related errors
    - code-related errors

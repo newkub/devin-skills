@@ -10,7 +10,7 @@ related:
   - follow-tool-usage
   - follow-best-practice
   - setup-cicd
-  - deep-review-codebase
+  - deep-review
   - run-verify
 ---
 
@@ -69,7 +69,7 @@ Use for:
 
 > Goal: agent-produced code is safe and actually works
 
-1. Review the diffs agents produce — use `/deep-review-codebase` for large changes
+1. Review the diffs agents produce — use `/deep-review` for large changes
 2. Use `swe-check` for quick reviews while working
 3. Do `/run-verify` (lint, typecheck, tests) before accepting
 4. Check for security issues and secrets before deploying
@@ -114,7 +114,7 @@ Use for:
 - Use /follow-tool-usage if needed
 - Use /follow-best-practice if needed
 - Use /setup-cicd if needed
-- Use /deep-review-codebase if needed
+- Use /deep-review if needed
 - Use /run-verify if needed
 
 - See best-practices/ for recommended patterns and pitfalls

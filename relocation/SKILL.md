@@ -3,7 +3,7 @@ name: relocation
 description: Move files and folders to appropriate locations by domain and responsibility
 argument-hint: "[scope]"
 related:
-  - deep-review-codebase
+  - deep-review
   - update-references
   - use-scripts
 ---
@@ -49,7 +49,7 @@ Covers moving files/folders and updating all references
 1. Run `use-scripts` to move files to the appropriate folders
 2. Move files in the planned order
 3. Check that no files are left behind in the original location
-4. Run `/deep-review-codebase` to create barrel exports and configure import aliases for the new folders if necessary
+4. Run `/deep-review` to create barrel exports and configure import aliases for the new folders if necessary
 
 ### 4. Update Import Paths
 
@@ -67,7 +67,7 @@ Covers moving files/folders and updating all references
 1. Run type check to confirm the import paths are correct
 2. Run build to check that there are no errors
 3. Check that there are no new circular dependencies
-4. Run `/deep-review-codebase` (architecture dimension) to confirm the new structure
+4. Run `/deep-review` (architecture dimension) to confirm the new structure
 
 ## Rules
 
@@ -98,7 +98,7 @@ Update import paths and barrel exports correctly:
 - Avoid complex deep imports
 - Check every import path that references the moved files
 - Create `index.ts` for folders that have multiple files
-- Use `/deep-review-codebase` to handle barrel exports and import aliases
+- Use `/deep-review` to handle barrel exports and import aliases
 
 ## Expected Outcome
 

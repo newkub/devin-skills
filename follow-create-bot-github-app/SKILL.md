@@ -19,7 +19,7 @@ Use for building a GitHub App from scratch with TypeScript/Bun — covers app re
 > Goal: Verify the tech stack before building
 
 1. Run `/deep-research` + `/follow-best-practice` to confirm the latest versions and patterns, following the conventions in `/update-devin-global-skills`
-2. Run `/deep-review-codebase` to summarize the tech stack in use
+2. Run `/deep-review` to summarize the tech stack in use
 3. Record the stack choice with reasons for reference
 
 ### 2. Gather Requirements

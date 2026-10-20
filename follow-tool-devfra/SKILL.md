@@ -9,7 +9,7 @@ related:
   - resolve-errors
   - follow-tool-vite-devtools
   - deep-validate
-  - deep-review-codebase
+  - deep-review
 ---
 
 ## Goal
@@ -150,7 +150,7 @@ Use for a project that needs a devtool (inspector, analyzer, data explorer, term
 - Latest: `devframe@1.2.5` (verified 2026-10-15); stable pin (published ≥7 days): `1.2.3` — `1.2.4` added `exposeSharedState` in the MCP route options
 - The `@devframes/*` kits follow the same version (`1.2.x`); `@vitejs/devtools-kit` is a separate adapter (`0.7.6` stable / `0.8.0` latest — json-render moved from the Kit into `@vitejs/devtools` in 0.8.0, see `/follow-tool-vite-devtools`)
 - Docs: any page can be fetched as raw markdown: `https://devfra.me/raw/<path>.md`, full docs at `https://devfra.me/llms-full.txt` (see `references/apis.md`)
-- Check `package.json` + `/deep-review-codebase` before choosing APIs — the spec may drift after 1.0
+- Check `package.json` + `/deep-review` before choosing APIs — the spec may drift after 1.0
 
 - See best-practices/ for recommended patterns and pitfalls
 

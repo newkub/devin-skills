@@ -10,7 +10,7 @@ related:
   - update-features-md
   - update-tests
   - update-config
-  - deep-review-codebase
+  - deep-review
   - check-should-update
   - run-check
   - deep-validate
@@ -35,9 +35,9 @@ Use when you want the code not to go out of date — e.g., after bumping deps, c
 > Goal: Know what in the project is stale
 
 1. Run `/check-should-update` to look at git changes and assess whether a target needs updating
-2. Run `/deep-review-codebase` scope `deprecated-apis` to find code using deprecated APIs/dependencies
-3. Run `/deep-review-codebase` scope `content-outdate` to check skills/docs/specs that are outdated
-4. Run `/deep-review-codebase` domain `review-config` to check config that has drifted from defaults
+2. Run `/deep-review` scope `deprecated-apis` to find code using deprecated APIs/dependencies
+3. Run `/deep-review` scope `content-outdate` to check skills/docs/specs that are outdated
+4. Run `/deep-review` domain `review-config` to check config that has drifted from defaults
 5. Check manifest drift — `package.json`/`Cargo.toml`/`go.mod` changed but the lockfile or code did not follow
 6. Combine the signals into a list: `{area, signal, severity}`
 

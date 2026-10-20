@@ -100,6 +100,13 @@ Used for building UI components with shadcn-solid on SolidJS for SolidStart, Ast
 - Setup theme — `components.json`, CSS variables, dark mode → `workflows/setup-theme/SKILL.md`
 - Adjust theme tokens, `cva` variants → `workflows/config-tokens/SKILL.md`
 
+### Use Cases
+
+| Scenario | Use case |
+|----------|----------|
+| Add components with the CLI and extend them with `cva` | `usecases/add-and-customize-component.md` |
+| Theme tokens and `data-kb-theme` dark mode | `usecases/theme-and-dark-mode.md` |
+
 ## Rules
 
 - Use the CLI `bunx shadcn-solid@latest init` for initial setup

@@ -10,7 +10,7 @@ related:
   - follow-release
   - follow-tool-github-actions
   - run-test
-  - deep-review-codebase
+  - deep-review
   - report
 
 ---
@@ -30,7 +30,7 @@ Use when creating actions for GitHub Marketplace or private repos, covering inpu
 
 > Goal: verify the tech stack before building
 
-1. Run `/deep-research` + `/follow-best-practice` to confirm the latest `@actions/*` packages and `runs.using` runtime, then run `/deep-review-codebase` to summarize the tech stack
+1. Run `/deep-research` + `/follow-best-practice` to confirm the latest `@actions/*` packages and `runs.using` runtime, then run `/deep-review` to summarize the tech stack
 2. Record the rationale for the chosen stack and libraries for future reference (create github action)
 3. Record the rationale for the chosen stack and libraries for future reference (create github action)
 

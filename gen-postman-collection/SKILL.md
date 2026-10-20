@@ -3,7 +3,7 @@ name: gen-postman-collection
 description: Generate a Postman/Bruno collection from API routes or an OpenAPI spec with environments
 argument-hint: "[spec-or-framework]"
 related:
-  - deep-review-codebase
+  - deep-review
   - scan-codebase
   - report
   - run-test
@@ -70,7 +70,7 @@ Generate an API collection (Postman or Bruno) from a real OpenAPI spec or route 
 ### 1. From Spec Or Real Code
 
 - Generate only from a real spec/code — never guess endpoints
-- If spec and code drift → run `/deep-review-codebase` first, then generate from the source of truth
+- If spec and code drift → run `/deep-review` first, then generate from the source of truth
 
 ### 2. No Secrets
 

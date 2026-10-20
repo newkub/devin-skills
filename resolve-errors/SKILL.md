@@ -10,7 +10,7 @@ related:
   - scan-codebase
   - refactor
   - use-scripts
-  - deep-review-codebase
+  - deep-review
   - run-check
   - run-test
   - run-until-pass
@@ -69,7 +69,7 @@ Step dependencies: each step depends on the previous step (Step N depends on Ste
 4. Group errors that share the same root cause into a batch
 5. Identify the error source and prioritize: `environment` > `config` > `dependency` > `code` > `test-data` — fix in this order because upstream may make downstream disappear on its own
 6. Prioritize by dependency: fix upstream before downstream — if error A causes B → fix A first
-7. If the error is complex or unclear → run `/deep-review-codebase` first
+7. If the error is complex or unclear → run `/deep-review` first
 
 ### 3. Identify Root Cause
 
@@ -117,7 +117,7 @@ Step dependencies: each step depends on the previous step (Step N depends on Ste
 ### 1. When To Use
 
 - Use when: the error is clear, directly fixable, arises from lint/typecheck/test/build, or there are multiple that can be batch fixed
-- Do not use when: it is complex with many points, or the cause must be found first (use `/deep-debug`), requires extensive prioritization (use `/deep-review-codebase`), is a race condition (use `/deep-debug`)
+- Do not use when: it is complex with many points, or the cause must be found first (use `/deep-debug`), requires extensive prioritization (use `/deep-review`), is a race condition (use `/deep-debug`)
 - `/resolve-errors` = you already know the cause, make the minimal fix, use scripts to automate | `/deep-debug` = find the root cause, plan the fix and prevent recurrence
 
 ### 2. Error Classification
@@ -164,7 +164,7 @@ Use `/use-scripts` when there are many errors:
 
 ### 6. Integration With Other Workflows
 
-- `/deep-review-codebase` — many errors, need prioritization
+- `/deep-review` — many errors, need prioritization
 - `/deep-debug` — root cause not found yet
 - `/deep-debug` — complex error, need to plan a fix and prevent recurrence
 - `/run-verify` — run lint + typecheck + scan together

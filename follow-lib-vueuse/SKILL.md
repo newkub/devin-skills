@@ -89,6 +89,13 @@ For Vue 3.5+ projects using VueUse v15 — covers installation, core composables
 
 - Install + auto-import integration + common composables → `workflows/setup-vueuse/SKILL.md`
 
+### Use Cases
+
+| Scenario | Use case |
+|----------|----------|
+| Persist preferences and follow the OS theme | `usecases/persisted-prefs-and-dark-mode.md` |
+| Observe elements, size containers, virtualize a feed | `usecases/element-observers-and-virtual-list.md` |
+
 ## Rules
 
 ### 1. Import Conventions

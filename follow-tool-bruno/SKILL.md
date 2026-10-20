@@ -18,7 +18,7 @@ Use Bruno to manage API collections in a Git-native way (`.bru` / OpenCollection
 
 For projects that want an offline API client, collections as text files in the repo, and collection tests in the pipeline
 
-- Latest: `@usebruno/cli@4.2.0` (verified 2026-09-24); GitHub Action `usebruno/bruno-cli-action@v1`
+- Latest: `@usebruno/cli@4.2.1` (npm latest, verified 2026-10-20); GitHub Action `usebruno/bruno-cli-action@v1`
 - If a lighter plain-text test format is needed (not the collection model) → `/follow-tool-hurl`; docs/mock from a spec → `/follow-tool-scalar`
 
 ## Execute
@@ -48,7 +48,7 @@ For projects that want an offline API client, collections as text files in the r
 2. Single file: `--output-file collection.json` instead of `--output`
 3. WSDL (SOAP): `bru import wsdl --source <file.wsdl> --output <dir>`
 4. Shorthand: `-s` (source), `-o` (output), `-n` (collection-name)
-5. Details in 
+5. Details in [references/cli.md](references/cli.md)
 
 ### 4. Run Collections
 
@@ -75,7 +75,7 @@ For projects that want an offline API client, collections as text files in the r
 1. Use `usebruno/bruno-cli-action@v1` — a composite action that prepends `bru` for you (write `run --env prod`, not `bru run --env prod`)
 2. Auto-injects `--reporter-junit` when unspecified; exposes outputs: `exit-code`, `passed`, `failed`, `total`, `duration-ms`
 3. Inputs: `command` (required), `bru-version`, `working-directory`
-4. See workflow examples and downstream actions in 
+4. See [references/cli.md](references/cli.md) for the CLI surface and CI usage
 
 ## Rules
 
@@ -101,13 +101,21 @@ For projects that want an offline API client, collections as text files in the r
 
 ## References
 
-
-
+- [API + CLI tables](references/apis.md), [CLI options](references/cli.md)
 
 - Use /follow-test if needed
 
 
 - See best-practices/ for recommended patterns and pitfalls
+
+### Use Cases
+
+| Scenario | Use case |
+|----------|----------|
+| Collection + environments + assertions | `usecases/collection-with-environments-and-tests.md` |
+| Run the collection as a CI gate | `usecases/run-collection-in-ci.md` |
+
+- See usecases/ for end-to-end scenario recipes
 
 ## Expected Outcome
 

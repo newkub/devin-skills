@@ -4,7 +4,7 @@ description: Pick and apply the architecture pattern — Clean, Layered, monorep
 argument-hint: "[clean | layered | monorepo | architecture | target]"
 related:
   - refactor
-  - deep-review-codebase
+  - deep-review
   - scan-codebase
   - follow-monorepo
   - follow-my-techstack
@@ -35,7 +35,7 @@ Pick the one architecture pattern that fits the target from evidence, then apply
 | `layered` | a single app | pick Layered → `## Layered Pattern` |
 | `monorepo` | repo root holds several workspaces | `## Monorepo Architecture` first, then per-workspace pattern |
 
-Handed off elsewhere: microservices/distributed topology (see `## Goal`) · the target is a skill package → `/refactor-skills` · folder move only → `/relocation` · naming only → `/rename` · boundary checking without a restructure → `/deep-review-codebase` dimension `review-architecture`
+Handed off elsewhere: microservices/distributed topology (see `## Goal`) · the target is a skill package → `/refactor-skills` · folder move only → `/relocation` · naming only → `/rename` · boundary checking without a restructure → `/deep-review` dimension `review-architecture`
 
 ## Execute
 
@@ -46,7 +46,7 @@ Handed off elsewhere: microservices/distributed topology (see `## Goal`) · the 
 1. Run `/scan-codebase` at the root — identify `apps/*`, `packages/*`, `crates/*`, and the target the user specifies
 2. Read what the project already decided: its `AGENTS.md` `Follow Architecture` section + `.devin/rules/` — a recorded pattern is repaired, not re-picked; write back at `### 4`
 3. Count app entry points; check for shared domain/modules several apps must use together (unified support)
-4. `/deep-review-codebase` dimension `review-architecture` on the target — coupling/boundary/dependency-direction evidence; explicit `clean`/`layered` argument → that pattern directly, skipping `### 2`
+4. `/deep-review` dimension `review-architecture` on the target — coupling/boundary/dependency-direction evidence; explicit `clean`/`layered` argument → that pattern directly, skipping `### 2`
 
 ### 2. Select Pattern
 
@@ -76,7 +76,7 @@ Handed off elsewhere: microservices/distributed topology (see `## Goal`) · the 
 > Goal: the pattern stays real in code, not just folder names — and it is provable
 
 1. Boundaries hold: `core/` + `modules/*/domain/` (Clean) or `types/` + `utils/` + `services/` (Layered) stay pure — no IO/framework imports, `services/` holds business rules only with IO reached through `infra/`; dependency direction never reversed; public API through barrels only, no deep imports from outside
-2. `/follow-tool-madge` (no circular) + `/deep-review-codebase` dimension `review-architecture` vs baseline; tests pass as before, original public API still works
+2. `/follow-tool-madge` (no circular) + `/deep-review` dimension `review-architecture` vs baseline; tests pass as before, original public API still works
 3. Persist the boundary so it stays enforced: import-direction rules → `/update-astgrep-rules` (`rules/architecture/` + `rules/dependencies/`), chosen pattern → the target's `AGENTS.md` `Follow Architecture` section via `/update-agents-md`
 4. `/report-before-after` with the old → new layer map
 

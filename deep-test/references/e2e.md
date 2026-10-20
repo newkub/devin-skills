@@ -6,7 +6,7 @@ Run E2E tests for browser testing with Playwright across every route and user fl
 - `agent-browser` (headless) is used for exploratory route/action testing when no Playwright suite exists yet or for ad-hoc verification
 - If Playwright tests need updating/writing → `/update-tests` (run-only, does not fix tests)
 
-> Pre-Run: always run `/deep-review-codebase` (domain `review-test`) first — never skip; if findings are blockers, fix or report before running
+> Pre-Run: always run `/deep-review` (domain `review-test`) first — never skip; if findings are blockers, fix or report before running
 
 ## Run Quick Path
 
@@ -14,7 +14,7 @@ Run E2E tests for browser testing with Playwright across every route and user fl
 
 1. Detect — `playwright.config.*`, `e2e/`/`tests/e2e/` → `bunx playwright test`; prerequisites — dev server/start command, `baseURL`, seed data
 2. Run — start the app as the suite requires (webServer config or manual), then run with `--reporter=line --retries=0` for honest results; record per-spec status, screenshots/traces, duration
-3. Classify — element missing / flow broken → source → `/resolve-errors`; outdated selector/timing → test → `/update-tests`; flaky → report + `/deep-review-codebase`, never add retries; server won't start / port conflict → environment; repeats ≥3 → stop+report
+3. Classify — element missing / flow broken → source → `/resolve-errors`; outdated selector/timing → test → `/update-tests`; flaky → report + `/deep-review`, never add retries; server won't start / port conflict → environment; repeats ≥3 → stop+report
 4. Report — persist → `.devin/temp/report/<workspace>/e2e-test-<time>.md` with trace paths; all pass → `/run-verify`
 
 ## 1. Detect Setup
@@ -106,7 +106,7 @@ Run E2E tests for browser testing with Playwright across every route and user fl
 - Look at the error, screenshot, video, and trace before fixing
 - Fix the root cause, don't suppress; never use `.skip`/`.only` to avoid failures
 - A flaky test that fails ≥3 times in a row → tag it and report instead of endlessly re-running
-- Use /deep-review-codebase if needed
+- Use /deep-review if needed
 - Use /run-check if needed
 - Use /run-verify if needed
 - Use /use-agent-browser if needed

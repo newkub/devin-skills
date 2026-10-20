@@ -103,6 +103,15 @@ Install and use `act` (nektos/act) to run GitHub Actions workflows on the local 
 
 - See best-practices/ for recommended patterns and pitfalls
 
+### Use Cases
+
+| Scenario | Use case |
+|----------|----------|
+| Run the workflow locally before push | `usecases/run-workflow-locally.md` |
+| Debug a failing CI job in the container | `usecases/debug-failing-job.md` |
+
+- See usecases/ for end-to-end scenario recipes
+
 ## Expected Outcome
 
 - `act` installed and running workflows locally

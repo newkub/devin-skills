@@ -4,7 +4,7 @@ description: Shrink and harden docker images — layer analysis, distroless, sec
 argument-hint: "[image]"
 related:
   - follow-create-docker
-  - deep-review-codebase
+  - deep-review
   - ask-me
 ---
 

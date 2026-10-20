@@ -45,7 +45,7 @@
 | YAML/TOML/XML query | `yq` | installed | `/use-scripts` |
 | structured pipelines | `nu` (nushell) | installed | `/use-nu-shell`, `/use-scripts` |
 | pretty diff | `delta` / `git-split-diffs` | installed | `/review-diff` |
-| .env lint | `dotenv-linter` | installed | `/deep-review-codebase` domain `review-config` |
+| .env lint | `dotenv-linter` | installed | `/deep-review` domain `review-config` |
 | secrets injection | `infisical` / `phase` | installed (scoop) | `/open-web-for-config-secret` |
 
 ## Git And GitHub

@@ -2,7 +2,7 @@
 
 > Build a JSON API with file-based routes, validation, and structured errors. Source: https://nitro.build/docs/routing, /docs/h3-utilities (accessed 2026-10-20)
 
-## Enable scanning
+## 1. Enable scanning
 
 Filesystem routing requires `serverDir` (or `scanDirs`); nothing is scanned by default.
 
@@ -14,7 +14,7 @@ export default defineConfig({
 });
 ```
 
-## File → URL mapping
+## 2. File → URL mapping
 
 | File | Route |
 |---|---|
@@ -27,7 +27,7 @@ export default defineConfig({
 
 - Append the HTTP method to the filename to match one method only; a path matched only by other methods gets `405 Method Not Allowed` + an `Allow` header.
 
-## List + create (verified from /docs/routing)
+## 3. List + create (verified from /docs/routing)
 
 ```ts [server/routes/api/users.get.ts]
 import { defineHandler } from "nitro";
@@ -64,7 +64,7 @@ export default defineHandler(async (event) => {
 });
 ```
 
-## Read one by dynamic param
+## 4. Read one by dynamic param
 
 ```ts [server/routes/api/users/[id].get.ts]
 import { defineHandler, createError } from "nitro";
@@ -82,7 +82,7 @@ export default defineHandler(async (event) => {
 });
 ```
 
-## Conventions
+## 5. Conventions
 
 - Return a plain object/array → Nitro serializes to JSON with the right `content-type`.
 - Read the body with `event.req.json()` (web `Request`); read query with `event.url.searchParams`.
@@ -95,3 +95,9 @@ export default defineHandler(async (event) => {
 - Two dynamic params in one filename → invalid; each `[param]` must be its own folder segment.
 - Trusting `event.req.json()` without validation → malformed/unsafe input reaches the DB.
 - Mutating module-scope state to "remember" data across requests → wrong under concurrency and on edge (instance recycled per request).
+
+## Related
+
+- `references/apis.md`
+- `references/cli.md`
+- `best-practices/deploy.md`

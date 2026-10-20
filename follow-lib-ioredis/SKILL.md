@@ -46,6 +46,16 @@ Use when the task involves ioredis — the Redis client on Node.js/Bun connectin
 2. Run `/run-test` if related tests exist
 3. Check the latest official docs before using an uncertain API (lib ioredis)
 
+### Use Cases
+
+| Scenario | Use case |
+|----------|----------|
+| Cache-aside reads with TTL and pipelines | `usecases/cache-aside-reads.md` |
+| Pub/sub fan-out and a token-based lock | `usecases/pubsub-and-locks.md` |
+| Cluster and Sentinel topologies, hash-tagged keys | `usecases/cluster-and-sentinel.md` |
+| Lazy connect, retry budget, offline queue, graceful quit | `usecases/connection-lifecycle-and-reconnect.md` |
+| RESP2/RESP3 negotiation and TLS | `usecases/resp3-and-tls-migration.md` |
+
 ## Rules
 
 - Don't share a subscriber connection with the command client

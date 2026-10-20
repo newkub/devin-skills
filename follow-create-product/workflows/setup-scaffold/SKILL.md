@@ -17,7 +17,7 @@ Scaffold a new product per conventions — structure, workspaces, shared config,
 ## Scope
 
 - Covers the initial scaffold only — deploy → `workflows/deploy-mvp`
-- Tech stack per the `/deep-review-codebase` catalog
+- Tech stack per the `/deep-review` catalog
 
 ## Execute
 

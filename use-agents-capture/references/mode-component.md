@@ -46,5 +46,5 @@ bun D:/newkub/agents-capture/src/presentation/cli.ts component <url> --selector 
 
 #### Component — Expected Outcome
 
-- Get a separate image per component/variant, ready for use with `/deep-review-codebase`, `/update-readme-md`
+- Get a separate image per component/variant, ready for use with `/deep-review`, `/update-readme-md`
 

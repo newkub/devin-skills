@@ -75,7 +75,7 @@ Understand order theory and lattices: partial orders, posets, monotonic function
 - test lattice/merge logic with property-based testing (`/follow-lib-fast-check`): commutativity, associativity, idempotence of join
 
 - Use /follow-math-concepts (set-theory, graph-theory, category-theory) if needed
-- Use /deep-review-codebase if needed
+- Use /deep-review if needed
 
 ## Expected Outcome
 

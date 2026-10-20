@@ -6,7 +6,7 @@ related:
   - follow-tool-tsdown
   - follow-create-plugins
   - follow-lang-typescript
-  - deep-review-codebase
+  - deep-review
   - follow-tool-turborepo
 
 ---
@@ -26,8 +26,8 @@ Use for building plugins for the `tsdown` bundler in TypeScript, covering plugin
 
 > Goal: Review the tech stack before building
 
-1. Run `/deep-research` + `/follow-best-practice` to confirm the latest versions and patterns, then run `/deep-review-codebase` to summarize the tech stack
-2. Run `/deep-review-codebase` to review the tech stack, dependencies, and library design (create tsdown plugins)
+1. Run `/deep-research` + `/follow-best-practice` to confirm the latest versions and patterns, then run `/deep-review` to summarize the tech stack
+2. Run `/deep-review` to review the tech stack, dependencies, and library design (create tsdown plugins)
 3. Record the rationale for the chosen stack and libraries for future reference (create tsdown plugins)
 
 ### 2. Setup Project

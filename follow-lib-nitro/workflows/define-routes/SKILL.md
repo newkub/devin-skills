@@ -15,7 +15,7 @@ Write complete Nitro server routes — file-based API routes, event handlers, bo
 
 ## Scope
 
-route handler authoring — Nitro uses the h3 event model (`defineEventHandler`); file routes auto-register from `api/`, `routes/`, `server/` conventions
+route handler authoring — Nitro v3 uses the h3 event model (`defineHandler`); files under `api/` and `routes/` inside `serverDir` auto-register, and nothing is scanned without `serverDir`/`scanDirs`
 
 ## Execute
 
@@ -23,21 +23,27 @@ route handler authoring — Nitro uses the h3 event model (`defineEventHandler`)
 
 > Goal: routes from filesystem convention
 
+1. Add `serverDir: "./server"` (or `scanDirs`) to `nitro.config.ts` — no directory is scanned by default
+2. Map files to URLs from the `api/` and `routes/` folders inside it:
+
 ```
-api/hello.ts        → /api/hello
-api/users/[id].ts   → /api/users/:id   (dynamic param)
-routes/index.ts     → /                (root routes)
-middleware/auth.ts  → global middleware (runs before every request)
+server/api/hello.ts            → /api/hello
+server/api/users.get.ts        → GET  /api/users   (other methods → 405 + Allow)
+server/api/users.post.ts       → POST /api/users
+server/api/users/[id].get.ts   → GET  /api/users/:id
+server/api/[org]/[repo].ts     → /api/:org/:repo   (one param per folder)
+server/api/[...].ts            → catch-all fallback
+server/middleware/auth.ts      → global middleware (runs before every request)
 ```
 
 ```ts
-// api/users/[id].ts
-import { defineEventHandler, getRouterParam } from 'nitro/h3' // or 'h3'
+// server/api/users/[id].get.ts
+import { defineHandler } from "nitro";
 
-export default defineEventHandler(async (event) => {
-  const id = getRouterParam(event, 'id')
-  return { id }
-})
+export default defineHandler((event) => {
+  const id = getRouterParam(event, "id");
+  return { id };
+});
 ```
 
 ### 2. Request/Response APIs
@@ -47,12 +53,12 @@ export default defineEventHandler(async (event) => {
 1. Params: `getRouterParam(event, 'id')`; query: `getQuery(event)`; body: `readBody(event)`/`readValidatedBody(event, schema)`
 2. Headers/cookies: `getRequestHeader`, `setResponseHeader`, `getCookie`, `setCookie`
 3. Status/redirect/error: `setResponseStatus`, `sendRedirect`, `throw createError({ statusCode, statusMessage })`
-4. Streaming/SSE: `event.node.res` or `createEventStream` (h3) for SSE
+4. Streaming/SSE: `createEventStream` from `nitro/h3` — it sets the `text/event-stream` headers; never write the headers by hand
 
 ### 3. Advanced
 
-1. `WebSockets`: `defineWebSocketHandler` — nitro v3 ws support (cross-platform)
-2. `Tasks`: `defineTask` + `tasks:` config for scheduled/queued jobs (`nitro task run`)
+1. `WebSockets`: `defineWebSocketHandler` — nitro v3 ws support (cross-platform), route file in `api/` or `routes/`
+2. `Tasks`: `experimental: { tasks: true }` + `tasks/<name>.ts` (`defineTask`) under `serverDir`; nested folders join with `:` (`tasks/db/migrate.ts` → `db:migrate`); run from code with `runTask()` or from the CLI with `nitro task run <name>` against a running dev server
 3. `Route-specific middleware`: `middleware/` in route dirs or `event.context` guards
 
 ### 4. Verify

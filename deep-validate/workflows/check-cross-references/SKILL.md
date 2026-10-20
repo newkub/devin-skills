@@ -5,7 +5,7 @@ argument-hint: "[scope]"
 related:
   - check-reference
   - update-references
-  - deep-review-codebase
+  - deep-review
   - report
 ---
 
@@ -32,7 +32,7 @@ Check the cross-reference dimension of `/deep-validate` — config/env refs, mod
 > Goal: internal references and contracts match
 
 1. Verify references between modules are correct — run `/check-reference` for a deep pass
-2. Verify API contracts match the implementation — run `/deep-review-codebase` if there is an API surface
+2. Verify API contracts match the implementation — run `/deep-review` if there is an API surface
 3. Verify dependencies do not conflict with existing versions
 
 ### 3. Check Docs References

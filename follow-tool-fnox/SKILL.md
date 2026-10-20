@@ -16,7 +16,7 @@ Use `fnox` (jdx, Rust, MIT) to manage secrets in dev/CI — define each value's 
 
 - `fnox.toml` providers + secrets, `fnox exec`, `fnox set`, profiles, shell integration, daemon cache, temporary credentials (leases), agent proxy
 - Not leak scanning — for leaked secrets use `/follow-tool-gitleaks` + `/check-secrets`
-- Latest: v1.36.x — https://fnox.jdx.dev/
+- Latest: v1.40.x — https://fnox.jdx.dev/
 
 ## Execute
 
@@ -74,6 +74,8 @@ value = "Database/url"
 - `fnox.toml` is committable — but never commit a plaintext `value`; use provider references or ciphertext only
 - Pick the provider per team: existing vault → reference, none → age encryption
 - local cache only via `fnox sync` (age) — never a plaintext fallback
+- See references/ for the config surface and the full CLI table
+- See best-practices/ for the pattern and pitfall checklist
 
 ## Expected Outcome
 

@@ -3,7 +3,7 @@ name: review-by-all-stakeholder
 description: Review dispatcher — review a project from stakeholder/persona views defined in references/
 argument-hint: "<category-or-role> [role]"
 related:
-  - deep-review-codebase
+  - deep-review
   - scan-codebase
   - review
   - ask-me
@@ -23,7 +23,7 @@ Play the persona or stakeholder the user selects, read the role details from `re
 
 Use for any project that needs an outside perspective — covers 18 categories in `references/` (75 roles): product, engineering, quality, user, customer, research, marketing, growth, business, data, operations, finance, legal, content, creative, communication, management, technical — does not edit code directly.
 
-If you need feedback from real stakeholders (not roleplay) → use `/deep-review-codebase` instead.
+If you need feedback from real stakeholders (not roleplay) → use `/deep-review` instead.
 
 ## Execute
 
@@ -42,7 +42,7 @@ Every run starts with the deep pre-pass — run `/deep-thinking` → `/deep-anal
 > Goal: Find the right `references/<category>.md` and role section
 
 1. Use the Category Mapping table below — each category maps to `references/<category>.md`; role details are in the `## <category>/<role>` section inside that file
-2. For roles in the security/compliance domain → hand off to `/deep-review-codebase` instead
+2. For roles in the security/compliance domain → hand off to `/deep-review` instead
 3. If a role falls under multiple categories → have the user confirm
 4. Open `references/<category>.md` → read the role table at the top + the `## <category>/<role>` section of the chosen role
 
@@ -90,7 +90,7 @@ Every run starts with the deep pre-pass — run `/deep-thinking` → `/deep-anal
 - Do not edit code during a roleplay review
 - Every finding must have evidence from code or config
 - If the role is unclear → ask first
-- Hand off to one role at a time — no mixed perspectives; for multiple viewpoints, run one role at a time or use `/deep-review-codebase`
+- Hand off to one role at a time — no mixed perspectives; for multiple viewpoints, run one role at a time or use `/deep-review`
 - Use `/use-subagents` if needed — review independent areas through different roles in parallel, one subagent per role
 - Do not deploy or run anything for real
 

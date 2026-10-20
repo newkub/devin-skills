@@ -4,7 +4,7 @@ description: Build a report of all app/website routes in a markdown table for UX
 argument-hint: "[scope]"
 related:
   - report-uxui
-  - deep-review-codebase
+  - deep-review
 
   - suggest-next-action
   - ask-me
@@ -108,7 +108,7 @@ Build a report of all routes of an app or website in a markdown table, for plann
 - Never invent routes that do not exist
 - If context is missing → state the gaps and ask the user with `/ask-me`
 
-- Use /deep-review-codebase if needed
+- Use /deep-review if needed
 - Use /run-dev if needed
 
 - Final report via `/report-review` — one chat table (No./Action/Evidence/Severity/Risk/Priority/Owner skill/Status), no report files

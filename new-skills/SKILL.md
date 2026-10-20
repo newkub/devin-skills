@@ -7,7 +7,7 @@ related:
   - follow-single-of-source
   - update-devin-global-skills
   - refactor-skills
-  - deep-review-codebase
+  - deep-review
   - scan-codebase
   - review-devin-global-harness
   - deep-validate
@@ -109,8 +109,8 @@ Pick a prefix by a single semantic only — never create a new skill that violat
 - Check markdown links for breakage
 - Update `AGENTS.md` if this skill is a primary workflow
 
-- Use /deep-review-codebase if needed
-- Use /deep-review-codebase if needed
+- Use /deep-review if needed
+- Use /deep-review if needed
 - Use `/follow-single-of-source` if needed
 
 ## Expected Outcome

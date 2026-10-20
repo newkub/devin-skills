@@ -3,7 +3,7 @@ name: report-my-tech-stack-update
 description: Report the weekly update of the tech stack used in development
 argument-hint: "[scope]"
 related:
-  - deep-review-codebase
+  - deep-review
   - deep-research
 
   - report
@@ -28,7 +28,7 @@ Covers checking and collecting updates from:
 
 > Goal: Identify the current tech stack
 
-1. Run `/deep-review-codebase` to identify the whole tech stack
+1. Run `/deep-review` to identify the whole tech stack
 2. Read `package.json`, `Cargo.toml`, `go.mod` for the current dependencies
 3. State the current version of each dependency
 4. Group by category: Runtime, Framework, Data, Frontend, Dev Tools, Infrastructure, Services
@@ -100,7 +100,7 @@ Covers checking and collecting updates from:
 - Use `mcp7_list_releases` for GitHub release tracking
 - Use `search_web` to find release notes
 - Use `read_url_content` to read full changelogs
-- Follow `/deep-review-codebase` for tech stack categories
+- Follow `/deep-review` for tech stack categories
 
 ### 3. Freshness Requirements
 

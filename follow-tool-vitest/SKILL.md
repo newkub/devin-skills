@@ -147,6 +147,13 @@ Install and set up Vitest 5 for unit testing in single projects and monorepos
 5. Install the VS Code extension for IDE integration
 6. Use `--detect-async-leaks` to catch leaked timers and async resources, and the GitHub Actions Job Summary reporter for CI
 
+### Use Cases
+
+| Scenario | Use case |
+|----------|----------|
+| Mocking modules, fake timers, mocked types | `usecases/mock-modules-and-fake-timers.md` |
+| Coverage thresholds as a CI gate | `usecases/coverage-gate-in-ci.md` |
+
 ## Rules
 
 ### 1. Vitest 4 Breaking Changes
@@ -210,6 +217,7 @@ Install and set up Vitest 5 for unit testing in single projects and monorepos
 
 
 - See best-practices/ for recommended patterns and pitfalls
+- See usecases/ for end-to-end scenario recipes
 
 ## Expected Outcome
 

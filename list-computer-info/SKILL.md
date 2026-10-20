@@ -4,7 +4,7 @@ description: Show computer info such as OS, CPU, RAM, disk, GPU, and hostname
 argument-hint: "[summary|full]"
 related:
   - list-program-in-computer
-  - deep-review-codebase
+  - deep-review
   - use-pwsh-shell
   - report
 ---
@@ -94,7 +94,7 @@ Show computer information in brief or detailed form to inspect specs and environ
 2. Summary columns: `Category`, `Value`
 3. Full columns: `Category`, `Item`, `Value`
 4. Order by category: OS, CPU, RAM, Disk, GPU, System
-5. Use `deep-review-codebase` or `Get-Volume` for disk when comparison is wanted
+5. Use `deep-review` or `Get-Volume` for disk when comparison is wanted
 
 ## Rules
 

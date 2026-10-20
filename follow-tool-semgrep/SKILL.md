@@ -16,7 +16,7 @@ Use Semgrep to install and run pattern-based scanning — security rules, custom
 
 - Use when: security scanning (`p/security-audit`, `p/owasp-top-ten`), framework-specific rules, custom org rules, taint tracking
 - Comparison: `use-astgrep` suits simple structural patterns; Semgrep suits dataflow/taint and ready-made rulesets
-- Scan-only in this skill — fixes via `/deep-review-codebase` or `/fix`
+- Scan-only in this skill — fixes via `/deep-review` or `/fix`
 
 - Latest: `semgrep@1.177.0` (pipx/brew/mise) (verified 2026-09-13)
 - References: [apis](references/apis.md) | [cli](references/cli.md) 
@@ -61,7 +61,7 @@ Use Semgrep to install and run pattern-based scanning — security rules, custom
 1. Group by rule severity and confidence — semgrep has false positives too
 2. Use `// nosemgrep` for intentional patterns with a comment stating the reason
 3. Use `/report` columns: `No.`, `Rule`, `File:Line`, `Severity`, `Confidence`, `Action`
-4. Route to `/deep-review-codebase` or `/fix` for remediation
+4. Route to `/deep-review` or `/fix` for remediation
 
 ### 5. Integrate (if you want it permanent)
 

@@ -4,7 +4,7 @@ description: Configure Neovim plugins with lazy.nvim
 argument-hint: "[scope]"
 related:
   - follow-create-sdk
-  - deep-review-codebase
+  - deep-review
   - ship
 
 ---
@@ -25,7 +25,7 @@ Use for projects that create or manage Neovim plugins
 
 > Goal: verify the tech stack before building
 
-1. Run `/deep-research` + `/follow-best-practice` to confirm the latest versions and patterns, then run `/deep-review-codebase` to summarize the tech stack
+1. Run `/deep-research` + `/follow-best-practice` to confirm the latest versions and patterns, then run `/deep-review` to summarize the tech stack
 3. Record the rationale for the chosen stack and libraries for future reference (create nvim plugins)
 
 ### 2. Prepare

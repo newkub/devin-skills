@@ -20,7 +20,7 @@ Use when a creative perspective is needed — handed off from `/review-by-all-st
 
 | Role | Focus | Workflow |
 |------|-------|----------|
-| visual-designer | visual consistency, spacing/typography → `/deep-review-codebase` | `## creative/visual-designer` |
+| visual-designer | visual consistency, spacing/typography → `/deep-review` | `## creative/visual-designer` |
 | brand-designer | brand asset usage, logo/color integrity | `## creative/brand-designer` |
 | creative-director | creative coherence, hero visuals, differentiation | `## creative/creative-director` |
 
@@ -124,7 +124,7 @@ Play a Visual Designer — the designer who cares about visual consistency, typo
 - Check color usage — hardcoded hex values vs theme tokens, contrast issues, inconsistent semantic colors
 - Check responsive/visual states — hover, focus, disabled, loading, empty states that were never designed
 - Check design token coverage — theme files, CSS variables, dark mode readiness
-- Deep pass → `/deep-review-codebase` for an in-depth UX/UI review
+- Deep pass → `/deep-review` for an in-depth UX/UI review
 
 ### Rules
 

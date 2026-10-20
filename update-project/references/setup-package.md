@@ -10,6 +10,6 @@ Package manifest setup (`package.json`, `Cargo.toml`, `pyproject.toml`, `go.mod`
    - Go `go.mod`: `module` path, `go` version; no `LICENSE`/`README.md` → recommend adding them
 3. Scripts: must have `build`, `test:all`, `verify` (`verify` = `check && test` or `lint && typecheck && test`) — never add a `release` script (release goes through the `/setup-cicd` workflow or `/follow-tool-*`)
 4. Missing field → have the user fill it in or use the project's defaults; run `/follow-tasks` to complete the scripts
-5. Validate: `/deep-review-codebase` the manifest + `/run-verify` — fail → fix and retry ≤3
+5. Validate: `/deep-review` the manifest + `/run-verify` — fail → fix and retry ≤3
 6. Monorepo: `/follow-monorepo` first; workspace packages don't need `private: false` if publishing happens at the root
 7. Never publish yourself — publish via `/publish-package-to-registry` or `/run-release`

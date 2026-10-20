@@ -3,7 +3,7 @@ name: git-tag
 description: Manage git tags — annotated release tags, semver, sync with manifest and remote
 argument-hint: "[create|list|push|delete] [version]"
 related:
-  - deep-review-codebase
+  - deep-review
   - run-release
   - report
 ---
@@ -15,7 +15,7 @@ Create and manage git tags per convention — annotated tags for releases, clear
 ## Scope
 
 - create annotated/lightweight tags, list, push, delete (local + remote)
-- connects with `/deep-review-codebase` — the tag must match the `package.json`/manifest version
+- connects with `/deep-review` — the tag must match the `package.json`/manifest version
 - does not cover the full release process → `/run-release` (this skill handles tags only)
 
 ## Execute
@@ -25,7 +25,7 @@ Create and manage git tags per convention — annotated tags for releases, clear
 > Goal: the tagged version matches the real release
 
 1. check the version in the manifest (`package.json`, `Cargo.toml`, `pyproject.toml`)
-2. `git tag -l` + `git ls-remote --tags origin` — the tag is not a duplicate, no drift (`/deep-review-codebase`)
+2. `git tag -l` + `git ls-remote --tags origin` — the tag is not a duplicate, no drift (`/deep-review`)
 3. the tag must point at the actual release commit — usually the release's merge commit on main
 
 ### 2. Create Tag
@@ -60,9 +60,9 @@ git tag -a v1.2.3 <sha> -m "..."           # tag an older commit
 
 - release tag = annotated always; lightweight only for temporary markers
 - a pushed tag is immutable — moving it = a breaking change for consumers
-- the tag name must match the manifest version — drift = a `/deep-review-codebase` finding
+- the tag name must match the manifest version — drift = a `/deep-review` finding
 - do not push all `--tags` — push only the intended tag
-- Use /deep-review-codebase if needed
+- Use /deep-review if needed
 
 ## Expected Outcome
 

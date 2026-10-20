@@ -11,7 +11,7 @@ related:
   - follow-tool-formatter
   - setup-cicd
   - improve
-  - deep-review-codebase
+  - deep-review
   - report
   - run-build
   - run-verify
@@ -153,7 +153,7 @@ Use with monorepos that use `moon`, `turbo`, `pnpm workspace`, `bun workspace`, 
 - Use /run-build if needed
 - Use /run-verify if needed
 - Use /follow-tool-vite if needed
-- Use /deep-review-codebase if needed
+- Use /deep-review if needed
 - Use /report if needed
 - Use /suggest-next-action if needed
 - Use /run-test all if needed

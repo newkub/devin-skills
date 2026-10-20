@@ -114,6 +114,13 @@ Use when the task involves `remeda` — installation, array/object/string/number
 2. Check the latest official docs at `https://remedajs.com/docs` before using an uncertain API — lazy functions are tagged `Lazy` in the docs
 3. Check the migration guide `https://remedajs.com/migrate/v1/` when editing v1 code
 
+### Use Cases
+
+| Scenario | Use case |
+|----------|----------|
+| Typed data pipeline with `pipe`, lazy functions, and `prop` | `usecases/data-pipeline-pipe.md` |
+| Migrate Lodash/v1 calls to Remeda v2 names | `usecases/migrate-from-lodash.md` |
+
 ## Rules
 
 ### 1. Signatures

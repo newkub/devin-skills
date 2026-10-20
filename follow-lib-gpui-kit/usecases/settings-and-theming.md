@@ -2,7 +2,7 @@
 
 > macOS-style settings, theme loading, and translated components. Source: https://gpui-kit.com/component/settings, /component/theme, /docs/i18n (accessed 2026-10-20)
 
-## Settings screen (verified from docs)
+## 1. Settings screen (verified from docs)
 
 Layout: `Settings → SettingPage → SettingGroup → SettingItem → SettingField`. Search matches title, description, and custom keywords (macOS/iOS style).
 
@@ -29,7 +29,7 @@ Settings::new("my-settings")
 - search selection rules: the current page stays selected while it has matches, else the first matching page; clearing search keeps the current page
 - field types include Input, Dropdown, Switch via the `SettingField` constructors
 
-## Theme access & custom themes (verified from docs)
+## 2. Theme access & custom themes (verified from docs)
 
 ```rust
 use gpui_kit::component::ActiveTheme;
@@ -53,7 +53,7 @@ ThemeRegistry::watch_dir(std::path::PathBuf::from("./themes"), cx, move |cx| {
 
 `watch_dir` hot-reloads on file changes — the callback re-applies whenever the directory updates.
 
-## Localization with rust-i18n (verified from docs)
+## 3. Localization with rust-i18n (verified from docs)
 
 Requires rust-i18n 4.2+. Component built-in strings live in `crates/component/locales/ui.yml` (en, zh-CN, zh-HK, zh-TW, it); your app owns its own `locales/ui.yml` and overrides deep-merged on top.
 
@@ -102,3 +102,9 @@ gpui_kit::init(cx);
 - defining app keys inside `gpui_component` expecting `t!` to find them — that namespace is component-lookup only
 - hand-copying the whole component `ui.yml` into the app — deep-merge means you only override the keys you need
 - assuming `cx.theme().tokens.*` is needed everywhere — solid fields like `cx.theme().primary` stay compatible unless you consume gradients
+
+## Related
+
+- `references/apis.md`
+- `best-practices/components.md`
+- `best-practices/state-model.md`

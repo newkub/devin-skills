@@ -7,7 +7,7 @@ related:
   - report
   - ship
   - update-references
-  - deep-review-codebase
+  - deep-review
   - run-test
   - update-tests
   - update-devin-global-skills
@@ -34,7 +34,7 @@ Use when the user wants to create a project/plugin/library/extension/CLI/skills/
 
 > Goal: Inspect the tech stack before creating
 
-1. Run `/deep-research` + `/follow-best-practice` to confirm the latest versions and patterns, then run `/deep-review-codebase` to summarize the tech stack
+1. Run `/deep-research` + `/follow-best-practice` to confirm the latest versions and patterns, then run `/deep-review` to summarize the tech stack
 3. Record the reasons for choosing the stack and libraries for later reference (create sdk)
 
 ### 2. Parse Argument

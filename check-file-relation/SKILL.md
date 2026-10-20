@@ -4,7 +4,7 @@ description: Check file import relations + concat all or related files into one 
 argument-hint: "<dir> [--all|--from <file>|--summary|--json] [--ext|--include|--order|--pattern|--max-lines]"
 related:
   - read-all-files
-  - deep-review-codebase
+  - deep-review
   - check-code-structure
 
 ---
@@ -105,7 +105,7 @@ cfr src --pattern 'from\s+([\w./-]+)\s+import' --ext py
 
 1. `[external]` = bare specifier/npm package — not resolved to a file in the tree
 2. Resolved path = internal edge — used to find cycles, orphans, shared hubs
-3. Pass the `--json` graph on to `/deep-review-codebase` (domain `review-architecture`) or other scripts via `/use-scripts`
+3. Pass the `--json` graph on to `/deep-review` (domain `review-architecture`) or other scripts via `/use-scripts`
 4. The concat output is used by `/read-all-files` — `--order smart` for `all` mode, `--from <entry>` for related files
 
 ## Rules

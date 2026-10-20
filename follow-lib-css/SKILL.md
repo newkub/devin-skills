@@ -155,6 +155,17 @@ Boundaries:
 - Use `/follow-best-practice` if needed
 
 - See best-practices/ for recommended patterns and pitfalls
+- See usecases/ for end-to-end scenario recipes
+
+### Use Cases
+
+| Scenario | Use case |
+|----------|----------|
+| Theme tokens with `light-dark()` | `usecases/design-tokens-with-light-dark.md` |
+| Component-level responsive design with `@container` | `usecases/container-queries.md` |
+| Cascade layers with native nesting | `usecases/cascade-layers-and-nesting.md` |
+| Subgrid tracks and intrinsic card layout | `usecases/subgrid-and-intrinsic-layout.md` |
+| View transitions and scroll-driven reveals | `usecases/scroll-and-view-transitions.md` |
 
 ## Expected Outcome
 

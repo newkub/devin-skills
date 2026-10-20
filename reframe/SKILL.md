@@ -19,7 +19,7 @@ Check whether the content, plan, idea, or skill currently being written is in th
 
 ## Scope
 
-Used when writing or designing new content (skill, doc, plan, prompt, idea) and you want to challenge the framing before delivering — not a correctness check (use `/check-reference`) or a freshness check (use `/deep-review-codebase`)
+Used when writing or designing new content (skill, doc, plan, prompt, idea) and you want to challenge the framing before delivering — not a correctness check (use `/check-reference`) or a freshness check (use `/deep-review`)
 
 ## Execute
 

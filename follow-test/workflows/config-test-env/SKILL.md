@@ -6,7 +6,7 @@ related:
   - follow-test
   - update-config
   - check-secrets
-  - deep-review-codebase
+  - deep-review
   - follow-secret-manager
   - follow-monorepo
   - setup-cicd
@@ -52,7 +52,7 @@ Set up the test environment so tests run deterministically — env vars, fixture
 1. create `tests/fixtures/` and `tests/helpers/` per the parent's structure — or the convention the project uses
 2. test database: separate db name/schema from dev — use an ephemeral option (container, in-memory, per-run db) per the stack
 3. seed/migration strategy for the test db — deterministic and reset between runs
-4. run `/deep-review-codebase` — tests share no state and do not depend on each other
+4. run `/deep-review` — tests share no state and do not depend on each other
 
 ### 4. Configure CI Test Env
 

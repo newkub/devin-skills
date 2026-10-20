@@ -3,7 +3,7 @@ name: extract-pattern
 description: Write pattern rules from the provided data
 argument-hint: "[pattern]"
 related:
-  - deep-review-codebase
+  - deep-review
   - follow-best-practice
 
 ---
@@ -64,7 +64,7 @@ Use `extract-pattern` for well-covered specific tasks and workflows (patterns)
 4. Never write rules more complex than necessary
 5. Must cover every possible case
 
-- Use /deep-review-codebase if needed
+- Use /deep-review if needed
 - Use /learn-pattern if needed
 - Use /follow-best-practice if needed
 

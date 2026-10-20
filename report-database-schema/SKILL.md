@@ -4,7 +4,7 @@ description: Create a database schema report — tables, columns, indexes, relat
 argument-hint: "[path]"
 related:
   - create-mermaid-diagram
-  - deep-review-codebase
+  - deep-review
   - report
   - run-drizzle-studio
   - suggest-next-action
@@ -75,7 +75,7 @@ Create a database schema report for the project from schema definitions or migra
 - Include every table and relation without omission
 - Large schema → split report by domain with an index
 
-- Use /deep-review-codebase if needed
+- Use /deep-review if needed
 - Use /create-mermaid-diagram if needed
 - Use /run-drizzle-studio if needed
 - alias stub: `/report-schema` — forwards to this skill

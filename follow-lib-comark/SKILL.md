@@ -76,6 +76,16 @@ For JS/TS projects that render Markdown content — docs sites, blogs, CMS conte
 2. Framework renderers have a streaming prop — chunks arriving mid-token render immediately with a caret
 3. Ideal for AI chat interfaces and live content feeds
 
+### Use Cases
+
+| Scenario | Use case |
+|----------|----------|
+| Render markdown to static HTML for docs, RSS, or email | `usecases/render-markdown-html.md` |
+| Stream AI output without broken markup | `usecases/stream-ai-markdown.md` |
+| Block components, inline components, and frontmatter | `usecases/custom-components-and-frontmatter.md` |
+| Shiki or rangi highlighting through plugins | `usecases/syntax-highlight-and-plugins.md` |
+| Render markdown to ANSI for CLIs | `usecases/render-to-ansi-terminal.md` |
+
 ## Rules
 
 ### 1. Serializable Document

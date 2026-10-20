@@ -8,7 +8,7 @@ related:
   - design-web-prototype
   - report-not-implement
   - implement-to-production
-  - deep-review-codebase
+  - deep-review
   - create-plan-in-dot-devin
   - report-review
   - ask-me
@@ -27,7 +27,7 @@ Review one dimension only: `gaps` — capability the scope promises but does not
 ## Scope
 
 - Use when the user asks what is missing / unfinished / not really wired in an area, or from `/review` `### 2` as the gaps dimension
-- Not wrong-behavior hunting (→ `/review-issues`), not a full multi-dimension scan (→ `/deep-review-codebase`), not ideating new features (→ `/idea-features`)
+- Not wrong-behavior hunting (→ `/review-issues`), not a full multi-dimension scan (→ `/deep-review`), not ideating new features (→ `/idea-features`)
 - If the user appends `and fix` → treat as confirmed; fill every gap without asking again (still report before filling)
 - A gap whose surface was never designed (command tree, TUI screens, web UX) → design it first: `/design-cli-prototype` / `/design-tui-prototype` in chat, or `/design-web-prototype` / `/design-html-prototype` when it must be seen — then fill it; never fill a gap with a new stub
 
@@ -75,7 +75,7 @@ Review one dimension only: `gaps` — capability the scope promises but does not
 1. If the user did not append `and fix` → ask which gaps to fill and wait
 2. Route each confirmed gap to its `Fill by` from `### 2`; anything that becomes net-new code goes through `/implement-to-production` so the result is production code, not a placeholder
 3. Multi-file or architectural fills → `/create-plan-in-dot-devin` first, then implement
-4. Domain-matched findings may be handed to `/deep-review-codebase <scope> then-fix fix all` instead of fixing inline (`fix all` because `and fix` already confirmed them)
+4. Domain-matched findings may be handed to `/deep-review <scope> then-fix fix all` instead of fixing inline (`fix all` because `and fix` already confirmed them)
 5. After filling → `/refactor` (SRP split) on touched files (≤250 lines, 1 responsibility), run build/lint/test, re-check the promise list from `### 1` step 3 is now honest → `/suggest-next-action`
 
 ## Rules

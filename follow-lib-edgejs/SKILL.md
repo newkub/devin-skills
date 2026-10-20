@@ -144,6 +144,16 @@ server.listen(3000)
 4. Run `/report table` summarizing status with columns: `No.`, `Check`, `Status`, `Notes`
 5. Run `/deep-validate` then `/ship`
 
+### Use Cases
+
+| Scenario | Use case |
+|----------|----------|
+| Server-rendered page with layout, partial, and loop | `usecases/layouts-and-partials.md` |
+| Components with props/slots and per-request state | `usecases/components-and-state.md` |
+| Edge instance, globals, and rendering | `usecases/edge-instance-and-render.md` |
+| Escaping vs raw HTML | `usecases/escaping-and-raw-html.md` |
+| Forms, CSRF, and validation errors | `usecases/forms-and-validation.md` |
+
 ## Rules
 
 ### 1. ESM Only

@@ -4,7 +4,7 @@ description: Create a Codex plugin with manifest, skills, MCP servers, app wirin
 argument-hint: "[scope]"
 related:
   - ask-me
-  - deep-review-codebase
+  - deep-review
   - follow-create-plugins
   - follow-create-sdk
   - follow-harness-engineering
@@ -28,8 +28,8 @@ Used to create a Codex plugin from scratch to extend ChatGPT Work and Codex with
 
 > Goal: verify the tech stack before building
 
-1. Run `/deep-review-codebase` to summarize the tech stack in use
-2. Run `/deep-review-codebase` to review tech stack, dependencies, and library design (create codex plugin)
+1. Run `/deep-review` to summarize the tech stack in use
+2. Run `/deep-review` to review tech stack, dependencies, and library design (create codex plugin)
 3. Record the rationale for the chosen stack and libraries for future reference (create codex plugin)
 
 ### 2. Gather Requirements
@@ -97,7 +97,7 @@ Used to create a Codex plugin from scratch to extend ChatGPT Work and Codex with
 - Use the `SKILL.md` format per `/update-devin-global-skills`
 - Plugin-bundled hooks are non-managed — Codex skips them until the user trusts the hook definition
 
-- Use /deep-review-codebase if needed
+- Use /deep-review if needed
 - Use /follow-create-sdk if needed
 - Use /search-skills if needed
 - Use /report if needed

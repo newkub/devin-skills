@@ -106,6 +106,16 @@ const table = useReactTable({
 - Server-side mode = `manual*` flags + fetch yourself — don't pass all the data and then enable manual
 - Controlled state when syncing the URL (`follow-router` search params)
 - Headless — a11y (sort buttons, aria-sort, row selection semantics) is the app's responsibility
+- See best-practices/ for the pattern and pitfall checklist
+
+### Use Cases
+
+| Scenario | Use case |
+|----------|----------|
+| Client-side sort/filter/pagination | `usecases/sorting-filtering-and-pagination.md` |
+| Server-side paging + stable row selection | `usecases/server-side-pagination-and-selection.md` |
+
+- See usecases/ for end-to-end scenario recipes
 
 ## Expected Outcome
 

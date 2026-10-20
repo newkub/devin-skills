@@ -7,7 +7,7 @@ related:
   - improve
   - update-usage-md
   - report-usage
-  - deep-review-codebase
+  - deep-review
   - report
   - suggest-next-action
   - ask-me
@@ -15,7 +15,7 @@ related:
 
 ## Goal
 
-Answer the question "what should improve in USAGE.md / the usage surface" for the scope the user specifies — collect findings from the `/deep-review-codebase` `usage` dimension into a prioritized list, then send them to `/deep-review-codebase <scope> then-fix fix all` to fix immediately (thin entry — it does not review itself and does not edit directly in this skill)
+Answer the question "what should improve in USAGE.md / the usage surface" for the scope the user specifies — collect findings from the `/deep-review` `usage` dimension into a prioritized list, then send them to `/deep-review <scope> then-fix fix all` to fix immediately (thin entry — it does not review itself and does not edit directly in this skill)
 
 ## Scope
 
@@ -33,7 +33,7 @@ Use when the user asks what "usage docs should improve" in this scope
 > Goal: get prioritized findings
 
 1. Take `scope` from the argument — if absent → use the current project; if unclear → `/ask-me`
-2. Run `/deep-review-codebase` on that scope (dimension `usage`)
+2. Run `/deep-review` on that scope (dimension `usage`)
 3. Collect the findings into a prioritized list with severity and evidence — P0: an example that breaks when run, a docs promise that cannot actually be fulfilled
 
 ### 2. Present Findings
@@ -47,19 +47,19 @@ Use when the user asks what "usage docs should improve" in this scope
 
 > Goal: fix every finding found
 
-1. Send each finding to `/deep-review-codebase <scope> then-fix fix all` (domain `usage` in `deep-review-codebase/references/domain-map.md`)
+1. Send each finding to `/deep-review <scope> then-fix fix all` (domain `usage` in `deep-review/references/domain-map.md`)
 2. For a parity fix (docs promise does not match reality) → verify with `/deep-test usage` after fixing; if a whole section is missing/outdated → `/update-usage-md`
 3. Run `/suggest-next-action` after everything is fixed
 
 ## Rules
 
-- Never review yourself — delegate to `/deep-review-codebase` dimension `usage`
+- Never review yourself — delegate to `/deep-review` dimension `usage`
 - Fix every finding immediately without waiting for confirmation
 - Every improvement must map to a skill that can actually do it
 - Never write docs from an assumption — every example must actually run on the project's stack
 
 ## Expected Outcome
 
-- A prioritized usage-md improvement list from `/deep-review-codebase`
-- No confirm gate — fix every finding immediately via `/deep-review-codebase <scope> then-fix fix all`
+- A prioritized usage-md improvement list from `/deep-review`
+- No confirm gate — fix every finding immediately via `/deep-review <scope> then-fix fix all`
 - Every example in `USAGE.md` passes `/deep-test usage` — docs promises equal reality

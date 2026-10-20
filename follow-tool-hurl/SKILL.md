@@ -42,7 +42,7 @@ Use for projects that want API test files diffable in Git, run on a pure CLI wit
 2. Format: a request block followed by the expected response — at minimum a status code
 3. Add `[Asserts]` with queries: `jsonpath`, `xpath`, `header`, `status`, `duration`, `body`, `regex`, `sha256`
 4. Use predicates: `==`, `!=`, `contains`, `startsWith`, `matches`, `exists`, `>`, `<`
-5. See full syntax in 
+5. See the full file syntax at https://hurl.dev/docs/
 
 ### 3. Chain Requests
 
@@ -69,7 +69,7 @@ Use for projects that want API test files diffable in Git, run on a pure CLI wit
 1. Use `hurl --test` + `--report-junit` in a CI step
 2. No official GitHub Action — install with a package manager or the npm binary in the workflow
 3. Store reports as artifacts; pair with JUnit reporters (dorny/test-reporter etc.)
-4. See examples in 
+4. See https://hurl.dev/docs/ for examples and the complete option list
 
 ## Rules
 
@@ -95,10 +95,7 @@ Use for projects that want API test files diffable in Git, run on a pure CLI wit
 
 ## References
 
-- [CLI options](references/cli.md)
-
-
-
+- [API + CLI tables](references/apis.md), [CLI options](references/cli.md)
 
 - Use /run-test if needed
 - Use /follow-test if needed

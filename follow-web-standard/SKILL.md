@@ -15,7 +15,7 @@ related:
   - follow-lib-unocss
   - follow-lib-animejs
   - use-playwriter
-  - deep-review-codebase
+  - deep-review
   - git-commit
   - ship
 
@@ -106,7 +106,7 @@ Boundaries:
 1. Gate non-widely-available features: JS `if ('showPopover' in HTMLElement.prototype)`, CSS `@supports` — fallbacks must stay functional (a `<dialog>` fallback: plain form submission still works)
 2. Core content and navigation must work with JS disabled where feasible (real `<a>`/`<form>` actions, server-rendered content)
 3. Verify in a browser: run `/use-agent-browser` (or `/use-playwriter` when login state is needed) to click through forms, dialogs, and keyboard flows
-4. Run `/follow-tool-lighthouse` for an a11y/best-practices audit of the changed routes; fix findings via `/deep-review-codebase` accessibility dimension
+4. Run `/follow-tool-lighthouse` for an a11y/best-practices audit of the changed routes; fix findings via `/deep-review` accessibility dimension
 5. Commit per project convention → run `/git-commit`; docs/UX scopes ship via `/ship`
 
 ## Rules

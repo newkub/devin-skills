@@ -20,7 +20,7 @@ related:
   - review-devin-global-harness
   - deep-thinking
   - follow-best-practice
-  - deep-review-codebase
+  - deep-review
   - plan
   - refactor
   - use-scripts
@@ -88,7 +88,7 @@ See also: `/scan-codebase`, `/use-astgrep`, `/review-devin-global-harness`, `/de
 2. Read `imports`, `exports`, dependencies, and reverse dependencies
 3. Run `/scan-codebase` along with `/use-astgrep` and `/review-devin-global-harness`
 4. Run `/deep-thinking` to analyze the structure, issues, and improvements
-5. Run `/follow-best-practice` and `/deep-review-codebase` to compare against standards
+5. Run `/follow-best-practice` and `/deep-review` to compare against standards
 6. Run `/plan` to plan the fixes according to the new findings
 7. Run `/refactor` and `/use-scripts` before implementing if needed
 8. Run `/implement-to-production` to deliver complete code

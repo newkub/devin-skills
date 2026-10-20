@@ -70,6 +70,13 @@ Use when the task involves 3D rendering — scene, camera, lights, materials, mo
 3. Check the Migration Guide before using an API from old docs — three.js breaks often between rXXX
 4. Check the latest official docs before using an API you're unsure about (three.js lib)
 
+### Use Cases
+
+| Scenario | Use case |
+|----------|----------|
+| Mount a scene once and dispose every GPU resource | `usecases/mount-scene-with-full-disposal.md` |
+| Load a Draco/Meshopt glTF and free it with the scene | `usecases/load-compressed-gltf.md` |
+
 ## Rules
 
 - Dispose every GPU resource in cleanup — geometry, material, texture, render target, renderer

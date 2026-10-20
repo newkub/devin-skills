@@ -4,7 +4,7 @@ description: Validate type safety dimension — typecheck, any/ts-ignore, type f
 argument-hint: "[scope]"
 related:
   - run-typecheck
-  - deep-review-codebase
+  - deep-review
   - report
 ---
 
@@ -30,7 +30,7 @@ Check the type safety dimension of `/deep-validate` — type errors, unnecessary
 
 > Goal: find type escapes that reduce safety
 
-1. Check there are no unnecessary `any` — run `/deep-review-codebase` for a coverage metric
+1. Check there are no unnecessary `any` — run `/deep-review` for a coverage metric
 2. Check there are no `@ts-ignore` or `@ts-nocheck`
 3. Check type inference is used correctly
 

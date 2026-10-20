@@ -7,7 +7,7 @@ related:
   - follow-lib-native-sdk
   - follow-best-practice
   - setup-cicd
-  - deep-review-codebase
+  - deep-review
 
 ---
 
@@ -138,7 +138,7 @@ desktop-apps/{project}/
 - Use /follow-create-mobile-cross-with-capacitor if needed (create desktop tauri)
 - Use /follow-best-practice if needed
 - Use /setup-cicd if needed
-- Use /deep-review-codebase if needed
+- Use /deep-review if needed
 - Use /follow-create-plugins if needed
 
 

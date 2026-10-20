@@ -137,6 +137,16 @@ Vue/Svelte: call `animate()` or `createScope()` in a lifecycle hook and clean up
 - releases/changelog: https://github.com/juliangarnier/anime/releases
 - v3 to v4 migration: https://github.com/juliangarnier/anime/wiki/Migrating-from-v3-to-v4
 
+### Use Cases
+
+| Scenario | Use case |
+|----------|----------|
+| Choreographed multi-step entrance with labels and playback control | `usecases/timeline-choreography.md` |
+| Grid reveal that follows the real column count | `usecases/stagger-grid.md` |
+| Draw and morph SVG icons in place | `usecases/svg-morph-and-draw.md` |
+| Scroll-linked reveal and progress scrub | `usecases/scroll-linked-progress.md` |
+| Reduced-motion path and unmount cleanup | `usecases/reduced-motion-and-cleanup.md` |
+
 ## Rules
 
 - Use `bun add animejs` for installation

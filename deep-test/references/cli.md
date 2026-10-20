@@ -2,7 +2,7 @@
 
 Test CLI commands by running them through a real shell — checking exit codes, stdout, stderr, help text, flags, subcommands, and error paths — works with CLI tools built with Bun/Node/Rust/Go/Python, run from a built binary or package script
 
-> Pre-Run: always run `/deep-review-codebase` (domain `review-cli`) first — never skip; if a finding is a blocker, fix it or report before running
+> Pre-Run: always run `/deep-review` (domain `review-cli`) first — never skip; if a finding is a blocker, fix it or report before running
 
 ## Run Quick Path
 

@@ -5,7 +5,7 @@ argument-hint: "[topic-or-url]"
 related:
   - idea
   - validate-idea
-  - deep-review-codebase
+  - deep-review
   - follow-design-system
   - report-uxui
   - deep-analyze
@@ -26,7 +26,7 @@ Generate UX/UI ideas — improvements to existing work and new features in visua
 - Cover dimensions: visual polish, layout/responsive, interaction/feedback, accessibility, design system consistency, empty/error/loading states
 - Reply in chat with markdown tables and bullets
 - Don't create report/plan files, don't implement
-- If you want a visual review of real routes before thinking of ideas → use `/deep-review-codebase` (domain `review-uxui`)
+- If you want a visual review of real routes before thinking of ideas → use `/deep-review` (domain `review-uxui`)
 - If you want implementation → hand off to `/implement-to-production`
 - An idea the user will actually take action on but that has no demand/feasibility evidence yet → screen it first with `/validate-idea`
 
@@ -38,7 +38,7 @@ Generate UX/UI ideas — improvements to existing work and new features in visua
 
 1. Take `<topic-or-url>` from the argument or conversation context
 2. Run `/deep-analyze` in a lightweight way if needed — look at existing routes, components, design system
-3. If a web server is running and you need evidence → use `/deep-review-codebase` or `/report-uxui` before thinking of ideas
+3. If a web server is running and you need evidence → use `/deep-review` or `/report-uxui` before thinking of ideas
 4. If the topic is unclear → use `/suggest-next-action` to ask the user
 
 ### 2. Generate Ideas
@@ -83,7 +83,7 @@ Generate UX/UI ideas — improvements to existing work and new features in visua
 
 ### 3. UX Dimension Coverage
 
-- Every run must cover at least 3 dimensions: visual, interaction, a11y (per the `/deep-review-codebase` checklist)
+- Every run must cover at least 3 dimensions: visual, interaction, a11y (per the `/deep-review` checklist)
 - Ideas must be actionable and based on the existing design system (`/follow-design-system`) — don't propose conflicting patterns without reason
 
 ### 4. Suggest Deep Workflow

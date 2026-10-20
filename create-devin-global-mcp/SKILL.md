@@ -14,7 +14,7 @@ allowed-tools:
   - mcp_call_tool
 related:
   - follow-create-mcp
-  - deep-review-codebase
+  - deep-review
   - deep-validate
   - ship
 ---
@@ -38,8 +38,8 @@ Use when creating a new MCP server that should be visible to Devin through the g
 
 > Goal: Check the tech stack and settle the scope
 
-1. Run `/deep-review-codebase` to inspect the current tech stack
-2. Run `/deep-review-codebase` to review dependencies
+1. Run `/deep-review` to inspect the current tech stack
+2. Run `/deep-review` to review dependencies
 3. Record the server name, transport, and the tools/resources you want
 
 ### 2. Create MCP Server

@@ -3,7 +3,7 @@ name: run-build
 description: Run the build process systematically to produce production-ready artifacts
 argument-hint: "[scope]"
 related:
-  - deep-review-codebase
+  - deep-review
   - run-typecheck
   - resolve-errors
   - run-clean
@@ -25,9 +25,9 @@ Use with projects that have a build script in the package manifest, optimizing b
 
 > Goal: Improve build configuration and reduce output size before building
 
-1. Run `/deep-review-codebase` to analyze bundle size, build config, manual chunks, and externalization
-2. Run `/deep-review-codebase` to improve build configuration, dependencies, imports, and assets
-3. If `/deep-review-codebase` or `/deep-review-codebase` fails → stop and report
+1. Run `/deep-review` to analyze bundle size, build config, manual chunks, and externalization
+2. Run `/deep-review` to improve build configuration, dependencies, imports, and assets
+3. If `/deep-review` or `/deep-review` fails → stop and report
 
 ### 2. Typecheck
 
@@ -75,7 +75,7 @@ Use with projects that have a build script in the package manifest, optimizing b
 
 ### 1. Build Order
 
-- Optimize: run `/deep-review-codebase` first, then run `/deep-review-codebase`
+- Optimize: run `/deep-review` first, then run `/deep-review`
 - Typecheck: run `/run-typecheck` before building
 - Install: install dependencies
 - Clean: run `/run-clean` to remove old artifacts
@@ -109,7 +109,7 @@ title: Run Build
 description: Run the build process for production-ready artifacts
 auto_execution_mode: 3
 related:
-  - /deep-review-codebase
+  - /deep-review
   - /run-typecheck
   - /run-clean
   - /resolve-errors
@@ -129,7 +129,7 @@ Use with projects that have a build script
 
 > Goal: build config ready
 
-1. Run `/deep-review-codebase`
+1. Run `/deep-review`
 
 #### 2. Typecheck
 

@@ -4,7 +4,7 @@ description: Design and write software that is easy to test, easy to scale, easy
 argument-hint: "[scope]"
 related:
   - follow-math-concepts
-  - deep-review-codebase
+  - deep-review
 ---
 
 ## Goal
@@ -23,7 +23,7 @@ Use for designing architecture, writing code, and designing UX/UI of any kind of
 
 Design an architecture that is easy to test and easy to scale
 
-1. Run `/deep-review-codebase` for the foundational structure
+1. Run `/deep-review` for the foundational structure
 2. Separate business logic from infrastructure
 3. Use dependency injection for external dependencies
 4. Create interfaces for external services
@@ -38,7 +38,7 @@ Design an architecture that is easy to test and easy to scale
 
 Write code that is easy to debug and easy to test
 
-1. Run `/deep-review-codebase` to separate pure logic from side effects
+1. Run `/deep-review` to separate pure logic from side effects
 2. Write business logic as pure functions
 3. Use clear, meaningful naming
 4. Write small, focused functions (max 20-30 lines)
@@ -53,7 +53,7 @@ Write code that is easy to debug and easy to test
 
 Design for ease of use
 
-1. Run `/deep-review-codebase` for design system principles
+1. Run `/deep-review` for design system principles
 2. Design APIs that are intuitive and consistent
 3. Use sensible defaults
 4. Add auto-completion and discoverability
@@ -68,7 +68,7 @@ Design for ease of use
 
 Create clear boundaries between layers
 
-1. Run `/deep-review-codebase` for layer separation
+1. Run `/deep-review` for layer separation
 2. Define interfaces between layers
 3. Use the ports and adapters pattern
 4. Separate domain logic from application logic

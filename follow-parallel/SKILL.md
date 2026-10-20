@@ -4,7 +4,7 @@ description: Group independent operations into parallel execution to cut time an
 argument-hint: "[scope]"
 related:
   - follow-math-concepts
-  - deep-review-codebase
+  - deep-review
 
 ---
 
@@ -14,7 +14,7 @@ Group independent operations into parallel execution to reduce total execution t
 
 ## Scope
 
-Use for managing parallel execution at 3 levels: tool calls, script execution, and workflow orchestration — does not cover concurrent programming in application code (use `/deep-review-codebase`)
+Use for managing parallel execution at 3 levels: tool calls, script execution, and workflow orchestration — does not cover concurrent programming in application code (use `/deep-review`)
 
 ## Execute
 
@@ -53,7 +53,7 @@ Use for managing parallel execution at 3 levels: tool calls, script execution, a
 > Goal: run independent workflows in parallel within orchestrator workflows
 
 1. Identify the independent sub-workflows — no data dependency between them
-2. Run independent sub-workflows at once, e.g. `/deep-review-codebase`, `/follow-tool-knip`
+2. Run independent sub-workflows at once, e.g. `/deep-review`, `/follow-tool-knip`
 3. Run dependent sub-workflows sequentially, e.g. `/deep-validate` after `/review-*`
 4. Collect results from every sub-workflow before aggregating the report
 5. If one sub-workflow finds a critical issue → stop and validate before continuing

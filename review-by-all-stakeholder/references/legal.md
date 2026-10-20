@@ -21,9 +21,9 @@ Use when a legal perspective is needed — handed off from `/review-by-all-stake
 | Role | Focus | Workflow |
 |------|-------|----------|
 | legal-advisor | license compliance, third-party conflicts, IP risks | `## legal/legal-advisor` |
-| privacy-specialist | PII handling, consent, deletion → `/deep-review-codebase` | `## legal/privacy-specialist` |
-| compliance-advisor | regulatory controls, audit evidence → `/deep-review-codebase` | `## legal/compliance-advisor` |
-| risk-analyst | risk surface, failure modes, mitigations → `/deep-review-codebase` | `## legal/risk-analyst` |
+| privacy-specialist | PII handling, consent, deletion → `/deep-review` | `## legal/privacy-specialist` |
+| compliance-advisor | regulatory controls, audit evidence → `/deep-review` | `## legal/compliance-advisor` |
+| risk-analyst | risk surface, failure modes, mitigations → `/deep-review` | `## legal/risk-analyst` |
 
 2. Read the `## legal/<role>` section in this file
 
@@ -70,7 +70,7 @@ Play a Compliance Advisor — the compliance consultant who maps regulatory requ
 - Check change management evidence — PR review requirements, protected branches, deploy approval gates
 - Check third-party/vendor compliance — DPA, subprocessor list, data residency constraints
 - Check breach/incident readiness — notification paths, incident logging, runbook for a data breach
-- Deep pass → `/deep-review-codebase` for an in-depth compliance review
+- Deep pass → `/deep-review` for an in-depth compliance review
 
 ### Rules
 
@@ -127,7 +127,7 @@ Play a Privacy Specialist — the data privacy expert safeguarding the PII lifec
 - Check data retention — retention periods, auto-purge jobs, backups keeping data past the limit
 - Check tracking disclosures — third-party trackers, analytics events, fingerprinting that isn't disclosed
 - Check data export (right to access/portability) — the export endpoint returns the user's data completely
-- Deep pass → `/deep-review-codebase` for in-depth privacy compliance
+- Deep pass → `/deep-review` for in-depth privacy compliance
 
 ### Rules
 
@@ -150,13 +150,13 @@ Play a Risk Analyst — the risk analyst hunting failure modes and exposure acro
 
 - Check the overall risk surface — security, operational, financial, reputational risks visible from code/config
 - Check failure modes — single points of failure, missing fallbacks, unhandled error paths in critical flows
-- Check security exposure — secrets in code, injection surfaces, missing auth checks (note: deep pass goes to `/deep-review-codebase`)
+- Check security exposure — secrets in code, injection surfaces, missing auth checks (note: deep pass goes to `/deep-review`)
 - Check operational risk — missing health checks, no graceful shutdown, unmonitored background jobs
 - Check financial risk — irreversible operations, missing limits/caps, manual intervention paths
 - Check reputational risk — user-facing error leaks, data exposure in emails/notifications, public debug info
 - Check third-party dependency risk — abandoned deps, single-vendor lock-in in core flows
 - Check mitigation coverage — rate limiting, circuit breakers, rollback paths, feature flags for risky features
-- Deep pass → `/deep-review-codebase` for an in-depth risk assessment
+- Deep pass → `/deep-review` for an in-depth risk assessment
 
 ### Rules
 

@@ -3,7 +3,7 @@ name: run-drizzle-studio
 description: Run Drizzle Studio to manage the database via a GUI
 argument-hint: "[scope]"
 related:
-  - deep-review-codebase
+  - deep-review
   - follow-lib-drizzle
   - resolve-errors
 ---
@@ -18,7 +18,7 @@ Use for projects that already have `drizzle-kit` installed — focused on execut
 
 ## Execute
 
-> Pre-Run: Always run `/deep-review-codebase` first — `run-*` must be reviewed/assessed before the main work, never skip; if findings are blockers, fix or report before running (drizzle studio)
+> Pre-Run: Always run `/deep-review` first — `run-*` must be reviewed/assessed before the main work, never skip; if findings are blockers, fix or report before running (drizzle studio)
 
 ### 1. Verify Prerequisites
 

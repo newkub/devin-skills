@@ -4,7 +4,7 @@ description: Configure and use Oxlint built-in and JavaScript plugins
 argument-hint: "[scope]"
 related:
   - follow-create-sdk
-  - deep-review-codebase
+  - deep-review
   - follow-tool-eslint
   - ship
   - run-lint
@@ -26,7 +26,7 @@ For setting up Oxlint plugins, both built-in (native) and JavaScript plugins, fo
 
 > Goal: Review the tech stack before creating
 
-1. Run `/deep-research` + `/follow-best-practice` to confirm the latest versions and patterns, then run `/deep-review-codebase` to summarize the tech stack
+1. Run `/deep-research` + `/follow-best-practice` to confirm the latest versions and patterns, then run `/deep-review` to summarize the tech stack
 3. Record the rationale for the chosen stack and libraries for later reference (create oxlint plugins)
 
 ### 2. Setup

@@ -88,7 +88,7 @@ Understand basic calculus: limits, derivatives, integrals, chain rule, partial d
 - `scipy.integrate` for a numeric integral
 
 - Use /follow-math-concepts (optimization, numerical-methods) if needed
-- Use /deep-review-codebase if needed
+- Use /deep-review if needed
 
 ## Expected Outcome
 

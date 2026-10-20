@@ -6,7 +6,7 @@ related:
   - run-verify
   - create-plan-in-dot-devin
   - use-lib-effective
-  - deep-review-codebase
+  - deep-review
   - update-tests
   - update-references
   - run-check
@@ -49,7 +49,7 @@ Handed off elsewhere: config drift → `/update-config` · hardcoded values → 
 
 1. Run `/run-verify` (lint, typecheck, test, build) FIRST — red → fix with `/resolve-errors` until green before touching anything
 2. Safety net: target's public behavior has no tests → `/update-tests` writes characterization tests locking current behavior
-3. `/follow-agents-md` for project conventions; record the baseline (`/check-long-files` + `/deep-review-codebase` metrics) for the after-comparison
+3. `/follow-agents-md` for project conventions; record the baseline (`/check-long-files` + `/deep-review` metrics) for the after-comparison
 
 ### 2. Plan
 
@@ -88,7 +88,7 @@ Handed off elsewhere: config drift → `/update-config` · hardcoded values → 
 
 ## Smells → Techniques
 
-> Detect with `file:line` evidence only; fix the cause, never mask the symptom; architecture-level smells → `/deep-review-codebase` + `/follow-architecture` instead of a file refactor
+> Detect with `file:line` evidence only; fix the cause, never mask the symptom; architecture-level smells → `/deep-review` + `/follow-architecture` instead of a file refactor
 
 | Smell | Technique |
 |-------|-----------|

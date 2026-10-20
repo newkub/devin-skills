@@ -4,7 +4,7 @@ description: Create custom ESLint plugins with JavaScript/TypeScript
 argument-hint: "[scope]"
 related:
   - follow-create-sdk
-  - deep-review-codebase
+  - deep-review
   - follow-tool-eslint
   - ship
   - report
@@ -27,7 +27,7 @@ Use for creating custom ESLint plugins with JavaScript/TypeScript, covering the 
 
 > Goal: verify the tech stack before creating
 
-1. Run `/deep-research` + `/follow-best-practice` to confirm the latest versions and patterns, then run `/deep-review-codebase` to summarize the tech stack
+1. Run `/deep-research` + `/follow-best-practice` to confirm the latest versions and patterns, then run `/deep-review` to summarize the tech stack
 3. Record the rationale for the chosen stack and libraries for future reference (create eslint plugins)
 
 ### 2. Setup

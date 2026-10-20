@@ -7,7 +7,7 @@ related:
   - summarize-your-understand
   - report
   - follow-create-cli
-  - deep-review-codebase
+  - deep-review
   - plan
 ---
 
@@ -69,7 +69,7 @@ Use when there are multiple options and only one answer is needed, e.g. choosing
 ### 3. General Purpose
 
 - Works in any context, not tied to skill creation
-- Can be called from other skills, e.g. `/follow-create-cli`, `/deep-review-codebase`, `/plan`
+- Can be called from other skills, e.g. `/follow-create-cli`, `/deep-review`, `/plan`
 - Returns the single option the user chose
 
 ### 4. References

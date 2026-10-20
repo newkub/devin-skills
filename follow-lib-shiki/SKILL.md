@@ -95,6 +95,13 @@ For JS/TS projects that need to highlight code blocks in UI, docs, markdown, or 
 - Use /follow-lib-markdown-it if needed
 - Use /follow-tool-vitepress if needed
 
+### Use Cases
+
+| Scenario | Use case |
+|----------|----------|
+| Build-time highlight with a singleton highlighter | `usecases/build-time-highlight.md` |
+| Dual light/dark themes + diff/focus notation | `usecases/dual-theme-and-transformers.md` |
+
 ## References
 
 - [API reference](references/apis.md)

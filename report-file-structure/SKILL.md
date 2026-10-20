@@ -4,7 +4,7 @@ description: Show file and folder structure with metadata, statistics, and recom
 argument-hint: "[scope]"
 related:
   - scan-codebase
-  - deep-review-codebase
+  - deep-review
   - use-scripts
   - report
   - suggest-next-action
@@ -29,7 +29,7 @@ Use for presenting:
 > Goal: Scan Project Structure
 
 1. Run `/scan-codebase` to scan all files
-2. Run `/deep-review-codebase` to analyze the structure
+2. Run `/deep-review` to analyze the structure
 3. Define the root directory and depth for the tree
 4. Filter out unnecessary files (`node_modules`, `.git`, `dist`, `build`)
 

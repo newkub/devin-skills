@@ -71,12 +71,20 @@ useHotkey('Shift+?', () => setHelpOpen(true), { preventDefault: true })
 3. Sequences: the timing window works, a partial sequence resets
 4. On failure → `/resolve-errors` max 3 rounds
 
+### Use Cases
+
+| Scenario | Use case |
+|----------|----------|
+| Command palette on `Mod+K` plus navigation shortcuts | `usecases/command-palette-mod-k.md` |
+| Scope shortcuts per surface and let users rebind | `usecases/scoped-shortcuts-and-remapping.md` |
+
 ## Rules
 
 - Use `Mod` instead of separate `Ctrl`/`Cmd` — cross-platform in one binding
 - Avoid clashing with browser defaults (`Mod+T`, `Mod+W`, `Mod+N`) — override only when truly necessary
 - Sequences max 2-3 keys — longer is bad UX
 - 0.x API — pin the version; verify signatures against the latest docs
+- See best-practices/ for the pattern and pitfall checklist
 - Use `/follow-lib-tanstack-ecosystem` for library selection
 
 ## Expected Outcome

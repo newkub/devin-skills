@@ -36,6 +36,14 @@ Use with all kinds of TypeScript projects including frontend, backend, full-stac
 | Error handling | `workflows/handle-errors/SKILL.md` — `ZodError`, issues, `treeifyError`, custom messages, locales |
 | Integration | `workflows/integrate-forms/SKILL.md` — Standard Schema, RHF/TanStack Form, JSON Schema/OpenAPI |
 | Migrate v3→v4 | `workflows/migrate-zod-v4/SKILL.md` — breaking changes, import path, API renames | 
+### Use Cases
+
+| Scenario | Use case |
+|----------|----------|
+| One schema for the form and the server handler | `usecases/form-and-server-validation.md` |
+| Request/response contracts + JSON Schema for OpenAPI | `usecases/api-boundary-validation.md` |
+| Fail-fast environment config | `usecases/env-config-parsing.md` |
+
 ### 1. Install Zod
 
 > Goal: install the latest Zod version

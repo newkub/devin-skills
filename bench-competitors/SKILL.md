@@ -8,7 +8,7 @@ related:
   - design-web-prototype
   - compare-competitors
   - deep-research
-  - deep-review-codebase
+  - deep-review
   - deep-thinking
   - plan
   - create-plan-in-dot-devin
@@ -33,7 +33,7 @@ Covers every dimension of the product: features, performance, UX/UI, architectur
 - Unlike `/compare-competitors`, which only returns the comparison (matrix + gap list + ideas) without implementing, this skill compares and then implements
 - UX/UI dimension — to match or beat a competitor visually: mock it fast with `/design-html-prototype`, build the real interactive prototype with `/design-web-prototype`, and design a CLI/TUI parity surface with `/design-cli-prototype` / `/design-tui-prototype` in chat — all before `/implement-to-production`
 
-See also: /deep-review-codebase, /create-plan-in-dot-devin, /implement-to-production, /compare-competitors
+See also: /deep-review, /create-plan-in-dot-devin, /implement-to-production, /compare-competitors
 
 ## Execute
 
@@ -72,8 +72,8 @@ See also: /deep-review-codebase, /create-plan-in-dot-devin, /implement-to-produc
 
 > Goal: Compare the remaining dimensions beyond features
 
-1. Run `/deep-review-codebase` to measure the project's current state for performance
-2. Run `/deep-review-codebase` for UX/UI
+1. Run `/deep-review` to measure the project's current state for performance
+2. Run `/deep-review` for UX/UI
 3. Run `/compare-competitors` on each dimension that can be compared against competitors (performance benchmarks, UX patterns, architecture, DX, security, scalability, business)
 4. Record the results in `docs/project.md`
 
@@ -99,8 +99,8 @@ See also: /deep-review-codebase, /create-plan-in-dot-devin, /implement-to-produc
 
 > Goal: Confirm the project genuinely beats competitors in every dimension, not just that implementation finished
 
-1. Run `/deep-review-codebase` for performance improvements
-2. Run `/deep-review-codebase` for UX/UI improvements
+1. Run `/deep-review` for performance improvements
+2. Run `/deep-review` for UX/UI improvements
 3. Re-benchmark against competitors across all dimensions — update the status in the comparison table
 4. If any dimension still isn't better than competitors → loop back to Step 4 for `/create-plan-in-dot-devin` + `/implement-to-production` on the remaining gaps only, until every dimension is better
 5. Stop the loop when the project beats all competitors, or when the remaining gaps need data/decisions from the user → use `/ask-me`

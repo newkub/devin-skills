@@ -2,7 +2,7 @@
 
 > Run one-off or scheduled server-side actions (migrations, cleanup, sync) on demand, from the CLI, or on a cron. Source: https://nitro.build/docs/tasks (accessed 2026-10-20)
 
-> Tasks are **experimental** — enable the flag and set `serverDir` (tasks are only scanned, never by default).
+> Tasks are experimental — enable the flag and set `serverDir` (tasks are only scanned, never by default).
 
 ```ts [nitro.config.ts]
 import { defineConfig } from "nitro";
@@ -15,7 +15,7 @@ export default defineConfig({
 });
 ```
 
-## Define a task
+## 1. Define a task
 
 Tasks live in `tasks/[name].ts` under `serverDir`; nested folders join the name with `:`.
 
@@ -42,7 +42,7 @@ export default defineTask({
 - `meta` (optional): `name` + `description` for the dev server and CLI.
 - `run(event)` (required): receives `{ name, payload, context }` and returns `{ result? }` (or a Promise of it).
 
-## Scheduled (cron)
+## 2. Scheduled (cron)
 
 ```ts [nitro.config.ts]
 export default defineConfig({
@@ -63,7 +63,7 @@ Scheduled runs receive `payload.scheduledTime = Date.now()`. Platform support (v
 | `cloudflare_module` / `cloudflare_pages` | native Cron Triggers — Nitro generates them into the wrangler config at build |
 | `vercel` | native Vercel Cron Jobs — auto-generated; secure with `CRON_SECRET` |
 
-## Run programmatically
+## 3. Run programmatically
 
 ```ts [server/api/migrate.ts]
 import { defineHandler } from "nitro";
@@ -79,12 +79,12 @@ export default defineHandler(async (event) => {
 
 `runTask` throws `404` if the task doesn't exist and `501` if it has no handler.
 
-## Dev server & CLI
+## 4. Dev server & CLI
 
 - `GET /_nitro/tasks` lists tasks + scheduledTasks; `POST /_nitro/tasks/:name` runs one (body `{ "payload": {...} }`).
 - `nitro task list` and `nitro task run db:migrate --payload "{}"` — only while the dev server is running.
 
-## `waitUntil`
+## 5. `waitUntil`
 
 `context.waitUntil` (runtime-dependent) keeps the worker alive until background work finishes:
 
@@ -102,4 +102,10 @@ run({ context }) {
 - Forgetting `experimental.tasks: true` → the tasks API isn't wired.
 - Config `tasks[].handler` path resolved against project root → use an absolute path via `fileURLToPath(new URL(..., import.meta.url))`.
 - Triggering a task from a public route without auth → anyone can run your migrations/cleanup.
-- Expecting two concurrent runs of the same task → runs are de-duplicated **by name**; concurrent callers share the first in-flight result (even with different payloads).
+- Expecting two concurrent runs of the same task → runs are de-duplicated by name; concurrent callers share the first in-flight result (even with different payloads).
+
+## Related
+
+- `references/apis.md`
+- `references/cli.md`
+- `best-practices/deploy.md`

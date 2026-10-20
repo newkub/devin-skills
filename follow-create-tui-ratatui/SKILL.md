@@ -5,7 +5,7 @@ argument-hint: "[scope]"
 related:
   - design-tui-prototype
   - follow-create-rust-cli
-  - deep-review-codebase
+  - deep-review
   - run-test
   - follow-single-responsibility
   - follow-release
@@ -31,7 +31,7 @@ Build a TUI application with Rust using the Ratatui library
 
 > Goal: Review the stack
 
-1. Run `/deep-research` + `/follow-best-practice` to confirm the latest versions and patterns, then run `/deep-review-codebase` to summarize the tech stack
+1. Run `/deep-research` + `/follow-best-practice` to confirm the latest versions and patterns, then run `/deep-review` to summarize the tech stack
 2. Confirm the use of Rust + Ratatui + crossterm
 3. Record the rationale for the chosen stack
 
@@ -103,7 +103,7 @@ Build a TUI application with Rust using the Ratatui library
 
 1. Run `cargo build` and `cargo test` — use `ratatui::backend::TestBackend` + `assert_buffer()` to snapshot-test rendering
 2. Run `/run-test all` if there are integration tests
-3. Run `/deep-review-codebase` to check usability
+3. Run `/deep-review` to check usability
 4. Test event handling on a real terminal
 
 ### 10. Package And Ship

@@ -11,7 +11,7 @@ allowed-tools:
   - find_file_by_name
 related:
   - check-secrets
-  - deep-review-codebase
+  - deep-review
   - follow-tool-security-audit-skill
   - report
 ---
@@ -22,7 +22,7 @@ Run deepsec (deepsec.sh — Vercel OSS) for an AI-driven security review of the 
 
 ## Scope
 
-Use when a deep AI-agent security audit of the codebase is needed — config/env-level secrets hygiene → `/check-secrets`; general code review → `/deep-review-codebase`; deepsec = the dedicated security pipeline tracking state, matchers, and findings per project; on-demand multi-phase audit inside the coding agent with independently verified `findings.json` → `/follow-tool-security-audit-skill`
+Use when a deep AI-agent security audit of the codebase is needed — config/env-level secrets hygiene → `/check-secrets`; general code review → `/deep-review`; deepsec = the dedicated security pipeline tracking state, matchers, and findings per project; on-demand multi-phase audit inside the coding agent with independently verified `findings.json` → `/follow-tool-security-audit-skill`
 
 - Boundary: deepsec reads source code with an AI agent authenticated to a model provider — run it only on code trusted at that level; untrusted PRs → guarded CI mode or sandboxes
 
@@ -82,7 +82,7 @@ bunx deepsec report       # quick overview
 > Goal: run isolated / summarize results
 
 - `bunx deepsec sandbox process --project-id my-app --sandboxes 10 --concurrency 4` — isolated Vercel sandboxes; the host keeps the credentials (sandboxes never see real keys)
-- Summarize findings for the user with `/report`; triage into the fix pipeline via `/deep-review-codebase`
+- Summarize findings for the user with `/report`; triage into the fix pipeline via `/deep-review`
 
 ## Rules
 

@@ -11,7 +11,7 @@ related:
   - follow-create-product
   - follow-create-web
   - implement-to-production
-  - deep-review-codebase
+  - deep-review
   - improve
   - run-dev
   - deep-test
@@ -92,7 +92,7 @@ Clone a product (website/SaaS) that has no public source repo — research every
 
 1. Run `/use-agents-capture all` against the rebuilt app — same routes, same device sizes → `.devin/temp/report/clone-<product>/ours/`
 2. Compare ours vs target captures route by route; list every visual/behavioral gap
-3. Run `/improve uxui` on the gap list and fix each finding; run `/deep-review-codebase` for accessibility/performance dimensions
+3. Run `/improve uxui` on the gap list and fix each finding; run `/deep-review` for accessibility/performance dimensions
 4. Repeat 2–3 until parity passes or remaining gaps are intentional (record why)
 
 ### 8. Ship

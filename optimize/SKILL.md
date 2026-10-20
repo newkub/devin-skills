@@ -4,17 +4,21 @@ description: Find optimization opportunities — baseline, deep review, fix, re-
 argument-hint: "[scope]"
 related:
   - deep-optimize
-  - deep-review-codebase
+  - deep-review
   - improve
   - run-bench
-  - report
+  - report-review
   - suggest-next-action
   - ask-me
+  - follow-tool-sonda
+  - follow-tool-vite-devtools
+  - follow-tool-node-modules-inspector
+  - follow-tool-unlighthouse
 ---
 
 ## Goal
 
-Answer the question "what can be optimized" for the scope the user specifies — a thin entry that routes the scope through `references/scope-map.md` (SSOT: signal → review domain) into `/deep-review-codebase`, then does Measure → optimize → re-measure per the convention in this skill; it does not optimize itself
+Answer the question "what can be optimized" for the scope the user specifies — a thin entry that routes the scope through `references/scope-map.md` (SSOT: signal → review domain) into `/deep-review`, then does Measure → optimize → re-measure per the convention in this skill; it does not optimize itself
 
 ## Scope
 
@@ -25,9 +29,18 @@ Use when the user orders optimizing the whole scope without naming a domain — 
 - If you want general quality improvement, not performance/cost → `/improve` instead
 - Every item must pass this skill's measure-first convention: never optimize without measuring a baseline
 
+### Tools And Libraries
+
+Hints per scope — the tool produces the baseline and the after-measurement; not every row is mandatory:
+
+| Scope | Skills |
+|-------|--------|
+| `bundle` | `follow-tool-sonda`, `follow-tool-vite-devtools`, `follow-tool-node-modules-inspector` |
+| `perf`, `web-vitals` | `follow-tool-unlighthouse` |
+
 ## References
 
-- `references/scope-map.md` — the SSOT table: signal → `/optimize <scope>` → `/deep-review-codebase` domain (merges the single `/follow-optimize` that was folded into this skill — covers all 18 signals)
+- `references/scope-map.md` — the SSOT table: signal → `/optimize <scope>` → `/deep-review` domain (merges the single `/follow-optimize` that was folded into this skill — covers all 18 signals)
 
 ## Execute
 
@@ -36,14 +49,14 @@ Use when the user orders optimizing the whole scope without naming a domain — 
 > Goal: pick the right dimension + have evidence before fixing
 
 1. Take `scope` from the argument — if absent → use the current project; if unclear → `/ask-me`
-2. Look up the signal in the scope from `references/scope-map.md` → get the matching `/deep-review-codebase` domain
+2. Look up the signal in the scope from `references/scope-map.md` → get the matching `/deep-review` domain
 3. Record the baseline metrics for that dimension (time, size, cost, hit rate, p50/p95/p99) via `/run-bench`/profiler as available — never skip
 
 ### 2. Review
 
 > Goal: findings are backed by a baseline
 
-1. Run `/deep-review-codebase` on that scope in the domains from scope-map — report via `/report-review`
+1. Run `/deep-review` on that scope in the domains from scope-map — report via `/report-review`
 2. Keep only the findings that are measurable (the metric actually changes) — no evidence = no fix
 
 ### 3. Fix And Re-Measure
@@ -51,12 +64,12 @@ Use when the user orders optimizing the whole scope without naming a domain — 
 > Goal: the result is measurably real
 
 1. Run `/report-review` with the `Metric before/after` column appended (the baseline delta is this scope's evidence), then proceed to fix immediately
-2. Send each finding to `/deep-review-codebase <scope> then-fix fix all` per domain — `fix all` skips the per-finding confirm this skill already waived
+2. Send each finding to `/deep-review <scope> then-fix fix all` per domain — `fix all` skips the per-finding confirm this skill already waived
 3. re-measure against the baseline for every fix — if it does not improve → revert; run `/suggest-next-action` after everything is fixed
 
 ## Rules
 
-- Never optimize yourself — route through scope-map into `/deep-review-codebase`, or use `/deep-optimize` when unclear — a thin entry holds no domain logic
+- Never optimize yourself — route through scope-map into `/deep-review`, or use `/deep-optimize` when unclear — a thin entry holds no domain logic
 - Always Measure → optimize → re-measure — no premature optimization
 - Every plan/finding must be prioritized by impact/effort with baseline evidence — no evidence = no fix
 - Metric-driven findings that escape from `/improve` are routed onward here — never fix perf in the improve path
@@ -64,5 +77,5 @@ Use when the user orders optimizing the whole scope without naming a domain — 
 ## Expected Outcome
 
 - A prioritized optimization list with baseline/after comparison
-- All fixes routed through `/deep-review-codebase <scope> then-fix` per the scope-map domains
+- All fixes routed through `/deep-review <scope> then-fix` per the scope-map domains
 - A metric that does not improve is reverted — ending with `/suggest-next-action`

@@ -9,7 +9,7 @@ related:
   - follow-release
   - follow-tool-cargo
   - run-test
-  - deep-review-codebase
+  - deep-review
   - report
 
 ---
@@ -29,8 +29,8 @@ Use for building library crates in pure Rust or with FFI, covering `Cargo.toml`,
 
 > Goal: Inspect the tech stack before creating
 
-1. Run `/deep-research` + `/follow-best-practice` to confirm the latest versions and patterns, then run `/deep-review-codebase` to summarize the tech stack
-2. Run `/deep-review-codebase` to review the tech stack, dependencies, and library design (create rust crate)
+1. Run `/deep-research` + `/follow-best-practice` to confirm the latest versions and patterns, then run `/deep-review` to summarize the tech stack
+2. Run `/deep-review` to review the tech stack, dependencies, and library design (create rust crate)
 3. Record the reasons for choosing the stack and libraries for later reference (create rust crate)
 
 ### 2. Setup Project

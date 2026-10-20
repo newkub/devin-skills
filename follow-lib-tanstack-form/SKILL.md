@@ -97,6 +97,16 @@ const form = useForm({
 - Async validators must have debounce — otherwise you spam the server on every keystroke
 - Headless = a11y is the app's job: `label htmlFor`, `aria-invalid`, `aria-describedby`, error text link
 - Use `form.Subscribe` for derived UI — never subscribe the whole store
+- See best-practices/ for the pattern and pitfall checklist
+
+### Use Cases
+
+| Scenario | Use case |
+|----------|----------|
+| Standard Schema validation + submit guard | `usecases/schema-validated-form.md` |
+| Field arrays + debounced async validation | `usecases/array-fields-and-async-validation.md` |
+
+- See usecases/ for end-to-end scenario recipes
 
 ## Expected Outcome
 

@@ -7,7 +7,7 @@ triggers:
   - model
 related:
   - deep-review-ship
-  - deep-review-codebase
+  - deep-review
   - deep-validate
   - update-tests
   - run-test
@@ -49,7 +49,7 @@ The single ship command — run every verification gate first, then commit/push,
 
 > Goal: changes and `AGENTS.md` pass review and their findings are fixed before ship
 
-1. Run `/deep-review-codebase [scope] --diff then-fix` — the canonical reviewer + fixer: one full scan sliced per dimension, one reviewer per dimension via `/use-subagents`, findings fixed per its `references/domain-map.md`, re-reviewed with `--diff` until clean; the `/ship` flow skips the step 7 per-finding confirm and follows the report as-is; it never pushes or merges
+1. Run `/deep-review [scope] --diff then-fix` — the canonical reviewer + fixer: one full scan sliced per dimension, one reviewer per dimension via `/use-subagents`, findings fixed per its `references/domain-map.md`, re-reviewed with `--diff` until clean; the `/ship` flow skips the step 7 per-finding confirm and follows the report as-is; it never pushes or merges
 2. Change spans several workspaces/modules/layers → run `/deep-review-ship` instead — it splits the scope into disjoint parts, runs the same review+fix skill per part in parallel, and returns the ship-readiness verdict here
 3. Add `/review-devin-global-harness` when changing the devin skills repo
 4. If findings survive ≤ 3 fix/re-verify rounds → stop and report `blocked`, never push
@@ -95,7 +95,7 @@ The single ship command — run every verification gate first, then commit/push,
 > Goal: the → `main` PR passes review + all checks before merge
 
 1. Create/find the PR into `main` with `/create-github-pr` (if none exists)
-2. Run `/review-github-pr` — full gate: all CI checks pass + `/deep-validate` + `/deep-review-codebase` + PR metadata/diff clean
+2. Run `/review-github-pr` — full gate: all CI checks pass + `/deep-validate` + `/deep-review` + PR metadata/diff clean
 3. If the gate fails → fix the findings on the branch, re-run `/git-commit-and-push` — never merge
 
 ### 9. Merge To Main
@@ -129,6 +129,6 @@ The single ship command — run every verification gate first, then commit/push,
 ## Expected Outcome
 
 - `AGENTS.md` fresh, review/validate/check passed, tests green, dev run works, usage matches reality
-- Code pushed to remote with green CI/CD, PR review gate passed (checks + deep-validate + deep-review-codebase)
+- Code pushed to remote with green CI/CD, PR review gate passed (checks + deep-validate + deep-review)
 - Branches merged into `main` successfully + cleanup done, with a rollback path
 - A clear report with the verdict and the next action (`/release-new-version` if a release is needed)

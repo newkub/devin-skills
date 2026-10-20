@@ -11,7 +11,7 @@ related:
   - deep-research
   - run-audit
   - use-scripts
-  - deep-review-codebase
+  - deep-review
 ---
 
 ## Goal
@@ -91,7 +91,7 @@ Covers analysis across many dimensions:
 2. Use `/use-astgrep-programmatic` for AST-based metrics if needed
 3. Find code smells with `Grep` multiline mode
 4. Use `/use-scripts` to compute metrics (complexity, coupling, cohesion)
-5. Run `/deep-review-codebase` and `/follow-tool-knip` in parallel
+5. Run `/deep-review` and `/follow-tool-knip` in parallel
 6. Scan for hardcoded secrets with `Grep`
 
 ### 6. Dependencies And Tech Stack
@@ -118,12 +118,12 @@ Covers analysis across many dimensions:
 
 > Goal: cover every dimension — dispatch to `review-*` per detected stack
 
-- Full dispatch catalog of 61 domains with priority order + pipeline phases → read `deep-review-codebase/SKILL.md` (single source of truth — never duplicate the table here)
+- Full dispatch catalog of 61 domains with priority order + pipeline phases → read `deep-review/SKILL.md` (single source of truth — never duplicate the table here)
 - Dispatch only the domains the stack actually has — never run all of them every time
 - Parallelize via `/use-subagents` when many domains
 - Merge all findings into one report with domain tags
 - Dedup: the same finding from multiple domains → merge into one item tagged with every domain that found it
-- If `/deep-review-codebase` already ran in this session → reuse its findings, don't re-dispatch the same domains
+- If `/deep-review` already ran in this session → reuse its findings, don't re-dispatch the same domains
 
 ### 9. External Research
 

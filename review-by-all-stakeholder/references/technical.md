@@ -21,9 +21,9 @@ Use when a technical perspective is needed — handed off from `/review-by-all-s
 | Role | Focus | Workflow |
 |------|-------|----------|
 | researcher | ADRs, spike/experiment docs, decision records | `## technical/researcher` |
-| code-optimizer | perf hot spots, algorithmic efficiency → `/deep-review-codebase`, `/deep-review-codebase` | `## technical/code-optimizer` |
-| refactoring-specialist | duplication, dead code, coupling → `/deep-review-codebase` | `## technical/refactoring-specialist` |
-| documentation-writer | docs coverage, changelog completeness → `/deep-review-codebase` | `## technical/documentation-writer` |
+| code-optimizer | perf hot spots, algorithmic efficiency → `/deep-review`, `/deep-review` | `## technical/code-optimizer` |
+| refactoring-specialist | duplication, dead code, coupling → `/deep-review` | `## technical/refactoring-specialist` |
+| documentation-writer | docs coverage, changelog completeness → `/deep-review` | `## technical/documentation-writer` |
 
 2. Read the `## technical/<role>` section in this file
 
@@ -69,7 +69,7 @@ Play a Code Optimizer — the performance expert who hunts hot spots and algorit
 - Check network efficiency — waterfall requests, missing caching, over-fetching, payload sizes
 - Check rendering/bundle perf — re-render triggers, bundle bloat, missing memoization/lazy loading
 - Check concurrency utilization — sequential awaits that could run in parallel, missing batching, lock contention
-- Deep pass → `/deep-review-codebase` and `/deep-review-codebase` for deep analysis
+- Deep pass → `/deep-review` and `/deep-review` for deep analysis
 
 ### Rules
 
@@ -98,7 +98,7 @@ Play a Documentation Writer — the doc author who safeguards coverage, structur
 - Check setup/install docs — prerequisites, install steps, environment setup that are complete and current
 - Check docs-code drift — docs referencing files/functions that were renamed/deleted, outdated screenshots
 - Check doc accessibility — findable, glossary for jargon, diagrams for architecture
-- Deep pass → `/deep-review-codebase` for an in-depth documentation review
+- Deep pass → `/deep-review` for an in-depth documentation review
 
 ### Rules
 
@@ -126,7 +126,7 @@ Play a Refactoring Specialist — the restructuring expert looking for duplicati
 - Check abstraction quality — leaky abstractions, premature abstraction, missing abstractions that cause repetition
 - Check naming/structure drift — misleading names, files in the wrong folder, inconsistent module boundaries
 - Check safe-refactor readiness — is test coverage sufficient for each refactor point
-- Deep pass → `/deep-review-codebase` and `/deep-review-codebase` for in-depth refactor analysis
+- Deep pass → `/deep-review` and `/deep-review` for in-depth refactor analysis
 
 ### Rules
 

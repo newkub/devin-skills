@@ -99,6 +99,16 @@ For JavaScript/TypeScript, CSS, and JSON in projects using Biome v2+ — this sk
 3. Use anchors and node matchers appropriately
 4. Verify performance by benchmarking on the real codebase
 
+### Use Cases
+
+| Scenario | Use case |
+|----------|----------|
+| Add a custom lint rule as a Biome plugin | `usecases/custom-lint-rule.md` |
+| Search structurally, then apply a gated rewrite | `usecases/structural-search-rewrite.md` |
+| Metavariables, spans, `where` and `<:` conditions | `usecases/metavariables-and-conditions.md` |
+| js/css/json targets and `engine biome` node matchers | `usecases/language-targets-and-biome-nodes.md` |
+| Two-pass rollout of safe and unsafe fixes | `usecases/safe-unsafe-fix-rollout.md` |
+
 ## Rules
 
 ### 1. Pattern Syntax

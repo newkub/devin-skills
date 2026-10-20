@@ -43,5 +43,5 @@
 - Most scan time goes to the file count — `.semgrepignore` is always the first optimization
 - Cache the semgrep binary/semgrep-core in the CI image or setup action — don't reinstall every run
 - Split jobs: fast pattern rules in PR checks, taint/dataflow rules in nightly — saves PR time
-- Findings that survive triage → route to `/deep-review-codebase` or `/fix` for remediation — semgrep is a detection tool, not a fixer
+- Findings that survive triage → route to `/deep-review` or `/fix` for remediation — semgrep is a detection tool, not a fixer
 - Track the findings trend — a steadily rising count = the rules or the codebase need a review

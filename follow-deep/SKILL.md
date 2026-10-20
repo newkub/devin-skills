@@ -4,7 +4,7 @@ description: Consider and invoke the relevant deep-* workflows based on the task
 argument-hint: "[scope]"
 related:
   - review
-  - deep-review-codebase
+  - deep-review
   - deep-analyze
   - plan
   - refactor
@@ -21,7 +21,7 @@ Consider and invoke the relevant `deep-*` workflows based on the task context, s
 
 Use as a sub-workflow to decide which `deep-*` workflows the current task should call — it is not a standalone main workflow
 
-See also: /deep-review-codebase
+See also: /deep-review
 
 ## Execute
 
@@ -39,13 +39,13 @@ See also: /deep-review-codebase
 > Goal: pick the deep- workflows relevant to the task context
 
 1. Analysis → `deep-analyze` (includes scripts/review CLI)
-2. Review → `deep-review-codebase` (comprehensive) or `/review-*` (specific dimension)
+2. Review → `deep-review` (comprehensive) or `/review-*` (specific dimension)
 3. Planning → `plan`
 4. Refactoring → `refactor`
 5. Testing → `run-test`
 6. Validation → `deep-validate`
-7. Security → `deep-review-codebase`
-8. Performance → `/deep-review-codebase` (comprehensive) or `deep-review-codebase` (specific)
+7. Security → `deep-review`
+8. Performance → `/deep-review` (comprehensive) or `deep-review` (specific)
 9. Research → `deep-research` (multi-source) or `learn-from-web` (single-source)
 10. Thinking → `deep-thinking` (systematic) or `deep-thinking` (reflective)
 
@@ -78,7 +78,7 @@ See also: /deep-review-codebase
 
 - Select only the deep- workflows genuinely relevant to the task
 - Do not always call every deep- workflow — choose based on context
-- If the task is about review → use `deep-review-codebase`, not `deep-analyze`
+- If the task is about review → use `deep-review`, not `deep-analyze`
 - If the task is about analysis needing scripts → use `deep-analyze` (scripts/review CLI already merged into it)
 
 ### 3. Parallel Execution

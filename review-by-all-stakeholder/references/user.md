@@ -69,14 +69,14 @@ Play an Accessibility Specialist — the person who guarantees the product works
 - Color/contrast — contrast ratio of text and UI tokens, meaning conveyed by color alone (error = red only), focus/hover distinguished only by color
 - Motion/media — `prefers-reduced-motion` support, autoplay that can be paused/stopped, captions/transcripts for media
 - Touch targets — sufficient hit area (≥44px), spacing to prevent mis-taps, interactions that require hover only
-- Delegate deep pass → `/deep-review-codebase` for a full WCAG audit
+- Delegate deep pass → `/deep-review` for a full WCAG audit
 
 ### Rules
 
 - Report only — do not modify anything
 - Every finding has evidence — file path, line, route, or config
 - Stay in persona — do not review topics this role does not care about; if you find an issue outside the lens, record it as an out-of-scope note
-- If a matching domain review skill exists (`/deep-review-codebase`), delegate to it or cite it as a deep pass
+- If a matching domain review skill exists (`/deep-review`), delegate to it or cite it as a deep pass
 
 ### Expected Outcome
 
@@ -103,7 +103,7 @@ Play a User Advocate — the person who protects users from harm and exploitativ
 - Report only — do not modify anything
 - Every finding has evidence — file path, line, route, or config
 - Stay in persona — do not review topics this role does not care about; if you find an issue outside the lens, record it as an out-of-scope note
-- If a matching domain review skill exists (e.g. `/deep-review-codebase`, `/deep-review-codebase`), delegate to it or cite it as a deep pass
+- If a matching domain review skill exists (e.g. `/deep-review`, `/deep-review`), delegate to it or cite it as a deep pass
 
 ### Expected Outcome
 
@@ -130,7 +130,7 @@ Play a User Researcher — the person who assesses whether the product is easy t
 - Report only — do not modify anything
 - Every finding has evidence — file path, line, route, or config
 - Stay in persona — do not review topics this role does not care about; if you find an issue outside the lens, record it as an out-of-scope note
-- If a matching domain review skill exists (`/deep-review-codebase`), delegate to it or cite it as a deep pass
+- If a matching domain review skill exists (`/deep-review`), delegate to it or cite it as a deep pass
 
 ### Expected Outcome
 
@@ -150,14 +150,14 @@ Play a UX Researcher — the person who studies the real user journey through th
 - Empty/error/loading states — pages with no data yet, failed flows, offline states — is the UI covered for every branch of the flow
 - Mental model fit — do navigation labels, information architecture, and naming match the language users expect; technical/internal terms leaking into the UI
 - Task feedback — confirmation after a successful action, undo/redo, autosave/draft, do destructive actions have warning or recovery
-- Delegate deep pass → `/deep-review-codebase` for visual/interaction detail deeper than the journey level
+- Delegate deep pass → `/deep-review` for visual/interaction detail deeper than the journey level
 
 ### Rules
 
 - Report only — do not modify anything
 - Every finding has evidence — file path, line, route, or config
 - Stay in persona — do not review topics this role does not care about; if you find an issue outside the lens, record it as an out-of-scope note
-- If a matching domain review skill exists (`/deep-review-codebase`), delegate to it or cite it as a deep pass
+- If a matching domain review skill exists (`/deep-review`), delegate to it or cite it as a deep pass
 
 ### Expected Outcome
 

@@ -2,9 +2,9 @@
 
 > Guard routes with JWT/session auth, attach user context, control middleware order. Source: https://nitro.build/docs/routing (Middleware), /docs/lifecycle (accessed 2026-10-20)
 
-## Global middleware
+## 1. Global middleware
 
-Files in `middleware/` auto-register and run before every route handler. Middleware is defined like a handler but **must not return a value** — returning closes the request and skips remaining handlers.
+Files in `middleware/` auto-register and run before every route handler. Middleware is defined like a handler but must not return a value — returning closes the request and skips remaining handlers.
 
 ```ts [middleware/auth.ts]
 import { defineHandler, createError, getRequestHeader } from "nitro";
@@ -20,7 +20,7 @@ export default defineHandler(async (event) => {
 });
 ```
 
-## Execution order
+## 2. Execution order
 
 Middleware runs in directory-listing (string) order. Prefix numbers to make it explicit:
 
@@ -33,7 +33,7 @@ middleware/
 
 > Filenames sort as strings, so `10.x.ts` lands between `1.x.ts` and `2.x.ts`. With >9 middleware, zero-pad (`01`, `02`, …).
 
-## Route-scoped middleware
+## 3. Route-scoped middleware
 
 To bind middleware to a pattern instead of scoping by `event.url` checks, register it via `handlers` with `middleware: true`:
 
@@ -48,7 +48,7 @@ export default defineConfig({
 });
 ```
 
-## Read context in a handler
+## 4. Read context in a handler
 
 ```ts [server/routes/api/private/me.get.ts]
 import { defineHandler } from "nitro";
@@ -58,7 +58,7 @@ export default defineHandler((event) => {
 });
 ```
 
-## Verify
+## 5. Verify
 
 1. `GET /api/private/me` with no token → expect `401`, not a `500`.
 2. With a valid token → expect `event.context.user` to reach the handler.
@@ -70,3 +70,9 @@ export default defineHandler((event) => {
 - Global middleware touching every route without a path guard → wasted work and surprising 401s on public routes.
 - Storing the user on module scope or a global instead of `event.context` → leaks identity across concurrent requests.
 - Assuming a `fs`-backed token store on an edge preset → use `/docs/storage` mounts that match the target.
+
+## Related
+
+- `references/apis.md`
+- `references/cli.md`
+- `best-practices/deploy.md`

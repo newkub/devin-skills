@@ -62,12 +62,20 @@ bun add @tanstack/highlight
 2. The languages the project really uses — token coverage + theme colors in both light/dark
 3. On failure → `/resolve-errors` max 3 rounds
 
+### Use Cases
+
+| Scenario | Use case |
+|----------|----------|
+| Highlight a code block with CSS-variable theming | `usecases/highlight-code-block.md` |
+| Precompute highlighting at build time, zero client cost | `usecases/precompute-at-build-time.md` |
+
 ## Rules
 
 - Theme via CSS — no inline color config in highlighter options
 - SSR/precompute static content — client highlighting only for dynamic
 - Verify escaped output before `dangerouslySetInnerHTML`
 - Lazy-load grammars for what's used — don't bundle every language
+- See best-practices/ for the pattern and pitfall checklist
 - Use `/follow-lib-tanstack-ecosystem` for library selection
 
 ## Expected Outcome

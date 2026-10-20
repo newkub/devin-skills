@@ -40,7 +40,7 @@ Update unit tests to match refactored/signature-changed code — mocks, assertio
 
 1. A refactor that adds new branches/functions → add test cases per `/update-tests`' code-path map
 2. Preserve the AAA pattern and `should [expected] when [condition]` test names per the project
-3. Run `/deep-review-codebase` — no shared state, complete cleanup
+3. Run `/deep-review` — no shared state, complete cleanup
 
 ### 4. Run And Verify
 

@@ -125,7 +125,15 @@ Prepare for Solid 2.0 (`2.0.0-rc.8` — release candidate, GA near):
 - Use /follow-create-vite-plugin if needed (lib solidjs)
 - Use /follow-create-plugins if needed
 - See best-practices/ for recommended patterns and pitfalls
+- See usecases/ for end-to-end scenario recipes
 
+
+### Use Cases
+
+| Scenario | Use case |
+|----------|----------|
+| Nested form state with `createStore` | `usecases/nested-form-state-with-store.md` |
+| Async data with `createResource` + `Suspense` | `usecases/async-data-with-resource.md` |
 
 ## Expected Outcome
 

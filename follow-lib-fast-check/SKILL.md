@@ -68,6 +68,16 @@ Use when the task involves `fast-check` — setup, writing property tests, model
 2. Run `/run-test` to execute the test suite containing the property tests
 3. Check the latest official docs at `https://fast-check.dev` before using an uncertain API
 
+### Use Cases
+
+| Scenario | Use case |
+|----------|----------|
+| Round-trip/idempotence properties for serializers and sorters | `usecases/property-test-invariants.md` |
+| Model-based tests and async race detection | `usecases/race-and-model-based.md` |
+| Custom arbitraries, `fc.pre` preconditions, distribution stats | `usecases/custom-arbitraries-and-preconditions.md` |
+| Shrink a failure, replay by seed/path, add a regression test | `usecases/shrink-replay-and-regression.md` |
+| Runner adapter, CI run counts, prototype-pollution guard | `usecases/runner-integration-and-ci.md` |
+
 ## Rules
 
 - Property tests complement unit tests, never replace them — use for pure functions, serializers, and invariants

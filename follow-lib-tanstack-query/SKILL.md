@@ -95,6 +95,14 @@ const queryClient = new QueryClient({
 3. Run `/run-typecheck` and `/run-test`
 4. If it fails → `/resolve-errors` max 3 rounds
 
+### Use Cases
+
+| Scenario | Use case |
+|----------|----------|
+| Cached queries + targeted invalidation | `usecases/query-with-cache-invalidation.md` |
+| Optimistic mutations with rollback | `usecases/mutations-with-optimistic-ui.md` |
+| Infinite scroll, pagination, prefetch | `usecases/infinite-scroll-and-prefetch.md` |
+
 ## Rules
 
 - One `QueryClient` instance per app — never create it inside a component render
@@ -104,6 +112,8 @@ const queryClient = new QueryClient({
 - `isLoading` = first load only; `isFetching` = every fetch — pick the right one for the UX
 - Server state lives only in Query — never copy it into a Store/useState (`follow-store`)
 - Use `/follow-lib-tanstack-ecosystem` for the overview and library selection
+
+- See usecases/ for end-to-end scenario recipes
 
 ## Expected Outcome
 

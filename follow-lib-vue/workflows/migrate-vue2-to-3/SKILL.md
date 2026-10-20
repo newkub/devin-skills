@@ -8,7 +8,7 @@ related:
   - follow-lib-vueuse
   - deep-analyze
   - use-astgrep
-  - deep-review-codebase
+  - deep-review
   - report-before-after
 ---
 
@@ -60,7 +60,7 @@ Use when migrating a Vue 2 codebase to Vue 3 — covers the migration plan, buil
 
 1. Fix all compat warnings first — gradually flip the feature flags to 3
 2. Remove `@vue/compat` when there are no warnings left
-3. Do `/deep-review-codebase` to check for leftover Vue 2 APIs
+3. Do `/deep-review` to check for leftover Vue 2 APIs
 
 ### 5. Verify
 

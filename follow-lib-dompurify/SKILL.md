@@ -83,6 +83,16 @@ const clean = purify.sanitize(dirty);
 3. Run `/run-test` if related tests exist
 4. Check the latest official docs before using uncertain config — https://github.com/cure53/DOMPurify#readme
 
+### Use Cases
+
+| Scenario | Use case |
+|----------|----------|
+| Render user rich text with a strict allowlist | `usecases/sanitize-user-html.md` |
+| Sanitize markdown/CMS HTML on the server | `usecases/server-side-sanitize.md` |
+| Allowlist profile for rich user content | `usecases/allowlist-for-rich-content.md` |
+| Hooks for safe links and images | `usecases/hooks-for-links-and-images.md` |
+| Trusted Types under a strict CSP | `usecases/trusted-types-and-csp.md` |
+
 ## Rules
 
 - Never render raw HTML from user input without sanitize

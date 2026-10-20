@@ -4,7 +4,7 @@ description: Generate a complete README.md from a standard template using real p
 argument-hint: "[scope]"
 related:
   - update-docs
-  - deep-review-codebase
+  - deep-review
   - deep-analyze
   - learn-from-codebase
   - create-plan-in-dot-devin
@@ -91,7 +91,7 @@ Covers generating `README.md` for the root and every workspace in a monorepo, an
 
 > Goal: check quality and update references
 
-1. Run `/deep-review-codebase` + `/update-references` to check quality and update references at the same time
+1. Run `/deep-review` + `/update-references` to check quality and update references at the same time
 2. Verify sections per `## Rules` — especially Features 5 columns; if validation fails → revise and recheck (max 3 → stop/report)
 3. Checklist: status callout · hero without ANSI (`#` title first line, no `>` description at top — status badge only) · flow diagram above Get Started · Get Started plain numbered · Features 5 columns · Usage with ANSI + inline references · Contributing/License conditionals · no bottom ANSI · aligned ANSI borders
 
@@ -157,7 +157,7 @@ Covers generating `README.md` for the root and every workspace in a monorepo, an
 ### 10. Plan Always
 
 - Always run `/create-plan-in-dot-devin` before starting any README writing/update — to clearly define scope, sections, and per-workspace work
-- Use `/deep-review-codebase`, `/report`, `/deep-validate`, `/run-docs`, `/update-docs` as needed
+- Use `/deep-review`, `/report`, `/deep-validate`, `/run-docs`, `/update-docs` as needed
 
 ## Template
 

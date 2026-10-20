@@ -222,7 +222,7 @@ Canonical tech stack + default picks per category, grouped by ecosystem —
 - If it has mobile: add `Capacitor`, plus `Maestro` for E2E (see `/follow-tool-maestro`)
 - If it has background daemons/processes: add `pitchfork` (see `/follow-tool-pitchfork`)
 - If building a CLI or needing completions/docs/manpages: add `usage` (see `/follow-tool-usage`)
-- If it has animation/interactive visuals: add `/deep-review-codebase`
+- If it has animation/interactive visuals: add `/deep-review`
 
 ## Fast Parser And Bundler
 

@@ -68,7 +68,7 @@ Build a health scorecard of a repository — combining signals from multiple che
 
 1. Identify quick wins per repo (e.g. add LICENSE, enable CI, delete stale branches)
 2. Flag repos that should be archived or revived
-3. Link to related skills: `/deep-review-codebase`
+3. Link to related skills: `/deep-review`
 4. If multiple fixes must be applied safely → recommend `/apply` mode `validate`
 5. Run `/suggest-next-action`
 

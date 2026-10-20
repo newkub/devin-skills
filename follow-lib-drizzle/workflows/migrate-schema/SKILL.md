@@ -4,7 +4,7 @@ description: Manage Drizzle migrations — generate/migrate/push flow with a rol
 argument-hint: "[strategy-or-scope]"
 related:
   - follow-lib-drizzle
-  - deep-review-codebase
+  - deep-review
   - plan
   - run-test
   - report-before-after
@@ -32,7 +32,7 @@ Manage Drizzle schema changes safely — pick a strategy (generate/migrate vs pu
    - Production/team: `bunx drizzle-kit generate` + `bunx drizzle-kit migrate`
    - Existing database with no schema: `bunx drizzle-kit pull`
 3. If the change is destructive (drop column/table, rename, type change on real data) → always back up the database first
-4. Run `/deep-review-codebase` to check the state of the current migration files
+4. Run `/deep-review` to check the state of the current migration files
 
 ### 2. Generate And Review
 

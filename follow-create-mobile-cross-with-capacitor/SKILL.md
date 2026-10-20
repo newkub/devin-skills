@@ -4,7 +4,7 @@ description: Guide to building Capacitor 8 cross-platform mobile apps with web t
 argument-hint: "[scope]"
 related:
   - use-bun-native-api
-  - deep-review-codebase
+  - deep-review
   - follow-tool-vite
   - follow-deploy
 
@@ -32,7 +32,7 @@ Use for developing and maintaining Capacitor 8 mobile apps in a monorepo, coveri
 5. Verify JDK 21 or newer
 6. Set environment variables if needed: `CAPACITOR_ANDROID_STUDIO_PATH`, `CAPACITOR_COCOAPODS_PATH`
 7. Run `/use-bun-native-api` for the Bun runtime and package manager
-8. Run `/deep-review-codebase` for configuration files
+8. Run `/deep-review` for configuration files
 
 ### 2. Project Configuration
 

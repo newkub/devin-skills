@@ -6,7 +6,7 @@ related:
   - follow-tool-vite
   - follow-tool-rolldown
   - deep-analyze
-  - deep-review-codebase
+  - deep-review
   - report-before-after
 ---
 
@@ -55,7 +55,7 @@ Move a Vite project to `vite@^8` (Rolldown + Oxc as the default) safely — dev,
 1. `build.rollupOptions` → `build.rolldownOptions` (the compat layer still supports it, but migrating is preferred)
 2. `optimizeDeps.esbuildOptions` → `optimizeDeps.rolldownOptions`; top-level `esbuild.*` → `oxc.*` (both deprecated in Vite 8)
 3. If a plugin uses `transformWithEsbuild`, install `esbuild` as a temporary devDependency — esbuild is no longer a direct Vite dependency
-4. Check the remaining deprecated options with `/deep-review-codebase` — for options you're unsure about, see official docs, never guess
+4. Check the remaining deprecated options with `/deep-review` — for options you're unsure about, see official docs, never guess
 
 ### 5. Verify
 

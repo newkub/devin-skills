@@ -5,7 +5,7 @@ argument-hint: "[module-name]"
 related:
   - use-pwsh-shell
   - devin-scripts-toolkit
-  - deep-review-codebase
+  - deep-review
   - follow-best-practice
   - run-test
   - run-check
@@ -30,8 +30,8 @@ Create a PowerShell module or script project that follows best practices: module
 
 > Goal: Prepare context before creating
 
-1. Run `/deep-research` + `/follow-best-practice` to confirm the latest versions and patterns, then run `/deep-review-codebase` to look at tooling
-2. Run `/deep-review-codebase` if the module involves project dependencies
+1. Run `/deep-research` + `/follow-best-practice` to confirm the latest versions and patterns, then run `/deep-review` to look at tooling
+2. Run `/deep-review` if the module involves project dependencies
 3. Check the PowerShell version with `$PSVersionTable.PSVersion` — target `pwsh` 7.6+ (LTS) by default
 
 ### 2. Gather Requirements

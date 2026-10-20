@@ -3,7 +3,7 @@ name: follow-lib-better-auth
 description: Use Better Auth for authentication and authorization
 argument-hint: "[scope]"
 related:
-  - deep-review-codebase
+  - deep-review
   - follow-lib-jose
   - follow-lib-simplewebauthn
 ---
@@ -20,7 +20,7 @@ Boundaries:
 - Use this skill when a full auth framework is needed (sessions, providers, plugins, adapters)
 - For JWT sign/verify only → use `/follow-lib-jose` instead
 - For WebAuthn/passkeys without an auth framework → use `/follow-lib-simplewebauthn` instead
-- To review existing auth design/security → use `/deep-review-codebase`
+- To review existing auth design/security → use `/deep-review`
 
 - Latest: `better-auth@1.7.5` (verified 2026-09-16)
 - References: [apis](references/apis.md) | [cli](references/cli.md) 
@@ -110,11 +110,23 @@ Boundaries:
 
 - Upgrade `better-auth` and `@better-auth/*` together
 - Read the migration guide before a major upgrade (e.g. v1.7 has breaking changes for OAuth, MCP, SCIM)
-- Use /deep-review-codebase if needed
+- Use /deep-review if needed
 - Use /follow-lib-jose if needed
 - Use /follow-lib-simplewebauthn if needed
 
 - See best-practices/ for recommended patterns and pitfalls
+
+### Use Cases
+
+| Scenario | Use case |
+|----------|----------|
+| Email/password + server session guard | `usecases/email-password-and-session.md` |
+| Social login + protected routes | `usecases/social-login-and-route-protection.md` |
+| Two-factor and passkey sign-in | `usecases/two-factor-and-passkey-plugins.md` |
+| Database adapter and auth migrations | `usecases/database-adapter-and-migrations.md` |
+| Organizations and multi-tenant sessions | `usecases/organization-multi-tenant.md` |
+
+- See usecases/ for end-to-end scenario recipes
 
 ## Expected Outcome
 

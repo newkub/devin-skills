@@ -8,7 +8,7 @@ related:
   - resolve-errors
   - run-check
   - run-verify
-  - deep-review-codebase
+  - deep-review
 
 ---
 
@@ -20,7 +20,7 @@ Profile performance to find bottlenecks and optimize
 
 Use for profiling with Chrome DevTools, a Node.js profiler, or a Bun profiler to find hot paths and memory issues
 
-See also: /deep-review-codebase
+See also: /deep-review
 
 ## Execute
 
@@ -64,7 +64,7 @@ See also: /deep-review-codebase
 
 > Goal: Improve performance based on findings
 
-1. Run `/deep-review-codebase` to make improvements
+1. Run `/deep-review` to make improvements
 2. Use appropriate caching
 3. Optimize algorithms and data structures
 4. Remove unnecessary work

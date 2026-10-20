@@ -27,7 +27,7 @@ Patterns verified against the `cloudflare/security-audit-skill` README and its d
 
 - Reports derive only from verified records + ledger — no prose claims the JSON can't back; target-neutral wording (no "obviously vulnerable" filler)
 - Publish via `/report-review` (chat table) for action; full artifacts live in the run dir, git-ignored — never commit raw findings into the repo
-- Route confirmed code fixes → `/deep-review-codebase security then-fix` / `/fix`; secrets-class findings → `/check-secrets`
+- Route confirmed code fixes → `/deep-review security then-fix` / `/fix`; secrets-class findings → `/check-secrets`
 
 ## 6. Make Runs Compound
 

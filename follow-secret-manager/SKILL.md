@@ -8,7 +8,7 @@ related:
   - deploy-to-vercel
   - deploy-to-railway
   - follow-deploy
-  - deep-review-codebase
+  - deep-review
   - follow-tool-github-actions
   - run-audit
 
@@ -182,7 +182,7 @@ Latest: `@infisical/cli@0.43.136`, `@infisical/sdk@5.0.2` (verified 2026-09-24)
 - Use /deploy-to-vercel if needed
 - Use /deploy-to-railway if needed
 - Use /follow-deploy if needed
-- Use /deep-review-codebase if needed
+- Use /deep-review if needed
 - Use /follow-tool-github-actions if needed (secret manager)
 - Use /run-audit if needed
 

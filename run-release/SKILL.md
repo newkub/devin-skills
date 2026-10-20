@@ -3,7 +3,7 @@ name: run-release
 description: Auto-detect platforms, release to external platforms, gen CHANGELOG
 argument-hint: "[scope]"
 related:
-  - deep-review-codebase
+  - deep-review
   - follow-secret-manager
   - ship
   - setup-cicd
@@ -27,7 +27,7 @@ Release to npm, crates.io, VSCode Marketplace, Chrome Web Store, and Docker Hub,
 
 ## Execute
 
-> Pre-Run: Always run `/deep-review-codebase` first — `run-*` must be reviewed/assessed before the main work, never skip; if findings are blockers, fix or report before running (release)
+> Pre-Run: Always run `/deep-review` first — `run-*` must be reviewed/assessed before the main work, never skip; if findings are blockers, fix or report before running (release)
 
 ### 1. Check Conditions And Detect Platforms
 
@@ -212,7 +212,7 @@ bun run skills/gen-changelog-md/scripts/gen-release-md
 
 - Use /setup-cicd if needed
 - Use /use-my-packages-on-registry if needed
-- Use /deep-review-codebase if needed
+- Use /deep-review if needed
 - Use /update-devin-global-skills if needed (release)
 
 - Use /resolve-errors if needed

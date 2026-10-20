@@ -3,7 +3,7 @@ name: report-review
 description: Report review findings as one chat table (No./Action/Evidence/Severity/Status)
 argument-hint: "[scope-or-findings-source]"
 related:
-  - deep-review-codebase
+  - deep-review
   - report
   - create-report-in-dot-devin
   - suggest-next-action
@@ -15,13 +15,13 @@ Report review results as chat tables — every row has an actionable step and re
 
 ## Scope
 
-- The final report of every `review-*`/`deep-review-codebase`/`report-*` — canonical format per `update-devin-global-skills` `## Conventions → Templates` rows `review-*`/`report-*`
-- Called standalone with no findings data → collect first with `/deep-review-codebase`
+- The final report of every `review-*`/`deep-review`/`report-*` — canonical format per `update-devin-global-skills` `## Conventions → Templates` rows `review-*`/`report-*`
+- Called standalone with no findings data → collect first with `/deep-review`
 - Files are created only when the user explicitly asks → `/create-report-in-dot-devin`; artifacts per the skill's nature (HTML/slides/diagram/schema file) can still be created via the owner skill
 
 ## Execute
 
-1. Collect findings from the source — `review-report.json` (findings table), dimension `review-*` results, or the scope the user specified; none → run `/deep-review-codebase` first
+1. Collect findings from the source — `review-report.json` (findings table), dimension `review-*` results, or the scope the user specified; none → run `/deep-review` first
 2. Dedup key = `file + rule/message-normalized + dimension` (merge into the highest severity + the more specific `fixSkill`), then order by severity → priority: P0 🔴 Critical (fix now, blocks ship) → P1 🟠 High (fix before ship) → P2 🟡 Medium (fix in this cycle) → P3 🟢 Low (nice to have) → P4 informational/hygiene
 3. Summarize at the report header: score/grade (if any), finding counts per severity, mode (full/diff) + the scope run, confidence
 4. Report one findings table PER dimension (grouped severity→priority inside each) with fixed columns:
@@ -34,10 +34,10 @@ Report review results as chat tables — every row has an actionable step and re
    - `Evidence` = file:line or real evidence (mandatory on every row, never invented)
    - `Severity`: 🔴 Critical / 🟠 High / 🟡 Medium / 🟢 Low — `Risk` = the blast radius (breach, outage, drift, UX, cost)
    - `Owner skill` = the `fixSkill` field — `Status` = new/existing/fixed/regressed (✅ fixed / ❌ open / 🔄 in progress / ⏭️ skipped)
-   - A caller that is a single dimension (e.g. `/review-issues`) renders one table; `/deep-review-codebase` renders one table per dispatched dimension
-   - When the caller is `/deep-review-codebase`, append the `in update-review-cli-then-run` (Y/N) column — the analyzer-gap flag from its step 3.6
+   - A caller that is a single dimension (e.g. `/review-issues`) renders one table; `/deep-review` renders one table per dispatched dimension
+   - When the caller is `/deep-review`, append the `in update-review-cli` (Y/N) column — the analyzer-gap flag from its step 3.6
 5. Close with the execution order: Foundation → Dependencies → High impact → Critical path (approximate effort per item — not a flat TODO) and the coverage of dimensions/workspaces run (done/skipped(reason)/failed from the ledger)
-6. Run `/suggest-next-action` — findings that must be fixed → `/deep-review-codebase <scope> then-fix`
+6. Run `/suggest-next-action` — findings that must be fixed → `/deep-review <scope> then-fix`
 
 ## Rules
 

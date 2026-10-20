@@ -145,6 +145,15 @@ jobs:
 
 - See best-practices/ for recommended patterns and pitfalls
 
+### Use Cases
+
+| Scenario | Use case |
+|----------|----------|
+| Version + publish a monorepo release | `usecases/monorepo-release-workflow.md` |
+| Require a changeset on package PRs | `usecases/pr-check-for-changeset.md` |
+
+- See usecases/ for end-to-end scenario recipes
+
 ## Expected Outcome
 
 - Changesets installed and working

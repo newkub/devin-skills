@@ -3,7 +3,7 @@ name: deep-validate-check-security
 description: Validate security dimension — input validation, auth, secrets, injection, rate limit
 argument-hint: "[scope]"
 related:
-  - deep-review-codebase
+  - deep-review
   - check-secrets
   - report
 ---
@@ -15,7 +15,7 @@ Check the security dimension of `/deep-validate` — input validation, authn/aut
 ## Scope
 
 - Used when `/deep-validate` dispatches to the `security` dimension, or invoked standalone
-- Read-only: record findings — fix via `/deep-review-codebase` fix workflows
+- Read-only: record findings — fix via `/deep-review` fix workflows
 
 ## Execute
 
@@ -32,7 +32,7 @@ Check the security dimension of `/deep-validate` — input validation, authn/aut
 
 1. Check authentication and authorization patterns
 2. Check there are no hardcoded secrets or API keys — run `/check-secrets` for a deep pass
-3. Check API security and rate limiting — run `/deep-review-codebase` on newly exposed endpoints
+3. Check API security and rate limiting — run `/deep-review` on newly exposed endpoints
 4. Record findings with severity + evidence
 
 ### 3. Report
@@ -46,7 +46,7 @@ Check the security dimension of `/deep-validate` — input validation, authn/aut
 
 - Confirmed hardcoded secret = Critical
 - State a short exploit path in each finding — no generic flags
-- Full deep security review → delegate to `/deep-review-codebase`
+- Full deep security review → delegate to `/deep-review`
 
 ## Expected Outcome
 

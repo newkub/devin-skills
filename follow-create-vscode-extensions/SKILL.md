@@ -9,7 +9,7 @@ related:
   - follow-release
   - follow-tool-vite
   - run-test
-  - deep-review-codebase
+  - deep-review
   - report
 
 ---
@@ -29,8 +29,8 @@ For building general VSCode extensions, supporting the official `yo generator-co
 
 > Goal: Review the tech stack before building
 
-1. Run `/deep-research` + `/follow-best-practice` to confirm the latest versions and patterns, then run `/deep-review-codebase` to summarize the tech stack
-2. Run `/deep-review-codebase` to review the tech stack, dependencies, and library design (create vscode extensions)
+1. Run `/deep-research` + `/follow-best-practice` to confirm the latest versions and patterns, then run `/deep-review` to summarize the tech stack
+2. Run `/deep-review` to review the tech stack, dependencies, and library design (create vscode extensions)
 3. Record the rationale for the chosen stack and libraries for future reference (create vscode extensions)
 
 ### 2. Setup Project

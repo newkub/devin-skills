@@ -99,6 +99,13 @@ Use when the task involves `tstyche` — install, config, type assertions, testi
 3. For TypeScript projects this is the dedicated type layer next to `expect-type`/vitest typecheck (`/follow-lang-typescript`, `/follow-tool-vitest`) — choose one owner per file type, don't duplicate assertions in both
 4. Run `/run-check` so lint/typecheck still pass with the new test files, then `/run-test` the runtime suite — type tests must not break it (`.tst.ts` files are outside runtime globs by design)
 
+### Use Cases
+
+| Scenario | Use case |
+|----------|----------|
+| Pin a public API's inferred types with relation/ability matchers | `usecases/type-test-public-api.md` |
+| Verify types across the declared TypeScript range in CI | `usecases/multi-version-target.md` |
+
 ## Rules
 
 ### 1. Type Tests Are Not Runtime Tests

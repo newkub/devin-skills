@@ -4,7 +4,7 @@ description: Build Raycast Extensions with TypeScript, React and the Raycast API
 argument-hint: "[scope]"
 related:
   - follow-create-sdk
-  - deep-review-codebase
+  - deep-review
   - follow-tool-vite
 
 ---
@@ -24,8 +24,8 @@ Use for building Raycast Extensions on macOS with TypeScript, React, and the Ray
 
 > Goal: Inspect the tech stack before creating
 
-1. Run `/deep-review-codebase` to summarize the tech stack in use
-2. Run `/deep-review-codebase` to review the tech stack, dependencies, and library design (create raycast extensions)
+1. Run `/deep-review` to summarize the tech stack in use
+2. Run `/deep-review` to review the tech stack, dependencies, and library design (create raycast extensions)
 3. Record the reasons for choosing the stack and libraries for later reference (create raycast extensions)
 
 ### 2. Setup Environment

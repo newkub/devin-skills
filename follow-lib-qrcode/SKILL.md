@@ -40,6 +40,13 @@ Use when the task involves this library/tool — setup, usage, debugging, or bes
 2. Run `/run-test` if related tests exist
 3. Check the latest official docs before using an uncertain API (lib qrcode)
 
+### Use Cases
+
+| Scenario | Use case |
+|----------|----------|
+| Return a PNG QR from an API route | `usecases/qr-in-api-response.md` |
+| Inline SVG, data URL, and terminal output | `usecases/qr-svg-and-terminal.md` |
+
 ## Rules
 
 - Pick the output by consumer: dataURL for `<img>`, buffer for download

@@ -3,7 +3,7 @@ name: follow-lang-nodejs-migrate-version
 description: Move a Node.js project between major versions safely, one step at a time
 related:
   - follow-lang-nodejs
-  - deep-review-codebase
+  - deep-review
   - improve
   - resolve-errors
   - run-test
@@ -29,7 +29,7 @@ For bumping the pinned Node.js line of an existing project; live-check the curre
 ### 2. Read The Breaking Changes
 
 1. Read the official release notes/changelog for every major between old and new — one major at a time, never skip intermediate majors on large jumps
-2. Grep the codebase for deprecated APIs touched by those notes → `/deep-review-codebase` for a systematic deprecation scan if the jump is large
+2. Grep the codebase for deprecated APIs touched by those notes → `/deep-review` for a systematic deprecation scan if the jump is large
 
 ### 3. Switch The Runtime
 

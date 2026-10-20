@@ -88,6 +88,13 @@ const { messages, sendMessage, isLoading, stop } = useChat({
 3. Test another adapter to confirm provider-agnosticism
 4. On failure → `/resolve-errors` max 3 rounds
 
+### Use Cases
+
+| Scenario | Use case |
+|----------|----------|
+| Streaming chat from server adapter to client UI | `usecases/streaming-chat.md` |
+| Server tools, client approval, bounded agent loop | `usecases/tool-calling-and-approval.md` |
+
 ## Rules
 
 - The adapter + `chat()` always live on the server — the client only sees the connection/stream
@@ -95,6 +102,7 @@ const { messages, sendMessage, isLoading, stop } = useChat({
 - Tools with side effects → `.server()` execution only
 - Message `parts` = source of truth — never parse raw text yourself
 - 0.x API — pin the exact version; verify every example against the latest docs
+- See best-practices/ for the pattern and pitfall checklist
 
 ## Expected Outcome
 

@@ -5,7 +5,7 @@ argument-hint: "[scope]"
 related:
   - follow-best-practice
   - setup-cicd
-  - deep-review-codebase
+  - deep-review
 
 ---
 
@@ -30,7 +30,7 @@ Configure Dioxus to build cross-platform applications (Desktop, Web, Mobile) wit
 
 > Goal: verify the environment before starting
 
-1. Run `/deep-research` + `/follow-best-practice` to confirm the latest version and patterns, then run `/deep-review-codebase` to summarize the tech stack
+1. Run `/deep-research` + `/follow-best-practice` to confirm the latest version and patterns, then run `/deep-review` to summarize the tech stack
 2. Confirm Rust/Cargo are installed (`rustc --version`, `cargo --version`)
 3. Install the `wasm32-unknown-unknown` target for Web (`rustup target add wasm32-unknown-unknown`)
 4. Linux desktop builds require WebKitGTK — `sudo apt install libwebkit2gtk-4.1-dev build-essential libxdo-dev libssl-dev libayatana-appindicator3-dev librsvg2-dev`; Windows uses WebView2 (ships with Edge); macOS needs nothing extra
@@ -101,7 +101,7 @@ Configure Dioxus to build cross-platform applications (Desktop, Web, Mobile) wit
 - Use /follow-create-mobile-cross-with-capacitor if needed (create cross dioxus)
 - Use /follow-best-practice if needed
 - Use /setup-cicd if needed
-- Use /deep-review-codebase if needed
+- Use /deep-review if needed
 
 ## Expected Outcome
 

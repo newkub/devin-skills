@@ -5,7 +5,7 @@ argument-hint: "<url> [options]"
 related:
   - follow-tool-unlighthouse
   - use-chrome-devtools
-  - deep-review-codebase
+  - deep-review
   - run-dev
   - report
 ---
@@ -90,8 +90,9 @@ bunx lighthouse <url> -GA           # gather + audit
 - Lighthouse scores vary between runs (variance) — don't conclude from a single run, use the median of several
 - Authenticated pages → launch Chrome with a logged-in profile via `--chrome-flags`/`--port`, or use `--disable-storage-reset`
 - Don't audit production third-party sites you have no rights to
-- Use /follow-tool-unlighthouse when site-wide is needed; /deep-review-codebase when going deeper than scores
+- Use /follow-tool-unlighthouse when site-wide is needed; /deep-review when going deeper than scores
 
+- See references/ for the API table and the full CLI flag list
 - See best-practices/ for recommended patterns and pitfalls
 
 ## Expected Outcome

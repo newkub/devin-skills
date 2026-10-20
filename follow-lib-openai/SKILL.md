@@ -47,6 +47,16 @@ Use when the task involves the `openai` SDK — the OpenAI API client server-sid
 2. Run `/run-test` if related tests exist
 3. Check the latest official docs before using an uncertain API (lib openai)
 
+### Use Cases
+
+| Scenario | Use case |
+|----------|----------|
+| Schema-enforced JSON output already typed by zod | `usecases/structured-output.md` |
+| Stream tokens from a server route to the browser | `usecases/streaming-chat.md` |
+| Run a function-calling loop with a hard turn cap | `usecases/tool-calling-loop.md` |
+| Embed, chunk, and rank documents for retrieval | `usecases/embeddings-and-retrieval.md` |
+| Retry only what is safe, and track token usage | `usecases/retry-rate-limits-and-usage.md` |
+
 ## Rules
 
 - Never call OpenAI from the client — always proxy through the server

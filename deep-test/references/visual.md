@@ -6,7 +6,7 @@ Check visual regression by capturing screenshots of routes/components and compar
 - Covers page-level screenshots via `agent-browser` or Playwright and component-level via Storybook/Playwright component tests
 - Report only: reports diffs, never auto-approves or reverts
 
-> Pre-Run: always run `/deep-review-codebase` (domain `review-test`) first — never skip; if findings are blockers, fix or report before running
+> Pre-Run: always run `/deep-review` (domain `review-test`) first — never skip; if findings are blockers, fix or report before running
 
 ## Run Quick Path
 
@@ -49,7 +49,7 @@ Check visual regression by capturing screenshots of routes/components and compar
 
 1. Open the diff images of the largest findings
 2. Check whether the change matches what was actually modified (from the git diff) or is a regression
-3. If unsure → run `/deep-review-codebase` or use `/deep-review-codebase` for additional context
+3. If unsure → run `/deep-review` or use `/deep-review` for additional context
 4. Group findings: `intended`, `suspect`, `regression`
 
 ## 5. Report

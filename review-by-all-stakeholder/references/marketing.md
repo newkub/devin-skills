@@ -76,7 +76,7 @@ Play a Brand Strategist — the person who maintains brand coherence, ensuring e
 - Report only — do not modify anything
 - Every finding has evidence — file path, line, route, or config
 - Stay in persona — do not review topics this role does not care about; if you find an issue outside the lens, record it as an out-of-scope note
-- If a matching domain review skill exists (e.g. `/deep-review-codebase`, `/deep-review-codebase`), delegate to it or cite it as a deep pass
+- If a matching domain review skill exists (e.g. `/deep-review`, `/deep-review`), delegate to it or cite it as a deep pass
 
 ### Expected Outcome
 
@@ -103,7 +103,7 @@ Play a Content Marketer — the person who looks at the project's content ecosys
 - Report only — do not modify anything
 - Every finding has evidence — file path, line, route, or config
 - Stay in persona — do not review topics this role does not care about; if you find an issue outside the lens, record it as an out-of-scope note
-- If a matching domain review skill exists (e.g. `/deep-review-codebase`, `/deep-review-codebase`), delegate to it or cite it as a deep pass
+- If a matching domain review skill exists (e.g. `/deep-review`, `/deep-review`), delegate to it or cite it as a deep pass
 
 ### Expected Outcome
 
@@ -130,7 +130,7 @@ Play a Marketing Strategist — the person who owns go-to-market messaging, cari
 - Report only — do not modify anything
 - Every finding has evidence — file path, line, route, or config
 - Stay in persona — do not review topics this role does not care about; if you find an issue outside the lens, record it as an out-of-scope note
-- If a matching domain review skill exists (e.g. `/deep-review-codebase`, `/deep-review-codebase`), delegate to it or cite it as a deep pass
+- If a matching domain review skill exists (e.g. `/deep-review`, `/deep-review`), delegate to it or cite it as a deep pass
 
 ### Expected Outcome
 
@@ -150,14 +150,14 @@ Play an SEO Specialist — the person who makes the product discoverable through
 - Crawlability — is content rendered server-side or client-only JS that crawlers can't see, SPA fallback, dynamic rendering needs
 - CWV signals — image optimization/dimensions/lazy loading, font loading strategy, render-blocking resources, layout shift risks (missing width/height)
 - URL hygiene — readable slug structure, trailing-slash consistency, redirect chains, broken internal links, params vs paths
-- Delegate deep pass → `/deep-review-codebase` for a full technical audit
+- Delegate deep pass → `/deep-review` for a full technical audit
 
 ### Rules
 
 - Report only — do not modify anything
 - Every finding has evidence — file path, line, route, or config
 - Stay in persona — do not review topics this role does not care about; if you find an issue outside the lens, record it as an out-of-scope note
-- If a matching domain review skill exists (`/deep-review-codebase`, `/deep-review-codebase`), delegate to it or cite it as a deep pass
+- If a matching domain review skill exists (`/deep-review`, `/deep-review`), delegate to it or cite it as a deep pass
 
 ### Expected Outcome
 
@@ -184,7 +184,7 @@ Play a Social Media Manager — the person who makes the product shared and look
 - Report only — do not modify anything
 - Every finding has evidence — file path, line, route, or config
 - Stay in persona — do not review topics this role does not care about; if you find an issue outside the lens, record it as an out-of-scope note
-- If a matching domain review skill exists (`/deep-review-codebase`), delegate to it or cite it as a deep pass
+- If a matching domain review skill exists (`/deep-review`), delegate to it or cite it as a deep pass
 
 ### Expected Outcome
 

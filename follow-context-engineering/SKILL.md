@@ -95,7 +95,7 @@ For AI coding assistants that run multi-step work, make many tool calls, or oper
 5. Check task decomposition: sub-tasks stay within 10 tool calls
 6. Check context window management: use `offset` `limit` `code_search`, batch parallel calls
 7. Compute a health score from the 6 metrics per `### 6. Context Rot Review`
-8. Rank findings by severity — per `deep-review-codebase/SKILL.md` Severity Classification
+8. Rank findings by severity — per `deep-review/SKILL.md` Severity Classification
 9. Report results with review score, severity, and action items
 
 ## Rules

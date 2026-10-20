@@ -7,7 +7,7 @@ related:
   - check-secrets
   - follow-secret-manager
   - update-config
-  - deep-review-codebase
+  - deep-review
   - follow-single-of-source
   - use-astgrep
   - update-references
@@ -23,8 +23,8 @@ Remove hardcoded values from the code — move them to env vars, config files, o
 
 - If the user specifies `@files...` → clear only those files; if not specified → scan the given scope or the whole project
 - secrets/credentials → route to `/check-secrets` + `/follow-secret-manager` (always rotate first)
-- user-facing strings → route to `/deep-review-codebase` (extraction to locale files)
-- config inconsistency across envs → route to `/deep-review-codebase`
+- user-facing strings → route to `/deep-review` (extraction to locale files)
+- config inconsistency across envs → route to `/deep-review`
 - mechanical batch across many files → `/use-astgrep rewrite` (always dry-run + confirm before overwriting)
 
 ## Execute
@@ -49,7 +49,7 @@ Remove hardcoded values from the code — move them to env vars, config files, o
 | env-specific values | env vars with a safe default + `.env.example` placeholder |
 | domain constants | `constants/` or a shared config module — one fact one source (`/follow-single-of-source`) |
 | magic numbers that cannot explain themselves | a named constant with a name that states the intent |
-| i18n strings | `/deep-review-codebase` extraction flow |
+| i18n strings | `/deep-review` extraction flow |
 
 ### 3. Extract
 

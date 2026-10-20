@@ -6,7 +6,7 @@ related:
   - move-to
   - update-references
   - report-file-structure
-  - deep-review-codebase
+  - deep-review
   - deep-validate
   - report
   - report-progress
@@ -56,7 +56,7 @@ Select a mode with `--mode` (default: `all`) — each mode uses the same steps b
 
 > Goal: design the target structure and mapping before moving
 
-1. Run `/deep-review-codebase` — plan relocations that do not break valuable grouping
+1. Run `/deep-review` — plan relocations that do not break valuable grouping
 2. Build the `old path → new path` mapping:
    - mode `refs`: `references/<name>/SKILL.md` → `references/<name>.md`, where `<name>` must match the frontmatter `name`
    - mode `code`: `old/path/file.ext` → `flat-name.ext` in kebab-case, prefixing parent dir names for uniqueness (e.g. `domain-user-service.ts`) — rename index files to `dirname-index.ext`

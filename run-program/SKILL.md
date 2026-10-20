@@ -3,7 +3,7 @@ name: run-program
 description: Run the main program and make it actually work
 argument-hint: "[scope]"
 related:
-  - deep-review-codebase
+  - deep-review
   - run-install
   - run-build
 ---
@@ -23,11 +23,11 @@ Use for:
 - Running background services
 - Verifying the program works correctly
 
-- See also: /deep-review-codebase
+- See also: /deep-review
 
 ## Execute
 
-> Pre-Run: Always run `/deep-review-codebase` first — `run-*` must be reviewed/assessed before the main work, never skip; if findings are blockers, fix or report before running (program)
+> Pre-Run: Always run `/deep-review` first — `run-*` must be reviewed/assessed before the main work, never skip; if findings are blockers, fix or report before running (program)
 
 ### 1. Prepare
 
@@ -65,7 +65,7 @@ Use for:
 1. Read the error messages and identify the root cause
 2. Prioritize
 3. Fix the problematic code
-4. Run `/deep-review-codebase` if needed
+4. Run `/deep-review` if needed
 5. Rebuild and rerun
 
 ## Rules

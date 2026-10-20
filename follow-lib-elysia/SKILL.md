@@ -209,6 +209,18 @@ For projects using Elysia as the web framework on the Bun runtime — pick the w
 
 - See best-practices/ for recommended patterns and pitfalls
 
+### Use Cases
+
+| Scenario | Use case |
+|----------|----------|
+| Scoped auth plugin + macro guard | `usecases/plugin-with-scoped-hooks.md` |
+| Validated REST endpoints + Eden client | `usecases/validated-rest-crud.md` |
+| Eden treaty client with typed errors | `usecases/eden-client-end-to-end.md` |
+| OpenAPI spec and Swagger UI from schemas | `usecases/openapi-and-swagger.md` |
+| Auth guard as a resolve macro | `usecases/auth-macro-and-guards.md` |
+
+- See usecases/ for end-to-end scenario recipes
+
 ## Expected Outcome
 
 - A fully type-safe API (server → client via Eden)

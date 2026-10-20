@@ -4,7 +4,7 @@ description: Edit, compose, and render video from existing footage with Remotion
 argument-hint: "[footage-or-idea]"
 related:
   - follow-lib-remotion
-  - deep-review-codebase
+  - deep-review
   - gen-subtitle-video
   - use-bun-native-api
   - follow-lib-animejs
@@ -26,7 +26,7 @@ Use for:
 - Handling audio (mix, fade, mute)
 - Rendering via Remotion CLI or cloud services
 
-See also: /follow-lib-remotion, /deep-review-codebase, /gen-subtitle-video
+See also: /follow-lib-remotion, /deep-review, /gen-subtitle-video
 
 ## Execute
 
@@ -124,7 +124,7 @@ See also: /follow-lib-remotion, /deep-review-codebase, /gen-subtitle-video
 
 1. Use `<Video>` from `@remotion/media` — fastest render with partial asset loading
 2. Lower the input resolution when 4K is not required
-3. Use `/deep-review-codebase` for pre-compressing inputs
+3. Use `/deep-review` for pre-compressing inputs
 4. Use `--concurrency` around `os.cpus().length`, or set it in `remotion.config.ts`
 5. Use `--image-format=jpeg` when the render needs no transparency
 
@@ -163,7 +163,7 @@ See also: /follow-lib-remotion, /deep-review-codebase, /gen-subtitle-video
 - Test on the real target device or resolution
 
 - Use /follow-lib-remotion for Remotion API details
-- Use /deep-review-codebase to optimize input/output
+- Use /deep-review to optimize input/output
 - Use /gen-subtitle-video to generate subtitles
 - Use /use-bun-native-api when using Bun as the runtime
 - Use /follow-lib-animejs for complex animations

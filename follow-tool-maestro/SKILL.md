@@ -83,6 +83,8 @@ appId: com.android.contacts
 
 - Default to CLI + MCP (free, open source); Cloud/Studio only on explicit user request — note: Studio is free but not open source
 
+- See references/ for the flow API and CLI tables
+
 ## Expected Outcome
 
 - Reproducible YAML flows in the repo running on emulator/simulator/browser in minutes

@@ -51,6 +51,16 @@ Use when the task involves markdown-it — parser/renderer, plugin ecosystem, CL
 2. Run `/run-test` if related tests exist
 3. Check the latest official docs before using an uncertain API (lib markdown it)
 
+### Use Cases
+
+| Scenario | Use case |
+|----------|----------|
+| Render markdown with Shiki highlighting | `usecases/render-with-shiki.md` |
+| Anchors, TOC, and a custom renderer rule | `usecases/anchors-and-toc.md` |
+| Pick a preset and harden raw HTML/links | `usecases/presets-and-hardening.md` |
+| Read the token stream and override renderer rules | `usecases/parse-tokens-and-custom-rules.md` |
+| Render from the CLI and batch a docs tree | `usecases/cli-and-batch-render.md` |
+
 ## Rules
 
 - Turn off `html: true` when rendering untrusted content, or sanitize after render

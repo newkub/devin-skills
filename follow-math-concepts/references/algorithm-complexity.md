@@ -82,7 +82,7 @@ Understand algorithm complexity: Big O, Omega, Theta, recurrence relations, Mast
 - Nested `filter` + `map` can be `O(n^2)` if careless
 - Recursion with many branches can be exponential
 
-- Use /deep-review-codebase if needed
+- Use /deep-review if needed
 - Use /follow-test if needed
 - Use /follow-math-concepts if needed
 

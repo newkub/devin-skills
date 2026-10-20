@@ -5,7 +5,7 @@ argument-hint: "[scope-or-area]"
 related:
   - review-issues
   - review-gaps
-  - deep-review-codebase
+  - deep-review
   - follow-parallel
   - report-review
   - create-plan-in-dot-devin
@@ -26,7 +26,7 @@ Review anything the user points at (code, docs, a feature area, a plan, a config
 
 - Use when the user wants a review of a specific scope/area — a feature, module, flow, doc, or set of files
 - When only one dimension matters, call the dimension skill directly: `/review-issues` for what is wrong, `/review-gaps` for what is missing
-- For a full codebase-wide multi-dimension scan, hand the heavy lifting to `/deep-review-codebase`, then bring its findings back through `### 2`
+- For a full codebase-wide multi-dimension scan, hand the heavy lifting to `/deep-review`, then bring its findings back through `### 2`
 - Not feature ideation (→ `/idea-features`) and not pure dependency health (→ `/run-bench-deps`)
 - If the user appends `and fix` → treat as confirmed; fix every finding without asking again (still report before fixing)
 
@@ -39,7 +39,7 @@ Review anything the user points at (code, docs, a feature area, a plan, a config
 1. Start with the deep pre-pass: `/deep-thinking` → `/deep-analyze` → `/deep-validate` (convention: `update-devin-global-skills` `## Conventions → Templates` row `review-*`)
 2. Take `scope` from the argument — if missing or unclear → `/ask-me`
 3. Survey the surface of the scope — related files, routes, guards, components, stores, docs, tests — so hidden spots are not missed
-4. If the scope is codebase-wide or multi-dimension → run `/deep-review-codebase` on it and use its findings as the input to `### 2`
+4. If the scope is codebase-wide or multi-dimension → run `/deep-review` on it and use its findings as the input to `### 2`
 
 ### 2. Run The Dimensions
 
@@ -47,7 +47,7 @@ Review anything the user points at (code, docs, a feature area, a plan, a config
 
 1. Issues → run `/review-issues` on the same `scope` (dead action, wrong guard, silent failure, logic/type error, async misuse, leak, race, contract mismatch, stale state, config drift)
 2. Gaps → run `/review-gaps` on the same `scope` (promised-but-absent, partial, stub left in place, unwired, declared-but-unused, missing states, dead integration, doc drift, test gap, a11y gap)
-3. The two are independent → run them in parallel through `/follow-parallel`; pass the same `scope` plus any `/deep-review-codebase` findings from `### 1` into both
+3. The two are independent → run them in parallel through `/follow-parallel`; pass the same `scope` plus any `/deep-review` findings from `### 1` into both
 4. Inconsistencies → review here: the same flow done differently across siblings (one side validates while the other doesn't, naming/structure drift), because this dimension needs both sides in view at once
 
 - Every finding must have `file:line` evidence — no evidence, no finding; state uncertainty instead of guessing
@@ -66,7 +66,7 @@ Review anything the user points at (code, docs, a feature area, a plan, a config
 
 > Goal: fix only what was confirmed, correctly
 
-1. Route each confirmed finding to `/deep-review-codebase <scope> then-fix fix all` by matching domain (`fix all` because `and fix` already confirmed them); findings with no matching domain are fixed directly from the evidence
+1. Route each confirmed finding to `/deep-review <scope> then-fix fix all` by matching domain (`fix all` because `and fix` already confirmed them); findings with no matching domain are fixed directly from the evidence
 2. Issue findings → fix at the cause (never suppress the symptom); gap findings → fill through the `/review-gaps` path so no new stub or `TODO` is left behind
 3. A finding that turns into a scoped improvement program rather than a single fix → hand it to `/improve <scope>`
 4. Large additions → always `/create-plan-in-dot-devin` before implementing; never skip
@@ -82,7 +82,7 @@ Review anything the user points at (code, docs, a feature area, a plan, a config
 ### 2. General Review With Dimension Skills
 - `/review` owns scoping, the inconsistency dimension, aggregation, and the fix handoff
 - `/review-issues` and `/review-gaps` own their own catalogs — never restate those catalogs here
-- `/deep-review-codebase` is a heavy tool it may invoke for wide scans — not the skill's identity
+- `/deep-review` is a heavy tool it may invoke for wide scans — not the skill's identity
 - Don't nest `/review` with other routers; if `/review` is already running, don't invoke it again; the dimension skills must not call back into `/review`
 
 ### 3. Confirmation
@@ -97,8 +97,8 @@ Review anything the user points at (code, docs, a feature area, a plan, a config
 - Use /review-issues if needed
 - Use /review-gaps if needed
 - Use /follow-parallel if needed
-- Use /deep-review-codebase if needed
-- Use /deep-review-codebase <scope> then-fix if needed
+- Use /deep-review if needed
+- Use /deep-review <scope> then-fix if needed
 
 ## Expected Outcome
 

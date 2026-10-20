@@ -7,7 +7,7 @@ related:
   - design-html-prototype
   - follow-create-plugins
   - follow-create-web-mcp
-  - deep-review-codebase
+  - deep-review
   - follow-lib-unocss
   - follow-design-system
   - follow-web-standard
@@ -100,8 +100,8 @@ Choose the right web project type and hand the work off to the correct skill
 ### 2. Quality
 
 - Run `/follow-single-responsibility` after creating major components
-- Run `/deep-review-codebase` and `/deep-review-codebase` for SEO/bundle
-- Run `/deep-review-codebase` before deploy
+- Run `/deep-review` and `/deep-review` for SEO/bundle
+- Run `/deep-review` before deploy
 - Run `/implement-to-production` after the website is finished
 
 ### 3. Safety
@@ -123,11 +123,11 @@ Choose the right web project type and hand the work off to the correct skill
 - Use backticks for paths, commands, and skill names
 - Report with `/report`
 
-- Use /deep-review-codebase if needed
-- Use /deep-review-codebase if needed
+- Use /deep-review if needed
+- Use /deep-review if needed
 - Use /follow-lib-unocss if needed
 - Use /follow-design-system if needed
-- Use /deep-review-codebase if needed
+- Use /deep-review if needed
 - Use /follow-service-cloudflare if deploying on Cloudflare
 - Use /run-dev if needed
 - Use /follow-create-plugins if needed

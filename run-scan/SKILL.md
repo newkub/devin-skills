@@ -3,7 +3,7 @@ name: run-scan
 description: Run ast-grep scan to check the codebase with AST-based patterns
 argument-hint: "[scope]"
 related:
-  - deep-review-codebase
+  - deep-review
   - use-astgrep
   - update-astgrep-rules
   - check-code-structure
@@ -23,7 +23,7 @@ Use for scanning the codebase with `ast-grep` in a project that has `sgconfig.ym
 
 ## Execute
 
-> Pre-Run: Always run `/deep-review-codebase` first — `run-*` must be reviewed/assessed before the main work, never skip; if findings are blockers, fix or report before running (scan)
+> Pre-Run: Always run `/deep-review` first — `run-*` must be reviewed/assessed before the main work, never skip; if findings are blockers, fix or report before running (scan)
 
 ### 1. Setup And Write Rules
 

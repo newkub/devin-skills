@@ -13,7 +13,7 @@ related:
   - follow-service-cloudflare
   - follow-lib-unocss
   - follow-design-system
-  - deep-review-codebase
+  - deep-review
   - ship
   - report
   - enhance-prompt
@@ -54,7 +54,7 @@ Turn an idea or requirements into a ready-to-use product, covering product spec,
 > Goal: Review the tech stack and analyze the product idea before creating
 
 1. Run `/deep-research` + `/follow-best-practice` to confirm the latest versions and patterns
-2. Run `/follow-my-techstack` to pick the stack from the canonical catalog; run `/deep-review-codebase` to summarize any tech stack already in use
+2. Run `/follow-my-techstack` to pick the stack from the canonical catalog; run `/deep-review` to summarize any tech stack already in use
 3. Record the rationale for the chosen stack and libraries for later reference (create product)
 4. Take `product-idea`, requirements, or feedback from the user
 5. Identify target users and personas
@@ -99,7 +99,7 @@ Turn an idea or requirements into a ready-to-use product, covering product spec,
 1. Use `/follow-design-system` to define design principles
 2. Use `/follow-lib-unocss` to install UnoCSS and create HSL theme tokens
 3. Plan the page structure: `/` landing, `/features`, `/pricing`, `/user`, `/dashboard`
-4. Use `/deep-review-codebase` to check layout, navigation, responsive, CTA
+4. Use `/deep-review` to check layout, navigation, responsive, CTA
 5. Create wireframes/sketches with `/report-uxui` if needed
 
 ### 6. Create Website
@@ -179,7 +179,7 @@ Turn an idea or requirements into a ready-to-use product, covering product spec,
 
 ### 5. UX Quality
 
-- Use `/deep-review-codebase` before shipping
+- Use `/deep-review` before shipping
 - Make it responsive, dark-mode ready, accessible
 - Use design tokens consistently
 

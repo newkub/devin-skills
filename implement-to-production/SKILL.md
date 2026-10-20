@@ -4,7 +4,7 @@ description: Convert TODO/MOCK/dead UI into production code: baseline, implement
 argument-hint: "[setup-infra|setup-coverage|deploy-production] [scope-or-plan]"
 related:
   - report-not-implement
-  - deep-review-codebase
+  - deep-review
   - create-plan-in-dot-devin
   - refactor
   - deep-test
@@ -29,7 +29,7 @@ Convert TODO, MOCK, FAKE, STUB, placeholder, and dead UI into real production co
 > Argument routing: `setup-infra` (`infra`, `env`, `secrets`, `ci`, `observability`) → do all of `### 3` readiness then report · `setup-coverage` (`coverage`) → do `## Setup Coverage` before starting the TDD loop · `deploy-production` (`deploy`, `production`) → do `### 9` including the deploy gate + post-deploy verify · none specified → steps 1-9 in order
 
 - input is a plan file (`.devin/temp/plan/<workspace>/`), `TODO.md`, or a loose plan → do `## Input Flows` first, then return to the main flow
-- Convert every unfinished feature into production code: schema, data, API, UX/UI, external services, with real end-to-end infrastructure — excluding work that should start from a new architecture (use `/deep-review-codebase` first)
+- Convert every unfinished feature into production code: schema, data, API, UX/UI, external services, with real end-to-end infrastructure — excluding work that should start from a new architecture (use `/deep-review` first)
 - UI that looks done but does not actually work also counts as a placeholder — dead buttons, `onClick={() => {}}`, `href="#"`, permanently `disabled` with no reason, dialogs/menus/tabs that do not open, forms that cannot submit, 'coming soon' text — it must be wired to actually work or removed
 - The starting entry point is `/report-not-implement` (know first what is still missing) → implement everything in the report → verify with `/deep-test` — never skip the first step or choose to do only some items
 - item with no design for the surface yet (CLI commands/flags, TUI screens, web layout) → design before writing code: `/design-cli-prototype` / `/design-tui-prototype` answer in chat, or `/design-web-prototype` / `/design-html-prototype` when it must be seen for real — never leave new stubs behind after implement
@@ -41,7 +41,7 @@ Convert TODO, MOCK, FAKE, STUB, placeholder, and dead UI into real production co
 
 > Goal: Understand the scope and problems before implementing
 
-1. Run the `/review` pre-action gate — pick and run the `review-*` that matches the context, then run `/deep-review-codebase` across every dimension to find TODO/MOCK/placeholder and issues
+1. Run the `/review` pre-action gate — pick and run the `review-*` that matches the context, then run `/deep-review` across every dimension to find TODO/MOCK/placeholder and issues
 2. Always run `/report-not-implement` for the whole scope as the first step (read-only) → get a work queue table (`missing`/`fake`/`partial`/`unwired`/`promised`) covering markers, stubs, dead UI, and missing routes/docs; never start implementing without a report — for a large codebase → have that skill spawn its own `gap-scanner` profile in parallel per directory; run `/deep-analyze` to understand the stack/context and `/deep-research` if you need to find external patterns
 3. If the input is a plan file / `TODO.md` / loose plan → complete the matching `## Input Flows` first
 4. Record the baseline and make it resumable: unfinished items from the report, files, dependencies, infrastructure gaps — keep the queue as a table with one `status` per item (`pending`/`in-progress`/`completed`/`blocked`) and update that row the moment the item closes (persist it to the plan file once `### 2.1` creates it; until then keep it in chat and copy it over), so a resumed or compacted session continues from the table instead of re-scanning; if you must rely on an external package that is not installed yet → run `/use-my-packages-on-registry` to list the packages we own as the first option before looking for external deps
@@ -51,7 +51,7 @@ Convert TODO, MOCK, FAKE, STUB, placeholder, and dead UI into real production co
 
 > Goal: Confirm the architecture before starting
 
-1. Always run `/create-plan-in-dot-devin` (if a plan file already exists → read it and follow it), then run `/deep-review-codebase` to inspect boundaries, layers, and data flow
+1. Always run `/create-plan-in-dot-devin` (if a plan file already exists → read it and follow it), then run `/deep-review` to inspect boundaries, layers, and data flow
 2. When implementing in `packages/`, `crates/`, or `apps/` → run `/follow-architecture` to pick + apply that directory's pattern (`packages/`/`crates/` → `clean`, `apps/` → `layered`)
 3. If the architecture is unclear or a big structure change is needed → run `/ask-me` first; identify the critical path: schema → data → API → UX/UI
 4. Draft the rollback plan here, before any code or migration is written (confirming it is executable happens in `### 9.6`): the method (`git revert <merge-commit>`, redeploy the previous version, platform rollback), the reverse path for each schema change (down-migration / restore from backup), and the current production version/revision recorded for later comparison — write it into the plan file so a destructive step never runs without one
@@ -60,7 +60,7 @@ Convert TODO, MOCK, FAKE, STUB, placeholder, and dead UI into real production co
 
 > Goal: env vars, secrets, CI, and observability are complete and verifiable before implementing
 
-1. Check the database: connection pool, indexes, migrations (pending vs applied via `/deep-review-codebase`), backup — and the API server: endpoints, rate limit, CORS, auth
+1. Check the database: connection pool, indexes, migrations (pending vs applied via `/deep-review`), backup — and the API server: endpoints, rate limit, CORS, auth
 2. Run `/check-secrets env-vars` comparing `.env` / `.env.example` / code usage — update `.env.example` to include every variable the code uses (without real values); if credentials the user must provide are missing → `/ask-me` then stop and wait
 3. Store secrets via `/follow-secret-manager` — never commit; inject them into the platform per target (`wrangler secret put`, dashboard, CI secrets); run `/check-secrets secrets-leak` to confirm there is no leak in code/config
 4. Check external services: credentials, API keys, endpoints, rate limits
@@ -104,10 +104,10 @@ Convert TODO, MOCK, FAKE, STUB, placeholder, and dead UI into real production co
 
 > Goal: code is secure, resilient, and observable in production
 
-1. Run `/deep-review-codebase` to find vulnerabilities, then fix the findings and re-review to confirm they are all closed
+1. Run `/deep-review` to find vulnerabilities, then fix the findings and re-review to confirm they are all closed
 2. Validate/sanitize user inputs, use parameterized queries, never expose secrets — run `/check-secrets secrets-leak` before ship
-3. Implement retry logic, exponential backoff, graceful degradation — run `/deep-review-codebase` on mutation endpoints to make them retry-safe
-4. Run `/deep-review-codebase` — no throw without a handler or catch that swallows errors; for newly opened endpoints — prevent abuse/brute force/cost exposure
+3. Implement retry logic, exponential backoff, graceful degradation — run `/deep-review` on mutation endpoints to make them retry-safe
+4. Run `/deep-review` — no throw without a handler or catch that swallows errors; for newly opened endpoints — prevent abuse/brute force/cost exposure
 5. Observability complete per `### 3` — structured logging, metrics, correlation IDs; run `/improve platform` to find gaps across logging/metrics/tracing
 6. For reviews across several domains on the same changes → spawn the `review-sweeper` profile (in `## Subagents`) one domain at a time in parallel (read-only), then merge the findings before fixing
 
@@ -126,7 +126,7 @@ Convert TODO, MOCK, FAKE, STUB, placeholder, and dead UI into real production co
 > Goal: code passes full validation before ship/deploy — green gate, real deploy, real verify, rollback plan ready
 
 1. Close the loop with the same instrument that opened it: re-run `/report-not-implement` on the same scope — the `### 1.4` queue must be fully `completed`/`blocked` (reason stated) and the new scan must report 0 `missing`/`fake`/`partial`/`unwired`/`promised`; any new marker (including one your own code just introduced) = close it before the gate, never gate around it
-2. Run `/ship verify-only` as the canonical verify gate (never duplicate the gate yourself — reference `/ship` per the repo's SSOT): run `/deep-review-codebase` → `/deep-validate` → `/run-check` → `/update-tests` + `/deep-test all` → `/run-dev` + `/deep-test usage` in full, then stop before push/merge — for test gaps found along the way → `/improve tests` then write/fix specs via `/update-tests`; if the project has a coverage target → `/deep-test coverage` until the target (default 100%)
+2. Run `/ship verify-only` as the canonical verify gate (never duplicate the gate yourself — reference `/ship` per the repo's SSOT): run `/deep-review` → `/deep-validate` → `/run-check` → `/update-tests` + `/deep-test all` → `/run-dev` + `/deep-test usage` in full, then stop before push/merge — for test gaps found along the way → `/improve tests` then write/fix specs via `/update-tests`; if the project has a coverage target → `/deep-test coverage` until the target (default 100%)
 3. Run `/run-verify` to check scan, format, lint, typecheck, test, build — if it fails → `/resolve-errors` then retry up to 3 times; if it still fails → stop and report, never deploy
 4. pre-ship sweep: scan for debug leftovers with `rg "console\.(log|debug)|debugger"`, `/check-secrets secrets-leak` to confirm no secrets leaked, and `/run-audit` to check dependency vulnerabilities
 5. Run `/deep-test website` (Roleplay Mode) across every route in the app (not just the routes touched), in this order: routes reachable from the navigation → auth flows → owner/admin surfaces → error/empty/loading states; on a large app close the nav-reachable set first, then deep-link the routes named in the `### 5` checklist — every interactive element, forms valid + invalid, the main flows, with evidence recorded per route; then codify the passing flows into a Playwright suite via `/deep-test e2e` — the Playwright report is the authoritative result

@@ -13,7 +13,7 @@ related:
   - follow-lib-solidjs
   - follow-tool-vite
   - follow-tool-cargo
-  - deep-review-codebase
+  - deep-review
   - follow-create-plugins
   - follow-service-cloudflare
   - deploy-to-vercel
@@ -38,7 +38,7 @@ Use when a task needs Rust performance in the browser without writing a backend,
 
 > Goal: Check the tech stack and confirm Rust and wasm-pack are ready
 
-1. Run `/deep-research` + `/follow-best-practice` to confirm the latest `wasm-pack`/`wasm-bindgen` versions, then run `/deep-review-codebase` to summarize the tech stack
+1. Run `/deep-research` + `/follow-best-practice` to confirm the latest `wasm-pack`/`wasm-bindgen` versions, then run `/deep-review` to summarize the tech stack
 2. Record the stack and library choices for future reference (web wasm)
 4. Run `rustc --version` and `cargo --version`
 5. Run `wasm-pack --version`; if missing → install with `cargo install wasm-pack`
@@ -201,7 +201,7 @@ Use when a task needs Rust performance in the browser without writing a backend,
 - Use /follow-create-rust-crate if needed
 - Use /follow-tool-vite if needed
 - Use /follow-tool-cargo if needed
-- Use /deep-review-codebase if needed
+- Use /deep-review if needed
 - Use /follow-create-vite-plugin if needed (create website rust)
 - Use /deploy-to-vercel if needed
 - Use /deploy-to-cloudflare if needed

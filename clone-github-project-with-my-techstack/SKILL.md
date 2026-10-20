@@ -12,7 +12,7 @@ related:
   - use-agents-capture
   - report-prompt-uxui-web-design
   - deep-research
-  - deep-review-codebase
+  - deep-review
   - deep-test
   - run-dev
   - ship
@@ -82,7 +82,7 @@ Clone an existing GitHub project into a fresh, working rebuild — `/deep-analyz
 1. If a live instance exists → run `/use-agents-capture all` against it (original routes × device sizes); otherwise capture the original from local run or rely on source-level checklist
 2. Run `/use-agents-capture all` against the rebuild → compare per route; list every gap
 3. Run `/report-prompt-uxui-web-design` on the rebuild route list to sanity-check full-app coverage (all routes present, states covered); close UX gaps via `/improve uxui`
-4. Run `/deep-test all` — unit/integration/e2e green; run `/deep-review-codebase` on the rebuild for quality dimensions; fix via `/deep-review-codebase then-fix`
+4. Run `/deep-test all` — unit/integration/e2e green; run `/deep-review` on the rebuild for quality dimensions; fix via `/deep-review then-fix`
 5. Repeat until every checklist row is `done` or `intentional-diff` (with reason)
 
 ### 7. Ship

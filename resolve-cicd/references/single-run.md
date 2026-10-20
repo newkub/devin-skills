@@ -88,7 +88,7 @@ Does not include the first trigger — it must be triggered by `/run-deploy`, `/
 
 2. Order by sequence: GitHub Actions → GitLab CI → Azure DevOps → CircleCI → Jenkins
 
-3. If no config is found → run `/deep-review-codebase` or `/ask-me`
+3. If no config is found → run `/deep-review` or `/ask-me`
 
 
 

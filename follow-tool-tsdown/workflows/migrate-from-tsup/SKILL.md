@@ -5,7 +5,7 @@ argument-hint: "[project-path]"
 related:
   - follow-tool-tsdown
   - follow-tool-rolldown
-  - deep-review-codebase
+  - deep-review
   - report-before-after
 ---
 
@@ -78,7 +78,7 @@ Move a tsup config to tsdown with equivalent output — use the migration tool f
 
 - Use /follow-tool-tsdown if needed
 - Use /follow-tool-rolldown if needed
-- Use /deep-review-codebase if needed
+- Use /deep-review if needed
 
 ## Expected Outcome
 

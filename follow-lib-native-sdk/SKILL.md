@@ -22,7 +22,7 @@ When you want a truly native desktop app (Metal/Direct2D/software renderer), not
 
 ## Facts (verified 2026-10-13)
 
-- Repo `vercel-labs/native` (Apache-2.0, ~7.8k stars, active); npm `@native-sdk/cli` 0.10.1; docs at native-sdk.dev
+- Repo `vercel-labs/native` (Apache-2.0, ~7.8k stars, active); npm `@native-sdk/cli` 0.11.0 (npm latest, checked 2026-10-20); docs at native-sdk.dev
 - Requires `Zig 0.16.0` (the CLI downloads it into `~/.native/toolchains/` with checksum) + `Node 24+` for the TS scaffold/checker — Node is used only at build/dev time and is not in the binary
 - Platforms: macOS (primary, Metal), Windows (Direct2D/DirectWrite + software fallback), Linux (software renderer via blit); iOS/Android host-tier (experimental, multi-window on desktop only)
 - The state system is TEA: `Model` readonly record + `Msg` union + `update(model,msg): Model | [Model, Cmd<Msg>]`; the view derives from the model through markup
@@ -92,6 +92,17 @@ When you want a truly native desktop app (Metal/Direct2D/software renderer), not
 1. `native build` → ReleaseFast at `zig-out/bin/`; `native package --target macos|linux|windows|ios|android`
 2. macOS: `.app` + DMG (`--archive`), signing `--signing adhoc|identity --identity --entitlements`, notarize `--notarize --notary-profile` (only macOS can sign)
 3. Icons: one square `assets/icon.png/.svg` → every format automatically; release-time updates: own signed Ed25519 updater (`native update keygen|sign`, manifest `updates{feed_url,public_key}` HTTPS, macOS only)
+
+### Use Cases
+
+| Scenario | Use case |
+|----------|----------|
+| Scaffold, verify, run and build a new app | `usecases/scaffold-app.md` |
+| Effects via Cmd/Sub with full-TS work in services | `usecases/cmd-and-services.md` |
+| Layout, templates with args/slots, and `<for>`/`<if>` markup | `usecases/markup-templates-and-components.md` |
+| Snapshot persist, key-value store, and SQLite migrations | `usecases/persistence-store-and-sqlite.md` |
+| Window scene, menu/shortcut budgets, permission groups | `usecases/windows-menus-and-permissions.md` |
+| Automation asserts, record/replay, and CI tiers | `usecases/automation-assert-and-ci.md` |
 
 ## Rules
 

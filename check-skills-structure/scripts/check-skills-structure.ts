@@ -47,6 +47,7 @@ interface Row {
   wf: number;
   sub: number;
   bp: number;
+  uc: number;
   src: string;
   scripts: number;
   mcp: string;
@@ -125,6 +126,7 @@ function inspect(dir: string): Row {
     wf: 0,
     sub: 0,
     bp: 0,
+    uc: 0,
     src: "-",
     scripts: 0,
     mcp: "-",
@@ -179,11 +181,13 @@ function inspect(dir: string): Row {
   const wfDirs = nestedList(join(dir, "workflows"), "SKILL.md");
   const subFiles = [...dirList(join(dir, "subagents"), ".md"), ...nestedList(join(dir, "subagents"), "AGENT.md").map((n) => `${n}/AGENT.md`)];
   const bpFiles = dirList(join(dir, "best-practices"), ".md");
+  const ucFiles = dirList(join(dir, "usecases"), ".md");
   const scriptFiles = dirList(join(dir, "scripts"));
   r.refs = refFiles.length;
   r.wf = wfDirs.length;
   r.sub = subFiles.length;
   r.bp = bpFiles.length;
+  r.uc = ucFiles.length;
   r.src = existsSync(join(dir, "src")) ? "yes" : "-";
   r.scripts = scriptFiles.length;
   r.detail = {
@@ -192,6 +196,7 @@ function inspect(dir: string): Row {
     "workflows": wfDirs,
     "subagents": subFiles,
     "best-practices": bpFiles,
+    "usecases": ucFiles,
     "scripts": scriptFiles,
     "frontmatter-missing": r.missingFm,
   };
@@ -242,6 +247,7 @@ const cols: [keyof Row, string][] = [
   ["wf", "Workflows"],
   ["sub", "Subagents"],
   ["bp", "BestPractices"],
+  ["uc", "UseCases"],
   ["src", "Source"],
   ["scripts", "Scripts"],
   ["mcp", "MCP"],

@@ -203,6 +203,15 @@ Configure per ESLint 10 standards
 
 - See best-practices/ for recommended patterns and pitfalls
 
+### Use Cases
+
+| Scenario | Use case |
+|----------|----------|
+| Flat config for TS + React (type-aware) | `usecases/flat-config-typescript-and-react.md` |
+| Lint gate in CI + cache + pre-commit | `usecases/lint-gate-in-ci.md` |
+
+- See usecases/ for end-to-end scenario recipes
+
 ## Expected Outcome
 
 1. ESLint 10 with flat config and a complete plugin setup

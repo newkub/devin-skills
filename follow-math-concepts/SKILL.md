@@ -10,7 +10,7 @@ related:
   - follow-lib-fast-check
   - ask-me
   - deep-debug
-  - deep-review-codebase
+  - deep-review
   - follow-context-engineering
   - follow-best-practice
   - report-slides
@@ -68,7 +68,7 @@ Use for general concepts: logic, sets, boolean algebra, combinatorics, graphs, a
 
 1. Identify the domain to solve for, then pick suitable concepts from `references/<topic>.md`
 2. Build an example or model per the concepts and test its correctness, following `/follow-best-practice`
-3. Cite trustworthy sources and use `/deep-review-codebase` to check the result when needed
+3. Cite trustworthy sources and use `/deep-review` to check the result when needed
 4. If more sources are needed → use `/deep-research` or `/learn`
 
 ## Rules

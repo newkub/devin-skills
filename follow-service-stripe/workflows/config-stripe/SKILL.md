@@ -53,7 +53,7 @@ Set/edit Stripe configuration — products, prices, webhook endpoints, customer 
 1. Enable the customer portal in dashboard settings and define the allowed features (cancel, update payment method)
 2. Set `return_url` to the app's billing page
 3. Before go live: replace test keys with live keys, confirm the webhook endpoint is HTTPS
-4. Do `/deep-review-codebase` domain `review-config` across test/live configs if needed
+4. Do `/deep-review` domain `review-config` across test/live configs if needed
 
 ### 5. Verify
 

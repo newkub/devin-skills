@@ -54,7 +54,7 @@ Signals: `## Usage` / `### Usage via ...` code blocks, README code fences, packa
 
 > Goal: verify correctness before reporting
 
-1. Run `/deep-review-codebase` to check logic, types, edge cases, contracts, and tests of the examples
+1. Run `/deep-review` to check logic, types, edge cases, contracts, and tests of the examples
 2. Record findings with severity and evidence
 3. Findings to fix → `/resolve-errors` or fix the README/code before continuing
 
@@ -62,7 +62,7 @@ Signals: `## Usage` / `### Usage via ...` code blocks, README code fences, packa
 
 > Goal: report per-example status and close failures
 
-1. Collect results into a table (example, expected, actual, status) including the `/deep-review-codebase` findings
+1. Collect results into a table (example, expected, actual, status) including the `/deep-review` findings
 2. Status per example: pass, fail, skipped (with reason)
 3. Failures → list them and ask the user whether to fix or skip; if fixing → edit the README or code
 4. Re-test until passing (max 3 rounds → stop + report)
@@ -92,5 +92,5 @@ Signals: `## Usage` / `### Usage via ...` code blocks, README code fences, packa
 
 - Every usage example in the docs is tested with pass/fail/skip status
 - No broken examples before ship
-- `/deep-review-codebase` ran to verify correctness, findings in the report
+- `/deep-review` ran to verify correctness, findings in the report
 - The user is informed before ship if any example still does not work

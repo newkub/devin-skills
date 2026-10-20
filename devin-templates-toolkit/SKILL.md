@@ -48,7 +48,7 @@ Collect starter templates for creating projects, CI/CD, docs, and TUI apps
 
 > Goal: confirm the template works
 
-1. Run `/deep-review-codebase`
+1. Run `/deep-review`
 2. Run `/report-config-files`
 3. Run `/review-devin-global-harness`
 

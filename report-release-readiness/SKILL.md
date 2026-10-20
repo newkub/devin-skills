@@ -4,7 +4,7 @@ description: Report readiness before release — tests, changelog, version, migr
 argument-hint: "[version-or-tag]"
 related:
   - follow-release
-  - deep-review-codebase
+  - deep-review
   - run-test
   - check-uncommit
   - check-unpush
@@ -36,7 +36,7 @@ Report the release readiness state completely — tests passing, version/changel
 
 > Goal: the version matches everywhere
 
-1. Run `/deep-review-codebase` — manifest version vs latest tag vs changelog
+1. Run `/deep-review` — manifest version vs latest tag vs changelog
 2. Verify the version bump is appropriate (semver per the actual changes)
 3. Flag pre-release versions if a stable release is intended
 
@@ -54,7 +54,7 @@ Report the release readiness state completely — tests passing, version/changel
 > Goal: documents and data are ready
 
 1. The changelog has an entry for this version — use `/report` to check completeness
-2. Run `/deep-review-codebase` — pending migrations with a clear deploy order
+2. Run `/deep-review` — pending migrations with a clear deploy order
 3. Docs/readme match the release if there are user-facing changes
 4. Breaking changes are documented
 

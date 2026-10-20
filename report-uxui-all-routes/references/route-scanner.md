@@ -84,7 +84,7 @@ For website projects using file-based routing, config-based routing, or a route 
 - Identify routes that may conflict or duplicate
 
 - Use /analyze-attack-surface if needed
-- Use /deep-review-codebase if needed
+- Use /deep-review if needed
 - Use /deep-test api (all-routes check) if needed
 
 ## Expected Outcome

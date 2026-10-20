@@ -6,7 +6,7 @@ related:
   - review-devin-global-harness
   - report
   - suggest-next-action
-  - deep-review-codebase
+  - deep-review
 ---
 
 ## Goal
@@ -39,7 +39,7 @@ Use before writing or editing a skill, to gather the needed context
 ### 1. Orchestration Only
 
 - Act as an orchestrator calling `/review-devin-global-harness` directly — do not redo the work
-- Do not use `/deep-review-codebase` — it would duplicate the related-context reading
+- Do not use `/deep-review` — it would duplicate the related-context reading
 - Do not duplicate the content of `/review-devin-global-harness`
 
 ### 2. Output

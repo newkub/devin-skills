@@ -16,7 +16,7 @@ related:
   - follow-deep
   - check-reference
   - update-devin-harness
-  - deep-review-codebase
+  - deep-review
   - update-references
   - use-subagents
   - simplify
@@ -36,7 +36,7 @@ Use before calling `update-devin-global-* / update-devin-project-*` — covers 5
 - `mcp` — check MCP servers are enabled/actually used, don't duplicate a server, and aren't dead config
 - `global rules` — check `global_rules.md` — referenced skills exist, no conflicts, not stale
 
-Cross-layer checks: `alignment` (rules↔skills↔subagents reference each other correctly), `redundancy` (duplicate purpose/scope/content/unused), `references integrity`, `context rot` (stale/incorrect content, dead weight, context bloat), `coverage` (domains/actions with no skill yet — `/deep-review-codebase`)
+Cross-layer checks: `alignment` (rules↔skills↔subagents reference each other correctly), `redundancy` (duplicate purpose/scope/content/unused), `references integrity`, `context rot` (stale/incorrect content, dead weight, context bloat), `coverage` (domains/actions with no skill yet — `/deep-review`)
 
 Do not create new skills (use `/update-devin-global-skills`); do not fix code (use `/deep-validate`)
 
@@ -62,7 +62,7 @@ Do not create new skills (use `/update-devin-global-skills`); do not fix code (u
 2. `subagents` → check every AGENT.md in `%APPDATA%\devin\agents`: frontmatter, sections, line count, style, safety — same standard as skills; report a finding per agent
 3. `hooks` → per `### Hooks`; `mcp` → per `### Mcp`; `global rules` → per `### References Integrity` item global rules — referenced skills exist, Execute order doesn't conflict, no stale skill names
 
-### 4. Cross-Layer Alignment — follow `deep-review-codebase/SKILL.md` `alignment` (canonical)
+### 4. Cross-Layer Alignment — follow `deep-review/SKILL.md` `alignment` (canonical)
 > Goal: check layers reference each other correctly
 
 1. `global_rules.md` references skills → every name has a real skill
@@ -83,7 +83,7 @@ Do not create new skills (use `/update-devin-global-skills`); do not fix code (u
 1. Follow `### Refactor Guide` (plan → execute → cross-skill consistency)
 2. Identify SKILL.md files that should be refactored — duplicated content, >250 lines, missing sections, blurred SRP → the list becomes action items
 
-### 7. Redundancy Audit — follow `deep-review-codebase/SKILL.md` `redundancy` (canonical)
+### 7. Redundancy Audit — follow `deep-review/SKILL.md` `redundancy` (canonical)
 > Goal: find redundant or unnecessary skills/layers
 
 Follow `### Redundancy` — inventory → detect ×4 → recommend → user confirm → score per `### Scoring`; remove/merge always requires user confirm
@@ -98,8 +98,8 @@ Follow `### Redundancy` — inventory → detect ×4 → recommend → user conf
 ### 9. Context Rot And Coverage
 > Goal: check content that decays over time and domain gaps
 
-1. Follow `### Context Rot` — stale content (`/deep-review-codebase` domain `usage`), incorrect content (`/check-reference`), dead weight, context bloat
-2. Run `/deep-review-codebase` domain `gaps` — check that the domains/actions the harness intends to cover actually have a skill supporting them, or list the gaps — merge findings into the report as separate `context-rot` and `coverage` sections
+1. Follow `### Context Rot` — stale content (`/deep-review` domain `usage`), incorrect content (`/check-reference`), dead weight, context bloat
+2. Run `/deep-review` domain `gaps` — check that the domains/actions the harness intends to cover actually have a skill supporting them, or list the gaps — merge findings into the report as separate `context-rot` and `coverage` sections
 
 ### 10. Score And Report
 > Goal: summarize score per layer + findings + refactor plan
@@ -152,7 +152,7 @@ Config: `config.json → mcpServers` global + project — checks: server actuall
 
 ### Content Quality
 
-- simplify: `/simplify` ∥ `/deep-review-codebase` (domains `simplify`/`redundancy`) to tighten content; Execute↔Rules overlap → delete; Rules duplicating another skill → reference it; `/dont-over-engineer` sets the minimal boundary; coverage gaps → `/deep-review-codebase` (domain `gaps`)
+- simplify: `/simplify` ∥ `/deep-review` (domains `simplify`/`redundancy`) to tighten content; Execute↔Rules overlap → delete; Rules duplicating another skill → reference it; `/dont-over-engineer` sets the minimal boundary; coverage gaps → `/deep-review` (domain `gaps`)
 - high impact: every bullet answers "if removed, does the outcome change" — no change → delete; no TODO/MOCK/placeholder/filler or pretty non-actionable wording; simplify must keep full context
 - clarity: active voice with explicit subject/object, validation criteria measurable (threshold/expected/pass-fail/retry limit), no unstated assumptions; ambiguous → rewrite + recheck max 3
 - severity: Critical = TODO/MOCK/unfollowable; High = Execute↔Rules duplication/missing criteria; Medium = filler/not active voice; Low = can be tighter
@@ -167,7 +167,7 @@ Config: `config.json → mcpServers` global + project — checks: server actuall
 2. Detect ×4: duplicate purpose — `description`/`## Goal` overlap >70% or different prefix but near purpose; overlapping scope — `## Scope` says "not" but they do the same thing, `related` pointing at each other, `## Execute` steps largely identical; redundant content — `/use-scripts` hash blocks >50% match between skills (compare `## Rules`/`## Expected Outcome`); unused — `/check-reference`+`AGENTS.md` → separate standalone vs orphan
 3. Recommend: duplicate → merge (`/idea-merge`)/rename (`/rename`)/split; scope overlap → adjust `## Scope`; repeated content → move to `references/` or a shared reference; unused → keep/document/remove — report table skill/issue/action/priority + `/suggest-next-action`
 4. Confirm+execute: `/ask-me` always first; merge → re-review, rename → `/rename`+`/update-references`, remove → `git rm`+`/update-references`; `/deep-validate` after every action
-5. Fix flow (canonical): detect → classify (code/content/config/cross-skill — deps → `/deep-review-codebase` domain `dependencies`, pattern → `/deep-review-codebase` domain `redundancy`, large code volume → `/follow-tool-jscpd`) → pick the canonical (most used/most test coverage — unclear → `/ask-me`) → replace with a reference → `/run-check`+`/run-test` per batch → report No./Duplicate Type/Canonical/Files Fixed/Status; never delete intentional redundancy (backup/fail-over), fix one dimension at a time
+5. Fix flow (canonical): detect → classify (code/content/config/cross-skill — deps → `/deep-review` domain `dependencies`, pattern → `/deep-review` domain `redundancy`, large code volume → `/follow-tool-jscpd`) → pick the canonical (most used/most test coverage — unclear → `/ask-me`) → replace with a reference → `/run-check`+`/run-test` per batch → report No./Duplicate Type/Canonical/Files Fixed/Status; never delete intentional redundancy (backup/fail-over), fix one dimension at a time
 
 ### References Integrity
 
@@ -179,11 +179,11 @@ Config: `config.json → mcpServers` global + project — checks: server actuall
 
 ### Artifact Alignment
 
-After changing rules/architecture/deps/skills/docs → inventory `rules/`+`sgconfig.yml`+`AGENTS.md`+`README`+`USAGE`+`package.json`+`global_rules.md` (record version/last-updated) → detect misalignment (broken/stale/circular refs, terminology, docs↔code) → align: rules → `/update-astgrep-rules`/`/update-dot-devin`/`sgconfig.yml`+`/run-scan`, docs → `/update-agents-md`/`/update-readme-md`/`/update-usage-md`, code → `/deep-review-codebase`+`/check-code-structure` → `/deep-validate`+typecheck/lint/scan+tests → report Artifact/Before/After/Status; rules vs code conflict → `/ask-me` asking the originating side; detect before fixing, minimal scope, rename/move → `/update-references`, never create circular refs
+After changing rules/architecture/deps/skills/docs → inventory `rules/`+`sgconfig.yml`+`AGENTS.md`+`README`+`USAGE`+`package.json`+`global_rules.md` (record version/last-updated) → detect misalignment (broken/stale/circular refs, terminology, docs↔code) → align: rules → `/update-astgrep-rules`/`/update-dot-devin`/`sgconfig.yml`+`/run-scan`, docs → `/update-agents-md`/`/update-readme-md`/`/update-usage-md`, code → `/deep-review`+`/check-code-structure` → `/deep-validate`+typecheck/lint/scan+tests → report Artifact/Before/After/Status; rules vs code conflict → `/ask-me` asking the originating side; detect before fixing, minimal scope, rename/move → `/update-references`, never create circular refs
 
 ### Context Rot
 
-- stale: `/deep-review-codebase` — version pins, `(verified YYYY-MM-DD)` markers (>90 days), deprecated commands, dead links → route `/update-devin-global-skills`/`update-*-md`
+- stale: `/deep-review` — version pins, `(verified YYYY-MM-DD)` markers (>90 days), deprecated commands, dead links → route `/update-devin-global-skills`/`update-*-md`
 - incorrect: `/check-reference` on recently edited/high-traffic skills; unverified claims → Warning
 - dead weight: skills/subagents never invoked, orphan `references/` (not linked from the SKILL.md), `related` pointing at deleted skills
 - bloat: SKILL.md near 250 → split into `references/`; `references/` totalling >~1500 → consolidate; `related` >15 → cut to what's necessary
@@ -191,7 +191,7 @@ After changing rules/architecture/deps/skills/docs → inventory `rules/`+`sgcon
 
 ### Refactor Guide
 
-Categories: split (>250/multiple responsibilities), merge (overlapping/duplicate scope — preserve intent, delete the absorbed one), restructure (≤10 steps), deduplicate (→ references/`related`), relocate (`/relocation` per prefix); priority: high redundancy → large files → broken structure; compare change frequency/usage — don't over-refactor; new sub-skills → `/update-devin-global-skills` one at a time; consistency → `/deep-review-codebase` + `/update-references` + complete bidirectional refs
+Categories: split (>250/multiple responsibilities), merge (overlapping/duplicate scope — preserve intent, delete the absorbed one), restructure (≤10 steps), deduplicate (→ references/`related`), relocate (`/relocation` per prefix); priority: high redundancy → large files → broken structure; compare change frequency/usage — don't over-refactor; new sub-skills → `/update-devin-global-skills` one at a time; consistency → `/deep-review` + `/update-references` + complete bidirectional refs
 
 ### Scoring
 
@@ -232,12 +232,12 @@ Categories: split (>250/multiple responsibilities), merge (overlapping/duplicate
 - Never use markdown bold markers — use backticks
 - Report as tables via `/report-review` (chat, no files)
 
-- Use /idea-new-devin-global-skills, /follow-deep, /deep-review-codebase, /run-review, /follow-single-of-source when needed
+- Use /idea-new-devin-global-skills, /follow-deep, /deep-review, /run-review, /follow-single-of-source when needed
 - Use /update-devin-harness when findings are layer misalignment; use /check-reference, /update-devin-global-skills to drill into a single layer
 
 ## Fix
 
-> Follow `deep-review-codebase/SKILL.md` when the user confirms fixing findings — use /use-subagents if needed
+> Follow `deep-review/SKILL.md` when the user confirms fixing findings — use /use-subagents if needed
 
 ## Expected Outcome
 

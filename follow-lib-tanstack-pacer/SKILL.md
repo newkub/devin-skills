@@ -74,12 +74,20 @@ Core (non-hook): `new Debouncer(fn, { wait })`, `debounce(fn, opts)` from `@tans
 2. Edge behavior (leading/trailing) matches options
 3. If it fails → `/resolve-errors` max 3 rounds
 
+### Use Cases
+
+| Scenario | Use case |
+|----------|----------|
+| Debounce a search input without painting stale results | `usecases/debounce-search-input.md` |
+| Cap an API quota and run a bounded upload queue | `usecases/rate-limit-and-queue.md` |
+
 ## Rules
 
 - Debounce ≠ throttle ≠ rate limit ≠ queue ≠ batch — choose by semantics, not approximation
 - Set `wait` to real UX needs: search ~300ms, scroll/resize 50-150ms
 - Never debounce actions that need immediate feedback (submit button)
 - Test timing with fake timers always — never `await sleep()` for real
+- See best-practices/ for the pattern and pitfall checklist
 
 ## Expected Outcome
 

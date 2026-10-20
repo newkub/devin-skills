@@ -4,7 +4,7 @@ description: Generate ideas according to user context, analyze gaps and opportun
 argument-hint: "[topic]"
 related:
   - validate-idea
-  - deep-review-codebase
+  - deep-review
   - reframe
   - report
   - suggest-next-action
@@ -49,7 +49,7 @@ Analyze context from the user request:
 Generate ideas according to the context:
 
 1. If it's feature ideas, run `/idea-features` to generate new feature ideas and improve existing features
-2. If it's UX/UI ideas, run `/deep-review-codebase` to generate UX/UI improvement ideas
+2. If it's UX/UI ideas, run `/deep-review` to generate UX/UI improvement ideas
 3. Generate improvement ideas from what exists (Extends) — if you want review-driven improvements instead → `/improve <scope>`
 4. Generate new ideas that don't exist yet (New)
 5. Identify the problem each idea will solve

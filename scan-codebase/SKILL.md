@@ -47,7 +47,7 @@ Use for a quick overview before `/deep-analyze`, or as a fast standalone snapsho
 
 > Goal: Find quality issues and anti-patterns with priority
 
-1. Run `/deep-review-codebase` to find duplicate code
+1. Run `/deep-review` to find duplicate code
 2. Use `Grep` to find anti-patterns (`any`, `console.log`, nested ternary)
 
 ### 5. Structured Data And Report (30 seconds)

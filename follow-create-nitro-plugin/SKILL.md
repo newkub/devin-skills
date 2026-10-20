@@ -7,7 +7,7 @@ related:
   - follow-create-web
   - follow-lang-typescript
   - run-test
-  - deep-review-codebase
+  - deep-review
   - report
 
 ---
@@ -28,8 +28,8 @@ Use when creating plugins that extend the Nitro runtime in Nuxt 3/4 or a standal
 
 > Goal: verify the tech stack before building
 
-1. Run `/deep-research` + `/follow-best-practice` to confirm the latest versions and patterns, then run `/deep-review-codebase` to summarize the tech stack
-2. Run `/deep-review-codebase` to review the tech stack, dependencies, and library design (create nitro plugin)
+1. Run `/deep-research` + `/follow-best-practice` to confirm the latest versions and patterns, then run `/deep-review` to summarize the tech stack
+2. Run `/deep-review` to review the tech stack, dependencies, and library design (create nitro plugin)
 3. Record the rationale for the chosen stack and libraries for future reference (create nitro plugin)
 
 ### 2. Choose Plugin Type

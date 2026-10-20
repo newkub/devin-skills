@@ -7,7 +7,7 @@ related:
   - run-dev
   - ship
   - follow-best-practice
-  - deep-review-codebase
+  - deep-review
 
 ---
 
@@ -30,7 +30,7 @@ Create and develop presentation slides with Slidev (Vite + Vue + Markdown), both
 
 > Goal: Pick the mode based on the project location
 
-1. Run `/deep-research` + `/follow-best-practice` to confirm the latest versions and patterns, then run `/deep-review-codebase` to summarize the tech stack
+1. Run `/deep-research` + `/follow-best-practice` to confirm the latest versions and patterns, then run `/deep-review` to summarize the tech stack
 2. Get the project name and location from the user — if no location is given → use the current directory
 3. If creating inside `D:/newkub/slides` → do steps 2-5 (shared root `package.json`)
 4. If creating standalone outside `D:/newkub/slides` → check the location is free (ask first if something exists there), then run `bun create slidev@latest {project-name}` + `bun install` — standalone has its own `package.json`; skip step 2

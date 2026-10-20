@@ -3,7 +3,7 @@ name: run-check
 description: Run lint, typecheck and scan to verify quality
 argument-hint: "[scope]"
 related:
-  - deep-review-codebase
+  - deep-review
   - run-lint
   - run-typecheck
   - run-scan
@@ -20,7 +20,7 @@ Use `run-check` for tasks and workflows within its coverage (check)
 
 ## Execute
 
-> Pre-Run: Always run `/deep-review-codebase` first — `run-*` requires review/assessment before the main action, never skip; if findings are blockers, fix or report them before running (check)
+> Pre-Run: Always run `/deep-review` first — `run-*` requires review/assessment before the main action, never skip; if findings are blockers, fix or report them before running (check)
 
 ### 1. Run Lint
 

@@ -2,7 +2,7 @@
 
 > Pick the right test level and drive the real UI headlessly. Source: https://gpui-kit.com/docs/test (accessed 2026-10-20)
 
-## Choose the test level (verified from docs)
+## 1. Choose the test level (verified from docs)
 
 | Behavior | Tool |
 |---|---|
@@ -14,7 +14,7 @@
 
 Kit exposes the test types and macro through its root — no extra GPUI dependency, no testing crate, no Cargo patch.
 
-## Setup (verified from docs)
+## 2. Setup (verified from docs)
 
 ```toml
 # dev-dependencies only — ordinary app builds must not enable observation
@@ -25,7 +25,7 @@ Keep the app's normal `gpui-kit` dependency resolving to the same source/version
 
 GOTCHA: `use gpui_kit::*;` also imports the GPUI `test` macro and can shadow Rust's `#[test]` — use explicit imports in test modules.
 
-## UI integration test (verified from docs)
+## 3. UI integration test (verified from docs)
 
 ```rust
 use gpui_kit::test::{TestSupportExt, TestWindowExt};
@@ -63,11 +63,11 @@ fn saves_a_profile_through_the_ui(cx: &mut TestAppContext) {
 - plain divs opt into observation with `.test_support()` (`TestSupportExt`) — no second state description needed
 - import your production view in tests; a separate test view drifts from the app
 
-## What observation exposes (condensed from the docs table)
+## 4. What observation exposes (condensed from the docs table)
 
 Button: label, focus scope · Input: value, label, focus · Checkbox/Switch/Radio: checked/selected · Tab: selected · Combobox/Select: expanded + value · Table/DataTable: native parts, row selection · Dialog/Sheet: host focus scope, surface bounds · Menu: item label/selection · Notification: alert role, bounds · Progress: indicator role/label · TitleBar: `title-bar`/`window-controls` bounds · Dock: area/group/content bounds, tab selection · Slider/Stepper/Progress: bounds only — numeric values are not exposed by `ElementSnapshot::value()`, verify resulting app content.
 
-## Accessibility checks
+## 5. Accessibility checks
 
 - these tests read the AccessKit-derived properties (`role`, `label`, focus) — they do not verify what a screen reader announces; check that in the running app per platform
 - give interactive elements stable IDs and `aria_label`s from object identity, not displayed text (labels get translated)
@@ -79,3 +79,9 @@ Button: label, focus scope · Input: value, label, focus · Checkbox/Switch/Radi
 - copying only the docs' `tests/ui.rs` — it needs `tests/common/mod.rs` too (`mod common;` fails otherwise)
 - busy-waiting on async work in tests — drive the test executor, not sleeps
 - asserting `ElementSnapshot::value()` on Slider/Progress — not exposed; assert the application effect instead
+
+## Related
+
+- `references/apis.md`
+- `best-practices/components.md`
+- `best-practices/state-model.md`

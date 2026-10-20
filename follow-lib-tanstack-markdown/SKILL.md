@@ -62,12 +62,20 @@ bun add @tanstack/markdown
 2. Edge cases: an unclosed fence mid-stream, nested lists, tables, inline code in a heading
 3. On failure → `/resolve-errors` max 3 rounds
 
+### Use Cases
+
+| Scenario | Use case |
+|----------|----------|
+| Render AI output while it streams, partial blocks included | `usecases/stream-ai-markdown.md` |
+| Map nodes to design-system components, links, and sanitizing | `usecases/custom-node-renderers.md` |
+
 ## Rules
 
 - The model = data only — never embed components/functions in nodes (serialization breaks)
 - Raw HTML → always sanitize — the app's XSS boundary
 - Streaming must handle incomplete blocks — test partial states
 - Pick the right lib: stream/serialize → TanStack Markdown; static render → `marked`, lighter
+- See best-practices/ for the pattern and pitfall checklist
 
 ## Expected Outcome
 

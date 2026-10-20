@@ -2,7 +2,7 @@
 
 > Build datasets UIs: virtualized tables, charts, and scroll containers. Source: https://gpui-kit.com/component/data-table, /component/chart, /component/scrollable (accessed 2026-10-20)
 
-## Scenario table
+## 1. Scenario table
 
 | Building | Components / APIs |
 |---|---|
@@ -13,7 +13,7 @@
 | OHLC price data | `component::chart::CandlestickChart` |
 | Scrollbars on any container | `component::scroll::{ScrollableElement, ScrollbarAxis, ScrollbarMode}` + `StyledExt` |
 
-## DataTable (delegate pattern, verified from docs)
+## 2. DataTable (delegate pattern, verified from docs)
 
 Virtual scrolling, row/column/cell selection, resizable + fixed columns, sorting, keyboard navigation, context menus, infinite loading. You implement `TableDelegate`; `TableState<D>` holds runtime state.
 
@@ -42,7 +42,7 @@ let columns = vec![
 - `render_td` can return any element — badges, inputs, progress bars, not just strings
 - user interactions arrive as `TableEvent` (subscribe on the `TableState` entity)
 
-## Charts (verified from docs)
+## 3. Charts (verified from docs)
 
 Charts take data + accessor closures and auto-adapt to the active theme.
 
@@ -65,7 +65,7 @@ Axes and guides for `LineChart`/`AreaChart`: `y_axis(true)`, `y_tick_count`, `y_
 
 Bar fills: `fill(|d, bar_bounds, chart_bounds, alignment| ...)` returns anything convertible to `Background` (solid, gradient, pattern); `fill_gradient(|d, chart_range, chart_to_bar| [linear_color_stop(c, 0.0), ...])` aligns the gradient to the bar orientation — `fill` and `fill_gradient` are mutually exclusive. Orientation comes from `gpui_kit::component::plot::shape::BarAlignment`; hide the band axis with `label_axis(false)`.
 
-## Scrollable containers (verified from docs)
+## 4. Scrollable containers (verified from docs)
 
 ```rust
 use gpui_kit::component::scroll::{ScrollableElement, ScrollbarAxis, ScrollbarMode};
@@ -82,3 +82,9 @@ v_flex().id("list").overflow_y_scrollbar().child(items)  // custom scrollbar, no
 - rebuilding a `TableDelegate` resets view state — keep it behind the `TableState` entity and mutate its data instead
 - gradient tokens only apply to background-capable tokens; top-level `cx.theme().button_primary` stays a solid `Hsla` (use `.tokens.button_primary.background` for the full value)
 - chart tick density: default shows every label — set `tick_margin` / `x_tick_count` for long series
+
+## Related
+
+- `references/apis.md`
+- `best-practices/components.md`
+- `best-practices/state-model.md`

@@ -46,6 +46,16 @@ Use when the task involves jose — JWT/JWS/JWE/JWK operations on runtimes that 
 2. Run `/run-test` if related tests exist
 3. Check the latest official docs before using an uncertain API (lib jose)
 
+### Use Cases
+
+| Scenario | Use case |
+|----------|----------|
+| Issue and verify session tokens | `usecases/sign-and-verify-jwt.md` |
+| Verify a remote JWKS, rotate keys, encrypt claims | `usecases/jwks-and-key-rotation.md` |
+| Generate, export, and import keys (JWK, PEM, secret) | `usecases/key-generation-and-import.md` |
+| Access + refresh token pair with `token_use` and `jti` | `usecases/access-and-refresh-token-pair.md` |
+| Map verify errors to 401/403 without leaking the reason | `usecases/verify-errors-and-status-codes.md` |
+
 ## Rules
 
 - Use `jose` instead of `jsonwebtoken` on edge runtimes (jsonwebtoken needs node:crypto)

@@ -130,6 +130,17 @@ Boundaries:
 2. Use it to browse, filter, and edit records during development
 3. Never use it in production
 
+### Use Cases
+
+| Scenario | Use case |
+|----------|----------|
+| Tables, relations, typed reads | `usecases/schema-and-relations.md` |
+| Filters, joins, counts, pagination | `usecases/typed-queries-and-joins.md` |
+| Transactions, constraints, migrations | `usecases/transactions-and-migrations.md` |
+| Driver setup and a single client per process | `usecases/driver-setup-and-client.md` |
+| Nested reads with `db.query` and relations | `usecases/relational-queries-with.md` |
+| Dynamic filters and prepared statements | `usecases/dynamic-filters-with-sql.md` |
+
 ## Rules
 
 ### 1. Installation
@@ -182,6 +193,7 @@ Boundaries:
 - Use /setup-cicd if needed
 
 - See best-practices/ for recommended patterns and pitfalls
+- See usecases/ for end-to-end scenario recipes
 
 ## Expected Outcome
 

@@ -131,7 +131,7 @@ Use for every debugging session — runtime errors, test failures, build errors,
 > Goal: add test cases and improve debuggability to prevent the problem from recurring
 
 1. Add regression-prevention test cases — run `/follow-tool-vitest` or `/follow-tool-playwright`
-2. Run `/deep-review-codebase` if debugging was hard due to insufficient logging
+2. Run `/deep-review` if debugging was hard due to insufficient logging
 3. Update documentation if the problem was about config or setup
 4. Record the root cause and solution in `docs/` or the commit message
 
@@ -177,7 +177,7 @@ Use for every debugging session — runtime errors, test failures, build errors,
 - E2E failures → `/follow-tool-playwright`
 - Build errors → `/run-build` + `/resolve-errors`
 - Type errors → `/run-typecheck` + `/follow-lang-typescript`
-- Performance → `/run-profiler` + `/deep-review-codebase`
+- Performance → `/run-profiler` + `/deep-review`
 - Git issues → `### 7` + `/follow-tool-git` + `/check-git-logs`
 
 ### 5. Time Budget And Escalation

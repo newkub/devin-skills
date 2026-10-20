@@ -7,7 +7,7 @@ related:
   - check-code-structure
   - search-with-astgrep
   - use-astgrep-programmatic
-  - deep-review-codebase
+  - deep-review
 ---
 
 ## Goal
@@ -118,7 +118,7 @@ Covers configuring `sgconfig.yml`, project structure, the scan script, and dispa
 - Every rewrite must be dry-run + preview + confirmed before applying — the workflows already enforce this, never skip it
 
 - Use /check-code-structure if needed
-- Use `/deep-review-codebase` if needed
+- Use `/deep-review` if needed
 
 ## Expected Outcome
 

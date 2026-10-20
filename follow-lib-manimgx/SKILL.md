@@ -117,6 +117,16 @@ Use ManimGX to create math and 3D videos from Python scenes — the API is compa
 2. Open the storyboard and the actual MP4 to confirm the video matches the spec — don't judge by exit code alone
 3. Check the latest official docs (`/deep-research`) before using an uncertain API — every docs page is available as Markdown at its URL + `index.md`
 
+### Use Cases
+
+| Scenario | Use case |
+|----------|----------|
+| First math scene: install, inspect, render | `usecases/first-math-scene.md` |
+| Narrated video with synced `.srt` captions | `usecases/narrated-video.md` |
+| 3D scene with axes, camera moves, ambient rotation | `usecases/3d-scene-and-camera.md` |
+| Run a scene in the browser with `<manimgx-player>` | `usecases/web-embed-player.md` |
+| Type-check a scene with `ty` before rendering | `usecases/ty-typecheck-setup.md` |
+
 ## Rules
 
 ### 1. Package Identity

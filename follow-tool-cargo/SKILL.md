@@ -146,6 +146,15 @@ For configuring Cargo lint rules in Rust projects, both single crate and workspa
 
 - See best-practices/ for recommended patterns and pitfalls
 
+### Use Cases
+
+| Scenario | Use case |
+|----------|----------|
+| Workspace lint config every crate inherits | `usecases/workspace-lints.md` |
+| Faster builds with profiles, cache, timings | `usecases/faster-builds-with-cache.md` |
+
+- See usecases/ for end-to-end scenario recipes
+
 ## Expected Outcome
 
 - Cargo lint rules configured automatically

@@ -93,6 +93,14 @@ Use with Vue 3 that needs state management via Pinia v4 — covers setup stores,
 
 - Install + `createPinia` + store patterns (setup vs options) → `workflows/setup-pinia/SKILL.md`
 
+### Use Cases
+
+| Scenario | Use case |
+|----------|----------|
+| Setup store for a CRUD feature used from components | `usecases/setup-store-crud.md` |
+| Persist a slice of state with the persistedstate plugin | `usecases/persist-store.md` |
+| Unit test state, getters and async actions | `usecases/test-store.md` |
+
 ## Rules
 
 ### 1. Setup Store Pattern

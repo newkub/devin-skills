@@ -3,7 +3,7 @@ name: list-recent-bookmark-raindrop
 description: List recent bookmarks from Raindrop.io sorted by created
 argument-hint: "[collection]"
 related:
-  - deep-review-codebase
+  - deep-review
   - report
 ---
 
@@ -53,7 +53,7 @@ Use with the `raindrop` CLI (`raindrop list`) — all collections or a specified
 - Full JSON: `raindrop list --json --all --sort="-created"`
 
 - Use /search-raindrop if needed
-- Use /deep-review-codebase if needed
+- Use /deep-review if needed
 
 ## Expected Outcome
 

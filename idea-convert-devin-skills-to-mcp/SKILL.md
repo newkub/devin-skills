@@ -4,7 +4,7 @@ description: Generate ideas and a draft to convert Devin skills into an MCP serv
 argument-hint: "[skill-name|family]"
 related:
   - create-devin-global-mcp
-  - deep-review-codebase
+  - deep-review
   - check-my-global-cli
   - create-plan-in-dot-devin
   - deep-validate
@@ -87,7 +87,7 @@ Use when you want skills to be accessible from other MCP clients or to integrate
 > Goal: Verify and present the next direction
 
 1. Run `/deep-validate` to check the draft — complete schema, no duplicate tool names, appropriate transport
-2. Run `/deep-review-codebase` if available — review the draft against MCP best practices
+2. Run `/deep-review` if available — review the draft against MCP best practices
 3. Check that it doesn't duplicate already-installed MCP servers (`/check-my-global-cli` or `.devin/config.json` mcpServers)
 4. If the draft passes and the user confirms, convert → run `/create-devin-global-mcp` per the draft (this skill is idea/draft only — implementation lives in `/create-devin-global-mcp`); if there are no candidates → `/suggest-next-action`
 
@@ -107,7 +107,7 @@ Use when you want skills to be accessible from other MCP clients or to integrate
 - Specify error cases: exit codes, missing deps, timeout
 - Store drafts in `.devin/temp/plan/<workspace>/` or the report — don't write server code until confirmed
 - When conversion is confirmed → always follow `/create-devin-global-mcp` (never implement an MCP server yourself in this skill)
-- Use /deep-review-codebase if necessary
+- Use /deep-review if necessary
 
 ## Expected Outcome
 

@@ -78,7 +78,7 @@ Understand graph theory: nodes, edges, directed/undirected graphs, trees, DAGs, 
 - Use a library like `graphlib` when needed
 
 - Use /follow-math-concepts if needed
-- Use /deep-review-codebase if needed
+- Use /deep-review if needed
 - Use /follow-monorepo if needed
 
 ## Expected Outcome

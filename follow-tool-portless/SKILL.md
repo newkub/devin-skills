@@ -96,6 +96,7 @@ PORTLESS=0 pnpm dev                          # bypass the proxy
 
 - LAN mode is not supported on Windows; `.localhost` resolves in modern browsers without editing hosts
 - `service install` uses Task Scheduler (SYSTEM) on Windows
+- See references/ for the CLI command and env var tables
 - Use /deep-test load if needed
 - Use /check-my-global-cli if needed
 

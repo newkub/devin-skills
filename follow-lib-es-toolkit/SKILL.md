@@ -112,6 +112,16 @@ Use when the task involves `es-toolkit` — install, array/object/string/math/pr
 2. Check the latest official docs at `https://es-toolkit.dev/reference/array/chunk.html` (swap category/function for what you use) and the performance/bundle docs before using an uncertain API
 3. Check `https://es-toolkit.dev/compatibility.html` when migrating from lodash — the list of functions compat does not support
 
+### Use Cases
+
+| Scenario | Use case |
+|----------|----------|
+| Migrate lodash imports via compat, then core | `usecases/replace-lodash-imports.md` |
+| Group, sort, and normalize API data | `usecases/group-and-aggregate-data.md` |
+| Debounce and throttle with cleanup | `usecases/debounce-and-throttle.md` |
+| Bounded retry, timeout, and delays | `usecases/async-retry-and-timeout.md` |
+| Deep clone and structural equality | `usecases/deep-clone-and-equality.md` |
+
 ## Rules
 
 ### 1. Import Discipline

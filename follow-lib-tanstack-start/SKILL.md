@@ -95,7 +95,17 @@ export const addTodo = createServerFn({ method: 'POST' })
 - Always use `inputValidator` on server functions that take input — it's a trust boundary, like a real API
 - Loaders must be isomorphic (run on both server+client) — put server-only code inside a server fn / `serverOnly()`
 - Never hand-edit the generated route tree
+- See best-practices/ for the pattern and pitfall checklist
 - Use `/follow-lib-tanstack-ecosystem` for the overview
+
+### Use Cases
+
+| Scenario | Use case |
+|----------|----------|
+| Authenticated, validated server function | `usecases/server-functions-with-middleware.md` |
+| Loader + pending/error UI + `router.invalidate()` | `usecases/ssr-loader-and-pending-ui.md` |
+
+- See usecases/ for end-to-end scenario recipes
 
 ## Expected Outcome
 

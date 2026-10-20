@@ -3,7 +3,7 @@ name: follow-create-web-nextjs
 description: Guidelines for structuring and developing Next.js 16 applications
 argument-hint: "[scope]"
 related:
-  - deep-review-codebase
+  - deep-review
   - follow-best-practice
   - setup-cicd
   - run-dev
@@ -160,11 +160,11 @@ Structure and develop Next.js 16 applications with App Router, React 19.3, Cache
 - Never make database calls in the proxy
 - Runs on the Edge Runtime
 
-- Use /deep-review-codebase if needed
+- Use /deep-review if needed
 - Use /follow-create-mobile-cross-with-capacitor if needed (create web nextjs)
 - Use /follow-best-practice if needed
 - Use /setup-cicd if needed
-- Use /deep-review-codebase if needed
+- Use /deep-review if needed
 - Use /run-dev if needed
 
 ## File Structure

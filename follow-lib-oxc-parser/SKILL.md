@@ -88,6 +88,13 @@ visitor.visit(result.program);
 2. Transform (TS→JS, JSX): use `oxc-transform`, a separate package
 3. Minify: `oxc-minify`; resolve: `oxc-resolver`
 
+### Use Cases
+
+| Scenario | Use case |
+|----------|----------|
+| Extract imports/exports and build a module graph | `usecases/extract-imports-and-exports.md` |
+| Write a custom analyzer rule with `file:line` findings | `usecases/custom-analyzer-rule.md` |
+
 ## Rules
 
 ### 1. Error Handling

@@ -2,11 +2,11 @@
 
 > Modal surfaces, transient feedback, and `⌘K` navigation. Source: https://gpui-kit.com/component/dialog, /component/notification, /component/command (accessed 2026-10-20)
 
-## Where overlays render
+## 1. Where overlays render
 
 The window's `Root` automatically mounts dialogs, sheets, and notifications. Open windows with `gpui_kit::open_window` (wraps your view) — application views do not render overlay layers themselves.
 
-## Dialog & Sheet (verified from docs)
+## 2. Dialog & Sheet (verified from docs)
 
 ```rust
 use gpui_kit::component::dialog::DialogButtonProps;
@@ -34,7 +34,7 @@ window.open_dialog(cx, move |dialog, window, cx| {
 - same contract for `open_alert_dialog`, `open_sheet`, `open_sheet_at`
 - `DialogButtonProps` types the footer button closures
 
-## Toast notifications (verified from docs)
+## 3. Toast notifications (verified from docs)
 
 ```rust
 use gpui_kit::component::notification::{Notification, NotificationType, NotificationDelivery};
@@ -56,7 +56,7 @@ Notification::new().title("Update Available")
 - OS delivery: `.system()` / `.in_app_and_system()` (`NotificationDelivery`); Windows needs `cx.set_app_identity(identifier, name)` early; macOS requires a bundled `.app`; clicking a system notification activates the window and fires `on_click`
 - don't register your own `on_system_notification_response` handler after `component::init` — gpui keeps only one
 
-## Command palette (verified from docs)
+## 4. Command palette (verified from docs)
 
 `Command` owns entries/presentation; `CommandState` owns query, focus, selection, scrolling, loading. Create the state once, rebuild `Command` from the owner's data each render.
 
@@ -88,3 +88,9 @@ Command::new(&state)
 - calling `window.close_dialog(cx)` from Command's `on_cancel` — double dismissal races the Dialog's own Cancel handling
 - pushing the same toast in a retry loop — use `.id::<T>()` so re-push replaces instead of stacking
 - spawning the palette list unbounded — Command measures every flattened row; keep entry counts sane or paginate in `on_query`
+
+## Related
+
+- `references/apis.md`
+- `best-practices/components.md`
+- `best-practices/state-model.md`

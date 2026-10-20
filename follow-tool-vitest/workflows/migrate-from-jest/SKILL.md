@@ -64,7 +64,7 @@ Migrate the test suite from Jest to Vitest safely — the suite fully green befo
 > Goal: the suite is fully green on Vitest, then remove Jest
 
 1. Run `vitest run` — must be fully green; on failures fix group by group, never skip arbitrarily
-2. Do `/deep-review-codebase` to check for remaining `jest.` usages
+2. Do `/deep-review` to check for remaining `jest.` usages
 3. Once green: remove `jest`, `@types/jest`, `ts-jest`, `babel-jest`, `jest.config.*` in a separate commit
 4. Switch `"test": "vitest run"` then run `/run-test` to confirm again
 5. Done → `/report-before-after` then `/ship`

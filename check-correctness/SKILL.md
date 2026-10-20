@@ -9,7 +9,7 @@ related:
   - check-secrets
   - review-issues
   - deep-test
-  - deep-review-codebase
+  - deep-review
   - deep-validate
   - follow-tool-data-validation
   - run-check
@@ -33,13 +33,13 @@ Use for any correctness question when the artifact type is not yet decided, or w
 |---|---|---|
 | Doc claim (README/USAGE/docs statement, link) | does the doc state what is really true | `/check-reference` |
 | Test assertion | would this test fail if the implementation were wrong | `/deep-test test-correctness` |
-| Code behavior | provably wrong behavior against the requirement | `/review-issues` (+ `/deep-review-codebase`) |
+| Code behavior | provably wrong behavior against the requirement | `/review-issues` (+ `/deep-review`) |
 | Type/API/config surface | name, type, options, default correct | `/check-types-definition` |
 | Data/schema values | payload, row, config file matches the schema | `/follow-tool-data-validation` |
 | Structure/metrics | SRP, size, cohesion against the repo rules | `/check-code-structure`, `/run-check` |
 | Secrets/env | present, non-leaked, sourced correctly | `/check-secrets` |
 
-- Not a correctness question → route elsewhere directly: strategy/quality → `/deep-review-codebase`, validation gate before applying → `/deep-validate`, "not implemented yet" inventory → `/report-not-implement`
+- Not a correctness question → route elsewhere directly: strategy/quality → `/deep-review`, validation gate before applying → `/deep-validate`, "not implemented yet" inventory → `/report-not-implement`
 - Check only — this skill never edits; every fix goes to the owner skill (`## Rules ### 3`)
 - No owner covers the artifact → run the generic method inline (`### 2` last bullet)
 

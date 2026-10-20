@@ -103,6 +103,14 @@ Use for modern web applications that use Vite as their build tool and dev server
 | Migrate from Vite ≤7/`rolldown-vite` to Vite 8 | `workflows/migrate-to-vite8/SKILL.md` |
 | Component testing with Testing Library (setup + queries + user-event) | `workflows/testing-library/SKILL.md` |
 | Pick/setup plugins — unified + frontend-lib catalogs | `/follow-tool-vite-plugins` |
+
+### Use Cases
+
+| Scenario | Use case |
+|----------|----------|
+| Dev proxy to a backend + typed env vars | `usecases/dev-proxy-and-env.md` |
+| Production build, `preview` verification, deploy | `usecases/build-and-preview.md` |
+
 ## Rules
 
 ### 1. Configuration
@@ -154,6 +162,7 @@ Use for modern web applications that use Vite as their build tool and dev server
 Canonical file structure + layer table: [templates/file-structure-web-vite-spa.md](templates/file-structure-web-vite-spa.md)
 
 - See best-practices/ for recommended patterns and pitfalls
+- See usecases/ for end-to-end scenario recipes
 
 ## Expected Outcome
 

@@ -67,12 +67,20 @@ import { Chart } from '@tanstack/react-charts'
 2. Real render: axis labels, series shapes, tooltip
 3. On failure → `/resolve-errors` max 3 rounds
 
+### Use Cases
+
+| Scenario | Use case |
+|----------|----------|
+| Bar + multi-series line chart from one record array | `usecases/bar-and-line-chart.md` |
+| Time series in a responsive, auto-refreshing card | `usecases/time-series-dashboard.md` |
+
 ## Rules
 
 - Keep the `data` reference stable (`useMemo`) — a new array each render = a full chart re-render
 - 0.x API — pin the exact version; never assume the API matches Recharts
 - Colors via design tokens — no hardcoded hex in chart config
 - Complex charts (brushing, custom marks) → read the full grammar docs first
+- See best-practices/ for the pattern and pitfall checklist
 
 ## Expected Outcome
 

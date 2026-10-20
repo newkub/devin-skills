@@ -106,6 +106,13 @@ For projects wanting the current TanStack ecosystem (see the latest list at `htt
 | Intent — ship agent skills in npm packages | `/follow-lib-tanstack-intent` |
 | Config — publish/maintain packages | `/follow-lib-tanstack-config` |
 
+### Use Cases
+
+| Scenario | Use case |
+|----------|----------|
+| Map a feature description to one library, maturity checked | `usecases/pick-library-for-a-feature.md` |
+| Add one library to an existing app without breaking it | `usecases/integrate-a-new-library.md` |
+
 ## Rules
 
 ### 1. Library Selection
@@ -115,6 +122,7 @@ For projects wanting the current TanStack ecosystem (see the latest list at `htt
 - `Router`/`Start` support React and Solid only — if using Vue/Svelte, use that framework's router
 - Always cite the official docs `https://tanstack.com` as the primary source
 - Per-library detail lives in the specialized `/follow-lib-tanstack-*` skills (all 18 libs — see the Workflows table; each skill's `references/apis.md` has package versions + API tables)
+- See references/ for the catalog table (library → package → role → skill)
 
 ### 2. Type Safety
 
@@ -129,6 +137,7 @@ For projects wanting the current TanStack ecosystem (see the latest list at `htt
 - Use `Pacer` for debounce/throttle instead of hand-rolling it
 - Separate reactivity scopes properly in `Store`/`DB`
 
+- See best-practices/ for the selection and boundary checklist
 - See each `/follow-lib-tanstack-*` skill's `best-practices/` for recommended patterns and pitfalls
 
 ## Expected Outcome

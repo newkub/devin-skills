@@ -76,7 +76,7 @@ Understand category theory: categories, objects, morphisms, functors, natural tr
 - Use `pipe`/`compose` for function composition
 - Use a library like `fp-ts` or `effect` when needed
 
-- Use /deep-review-codebase if needed
+- Use /deep-review if needed
 - Use /follow-math-concepts if needed
 
 ## Expected Outcome

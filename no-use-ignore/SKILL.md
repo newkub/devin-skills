@@ -3,7 +3,7 @@ name: no-use-ignore
 description: Remove ignore comments (ts-ignore, eslint-disable, biome-ignore, noqa), fix root cause
 argument-hint: "[@files... | scope]"
 related:
-  - deep-review-codebase
+  - deep-review
   - run-lint
   - run-typecheck
   - run-verify
@@ -119,8 +119,8 @@ Remove suppression comments (lint ignore, type ignore, coverage ignore) from the
 - A suppression that is already well justified (named rule + reason + narrow scope) → keep it, no need to "fix" (`/dont-over-engineer`)
 - test files have more leniency — `@ts-expect-error` in negative tests is a feature, not a suppression
 
-- Use /deep-review-codebase if necessary
-- Use /deep-review-codebase if necessary
+- Use /deep-review if necessary
+- Use /deep-review if necessary
 - Use /run-lint if necessary
 - Use /run-typecheck if necessary
 

@@ -193,6 +193,18 @@ Use for projects that use oRPC as the API layer (both standalone and inside TanS
 
 - See best-practices/ for recommended patterns and pitfalls
 
+### Use Cases
+
+| Scenario | Use case |
+|----------|----------|
+| Procedure with auth middleware + I/O schemas | `usecases/procedure-with-validation-and-middleware.md` |
+| Typed client in TanStack Query + invalidation | `usecases/client-with-tanstack-query.md` |
+| Typed errors, `safe()`, and the safe client | `usecases/typed-errors-and-safe-client.md` |
+| Contract-first router shared by server and client | `usecases/contract-first-router.md` |
+| REST endpoints plus a generated OpenAPI spec and docs | `usecases/openapi-rest-and-docs.md` |
+
+- See usecases/ for end-to-end scenario recipes
+
 ## Expected Outcome
 
 - A fully type-safe API (server → client)

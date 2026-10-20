@@ -6,7 +6,7 @@ related:
   - report-todo
   - report-progress
   - suggest-next-action
-  - deep-review-codebase
+  - deep-review
 
 ---
 
@@ -48,7 +48,7 @@ Used for reporting results in chat; `/report` dispatches to `report-table` or `r
 
 1. Pass the data to the selected skill
 2. Check that the output matches the format
-3. If needed, use `/deep-review-codebase`
+3. If needed, use `/deep-review`
 
 ### 3. Apply UX/UI Format
 

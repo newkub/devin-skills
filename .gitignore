@@ -15,6 +15,7 @@ Thumbs.db
 
 # Temp / scratch
 temp/
+.tmp-*
 _tmp_*.py
 
 # Secrets

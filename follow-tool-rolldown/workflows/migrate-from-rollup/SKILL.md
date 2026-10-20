@@ -6,7 +6,7 @@ related:
   - follow-tool-rolldown
   - scan-codebase
   - deep-analyze
-  - deep-review-codebase
+  - deep-review
   - report-before-after
 ---
 

@@ -35,7 +35,7 @@ Enumerate every task defined in the project's task manifest (`package.json` scri
 > Goal: review the project state before executing tasks
 
 1. Run `/check-monorepo` to determine project scope (single package vs monorepo)
-2. Run `/deep-review-codebase` to assess the project state — blockers found → fix or report before proceeding
+2. Run `/deep-review` to assess the project state — blockers found → fix or report before proceeding
 
 ### 2. Discover Tasks
 

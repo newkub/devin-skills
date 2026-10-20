@@ -6,7 +6,7 @@ related:
   - use-agent-browser
   - use-chrome-devtools
   - run-dev
-  - deep-review-codebase
+  - deep-review
 
 ---
 
@@ -61,7 +61,7 @@ bun D:/newkub/agents-capture/src/presentation/cli.ts <mode> [options]
 - Give files meaningful names; include the date when they are evidence
 - Don't capture screens containing secrets/credentials unless necessary — if the target requires auth, ask the user first
 - Always report the path of captured files
-- Use /run-dev, /use-agent-browser, /resolve-errors, /deep-review-codebase if needed
+- Use /run-dev, /use-agent-browser, /resolve-errors, /deep-review if needed
 
 ## Mode Guides
 
@@ -93,4 +93,4 @@ bun D:/newkub/agents-capture/src/presentation/cli.ts <mode> [options]
 ## Expected Outcome
 
 - Ready-to-use image/video/PDF evidence files for the specified mode
-- `all` mode yields a `manifest.json` summarizing results + errors, ready for `/deep-review-codebase` or a report
+- `all` mode yields a `manifest.json` summarizing results + errors, ready for `/deep-review` or a report

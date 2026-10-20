@@ -63,7 +63,7 @@ Latest: `stripe@22.6.2` (server), `@stripe/stripe-js@9.17.0` (client) (verified 
 
 1. Do `/follow-lib-unocss` for UnoCSS and HSL theme tokens
 2. Design cards for each plan with price, features, CTA
-3. Call `/deep-review-codebase` before deploying the pricing page
+3. Call `/deep-review` before deploying the pricing page
 4. Pass the price_id to the checkout session
 
 ### 4. Implement Checkout

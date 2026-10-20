@@ -6,7 +6,7 @@ related:
   - report-file-structure
   - report
   - follow-create-rust-cli
-  - deep-review-codebase
+  - deep-review
 
 ---
 
@@ -51,7 +51,7 @@ For viewing the file tree plus file counts, types, and sizes, scanned by a Rust 
 - Never modify source files in the scanned project — read-only
 - Build/cache files are filtered out by default
 - Set a depth limit for large projects
-- If the CLI doesn't match the tech stack → run `/deep-review-codebase` first
+- If the CLI doesn't match the tech stack → run `/deep-review` first
 
 - Use /follow-create-rust-cli if needed
 ## Expected Outcome

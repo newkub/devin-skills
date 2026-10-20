@@ -136,6 +136,16 @@ For projects that need functional programming with Effect-TS — pick the workfl
 2. Run `bunx vitest run` until it passes
 3. Verify no `Effect.run*` exists in library/service code (allowed only at the entry point)
 
+### Use Cases
+
+| Scenario | Use case |
+|----------|----------|
+| Tagged errors, per-tag recovery, run at the boundary | `usecases/typed-error-pipeline.md` |
+| Service + Layer with bounded retry and TestClock | `usecases/retry-and-services.md` |
+| Schema and Config at the request edge | `usecases/schema-and-config-boundary.md` |
+| Layer composition and swappable services | `usecases/layer-composition-and-context.md` |
+| Streams with bounded concurrency and batching | `usecases/streams-and-concurrency.md` |
+
 ## Rules
 
 ### 1. TypeScript Configuration

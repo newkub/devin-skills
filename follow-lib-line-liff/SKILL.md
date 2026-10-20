@@ -51,6 +51,16 @@ Use when the task involves `@line/liff` — the client-side (browser/LINE app) L
 2. Run `/run-test` if related tests exist
 3. Check the latest official docs before using an uncertain API (lib line liff)
 
+### Use Cases
+
+| Scenario | Use case |
+|----------|----------|
+| Init, login, and send the ID token to the server | `usecases/login-and-profile.md` |
+| Share content and send messages from LIFF | `usecases/share-and-messaging.md` |
+| QR scan behind an API-availability check | `usecases/qr-scan-and-api-availability.md` |
+| Friendship gate, close window, home-screen shortcut | `usecases/friendship-gate-and-close-window.md` |
+| Chat context, permanent links, logout | `usecases/context-and-permanent-links.md` |
+
 ## Rules
 
 - Always verify the ID token server-side with the LINE API

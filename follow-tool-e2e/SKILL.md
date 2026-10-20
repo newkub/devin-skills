@@ -13,7 +13,7 @@ related:
   - run-test
   - follow-my-techstack
   - check-secrets
-  - deep-review-codebase
+  - deep-review
 ---
 
 ## Goal
@@ -102,7 +102,7 @@ test('member upgrades to Pro', async ({ app, agent, screen }) => {
 
 - Use /deep-test e2e when a framework/strategy choice is needed
 - Use /deep-test mobile for device specifics
-- Use /deep-review-codebase domain `review-test` for suite review
+- Use /deep-review domain `review-test` for suite review
 
 ## Expected Outcome
 

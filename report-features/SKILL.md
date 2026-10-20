@@ -4,7 +4,7 @@ description: Report all features in the project as a table from generated TypeSc
 argument-hint: "[scope]"
 related:
   - update-docs
-  - deep-review-codebase
+  - deep-review
   - all-workspace
 
   - report
@@ -19,7 +19,7 @@ Report all features in the project as a chat table, reading from `.devin/feature
 
 Read and display features from generated TypeScript files in `.devin/features/<workspace>/` as a chat table only
 
-Does not include: scanning and creating feature files (use `/update-features-md`), analyzing and reviewing features (use `/deep-review-codebase`), checking coverage (use `/deep-review-codebase`)
+Does not include: scanning and creating feature files (use `/update-features-md`), analyzing and reviewing features (use `/deep-review`), checking coverage (use `/deep-review`)
 
 ## Execute
 
@@ -64,7 +64,7 @@ Summarize the status of all features
 1. Use `/report` to output in chat
 2. Summarize feature count per workspace and per status
 3. Identify `partial` or `deprecated` features in a separate group
-4. Recommend `/deep-review-codebase` for `partial` features
+4. Recommend `/deep-review` for `partial` features
 
 ## Rules
 
@@ -113,6 +113,6 @@ Summarize the status of all features
 
 - A features table in chat, grouped by workspace and module
 - Summary of feature status per workspace
-- Recommended follow-up workflows (`/deep-review-codebase`)
+- Recommended follow-up workflows (`/deep-review`)
 - Report is readable with key findings on top
 - Next action is clear

@@ -4,7 +4,7 @@ description: Create a new skill or project file based on an existing example's s
 argument-hint: "[scope]"
 related:
   - update-devin-global-skills
-  - deep-review-codebase
+  - deep-review
   - use-related-skills
   - deep-validate
 ---
@@ -92,7 +92,7 @@ Use when creating a new skill, file, component, or project structure based on an
 - If creating a new skill → update `AGENTS.md`
 
 - Use /update-devin-global-skills if needed (similar)
-- Use /deep-review-codebase if needed
+- Use /deep-review if needed
 - Use /use-related-skills if needed
 - Use /use-scripts if needed
 

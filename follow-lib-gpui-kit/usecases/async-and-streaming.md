@@ -2,7 +2,7 @@
 
 > Task ownership model for I/O, heavy computation, and streamed UI updates. Source: https://gpui-kit.com/docs/task (accessed 2026-10-20)
 
-## Choose the spawn API (verified table from docs)
+## 1. Choose the spawn API (verified table from docs)
 
 | Start from | Runs on | Async callback receives | Use for |
 |---|---|---|---|
@@ -13,7 +13,7 @@
 
 Core property: dropping a `Task` handle cancels unfinished work — the handle's lifetime is part of your View's state design.
 
-## Canonical start/cancel/fail pattern (verified from docs)
+## 2. Canonical start/cancel/fail pattern (verified from docs)
 
 ```rust
 struct TaskLab {
@@ -54,21 +54,21 @@ impl TaskLab {
 
 Runnable drills: `cargo run -p example-stream-markdown` (streamed chunks + replay ID) and the docs' task_lab exercise — save the full listing as `examples/hello_world/src/bin/task_lab.rs` in a Kit checkout, then `cargo run -p hello_world --bin task_lab`.
 
-## Lifetime choice
+## 3. Lifetime choice
 
 - store it on the owning Entity for search/refresh/debounce/stream — replacing the `Option<Task<_>>` cancels the previous run
 - await it from another task when the next step needs the result
 - `.detach()` for one-off work that must finish regardless of the owner — the owner can no longer cancel it
 - `Task::detach()` ≠ `Subscription::detach()` — the first lets work run on, the second keeps a callback subscribed until its source Entity drops
 
-## Re-enter GPUI after await
+## 4. Re-enter GPUI after await
 
 - `this.update(cx, ...)` when the Window is irrelevant; failed update = View is gone — treat as ordinary cancellation
 - `cx.spawn_in(window, ...)` + `this.update_in(cx, ...)` restores `&mut Window` for focus changes and prompts — handle the case where the window closed
 - never hold `&mut Context<T>` or `Window` across an `await`; extract owned inputs before spawning
 - heavy CPU: clone owned `Send` input into `background_spawn`, await its `Task` from the foreground task, apply the result back with a revision check — no UI mutation inside a background future
 
-## Streaming into the UI
+## 5. Streaming into the UI
 
 Producer (background, owns nothing GPUI) sends chunks over a bounded channel; receiver (foreground `Task` owned by the View) checks the current replay/request ID, then updates state (`TextViewState` in the example) and `cx.notify()`. For real network streams await the async read and a bounded send so a slow UI can't queue unbounded data.
 
@@ -80,3 +80,9 @@ Producer (background, owns nothing GPUI) sends chunks over a bounded channel; re
 - blocking sleep or blocking I/O in a foreground task — the poll owns the UI thread until it returns
 - capturing a strong `Entity` handle back to the owner inside a task the owner stores — retention cycle; use the `WeakEntity` from `spawn` or `cx.weak_entity()`
 - dropping a task and assuming side effects stopped — cancellation is cooperative; already-started I/O finishes, and synchronous worker code can't be interrupted mid-call; the request-ID guard rejects late results
+
+## Related
+
+- `references/apis.md`
+- `best-practices/components.md`
+- `best-practices/state-model.md`

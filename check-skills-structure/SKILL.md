@@ -20,7 +20,7 @@ related:
 
 ## Goal
 
-Inspect the structure of skill packages in `%APPDATA%\devin\skills\` — frontmatter fields, `references/`, `workflows/`, `subagents/`, `best-practices/`, `src/`, `scripts/`, MCP, website — with a single CLI command that outputs a bullet list + findings, including the body-level rules (every `related` entry mentioned in the body, `related` <=15, no `**` bold outside code)
+Inspect the structure of skill packages in `%APPDATA%\devin\skills\` — frontmatter fields, `references/`, `usecases/`, `workflows/`, `subagents/`, `best-practices/`, `src/`, `scripts/`, MCP, website — with a single CLI command that outputs a bullet list + findings, including the body-level rules (every `related` entry mentioned in the body, `related` <=15, no `**` bold outside code)
 
 ## Scope
 
@@ -43,7 +43,7 @@ bun "check-skills-structure/scripts/check-skills-structure.ts" --detail         
 bun "check-skills-structure/scripts/check-skills-structure.ts" <custom-root>       # another repo
 ```
 
-Besides the bullet counts, use `--skill <name>` or `--detail` to see the `actual names` per skill — `related`, `references`, `workflows`, `subagents`, `best-practices`, `scripts`, `frontmatter-missing`
+Besides the bullet counts, use `--skill <name>` or `--detail` to see the `actual names` per skill — `related`, `references`, `workflows`, `subagents`, `best-practices`, `usecases`, `scripts`, `frontmatter-missing`
 
 ### 2. Interpret Output
 
@@ -55,7 +55,7 @@ Besides the bullet counts, use `--skill <name>` or `--detail` to see the `actual
 | `Frontmatter` | frontmatter keys present x/10 (`name`, `description`, `argument-hint`, `allowed-tools`, `related`, `model`, `triggers`, `permissions`, `subagent`, `agent`) |
 | `Name` | `ok` = frontmatter name matches the dir, `!=` = mismatch, `missing` |
 | `Related` | number of entries in `related:` |
-| `References`/`Workflows`/`Subagents`/`BestPractices` | counts of `references/*.md`, `workflows/*/SKILL.md`, `subagents`, `best-practices/*.md` |
+| `References`/`Workflows`/`Subagents`/`BestPractices`/`UseCases` | counts of `references/*.md`, `workflows/*/SKILL.md`, `subagents`, `best-practices/*.md`, `usecases/*.md` — a `0` in `UseCases`/`BestPractices` is the backfill queue for `follow-lib-*`/`follow-tool-*`, not a warning |
 | `Source`/`Scripts` | whether a `src/` dir exists, number of files in `scripts/` |
 | `MCP` | SKILL.md mentions MCP/`mcp_config`, or `src/` is an MCP package |
 | `Website` | SKILL.md mentions website/viewer/vite, or `src/` is a web app |

@@ -75,7 +75,7 @@ Play a Community Manager — the person who looks after the contributor experien
 - Report only — do not modify anything
 - Every finding has evidence — file path, line, route, or config
 - Stay in persona — do not review topics this role does not care about; if you find an issue outside the lens, record it as an out-of-scope note
-- If a matching domain review skill exists (e.g. `/deep-review-codebase`), delegate to it or cite it as a deep pass
+- If a matching domain review skill exists (e.g. `/deep-review`), delegate to it or cite it as a deep pass
 
 ### Expected Outcome
 
@@ -102,7 +102,7 @@ Play a Customer Advocate — the person who checks that the product actually del
 - Report only — do not modify anything
 - Every finding has evidence — file path, line, route, or config
 - Stay in persona — do not review topics this role does not care about; if you find an issue outside the lens, record it as an out-of-scope note
-- If a matching domain review skill exists (e.g. `/deep-review-codebase`, `/deep-review-codebase`), delegate to it or cite it as a deep pass
+- If a matching domain review skill exists (e.g. `/deep-review`, `/deep-review`), delegate to it or cite it as a deep pass
 
 ### Expected Outcome
 
@@ -129,7 +129,7 @@ Play a Customer Success Manager — the person who owns that customers get value
 - Report only — do not modify anything
 - Every finding has evidence — file path, line, route, or config
 - Stay in persona — do not review topics this role does not care about; if you find an issue outside the lens, record it as an out-of-scope note
-- If a matching domain review skill exists (e.g. `/deep-review-codebase`, `/deep-review-codebase`), delegate to it or cite it as a deep pass
+- If a matching domain review skill exists (e.g. `/deep-review`, `/deep-review`), delegate to it or cite it as a deep pass
 
 ### Expected Outcome
 
@@ -156,7 +156,7 @@ Play a Customer Support Engineer — the person handling real tickets every day,
 - Report only — do not modify anything
 - Every finding has evidence — file path, line, route, or config
 - Stay in persona — do not review topics this role does not care about; if you find an issue outside the lens, record it as an out-of-scope note
-- If a matching domain review skill exists (e.g. `/deep-review-codebase`, `/deep-review-codebase`), delegate to it or cite it as a deep pass
+- If a matching domain review skill exists (e.g. `/deep-review`, `/deep-review`), delegate to it or cite it as a deep pass
 
 ### Expected Outcome
 

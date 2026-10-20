@@ -3,7 +3,7 @@ name: update-config
 description: Update project config to be complete, consistent, duplication-free via a shared config/dep catalog
 argument-hint: "[path]"
 related:
-  - deep-review-codebase
+  - deep-review
   - report-config-files
   - follow-devin-global-skills
   - follow-tool-mise
@@ -27,7 +27,7 @@ Update the project configuration so it is complete and consistent, reduce duplic
 
 - Applies to the root project or any workspace
 - Covers package manifests, tool configs, monorepo setup, CI/CD, editor, env, git
-- Run `/deep-review-codebase` first to get findings
+- Run `/deep-review` first to get findings
 - If it is a monorepo → use `/follow-tool-moonrepo`
 
 ## Execute
@@ -36,7 +36,7 @@ Update the project configuration so it is complete and consistent, reduce duplic
 
 > Goal: Understand the current config state
 
-1. Run `/deep-review-codebase` to collect findings
+1. Run `/deep-review` to collect findings
 2. Record a priority list from the severities
 3. Identify the configs to create, delete, or refactor
 4. If the project has no `rules/` + `sgconfig.yml` or `AGENTS.md` yet → run `/update-astgrep-rules` and `/update-agents-md`
@@ -183,7 +183,7 @@ Update the project configuration so it is complete and consistent, reduce duplic
 
 ### 1. Review First
 
-- Always run `/deep-review-codebase` before updating
+- Always run `/deep-review` before updating
 - Do not change anything before there are findings and a priority order
 - For a large project or a complex monorepo → use `/update-devin-global-subagents`
 

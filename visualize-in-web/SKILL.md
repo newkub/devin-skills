@@ -11,7 +11,7 @@ related:
   - follow-create-rust-crate
   - follow-tool-vite
   - alternative
-  - deep-review-codebase
+  - deep-review
   - resolve-errors
   - ship
   - suggest-next-action
@@ -130,7 +130,7 @@ Works with general repos having a `package.json`, `Cargo.toml`, `go.mod`, `pypro
 - No more than 250 lines per scaffold file
 - Use distinct colors per node type (`directory`, `file`, `module`, `dependency`, `workspace`)
 - Use ecosystem-appropriate commands (`cargo run` for Rust, `bun install` for JS/TS)
-- Review the frontend with `/deep-review-codebase` (frontend scope) when done
+- Review the frontend with `/deep-review` (frontend scope) when done
 
 ### 5. Content Clarity
 

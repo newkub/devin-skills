@@ -5,7 +5,7 @@ argument-hint: "[scope]"
 related:
   - run-release
   - report
-  - deep-review-codebase
+  - deep-review
   - follow-tool-changelogen
   - follow-tool-semantic-release
 ---
@@ -80,7 +80,7 @@ bun run skills/gen-changelog-md/scripts/gen-release-md.ts --output PATH
 
 - Publishing to platforms already lives in `run-release`
 - Reporting the changelog already lives in `report`
-- Reviewing changelog completeness already lives in `deep-review-codebase`
+- Reviewing changelog completeness already lives in `deep-review`
 - For projects using changelogen or semantic-release, use `follow-tool-changelogen` or `follow-tool-semantic-release` instead
 
 ## Expected Outcome

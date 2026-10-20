@@ -41,6 +41,13 @@ Use when the task involves this library/tool — setup, usage, debugging, or bes
 2. Run `/run-test` if related tests exist
 3. Check the latest official docs before using an uncertain API (lib pdfkit)
 
+### Use Cases
+
+| Scenario | Use case |
+|----------|----------|
+| Generate a PDF and stream it from a route | `usecases/stream-pdf-from-route.md` |
+| Multi-page report with header, footer, fonts, images | `usecases/multi-page-report.md` |
+
 ## Rules
 
 - pdfkit requires the Node runtime — it doesn't run on edge/workerd (use a separate service or pre-render)

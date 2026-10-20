@@ -4,7 +4,7 @@ description: Use ArkType for TypeScript runtime validation with native type synt
 argument-hint: "[scope]"
 related:
   - follow-lib-zod
-  - deep-review-codebase
+  - deep-review
   - follow-lib-better-auth
   - follow-lang-typescript
   - follow-best-practice
@@ -24,7 +24,7 @@ Applies to any TypeScript project that supports ESM and strict mode — Bun, Nod
 Boundaries:
 - Use this skill when the project chose/uses ArkType as its main validator
 - If the project already uses Zod → use `/follow-lib-zod` instead (do not mix two primary validators in one domain)
-- If no validation library is chosen yet → run `/deep-review-codebase` to compare first
+- If no validation library is chosen yet → run `/deep-review` to compare first
 
 - Latest: `arktype@2.2.3` (verified 2026-09-13)
 - Key v2.2 features: `type.fn` (validated functions), type-safe regex via `arkregex` (`x/.../` literal + named groups), `@ark/json-schema` (bidirectional JSON Schema), Standard Schema validators embeddable directly in definitions, `|>` pipe operator, `type.valueOf` for TS enums, keywords `string.hex`/`string.regex`, serializable `ArkErrors`
@@ -124,6 +124,16 @@ Boundaries:
 5. Use `@ark/json-schema` for bidirectional JSON Schema conversion (`toJsonSchema()` supports fallbacks and draft-07/2020-12)
 6. See official resources in 
 
+### Use Cases
+
+| Scenario | Use case |
+|----------|----------|
+| Validate request bodies and map errors to 422 | `usecases/api-boundary-validation.md` |
+| Parse environment config once at startup | `usecases/env-config-parsing.md` |
+| Discriminated union with exhaustive narrowing | `usecases/discriminated-union-narrowing.md` |
+| Morph strings into domain values with `.pipe()` | `usecases/morph-and-pipe-transforms.md` |
+| Recursive trees through `scope()` | `usecases/recursive-and-scoped-schemas.md` |
+
 ## Rules
 
 ### 1. Installation
@@ -164,7 +174,7 @@ Boundaries:
 
 - Use Standard Schema (`~standard`) when needed
 - Use `/follow-lib-zod` if the project uses Zod as its primary validator
-- Use `/deep-review-codebase` when a validation library still needs choosing/comparing
+- Use `/deep-review` when a validation library still needs choosing/comparing
 - Use /follow-lib-better-auth if needed
 - Use /follow-lang-typescript if needed
 - Use /follow-best-practice if needed

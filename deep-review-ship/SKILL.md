@@ -9,7 +9,7 @@ related:
   - deep-thinking
   - deep-analyze
   - use-subagents
-  - deep-review-codebase
+  - deep-review
   - follow-parallel
   - report-review
   - deep-validate
@@ -28,7 +28,7 @@ Review the changed scope the way it will actually ship: split it into parts (wor
 - Thin pre-ship orchestrator: this skill reviews and fixes; it never commits, pushes, opens PRs, or merges — `/ship` owns every ship gate
 - Called from `/ship` step 2 → stop at the ship-readiness report and return control to `/ship` (never re-enter `/ship`)
 - Standalone use → finish with `/ship` when the verdict is `ready-for-ship`
-- One dimension only, no per-part fan-out → `/deep-review-codebase [scope] then-fix` directly; no findings to fix → skip step 5
+- One dimension only, no per-part fan-out → `/deep-review [scope] then-fix` directly; no findings to fix → skip step 5
 
 ## Execute
 
@@ -54,7 +54,7 @@ Review the changed scope the way it will actually ship: split it into parts (wor
 > Goal: one reviewer per part, full coverage, disjoint context
 
 1. Use `/use-subagents` — spawn the `part-reviewer` profile (see `## Subagents`) per part in parallel (`is_background=true`), one wave at a time per the DAG; independent batches ≤ 10 via `/follow-parallel`
-2. Each subagent runs `/deep-review-codebase` limited to its own file set with `--diff` — report-only contract, never edits code
+2. Each subagent runs `/deep-review` limited to its own file set with `--diff` — report-only contract, never edits code
 3. Pass complete context in the prompt: part path, in-scope files, project `AGENTS.md` conventions, step 1 evidence
 4. A part with ≤ 2 changed files → the parent reviews it itself instead of spawning — mark it `covered-manually`
 5. Subagent timeout/error → `/resolve-errors`, retry once; still failing → mark the part `failed` and carry it into the report — never silently drop a part
@@ -72,8 +72,8 @@ Review the changed scope the way it will actually ship: split it into parts (wor
 > Goal: findings are fixed by the canonical reviewer+fixer, part by part
 
 1. Confirm the fix list via `/ask-me` — per finding by default; called from `/ship` or in `dont-ask-me` mode → follow the report as-is (`/follow-your-suggestion`), never a severity subset
-2. Run `/deep-review-codebase <part> then-fix` per part with the confirmed findings — its step 7 fixes per `deep-review-codebase/references/domain-map.md`; parts with disjoint file sets → parallel `fix-worker` subagents via `/use-subagents`
-3. Mechanically enforceable or convention findings → persist per `/deep-review-codebase` step 5 (`/update-devin-project-rules`, `/update-astgrep-rules`) so they cannot silently recur
+2. Run `/deep-review <part> then-fix` per part with the confirmed findings — its step 7 fixes per `deep-review/references/domain-map.md`; parts with disjoint file sets → parallel `fix-worker` subagents via `/use-subagents`
+3. Mechanically enforceable or convention findings → persist per `/deep-review` step 5 (`/update-devin-project-rules`, `/update-astgrep-rules`) so they cannot silently recur
 
 ### 6. Re-Verify
 
@@ -97,14 +97,14 @@ Review the changed scope the way it will actually ship: split it into parts (wor
 
 - Inputs: `part-path`, `files-in-scope` (disjoint list), `findings-slice?`, `conventions` (workspace `AGENTS.md` paths), `scope-mode` (`--diff` default)
 - Tools: read, grep, glob, exec (read-only commands), skill
-- Execute: run `/deep-review-codebase` limited to `files-in-scope` — read the slice and every evidence file named; never rerun the CLI outside the part, never sweep the codebase, never edit anything
+- Execute: run `/deep-review` limited to `files-in-scope` — read the slice and every evidence file named; never rerun the CLI outside the part, never sweep the codebase, never edit anything
 - Output: findings table (`No. | Finding | Severity | Evidence file:line | Action | Owner skill`) + a one-paragraph part summary + `part-status` (`clean` / `findings` / `failed (reason)`)
 - Constraints: report-only; read only its own file set + evidence-named files; one part per subagent, no shared mutable state
 
 ## Rules
 
 - `/ship` owns commit/push/PR/merge — this skill never performs them; when invoked from `/ship`, return the verdict instead of chaining back (no recursion)
-- Review subagents are report-only; every fix runs in `/deep-review-codebase <part> then-fix` step 7 — the canonical reviewer+fixer
+- Review subagents are report-only; every fix runs in `/deep-review <part> then-fix` step 7 — the canonical reviewer+fixer
 - File sets stay disjoint across parts; dependent parts run in DAG waves, never together
 - Evidence first — every finding cites `file:line`; no severity from intuition
 - Hard limits: ≤ 10 parts, retry ×1 per subagent, fix/re-verify loop ≤ 3 rounds → then stop and report `blocked`

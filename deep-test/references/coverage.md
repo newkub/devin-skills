@@ -6,8 +6,8 @@ Analyze test coverage, detect the framework, and reach 100% coverage in every ca
 
 > Goal: measure and close to the target with the least setup (merged from `/test-coverage`) — steps 1-5 below are the deep pass
 
-1. Scope — audit the coverage config with `/deep-review-codebase` first; include/exclude from the argument + signals ("logic-only" → drop UI/runtime-bound modules and record the reason); always exclude tests/generated/type-only; set `thresholds` to the target so failures are explicit
-2. Baseline → close gaps → re-measure — feed the uncovered analysis into `/deep-review-codebase coverage`, the loop owner: prioritize, write tests via `/update-tests`, re-run; a test exposes a source bug → `/resolve-errors`, never adjust the assertion; ≥3 iterations without progress → stop + report the blocker
+1. Scope — audit the coverage config with `/deep-review` first; include/exclude from the argument + signals ("logic-only" → drop UI/runtime-bound modules and record the reason); always exclude tests/generated/type-only; set `thresholds` to the target so failures are explicit
+2. Baseline → close gaps → re-measure — feed the uncovered analysis into `/deep-review coverage`, the loop owner: prioritize, write tests via `/update-tests`, re-run; a test exposes a source bug → `/resolve-errors`, never adjust the assertion; ≥3 iterations without progress → stop + report the blocker
 3. Validate — uncovered = 0 in the raw JSON (watch for files missing because they were never included); every branch side covered (ternary/optional-chain/short-circuit); re-run the suite 2 more times to confirm determinism
 4. Report — persist → `.devin/temp/report/<workspace>/test-coverage-<time>.md` — baseline→final delta, files added, source bugs, exclusions + reasons
 
@@ -52,7 +52,7 @@ Verify that coverage reaches 100% in every category; if not, write tests and re-
 3. Verify `functions` coverage reaches 100%
 4. Verify `statements` coverage reaches 100%
 5. If every category reaches 100% → go to Report
-6. If coverage is below 100% → run `/deep-review-codebase` to analyze gaps and fill in the missing tests
+6. If coverage is below 100% → run `/deep-review` to analyze gaps and fill in the missing tests
 7. If tests were written → go back to Step 3 and re-run Coverage Analysis
 8. Loop at most 5 times; if exceeded → stop and report the remaining gaps
 
@@ -78,13 +78,13 @@ Verify that coverage reaches 100% in every category; if not, write tests and re-
 ### 2. Coverage Threshold And Loop
 
 - Only 100% coverage in every category passes
-- If coverage is below 100%, run `/deep-review-codebase` to analyze gaps and write the missing tests
+- If coverage is below 100%, run `/deep-review` to analyze gaps and write the missing tests
 - Loop run coverage → write tests → run coverage until 100%, at most 5 rounds
 - If more than 5 rounds → stop and report the remaining gaps
 - No exceptions for critical code, edge cases, or error paths
 
 - Use /improve coverage if needed
-- Use /deep-review-codebase if needed
+- Use /deep-review if needed
 - Use /run-check if needed
 - Use /run-verify if needed
 - Use /suggest-next-action if needed

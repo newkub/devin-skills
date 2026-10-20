@@ -6,7 +6,7 @@ related:
   - delete
   - create-plan-in-dot-devin
   - create-report-in-dot-devin
-  - deep-review-codebase
+  - deep-review
   - ask-me
   - report
   - suggest-next-action
@@ -33,7 +33,7 @@ Safely delete the entire `.devin/temp/` directory in the project — covering `r
 1. Check that `.devin/temp/` exists at the project root
 2. If missing → report that there is nothing to delete and finish
 3. List all contents (`report/`, `plan/`, and other files) with file counts
-4. Measure the total size via `/deep-review-codebase` scope `size` or `du -sh .devin/temp`
+4. Measure the total size via `/deep-review` scope `size` or `du -sh .devin/temp`
 
 ### 2. Dry Run And Confirm
 

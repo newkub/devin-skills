@@ -218,6 +218,14 @@ Use to install and configure UnoCSS v66+ on Vite, Nuxt, Next.js, Astro, CLI, and
 - Use `/follow-best-practice` if needed
 
 - See best-practices/ for recommended patterns and pitfalls
+- See usecases/ for end-to-end scenario recipes
+
+### Use Cases
+
+| Scenario | Use case |
+|----------|----------|
+| Design tokens + component shortcuts | `usecases/design-tokens-and-shortcuts.md` |
+| Runtime/CMS classes + safelist | `usecases/dynamic-classes-and-safelist.md` |
 
 ## Expected Outcome
 

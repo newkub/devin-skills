@@ -6,7 +6,7 @@ related:
   - follow-lib-mswjs
   - follow-tool-vitest
   - run-test
-  - deep-review-codebase
+  - deep-review
 ---
 
 ## Goal
@@ -25,7 +25,7 @@ First-time MSW setup so network requests can be mocked in both browser dev and N
 
 > Goal: know the stack and environments that need mocking
 
-1. run `/deep-review-codebase` — identify the HTTP client (`fetch`, `axios`, `graphql-request`) — MSW can intercept all of them at the network layer
+1. run `/deep-review` — identify the HTTP client (`fetch`, `axios`, `graphql-request`) — MSW can intercept all of them at the network layer
 2. identify the environments: browser dev, Node tests (Vitest/Jest), or both
 3. identify the dev server's public dir (`public/` for Vite, etc.)
 4. check `package.json` — if `msw` is already there (idempotent check) → skip install

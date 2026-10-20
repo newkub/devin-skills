@@ -2,7 +2,7 @@
 
 > Collect user input with validated state. Source: https://gpui-kit.com/component/input, /component/input-group, /component/form, /component/editor, /component/combobox, /component/select, /component/date-picker, /component/otp-input (accessed 2026-10-20)
 
-## Choose the control
+## 1. Choose the control
 
 | Need | Use |
 |---|---|
@@ -19,7 +19,7 @@
 | single choice from several | `Radio` / `Rating` |
 | addons/toolbar around a field | `InputGroup` |
 
-## Input + retained state (verified from /component/input)
+## 2. Input + retained state (verified from /component/input)
 
 ```rust
 use gpui_kit::component::input::{Input, InputState};
@@ -41,7 +41,7 @@ Masked password field: `InputState::new(window, cx).masked(true)`.
 
 React to edits: subscribe with `cx.subscribe_in(&input_state, window, ...)` on `InputEvent::Change` (or `InputEvent::Edit`) — store the `Subscription` in the view struct.
 
-## Form layout (verified from /component/form)
+## 3. Form layout (verified from /component/form)
 
 ```rust
 use gpui_kit::component::form::{field, v_form, h_form, Form, Field};
@@ -66,11 +66,11 @@ Form::new()
 
 - `Form` owns layout only — the application owns values, validation, submission; `footer` spans all columns and does NOT auto-submit
 
-## Dialog form pattern
+## 4. Dialog form pattern
 
 Open a form in a dialog (see `overlays-and-feedback.md`): create the `InputState` entities BEFORE `window.open_dialog(...)`, capture handles in the builder, validate in the Submit button's click, then `window.close_dialog(cx)`.
 
-## Complete tested recipe
+## 5. Complete tested recipe
 
 The docs point to compiled examples: https://github.com/longbridge/gpui-kit/tree/main/examples/ai_recipes (`settings.rs` + its interaction test) — retained input state + subscriptions verified by `cargo test`.
 
@@ -80,3 +80,10 @@ The docs point to compiled examples: https://github.com/longbridge/gpui-kit/tree
 - ignoring the `Subscription` return → callback silently detaches
 - expecting `Form` to submit → attach your own handler to the footer button
 - `on_change` gives the requested value — apply it yourself + `cx.notify()` (controlled pattern)
+
+## Related
+
+- `references/apis.md`
+- `best-practices/components.md`
+- `best-practices/state-model.md`
+- `usecases/overlays-and-feedback.md`

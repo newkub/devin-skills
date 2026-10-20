@@ -2,7 +2,7 @@
 
 > Bidirectional realtime with CrossWS: presence, pub/sub topics, and per-room namespaces. Source: https://nitro.build/docs/websocket (accessed 2026-10-20)
 
-## Enable WebSocket
+## 1. Enable WebSocket
 
 ```ts [nitro.config.ts]
 import { defineConfig } from "nitro";
@@ -15,7 +15,7 @@ export default defineConfig({
 });
 ```
 
-## Handler = a route file
+## 2. Handler = a route file
 
 A WebSocket handler is exported from a normal route file and follows file-based routing. `routes/rooms/[room].ts` handles the socket at `/rooms/:room`.
 
@@ -38,9 +38,9 @@ export default defineWebSocketHandler({
 });
 ```
 
-> `peer.publish(topic, data)` reaches every subscriber **except** the publishing peer; use `peer.send()` to also answer the sender.
+> `peer.publish(topic, data)` reaches every subscriber except the publishing peer; use `peer.send()` to also answer the sender.
 
-## Authenticate on upgrade
+## 3. Authenticate on upgrade
 
 Reject the handshake before a connection exists and attach per-peer context:
 
@@ -61,7 +61,7 @@ export default defineWebSocketHandler({
 });
 ```
 
-## Rooms via namespaces
+## 4. Rooms via namespaces
 
 The default namespace is the request pathname, so a dynamic route isolates rooms automatically — `/rooms/game` peers can't see `/rooms/lobby`. To group by a query param instead, return `namespace` from `upgrade`:
 
@@ -72,7 +72,7 @@ upgrade(request) {
 }
 ```
 
-## Peer API (verified)
+## 5. Peer API (verified)
 
 | Member | Purpose |
 |---|---|
@@ -92,3 +92,10 @@ Client side uses the browser `WebSocket` API (`new WebSocket("ws://host/chat")`)
 - Relying on a single instance's peer list across many serverless instances → publish only reaches peers in the same instance/namespace; cross-instance fan-out needs the platform adapter or an external pub/sub.
 - Doing auth inside `open` instead of `upgrade` → the connection is already established before you reject it.
 - One-way notifications → use SSE (`sse-streaming.md`) instead of a full WebSocket.
+
+## Related
+
+- `references/apis.md`
+- `references/cli.md`
+- `best-practices/deploy.md`
+- `usecases/sse-streaming.md`

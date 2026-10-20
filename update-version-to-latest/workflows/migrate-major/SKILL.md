@@ -93,7 +93,7 @@ Safely upgrade a dependency/runtime across a major version — scan all breaking
 
 2. monorepo → verify one dependent workspace at a time, leaf packages before consumers
 
-3. Run `/deep-review-codebase` to find any remaining deprecated usage
+3. Run `/deep-review` to find any remaining deprecated usage
 
 4. Runtime smoke test on the critical paths that use that package
 

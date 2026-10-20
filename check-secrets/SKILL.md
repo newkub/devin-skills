@@ -4,7 +4,7 @@ description: Check secrets hygiene — env vars, hardcoded values, and leaks via
 argument-hint: "[domain]"
 related:
   - follow-secret-manager
-  - deep-review-codebase
+  - deep-review
   - report
   - ask-me
 
@@ -39,7 +39,7 @@ Dispatch to a workflow by secrets-check domain — the parent only routes
 - Never echo actual values of found secrets — report only location + type
 
 - Use /follow-secret-manager if needed
-- Use /deep-review-codebase if needed
+- Use /deep-review if needed
 
 ## Expected Outcome
 

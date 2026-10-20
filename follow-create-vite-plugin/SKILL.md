@@ -4,7 +4,7 @@ description: Build Vite plugins with the standard Plugin API
 argument-hint: "[scope]"
 related:
   - follow-create-sdk
-  - deep-review-codebase
+  - deep-review
   - follow-tool-vite
   - ship
 
@@ -25,7 +25,7 @@ Use `follow-create-vite-plugins` for the specifically covered tasks and workflow
 
 > Goal: Review the tech stack before building
 
-1. Run `/deep-research` + `/follow-best-practice` to confirm the latest versions and patterns, then run `/deep-review-codebase` to summarize the tech stack
+1. Run `/deep-research` + `/follow-best-practice` to confirm the latest versions and patterns, then run `/deep-review` to summarize the tech stack
 3. Record the rationale for the chosen stack and libraries for future reference (create vite plugins)
 
 ### 2. Setup

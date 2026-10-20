@@ -4,7 +4,7 @@ description: Set/edit query() options — model, tools, permissions, MCP servers
 related:
   - follow-service-claude-agent-sdk
   - follow-secret-manager
-  - deep-review-codebase
+  - deep-review
   - run-verify
   - run-test
   - learn-from-web
@@ -26,7 +26,7 @@ Set/edit `query()` options of `@anthropic-ai/claude-agent-sdk` — model, tools,
 > Goal: Know the current options before editing
 
 1. Read the `query()` call sites and the options passed
-2. Do `/deep-review-codebase` with the `config` dimension if config lives separately in other files
+2. Do `/deep-review` with the `config` dimension if config lives separately in other files
 3. If no `query()` is found → do `workflows/setup-claude-agent-sdk/SKILL.md` first
 
 ### 2. Configure Model And Prompt

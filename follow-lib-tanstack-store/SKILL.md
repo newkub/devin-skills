@@ -93,6 +93,16 @@ batch(() => {                          // collapse into one notification
 - `Derived` must `.mount()`; derived-from-derived works (chain)
 - Store = a module singleton export — never create it inside a component
 - Never put server state in a Store — `follow-query`; a reactive client DB → `follow-db`
+- See best-practices/ for the pattern and pitfall checklist
+
+### Use Cases
+
+| Scenario | Use case |
+|----------|----------|
+| `Derived` state + slice selectors | `usecases/derived-selectors-and-subscriptions.md` |
+| Batched writes, persistence, async rollback | `usecases/batched-actions-and-side-effects.md` |
+
+- See usecases/ for end-to-end scenario recipes
 
 ## Expected Outcome
 

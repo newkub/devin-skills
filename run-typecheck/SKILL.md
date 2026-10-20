@@ -3,7 +3,7 @@ name: run-typecheck
 description: Run typecheck with config check
 argument-hint: "[scope]"
 related:
-  - deep-review-codebase
+  - deep-review
   - deep-debug
   - resolve-errors
 ---
@@ -18,7 +18,7 @@ Run typecheck for every workspace in the monorepo as defined in the package mani
 
 ## Execute
 
-> Pre-Run: Always run `/deep-review-codebase` domain `review-config` first — `run-*` must be reviewed/assessed before the main work, never skip; if findings are blockers, fix or report before running (typecheck)
+> Pre-Run: Always run `/deep-review` domain `review-config` first — `run-*` must be reviewed/assessed before the main work, never skip; if findings are blockers, fix or report before running (typecheck)
 
 ### 1. Check Config
 
@@ -39,8 +39,8 @@ Run typecheck for every workspace in the monorepo as defined in the package mani
 
 > Goal: Analyze Errors
 
-1. Run `/deep-review-codebase` to analyze and prioritize the errors from typecheck
-2. `/deep-review-codebase` decides which workflow to follow next:
+1. Run `/deep-review` to analyze and prioritize the errors from typecheck
+2. `/deep-review` decides which workflow to follow next:
    - If they are cascade issues → `/deep-debug` → `/resolve-errors`
    - If they are isolated errors → `/resolve-errors`
 

@@ -48,6 +48,16 @@ Use when the task involves `@modelcontextprotocol/sdk` — creating/modifying an
 2. Run `/run-test` if related tests exist
 3. Check the latest official docs before using an uncertain API (lib mcp sdk)
 
+### Use Cases
+
+| Scenario | Use case |
+|----------|----------|
+| Local MCP server exposing tools over stdio | `usecases/tool-server.md` |
+| Script or agent host that connects to and calls an MCP server | `usecases/client-call-tools.md` |
+| Resources with templates and prompts with completions | `usecases/resources-and-prompts.md` |
+| Remote client over Streamable HTTP, stateless or session-based | `usecases/streamable-http-remote.md` |
+| Elicit input mid-call and change tools at runtime | `usecases/elicitation-and-dynamic-tools.md` |
+
 ## Rules
 
 - Every tool needs a clear description — the LLM uses it to pick tools

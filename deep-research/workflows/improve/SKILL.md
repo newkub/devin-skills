@@ -1,10 +1,10 @@
 ---
 name: deep-research-improve
-description: Research improvement opportunities — best practices, alternatives, issues → /improve + /deep-review-codebase
+description: Research improvement opportunities — best practices, alternatives, issues → /improve + /deep-review
 argument-hint: "[area-or-topic]"
 related:
   - deep-research
-  - deep-review-codebase
+  - deep-review
   - improve
   - optimize
   - report
@@ -12,11 +12,11 @@ related:
 
 ## Goal
 
-Research improvement opportunities for a given project/area — current best practices, modern alternatives, known issues/pitfalls, benchmarks — then hand the findings to the `/improve` thin entry (scope-map → review → fix) or `/deep-review-codebase then-fix` after user confirm
+Research improvement opportunities for a given project/area — current best practices, modern alternatives, known issues/pitfalls, benchmarks — then hand the findings to the `/improve` thin entry (scope-map → review → fix) or `/deep-review then-fix` after user confirm
 
 ## Scope
 
-Use when you want research-driven improvement — e.g. "is this stack still current", "is there a better pattern", "new tools that replace the current ones" — not a codebase scan (that is `/deep-review-codebase`); this is external research compared against what you already have
+Use when you want research-driven improvement — e.g. "is this stack still current", "is there a better pattern", "new tools that replace the current ones" — not a codebase scan (that is `/deep-review`); this is external research compared against what you already have
 
 ## Execute
 
@@ -41,7 +41,7 @@ Use when you want research-driven improvement — e.g. "is this stack still curr
 > Goal: Compare current vs best practice as a findings list
 
 1. Build a findings list: `Gap`, `Current`, `Best Practice`, `Evidence/Source`, `Impact`, `Effort`
-2. Group by `/improve`/`/optimize` scope (per the scope-maps) or the matching `/deep-review-codebase` review domain
+2. Group by `/improve`/`/optimize` scope (per the scope-maps) or the matching `/deep-review` review domain
 3. Separate quick wins from structural changes
 
 ### 4. Hand Off To Improve Flow
@@ -49,7 +49,7 @@ Use when you want research-driven improvement — e.g. "is this stack still curr
 > Goal: Feed the findings into the improvement convention
 
 1. Produce a `/report` table of findings with sources
-2. Route per `improve/references/scope-map.md` — findings matching a scope → `/improve <scope>`; metric-driven → `/optimize <scope>` (`optimize/references/scope-map.md`); no match → `/deep-review-codebase` domain + `then-fix` after user confirm
+2. Route per `improve/references/scope-map.md` — findings matching a scope → `/improve <scope>`; metric-driven → `/optimize <scope>` (`optimize/references/scope-map.md`); no match → `/deep-review` domain + `then-fix` after user confirm
 3. If this is this repo (devin skills) → `/improve devin-global-skills`
 
 ## Rules
@@ -57,7 +57,7 @@ Use when you want research-driven improvement — e.g. "is this stack still curr
 - Findings must have evidence + source + version/year — never propose an improvement without a basis
 - Research only — no edits in this workflow; fixes go through the `/improve` flow after user confirm
 - Verify current-state claims against the real codebase before comparing — don't guess
-- Use `/deep-review-codebase`, `/optimize` if needed
+- Use `/deep-review`, `/optimize` if needed
 
 ## Expected Outcome
 

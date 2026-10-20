@@ -22,8 +22,8 @@ Use when an operations perspective is needed — handed off from `/review-by-all
 |------|-------|----------|
 | process-analyst | documented processes, runbooks, SOPs, inefficiencies | `## operations/process-analyst` |
 | automation-specialist | CI/scripts coverage, manual toil, scheduled jobs | `## operations/automation-specialist` |
-| release-manager | versioning, changelog, pipeline, rollback → `/deep-review-codebase` | `## operations/release-manager` |
-| compliance-specialist | audit trails, retention, consent, controls → `/deep-review-codebase` | `## operations/compliance-specialist` |
+| release-manager | versioning, changelog, pipeline, rollback → `/deep-review` | `## operations/release-manager` |
+| compliance-specialist | audit trails, retention, consent, controls → `/deep-review` | `## operations/compliance-specialist` |
 
 2. Read the `## operations/<role>` section in this file
 
@@ -98,14 +98,14 @@ Play a Compliance Specialist — the guardian of regulatory requirements and aud
 - Incident/breach — breach notification workflow, incident log, evidence collection
 - Regulatory artifacts — privacy policy links, DPA surface, compliance docs, license compliance
 - Secrets/credentials — secrets handling, key rotation, exposed credentials in code/config
-- Deep pass → delegate `/deep-review-codebase`
+- Deep pass → delegate `/deep-review`
 
 ### Rules
 
 - Report only — do not modify anything
 - Every finding has evidence — file path, line, route, or config
 - Stay in persona — do not review topics this role does not care about; if you find an issue outside the lens, record it as an out-of-scope note
-- If a matching domain review skill exists, delegate to it or cite it as a deep pass — use `/deep-review-codebase`
+- If a matching domain review skill exists, delegate to it or cite it as a deep pass — use `/deep-review`
 
 ### Expected Outcome
 
@@ -154,14 +154,14 @@ Play a Release Manager — the controller of the release lifecycle from version 
 - Environment promotion — staging → prod flow, approval gates, environment parity
 - Release cadence — release branches, freeze process, hotfix path
 - Release artifacts — build artifacts, container tags, asset publishing
-- Deep pass → delegate `/deep-review-codebase` and `/deep-review-codebase`
+- Deep pass → delegate `/deep-review` and `/deep-review`
 
 ### Rules
 
 - Report only — do not modify anything
 - Every finding has evidence — file path, line, route, or config
 - Stay in persona — do not review topics this role does not care about; if you find an issue outside the lens, record it as an out-of-scope note
-- If a matching domain review skill exists, delegate to it or cite it as a deep pass — use `/deep-review-codebase`, `/deep-review-codebase`
+- If a matching domain review skill exists, delegate to it or cite it as a deep pass — use `/deep-review`, `/deep-review`
 
 ### Expected Outcome
 

@@ -23,7 +23,7 @@ Update the project's env configuration — diff the vars that exist against the 
 1. Run `/check-secrets env-vars` — the vars the code reads (`process.env.*`, `import.meta.env.*` per stack) compared with those defined
 2. Read the current env files and `.env.example` — list all keys
 3. Build the diff: missing keys (used by code but absent), stale keys (present but unused by code), keys whose value/format must change
-4. Run the `/deep-review-codebase` domain `review-config` report-drift workflow if you need to see drift across environments/workspaces
+4. Run the `/deep-review` domain `review-config` report-drift workflow if you need to see drift across environments/workspaces
 
 ### 2. Apply Changes
 

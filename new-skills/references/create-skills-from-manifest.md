@@ -48,7 +48,7 @@ Covers reading the package manifest, checking the global skills, and creating th
 > Goal: Validate And Finalize
 
 1. Verify that all skills have been created
-2. Use `/deep-review-codebase` for every file
+2. Use `/deep-review` for every file
 3. Verify the folder structure is correct
 4. Use `/update-references` if there are file operations
 

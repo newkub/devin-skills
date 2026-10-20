@@ -58,6 +58,15 @@ Use when the task involves this library/tool — setup, usage, debugging, or bes
 
 - See best-practices/ for recommended patterns and pitfalls
 
+### Use Cases
+
+| Scenario | Use case |
+|----------|----------|
+| Multi-statement transactions + savepoints | `usecases/transactions-with-rollback.md` |
+| Bulk insert + `LISTEN`/`NOTIFY` | `usecases/bulk-insert-and-listen-notify.md` |
+
+- See usecases/ for end-to-end scenario recipes
+
 ## Expected Outcome
 
 - The library is used correctly per best practices (lib postgres)

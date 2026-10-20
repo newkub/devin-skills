@@ -41,7 +41,7 @@ Verify that service contracts match on both sides — consumer expectations vs p
 
 1. Compare consumer expectations vs provider actuals — fields that differ
 2. flag: consumer uses fields the provider does not send, provider removed fields the consumer uses
-3. Run `/deep-review-codebase` (domain `review-api`) jointly for spec-level drift
+3. Run `/deep-review` (domain `review-api`) jointly for spec-level drift
 
 ## 5. Report
 
@@ -49,7 +49,7 @@ Verify that service contracts match on both sides — consumer expectations vs p
 
 1. Use `/report`: `No.`, `Interaction`, `Consumer`, `Provider`, `Status`, `Mismatch`
 2. Verdict per contract: `verified`, `drift`, `broken`
-3. Recommend: fix provider, update contract, or version the API (`/deep-review-codebase` domain `review-api`)
+3. Recommend: fix provider, update contract, or version the API (`/deep-review` domain `review-api`)
 
 ## Rules
 

@@ -23,7 +23,7 @@ Set/edit Vercel configuration — environment variables and `vercel.json` (rewri
 
 1. Read `vercel.json`, `.vercel/project.json`, and existing env files
 2. Run `bunx vercel pull` to sync the latest project settings from the dashboard
-3. Do `/deep-review-codebase` domain `review-config` or `/report-config-files` if drift must be known
+3. Do `/deep-review` domain `review-config` or `/report-config-files` if drift must be known
 
 ### 2. Configure Environment Variables
 

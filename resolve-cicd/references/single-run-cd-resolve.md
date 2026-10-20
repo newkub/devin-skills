@@ -62,9 +62,9 @@
 
 5. If the failure comes from code/config → make the minimal fix
 
-6. If the failure comes from workflow/CI setup → run `/follow-tool-github-actions`, `/setup-cicd`, or `/deep-review-codebase` as appropriate
+6. If the failure comes from workflow/CI setup → run `/follow-tool-github-actions`, `/setup-cicd`, or `/deep-review` as appropriate
 
-7. If the failure comes from infra/secret/platform → run `/deep-review-codebase`, `/follow-secret-manager`, `/setup-cicd` as appropriate
+7. If the failure comes from infra/secret/platform → run `/deep-review`, `/follow-secret-manager`, `/setup-cicd` as appropriate
 
 8. If it is CI: commit/push or re-trigger the pipeline per platform and return to Watch Pipeline
 

@@ -2,7 +2,7 @@
 
 > Build message threads: virtualized scrolling, streaming updates, bubbles. Source: https://gpui-kit.com/component/message-scroller, /component/bubble (accessed 2026-10-20)
 
-## Ownership boundary (verified from docs)
+## 1. Ownership boundary (verified from docs)
 
 | Owner | Responsibilities |
 |---|---|
@@ -11,7 +11,7 @@
 
 One state entity per scroller. The component keeps no index-to-ID map.
 
-## Scroller wiring (verified from docs)
+## 2. Scroller wiring (verified from docs)
 
 ```rust
 use gpui_kit::component::message_scroller::{MessageScroller, MessageScrollerState};
@@ -31,7 +31,7 @@ MessageScroller::new("conversation", scroller.clone(), move |index, _window, _cx
 .w_full().h_96()
 ```
 
-## Structural updates (verified table from docs)
+## 3. Structural updates (verified table from docs)
 
 | Change | State operation |
 |---|---|
@@ -49,7 +49,7 @@ scroller.update(cx, |state, cx| { let _ = state.remeasure_items(index..index + 1
 cx.notify();
 ```
 
-## Follow-tail state and navigation
+## 4. Follow-tail state and navigation
 
 ```rust
 let following = scroller.read(cx).is_following_tail(); // appends keep latest visible
@@ -64,7 +64,7 @@ if let Some(i) = messages.iter().position(|m| m.id == unread_id) {
 
 There is no `starting_position` field or persisted scroll offset: after load, call `reset(len, cx)` then `scroll_to_item(saved_index, cx)`.
 
-## Bubbles (verified from docs)
+## 5. Bubbles (verified from docs)
 
 `Bubble` is presentational — it owns alignment, max width, reaction region; it does not own a message record, collapsed state, or click. Compose with `Button`, `Link`, `Collapsible`, `Tooltip`, `Popover`.
 
@@ -94,3 +94,9 @@ Bubble::new().alignment(MessageAlignment::Start)
 - rendering empty/error/loading state inside the scroller — it never invents a placeholder; branch outside and mount the scroller only when rows exist
 - `cx.observe(...)` without storing the subscription or `.detach()` — dropped handles unsubscribe silently
 - long unbreakable text without `min_w_0()` on the row child — bubbles overflow instead of wrapping
+
+## Related
+
+- `references/apis.md`
+- `best-practices/components.md`
+- `best-practices/state-model.md`

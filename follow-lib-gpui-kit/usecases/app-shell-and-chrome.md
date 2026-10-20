@@ -2,7 +2,7 @@
 
 > Build the application window, chrome, navigation, and keyboard layer. Source: https://gpui-kit.com/docs/getting-started, /docs/multi-window, /component/sidebar, /component/toolbar, /component/status-bar, /component/title-bar, /docs/keybinding, /docs/action (accessed 2026-10-20)
 
-## Scenario table
+## 1. Scenario table
 
 | Building | Components / APIs |
 |---|---|
@@ -12,7 +12,7 @@
 | Multiple windows | second `open_window` call — each window owns its `Window` context, focus, input dispatch, geometry, and `Root` |
 | Keyboard layer | `actions!` + `cx.bind_keys([KeyBinding::new(...)])` + Action dispatch |
 
-## Skeleton (verified from docs/getting-started)
+## 2. Skeleton (verified from docs/getting-started)
 
 ```rust
 use gpui_kit::component::button::{Button, ButtonVariants};
@@ -42,7 +42,7 @@ fn main() {
 
 Startup has exactly three parts: `application()` (shell) → `init(cx)` (Kit layers + component themes) → `open_window(...)` (wraps your view in a `Root`; return the content view, never a `Root`).
 
-## Sidebar navigation (verified pattern)
+## 3. Sidebar navigation (verified pattern)
 
 ```rust
 use gpui_kit::component::sidebar::*;
@@ -62,7 +62,7 @@ Sidebar::new()
 
 - collapsible: `Sidebar::new().collapsible(true).collapsed(flag)` + `SidebarToggleButton` — render label text only when expanded via `.when(!collapsed, ...)`
 
-## Keyboard actions (verified from /component/command)
+## 4. Keyboard actions (verified from /component/command)
 
 ```rust
 use gpui_kit::{actions, KeyBinding};
@@ -78,7 +78,7 @@ cx.bind_keys([
 
 The third argument is the focus-context name — bindings resolve in the focused element's context first, then application scope.
 
-## Multi-window notes
+## 5. Multi-window notes
 
 - call `open_window` again for each window — application data shared across windows via `Global` or entity handles
 - each window keeps its own `Root` (its own dialogs/sheets/notifications layer)
@@ -88,3 +88,9 @@ The third argument is the focus-context name — bindings resolve in the focused
 - `init(cx)` after `open_window` → themes/components not registered — window opens with lost styling
 - putting overlay calls (`open_dialog`, `push_notification`) on a view instead of the window — overlays are owned by the window's `Root`
 - reading `/docs/multi-window` example requires the platform deps from `/docs/installation` first (Windows: MSVC + CMake)
+
+## Related
+
+- `references/apis.md`
+- `best-practices/components.md`
+- `best-practices/state-model.md`
