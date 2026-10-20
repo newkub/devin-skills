@@ -11,6 +11,6 @@
 | `install` | Install react in project | latest version | `--save-dev`, `--save`, `--global` |
 | `dev` | Start Vite dev server | `vite` | (none) |
 | `build` | Build for production | `vite build` | (none) |
-| `typecheck` | Run TypeScript type check | `tsc --noEmit` | (none) |
+| `typecheck` | Run TypeScript type check | `bun check` (`tsc --noEmit` without Bun ≥ 1.4) | (none) |
 | `import 'react/jsx-runtime'` | Subpath export for jsx-runtime | entry as documented | (none) |
 | `import 'react/compiler-runtime'` | Subpath export for compiler-runtime | entry as documented | (none) |

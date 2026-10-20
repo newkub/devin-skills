@@ -10,7 +10,7 @@ Use after `/merge` results from `use-subagents` or after complex implementation 
 
 1. Run `/run-verify` to execute lint, format, and quality checks
 2. Run `/run-test` to execute unit/integration tests
-3. If the project has a `package.json` with a typecheck script, run `bunx tsc --noEmit` or the appropriate command
+3. If the project has a `package.json` with a typecheck script, run `bun check` (Bun ≥ 1.4) or the appropriate command
 4. Record the result of each check with evidence
 
 ### 2. Check References

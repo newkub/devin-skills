@@ -28,6 +28,8 @@ target/
 
 # Generated temp artifacts (reports, plans)
 .devin/temp/
+/reports/
+/.playwright-mcp/
 
 
 target/

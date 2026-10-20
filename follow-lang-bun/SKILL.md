@@ -101,7 +101,7 @@ For creating or improving projects that run on the Bun runtime, single package a
 
 1. `bun run <entry>` starts; `bun test` passes; `bun build <entry>` succeeds
 2. `bun install --frozen-lockfile` confirms the lockfile matches `package.json`
-3. Typecheck with `bunx tsc --noEmit` (Bun strips types at runtime, it does not check them)
+3. Typecheck with `bun check` (Bun strips types at runtime, it does not check them)
 4. On errors → run `/resolve-errors`
 
 ### 10. Migrate From Node.js (If Applicable)
@@ -133,7 +133,8 @@ For creating or improving projects that run on the Bun runtime, single package a
 
 ### 4. Quality
 
-- Tests via `bun:test`; CI runs `bun install && bunx tsc --noEmit && bun test --coverage` with a `coverageThreshold` in `bunfig.toml`
+- Tests via `bun:test`; CI runs `bun install && bun check && bun test --coverage` with a `coverageThreshold` in `bunfig.toml`
+- Typecheck with `bun check` (parallel, same errors as `tsc`); `tsc --noEmit` only as the fallback on Bun < 1.4
 - Use `bun run --bun` when a script's shebang points at node but must run on Bun
 
 ### 5. Related Skills
@@ -144,6 +145,6 @@ For creating or improving projects that run on the Bun runtime, single package a
 
 - Bun project set up per official conventions with a committed `bun.lock`
 - TS/JSX run with no build step; tests pass via `bun test` with coverage
-- Builds/compiles succeed via `bun build`; typecheck passes via `tsc --noEmit`
+- Builds/compiles succeed via `bun build`; typecheck passes via `bun check`
 - `bunfig.toml` covers runtime, install, test, and build configuration
 - Bun native APIs used appropriately through `/use-bun-native-api`

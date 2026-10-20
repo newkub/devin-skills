@@ -1,6 +1,6 @@
 ---
 name: migration-with-astgrep
-description: รัน codebase migrations ด้วย ast-grep rules
+description: Run codebase migrations with ast-grep rules
 argument-hint: "[rule-file-or-pattern]"
 related:
   - scan-codebase
@@ -11,117 +11,117 @@ related:
 
 ## Goal
 
-ใช้ ast-grep สำหรับรัน codebase migrations แบบ pattern-based ทีปลอดภัย ตรวจสอบได้ และ revert ได้
+Use ast-grep to run codebase migrations that are pattern-based, safe, verifiable, and revertible
 
 ## Scope
 
-ใช้สำหรับ refactor patterns เช่น API rename, function signature change, deprecation cleanup, import migration, framework upgrade โดยรัน ast-grep scan และ apply ทีละ batch
+Use for refactoring patterns such as API rename, function signature change, deprecation cleanup, import migration, framework upgrade by running ast-grep scan and applying one batch at a time
 
 ## Execute
 
 ### 1. Detect Migration Scope
 
-> Goal: รู้ว่าต้อง migration อะไร
+> Goal: know what needs to be migrated
 
-1. ทำ `/scan-codebase` เพื่อหา patterns เก่า
-2. ตรวจ `package.json` versions และ breaking changes
-3. ระบุ patterns ทีต้องเปลี่ยน: function names, imports, APIs, decorators
-4. สร้าง list ของ target files และ patterns
+1. Do `/scan-codebase` to find old patterns
+2. Check `package.json` versions and breaking changes
+3. Identify the patterns that must change: function names, imports, APIs, decorators
+4. Build a list of target files and patterns
 
 ### 2. Install Or Verify Ast-Grep
 
-> Goal: มี ast-grep CLI ใช้งาน
+> Goal: have a usable ast-grep CLI
 
-Latest: `@ast-grep/cli@0.45.3` (verified 2026-09-12) — `mise use -g ast-grep` หรือ `bunx @ast-grep/cli`
+Latest: `@ast-grep/cli@0.45.3` (verified 2026-09-12) — `mise use -g ast-grep` or `bunx @ast-grep/cli`
 
-1. ตรวจสอบ `ast-grep` ด้วย `ast-grep --version`
-2. ถ้าไม่มี → ติดตั้งด้วย `mise use -g ast-grep` หรือ package manager ทีเหมาะสม
-3. ใช้ `bunx @ast-grep/cli --version` ถ้าไม่ต้องการ global install
+1. Check `ast-grep` with `ast-grep --version`
+2. If not present → install with `mise use -g ast-grep` or the appropriate package manager
+3. Use `bunx @ast-grep/cli --version` if you do not want a global install
 
 ### 3. Write Ast-Grep Rules
 
-> Goal: มี rules สำหรับ migration
+> Goal: have rules for the migration
 
-1. สร้าง `ast-grep-rules/<migration-name>.yml`
-2. ระบุ `language`, `rule.id`, `pattern` หรือ `regex`
-3. ระบุ `fix` หรือ `rewrite` สำหรับ auto-fix
-4. ทดสอบ rule ด้วย `ast-grep scan --rule ast-grep-rules/<rule>.yml`
-5. ใช้ `utils.isDefinition`, `utils.isExpression`, `utils.isStatement` เมื่อจำเป็น
+1. Create `ast-grep-rules/<migration-name>.yml`
+2. Specify `language`, `rule.id`, `pattern` or `regex`
+3. Specify `fix` or `rewrite` for auto-fix
+4. Test the rule with `ast-grep scan --rule ast-grep-rules/<rule>.yml`
+5. Use `utils.isDefinition`, `utils.isExpression`, `utils.isStatement` when necessary
 
 ### 4. Dry Run Scan
 
-> Goal: ดู matches ก่อนแก้
+> Goal: see the matches before editing
 
-1. รัน `ast-grep scan --rule ast-grep-rules/<rule>.yml` โดยไม่ใช้ `--apply`
-2. บันทึกจำนวน matches, files, severity
-3. ตรวจ false positives
-4. ปรับ rule ถ้าจับ patterns เกินหรือขาด
+1. Run `ast-grep scan --rule ast-grep-rules/<rule>.yml` without `--apply`
+2. Record the number of matches, files, severity
+3. Check for false positives
+4. Adjust the rule if it catches too many or too few patterns
 
 ### 5. Apply Fixes
 
-> Goal: แก้ code ตาม rules
+> Goal: edit the code per the rules
 
-1. สำรอง `git diff` หรือ commit ก่อน apply
-2. รัน `ast-grep scan --rule ast-grep-rules/<rule>.yml --apply`
-3. ตรวจ diff ทีเกิดขึ้น
-4. ถ้ามี false positive ที่ apply ไปแล้ว → revert ด้วย `git checkout -- <file>` แล้วปรับ rule
+1. Back up with `git diff` or commit before applying
+2. Run `ast-grep scan --rule ast-grep-rules/<rule>.yml --apply`
+3. Check the resulting diff
+4. If there is a false positive that was already applied → revert with `git checkout -- <file>` then adjust the rule
 
 ### 6. Validate
 
-> Goal: ยืนยันว่า migration ไม่พัง
+> Goal: confirm the migration did not break anything
 
-1. รัน `git diff --stat`
-2. รัน `bun run typecheck` หรือ typecheck ของ project
-3. รัน `bun run lint` หรือ lint ของ project
-4. รัน `bun run test` หรือ `bun run test:unit`
-5. ถ้ามี fail → แก้ไขหรือ revert แล้ว refine rule
+1. Run `git diff --stat`
+2. Run `bun run typecheck` or the project's typecheck
+3. Run `bun run lint` or the project's lint
+4. Run `bun run test` or `bun run test:unit`
+5. If there is a failure → fix or revert then refine the rule
 
 ### 7. Repeat And Report
 
-> Goal: ทำ migration ครบทุก patterns
+> Goal: complete the migration for all patterns
 
-1. ทำซ้ำสำหรับแต่ละ migration rule
-2. ใช้ `/report` สรุปจำนวน matches, files changed, tests status
-3. ทำ `/suggest-next-action`
+1. Repeat for each migration rule
+2. Use `/report` to summarize the number of matches, files changed, tests status
+3. Do `/suggest-next-action`
 
 ## Rules
 
 ### 1. Start With Dry Run
 
-- ไม่ apply โดยไม่มี dry run
-- ไม่ apply ทั้งหมดในครั้งเดียว
-- ทำ batch เล็กๆ ก่อน
+- Do not apply without a dry run
+- Do not apply everything at once
+- Do small batches first
 
 ### 2. Backup
 
-- ต้อง commit หรือ diff ก่อน apply
-- ใช้ `git diff` ตรวจทุกครั้ง
-- ต้อง revert ได้
+- You must commit or diff before applying
+- Use `git diff` to check every time
+- It must be revertible
 
 ### 3. Rule Quality
 
-- rule ต้องจำกัด scope ชัดเจน
-- ระบุ `language` ถูกต้อง
-- ใช้ `pattern` มากกว่า `regex` เมื่อเป็นไปได้
-- ทดสอบ rule กับ 1-2 files ก่อน
+- The rule must have a clearly limited scope
+- Specify `language` correctly
+- Use `pattern` more than `regex` when possible
+- Test the rule against 1-2 files first
 
 ### 4. Validation Gate
 
-- ทุก apply ต้องผ่าน typecheck
-- ทุก apply ต้องผ่าน lint
-- ทุก apply ต้องผ่าน tests หรือมี test plan
+- Every apply must pass typecheck
+- Every apply must pass lint
+- Every apply must pass tests or have a test plan
 
 ### 5. No Unintended Changes
 
-- ไม่แก้ไฟล์นอก scope
-- ไม่ apply กับ generated files ยกเว้นมีเหตุผล
-- ไม่ apply กับ third-party code
-- ใช้ /run-drizzle-studio ถ้าจำเป็น
+- Do not edit files outside the scope
+- Do not apply to generated files unless there is a reason
+- Do not apply to third-party code
+- Use /run-drizzle-studio if necessary
 
 ## Expected Outcome
 
-- ast-grep rules สร้างและทดสอบแล้ว
-- Patterns เก่าถูก replace ตาม rule
-- Typecheck, lint, tests ผ่าน
-- Diff ชัดเจนและ review ได้
-- Report table สรุป migration แต่ละ rule
+- ast-grep rules are created and tested
+- Old patterns are replaced per the rule
+- Typecheck, lint, tests pass
+- The diff is clear and reviewable
+- A report table summarizing each migration rule

@@ -1,6 +1,6 @@
 ---
 name: record-video-terminal-with-asciinema
-description: บันทึก terminal session เป็นวิดีโอ/`.cast` ด้วย asciinema สำหรับ CLI testing
+description: Record a terminal session as a video/`.cast` with asciinema for CLI testing
 argument-hint: "[scope]"
 related:
   - run-dev
@@ -11,11 +11,11 @@ related:
 
 ## Goal
 
-บันทึก terminal session ด้วย `asciinema` เป็น `.cast` (text-based) หรือแปลงเป็นวิดีโอ สำหรับ CLI testing, demo และ documentation
+Record a terminal session with `asciinema` as a `.cast` (text-based) or convert it to a video, for CLI testing, demo, and documentation
 
 ## Scope
 
-ใช้สำหรับ workflows ที่ต้องการบันทึก terminal sessions เช่น `/run-dev`, `/watch-terminal` — `asciinema` เป็น primary tool; tools อื่น (`vhs`, `terminalizer`, `tuirec`) เป็น alternative ตาม Rules ข้อ 1
+Use for workflows that need to record terminal sessions, such as `/run-dev`, `/watch-terminal` — `asciinema` is the primary tool; other tools (`vhs`, `terminalizer`, `tuirec`) are alternatives per Rules item 1
 
 ## Execute
 
@@ -23,85 +23,85 @@ related:
 
 > Goal: Analyze Requirements
 
-วิเคราะห์ความต้องการก่อนเลือก output
+Analyze the requirements before choosing the output
 
-1. ต้องการ format อะไร: text-based (`.cast`), GIF, หรือ video
-2. ต้องการ automation หรือ manual recording
-3. ต้องการ embed ใน HTML หรือเป็นไฟล์ standalone
-4. ต้องการใช้ใน CI/CD หรือเฉพาะ local
+1. What format is needed: text-based (`.cast`), GIF, or video
+2. Automation or manual recording
+3. Embed in HTML or a standalone file
+4. Use in CI/CD or local only
 
 ### 2. Install Asciinema
 
 > Goal: Install Asciinema
 
-ติดตั้ง `asciinema` (primary tool)
+Install `asciinema` (primary tool)
 
-1. ติดตั้งด้วย `cargo install asciinema` หรือ `scoop install asciinema` — ไม่มีบน npm (verified 2026-09-12)
-2. ตรวจสอบด้วย `asciinema --version`
-3. ถ้าต้องการ GIF/MP4 จาก `.cast` → ติดตั้ง `agg` (asciinema gif generator) ด้วย `cargo install agg`
+1. Install with `cargo install asciinema` or `scoop install asciinema` — not available on npm (verified 2026-09-12)
+2. Check with `asciinema --version`
+3. If you need GIF/MP4 from `.cast` → install `agg` (asciinema gif generator) with `cargo install agg`
 
 ### 3. Record Session
 
 > Goal: Record Session
 
-บันทึก terminal session ด้วย `asciinema`
+Record a terminal session with `asciinema`
 
-1. บันทึกแบบกำหนด command: `asciinema rec <path>.cast --command "<command>"`
-2. บันทึก interactive session: `asciinema rec <path>.cast` แล้วพิมพ์ `exit` เมื่อเสร็จ
-3. จำกัดช่วง idle: เพิ่ม `--idle-time-limit <seconds>` หรือตั้งเป็น env `ASCIINEMA_IDLE_TIME_LIMIT`
-4. กำหนดขนาด terminal: `--cols <n> --rows <n>` (แนะนำ 80x24 หรือ 120x30)
-5. แปลง `.cast` เป็น GIF: `agg <path>.cast <path>.gif`
+1. Record with a specified command: `asciinema rec <path>.cast --command "<command>"`
+2. Record an interactive session: `asciinema rec <path>.cast`, then type `exit` when done
+3. Limit idle periods: add `--idle-time-limit <seconds>` or set the env `ASCIINEMA_IDLE_TIME_LIMIT`
+4. Set the terminal size: `--cols <n> --rows <n>` (80x24 or 120x30 recommended)
+5. Convert `.cast` to GIF: `agg <path>.cast <path>.gif`
 
 ### 4. Verify Recording
 
 > Goal: Verify Recording
 
-ตรวจสอบไฟล์ที่บันทึก
+Verify the recorded file
 
-1. ตรวจสอบว่าไฟล์ถูกสร้างที่ path ที่ระบุ
-2. เล่นกลับด้วย `asciinema play <path>.cast` เพื่อยืนยันการบันทึก
-3. ตรวจสอบขนาดไฟล์ว่าไม่ใหญ่เกินไป
+1. Check that the file was created at the specified path
+2. Play it back with `asciinema play <path>.cast` to confirm the recording
+3. Check that the file size is not too large
 
 ## Rules
 
 ### 1. Tool Selection
 
-- Default/CI/CD/Quick: ใช้ `asciinema` — text-based `.cast`, ไฟล์เล็ก, แก้ไขได้, diff ได้
-- Automated recording จาก config: ใช้ `vhs` (`go install github.com/charmbracelet/vhs@latest` หรือ `winget install charmbracelet.vhs` — npm `vhs` เป็นคนละ package, verified 2026-09-12)
-- Demo ต้องการ style: ใช้ `terminalizer` (`bun add -g terminalizer`, `terminalizer@0.12.0`, verified 2026-09-12)
-- TUI app ต้องการ keystroke script: ใช้ `tuirec` (`go install github.com/gui-cs/tuirec/cmd/tuirec@latest`)
+- Default/CI/CD/Quick: use `asciinema` — text-based `.cast`, small file, editable, diffable
+- Automated recording from config: use `vhs` (`go install github.com/charmbracelet/vhs@latest` or `winget install charmbracelet.vhs` — the npm `vhs` is a different package, verified 2026-09-12)
+- Demo that needs style: use `terminalizer` (`bun add -g terminalizer`, `terminalizer@0.12.0`, verified 2026-09-12)
+- TUI app that needs a keystroke script: use `tuirec` (`go install github.com/gui-cs/tuirec/cmd/tuirec@latest`)
 
 ### 2. File Management
 
-- เก็บไฟล์ใน `test/recordings/` หรือ `docs/recordings/`
-- ตั้งชื่อไฟล์ตาม test case เช่น `cli-help.cast`, `login-flow.gif`
-- ลบไฟล์เก่าก่อนบันทึกใหม่เพื่อหลีกเลี่ยง confusion
-- ไม่ commit ไฟล์ขนาดใหญ่เข้า git (เก็บ `.cast` ได้เพราะเล็ก)
+- Store files in `test/recordings/` or `docs/recordings/`
+- Name files after the test case, e.g. `cli-help.cast`, `login-flow.gif`
+- Delete old files before recording new ones to avoid confusion
+- Do not commit large files to git (`.cast` can be kept because it is small)
 
 ### 3. Quality Standards
 
-- ตั้งค่า terminal size ที่เหมาะสม (80x24 หรือ 120x30) ด้วย `--cols`/`--rows`
-- ใช้ font monospace ที่อ่านง่าย
-- หลีกเลี่ยง recording ที่ยาวเกินไป แบ่งเป็นส่วนถ้าจำเป็น
-- ใช้ `--idle-time-limit` เพื่อตัดช่วง idle
+- Set an appropriate terminal size (80x24 or 120x30) with `--cols`/`--rows`
+- Use an easy-to-read monospace font
+- Avoid recordings that are too long; split into parts if needed
+- Use `--idle-time-limit` to trim idle periods
 
 ### 4. Integration With Workflows
 
-- เรียก `/record-video-terminal-with-asciinema` ใน workflows ที่ต้องการบันทึก
-- ใช้ใน `/run-dev` สำหรับบันทึก development sessions
-- ใช้ใน `/watch-terminal` สำหรับ monitoring
-- บันทึกหน้าเว็บ → `/record-video-web-with-agents-browser`
+- Call `/record-video-terminal-with-asciinema` in workflows that need recording
+- Use in `/run-dev` to record development sessions
+- Use in `/watch-terminal` for monitoring
+- Recording a web page → `/record-video-web-with-agents-browser`
 
 ### 5. Error Handling
 
-- เรียก `/resolve-errors` เมื่อเจอ error
-- ตรวจสอบว่า tool ที่เลือกติดตั้งแล้วก่อนใช้งาน
-- ตรวจสอบ disk space ก่อนบันทึก
-- ถ้า tool ไม่รองรับ Windows ให้เลือก tool อื่น
+- Call `/resolve-errors` when an error is hit
+- Check that the chosen tool is installed before use
+- Check disk space before recording
+- If a tool does not support Windows, choose another tool
 
 ## Expected Outcome
 
-- บันทึก terminal session ด้วย `asciinema` สำเร็จ
-- ไฟล์จัดเก็บอย่างเป็นระบบ
-- เลือก alternative tool ได้ถูกต้องเมื่อ `asciinema` ไม่ตอบโจทย์
-- ผนวกกับ workflows อื่นได้อย่างราบรื่น
+- The terminal session is recorded with `asciinema` successfully
+- Files are stored systematically
+- An alternative tool is chosen correctly when `asciinema` does not fit
+- Integrates smoothly with other workflows

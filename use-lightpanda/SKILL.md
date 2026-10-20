@@ -9,6 +9,7 @@ related:
   - follow-tool-playwright
   - create-devin-global-mcp
   - deep-research
+  - learn-from-web
   - resolve-errors
 
 ---
@@ -24,9 +25,9 @@ Use when you need a browser with real JS execution (V8) but no pixel rendering �
 - Boundary (per `/use-chrome-devtools` `## Tool Selection` — canonical): need real screenshots, visual/layout, CSS, fonts, extensions → use real Chrome (`agent-browser`/`chrome-devtools-mcp`/`/use-midscenejs` — Midscene needs rendered images, so it **cannot be paired with Lightpanda**)
 - Lightpanda is a good fit for: content extraction, DOM-based E2E logic, headless crawling, agent tools via MCP
 
-## Facts (verified 2026-10-13)
+## Facts (verified 2026-10-20)
 
-- v1.0.0 GA (2026-10-02) — out of beta, production-ready; written in Zig, JS engine is V8 (the same one Chrome uses), AGPL-3.0, repo `lightpanda-io/browser` (~36k stars)
+- v1.0.0 GA (2026-10-02, first stable); latest release v1.0.1 (2026-10-15) — production-ready; written in Zig, JS engine is V8 (the same one Chrome uses), AGPL-3.0, repo `lightpanda-io/browser` (~36k stars)
 - Claims from lightpanda.io: "9x faster" (5s vs Chrome 46s) and "16x less memory" (123MB vs 2GB) on a chromedp run of 933 real pages (AWS EC2 m5.large)
 - No native Windows binary — Windows must run it via **WSL2**; Linux binaries are glibc-linked (Alpine/musl won't work)
 - Telemetry is on by default — disable with `LIGHTPANDA_DISABLE_TELEMETRY=true`
@@ -47,12 +48,14 @@ Use when you need a browser with real JS execution (V8) but no pixel rendering �
 2. Other fallbacks (if AUR is unavailable — no root/pacman):
    ```sh
    # direct release binary (verified 2026-10-13 — use this route on real machines when AUR needs root ops)
-   curl -fL https://github.com/lightpanda-io/browser/releases/download/1.0.0/lightpanda-x86_64-linux -o ~/.local/bin/lightpanda && chmod +x ~/.local/bin/lightpanda
-   curl -fsSL https://pkg.lightpanda.io/install.sh | bash        # installs ~/.local/bin/lightpanda (pin version: bash -s "1.0.0")
+   curl -fL https://github.com/lightpanda-io/browser/releases/download/1.0.1/lightpanda-x86_64-linux -o ~/.local/bin/lightpanda && chmod +x ~/.local/bin/lightpanda
+   curl -fsSL https://pkg.lightpanda.io/install.sh | bash        # installs ~/.local/bin/lightpanda (pin version: bash -s "1.0.1")
    brew install lightpanda-io/browser/lightpanda                  # macOS/Linux brew
+   mise use -g github:lightpanda-io/browser                       # mise GitHub backend (verified 2026-10-20, arch WSL)
    docker run -d --name lightpanda -p 127.0.0.1:9222:9222 lightpanda/browser:nightly
    ```
    - the release binary is named `lightpanda-x86_64-linux` (~188MB raw ELF) — rename/chmod it yourself
+   - mise resolves the latest tag + platform asset, installs a shim at `~/.local/share/mise/shims/lightpanda`; `eval "$(mise activate bash)"` in profile.d floods errors when appendWindowsPath puts space-containing Windows paths in PATH — use a plain `export PATH="$HOME/.local/share/mise/shims:$PATH"` instead
    - non-login shells on WSL may lack `~/.local/bin` in PATH — calling it by absolute path is the safest
    - calling from git-bash/MSYS requires blocking path rewriting: `MSYS_NO_PATHCONV=1 MSYS2_ARG_CONV_EXCL="*" wsl -d <distro> -- /root/.local/bin/lightpanda …`
 3. Verify: `lightpanda version`; path from `command -v lightpanda`

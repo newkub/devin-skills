@@ -62,7 +62,7 @@ For an existing Node.js project (npm/pnpm/yarn) moving onto Bun — full migrati
 
 ### 6. Verify
 
-1. `bun run dev`, `bun test`, `bun run build`, `bunx tsc --noEmit` all pass
+1. `bun run dev`, `bun test`, `bun run build`, `bun check` all pass
 2. On failure → run `/resolve-errors`
 
 ### 7. Rollback

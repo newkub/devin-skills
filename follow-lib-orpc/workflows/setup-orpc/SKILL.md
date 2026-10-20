@@ -61,7 +61,7 @@ Install oRPC and create a router/procedure with Zod validation + a server handle
 
 1. Smoke: call a procedure via an HTTP request or test client — input is validated, output is correct
 2. Invalid input → a clear error response (zod validation)
-3. run `bunx tsc --noEmit` + lint — if it fails → run `/resolve-errors` max 3 rounds, then stop and report; passing → `/suggest-next-action`
+3. run `bun check` + lint — if it fails → run `/resolve-errors` max 3 rounds, then stop and report; passing → `/suggest-next-action`
 
 ## Rules
 

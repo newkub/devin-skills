@@ -1,6 +1,6 @@
 ---
 name: refactor-commit
-description: Refactor commits ด้วย rebase (break down, edit, squash, fixup, autosquash, force push, rollback)
+description: Refactor commits with rebase (break down, edit, squash, fixup, autosquash, force push, rollback)
 argument-hint: "[scope]"
 related:
   - update-references
@@ -10,19 +10,19 @@ related:
 
 ## Goal
 
-Refactor commits ที่ commit ไปแล้วเพื่อ break down, edit, reorganize, squash, fixup และ rollback ให้เหมาะสม
+Refactor commits that have already been committed in order to break down, edit, reorganize, squash, fixup, and rollback as appropriate
 
 ## Scope
 
-ใช้สำหรับแก้ไข commits ที่ commit ไปแล้วด้วย `git rebase` (interactive หรือ non-interactive) เพื่อ:
-- Break down commit ขนาดใหญ่เป็น commits ย่อยๆ
-- Edit commit messages ตาม conventional commits
-- Reorder commits ตาม logical order
-- Squash commits หลายตัวเป็นตัวเดียว
-- Fix commits ที่ผิดพลาดด้วย fixup และ autosquash
-- Move commits ระหว่าง branches ด้วย cherry-pick
-- Rebase commits ไปยัง upstream โดยอัตโนมัติ (non-interactive)
-- Force push และ rollback หลัง refactor
+Used for amending commits that have already been committed with `git rebase` (interactive or non-interactive) to:
+- Break down large commits into smaller commits
+- Edit commit messages per conventional commits
+- Reorder commits in logical order
+- Squash multiple commits into one
+- Fix erroneous commits with fixup and autosquash
+- Move commits between branches with cherry-pick
+- Rebase commits onto upstream automatically (non-interactive)
+- Force push and rollback after refactor
 
 ## Execute
 
@@ -30,195 +30,195 @@ Refactor commits ที่ commit ไปแล้วเพื่อ break down, 
 
 > Goal: Check Status
 
-ตรวจสอบสถานะก่อน refactor
+Check the status before refactoring
 
-1. ทำ `git branch --show-current` เพื่อดู current branch
-2. ทำ `git status` เพื่อดูว่าไม่มี uncommitted changes
-3. ทำ `git log --oneline -10` เพื่อดู commits ล่าสุด
-4. ทำ `git log --oneline origin/<branch>..HEAD` เพื่อดู commits ที่ยังไม่ได้ push
+1. Run `git branch --show-current` to see the current branch
+2. Run `git status` to check that there are no uncommitted changes
+3. Run `git log --oneline -10` to see the latest commits
+4. Run `git log --oneline origin/<branch>..HEAD` to see commits that have not been pushed
 
 ### 2. Check Shared Status
 
 > Goal: Check Shared Status
 
-ตรวจสอบว่า branch ไม่ได้ถูก shared กับทีม
+Check that the branch has not been shared with the team
 
-1. ทำ `git branch -r` เพื่อดู remote branches
-2. ทำ `git log --oneline origin/<branch>..HEAD` เพื่อดู commits ที่ยังไม่ได้ push
-3. ถ้ามี commits ที่ถูก push ไปแล้ว, แจ้งเตือนผู้ใช้เกี่ยวกับความเสี่ยงของ force push
-4. แนะนำให้ใช้ branch ส่วนตัวสำหรับ refactor
+1. Run `git branch -r` to see remote branches
+2. Run `git log --oneline origin/<branch>..HEAD` to see commits that have not been pushed
+3. If there are commits that have already been pushed, warn the user about the risk of force push
+4. Recommend using a private branch for the refactor
 
 ### 3. Backup Branch
 
 > Goal: Backup Branch
 
-สร้าง backup branch ก่อน refactor
+Create a backup branch before refactoring
 
-1. ทำ `git branch backup-<branch>-<timestamp>` เพื่อสร้าง backup
-2. ทำ `git branch -a` เพื่อยืนยันว่า backup branch ถูกสร้าง
-3. บันทึกชื่อ backup branch สำหรับ rollback ถ้าจำเป็น
-4. ทำ `git reflog` เพื่อยืนยันว่า reflog มีข้อมูลสำหรับ recovery
+1. Run `git branch backup-<branch>-<timestamp>` to create a backup
+2. Run `git branch -a` to confirm that the backup branch was created
+3. Record the backup branch name for rollback if needed
+4. Run `git reflog` to confirm that the reflog has data for recovery
 
 ### 4. Choose Rebase Mode
 
 > Goal: Choose Rebase Mode
 
-เลือก rebase mode ตามความต้องการ
+Choose the rebase mode according to the requirement
 
-1. ถ้าต้อง break down commits หรือ edit commit messages ใช้ Interactive Rebase (step 5)
-2. ถ้าต้อง rebase ไปยัง upstream โดยอัตโนมัติ ใช้ Non-Interactive Rebase (step 6)
-3. ถ้าต้อง squash commits ด้วย fixup ใช้ Autosquash (step 7)
+1. If commits need to be broken down or commit messages need to be edited, use Interactive Rebase (step 5)
+2. If commits need to be rebased onto upstream automatically, use Non-Interactive Rebase (step 6)
+3. If commits need to be squashed with fixup, use Autosquash (step 7)
 
 ### 5. Execute Rebase
 
-> Goal: Execute rebase ตาม mode ที่เลือก (interactive, non-interactive, หรือ autosquash)
+> Goal: Execute rebase according to the chosen mode (interactive, non-interactive, or autosquash)
 
-1. Interactive: ทำ `git rebase -i HEAD~N` หรือ `git rebase -i <commit-hash>` แล้วแก้ไข rebase todo list:
-   - เปลี่ยน `pick` เป็น `edit` สำหรับ commit ที่ต้อง break down
-   - เปลี่ยน `pick` เป็น `reword` สำหรับ commit ที่ต้อง edit message
-   - เปลี่ยน `pick` เป็น `squash` สำหรับ commit ที่ต้องรวม
-   - ลำดับ commits ใหม่ถ้าต้องการ reorder
-2. Non-interactive: ทำ `git rebase <upstream>` หรือ `git rebase --onto <new-base> <upstream>`
-3. Autosquash: สร้าง fixup commits ด้วย `git commit --fixup <commit-hash>` แล้วทำ `git rebase -i --autosquash HEAD~N`
-4. ถ้าเกิด conflicts → แก้ไขและทำ `git rebase --continue`
-5. ถ้าต้องการ skip commit → ทำ `git rebase --skip`
-6. ถ้าต้องการ abort → ทำ `git rebase --abort` และ restore จาก backup branch
-7. Save และ close editor
+1. Interactive: run `git rebase -i HEAD~N` or `git rebase -i <commit-hash>` then edit the rebase todo list:
+   - Change `pick` to `edit` for commits that need to be broken down
+   - Change `pick` to `reword` for commits whose message needs editing
+   - Change `pick` to `squash` for commits that need to be combined
+   - Reorder commits if reordering is needed
+2. Non-interactive: run `git rebase <upstream>` or `git rebase --onto <new-base> <upstream>`
+3. Autosquash: create fixup commits with `git commit --fixup <commit-hash>` then run `git rebase -i --autosquash HEAD~N`
+4. If conflicts occur → resolve them and run `git rebase --continue`
+5. If a commit needs to be skipped → run `git rebase --skip`
+6. If you need to abort → run `git rebase --abort` and restore from the backup branch
+7. Save and close the editor
 
 ### 6. Break Down Commits
 
 > Goal: Break Down Commits
 
-Break down commit ขนาดใหญ่เป็น commits ย่อยๆ
+Break down large commits into smaller commits
 
-1. เมื่อ rebase หยุดที่ commit ที่มี `edit`, ทำ `git reset HEAD~` เพื่อ unstage ทุกอย่าง
-2. ทำ `git status` เพื่อดู files ที่ถูก unstage
-3. Stage และ commit แยกเป็น commits ย่อยๆ ตามที่ต้องการ:
-   - `git add <file>` และ `git commit -m "message"` สำหรับแต่ละ commit
-4. ทำ `git rebase --continue` เมื่อ break down เสร็จ
+1. When the rebase stops at a commit marked `edit`, run `git reset HEAD~` to unstage everything
+2. Run `git status` to see the unstaged files
+3. Stage and commit separately into smaller commits as desired:
+   - `git add <file>` and `git commit -m "message"` for each commit
+4. Run `git rebase --continue` when the break down is done
 
 #### 8.2 Validate Refactor
 
 > Goal: Validate Refactor
 
-ตรวจสอบว่า refactor สำเร็จ
+Check that the refactor succeeded
 
-1. ทำ `git log --oneline -10` เพื่อดู commits ใหม่
-2. ทำ `git status` เพื่อยืนยันว่าไม่มี conflicts
-3. ทำ `git diff backup-branch HEAD` เพื่อดู changes ที่เกิดขึ้น
-4. รัน tests ถ้ามีเพื่อยืนยันว่าไม่มี regression
+1. Run `git log --oneline -10` to see the new commits
+2. Run `git status` to confirm that there are no conflicts
+3. Run `git diff backup-branch HEAD` to see the changes that occurred
+4. Run tests if available to confirm that there is no regression
 
 ### 7. Handle Conflicts
 
 > Goal: Handle Conflicts
 
-แก้ไข conflicts ถ้าเกิดขึ้น
+Resolve conflicts if they occur
 
-1. ถ้ามี conflicts, ทำ `git status` เพื่อดู files ที่มี conflicts
-2. แก้ไข conflicts ใน files ที่มีปัญหา
-3. ทำ `git add <file>` สำหรับ files ที่แก้ไขแล้ว
-4. ทำ `git rebase --continue` เพื่อดำเนินการต่อ
-5. ถ้าต้องการ abort, ทำ `git rebase --abort` และ restore จาก backup branch
-6. ใช้ `git reflog` เพื่อดู history และ recover ถ้าจำเป็น
+1. If there are conflicts, run `git status` to see the files with conflicts
+2. Resolve conflicts in the problematic files
+3. Run `git add <file>` for the resolved files
+4. Run `git rebase --continue` to proceed
+5. If you need to abort, run `git rebase --abort` and restore from the backup branch
+6. Use `git reflog` to see the history and recover if needed
 
 #### 9.2 Force Push
 
 > Goal: Force Push
 
-Push commits ที่ refactor แล้วไปยัง remote อย่างปลอดภัย
+Push the refactored commits to the remote safely
 
-1. ตรวจสอบว่าจำเป็นต้อง force push จริงๆ (commits ถูก rewrite แล้ว)
-2. ตรวจสอบว่าไม่มีคนอื่นดึง commits เดิมไปใช้แล้ว
-3. ใช้ `git push --force-with-lease` เพื่อความปลอดภัยกว่า `--force`
-4. แจ้งทีมให้ทราบก่อนทำ force push
+1. Check that a force push is actually necessary (commits have been rewritten)
+2. Check that nobody else has already pulled the old commits
+3. Use `git push --force-with-lease` as it is safer than `--force`
+4. Notify the team before doing a force push
 
 ### 8. Rollback
 
 > Goal: Rollback
 
-ย้อนกลับสู่สถานะก่อน refactor ถ้าจำเป็น
+Return to the pre-refactor state if needed
 
-1. ใช้ `git reflog` เพื่อดูประวัติการทำงาน
-2. ใช้ `git reset --hard backup-<branch>-<timestamp>` เพื่อย้อนกลับสู่ backup
-3. หรือใช้ `git reset --hard HEAD@{1}` เพื่อย้อนกลับสู่สถานะก่อน rebase
-4. ลบ backup branch ด้วย `git branch -D backup-<branch>-<timestamp>` เมื่อตรวจสอบแล้วถูกต้อง
+1. Use `git reflog` to see the work history
+2. Use `git reset --hard backup-<branch>-<timestamp>` to return to the backup
+3. Or use `git reset --hard HEAD@{1}` to return to the state before the rebase
+4. Delete the backup branch with `git branch -D backup-<branch>-<timestamp>` once it has been verified as correct
 
 #### 10.2 Update References
 
 > Goal: Update References
 
-อัปเดท references ทั้งหมดที่เกี่ยวข้อง
+Update all related references
 
-1. ทำตาม `@[/update-references]`
+1. Follow `@[/update-references]`
 
 ### 9. Quick Amend Or Rename
 
-> Goal: แก้ไข message ของ commit ล่าสุดหรือ commit ก่อนหน้าอย่างรวดเร็ว
+> Goal: Quickly edit the message of the latest commit or a previous commit
 
-1. ถ้า commit ล่าสุดยังไม่ push → รัน `git commit --amend --message="<new-message>"`
-2. ถ้าต้องแก้ message ของ commit ก่อนหน้า → หา N จาก `git log --oneline` แล้ว `git rebase -i HEAD~N`
-3. เปลี่ยน `pick` เป็น `reword` สำหรับ target commit แล้วบันทึก
-4. ถ้า rebase มี conflict → ใช้ `/resolve-merge-conflicts`
-5. ตรวจสอบด้วย `git log --oneline -n 10`
+1. If the latest commit has not been pushed yet → run `git commit --amend --message="<new-message>"`
+2. If the message of a previous commit needs to be edited → find N from `git log --oneline` then `git rebase -i HEAD~N`
+3. Change `pick` to `reword` for the target commit then save
+4. If the rebase has a conflict → use `/resolve-merge-conflicts`
+5. Verify with `git log --oneline -n 10`
 
 ### 10. Check And Rewrite Non-English Commit Messages
 
-> Goal: ตรวจสอบและแก้ไข commit messages ที่ไม่ใช่ภาษาอังกฤษ
+> Goal: Check and fix non-English commit messages
 
-1. รัน `git log --oneline` เพื่อดู commit messages ทั้งหมด
-2. ระบุ commits ที่มีตัวอักษรหรือคำภาษาอื่น (เช่น ภาษาไทย)
-3. ถ้าพบ → ใช้ `git rebase -i HEAD~N` แล้วเปลี่ยน `pick` เป็น `reword` สำหรับ commits นั้น
-4. แปลง messages เป้นภาษาอังกฤษทีมีความหมายเดียวกัน โดยใช้ imperative mood และ conventional commits
-5. ถ้าไม่แน่ใจในการแปล → หยุดและใช้ `/ask-me` ก่อน reword
-6. ตรวจสอบด้วย `git log --oneline -n 10` ว่า messages ทั้งหมดเป็นภาษาอังกฤษ
+1. Run `git log --oneline` to see all commit messages
+2. Identify commits that contain characters or words from another language (e.g. Thai)
+3. If found → use `git rebase -i HEAD~N` then change `pick` to `reword` for those commits
+4. Convert the messages to English with the same meaning, using imperative mood and conventional commits
+5. If unsure about the translation → stop and use `/ask-me` before reword
+6. Verify with `git log --oneline -n 10` that all messages are in English
 
 ## Rules
 
 ### 1. Safety
 
-- สร้าง backup branch ก่อน refactor เสมอ
-- ไม่ refactor commits ที่ถูก push ไป remote แล้ว ถ้าไม่จำเป็น
-- ถ้าต้อง force push หลัง refactor, ต้องแจ้ง team members ก่อน
-- ใช้ `--force-with-lease` แทน `--force` เสมอ
-- ใช้ `git rebase --abort` ถ้าเกิดปัญหาและ restore จาก backup
+- Always create a backup branch before refactoring
+- Do not refactor commits that have already been pushed to the remote unless necessary
+- If a force push is needed after the refactor, notify team members first
+- Always use `--force-with-lease` instead of `--force`
+- Use `git rebase --abort` if a problem occurs and restore from the backup
 
 ### 2. Commit Quality
 
-- Break down commits ตาม logical changes (ไม่ใหญ่เกินไป)
-- ใช้ commit messages ที่ชัดเจน เป็นไปตาม conventional commits และเป็นภาษาอังกฤษ
-- แต่ละ commit ควรเป็น self-contained และ buildable
-- ไม่รวม unrelated changes ใน commit เดียวกัน
-- ใช้ `fixup` และ `autosquash` สำหรับการจัดการ commits ที่ซับซ้อน
-- ใช้ `git commit --amend` เฉพาะกรณีที่ commit ล่าสุดยังไม่ได้ push
+- Break down commits according to logical changes (not too large)
+- Use clear commit messages that follow conventional commits and are in English
+- Each commit should be self-contained and buildable
+- Do not include unrelated changes in the same commit
+- Use `fixup` and `autosquash` for handling complex commits
+- Use `git commit --amend` only when the latest commit has not been pushed
 
 ### 3. Submodules
 
-- ถ้ามี submodules, ต้อง refactor commits ใน submodules ด้วย
-- ใช้ `git submodule foreach --recursive` สำหรับ operations ทั้งหมด
-- ตรวจสอบว่า submodules sync กับ parent repository
+- If there are submodules, commits in the submodules must be refactored as well
+- Use `git submodule foreach --recursive` for all operations
+- Check that the submodules are in sync with the parent repository
 
 ### 4. Verification
 
-- ตรวจสอบว่า refactor สำเร็จจริง
-- รัน tests ถ้ามีเพื่อยืนยันว่าไม่มี regression
-- ตรวจสอบว่าไม่มี conflicts หรือ errors
-- ยืนยันว่า commits ใหม่มีความถูกต้อง
-- ใช้ `git diff --stat` เพื่อดูสรุป changes
-- ตรวจสอบว่าไม่มี files ที่ถูกลบโดยไม่ตั้งใจ
+- Check that the refactor actually succeeded
+- Run tests if available to confirm that there is no regression
+- Check that there are no conflicts or errors
+- Confirm that the new commits are correct
+- Use `git diff --stat` to see a summary of the changes
+- Check that no files were deleted unintentionally
 
 ### 5. Language
 
-- Commit messages ทั้งหมดต้องเป็นภาษาอังกฤษ
-- ถ้าพบข้อความภาษาอื่นใน git history ให้ reword เป้นภาษาอังกฤษ
-- รักษาความหมายและ context เดิมเมื่อแปล
-- ถ้า commit ถูก push ไปแล้ว ให้ทำตาม Rules ส่วน Safety ก่อน reword
+- All commit messages must be in English
+- If messages in another language are found in the git history, reword them into English
+- Preserve the original meaning and context when translating
+- If a commit has already been pushed, follow the Safety part of the Rules before rewording
 
 ## Expected Outcome
 
-- Commits ถูก refactor ให้เหมาะสม (break down, edit, reorganize, squash, fixup)
-- Commit messages ทั้งหมดเป็นภาษาอังกฤษ
-- Commit history สะอาดและเป็นไปตาม best practices
-- ไม่มี conflicts หรือ errors หลัง refactor
-- Tests ผ่านทั้งหมด (ถ้ามี)
-- Force push สำเร็จด้วย `--force-with-lease` (ถ้าจำเป็น)
-- Backup branch พร้อมสำหรับ rollback ถ้าจำเป็น
+- Commits are refactored appropriately (break down, edit, reorganize, squash, fixup)
+- All commit messages are in English
+- The commit history is clean and follows best practices
+- There are no conflicts or errors after the refactor
+- All tests pass (if any)
+- Force push succeeds with `--force-with-lease` (if necessary)
+- A backup branch is ready for rollback if needed

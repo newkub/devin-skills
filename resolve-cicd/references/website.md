@@ -2,42 +2,26 @@
 
 ## Resolve CICD Official Resources
 
-
-
 ### Website
 
-
-
-- https://devin.ai
-
-
+- https://github.com/features/actions
+- https://developers.cloudflare.com/workers/
 
 ### Documentation
 
-
-
-- https://docs.devin.ai
-
-
+- https://docs.github.com/en/actions
+- https://developers.cloudflare.com/workers/ci-cd/
+- https://docs.github.com/en/cli/using-the-github-cli
 
 ### Repository
 
-
-
-- N/A
-
-
+- https://github.com/cli/cli (`gh` CLI)
+- https://github.com/cloudflare/workers-sdk (`wrangler`)
 
 ### Package Registry
 
-
-
-- N/A
-
-
+- N/A (uses the `gh` and `wrangler` CLIs, not a package dependency)
 
 ### Description
 
-
-
-ติดตามและแก้ไข CI/CD pipeline failures สำหรับ repo หรือ single run/URL ที่ระบุ
+Follow and fix CI/CD pipeline failures for a specified repo or single run/URL

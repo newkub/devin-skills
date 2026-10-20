@@ -34,7 +34,8 @@ Run typecheck for every workspace in the monorepo as defined in the package mani
 > Goal: Run Typecheck
 
 1. Do not use ignore comments/attributes in any language
-2. Run typecheck as defined in the package manifest
+2. Pick the command by ecosystem: Bun project (`bun.lock`) → `bun check`; otherwise the manifest `typecheck` script (`tsc --noEmit` where Bun is absent)
+3. Run typecheck as defined in the package manifest
 
 ### 3. Analyze Errors
 

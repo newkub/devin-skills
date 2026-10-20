@@ -23,7 +23,7 @@ Patterns verified against the `every-app/open-seo` README (MIT) and openseo.so d
 ## 4. Turn SEO Findings Into Repo Changes
 
 - Site-audit output → map each technical issue to code: meta/structured data/canonical fixes in the app router or head manager (`/follow-lib-*` for the stack), robots/sitemap from the deploy skill (`/follow-create-web` robots step)
-- Keep one tracked list per site (issue → file → status); close through `/deep-review-codebase-then-fix`, verify with a re-crawl after deploy
+- Keep one tracked list per site (issue → file → status); close through `/deep-review-codebase seo then-fix`, verify with a re-crawl after deploy
 - AI-visibility and rank-tracking are directional signals — decide content work from `/create-plan-in-dot-devin`, not from one noisy position change
 
 ## 5. Pitfalls

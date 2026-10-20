@@ -56,7 +56,7 @@ Adopt Effect-TS into a codebase using neverthrow/Promise/try-catch incrementally
 
 > Goal: every migrated module typechecks and its tests pass
 
-1. Run `bunx tsc --noEmit` after each module (do `/run-typecheck`)
+1. Run `bun check` after each module (do `/run-typecheck`)
 2. Run that module's tests (do `/run-test`) — add `it.effect` tests for the new behavior
 3. Assert error paths with `Effect.exit` + `Exit` instead of try/catch in tests
 4. Runtime smoke at the entry point — confirm old callers still work through the interop boundary

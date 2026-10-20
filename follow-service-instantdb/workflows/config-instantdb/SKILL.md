@@ -51,7 +51,7 @@ Set/edit InstantDB configuration — `instant.schema.ts`, `instant.perms.ts`, en
 
 1. Run `npx instant-cli@latest push schema` when the schema changes
 2. Run `npx instant-cli@latest push perms` when permissions change
-3. Run `bunx tsc --noEmit` or `bun run build` to typecheck schema types
+3. Run `bun check` or `bun run build` to typecheck schema types
 4. Run `npx instant-cli@latest status` to confirm the connection — if it fails → `resolve-errors` max 3 rounds
 5. If new links/rooms exist → update the parent's references and do `/update-references`
 

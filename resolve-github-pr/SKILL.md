@@ -1,6 +1,6 @@
 ---
 name: resolve-github-pr
-description: Resolve pull request ด้วยการ merge, squash, หรือ rebase ตาม project conventions
+description: Resolve pull requests via merge, squash, or rebase per project conventions
 argument-hint: "[scope]"
 related:
   - create-github
@@ -10,83 +10,83 @@ related:
 
 ## Goal
 
-Resolve pull request ด้วยวิธีที่เหมาะสมตาม project conventions และตรวจสอบคุณภาพ
+Resolve pull requests using the method appropriate for the project conventions and check quality
 
 ## Scope
 
-- ตรวจสอบ PR ก่อน merge (CI checks, reviews, approvals)
-- เลือก merge method ที่เหมาะสม (merge, squash, rebase)
-- Merge PR และอัปเดต branch
-- ปิด issue ที่เกี่ยวข้อง (ถ้ามี)
-- ลบ branch ที่ merge แล้ว
+- Inspect the PR before merge (CI checks, reviews, approvals)
+- Choose the appropriate merge method (merge, squash, rebase)
+- Merge the PR and update the branch
+- Close the related issue (if any)
+- Delete the merged branch
 
 ## Execute
 
 ### 1. Verify PR Readiness
 
-> Goal: ตรวจสอบว่า PR พร้อมสำหรับ merge
+> Goal: Check that the PR is ready to merge
 
-1. ตรวจสอบว่า CI checks ผ่านทั้งหมด
-2. ตรวจสอบว่ามี approvals จาก reviewers ที่จำเป็น
-3. ตรวจสอบว่า review comments ถูก resolve แล้ว
-4. ตรวจสอบว่าไม่มี conflicts
-5. ตรวจสอบว่า branch ปัจจุบัน sync กับ remote
+1. Check that all CI checks pass
+2. Check that there are approvals from the required reviewers
+3. Check that review comments are resolved
+4. Check that there are no conflicts
+5. Check that the current branch is synced with the remote
 
 ### 2. Review Changes
 
-> Goal: ตรวจสอบ changes อย่างละเอียดก่อน merge
+> Goal: Inspect the changes in detail before merge
 
-1. อ่าน diff ของ PR อย่างละเอียด
-2. ตรวจสอบว่า changes ตรงกับ description
-3. ตรวจสอบว่าไม่มี unintended changes
-4. ตรวจสอบว่า code quality ตาม standards
-5. ตรวจสอบว่า tests ครอบคลุม
+1. Read the PR diff in detail
+2. Check that the changes match the description
+3. Check that there are no unintended changes
+4. Check that the code quality meets the standards
+5. Check that the tests cover the changes
 
 ### 3. Choose Merge Method
 
-> Goal: เลือก merge method ตาม project conventions
+> Goal: Choose the merge method per project conventions
 
-เลือก merge method ตาม project conventions:
+Choose the merge method per project conventions:
 
-- Merge: สำหรับ PR ที่มี historical context สำคัญ
-- Squash: สำหรับ PR ที่มีหลาย commits แต่ต้องการ clean history
-- Rebase: สำหรับ linear history และ avoiding merge commits
+- Merge: for PRs with important historical context
+- Squash: for PRs with many commits but needing a clean history
+- Rebase: for a linear history and avoiding merge commits
 
 ### 4. Merge PR With MCP Tool
 
-> Goal: ทำการ merge PR ด้วย MCP tool
+> Goal: Perform the PR merge with the MCP tool
 
-1. ใช้ `mcp3_merge_pull_request`
-2. ระบุ owner, repo, pullNumber
-3. เลือก merge_method (merge, squash, rebase)
-4. เพิ่ม commit_title และ commit_message หากจำเป็น
-5. ตรวจสอบว่า merge สำเร็จ
+1. Use `mcp3_merge_pull_request`
+2. Specify owner, repo, pullNumber
+3. Choose merge_method (merge, squash, rebase)
+4. Add commit_title and commit_message if necessary
+5. Check that the merge succeeded
 
 ### 5. Post-Merge Actions
 
-> Goal: ดำเนินการหลัง merge เช่นลบ branch และปิด issue
+> Goal: Perform actions after merge such as deleting the branch and closing the issue
 
-1. ตรวจสอบว่า issue ถูกปิดอัตโนมัติ (ถ้ามี `Closes #issue`)
-2. ลบ branch ที่ merge แล้ว (ทั้ง local และ remote)
-3. อัปเดต changelog หากจำเป็น
-4. สร้าง release notes หากจำเป็น
-5. แจ้ง team ว่า PR ถูก merge แล้ว
+1. Check that the issue is closed automatically (if there is `Closes #issue`)
+2. Delete the merged branch (both local and remote)
+3. Update the changelog if necessary
+4. Create release notes if necessary
+5. Notify the team that the PR is merged
 
 ## Rules
 
 ### 1. Merge Method Selection
 
-ใช้ criteria ต่อไปนี้:
+Use the following criteria:
 
 | Method | When to Use | Pros | Cons |
 |--------|-------------|------|------|
-| Merge | PR ที่มี historical context สำคัญ | Preserve history | Many merge commits |
-| Squash | PR ที่มีหลาย commits แต่ต้องการ clean history | Clean linear history | Lose commit details |
-| Rebase | Linear history และ avoiding merge commits | Clean history | Can cause conflicts |
+| Merge | PRs with important historical context | Preserve history | Many merge commits |
+| Squash | PRs with many commits but needing a clean history | Clean linear history | Lose commit details |
+| Rebase | Linear history and avoiding merge commits | Clean history | Can cause conflicts |
 
 ### 2. Pre-Merge Checklist
 
-ต้องตรวจสอบก่อน merge:
+Must check before merge:
 
 - [ ] All CI checks pass
 - [ ] Required approvals received
@@ -99,55 +99,55 @@ Resolve pull request ด้วยวิธีที่เหมาะสมต�
 
 ### 3. Commit Message
 
-เมื่อใช้ squash หรือ merge:
+When using squash or merge:
 
-- ใช้ conventional commit format
-- รวมรายละเอียดจาก PR description
-- เพิ่ม issue reference ถ้าจำเป็น
-- ตัวอย่าง: `feat(auth): add OAuth2 login support (#123)`
+- Use the conventional commit format
+- Include details from the PR description
+- Add the issue reference if necessary
+- Example: `feat(auth): add OAuth2 login support (#123)`
 
 ### 4. Branch Cleanup
 
-หลังจาก merge:
+After merge:
 
-- ลบ branch local: `git branch -d branch-name`
-- ลบ branch remote: `git push origin --delete branch-name`
-- หลีกเลี่ยงค้าง branch ที่ไม่ได้ใช้
+- Delete the local branch: `git branch -d branch-name`
+- Delete the remote branch: `git push origin --delete branch-name`
+- Avoid leaving unused branches around
 
 ### 5. Issue Resolution
 
-เชื่อมโยง PR กับ issue:
+Link the PR to the issue:
 
-- ใช้ `Closes #issue-number` ใน PR description
-- หรือใช้ `Fixes #issue-number` สำหรับ bug fixes
-- หรือใช้ `Refs #issue-number` สำหรับ tracking
-- GitHub จะปิด issue อัตโนมัติเมื่อ PR merge
+- Use `Closes #issue-number` in the PR description
+- Or use `Fixes #issue-number` for bug fixes
+- Or use `Refs #issue-number` for tracking
+- GitHub closes the issue automatically when the PR merges
 
-- ใช้ /create-github-pr ถ้าจำเป็น
-- ใช้ /list-github-pr ถ้าจำเป็น
-- ใช้ /merge-github-pr ถ้าจำเป็น
+- Use /create-github-pr if necessary
+- Use /list-github-pr if necessary
+- Use /merge-github-pr if necessary
 
 ## Expected Outcome
 
-- PR ถูก merge ด้วยวิธีที่เหมาะสม
-- CI checks ผ่านทั้งหมด
-- Review comments ถูก resolve แล้ว
-- Issue ที่เกี่ยวข้องถูกปิด (ถ้ามี)
-- Branch ที่ merge แล้วถูกลบ
-- Team ได้รับ notification
+- The PR is merged with the appropriate method
+- All CI checks pass
+- Review comments are resolved
+- The related issue is closed (if any)
+- The merged branch is deleted
+- The team is notified
 
 ## Common Mistakes
 
-- Merge โดยไม่ตรวจสอบ CI checks
-- เลือก merge method ที่ไม่เหมาะสม
-- ไม่ลบ branch ที่ merge แล้ว
-- ไม่ตรวจสอบ review comments ก่อน merge
-- Merge โดยไม่มี approvals
+- Merging without checking CI checks
+- Choosing an inappropriate merge method
+- Not deleting the merged branch
+- Not checking review comments before merge
+- Merging without approvals
 
 ## Anti-Patterns
 
-- Force merge เมื่อ CI checks fail
-- Merge โดยไม่มี review
-- Merge โดยไม่ resolve conflicts
-- ใช้ rebase บน shared branches
-- Merge โดยไม่เชื่อมโยงกับ issue
+- Force merge when CI checks fail
+- Merge without review
+- Merge without resolving conflicts
+- Using rebase on shared branches
+- Merge without linking to the issue

@@ -1,6 +1,6 @@
 ---
 name: refactor-skills
-description: Refactor skill packages ตาม update-devin-global-skills — split, merge, workflows, naming
+description: Refactor skill packages per update-devin-global-skills — split, merge, workflows, naming
 argument-hint: "[skill | family-prefix | all]"
 related:
   - update-devin-global-skills
@@ -19,96 +19,96 @@ related:
 
 ## Goal
 
-Refactor skill packages ใน `%APPDATA%\devin\skills` ให้ SRP ชัดเจนและผ่านมาตรฐาน repo — split, reclassify, merge, fix metadata, sync references
+Refactor skill packages in `%APPDATA%\devin\skills` so that SRP is clear and they pass the repo standard — split, reclassify, merge, fix metadata, sync references
 
 ## Scope
 
-Restructure skill ที่มีอยู่ — skill เดียว, family (`follow-lib-*`, `review-*`) หรือ `all` — ไม่รวม: สร้างใหม่ → `/new-skills`, update content → `/update-devin-global-skills`, project code → `/refactor`
+Restructure existing skills — a single skill, a family (`follow-lib-*`, `review-*`), or `all` — excluding: creating new → `/new-skills`, updating content → `/update-devin-global-skills`, project code → `/refactor`
 
 ## Execute
 
 ### 1. Detect Violations
 
-> Goal: รู้ว่า refactor skill ใด และ violation คืออะไร
+> Goal: Know which skill to refactor and what the violation is
 
-1. `<skill>` → target เดียว; family prefix หรือ `all` → list ทุก skill ที่ตรง
-2. เก็บ baseline ต่อ skill:
+1. `<skill>` → a single target; family prefix or `all` → list every matching skill
+2. Collect a baseline per skill:
 
    | No. | Violation | Detect |
    |-----|-----------|--------|
-   | 1 | ไฟล์เกิน 250 บรรทัด | `/check-long-files` |
-   | 2 | หลาย responsibility | อ่าน `## Execute` — นับ workflow ที่ต่าง goal |
-   | 3 | workflow อยู่ใน `references/` | เทียบ decision matrix (step 2) |
-   | 4 | เนื้อหาซ้ำ skill อื่น | `/use-related-skills` + grep title/description |
-   | 5 | `references/` ไม่ flat | list dir |
-   | 6 | frontmatter ผิด | `name` ≠ dir, `description` >100 |
-   | 7 | `related` dangling | `/deep-validate` |
+   | 1 | File exceeds 250 lines | `/check-long-files` |
+   | 2 | Multiple responsibilities | Read `## Execute` — count workflows with different goals |
+   | 3 | Workflow lives in `references/` | Compare with decision matrix (step 2) |
+   | 4 | Content duplicated from another skill | `/use-related-skills` + grep title/description |
+   | 5 | `references/` is not flat | list dir |
+   | 6 | Wrong frontmatter | `name` ≠ dir, `description` >100 |
+   | 7 | Dangling `related` | `/deep-validate` |
 
 ### 2. Plan
 
-> Goal: เลือก fix ต่อ violation จาก conventions — ไม่ ad hoc
+> Goal: Choose a fix per violation from conventions — not ad hoc
 
-1. อ่าน `update-devin-global-skills` `## Conventions` — `When To Split` (violation → fix) และ `Workflows And Subagents` (decision matrix + consolidation)
-2. สรุป skill → violation → action → target — report ก่อนแก้ถ้า scope >3 skills
-3. Merge top-level skills → `git mv` เข้า `parent/workflows/<domain>/`, parent เป็น dispatcher, bulk-update callers ก่อนลบ dir เดิม
+1. Read `update-devin-global-skills` `## Conventions` — `When To Split` (violation → fix) and `Workflows And Subagents` (decision matrix + consolidation)
+2. Summarize skill → violation → action → target — report before fixing if scope >3 skills
+3. Merge top-level skills → `git mv` into `parent/workflows/<domain>/`, parent becomes a dispatcher, bulk-update callers before deleting the old dir
 
 ### 3. Apply
 
-> Goal: แก้ตาม plan โดยไม่เสีย content
+> Goal: Fix per the plan without losing content
 
 | Action | How |
 |--------|-----|
-| Split | เนื้อหาละเอียด → `references/<topic>.md`; SKILL.md เหลือ workflow + pointer |
+| Split | Detailed content → `references/<topic>.md`; SKILL.md keeps workflow + pointer |
 | Reclassify | workflow ↔ `workflows/<name>/` (`name: <parent>-<name>`), knowledge ↔ `references/` |
-| Merge | รวมเนื้อหาซ้ำเข้าที่เดียว |
-| Metadata | `name` = dir, `description` ≤100, `related` resolve ได้ |
-| Simplify | ย่อ prose ที่ verbose → `/simplify` |
-| Flatten | `references/` ไม่มี nested dirs |
+| Merge | Combine duplicated content into one place |
+| Metadata | `name` = dir, `description` ≤100, `related` resolvable |
+| Simplify | Condense verbose prose → `/simplify` |
+| Flatten | `references/` has no nested dirs |
 
-ใช้ `git mv` ทุกการย้ายเพื่อเก็บ history
+Use `git mv` for every move to preserve history
 
 ### 4. Dispatch Bulk Work
 
-> Goal: family-wide refactor ทำขนานโดยไม่ชนกัน
+> Goal: Family-wide refactor runs in parallel without colliding
 
-Scope >3 skills อิสระกัน → spawn `skill-updater` subagent ทีละ skill ผ่าน `/use-subagents` — แก้เฉพาะ dir ตัวเอง; skills ที่แตะ shared files (`AGENTS.md`, `global_rules.md`) ทำ sequential ห้าม spawn
+Scope >3 independent skills → spawn a `skill-updater` subagent per skill via `/use-subagents` — each edits only its own dir; skills that touch shared files (`AGENTS.md`, `global_rules.md`) are done sequentially, no spawning
 
 ### 5. Sync And Validate
 
-> Goal: ไม่มี stale refs ผ่าน conventions
+> Goal: No stale refs, passes conventions
 
 `/update-references` → sync living docs (`AGENTS.md` count + `related:`) → `/deep-validate`
 
 ### 6. Report
 
-> Goal: สรุปการเปลี่ยนแปลงและผลตรวจ
+> Goal: Summarize the changes and the check results
 
-`/report` (skill → violation → action → result + รายการที่ข้าม) → `/suggest-next-action`
+`/report` (skill → violation → action → result + list of skipped items) → `/suggest-next-action`
 
 ## Rules
 
 ### 1. Convention Authority
 
-- มาตรฐานอยู่ที่ `/update-devin-global-skills` references — point ไปอ่าน ห้ามเขียนซ้ำ
-- prefix contract (`check-*`/`review-*`/`deep-*`, lifecycle prefixes) ตาม `new-skills` — ห้าม refactor จนขาด
-- ห้ามสร้าง `workflows/fix-*/` หรือ `references/fix-*.md` — fix อยู่ใน `## Fix`
+- The standard lives in `/update-devin-global-skills` references — point to it, do not rewrite it
+- prefix contract (`check-*`/`review-*`/`deep-*`, lifecycle prefixes) per `new-skills` — do not refactor in a way that breaks it
+- Do not create `workflows/fix-*/` or `references/fix-*.md` — fixes live in `## Fix`
 
 ### 2. No Content Loss
 
-- ย้าย/แยกต้อง preserve เนื้อหา — ลบเฉพาะ duplicate จริง; destructive → dry run + confirm
+- Moving/splitting must preserve content — delete only true duplicates; destructive → dry run + confirm
 
 ### 3. Minimal Diff
 
-- แก้เฉพาะ violation ที่ detect ได้ — ไม่ rewrite ของที่ผ่านอยู่แล้ว
-- ไม่เปลี่ยน semantic ของ workflow (Two Hats เหมือน code refactor)
+- Fix only detected violations — do not rewrite what already passes
+- Do not change the semantics of a workflow (Two Hats, same as code refactoring)
 
 ### 4. Deterministic Output
 
-- ทุก violation ต้องมี evidence ก่อนแก้ — ห้ามเดา
-- report บอก verify result จริง — ห้ามอ้างว่าผ่านถ้ายังไม่รัน
+- Every violation must have evidence before fixing — do not guess
+- The report states the actual verify result — do not claim it passed if you have not run it
 
 ## Expected Outcome
 
-- ไฟล์ ≤250 บรรทัด SRP ชัดเจน; `references/` flat, `workflows/` = invocable workflows, subagent profiles = `SKILL.md ## Subagents` (ไม่มี `subagents/`)
-- ไม่มี content ซ้ำ, stale refs หรือ dangling `related`; `AGENTS.md` + living docs sync
-- ผ่าน `/deep-validate` พร้อมรายงาน before/after
+- Files ≤250 lines, clear SRP; `references/` flat, `workflows/` = invocable workflows, subagent profiles = `SKILL.md ## Subagents` (no `subagents/`)
+- No duplicated content, stale refs, or dangling `related`; `AGENTS.md` + living docs in sync
+- Passes `/deep-validate` with a before/after report

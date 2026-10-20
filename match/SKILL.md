@@ -1,6 +1,6 @@
 ---
 name: match
-description: หา match items จาก codebase แล้ว apply rules ที่ผู้ใช้กำหนดให้กับแต่ละ match
+description: Find match items from the codebase then apply rules the user defined to each match
 argument-hint: "<what-to-match>"
 allowed-tools:
   - read
@@ -27,13 +27,13 @@ related:
 
 ## Goal
 
-หา match items ใน workspace หรือ skill set แล้วนำเสนอพร้อมหลักฐาน จากนั้นให้ผู้ใช้กำหนด conditional rules แล้ว apply rule ให้กับแต่ละ matched item โดยอัตโนมัติ
+Find match items in the workspace or skill set, then present them with evidence, and then have the user define conditional rules and apply the rule to each matched item automatically
 
 ## Scope
 
-ใช้เมื่อผู้ใช้พูดในลักษณะ "find X, then do Y if A, do Z if B" หรือต้องการรัน rule-based batch operation บนชุด items ที่ค้นพบ ใช้ได้กับ files, code symbols, skills, dependencies หรือ searchable target ใดๆ
+Use when the user speaks in the form "find X, then do Y if A, do Z if B" or wants to run a rule-based batch operation on a set of discovered items. Works with files, code symbols, skills, dependencies, or any searchable target
 
-ดูเพิ่มเติม: /search-in-git, /report-file-structure, /ask-me, /follow-your-suggestion, /use-scripts, /plan
+See also: /search-in-git, /report-file-structure, /ask-me, /follow-your-suggestion, /use-scripts, /plan
 
 ## Execute
 
@@ -41,121 +41,121 @@ related:
 
 > Goal: Identify What To Match
 
-1. รับ match target จาก argument หรือ context.
-2. ตัวอย่าง: `*.test.ts`, `skills with TODO`, `functions longer than 50 lines`, `packages with no tests`.
-3. ถ้า target คลุมเครือ ให้ถามหา concrete pattern หรือ example.
-4. บันทึก matching criteria ลงใน `todo_write`.
+1. Accept the match target from the argument or context.
+2. Examples: `*.test.ts`, `skills with TODO`, `functions longer than 50 lines`, `packages with no tests`.
+3. If the target is vague, ask for a concrete pattern or example.
+4. Record the matching criteria in `todo_write`.
 
 ### 2. Match Items
 
 > Goal: Match Items
 
-หา items ทั้งหมดที่ตรงกับ criteria.
+Find all items that match the criteria.
 
-1. ใช้ `find_file_by_name` สำหรับ file patterns.
-2. ใช้ `grep` สำหรับ text patterns.
-3. ใช้ `use-astgrep` สำหรับ AST-based code patterns.
-4. ใช้ `scan-codebase` สำหรับการค้นหาที่กว้างหรือมีหลาย criteria.
-5. จำกัดผลลัพธ์ให้เหมาะสม; ถ้ามากเกินไป ให้แสดงสรุปแล้วถามก่อนขยาย.
+1. Use `find_file_by_name` for file patterns.
+2. Use `grep` for text patterns.
+3. Use `use-astgrep` for AST-based code patterns.
+4. Use `scan-codebase` for broad searches or searches with multiple criteria.
+5. Limit the results to a reasonable amount; if there are too many, show a summary and ask before expanding.
 
 ### 3. Present Matches
 
 > Goal: Present Matches
 
-แสดง match items เป็นรายการลำดับเลขพร้อมหลักฐาน.
+Show the match items as a numbered list with evidence.
 
-1. ลำดับเลขแต่ละ item เริ่มจาก 1.
-2. แสดง identifier ที่เกี่ยวข้อง: path, symbol, skill name หรือ code snippet.
-3. รวม match attribute ที่จะใช้สำหรับ rules เช่น:
+1. Number each item starting from 1.
+2. Show the relevant identifier: path, symbol, skill name, or code snippet.
+3. Include the match attribute that will be used for the rules, such as:
    - file extension
    - directory
    - content snippet
-   - size หรือ line count
-4. ถามผู้ใช้ว่า match set ถูกต้องหรือไม่ก่อน apply rules.
+   - size or line count
+4. Ask the user whether the match set is correct before applying the rules.
 
 ### 4. Collect Rules
 
 > Goal: Collect Rules
 
-รับ conditional rules จากผู้ใช้.
+Accept conditional rules from the user.
 
-1. ถามผู้ใช้สำหรับ rules ในรูปแบบ: `if <condition> => <action>`.
-2. ยอมรับหลาย rules ในข้อความเดียว.
-3. รองรับ default rule: `else => <action>`.
-4. Conditions สามารถใช้ attributes ที่เปิดเผยในขั้นตอนที่ 3 เช่น:
+1. Ask the user for rules in the form: `if <condition> => <action>`.
+2. Accept multiple rules in a single message.
+3. Support a default rule: `else => <action>`.
+4. Conditions can use the attributes exposed in step 3, such as:
    - `ext == .ts`
    - `path contains packages/`
    - `size > 1000`
    - `content contains TODO`
-5. Actions สามารถเป็น skills, commands หรือ instructions เช่น:
+5. Actions can be skills, commands, or instructions, such as:
    - `review`
    - `refactor`
    - `delete`
    - `update-references`
    - `add tests`
    - `skip`
-6. ถ้า action เป็น destructive หรือ irreversible ให้เตือนแล้วถามยืนยัน.
+6. If an action is destructive or irreversible, warn and ask for confirmation.
 
 ### 5. Apply Rules
 
 > Goal: Apply Rules
 
-รัน action ที่ตรงกันให้แต่ละ item.
+Run the matching action for each item.
 
-1. วนซ้ำรายการ match ตามลำดับเลข.
-2. สำหรับแต่ละ item ประเมิน rules จากบนลงล่าง.
-3. Execute action แรกที่ตรงกัน.
-4. ถ้าไม่มี rule ตรงกัน ให้ apply default rule หรือ skip.
-5. บันทึกสิ่งที่ทำสำหรับแต่ละ item.
-6. หยุดแล้วถามหาก action ที่รุนแรงหรือ irreversible กำลังจะรัน.
+1. Iterate over the match list in numbered order.
+2. For each item evaluate the rules from top to bottom.
+3. Execute the first matching action.
+4. If no rule matches, apply the default rule or skip.
+5. Record what was done for each item.
+6. Stop and ask if a severe or irreversible action is about to run.
 
 ### 6. Report And Validate
 
 > Goal: Report And Validate
 
-รายงานผลลัพธ์และตรวจสอบความถูกต้อง.
+Report the results and verify correctness.
 
-1. แสดงตารางที่มีคอลัมน์: No., item, matched rule, action, status.
-2. รัน `deep-validate` ถ้า actions เปลี่ยน code หรือ skills.
-3. รัน `run-verify` สำหรับ lint, typecheck หรือ tests เมื่อเกี่ยวข้อง.
-4. รายการ items ใดที่ประมวลผลไม่ได้ พร้อมเหตุผล.
+1. Show a table with columns: No., item, matched rule, action, status.
+2. Run `deep-validate` if the actions changed code or skills.
+3. Run `run-verify` for lint, typecheck, or tests when relevant.
+4. List any items that could not be processed, with the reason.
 
 ## Rules
 
 ### 1. Match Before Act
 
-- ต้องหาและนำเสนอ matches ก่อนจึง apply rules.
-- อย่าสมมติว่าผู้ใช้ต้องการ action เดียวกันทุก item.
-- ยืนยัน match set เว้นแต่ผู้ใช้จะไว้วางใจ criteria อย่างชัดเจน.
+- You must find and present the matches before applying the rules.
+- Do not assume the user wants the same action for every item.
+- Confirm the match set unless the user clearly trusts the criteria.
 
 ### 2. Rule Clarity
 
-- แต่ละ rule ต้องมี condition และ action อย่างละหนึ่ง.
-- Conditions ต้องอ้างอิง match attribute.
-- Actions ต้องเป็น known skill, command หรือคำสั่งที่ชัดเจน.
-- ถ้า rule คลุมเครือ ให้ถามผู้ใช้ให้ชัดเจน.
+- Each rule must have exactly one condition and one action.
+- Conditions must reference a match attribute.
+- Actions must be a known skill, command, or clear instruction.
+- If a rule is vague, ask the user for clarity.
 
 ### 3. Safety
 
-- Destructive actions ต้องมี user confirmation ก่อน execution.
-- รองรับ dry-run ก่อนเมื่อถูกขอหรือเมื่อ action มีความเสี่ยง.
-- อย่ารัน actions ที่กระทบ secrets, credentials หรือ remote systems โดยไม่มี confirmation.
+- Destructive actions require user confirmation before execution.
+- Support a dry-run first when requested or when the action is risky.
+- Do not run actions that affect secrets, credentials, or remote systems without confirmation.
 
 ### 4. Ordering
 
-- Rules ถูกประเมินตามลำดับที่ผู้ใช้ให้มา.
-- Rule แรกที่ตรงกันใช้ได้.
-- ถ้าไม่มี rule ตรงกัน ให้ใช้ default rule หรือรายงาน "no match".
+- Rules are evaluated in the order the user provided them.
+- The first matching rule is used.
+- If no rule matches, use the default rule or report "no match".
 
 ### 5. Evidence
 
-- ทุก match ต้องมีหลักฐาน: path, snippet, line number หรือ attribute.
-- ทุก applied action ต้องถูกบันทึกใน report.
-- ถ้า action ล้มเหลว ให้บันทึก error แล้วทำต่อกับ item ถัดไป เว้นแต่จะถูกบอกให้หยุด.
+- Every match must have evidence: path, snippet, line number, or attribute.
+- Every applied action must be recorded in the report.
+- If an action fails, record the error and continue with the next item unless told to stop.
 
 ## Expected Outcome
 
-- แสดงรายการ match items แบบลำดับเลขก่อนที่ action ใดจะรัน.
-- User rules ถูก apply เป็นระบบต่อแต่ละ matched item.
-- Report แสดง rule ใดตรงกันและผลลัพธ์ของแต่ละ item.
-- Code หรือ skills ยังคง valid หาก validation เกี่ยวข้อง.
+- The match items are shown as a numbered list before any action runs.
+- User rules are applied systematically to each matched item.
+- The report shows which rule matched and the result for each item.
+- Code or skills remain valid if validation is relevant.

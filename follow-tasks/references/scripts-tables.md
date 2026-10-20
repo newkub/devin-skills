@@ -39,7 +39,7 @@ The baseline scripts every project must have to guarantee code quality:
 | prepare (Workspace) | - | - | - | - | - | - | - | - | - |
 | dev | `bun run src/index.ts` | `nuxi dev` | `next dev` | `vite dev` | `vite dev` | `tauri dev` | `cargo run` | `python -m app` | `go run .` |
 | build | `bun build` | `nuxi build` | `next build` | `vite build` | `vite build` | `tauri build` | `cargo build` | `python -m build` | `go build .` |
-| typecheck | `tsc --noEmit` | `nuxi typecheck` | `tsc --noEmit` | `tsc --noEmit` | `svelte-check --tsconfig ./tsconfig.json` | `tsc --noEmit` | `cargo check` | `mypy src` | `go vet ./...` |
+| typecheck | `bun check` | `nuxi typecheck` | `tsc --noEmit` | `tsc --noEmit` | `svelte-check --tsconfig ./tsconfig.json` | `tsc --noEmit` | `cargo check` | `mypy src` | `go vet ./...` |
 | lint | `biome lint` | `biome lint` | `biome lint` | `biome lint` | `biome lint` | `biome lint` | `cargo clippy` | `ruff check` | `golangci-lint run` |
 | format | `biome format --write` | `biome format --write` | `biome format --write` | `biome format --write` | `biome format --write` | `biome format --write` | `cargo fmt` | `ruff format` | `gofmt -w .` |
 | format:check | `biome ci` | `biome ci` | `biome ci` | `biome ci` | `biome ci` | `biome ci` | `cargo fmt --check` | `ruff format --check` | `test -z "$(gofmt -l .)"` |
@@ -57,7 +57,7 @@ The baseline scripts every project must have to guarantee code quality:
 | Task | Bun | Nuxt | Next.js | Solid Start | SvelteKit | Tauri | Rust | Python | Go |
 |------|-----|------|---------|------------|----------|-------|------|--------|----|
 | test:watch | `vitest` | `vitest` | `vitest` | `vitest` | `vitest` | `vitest` | `cargo watch -x "nextest run"` | `pytest-watch` | `gotestsum --watch` |
-| typecheck:watch | `tsc --noEmit --watch` | `nuxi typecheck --watch` | `tsc --noEmit --watch` | `tsc --noEmit --watch` | `svelte-check --watch --tsconfig ./tsconfig.json` | `tsc --noEmit --watch` | `cargo watch -x check` | - | - |
+| typecheck:watch | `bun run --watch typecheck` | `nuxi typecheck --watch` | `tsc --noEmit --watch` | `tsc --noEmit --watch` | `svelte-check --watch --tsconfig ./tsconfig.json` | `tsc --noEmit --watch` | `cargo watch -x check` | - | - |
 | build:watch | `bunup --watch` | `nuxi build --watch` | `next build --watch` | `vite build --watch` | `vite build --watch` | `tauri build --watch` | `cargo watch -x build` | - | - |
 
 ## Testing Scripts

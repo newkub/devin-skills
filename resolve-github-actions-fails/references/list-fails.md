@@ -4,56 +4,56 @@
 
 ### Goal
 
-สรุป GitHub Actions workflow runs ที conclusion=failure หรือ status ล้มเหลว ทั้งหมดที user เข้าถึงบน GitHub
+Summarize all GitHub Actions workflow runs with conclusion=failure or failed status that the user can access on GitHub
 
 ### Scope
 
-ใช้สำหรับตรวจสอบ CI/CD failures โดยใช้ `gh` CLI โดยไม่แก้ไข repo หรือ workflow — รองรับ 2 modes:
+Used to inspect CI/CD failures using the `gh` CLI without modifying the repo or workflow — supports 2 modes:
 
-- repo-scoped (default ถ้าอยู่ใน git repo): ตรวจ repo ปัจจุบันหรือ `--repo <owner/repo>`
-- account-wide: ระบุ `--all` เพื่อตรวจทุก personal และ org repositories ที user เป็นสมาชิก
+- repo-scoped (default if inside a git repo): inspect the current repo or `--repo <owner/repo>`
+- account-wide: specify `--all` to inspect all personal and org repositories the user is a member of
 
-ดูเพิ่มเติม: /list-github-repo, /check-deployment-fails
+See also: /list-github-repo, /check-deployment-fails
 
 ### Execute
 
 #### 1. Verify gh CLI
 
-> Goal: ยืนยันว่า `gh` ติดตั้งและ authenticated
+> Goal: Confirm that `gh` is installed and authenticated
 
-1. รัน `gh --version` เพื่อตรวจสอบการติดตั้ง
-2. รัน `gh auth status` เพื่อตรวจสอบ authentication
-3. ถ้าไม่ authenticated → ทำ `/ask-me` เพื่อให้ user รัน `gh auth login`
-4. ถ้าพร้อม → บันทึก username
+1. Run `gh --version` to check the installation
+2. Run `gh auth status` to check authentication
+3. If not authenticated → run `/ask-me` to have the user run `gh auth login`
+4. If ready → record the username
 
 #### 2. Detect Mode And List Repos
 
-> Goal: เลือก scope — repo เดียวหรือทั้ง account
+> Goal: Choose the scope — a single repo or the whole account
 
-1. ถ้ามี `--repo <owner/repo>` → repo-scoped กับ repo นั้น
-2. ถ้าไม่มี `--all` และอยู่ใน git repo → repo-scoped กับ repo ปัจจุบัน (`gh repo view --json nameWithOwner` หรือ `git remote -v`)
-3. ถ้ามี `--all` หรือไม่อยู่ใน git repo → account-wide:
-   - รัน `gh repo list --json nameWithOwner,updatedAt --limit 100`
-   - รัน `gh org list` หรือ `gh api user/orgs --jq '.[].login'`
-   - สำหรับแต่ละ org รัน `gh repo list <org> --json nameWithOwner,updatedAt --limit 100`
-   - ข้าม archived repositories โดย default
-4. บันทึกรายการ repo names ทีต้องตรวจ
+1. If there is `--repo <owner/repo>` → repo-scoped on that repo
+2. If there is no `--all` and you are in a git repo → repo-scoped on the current repo (`gh repo view --json nameWithOwner` or `git remote -v`)
+3. If there is `--all` or you are not in a git repo → account-wide:
+   - Run `gh repo list --json nameWithOwner,updatedAt --limit 100`
+   - Run `gh org list` or `gh api user/orgs --jq '.[].login'`
+   - For each org run `gh repo list <org> --json nameWithOwner,updatedAt --limit 100`
+   - Skip archived repositories by default
+4. Record the list of repo names to inspect
 
 #### 3. Query Failed Runs
 
-> Goal: หา workflow runs ทีล้มเหลวในแต่ละ repo
+> Goal: Find the failed workflow runs in each repo
 
-1. สำหรับแต่ละ `owner/repo` รัน:
+1. For each `owner/repo` run:
    `gh run list --repo <owner/repo> --json databaseId,name,headBranch,headSha,status,conclusion,event,startedAt,displayTitle,url --limit 20 --jq '.[] | select(.conclusion=="failure")'`
-2. ถ้าบาง repo ไม่มี GitHub Actions หรือไม่มี failure → ข้าม
-3. บันทึก failed runs ทั้งหมด
+2. If some repo has no GitHub Actions or no failure → skip
+3. Record all the failed runs
 
 #### 4. Aggregate And Build Report
 
-> Goal: สรุปผลเป็นตาราง
+> Goal: Summarize the result as a table
 
-1. รวม failed runs จากทุก repo
-2. ใช้ `/report` คอลัมน์:
+1. Combine the failed runs from every repo
+2. Use `/report` columns:
    - No.
    - Repo
    - Workflow
@@ -62,41 +62,41 @@
    - Event
    - Started At
    - URL
-3. เรียงตาม Started At ล่าสุด
-4. ระบุสรุปจำนวน repos ทีมี failure และจำนวน failed runs
+3. Sort by latest Started At
+4. State a summary of the number of repos with failures and the number of failed runs
 
 #### 5. Suggest Next Action
 
-> Goal: แนะนำขั้นตอนถัดไป
+> Goal: Suggest the next step
 
-1. ทำ `/suggest-next-action` เพื่อแนะนำ fix workflow, view logs, หรือ `/resolve-github-actions-fails`
+1. Run `/suggest-next-action` to suggest fix workflow, view logs, or `/resolve-github-actions-fails`
 
 ### Rules
 
 #### 1. Read Only
 
-- ไม่ re-run, cancel, delete workflow run ใดๆ
-- ไม่ push code หรือแก้ไข repo
+- Do not re-run, cancel, delete any workflow run
+- Do not push code or modify the repo
 
 #### 2. Rate Limit And Scope
 
-- ถ้า repo จำนวนมาก → จำกัดเฉพาะ repos ทีอัปเดตล่าสุด หรือกรองตาม `limit`
-- ใช้ pagination ตาม `--limit` และ `--page`
-- ถ้า `gh` ถูก rate limit → รอและ retry ตาม header หรือ report
+- If there are many repos → limit to the most recently updated repos, or filter by `limit`
+- Use pagination per `--limit` and `--page`
+- If `gh` is rate limited → wait and retry per the header, or report
 
 #### 3. Skip Archived
 
-- ข้าม archived repositories โดย default
-- ถ้าต้องการรวม archived ให้ user ระบุ
+- Skip archived repositories by default
+- If archived ones should be included, the user specifies it
 
 #### 4. Privacy
 
-- รองรับ public/private repositories ตามสิทธิ์ของ `gh` token
-- ไม่ expose secrets หรือ tokens ใน output
+- Supports public/private repositories per the permissions of the `gh` token
+- Do not expose secrets or tokens in the output
 
 ### Expected Outcome
 
-- รายการ GitHub Actions runs ทีล้มเหลวทั่ว personal/org repos
-- ตารางที sort ตามวันที failure เกิด
-- ข้อมูล repo, workflow, branch, commit, event, url พร้อม
-- ไม่มีการแก้ไข repo หรือ workflow ใดๆ
+- A list of failed GitHub Actions runs across personal/org repos
+- A table sorted by the date the failure occurred
+- repo, workflow, branch, commit, event, url data available
+- No repo or workflow is modified in any way

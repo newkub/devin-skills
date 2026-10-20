@@ -6,7 +6,6 @@ related:
   - review
   - review-gaps
   - deep-review-codebase
-  - deep-review-codebase-then-fix
   - report-review
   - create-plan-in-dot-devin
   - refactor
@@ -66,14 +65,14 @@ Check the surface against this issue catalog:
 
 1. Attach `file:line` + the provable reason to every finding — no evidence, no finding; state uncertainty instead of guessing
 2. Classify severity: `Critical` (data loss, security, outage) → `High` (wrong user-visible behavior) → `Medium` (edge case, degradation) → `Low` (noise, maintainability)
-3. Produce a `/report-review` table (chat, no files): `No.`, `Area`, `Issue Class`, `Finding`, `Severity`, `Evidence`, `Fix Skill` — ordered Critical first
+3. Produce a `/report-review` table (chat, no files) with its canonical columns, plus this dimension's extra `Area` and `Issue Class` — the owner column is `Owner skill` — ordered Critical first
 
 ### 4. Confirm And Fix
 
 > Goal: fix only what was confirmed, correctly
 
 1. If the user did not append `and fix` → ask which items to fix and wait
-2. Route each confirmed finding to `/deep-review-codebase-then-fix` by matching domain; unmappable findings are fixed directly from the evidence
+2. Route each confirmed finding to `/deep-review-codebase <scope> then-fix fix all` by matching domain (`fix all` because `and fix` already confirmed them); unmappable findings are fixed directly from the evidence
 3. Behavior-preserving rule: fix the cause, never suppress the symptom (no ignore comments, no widened types, no try/catch that hides)
 4. Structural additions → `/create-plan-in-dot-devin` before implementing
 5. After fixes → `/refactor` (SRP split) on touched files (≤250 lines, 1 responsibility), then build/lint/test → `/suggest-next-action`

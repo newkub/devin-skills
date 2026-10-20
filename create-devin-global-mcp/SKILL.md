@@ -18,6 +18,7 @@ related:
   - deep-review-codebase
   - deep-validate
   - ship
+  - use-lightpanda
 ---
 
 ## Goal

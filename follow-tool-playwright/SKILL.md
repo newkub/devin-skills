@@ -11,7 +11,7 @@ related:
   - follow-best-practice
   - setup-cicd
   - run-test
-
+  - use-lightpanda
 ---
 
 ## Goal

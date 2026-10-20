@@ -1,6 +1,6 @@
 ---
 name: deep-test
-description: Deep test ทุก domain — quick run path หรือ deep workflow ต่อ domain พร้อม orchestrator all
+description: Deep test every domain — quick run path or deep workflow per domain with the orchestrator all
 argument-hint: "[domain|all] [scope] [target%]"
 related:
   - check-correctness

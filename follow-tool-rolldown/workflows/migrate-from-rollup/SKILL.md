@@ -5,7 +5,7 @@ argument-hint: "[project-path]"
 related:
   - follow-tool-rolldown
   - scan-codebase
-  - deep-impact
+  - deep-analyze
   - deep-review-codebase
   - report-before-after
 ---

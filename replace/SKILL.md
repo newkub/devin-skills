@@ -1,6 +1,6 @@
 ---
 name: replace
-description: แทนที่เนื้อหาในไฟล์หรือโค้ดด้วย regex หรือ AST-based patterns
+description: Replace content in files or code with regex or AST-based patterns
 argument-hint: "[scope]"
 related:
   - use-astgrep
@@ -10,54 +10,54 @@ related:
 
 ## Goal
 
-แทนที่เนื้อหาในไฟล์หรือโค้ดให้ถูกต้องและปลอดภัย
+Replace content in files or code correctly and safely
 
 ## Scope
 
-ใช้ `replace` สำหรับแทนที่เนื้อหาในไฟล์หรือโค้ด โดยเลือกวิธีตามลักษณะงาน:
+Use `replace` to replace content in files or code, choosing the method by the nature of the task:
 
-- Plain text / regex replacement: สำหรับเนื้อหาทั่วไป เช่น docs, config
-- AST-based replacement: สำหรับ code ทีต้องการ precision สูง
+- Plain text / regex replacement: for general content such as docs, config
+- AST-based replacement: for code that needs high precision
 
-- ดูเพิ่มเติม: /use-astgrep
+- See also: /use-astgrep
 
 ## Execute
 
 ### 1. Identify Content To Replace
 
-> Goal: ระบุเนื้อหาที่ต้องการแทนที่
+> Goal: Identify the content to be replaced
 
-1. SEARCH เนื้อหา x ที่ต้องการแทนที่
-2. MARK ตำแหน่งที่ต้องการแทนที่
-3. PREPARE เนื้อหา y ที่จะนำมาแทนที่
-4. ถ้าเป็น code replacement → ทำ `/use-astgrep` programmatic workflow เพื่อหา patterns ด้วย AST
+1. SEARCH for the content x to be replaced
+2. MARK the location to be replaced
+3. PREPARE the content y that will replace it
+4. If it is a code replacement → run the `/use-astgrep` programmatic workflow to find patterns with AST
 
 ### 2. Execute Replacement
 
-> Goal: ทำการแทนที่เนื้อหา
+> Goal: Perform the content replacement
 
-1. ถ้าเป็น plain text หรือ regex → ใช้ `edit` หรือ `write` แทนที่
-2. ถ้าเป็น code ทีซับซ้อนหรือต้องการ precision → ใช้ `/use-astgrep` programmatic workflow สำหรับ AST-based rewrite
-3. REPLACE x ด้วย y ในไฟล์หรือโค้ดที่ระบุ
-4. VERIFY ว่าการแทนที่ถูกต้อง
-5. CHECK ว่าไม่มีผลข้างเคียงจากการแทนที่
+1. If it is plain text or regex → use `edit` or `write` to replace
+2. If it is complex code or needs precision → use the `/use-astgrep` programmatic workflow for AST-based rewrite
+3. REPLACE x with y in the specified file or code
+4. VERIFY that the replacement is correct
+5. CHECK that there are no side effects from the replacement
 
 ### 3. Update References
 
-> Goal: อัปเดต references หลัง replace
+> Goal: Update references after replace
 
-1. ถ้าการแทนที่เปลี่ยนชื่อ identifier, path, หรือ skill name → ทำ `/update-references`
-2. รัน `/review-devin-global-harness` หรือ `/deep-validate` เพื่อตรวจสอบ
+1. If the replacement changes an identifier, path, or skill name → run `/update-references`
+2. Run `/review-devin-global-harness` or `/deep-validate` to check
 
 ## Rules
 
-- ใช้ `/use-astgrep` programmatic workflow เมื่อ replace ใน source code เพื่อหลีกเลี่ยง false positives
-- ใช้ `/use-astgrep` programmatic workflow เมื่อต้อง batch replace หลายไฟล์หรือ integrate กับ scripts
+- Use the `/use-astgrep` programmatic workflow when replacing in source code to avoid false positives
+- Use the `/use-astgrep` programmatic workflow when batch replacing multiple files or integrating with scripts
 - Follow the project conventions and global rules (replace)
 - Use the allowed tools only when needed
 
 ## Expected Outcome
 
-- เนื้อหาที่ต้องการถูกแทนที่ถูกต้อง
-- ไม่มี broken references
-- ไม่มีผลข้างเคียงที่ไม่ต้องการ
+- The content to be replaced is replaced correctly
+- No broken references
+- No unwanted side effects

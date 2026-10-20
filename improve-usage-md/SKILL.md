@@ -1,6 +1,6 @@
 ---
 name: improve-usage-md
-description: หา improvements ของ USAGE.md — docs promise เทียบของจริง, examples run ได้ — แก้ทันที
+description: Find improvements to USAGE.md — docs promises vs reality, examples actually run — fix immediately
 argument-hint: "[scope]"
 related:
   - design-usage-with-me-first
@@ -8,7 +8,6 @@ related:
   - update-usage-md
   - report-usage
   - deep-review-codebase
-  - deep-review-codebase-then-fix
   - report
   - suggest-next-action
   - ask-me
@@ -16,51 +15,51 @@ related:
 
 ## Goal
 
-ตอบคำถาม "USAGE.md / usage surface ควร improve อะไร" สำหรับ scope ที่ user ระบุ — รวม findings จาก `/deep-review-codebase` dimension `usage` เป็น prioritized list แล้วส่งไป `/deep-review-codebase-then-fix` แก้ทันที (thin entry — ไม่ทำ review เอง ไม่แก้ไขโดยตรงใน skill นี้)
+Answer the question "what should improve in USAGE.md / the usage surface" for the scope the user specifies — collect findings from the `/deep-review-codebase` `usage` dimension into a prioritized list, then send them to `/deep-review-codebase <scope> then-fix fix all` to fix immediately (thin entry — it does not review itself and does not edit directly in this skill)
 
 ## Scope
 
-ใช้เมื่อ user ถามว่า scope นี้ "usage docs ควร improve อะไร"
+Use when the user asks what "usage docs should improve" in this scope
 
-- `usage` dimension coverage — usage surface parity (`USAGE.md`/README promise ตรงกับที่ API/CLI/web ทำได้จริง), discoverability ของ commands/API, onboarding friction, broken/outdated examples, public surface ที่ยังไม่มี example เลย
-- เขียน/เขียนไฟล์ใหม่ทั้งฉบับ → `/update-usage-md`; สรุปรายการ surface ที่ใช้จริง → `/report-usage`; รัน example verify → `/deep-test usage`
-- finding ที่ต้องออกแบบ structure/wording/example ใหม่ก่อนเขียน (ยังไม่ได้คุยกับ user) → `/design-usage-with-me-first` ในแชท แล้วส่ง `/update-usage-md`
-- เกณฑ์ boundary เต็ม: `improve/references/scope-map.md` (SSOT)
+- `usage` dimension coverage — usage surface parity (`USAGE.md`/README promises match what the API/CLI/web can actually do), discoverability of commands/API, onboarding friction, broken/outdated examples, public surface with no example at all
+- Write/rewrite the whole file → `/update-usage-md`; summarize the surfaces actually used → `/report-usage`; run example verification → `/deep-test usage`
+- A finding that needs a new structure/wording/example designed before writing (not yet discussed with the user) → `/design-usage-with-me-first` in chat, then forward to `/update-usage-md`
+- Full boundary criteria: `improve/references/scope-map.md` (SSOT)
 
 ## Execute
 
 ### 1. Review
 
-> Goal: ได้ prioritized findings
+> Goal: get prioritized findings
 
-1. รับ `scope` จาก argument — ถ้าไม่มี → ใช้ project ปัจจุบัน ถ้าไม่ชัด → `/ask-me`
-2. ทำ `/deep-review-codebase` กับ scope นั้น (dimension `usage`)
-3. รวม findings เป็น prioritized list พร้อม severity และ evidence — P0: example ที่ run แล้วพัง, docs promise ที่ทำจริงไม่ได้
+1. Take `scope` from the argument — if absent → use the current project; if unclear → `/ask-me`
+2. Run `/deep-review-codebase` on that scope (dimension `usage`)
+3. Collect the findings into a prioritized list with severity and evidence — P0: an example that breaks when run, a docs promise that cannot actually be fulfilled
 
 ### 2. Present Findings
 
-> Goal: แสดงผล findings ก่อนแก้
+> Goal: show the findings before fixing
 
-1. ทำ `/report` แสดง improvements: No., Finding, Severity, Fix Skill
-2. ดำเนินการแก้ต่อทันที — ไม่รอ user confirm
+1. Run `/report` to show the improvements: No., Finding, Severity, Fix Skill
+2. Proceed to fix immediately — do not wait for user confirmation
 
 ### 3. Fix All Findings
 
-> Goal: แก้ทุก finding ที่พบ
+> Goal: fix every finding found
 
-1. ส่งแต่ละ finding ไป `/deep-review-codebase-then-fix` (domain `usage` ใน Domain Map)
-2. Parity fix (docs promise ไม่ตรงของจริง) → verify ด้วย `/deep-test usage` หลังแก้; เนื้อหาขาด/เก่าทั้งส่วน → `/update-usage-md`
-3. ทำ `/suggest-next-action` หลังแก้ครบ
+1. Send each finding to `/deep-review-codebase <scope> then-fix fix all` (domain `usage` in `deep-review-codebase/references/domain-map.md`)
+2. For a parity fix (docs promise does not match reality) → verify with `/deep-test usage` after fixing; if a whole section is missing/outdated → `/update-usage-md`
+3. Run `/suggest-next-action` after everything is fixed
 
 ## Rules
 
-- ไม่ทำ review เอง — delegate ไป `/deep-review-codebase` dimension `usage`
-- แก้ทุก finding ทันทีโดยไม่รอ confirm
-- ทุก improvement ต้อง map ไปยัง skill ที่ทำได้จริง
-- ห้ามเขียน docs จาก assumption — ทุก example ต้อง run ได้จริงบน stack ของ project
+- Never review yourself — delegate to `/deep-review-codebase` dimension `usage`
+- Fix every finding immediately without waiting for confirmation
+- Every improvement must map to a skill that can actually do it
+- Never write docs from an assumption — every example must actually run on the project's stack
 
 ## Expected Outcome
 
-- Prioritized usage-md improvement list จาก `/deep-review-codebase`
-- ไม่มี confirm gate — แก้ทุก finding ทันทีผ่าน `/deep-review-codebase-then-fix`
-- ทุก example ใน `USAGE.md` ผ่าน `/deep-test usage` — docs promise เท่ากับของจริง
+- A prioritized usage-md improvement list from `/deep-review-codebase`
+- No confirm gate — fix every finding immediately via `/deep-review-codebase <scope> then-fix fix all`
+- Every example in `USAGE.md` passes `/deep-test usage` — docs promises equal reality

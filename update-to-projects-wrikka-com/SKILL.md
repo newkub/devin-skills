@@ -74,7 +74,7 @@ Make updating the `projects-wrikka-com` project safe, verifiable, and complete w
 1. Never commit or expose `GITHUB_TOKEN`, `BASIC_AUTH_PASS`
 2. Never overwrite `dist` without a proper fresh build
 3. Use `bun` as the primary package manager for this project
-4. Run typecheck (`tsc --noEmit`) before every deploy
+4. Run typecheck (`bun check`) before every deploy
 5. If the deploy fails, stop and report before retrying
 6. Never delete `wrangler.jsonc`, `vite.config.ts`, `src/router.tsx`, `src/routes/__root.tsx`, `src/start.ts` without recreating them
 

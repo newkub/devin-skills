@@ -1,6 +1,6 @@
 ---
 name: move-to
-description: ย้ายไฟล์และอัพเดท reference
+description: Move files and update references
 argument-hint: "[source] [target]"
 related:
   - follow-best-practice
@@ -11,11 +11,11 @@ related:
 
 ## Goal
 
-ย้ายไฟล์ไปยังตำแหน่งใหม่และอัพเดท reference
+Move a file to a new location and update references
 
 ## Scope
 
-ใช้ `move` สำหรับ tasks และ workflows เฉพาะที่ครอบคลุม (to)
+Use `move` for tasks and workflows that specifically cover (to)
 
 ## Execute
 
@@ -23,33 +23,33 @@ related:
 
 > Goal: Move File
 
-ย้ายไฟล์ไปยังตำแหน่งใหม่
+Move the file to a new location
 
-1. ระบุไฟล์ที่ต้องย้าย
-2. ย้ายไฟล์ไปยังตำแหน่งใหม่
-3. ตรวจสอบว่าย้ายถูกต้อง
+1. Identify the file that needs to be moved
+2. Move the file to the new location
+3. Check that the move is correct
 
 ### 2. Update Reference
 
 > Goal: Update Reference
 
-อัพเดท reference
+Update references
 
-1. รัน `/update-references`
-2. ตรวจสอบว่า references ถูกอัพเดท
+1. Run `/update-references`
+2. Check that the references are updated
 
 ## Rules
 
-- ใช้ git สำหรับ file operations ถ้าเป็นไปได้
-- ตรวจสอบว่าไม่มี data loss
-- อัพเดท references หลังจากย้ายไฟล์
+- Use git for file operations when possible
+- Check that there is no data loss
+- Update references after moving the file
 
-- ใช้ /follow-best-practice ถ้าจำเป็น
-- ใช้ /suggest-next-action ถ้าจำเป็น
-- ใช้ /resolve-errors ถ้าจำเป็น
+- Use /follow-best-practice if necessary
+- Use /suggest-next-action if necessary
+- Use /resolve-errors if necessary
 
 ## Expected Outcome
 
-- ไฟล์ถูกย้ายไปยังตำแหน่งใหม่
-- References ถูกอัพเดท
-- ไม่มี data loss
+- The file is moved to the new location
+- References are updated
+- No data loss

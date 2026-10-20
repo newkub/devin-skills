@@ -12,7 +12,6 @@ related:
   - report-not-implement
   - implement-to-production
   - deep-review-codebase
-  - deep-review-codebase-then-fix
   - create-plan-in-dot-devin
   - report-review
   - ask-me
@@ -69,7 +68,7 @@ Review one dimension only: `gaps` — capability the scope promises but does not
 1. Every finding needs two pieces of evidence: the promise (`file:line` of the claim) and the absence proof (the search that found no implementation, or the stub location)
 2. Severity: `Critical` (paid/advertised capability absent, security or data path missing) → `High` (user-visible flow incomplete) → `Medium` (edge or state coverage missing) → `Low` (unused declaration, doc drift)
 3. Exclude intentional scope cuts: an explicitly deferred feature in `TODO.md` or a documented limitation is not a gap — list it separately as "known deferral"
-4. Produce a `/report-review` table (chat, no files): `No.`, `Area`, `Gap Class`, `Finding`, `Severity`, `Promise Evidence`, `Absence Evidence`, `Fill Skill`
+4. Produce a `/report-review` table (chat, no files) with its canonical columns, plus this dimension's extras: `Area`, `Gap Class`, and the pair `Promise Evidence` + `Absence Evidence` in place of the single `Evidence` column — the owner column is `Owner skill`
 
 ### 4. Confirm And Fill
 
@@ -78,7 +77,7 @@ Review one dimension only: `gaps` — capability the scope promises but does not
 1. If the user did not append `and fix` → ask which gaps to fill and wait
 2. Route each confirmed gap to its `Fill by` from `### 2`; anything that becomes net-new code goes through `/implement-to-production` so the result is production code, not a placeholder
 3. Multi-file or architectural fills → `/create-plan-in-dot-devin` first, then implement
-4. Domain-matched findings may be handed to `/deep-review-codebase-then-fix` instead of fixing inline
+4. Domain-matched findings may be handed to `/deep-review-codebase <scope> then-fix fix all` instead of fixing inline (`fix all` because `and fix` already confirmed them)
 5. After filling → `/refactor` (SRP split) on touched files (≤250 lines, 1 responsibility), run build/lint/test, re-check the promise list from `### 1` step 3 is now honest → `/suggest-next-action`
 
 ## Rules

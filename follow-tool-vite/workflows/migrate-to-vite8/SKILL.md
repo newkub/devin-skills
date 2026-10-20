@@ -5,7 +5,7 @@ argument-hint: "[project-path]"
 related:
   - follow-tool-vite
   - follow-tool-rolldown
-  - deep-impact
+  - deep-analyze
   - deep-review-codebase
   - report-before-after
 ---
@@ -80,7 +80,7 @@ Move a Vite project to `vite@^8` (Rolldown + Oxc as the default) safely — dev,
 
 - Use /follow-tool-vite if needed
 - Use /follow-tool-rolldown if needed
-- Use /deep-impact if needed
+- Use /deep-analyze if needed
 - Use /report-before-after if needed
 
 ## Expected Outcome

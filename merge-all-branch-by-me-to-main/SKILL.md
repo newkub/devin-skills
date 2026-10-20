@@ -1,6 +1,6 @@
 ---
 name: merge-all-branch-by-me-to-main
-description: Merge เฉพาะ branch ที่ user สร้างเข้า main แล้วลบ branch เก่าทั้งหมด ให้เหลือเฉพาะ main
+description: Merge only branches created by the user into main, then delete all old branches, leaving only main
 argument-hint: "[--dry-run] [--remote] [--force-unmerged]"
 related:
   - list-git
@@ -17,136 +17,135 @@ related:
 
 ## Goal
 
-Merge เฉพาะ branch ที่ `git config user.name` / `user.email` หรือ committer สร้างเข้า `main` ตามลำดับ แล้วลบ branch เก่าทั้งหมดให้เหลือเฉพาะ `main`
+Merge only branches created by `git config user.name` / `user.email` or the committer into `main` in order, then delete all old branches leaving only `main`
 
 ## Scope
 
-ใช้เมื่อต้องรวม branches ที่ตัวเองสร้างกลับ `main` และทำความสะอาด repo — เป็น destructive workflow ต้องมี dry-run และ user confirmation ก่อนลบจริง ไม่รวมการ resolve PR บน remote (ใช้ `/merge-github-pr` หรือ `/merge-github-pr`)
+Use when you need to merge branches you created back into `main` and clean up the repo — it is a destructive workflow, so it requires a dry-run and user confirmation before actually deleting. It does not include resolving PRs on the remote (use `/merge-github-pr` or `/resolve-github-pr`)
 
-หากต้องการ merge branch ที่ไม่ใช่ของตัวเอง → ต้องตรวจสอบเจ้าของ branch และขออนุญาตก่อน ไม่มี skill auto-merge ทั้งหมดให้ใช้โดย default
+If you need to merge branches that are not yours → you must check the branch owner and ask permission first. There is no skill that auto-merges everything available by default
 
 ## Execute
 
 ### 1. Inventory Branches
 
-> Goal: รู้ว่ามี branch อะไรบ้างและ branch ไหนเป็นของ user
+> Goal: know which branches exist and which ones belong to the user
 
-1. ทำ `/list-git-branch` หรือ `git branch -a` เก็บรายชื่อทั้งหมด
-2. ระบุ user identity จาก `git config user.name` / `user.email` หรือ `gh auth status`
-3. ตรวจ branches ที่ merged แล้วด้วย `git branch --merged main`
-4. ตรวจ unmerged branches ด้วย `git branch --no-merged main`
-5. กรองเฉพาะ branches ที่เป็น user: branch tip หรือ commit ล่าสุดมี author/committer ตรงกับ user
-   - ใช้ `git log -1 --format='%an <%ae>' <branch>` เปรียบเทียบกับ `git config user.name` / `user.email`
-   - ถ้าไม่ชัดเจน ให้ดู commit ส่วนใหญ่บน branch ว่ามาจาก user หรือไม่
+1. Do `/list-git-branch` or `git branch -a` to collect the full list of names
+2. Identify the user identity from `git config user.name` / `user.email` or `gh auth status`
+3. Check branches that are already merged with `git branch --merged main`
+4. Check unmerged branches with `git branch --no-merged main`
+5. Filter down to only branches that are the user's: branch tip or latest commit has an author/committer matching the user
+   - Use `git log -1 --format='%an <%ae>' <branch>` compared with `git config user.name` / `user.email`
+   - If unclear, look at the majority of commits on the branch to see whether they come from the user
 
 ### 2. Preflight Safety Checks
 
-> Goal: ยืนยัน repo พร้อมก่อน merge
+> Goal: confirm the repo is ready before merge
 
-1. ตรวจ working tree clean ด้วย `git status --porcelain` — ถ้ามี uncommitted changes → หยุดและแจ้ง
-2. `git switch main` แล้ว `git pull` ให้ main เป็นปัจจุบัน
-3. ตรวจว่า remote `main` ไม่ diverge จาก local
+1. Check the working tree is clean with `git status --porcelain` — if there are uncommitted changes → stop and notify
+2. `git switch main` then `git pull` so main is current
+3. Check that the remote `main` does not diverge from local
 
 ### 3. Dry Run Plan
 
-> Goal: แสดงแผนก่อนทำจริง
+> Goal: show the plan before doing it for real
 
-1. สร้างตาราง: branch → commits ahead/behind → merged? → created by → action (merge/delete/skip)
-2. ทำ `/report` แสดง plan พร้อม branches ที่จะถูกลบ
-3. ถ้ามี unmerged branches → แจ้งว่าจะพยายาม merge และจะ conflict ตรงไหน
-4. ทำ `/ask-me` ให้ user ยืนยันก่อนดำเนินการ
+1. Build a table: branch → commits ahead/behind → merged? → created by → action (merge/delete/skip)
+2. Do `/report` to show the plan along with branches that will be deleted
+3. If there are unmerged branches → notify that an attempt to merge will be made and where it will conflict
+4. Do `/ask-me` to have the user confirm before proceeding
 
 ### 4. Merge Branches Into Main
 
-> Goal: merge branch ของ user เข้า main ตามลำดับความเสี่ยง
+> Goal: merge the user's branches into main in order of risk
 
-1. เรียง branches: merged-already → fast-forward-able → unmerged (เสี่ยง conflict น้อย → มาก)
-2. ทำ `git merge <branch>` ทีละ branch — ใช้ `--no-ff` ถ้า project ต้องการ history
-3. ถ้า conflict → ทำ `/resolve-merge-conflicts` หรือหยุดและ report branch นั้น
-4. หลังแต่ละ merge ให้ verify build/test ตาม `AGENTS.md` ถ้ากำหนดไว้
+1. Order the branches: merged-already → fast-forward-able → unmerged (low conflict risk → high)
+2. Do `git merge <branch>` one branch at a time — use `--no-ff` if the project wants history
+3. If there is a conflict → do `/resolve-merge-conflicts` or stop and report that branch
+4. After each merge, verify build/test per `AGENTS.md` if defined
 
 ### 5. Verify Main
 
-> Goal: main ต้องใช้งานได้หลัง merge ครบ
+> Goal: main must be usable after all merges
 
-1. รัน tests/build ตาม project conventions (`/run-verify` หรือเทียบเท่า)
-2. ถ้า fail → แก้ด้วย `/resolve-errors` หรือ rollback merge ที่ทำให้พัง
-3. ยืนยัน main มี commits ของทุก branch ที่ต้องการ
+1. Run tests/build per project conventions (`/run-verify` or equivalent)
+2. If it fails → fix it with `/resolve-errors` or roll back the merge that broke it
+3. Confirm main has the commits of every branch that was wanted
 
 ### 6. Delete Old Branches
 
-> Goal: ลบ branch เก่าของ user หลัง merge สำเร็จ
+> Goal: delete the user's old branches after a successful merge
 
-1. ลบ local branches ที่ merged แล้วด้วย `git branch -d <branch>` — ใช้ `/delete-git-branch` หรือ `/cleanup-branches-merged`
-2. unmerged branches ที่ merge สำเร็จแล้ว → `git branch -d` ได้; ที่ยังไม่ merge → ห้ามลบเว้นแต่ user ยืนยัน `--force-unmerged`
-3. ถ้า `--remote` → ลบ remote branches ด้วย `git push origin --delete <branch>` เฉพาะที่ merged และยืนยันแล้ว
-4. prune stale remote refs ด้วย `git fetch --prune`
+1. Delete merged local branches with `git branch -d <branch>` — use `/delete-git-branch` or `/cleanup-branches-merged`
+2. Unmerged branches that have now merged successfully → `git branch -d` is fine; ones not yet merged → do not delete unless the user confirms `--force-unmerged`
+3. If `--remote` → delete remote branches with `git push origin --delete <branch>` only for those merged and already confirmed
+4. Prune stale remote refs with `git fetch --prune`
 
 ### 7. Finalize And Report
 
-> Goal: repo เหลือแค่ main
+> Goal: the repo is left with only main
 
-1. `git branch` ยืนยันเหลือเฉพาะ `main`
-2. ถ้าต้องการ sync remote → `/git-push` หรือ `git push origin main`
-3. ทำ `/report` สรุป: merged, deleted, skipped, conflicts, remaining branches
+1. `git branch` to confirm only `main` remains
+2. If you need to sync the remote → `/git-push` or `git push origin main`
+3. Do `/report` summarizing: merged, deleted, skipped, conflicts, remaining branches
 
 ### Subagents
 
-> Goal: delegate merge ทีละ branch ตามลำดับที่ plan กำหนด
+> Goal: delegate merge one branch at a time in the order defined by the plan
 
-- ใช้ profile `branch-merger` (ดู `## Subagents` ด้านล่าง) ใน Step 4 สำหรับ merge branch เดียวต่อ agent ผ่าน `/use-subagents` — ส่ง `branch`, `strategy`, `conflict-policy`, `verify-commands` แล้วรวม merged/conflict report ทีละตัวก่อน Step 5
-- ข้อควรระวัง: merge เข้า `main` ต้องทำทีละ branch ตามลำดับ (shared working tree) — spawn แบบ sequential dispatch เท่านั้น ห้ามรันพร้อมกันหลาย branches ใน repo เดียวกัน
+- Use the `branch-merger` profile (see `## Subagents` below) in Step 4 to merge a single branch per agent via `/use-subagents` — pass `branch`, `strategy`, `conflict-policy`, `verify-commands` then combine the merged/conflict report one at a time before Step 5
+- Caution: merging into `main` must be done one branch at a time in order (shared working tree) — spawn as sequential dispatch only. Never run multiple branches concurrently in the same repo
 
 ## Rules
 
 ### 1. Author Filter
 
-- merge ได้เฉพาะ branch ที่ `git log -1` ของ branch มี author/committer ตรงกับ `git config user.name` / `user.email`
-- ถ้า branch ไม่มี identity ของ user ชัดเจน → skip หรือถามก่อน
-- ห้าม merge หรือลบ branch ที่คนอื่นสร้างโดยไม่มีการยืนยันแยก
+- Only merge branches whose `git log -1` shows an author/committer matching `git config user.name` / `user.email`
+- If a branch does not clearly have the user's identity → skip or ask first
+- Never merge or delete a branch created by someone else without separate confirmation
 
 ### 2. Destructive Safety
 
-- บังคับ dry-run + `/ask-me` ก่อน merge/delete จริงเสมอ
-- ห้าม `git branch -D` เว้นแต่ user ยืนยัน `--force-unmerged`
-- ห้ามลบ `main`, protected branches หรือ current branch
-- ห้ามลบ remote branches โดยไม่ระบุ `--remote` และยืนยันแยก
+- Always require a dry-run + `/ask-me` before actually merging/deleting
+- Never `git branch -D` unless the user confirms `--force-unmerged`
+- Never delete `main`, protected branches, or the current branch
+- Never delete remote branches without specifying `--remote` and separate confirmation
 
 ### 3. No Data Loss
 
-- ถ้า branch มี commits ที่ยังไม่ merge → ต้องแจ้ง user ไม่ลบเอง
-- หลังลบทุก branch ต้อง recoverable ผ่าน `git reflog`
-- ห้าม force-push `main`
+- If a branch has commits that are not yet merged → you must notify the user, do not delete it yourself
+- After deleting every branch it must be recoverable via `git reflog`
+- Never force-push `main`
 
 ### 4. Order And Atomicity
 
-- merge ทีละ branch
-- ถ้า merge ใดพัง → หยุดและ report
-- ลบ branches เฉพาะหลัง main verified ผ่าน
-- ถ้า branch ที่ merge มี history รก → ทำ `/refactor-commit` บน branch นั้นก่อน merge
+- Merge one branch at a time
+- If any merge fails → stop and report
+- Delete branches only after main is verified to pass
+- If a merged branch has a messy history → do `/refactor-commit` on that branch before merge
 
 ## Subagents
 
-> Goal: งานอิสระที่ spawn ทำขนานได้ — profile อยู่ใน section นี้เลย ไม่ต้องมีไฟล์แยก
+> Goal: independent work that can be spawned in parallel — the profile lives right in this section, no separate file needed
 
-### branch-merger — merge branch เดียวของ user เข้า `main` แล้วคืน merged/conflict report
+### branch-merger — merge a single branch of the user into `main` then return a merged/conflict report
 
-- **Inputs**: `branch` (branch เดียวที่จะ merge เช่น `feature/x`), `repo-path` (path ของ repo), `strategy` (optional — `merge` default หรือ `rebase` ตาม project convention), `conflict-policy` (optional — `resolve` = agent แก้เอง, `report` = หยุดและคืน conflict, `ours`/`theirs`), `verify-commands` (optional — commands หลัง merge เช่น `bun run test`, `bun run build`), `delete-after` (optional — `true` = ลบ branch local หลัง merge สำเร็จ ด้วย `git branch -d` เท่านั้น)
-- **Tools**: `exec` — git commands `git switch`, `git merge`, `git rebase`, `git status`, `git diff`, `git log`, `git branch -d`; `read`/`edit` — อ่านและ resolve conflict files เฉพาะเมื่อ `conflict-policy` = `resolve`; ห้าม `git push` — parent เป็นผู้ push/finalize
+- **Inputs**: `branch` (the single branch to merge, e.g. `feature/x`), `repo-path` (the path of the repo), `strategy` (optional — `merge` default or `rebase` per project convention), `conflict-policy` (optional — `resolve` = agent fixes it itself, `report` = stop and return the conflict, `ours`/`theirs`), `verify-commands` (optional — commands after merge such as `bun run test`, `bun run build`), `delete-after` (optional — `true` = delete the local branch after a successful merge, using `git branch -d` only)
+- **Tools**: `exec` — git commands `git switch`, `git merge`, `git rebase`, `git status`, `git diff`, `git log`, `git branch -d`; `read`/`edit` — read and resolve conflict files only when `conflict-policy` = `resolve`; no `git push` — the parent does the push/finalize
 - **Execute**:
-  1. ยืนยัน branch เป็นของ user: `git log -1 --format='%an <%ae>' <branch>` เทียบ `git config user.name`/`user.email` — ไม่ตรงคืน `skipped`
-  2. `git switch main` และยืนยัน main เป็นปัจจุบันตาม state ที่ parent เตรียมไว้
-  3. ลอง merge `git merge <branch>` (`--no-ff` ถ้า strategy กำหนด) หรือ `git rebase main` บน branch แล้ว fast-forward
-  4. ถ้า conflict → ตาม `conflict-policy`: `resolve` = แก้ไฟล์แล้ว `git add` + continue; `report` = `git merge --abort` แล้วคืน `conflict` พร้อมรายชื่อไฟล์
-  5. รัน `verify-commands` — fail → report `failed` พร้อมระบุว่า revert หรือทิ้ง state ไว้อย่างไร
-  6. ถ้า `delete-after` และ merge สำเร็จ → `git branch -d <branch>` (ห้าม `-D`)
-- **Output**: ตาราง `| No. | Branch | Strategy | Result | Conflicts | Verify | Deleted |` — `result`: `merged`/`conflict`/`failed`/`skipped`; ถ้า `conflict` → แนบตาราง conflict files (`file`, `reason` content/add-delete, `suggested resolution`); ปิดท้ายด้วย merge commit hash และจำนวน commits ที่เข้า main
-- **Constraints**: รับผิดชอบ branch เดียวเท่านั้น ห้าม merge/ลบ branch อื่น; ห้าม force-push, `git branch -D`, หรือลบ `main`/protected branches; merge พังระหว่างทาง → `git merge --abort`/`git rebase --abort` คืน state เดิมก่อน report; `delete-after` ใช้ `-d` เท่านั้น — unmerged ให้คืน `skipped` ไม่ force; ทุก action ต้อง recoverable ผ่าน `git reflog` — ระบุ reflog hints ถ้า `failed`
+  1. Confirm the branch belongs to the user: `git log -1 --format='%an <%ae>' <branch>` compared to `git config user.name`/`user.email` — if it does not match return `skipped`
+  2. `git switch main` and confirm main is current per the state the parent prepared
+  3. Try merging `git merge <branch>` (`--no-ff` if the strategy defines it) or `git rebase main` on the branch then fast-forward
+  4. If there is a conflict → per `conflict-policy`: `resolve` = fix the files then `git add` + continue; `report` = `git merge --abort` then return `conflict` with the file list
+  5. Run `verify-commands` — on failure → report `failed` and specify how you reverted or left the state
+  6. If `delete-after` and the merge succeeded → `git branch -d <branch>` (never `-D`)
+- **Output**: a table `| No. | Branch | Strategy | Result | Conflicts | Verify | Deleted |` — `result`: `merged`/`conflict`/`failed`/`skipped`; if `conflict` → attach a conflict files table (`file`, `reason` content/add-delete, `suggested resolution`); close with the merge commit hash and the number of commits that entered main
+- **Constraints**: responsible for only a single branch, never merge/delete another branch; never force-push, `git branch -D`, or delete `main`/protected branches; if a merge fails partway → `git merge --abort`/`git rebase --abort` to return to the original state before reporting; `delete-after` uses `-d` only — if unmerged, return `skipped` rather than forcing; every action must be recoverable via `git reflog` — specify reflog hints if `failed`
 
 ## Expected Outcome
 
-- ทุก branch ที่ user สร้าง merge เข้า `main` สำเร็จ หรือมีเหตุผลชัดเจน
-- Branches เก่าของ user ถูกลบตามที่ยืนยัน เหลือเฉพาะ `main`
-- `main` ผ่าน verification และ recoverable ผ่าน reflog
-- รายงานสรุป merged/deleted/skipped พร้อม evidence
-
+- Every branch the user created is merged into `main` successfully or has a clear reason
+- The user's old branches are deleted as confirmed, leaving only `main`
+- `main` passes verification and is recoverable via reflog
+- A summary report of merged/deleted/skipped with evidence

@@ -96,7 +96,7 @@ Scan a project for security issues across every domain — dependencies, secrets
 
 1. Deduplicate and rank by severity: Critical/High → fix immediately; Medium → next sprint; Low/Info → record
 2. Validate every finding is real (false-positive check) before touching code — evidence `file:line` or advisory ID
-3. Fix via `/deep-review-codebase-then-fix` (or `/resolve-errors` for build/test breakage introduced by upgrades); never suppress with ignores/allowlists without a written reason
+3. Fix via `/deep-review-codebase security then-fix` (or `/resolve-errors` for build/test breakage introduced by upgrades); never suppress with ignores/allowlists without a written reason
 
 ### 9. Re-Scan And Report
 

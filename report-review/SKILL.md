@@ -1,19 +1,18 @@
 ---
 name: report-review
-description: Report review findings as a chat table (No./Action/Evidence/Severity/Priority/Status), no files
+description: Report review findings as chat tables (No./Finding/Action/Evidence/Severity/Risk/Priority/Owner skill/Status), no files
 argument-hint: "[scope-or-findings-source]"
 related:
   - deep-review-codebase
   - run-review
   - report
   - create-report-in-dot-devin
-  - deep-review-codebase-then-fix
   - suggest-next-action
 ---
 
 ## Goal
 
-Report review results as one chat table — every row has an actionable step and real evidence; no report files
+Report review results as chat tables — every row has an actionable step and real evidence; no report files
 
 ## Scope
 
@@ -23,31 +22,34 @@ Report review results as one chat table — every row has an actionable step and
 
 ## Execute
 
-1. Collect findings from the source — `review-report.json` (findings table), domain `review-*` results, or the scope the user specified; none → run `/deep-review-codebase` first
-2. Dedup key = `file + rule/message-normalized + domain` (merge into the highest severity + the more specific fixSkill), then order by severity → priority (P0→P4 per `deep-review-codebase` `## Domain Pipeline`)
+1. Collect findings from the source — `review-report.json` (findings table), dimension `review-*` results, or the scope the user specified; none → run `/deep-review-codebase` first
+2. Dedup key = `file + rule/message-normalized + dimension` (merge into the highest severity + the more specific `fixSkill`), then order by severity → priority: P0 🔴 Critical (fix now, blocks ship) → P1 🟠 High (fix before ship) → P2 🟡 Medium (fix in this cycle) → P3 🟢 Low (nice to have) → P4 informational/hygiene
 3. Summarize at the report header: score/grade (if any), finding counts per severity, mode (full/diff) + the scope run, confidence
-4. Report as one chat table with fixed columns:
+4. Report one findings table PER dimension (grouped severity→priority inside each) with fixed columns:
 
-   | No. | Action | Evidence | Reason | Severity | Risk | Priority | Owner skill | Status |
-   |-----|--------|----------|--------|----------|------|----------|-------------|--------|
-   | 1 | Move the secret to an env var | `src/api/x.ts:12` | hardcoded secret in code | 🔴 High | breach | P0 | `/improve security` | ❌ open |
+   | No. | Finding | Action | Evidence | Severity | Risk | Priority | Owner skill | Status |
+   |-----|---------|--------|----------|----------|------|----------|-------------|--------|
+   | 1 | Hardcoded secret in code | Move the secret to an env var | `src/api/x.ts:12` | 🔴 High | breach | P1 | `/improve security` | ❌ open |
 
-   - `Action` = what must be done (imperative, 1 action per row) — `Evidence` = file:line or real evidence (mandatory on every row, never invented)
-   - `Reason` = the rule that failed — `Severity`: 🔴 Critical / 🟠 High / 🟡 Medium / 🟢 Low
-   - `Owner skill` = the `fixSkill` field — `Priority` includes status new/existing/fixed/regressed (✅ fixed / ❌ open / 🔄 in progress / ⏭️ skipped)
-5. Close with the execution order: Foundation → Dependencies → High impact → Critical path (approximate effort per item — not a flat TODO) and the coverage of domains/workspaces run (done/skipped(reason)/failed from the ledger)
-6. Run `/suggest-next-action` — findings that must be fixed → `/deep-review-codebase-then-fix`
+   - `Finding` = what is wrong, stated with the rule that failed — `Action` = what must be done (imperative, 1 action per row)
+   - `Evidence` = file:line or real evidence (mandatory on every row, never invented)
+   - `Severity`: 🔴 Critical / 🟠 High / 🟡 Medium / 🟢 Low — `Risk` = the blast radius (breach, outage, drift, UX, cost)
+   - `Owner skill` = the `fixSkill` field — `Status` = new/existing/fixed/regressed (✅ fixed / ❌ open / 🔄 in progress / ⏭️ skipped)
+   - A caller that is a single dimension (e.g. `/review-issues`) renders one table; `/deep-review-codebase` renders one table per dispatched dimension
+   - When the caller is `/deep-review-codebase`, append the `in update-review-cli-then-run` (Y/N) column — the analyzer-gap flag from its step 3.6
+5. Close with the execution order: Foundation → Dependencies → High impact → Critical path (approximate effort per item — not a flat TODO) and the coverage of dimensions/workspaces run (done/skipped(reason)/failed from the ledger)
+6. Run `/suggest-next-action` — findings that must be fixed → `/deep-review-codebase <scope> then-fix`
 
 ## Rules
 
 - Chat only — never create `.devin/temp/report/` files unless the user explicitly asks
-- Every row must have real evidence (spot-check by reading the referenced file:line for at least 1 item per domain) — no guessing, no vacuous rows
-- One table covering every domain — do not split into many redundant tables; group rows by severity→priority
+- Every row must have real evidence (spot-check by reading the referenced file:line for at least 1 item per dimension) — no guessing, no vacuous rows
+- One table per dispatched dimension, rows grouped severity→priority — never one table per finding, and never redundant near-duplicate tables
 - Too many findings → report the highest-priority list first, then clearly state "remaining skipped (n)"; never silently truncate
 - Do not change code in the report step — report only; bind a fixSkill to every action
 
 ## Expected Outcome
 
-- A complete table in chat — every row with a real `Action` + `Evidence` + summary + execution order
-- Coverage clearly stated — every domain done/skipped/failed
+- Complete tables in chat — every row with a real `Finding` + `Action` + `Evidence` + summary + execution order
+- Coverage clearly stated — every dimension done/skipped/failed
 - No report files created (unless the user asks → `/create-report-in-dot-devin`)

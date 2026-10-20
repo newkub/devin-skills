@@ -89,7 +89,7 @@ Use as the single consolidation point for all verify work
 
 1. Runtime gate: run `/run-test` (e2e) if there are UI flows, `/check-open-ports` + smoke test the real entry points, `/watch-browser fix` to catch console/network errors if there is a web URL
 2. Usage gate: run `/deep-test usage` to confirm the examples in README/docs actually work
-3. Deep validation: run `/deep-validate` for a final cross-reference, compliance, and security pass; if issues are found → `/deep-review-codebase-then-fix`, then re-verify
+3. Deep validation: run `/deep-validate` for a final cross-reference, compliance, and security pass; if issues are found → `/deep-review-codebase then-fix`, then re-verify
 4. Each gate that fails → fix and restart that gate; never skip; after 3 retries → stop + report
 5. Run `/report table` with columns: No., Gate, Result, Evidence, Fix applied — summarize ready / not-ready
 

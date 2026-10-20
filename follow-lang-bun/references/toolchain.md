@@ -18,7 +18,9 @@
 | `bun test` | test runner (`bun:test` — Jest-compatible, `--coverage`, `--parallel`) | built in |
 | `bun build` | bundler (`--target browser\|bun\|node`), `--compile` standalone binary | built in |
 | `bun link` / `bun patch` / `bun publish` | workspace linking, dependency patches, npm publishing | built in |
-| `tsc --noEmit` | typecheck only (Bun strips types, never checks them) | `bun add -d typescript bun-types` |
+| `bun check` | typecheck (Bun strips types at runtime, never checks them) — same errors as `tsc`, parallel across all CPU cores; `-p <path>` per project, `-b` follows references like `tsc -b` (a `composite` project checks without building first), `--threads N`, `--all`, compiler flags pass through; no `--watch` and no incremental cache (whole project re-checked each run, no `.tsbuildinfo` even with `incremental`) — watch with `bun run --watch typecheck` | built in (Bun ≥ 1.4) |
+| `bun test --check` | typecheck the test files and everything they import before any test runs; needs `bun add -d @types/bun` or else `bun:test` fails to resolve | built in |
+| `tsc --noEmit` | fallback typecheck when `bun check` is unavailable (older Bun, or CI pinned to `typescript`) | `bun add -d typescript bun-types` |
 | `biome` | lint + format default (ESLint per project when required) | `bun add -d @biomejs/biome` |
 | `bunfig.toml` | single toolchain config (`[install]`, `[test]`, `[build]`) — overrides only | project file |
 | `happy-dom` / `jsdom` | DOM environment for `bun test` via `[test] preload` | `bun add -d happy-dom` |

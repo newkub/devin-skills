@@ -1,6 +1,6 @@
 ---
 name: prioritize
-description: จัดลำดับความสำคัญของ tasks และ improvements ตาม impact และ effort
+description: Prioritize tasks and improvements by impact and effort
 argument-hint: "[scope]"
 related:
   - follow-best-practice
@@ -11,11 +11,11 @@ related:
 
 ## Goal
 
-จัดลำดับความสำคัญของ tasks และ improvements ตาม impact และ effort เพื่อให้ทำงานได้อย่างมีประสิทธิภาพ
+Prioritize tasks and improvements by impact and effort so that work is efficient.
 
 ## Scope
 
-ใช้สำหรับจัดลำดับความสำคัญของ tasks ทั้งใน development, maintenance, และ improvement
+Use to prioritize tasks across development, maintenance, and improvement.
 
 ## Execute
 
@@ -23,31 +23,31 @@ related:
 
 > Goal: Assess Impact
 
-ประเมินผลกระทบของ task
+Assess the impact of the task
 
-1. ประเมิน `business impact`: revenue, user experience, compliance
-2. ประเมิน `technical impact`: performance, security, maintainability
-3. ประเมิน `user impact`: จำนวนผู้ใช้ที่ได้รับผลกระทบ
-4. ประเมิน `urgency`: deadline, dependencies, blocking issues
+1. Assess `business impact`: revenue, user experience, compliance
+2. Assess `technical impact`: performance, security, maintainability
+3. Assess `user impact`: number of users affected
+4. Assess `urgency`: deadline, dependencies, blocking issues
 
 ### 2. Estimate Effort
 
 > Goal: Estimate Effort
 
-ประเมินความยากและเวลาที่ต้องใช้
+Estimate the difficulty and time required
 
-1. ประเมิน `complexity`: ความซับซ้อนของงาน
-2. ประเมิน `time`: เวลาที่คาดว่าจะใช้
-3. ประเมิน `resources`: ทีม, skills, tools ที่ต้องการ
-4. ประเมิน `risk`: ความเสี่ยงของการทำงาน
+1. Assess `complexity`: complexity of the work
+2. Assess `time`: expected time to spend
+3. Assess `resources`: team, skills, tools required
+4. Assess `risk`: risk of doing the work
 
 ### 3. Calculate Priority
 
 > Goal: Calculate Priority
 
-คำนวณ priority จาก impact และ effort
+Calculate priority from impact and effort
 
-1. ทำ `/deep-thinking` เพื่อทบทวนมุมมองหลายด้านก่อนตัดสินใจ priority
+1. Run `/deep-thinking` to review multiple perspectives before deciding priority
 
 | Impact | Effort | Priority | Rationale |
 |--------|--------|----------|-----------|
@@ -65,82 +65,82 @@ related:
 
 > Goal: Consider Dependencies
 
-พิจารณา dependencies ระหว่าง tasks
+Consider dependencies between tasks
 
-1. ระบุ tasks ที่ block tasks อื่น
-2. ระบุ tasks ที่ blocked โดย tasks อื่น
-3. ปรับ priority ตาม dependencies
-4. จัดลำดับ tasks ที่เป็น prerequisites ก่อน
+1. Identify tasks that block other tasks
+2. Identify tasks that are blocked by other tasks
+3. Adjust priority according to dependencies
+4. Order prerequisite tasks first
 
 ### 5. Validate With Stakeholders
 
 > Goal: Validate With Stakeholders
 
-ตรวจสอบ priority กับ stakeholders
+Validate priority with stakeholders
 
-1. แสดง priority list พร้อม rationale
-2. ขอ feedback จาก stakeholders
-3. ปรับ priority ตาม feedback
-4. ยืนยัน priority สุดท้าย
+1. Show the priority list with rationale
+2. Ask for feedback from stakeholders
+3. Adjust priority according to feedback
+4. Confirm the final priority
 
 ## Rules
 
 ### Impact Assessment
 
-ประเมิน impact อย่างครบถ้วน
+Assess impact thoroughly
 
-- ประเมิน `business impact` ก่อนเสมอ
-- ประเมิน `technical impact` สำหรับ long-term health
-- ประเมิน `user impact` สำหรับ immediate value
-- ประเมิน `urgency` สำหรับ time-sensitive tasks
-- ใช้ quantitative metrics เมื่อเป็นไปได้
+- Always assess `business impact` first
+- Assess `technical impact` for long-term health
+- Assess `user impact` for immediate value
+- Assess `urgency` for time-sensitive tasks
+- Use quantitative metrics when possible
 
 ### Effort Estimation
 
-ประเมิน effort อย่าง realistic
+Estimate effort realistically
 
-- ประเมิน `complexity` อย่างถูกต้อง
-- ประเมิน `time` รวม buffer
-- ประเมิน `resources` ที่จำเป็น
-- ประเมิน `risk` ของการทำงาน
-- ใช้ historical data เมื่อเป็นไปได้
+- Assess `complexity` accurately
+- Assess `time` including buffer
+- Assess the `resources` required
+- Assess the `risk` of doing the work
+- Use historical data when possible
 
 ### Priority Matrix
 
-ใช้ matrix ในการกำหนด priority
+Use the matrix to set priority
 
 - P0: High impact + Low effort (quick wins)
-- P1: High impact + Medium effort หรือ Medium impact + Low effort
-- P2: High impact + High effort หรือ Medium impact + Medium/Low effort
-- P3: Medium impact + High effort หรือ Low impact + Medium effort
+- P1: High impact + Medium effort or Medium impact + Low effort
+- P2: High impact + High effort or Medium impact + Medium/Low effort
+- P3: Medium impact + High effort or Low impact + Medium effort
 - P4: Low impact + High effort (defer or skip)
 
 ### Dependencies
 
-พิจารณา dependencies อย่างเหมาะสม
+Consider dependencies appropriately
 
-- Tasks ที่ block อื่นต้องทำก่อน
-- Tasks ที่ blocked ต้องรอ prerequisites
-- ปรับ priority ตาม dependency chain
-- พิจารณา parallel execution เมื่อเป็นไปได้
+- Tasks that block others must be done first
+- Blocked tasks must wait for prerequisites
+- Adjust priority according to the dependency chain
+- Consider parallel execution when possible
 
 ### Stakeholder Validation
 
-ตรวจสอบ priority กับ stakeholders
+Validate priority with stakeholders
 
-- แสดง rationale อย่างชัดเจน
-- ขอ feedback จากทุก stakeholders
-- ปรับ priority ตาม business needs
-- ยืนยัน priority สุดท้ายก่อนเริ่มทำ
+- Show rationale clearly
+- Ask for feedback from all stakeholders
+- Adjust priority according to business needs
+- Confirm the final priority before starting
 
-- ใช้ /follow-best-practice ถ้าจำเป็น
-- ใช้ /suggest-next-action ถ้าจำเป็น
-- ใช้ /resolve-errors ถ้าจำเป็น
+- Use /follow-best-practice if needed
+- Use /suggest-next-action if needed
+- Use /resolve-errors if needed
 
 ## Expected Outcome
 
-- Tasks ถูกจัดลำดับความสำคัญอย่างถูกต้อง
-- Priority สอดคล้องกับ business goals
-- Resources ถูกจัดสรรอย่างมีประสิทธิภาพ
-- Dependencies ถูกจัดการอย่างเหมาะสม
-- Stakeholders เห็นด้วยกับ priority decisions
+- Tasks are prioritized correctly
+- Priority aligns with business goals
+- Resources are allocated efficiently
+- Dependencies are managed appropriately
+- Stakeholders agree with the priority decisions

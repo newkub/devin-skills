@@ -1,86 +1,86 @@
 # Web Research
 
-เรียนรู้จากเว็บไซต์หลักและเอกสารอย่างเป็นระบบ — ใช้เมื่อ source เป็น tool, library, framework หรือ topic ที่ต้องการข้อมูลจากภายนอก
+Learn from the primary website and documentation systematically — use when the source is a tool, library, framework, or topic that needs external information
 
 ## 1. Research Strategy
 
-กำหนดลำดับความสำคัญของแหล่งข้อมูล:
+Define the priority order of the sources:
 
-1. `Official Documentation` — แหล่งหลักเสมอ (priority สูงสุด)
-2. `DeepWiki` — สำหรับ GitHub repositories
-3. `Context7` — สำหรับ libraries และ frameworks
-4. `Web Search` — fallback เมื่อไม่มีข้อมูลจากแหล่งอื่น
+1. `Official Documentation` — always the primary source (highest priority)
+2. `DeepWiki` — for GitHub repositories
+3. `Context7` — for libraries and frameworks
+4. `Web Search` — fallback when there is no information from the other sources
 
 ## 2. Official Website Research
 
-1. ระบุ official website ของ tool, library หรือ framework ที่ต้องการเรียนรู้
-2. ใช้ `webfetch`/`read_url_content` เพื่ออ่านหน้า documentation โดยตรง
-3. ใช้ CRW (`crw_scrape`, `crw_map`, `crw_crawl`) สำหรับ crawl documentation ทั้ง site
-4. เริ่มจากหน้า getting started หรือ quickstart เสมอ
-5. อ่าน API reference และ guides ตามลำดับ
-6. บันทึก code examples และ configuration examples จาก official site
-7. ตรวจสอบ version ที่ตรงกับ project ปัจจุบัน
-8. ใช้ domain filter ใน Web Search เพื่อจำกัดผลลัพธ์เฉพาะ official site เช่น domain: "bun.sh"
+1. Identify the official website of the tool, library, or framework you want to learn
+2. Use `webfetch`/`read_url_content` to read the documentation pages directly
+3. Use CRW (`crw_scrape`, `crw_map`, `crw_crawl`) to crawl the whole documentation site
+4. Always start from the getting started or quickstart page
+5. Read the API reference and guides in order
+6. Record code examples and configuration examples from the official site
+7. Check the version that matches the current project
+8. Use the domain filter in Web Search to limit results to the official site only, e.g., domain: "bun.sh"
 
 ## 3. DeepWiki Research
 
-1. ใช้ `read_wiki_structure` เพื่อดู topics ทั้งหมด
-2. ใช้ `read_wiki_contents` เพื่ออ่านเนื้อหาของ topic ที่เลือก
-3. ใช้ `ask_question` สำหรับคำถามเฉพาะเจาะจง
-4. เริ่มด้วย structure เพื่อดู topics ทั้งหมดก่อน
-5. เลือก topics ที่เกี่ยวข้องกับงานปัจจุบัน
-6. อ่าน getting started ก่อน advanced topics
-7. บันทึก code examples และ configuration examples
+1. Use `read_wiki_structure` to view all topics
+2. Use `read_wiki_contents` to read the content of the selected topic
+3. Use `ask_question` for specific questions
+4. Start with structure to view all topics first
+5. Select topics relevant to the current work
+6. Read getting started before advanced topics
+7. Record code examples and configuration examples
 
 ## 4. Context7 Research
 
-1. ใช้ `resolve-library-id` เพื่อหา library ID ที่ถูกต้อง
-2. ใช้ `query-docs` สำหรับ documentation ที่ต้องการ
-3. Query ให้เฉพาะเจาะจง เช่น "How to setup authentication with JWT in Express.js"
-4. ตรวจสอบ source reputation และ benchmark scores
-5. เลือก library ที่มี source reputation High หรือ Medium
-6. อ่าน examples และ code snippets ที่ Context7 ให้มา
-7. ตรวจสอบ version ที่เข้ากันได้กับ project
-8. ไม่เรียก Context7 เกิน 3 ครั้งต่อคำถาม
+1. Use `resolve-library-id` to find the correct library ID
+2. Use `query-docs` for the documentation you need
+3. Make the query specific, e.g., "How to setup authentication with JWT in Express.js"
+4. Check the source reputation and benchmark scores
+5. Choose a library with High or Medium source reputation
+6. Read the examples and code snippets Context7 provides
+7. Check the version compatible with the project
+8. Do not call Context7 more than 3 times per question
 
 ## 5. Web Search Research
 
-1. ใช้ `web_search`/`search_web` เมื่อไม่มีข้อมูลจาก DeepWiki หรือ Context7
-2. กำหนด query ที่ชัดเจนและเฉพาะเจาะจง
-3. ใช้ domain filter ถ้าจำเป็น เช่น domain: "bun.sh"
-4. เปรียบเทียบข้อมูลจากหลายแหล่ง
-5. ตรวจสอบว่าข้อมูลเป็นปัจจุบัน (check publish date)
+1. Use `web_search`/`search_web` when there is no information from DeepWiki or Context7
+2. Define a clear and specific query
+3. Use the domain filter if necessary, e.g., domain: "bun.sh"
+4. Compare information from multiple sources
+5. Check that the information is current (check publish date)
 
 ## 6. Knowledge Extraction
 
-1. จดบันทึกหลักการที่สำคัญและ core concepts
-2. ระบุ features และ capabilities หลักทั้งหมด
-3. บันทึก best practices และ recommendations
-4. บันทึก code examples ที่สำคัญพร้อมคำอธิบาย
-5. บันทึก configuration examples ที่สำคัญ
-6. บันทึก edge cases และ common pitfalls
-7. สร้าง summary สำหรับแต่ละ source
+1. Note down the key principles and core concepts
+2. Identify all the main features and capabilities
+3. Record best practices and recommendations
+4. Record the important code examples together with explanations
+5. Record the important configuration examples
+6. Record edge cases and common pitfalls
+7. Create a summary for each source
 
 ## 7. Validation
 
-1. ทดลองใช้งานตามที่เรียนรู้
-2. สร้างโปรเจกต์ตัวอย่างเพื่อทดสอบ
-3. เปรียบเทียบข้อมูลจากหลายแหล่ง
-4. ยืนยันว่าข้อมูลเป็นปัจจุบัน
-5. ตรวจสอบว่า code examples ทำงานได้จริง
-6. ทดสอบ edge cases และ error handling
+1. Try using it as learned
+2. Create a sample project to test
+3. Compare information from multiple sources
+4. Confirm that the information is current
+5. Check that the code examples actually work
+6. Test edge cases and error handling
 
 ## 8. Application
 
-1. นำความรู้ไปใช้ในโปรเจกต์จริง
-2. สร้าง examples หรือ tutorials สำหรับทีม
-3. ติดตาม updates จากเว็บไซต์หลักอย่างสม่ำเสมอ
-4. สร้าง learning loop สำหรับพัฒนาตนเอง
-5. บันทึก lessons learned สำหรับ future reference
-6. แชร์ความรู้กับทีมผ่าน documentation
+1. Apply the knowledge in a real project
+2. Create examples or tutorials for the team
+3. Follow updates from the primary website regularly
+4. Create a learning loop for self-development
+5. Record lessons learned for future reference
+6. Share knowledge with the team through documentation
 
 ## Notes
 
-- ทำ `/deep-research` เมื่อต้องการค้นหาจาก NPM, GitHub, DeepWiki, Context7 และ WebSearch พร้อมกัน
-- ทำ `/follow-best-practice` เพื่อใช้ความรู้ตามมาตรฐานของ language, runtime, และ library
-- ทำ `/deep-research setup` ถ้าจำเป็น
+- Run `/deep-research` when you want to search from NPM, GitHub, DeepWiki, Context7, and WebSearch at the same time
+- Run `/follow-best-practice` to apply the knowledge according to the standards of the language, runtime, and library
+- Run `/deep-research setup` if necessary

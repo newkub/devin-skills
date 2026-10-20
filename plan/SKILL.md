@@ -8,24 +8,24 @@ related:
 
 ## Goal
 
-Alias ของ `/create-plan-in-dot-devin` — analyze + plan ที่ persist ลง `.devin/temp/plan/<workspace>/` (ตัว plan content สร้างโดย `/deep-plan`, skill นี้ owns การเก็บไฟล์)
+Alias of `/create-plan-in-dot-devin` — analyze + plan persisted to `.devin/temp/plan/<workspace>/` (the plan content itself is produced by `/deep-plan`; this skill owns the file storage)
 
 ## Scope
 
-ใช้เมื่อ user หรือ skill อื่นเรียก `/plan` — workflow จริงอยู่ใน `create-plan-in-dot-devin`
+Use when the user or another skill calls `/plan` — the real workflow lives in `create-plan-in-dot-devin`
 
-- Default: forward เต็ม workflow (สร้าง plan file)
-- Caller ที่ต้องการ chat-only → forward แบบระบุ `chat-only`
+- Default: forward the full workflow (create the plan file)
+- A caller that wants chat-only → forward with `chat-only` specified
 
 ## Execute
 
-ทำ `/create-plan-in-dot-devin` เต็ม workflow — ส่งต่อ `<scope>` และ `chat-only` hint ตามที่ caller ระบุ
+Run the full `/create-plan-in-dot-devin` workflow — forward the `<scope>` and the `chat-only` hint as specified by the caller
 
 ## Rules
 
-- ห้าม duplicate workflow ของ `/create-plan-in-dot-devin` ในไฟล์นี้
-- ถ้า alias ขาด steps → อ่าน `create-plan-in-dot-devin/SKILL.md` เสมอ
+- Never duplicate the `/create-plan-in-dot-devin` workflow in this file
+- If the alias misses steps → always read `create-plan-in-dot-devin/SKILL.md`
 
 ## Expected Outcome
 
-- `/create-plan-in-dot-devin` ถูก execute ครบทุก step จนได้ implementation-ready plan
+- `/create-plan-in-dot-devin` is executed through every step until an implementation-ready plan is produced

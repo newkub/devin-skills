@@ -11,7 +11,6 @@ related:
   - deep-review-codebase
   - deep-validate
   - refactor
-  - deep-review-codebase-then-fix
   - ask-me
 
 ---
@@ -134,7 +133,7 @@ Do not use rethink when:
 - Use /deep-validate if needed
 - Use /deep-review-codebase if needed
 - Use /refactor if needed
-- Use /deep-review-codebase-then-fix if needed
+- Use /deep-review-codebase then-fix if needed
 - Use /reframe if needed
 
 

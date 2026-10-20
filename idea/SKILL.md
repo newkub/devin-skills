@@ -1,6 +1,6 @@
 ---
 name: idea
-description: สร้างไอเดียตาม user context วิเคราะห์ gaps และ opportunities
+description: Generate ideas according to user context, analyze gaps and opportunities
 argument-hint: "[topic]"
 related:
   - validate-idea
@@ -12,11 +12,11 @@ related:
 ---
 ## Goal
 
-สร้างไอเดียตาม user context วิเคราะห์ gaps, needs และ opportunities แล้วรายงานเป็นตาราง
+Generate ideas according to user context, analyze gaps, needs and opportunities, then report as a table
 
 ## Scope
 
-ใช้เมื่อผู้ใช้บอกว่า "ขอ idea" หรือต้องการไอเดียสำหรับงานใดๆ ครอบคลุม features, UX/UI, refactor, และ improvements
+Use when the user says "I want ideas" or needs ideas for any work; covers features, UX/UI, refactor, and improvements
 
 ## Execute
 
@@ -24,66 +24,66 @@ related:
 
 | Topic | Skill |
 |-------|-------|
-| ไอเดีย features (extends + net-new + platform) | `/idea-features` |
-| ไอเดีย merge/consolidate สิ่งที่ซ้ำซ้อน | `/idea-merge` |
-| ไอเดีย UX/UI improvements และ features | `/idea-uxui` |
-| ไอเดีย devin global skills ใหม่/ปรับปรุง | `/idea-new-devin-global-skills` |
-| skill candidates จาก session ปัจจุบัน | `/idea-devin-global-skills-from-session` |
-| แปลง CLI tools เป็น Devin skills | `/idea-convert-my-global-cli-to-skills` |
-| คัดกรอง/พิสูจน์ไอเดียหนึ่งอันก่อนลงมือ (GO/NO-GO/PIVOT ในแชท) | `/validate-idea` |
+| Feature ideas (extends + net-new + platform) | `/idea-features` |
+| Ideas to merge/consolidate redundant things | `/idea-merge` |
+| UX/UI improvement and feature ideas | `/idea-uxui` |
+| Ideas for new/improved devin global skills | `/idea-new-devin-global-skills` |
+| Skill candidates from the current session | `/idea-devin-global-skills-from-session` |
+| Convert CLI tools into Devin skills | `/idea-convert-my-global-cli-to-skills` |
+| Screen/prove a single idea before starting (GO/NO-GO/PIVOT in chat) | `/validate-idea` |
 
 ### 1. Analyze Context
 
 > Goal: Analyze Context
 
-วิเคราะห์ context จาก user request:
+Analyze context from the user request:
 
-1. ระบุประเภทไอเดียที่ต้องการ (features, UX/UI, refactor, improvements)
-2. ระบุ scope จาก user context (project, module, file, workflow)
-3. ระบุ pain points และ gaps จาก context
+1. Identify the type of idea needed (features, UX/UI, refactor, improvements)
+2. Identify scope from user context (project, module, file, workflow)
+3. Identify pain points and gaps from the context
 
 ### 2. Generate Ideas
 
 > Goal: Generate Ideas
 
-สร้างไอเดียตาม context:
+Generate ideas according to the context:
 
-1. ถ้าเป็นไอเดีย features ให้ทำ `/idea-features` สร้างไอเดีย features ใหม่และปรับปรุง features ที่มีอยู่
-2. ถ้าเป็นไอเดีย UX/UI ให้ทำ `/deep-review-codebase` สร้างไอเดีย UX/UI improvements
-3. สร้างไอเดียปรับปรุงจากเดิม (Extends) — wants review-driven improvements แทน → `/improve <scope>`
-4. สร้างไอเดียใหม่ที่ยังไม่มี (New)
-5. ระบุ problem ที่แต่ละไอเดียจะ solve
-6. จัดกลุ่มตาม topics
+1. If it's feature ideas, run `/idea-features` to generate new feature ideas and improve existing features
+2. If it's UX/UI ideas, run `/deep-review-codebase` to generate UX/UI improvement ideas
+3. Generate improvement ideas from what exists (Extends) — if you want review-driven improvements instead → `/improve <scope>`
+4. Generate new ideas that don't exist yet (New)
+5. Identify the problem each idea will solve
+6. Group by topics
 
 ### 3. Prioritize And Report
 
 > Goal: Prioritize And Report
 
-จัดลำดับและรายงาน:
+Prioritize and report:
 
-1. จัดลำดับตาม value vs effort
-2. ระบุ quick wins และ strategic ideas
-3. ทำ `/report table` แสดงผลเป็นตาราง: `No.`, `Idea`, `Type`, `Problem`, `Impact`, `Effort`
-4. ถ้ามี action ต่อเนื่องจาก idea ก่อนหน้า → ใช้ `/follow-your-suggestion`
-4. ใช้ Impact: 🔴 สูง → 🟡 ปานกลาง → 🟢 ต่ำ
-5. ทำ `/suggest-next-action` เพื่อแนะนำ action ถัดไป
+1. Prioritize by value vs effort
+2. Identify quick wins and strategic ideas
+3. Run `/report table` to show results as a table: `No.`, `Idea`, `Type`, `Problem`, `Impact`, `Effort`
+4. If there is a follow-up action from the previous idea → use `/follow-your-suggestion`
+4. Use Impact: 🔴 High → 🟡 Medium → 🟢 Low
+5. Run `/suggest-next-action` to suggest the next action
 
 ## Rules
 
 ### 1. Context-Based
 
-- สร้างไอเดียตาม user context ไม่ใช่ generic
-- ทุกไอเดียต้อง solve real problem
-- ไม่สร้างไอเดียเพราะเท่ห์อย่างเดียว
+- Generate ideas according to user context, not generic
+- Every idea must solve a real problem
+- Don't generate ideas just because they're cool
 
 ### 2. Direct Execution
 
-- ถ้าผู้ใช้บอกว่า "ทำ ... ให้" ให้ทำตาม `/implement-to-production` เลย
-- ไม่ต้องทำตาม workflow ปกติถ้าผู้ใช้สั่งโดยตรง
-- ใช้ /reframe ถ้าจำเป็น
+- If the user says "do ... for me", follow `/implement-to-production` directly
+- Don't follow the normal workflow if the user orders directly
+- Use /reframe if necessary
 
 ## Expected Outcome
 
-- ไอเดียตาม user context พร้อมจัดลำดับตาม Impact
-- รายงานเป็นตารางตาม `/report`
-- ทุกไอเดีย solve real problem
+- Ideas according to user context, prioritized by Impact
+- Report as a table per `/report`
+- Every idea solves a real problem

@@ -1,6 +1,6 @@
 ---
 name: learn-pattern
-description: เรียนรู้จาก patterns ที่พบใน codebase, competitors, หรือ real-world implementations
+description: Learn from patterns found in codebases, competitors, or real-world implementations
 argument-hint: "[target]"
 related:
   - scan-codebase
@@ -15,11 +15,11 @@ related:
 
 ## Goal
 
-สกัดความรู้และ reusable patterns จาก code ที่มีอยู่, competitors, หรือ real-world implementations เพื่อนำมาประยุกต์ใช้ใน project
+Extract knowledge and reusable patterns from existing code, competitors, or real-world implementations to apply them in the project
 
 ## Scope
 
-ใช้สำหรับเรียนรู้จาก patterns ที่พบใน codebase ปัจจุบัน, code ของ competitors, open-source projects, หรือ implementations จริง เพื่อสกัดและประยุกต์ใช้
+Use to learn from patterns found in the current codebase, competitor code, open-source projects, or real implementations, in order to extract and apply them
 
 ## Execute
 
@@ -27,114 +27,114 @@ related:
 
 > Goal: Define Pattern Target
 
-กำหนดเป้าหมายการเรียนรู้:
+Define the learning target:
 
-1. ระบุประเภท pattern ที่ต้องการเรียนรู้ (architecture, design, code, UX, data flow)
-2. ระบุแหล่งที่จะศึกษา: codebase ปัจจุบัน, competitor code, open-source project, หรือ reference implementation
-3. กำหนดระดับความลึก: overview, intermediate, deep
-4. ระบุ context ที่ต้องการนำ pattern ไปใช้
+1. Identify the type of pattern you want to learn (architecture, design, code, UX, data flow)
+2. Identify the source to study: current codebase, competitor code, open-source project, or reference implementation
+3. Determine the depth: overview, intermediate, deep
+4. Identify the context in which you want to apply the pattern
 
 ### 2. Discover Patterns
 
 > Goal: Discover Patterns
 
-ค้นหา patterns จากแหล่งที่กำหนด:
+Find patterns from the specified source:
 
-1. ทำ `/scan-codebase` เพื่อค้นหา code patterns ใน codebase ปัจจุบัน
-2. ทำ `/scan-codebase` เพื่อ scan หา recurring structures
-3. ทำ `/use-astgrep` สำหรับ AST-based pattern discovery
-4. ถ้าศึกษาจาก open-source ให้ทำ `/deep-research` เพื่อหา reference projects
-5. ถ้าศึกษาจาก competitor ให้ทำ `/bench-competitors` เพื่อวิเคราะห์ patterns ของคู่แข่ง
+1. Run `/scan-codebase` to find code patterns in the current codebase
+2. Run `/scan-codebase` to scan for recurring structures
+3. Run `/use-astgrep` for AST-based pattern discovery
+4. If studying from open-source, run `/deep-research` to find reference projects
+5. If studying from a competitor, run `/bench-competitors` to analyze the competitor's patterns
 
 ### 3. Extract And Document Patterns
 
 > Goal: Extract And Document Patterns
 
-สกัดและจัดทำเอกสาร patterns ที่พบ:
+Extract and document the patterns found:
 
-1. จัดกลุ่ม patterns ตามประเภท (structural, behavioral, creational)
-2. บันทึกแต่ละ pattern พร้อม: ชื่อ, คำอธิบาย, code example, use case, pros/cons
-3. ระบุ context ที่ pattern เหมาะสมและไม่เหมาะสม
-4. บันทึก variations และ alternative approaches
-5. ระบุ anti-patterns ที่เกี่ยวข้องเพื่อหลีกเลี่ยง
+1. Group the patterns by type (structural, behavioral, creational)
+2. Record each pattern together with: name, description, code example, use case, pros/cons
+3. Identify the contexts where the pattern is suitable and unsuitable
+4. Record variations and alternative approaches
+5. Identify related anti-patterns to avoid
 
 ### 4. Validate Patterns
 
 > Goal: Validate Patterns
 
-ตรวจสอบความถูกต้องและความเข้ากันได้:
+Verify correctness and compatibility:
 
-1. ตรวจสอบว่า pattern สอดคล้องกับ `/follow-best-practice` ของ tech stack ที่ใช้
-2. เปรียบเทียบกับ official documentation โดยทำ `/learn` (web)
-3. ตรวจสอบ version compatibility กับ project ปัจจุบัน
-4. ทดสอบ pattern กับ use case จริงใน project
-5. ตรวจสอบว่า pattern ไม่ขัดกับ existing architecture
+1. Check that the pattern complies with the `/follow-best-practice` of the tech stack in use
+2. Compare against the official documentation by running `/learn` (web)
+3. Check version compatibility with the current project
+4. Test the pattern against a real use case in the project
+5. Check that the pattern does not conflict with the existing architecture
 
 ### 5. Apply Patterns
 
 > Goal: Apply Patterns
 
-นำ patterns ไปใช้ใน project:
+Apply the patterns in the project:
 
-1. ทำ `/generalize` เพื่อทำให้ pattern เป็น generic สำหรับ reuse
-2. ปรับ pattern ให้เข้ากับ project context และ conventions
-3.  implement ในที่ที่เหมาะสม โดยทำตาม `/deep-review-codebase`
-4. ถ้าต้องแก้ไขไฟล์มากกว่า 10 ไฟล์ ให้ทำ `/use-scripts` สำหรับ batch transformations
-5. รัน `/run-verify` เพื่อตรวจสอบคุณภาพหลัง implement
+1. Run `/generalize` to make the pattern generic for reuse
+2. Adapt the pattern to the project context and conventions
+3. Implement it where appropriate, following `/deep-review-codebase`
+4. If more than 10 files must be edited, run `/use-scripts` for batch transformations
+5. Run `/run-verify` to check quality after implementing
 
 ### 6. Document And Share
 
 > Goal: Document And Share
 
-จัดทำเอกสารและแชร์ความรู้:
+Produce documentation and share the knowledge:
 
-1. สร้าง pattern documentation ใน `docs/development/patterns/`
-2. เขียน examples สำหรับแต่ละ pattern โดยทำ `/update-examples`
-3. อัปเดท `AGENTS.md` ถ้า pattern เป็น project-wide convention
-4. แชร์กับทีมผ่าน documentation หรือ code review
+1. Create pattern documentation in `docs/development/patterns/`
+2. Write examples for each pattern by running `/update-examples`
+3. Update `AGENTS.md` if the pattern is a project-wide convention
+4. Share with the team through documentation or code review
 
 ## Rules
 
 ### Pattern Discovery
 
-- ใช้ `/scan-codebase` สำหรับค้นหา patterns ใน codebase
-- ใช้ `/use-astgrep` สำหรับ AST-based structural pattern matching
-- ใช้ `/scan-codebase` สำหรับ quick pattern scanning
-- ค้นหาทั้ง positive patterns (ดี) และ anti-patterns (ไม่ดี)
+- Use `/scan-codebase` to find patterns in the codebase
+- Use `/use-astgrep` for AST-based structural pattern matching
+- Use `/scan-codebase` for quick pattern scanning
+- Look for both positive patterns (good) and anti-patterns (bad)
 
 ### Pattern Documentation
 
-- แต่ละ pattern ต้องมี: ชื่อ, คำอธิบาย, code example, use case, pros/cons
-- ระบุ context ที่เหมาะสมและไม่เหมาะสม
-- บันทึก variations และ alternatives
-- ใช้ภาษาที่เข้าใจง่าย ไม่ใช่ academic terminology
+- Each pattern must have: name, description, code example, use case, pros/cons
+- Identify the suitable and unsuitable contexts
+- Record variations and alternatives
+- Use language that is easy to understand, not academic terminology
 
 ### Validation Standards
 
-- ทำ `/learn` (web) เพื่อ cross-reference กับ official docs
-- ทำ `/follow-best-practice` เพื่อตรวจสอบมาตรฐาน
-- ทดสอบ pattern กับ use case จริงก่อน adopt
-- ตรวจสอบ version compatibility เสมอ
+- Run `/learn` (web) to cross-reference with official docs
+- Run `/follow-best-practice` to check the standards
+- Test the pattern against a real use case before adopting
+- Always check version compatibility
 
 ### Application Discipline
 
-- ทำ `/generalize` เพื่อทำให้ reusable และไม่ specific เกินไป
-- ปรับ pattern ให้เข้ากับ project context ไม่ copy ตรงๆ
-- ถ้าต้องแก้ไขไฟล์มากกว่า 10 ไฟล์ ให้ทำ `/use-scripts`
-- รัน `/run-verify` หลัง implement เสมอ
+- Run `/generalize` to make it reusable and not overly specific
+- Adapt the pattern to the project context, do not copy it directly
+- If more than 10 files must be edited, run `/use-scripts`
+- Always run `/run-verify` after implementing
 
 ### Non-Duplication
 
-- ใช้ `/learn` สำหรับเรียนรู้ concept หรือ tool ทั่วไป
-- ใช้ `/learn` (web) สำหรับเรียนรู้จาก official documentation
-- ใช้ `/extract-pattern` สำหรับเขียน pattern rules จากข้อมูลที่ให้มา
-- Workflow นี้เน้นเฉพาะการสกัดและประยุกต์ใช้ patterns จาก real-world code
+- Use `/learn` to learn a general concept or tool
+- Use `/learn` (web) to learn from official documentation
+- Use `/extract-pattern` to write pattern rules from the given data
+- This workflow focuses specifically on extracting and applying patterns from real-world code
 
 ## Expected Outcome
 
-- Patterns ที่สกัดได้จาก code จริง พร้อม documentation
-- Code examples และ use cases ที่ชัดเจน
-- Patterns ที่ validated กับ official docs และ best practices
-- การนำ patterns ไปใช้จริงใน project พร้อม quality checks
-- Pattern library สำหรับทีมใน `docs/development/patterns/`
+- Patterns extracted from real code, together with documentation
+- Clear code examples and use cases
+- Patterns validated against official docs and best practices
+- Real application of the patterns in the project with quality checks
+- A pattern library for the team in `docs/development/patterns/`
 

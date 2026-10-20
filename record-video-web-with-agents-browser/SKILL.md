@@ -1,6 +1,6 @@
 ---
 name: record-video-web-with-agents-browser
-description: บันทึกวิดีโอ WebM/MP4 จากหน้าเว็บด้วย `agent-browser record` CLI
+description: Record WebM/MP4 video from a web page with the `agent-browser record` CLI
 argument-hint: "[url]"
 related:
   - use-agent-browser
@@ -11,86 +11,86 @@ related:
 
 ## Goal
 
-บันทึกวิดีโอ WebM หรือ MP4 จากหน้าเว็บด้วย `agent-browser record` สำหรับ debugging, CI evidence, product walkthroughs และ repro reports — ตาม https://agent-browser.dev/recording
+Record WebM or MP4 video from a web page with `agent-browser record` for debugging, CI evidence, product walkthroughs, and repro reports — per https://agent-browser.dev/recording
 
 ## Scope
 
-ใช้สำหรับบันทึกวิดีโอการใช้งานหน้าเว็บ, demo และ record test scenarios ด้วย `agent-browser` CLI (recording pipes frames เข้า `ffmpeg` — `agent-browser` ส่วนอื่นไม่ต้องใช้ ffmpeg)
+Use to record video of web page usage, demos, and test scenarios with the `agent-browser` CLI (recording pipes frames into `ffmpeg` — the rest of `agent-browser` does not need ffmpeg)
 
-Boundary: video recording ทำได้เฉพาะ `agent-browser` — `chrome-devtools-mcp` ไม่มี record tool (inspect/screenshot/perf trace เท่านั้น ดู `/use-chrome-devtools` `## Tool Selection`)
+Boundary: video recording is only possible with `agent-browser` — `chrome-devtools-mcp` has no record tool (inspect/screenshot/perf trace only; see `/use-chrome-devtools` `## Tool Selection`)
 
 ## Execute
 
 ### 1. Install And Verify
 
-> Goal: agent-browser + ffmpeg พร้อมใช้งาน
+> Goal: agent-browser + ffmpeg ready to use
 
-1. ติดตั้ง/ตรวจ `agent-browser` ตาม `/use-agent-browser` ข้อ 1 — ถ้ายังไม่มี: `bun add -g agent-browser` แล้ว `agent-browser install`
-2. ตรวจ `ffmpeg` บน `PATH` ด้วย `agent-browser doctor` — รายงาน encoders ใต้ "Recording" ต้องมี `libvpx` และ `libx264`
-3. ถ้า ffmpeg ขาด → ติดตั้งด้วย package manager ของ OS (เช่น `winget install ffmpeg`, `scoop install ffmpeg`, `brew install ffmpeg`, `sudo apt install ffmpeg`)
+1. Install/check `agent-browser` per `/use-agent-browser` item 1 — if not present: `bun add -g agent-browser` then `agent-browser install`
+2. Check `ffmpeg` on `PATH` with `agent-browser doctor` — the encoder report under "Recording" must include `libvpx` and `libx264`
+3. If ffmpeg is missing → install it with the OS package manager (e.g. `winget install ffmpeg`, `scoop install ffmpeg`, `brew install ffmpeg`, `sudo apt install ffmpeg`)
 
 ### 2. Choose Output Format
 
-> Goal: เลือก container ตาม use case
+> Goal: Choose the container per use case
 
-1. `.webm` — VP8 via libvpx (default ของ web evidence)
-2. `.mp4` — H.264 via libx264 (แชร์เล่นได้ทุก player)
-3. extension อื่น (`.mkv`, `.mov`) — ส่งให้ ffmpeg เป็น H.264 ใน container นั้น
-4. path ไม่มี extension → `record start` reject ทันที เพราะ ffmpeg เลือก container ไม่ได้
+1. `.webm` — VP8 via libvpx (default for web evidence)
+2. `.mp4` — H.264 via libx264 (shareable and playable in any player)
+3. other extensions (`.mkv`, `.mov`) — handed to ffmpeg as H.264 in that container
+4. a path with no extension → `record start` rejects immediately because ffmpeg cannot choose a container
 
 ### 3. Open And Start Recording
 
-> Goal: เริ่มบันทึกบน tab ที่ต้องการ
+> Goal: Start recording on the desired tab
 
-1. เปิด browser: `agent-browser open <url> --headed` แล้วรอ `agent-browser wait --load networkidle`
-2. เริ่มบันทึก: `agent-browser record start <path>.webm` — บันทึก active page ตามสภาพ (hydrated state, session/cookies คงอยู่)
-3. หรือเริ่มพร้อม navigate: `agent-browser open` แล้ว `agent-browser record start <path>.webm <url>` — tab ปัจจุบัน navigate ก่อน เริ่มบันทึกเมื่อ page loaded
-4. บันทึกใน tab แยก: `agent-browser tab new <url>` แล้ว `agent-browser record start <path>.webm`
-5. options เสริม (ตาม Rules ข้อ 2-3): `--fps <1-60>`, `--cursor`, `--contact-sheet [--contact-sheet-threshold <0-1>]`
+1. Open the browser: `agent-browser open <url> --headed`, then wait with `agent-browser wait --load networkidle`
+2. Start recording: `agent-browser record start <path>.webm` — records the active page as-is (hydrated state, session/cookies preserved)
+3. Or start with navigation: `agent-browser open`, then `agent-browser record start <path>.webm <url>` — the current tab navigates first, and recording starts when the page is loaded
+4. Record in a separate tab: `agent-browser tab new <url>`, then `agent-browser record start <path>.webm`
+5. extra options (per Rules items 2-3): `--fps <1-60>`, `--cursor`, `--contact-sheet [--contact-sheet-threshold <0-1>]`
 
 ### 4. Perform Actions
 
-> Goal: ทำ actions ที่ต้องการบันทึก
+> Goal: Perform the actions to record
 
-1. ใช้ `agent-browser snapshot -i` เพื่อดู interactive elements และ refs
-2. ใช้ `agent-browser click @e1`, `agent-browser fill @e2 "text"`, `agent-browser scroll down 500`
-3. ใช้ `agent-browser wait <ms>` หน่วงระหว่าง actions ให้วิดีโออ่านง่าย (demo สำหรับคน → wait 500ms ระหว่าง steps)
-4. ใช้ `agent-browser screenshot <path>.png` ควบคู่ — screenshot เก็บ still state แม่นยำ, video แสดง timing/transitions/overlays
+1. Use `agent-browser snapshot -i` to see interactive elements and refs
+2. Use `agent-browser click @e1`, `agent-browser fill @e2 "text"`, `agent-browser scroll down 500`
+3. Use `agent-browser wait <ms>` to delay between actions so the video is easy to read (demo for humans → wait 500ms between steps)
+4. Use `agent-browser screenshot <path>.png` alongside — screenshots capture still state precisely, while video shows timing/transitions/overlays
 
 ### 5. Stop Recording
 
-> Goal: หยุดและ flush ไฟล์ก่อนปิด session
+> Goal: Stop and flush the file before closing the session
 
-1. ใช้ `agent-browser record stop` — รายงาน `frames` ที่เขียนลงไฟล์และ `capturedFrames` จาก Chrome
-2. `record stop` ต้องทำก่อน `close` ทุกครั้งเพื่อให้ไฟล์ flush ครบ
-3. บันทึกต่อทันที: `agent-browser record restart <path>.webm [url] [options]` — หยุดของเดิมแล้วเริ่มอันใหม่
-4. ปิด browser ด้วย `agent-browser close` แล้วรายงาน path ไฟล์
+1. Use `agent-browser record stop` — reports the `frames` written to the file and `capturedFrames` from Chrome
+2. `record stop` must always be done before `close` so the file is fully flushed
+3. Record again immediately: `agent-browser record restart <path>.webm [url] [options]` — stops the old one and starts a new one
+4. Close the browser with `agent-browser close`, then report the file path
 
 ## Rules
 
 ### 1. Video Format
 
-- ตั้ง extension ชัดเจนเสมอ (`.webm` หรือ `.mp4`) — path ไม่มี extension ถูก reject
-- เก็บใน `test/recordings/` หรือ `docs/recordings/`; ชื่อตาม scenario เช่น `login-flow.webm`
-- ไม่ commit ไฟล์วิดีโอขนาดใหญ่เข้า git
+- Always set an explicit extension (`.webm` or `.mp4`) — a path without an extension is rejected
+- Store in `test/recordings/` or `docs/recordings/`; name after the scenario, e.g. `login-flow.webm`
+- Do not commit large video files to git
 
 ### 2. Frame Rate And Options
 
-| Option | เมื่อไหร่ |
+| Option | When |
 |--------|----------|
-| `--fps 60` | drag/animation/scroll polish — คลิปสั้นที่ต้องการ evidence ต่อ frame (bitrate ~2x ของ 30) |
-| `--fps 30` (default) | flows, CI evidence, walkthroughs ทั่วไป |
-| `--fps 1-15` | soak/long sessions ที่ video เป็น timeline มากกว่า motion |
-| `--cursor` | walkthrough — animated pointer + click ripple (overlay inert, ซ่อนจาก a11y snapshot, ลบเมื่อ stop; screenshots ระหว่าง record มีด้วย) |
-| `--contact-sheet` | ต้องการ PNG timestamped ที่ highlight การเปลี่ยนแปลง (สูงสุด 100 frames) |
-| `--contact-sheet-threshold <0-1>` | default 0.05 — เลือก frame เมื่อ pixel เปลี่ยนเกิน threshold; imply `--contact-sheet` |
+| `--fps 60` | drag/animation/scroll polish — short clips that need per-frame evidence (bitrate ~2x that of 30) |
+| `--fps 30` (default) | flows, CI evidence, general walkthroughs |
+| `--fps 1-15` | soak/long sessions where the video is more timeline than motion |
+| `--cursor` | walkthrough — animated pointer + click ripple (overlay inert, hidden from the a11y snapshot, removed on stop; screenshots during record are also included) |
+| `--contact-sheet` | need timestamped PNGs that highlight changes (up to 100 frames) |
+| `--contact-sheet-threshold <0-1>` | default 0.05 — selects a frame when pixels change beyond the threshold; implies `--contact-sheet` |
 
 ### 3. Recording Workflow
 
-- `record start` บันทึก active page as-is — ไม่สร้าง tab/context ใหม่; cookies/localStorage คงอยู่
-- fps จริงถูกจำกัดด้วย repaint rate ของหน้า — หน้าที่ render < 60 fps จะได้วิดีโอ < 60 fps
-- Chrome frame ล่าสุดถูก hold ระหว่าง repaints ทำให้ duration ตรง wall clock
-- viewport ตาม browser settings ปัจจุบัน — ตั้งก่อนบันทึกด้วย `agent-browser set viewport <w> <h>`
+- `record start` records the active page as-is — does not create a new tab/context; cookies/localStorage are preserved
+- The actual fps is capped by the page's repaint rate — a page rendering < 60 fps yields a video < 60 fps
+- The latest Chrome frame is held between repaints, so the duration matches wall clock
+- The viewport follows the current browser settings — set it before recording with `agent-browser set viewport <w> <h>`
 
 ### 4. CI Evidence Pattern
 
@@ -111,20 +111,20 @@ agent-browser click @e3
 agent-browser wait --url "**/dashboard"
 ```
 
-- เก็บ recordings เป็น CI artifacts เมื่อ browser failures วินิจฉัยจาก text output ไม่ได้
-- ใช้ `trap cleanup EXIT` เพื่อ flush ไฟล์เสมอ
+- Store recordings as CI artifacts when browser failures cannot be diagnosed from text output
+- Use `trap cleanup EXIT` to always flush the file
 
 ### 5. Limitations And Errors
 
-- recording เพิ่ม overhead ต่อ automation — fps สูงยิ่งหนัก; คลิปยาวกิน disk (60 fps ≈ 2x bitrate)
-- headless ที่จำกัดอาจขาด codec/GPU — `agent-browser doctor` บอก encoders ที่มี
-- ffmpeg ที่ build ไม่มี `libvpx`/`libx264` → เขียน format นั้นไม่ได้
-- `agent-browser` ไม่ติดตั้ง → `/use-agent-browser` fallback; error อื่น → `/resolve-errors`
-- ตรวจ disk space ก่อนบันทึกยาว
+- recording adds overhead to automation — the higher the fps the heavier; long clips consume disk (60 fps ≈ 2x bitrate)
+- A restricted headless environment may lack codecs/GPU — `agent-browser doctor` reports the available encoders
+- ffmpeg built without `libvpx`/`libx264` → cannot write that format
+- `agent-browser` not installed → `/use-agent-browser` fallback; other errors → `/resolve-errors`
+- Check disk space before a long recording
 
 ## Expected Outcome
 
-- วิดีโอ WebM/MP4 บันทึกการใช้งานหน้าเว็บครบ actions ที่ต้องการ
-- ไฟล์ flush ครบก่อนปิด session และจัดเก็บอย่างเป็นระบบ
-- เลือก fps/options (`--cursor`, `--contact-sheet`) ตรง use case
-- ใช้ CI evidence pattern ได้ reproducible
+- A WebM/MP4 video records all the desired web page actions
+- The file is fully flushed before closing the session and stored systematically
+- fps/options (`--cursor`, `--contact-sheet`) chosen to match the use case
+- The CI evidence pattern is reproducibly usable

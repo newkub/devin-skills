@@ -30,11 +30,11 @@ created: ${now.toISOString()}
 
 ## Goal
 
-รายงานผลการ review devin global skills repo ด้วย /review-devin-global-harness CLI
+Review findings for the devin global skills repo via the /review-devin-global-harness CLI
 
 ## Scope
 
-รวม findings, observations, score, grade และสรุปจำนวน issues ตาม category
+Combines findings, observations, score, grade, and a per-category issue count summary
 
 ## Meta
 
@@ -67,9 +67,9 @@ ${data.observations.map((o: any, i: number) => `${i + 1}. [${o.severity}/${o.cat
 
 ## Next Action
 
-1. ตรวจสอบ findings ที Critical ก่อน
-2. แก้ไข frontmatter orphan related references
-3. รัน /review-devin-global-harness ซ้ำเพื่อ verify
+1. Review Critical findings first
+2. Fix frontmatter orphan related references
+3. Re-run /review-devin-global-harness to verify
 `;
 
 writeFileSync(outFile, md);

@@ -1,13 +1,15 @@
 # Improve Scope Map (SSOT)
 
 The single mapping table of scope → review domain + ownership boundary — other skills must not copy this table; point to this file instead (`/follow-single-of-source`)
-Every scope is handled by the `/improve` thin entry (or `/optimize` for metric-driven scope): review → `/deep-review-codebase <domain>` | fix → `/deep-review-codebase-then-fix`
+Every scope is handled by the `/improve` thin entry (or `/optimize` for metric-driven scope): review → `/deep-review-codebase <dimension>` | fix → `/deep-review-codebase <scope> then-fix`
+
+**Label resolution (mandatory)** — the `Review domain(s)` column keeps the legacy `review-*` names; they are not skills. Resolve each label before dispatch: strip `review-`, then take the row(s) in `deep-review-codebase/references/dimension-matrix.md` whose `Aliases` column lists it (a label may map to several dimensions), plus the `always` tier. `review-issues` and `review-gaps` are the exceptions — they are real skills and may be called directly. A label on no row is a matrix gap: dispatch the `always` tier + the closest artifact-match rows and report the gap, never invent a dimension.
 
 | Scope (`/improve <scope>`) | Review domain(s) | Ownership / boundary |
 |---|---|---|
 | (generic) | (broad scan) | `/improve` dispatches on its own; metric-driven findings → `/optimize` |
 | `a11y` | review-accessibility | WCAG, screen reader, keyboard nav; native-element semantics + ARIA ordering → `/follow-web-standard` |
-| `ai` | review-ai | prompts, evals, token/cost, hallucination guards; safety → `/improve ai-safety`, LLM spend → `/optimize llm` |
+| `ai` | review-ai | prompts, evals, token/cost, hallucination guards; safety → the `security` scope, LLM spend → `/optimize llm` |
 | `algorithm` | review-algorithm | complexity, algorithm correctness |
 | `api` | review-api, review-backend | contract, versioning, endpoints |
 | `architecture` | review-architecture | pattern/coupling/boundary findings — pick a pattern + apply restructure + monorepo layout → `/follow-architecture`, file-level passes → `/refactor` |
@@ -17,7 +19,7 @@ Every scope is handled by the `/improve` thin entry (or `/optimize` for metric-d
 | `billing` | review-api, review-business, review-security | payments, invoicing, webhooks; raw spend optimization → `/optimize cost` |
 | `browser-extensions` | review-browser-ext | manifest V3, permissions, content scripts |
 | `business` | review-business | domain logic vs requirements |
-| `cache` | review-backend, review-data-validation | cache correctness: invalidation ทุก write path, TTL, cache key design, stale data; hit rate/perf → `/optimize cache`; source data integrity → `/improve data` |
+| `cache` | review-backend, review-data-validation | cache correctness: invalidation on every write path, TTL, cache key design, stale data; hit rate/perf → `/optimize cache`; source data integrity → `/improve data` |
 | `cli` | review-cli | flags, output, exit codes |
 | `code-quality` | review-code-quality, review-redundancy | error-handling findings → `/improve error-handling`; correctness → `/improve correctness` |
 | `collaboration` | review-frontend, review-backend, review-data-validation | concurrent edits, CRDT/OT merge, presence; transport → `/improve realtime`, messaging → `/improve events` |
@@ -25,13 +27,13 @@ Every scope is handled by the `/improve` thin entry (or `/optimize` for metric-d
 | `config` | review-config | config hygiene, drift |
 | `consistency` | review-alignment, review-redundancy, review-code-quality, review-writing | naming/pattern/style/layer sync |
 | `correctness` | review-code-quality, review-data-validation, review-test | bugs/logic errors + regression tests |
-| `coverage` | review-coverage, review-gaps | gap-filling: ตรวจและเติมส่วนที่ขาด (content/skill/code) — code coverage → `/update-tests` + `/deep-test coverage`; flaky → `/check-flaky-tests` |
-| `data` | review-data-validation | data integrity end to end (pipeline, schema/constraints, retention); validation layer only → `/improve data-validation` |
+| `coverage` | review-coverage, review-gaps | gap-filling: check and fill in the missing parts (content/skill/code) — code coverage → `/update-tests` + `/deep-test coverage`; flaky → `/check-flaky-tests` |
+| `data` | review-data-validation | data integrity end to end (pipeline, schema/constraints, retention); validation layer only → the `correctness` scope |
 | `database` | review-database | ORM, schema design; query perf → `/optimize queries` |
 | `delivery` | review-delivery | release pipeline end-to-end |
 | `deps` | review-dependencies | versions, lockfile, supply chain |
 | `desktop-app` | review-desktop-app | windowing, IPC, packaging |
-| `devin-global-skills` | review-devin-global-harness | harness review (skills, subagents, hooks, MCP, global rules) — fix via `/deep-review-codebase-then-fix`, standards via `/update-devin-global-skills` |
+| `devin-global-skills` | review-devin-global-harness | harness review (skills, subagents, hooks, MCP, global rules) — fix via `/deep-review-codebase <scope> then-fix`, standards via `/update-devin-global-skills` |
 | `docs` | review-docs | README/guides/structure; writing findings → `/improve writing` |
 | `dot-devin` | review-dot-devin | project devin config/assets |
 | `dx` | review-dx, review-bundle | tooling, onboarding; devtools dock/integrations → `/follow-tool-vite-devtools`, standalone devtool → `/follow-tool-devfra`; size → `/optimize bundle` |

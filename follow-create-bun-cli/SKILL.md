@@ -62,7 +62,7 @@ For building CLI applications with the Bun runtime — does not cover library bu
 1. Add `dev`: `bun run <cli-entry>` where `<cli-entry>` may be `src/cli.ts` or `src/presentation/cli.ts` per the chosen architecture
 2. Add `build`: `bunx bunup`
 3. Add `build:watch`: `bunx bunup --watch`
-4. Add `lint`: `bunx tsc --noEmit && bunx biome lint --write`
+4. Add `lint`: `bun check && bunx biome lint --write`
 5. Add `test`: `bun test`
 
 ### 5. Choose CLI Libraries and APIs
@@ -161,7 +161,7 @@ project/
   "dev": "bun run src/presentation/cli.ts",
   "build": "bunx bunup",
   "build:watch": "bunx bunup --watch",
-  "lint": "bunx tsc --noEmit && bunx biome lint --write",
+  "lint": "bun check && bunx biome lint --write",
   "test": "bun test"
 }
 ```

@@ -1,6 +1,6 @@
 ---
 name: no-use-ignore
-description: หาและลบ ignore comments (ts-ignore, eslint-disable, biome-ignore, noqa) โดยแก้ root cause
+description: Find and remove ignore comments (ts-ignore, eslint-disable, biome-ignore, noqa) by fixing the root cause
 argument-hint: "[@files... | scope]"
 related:
   - refactor
@@ -17,28 +17,28 @@ related:
 
 ## Goal
 
-ลบ suppression comments (lint ignore, type ignore, coverage ignore) ออกจาก code — แก้ปัญหาที่ถูก suppress จริงๆ แทนการปิด rule — เหลือเฉพาะ suppression ที่ justified พร้อมเหตุผล
+Remove suppression comments (lint ignore, type ignore, coverage ignore) from the code — actually fix the problem that was suppressed instead of disabling the rule — leaving only suppressions that are justified with a reason
 
 ## Scope
 
-- ถ้า user ระบุ `@files...` → เคลียร์เฉพาะไฟล์นั้น; ไม่ระบุ → scan scope ที่ให้มาหรือทั้ง project
-- suppression ที่อยู่ใน config files (`.eslintignore`, `coveragePathIgnorePatterns`, `.gitignore` เพื่อ build outputs) → ไม่ใช่ scope นี้ — skill นี้จัดการ code-level suppression comments/annotations เท่านั้น
-- security-scan ignores (`# nosec`, `#checkov:skip`, `#tfsec:ignore`) → escalate severity — suppressing security finding ต้องมี written justification + issue link เสมอ
-- mechanical batch หลายไฟล์ → `/use-astgrep rewrite` (dry-run + confirm ก่อนเขียนทับเสมอ)
+- If the user specifies `@files...` → clear only those files; if not specified → scan the given scope or the whole project
+- Suppressions that live in config files (`.eslintignore`, `coveragePathIgnorePatterns`, `.gitignore` for build outputs) → not in this scope — this skill handles only code-level suppression comments/annotations
+- security-scan ignores (`# nosec`, `#checkov:skip`, `#tfsec:ignore`) → escalate severity — suppressing a security finding must always have a written justification + issue link
+- mechanical batch across many files → `/use-astgrep rewrite` (always dry-run + confirm before overwriting)
 
 ## Execute
 
 ### 1. Inventory Suppressions
 
-> Goal: รู้ว่ามี suppression อะไรบ้าง ที่ไหน ของ tool ไหน
+> Goal: know which suppressions exist, where, and for which tool
 
-1. scan suppression comments/annotations ใน scope ตามตารางด้านล่าง — ใช้ `rg`/`ast-grep` patterns ต่อ ecosystem
-2. จัดกลุ่มตาม tool + rule: `(file, line, tool, rule)` ต่อ suppression
-3. จำแนก: `stale` (suppress อะไรที่ไม่มีอยู่แล้ว — unused directives), `blanket` (file-level หรือไม่ระบุ rule), `lazy` (ระบุ rule แต่ไม่มีเหตุผล), `justified` (rule + reason comment + narrowest scope)
+1. scan suppression comments/annotations in the scope per the table below — use `rg`/`ast-grep` patterns per ecosystem
+2. Group by tool + rule: `(file, line, tool, rule)` per suppression
+3. Classify: `stale` (suppresses something that no longer exists — unused directives), `blanket` (file-level or no rule specified), `lazy` (rule specified but no reason), `justified` (rule + reason comment + narrowest scope)
 
 | Ecosystem | Suppression Syntax |
 |-----------|-------------------|
-| TypeScript | `@ts-ignore`, `@ts-expect-error`, `@ts-nocheck`, `@ts-check` (บน file ที่ไม่ตั้งใจ) |
+| TypeScript | `@ts-ignore`, `@ts-expect-error`, `@ts-nocheck`, `@ts-check` (on a file where it is not intended) |
 | ESLint | `eslint-disable`, `eslint-disable-next-line`, `eslint-disable-line`, `eslint-enable`, `/* eslint ... */` overrides |
 | Biome | `biome-ignore lint/...`, `biome-ignore format`, `biome-ignore assist` |
 | Prettier / formatters | `prettier-ignore`, `# fmt: off`/`on` (black/ruff), `// swiftformat:disable`, `// clang-format off` |
@@ -58,78 +58,78 @@ related:
 
 ### 2. Classify Each Suppression
 
-> Goal: แยกของที่ต้องแก้ vs ของที่เก็บได้
+> Goal: separate the ones that must be fixed vs the ones that can be kept
 
-1. `stale` — ลบทิ้งเลย (directive ที่ไม่ suppress อะไร — เช่น `eslint-disable` บน code ที่ผ่าน rule อยู่แล้ว; tools: `eslint --report-unused-disable-directives`, biome `--diagnostic-level=error` reports unused suppressions)
-2. `blanket` — file-level disables (`@ts-nocheck`, `eslint-disable` ไม่มี rule, `ignore_for_file`, `#![allow]`) → split เป็น per-line suppressions ชั่วคราวเพื่อเห็น surface จริง แล้วแก้ทีละจุด
-3. `lazy` — มี rule แต่ไม่มีเหตุผล → แก้ root cause (Step 3)
-4. `justified` — เก็บไว้แต่ enforce format: narrowest scope + named rule + reason comment (`// eslint-disable-next-line no-console — intentional CLI output`) + link issue ถ้าเป็น workaround ชั่วคราว
+1. `stale` — just delete it (a directive that suppresses nothing — e.g. `eslint-disable` on code that already passes the rule; tools: `eslint --report-unused-disable-directives`, biome `--diagnostic-level=error` reports unused suppressions)
+2. `blanket` — file-level disables (`@ts-nocheck`, `eslint-disable` with no rule, `ignore_for_file`, `#![allow]`) → split into temporary per-line suppressions to see the real surface then fix each point
+3. `lazy` — has a rule but no reason → fix the root cause (Step 3)
+4. `justified` — keep it but enforce the format: narrowest scope + named rule + reason comment (`// eslint-disable-next-line no-console — intentional CLI output`) + link the issue if it is a temporary workaround
 
 ### 3. Fix Root Cause
 
-> Goal: แก้ปัญหาที่ suppress จริง ไม่ใช่ลบ comment แล้วปล่อย lint/typecheck พัง
+> Goal: fix the problem that is actually suppressed, not delete the comment and let lint/typecheck break
 
-| Suppressed อะไร | Fix จริง |
+| What is suppressed | The real fix |
 |-----------------|----------|
-| type error (`@ts-ignore`, `# type: ignore`) | แก้ types — proper types, narrowing, guards; cast เมื่อจำเป็นจริง (`as` + comment); generated/external code → `.d.ts` หรือ `skipLibCheck` scope |
-| lint rule violation | แก้ code ตาม rule — restructure logic, rename, split function; ถ้า rule ผิดพลาดทั้ง codebase → ปรับ config ที่ root (`update-config`) ไม่ใช่ suppress ทีละไฟล์ |
-| format suppression (`prettier-ignore`, `fmt: off`) | ลบ suppression แล้ว format — ถ้า code จงใจ layout เอง (ASCII art, aligned tables) → justified พร้อม reason |
-| security suppression (`# nosec`, `checkov:skip`) | แก้ root cause เสมอ — ไม่มี justified case โดยไม่มี written exception + expiry; escalate `/check-secrets` ถ้า suppress เพื่อซ่อน secret |
-| coverage suppression (`no cover`, `istanbul ignore`) | เขียน test แทน (`/update-tests`); เก็บได้เฉพาะ defensive branches ที่ unreachable จริง (`assert_never`, platform guards) พร้อม comment |
-| allow/expect ใน Rust/C | แก้ lint ที่ trigger — clippy suggestion ส่วนใหญ่แก้ได้ตรง; `#[allow]` ที่ block-level ดีกว่า item-level, item-level ดีกว่า crate-level |
+| type error (`@ts-ignore`, `# type: ignore`) | fix the types — proper types, narrowing, guards; cast when truly necessary (`as` + comment); generated/external code → `.d.ts` or `skipLibCheck` scope |
+| lint rule violation | fix the code per the rule — restructure logic, rename, split the function; if the rule is wrong across the whole codebase → adjust the config at the root (`update-config`) rather than suppressing file by file |
+| format suppression (`prettier-ignore`, `fmt: off`) | remove the suppression then format — if the code intentionally lays itself out (ASCII art, aligned tables) → justified with a reason |
+| security suppression (`# nosec`, `checkov:skip`) | always fix the root cause — there is no justified case without a written exception + expiry; escalate `/check-secrets` if suppressing to hide a secret |
+| coverage suppression (`no cover`, `istanbul ignore`) | write a test instead (`/update-tests`); keep only defensive branches that are truly unreachable (`assert_never`, platform guards) with a comment |
+| allow/expect in Rust/C | fix the lint that triggers — most clippy suggestions can be fixed directly; `#[allow]` at block-level is better than item-level, item-level is better than crate-level |
 
 ### 4. Enforce Going Forward
 
-> Goal: suppression ไม่กลับมาโดยไม่มีเหตุผล
+> Goal: suppressions do not come back without a reason
 
-1. enable unused-directive reporting ใน tool config — `reportUnusedDisableDirectives` (eslint ≥9 default), biome `linter` diagnostics, `#![warn(unused_attributes)]`
-2. lint rule/CI check — fail บน suppression ที่ไม่มี reason comment (eslint `eslint-plugin-eslint-comments`/`@eslint-community/eslint-comments` `require-description`; biome nursery `noSuppressionWithoutReason` ถ้ามี; custom `rg` gate เช่น `rg -l '(ts-ignore|eslint-disable|noqa|nolint)(?!\s*-\s*\w)'`)
-3. config-level exceptions ย้ายไปที่ root config (`.eslintrc` overrides, `biome.json` overrides) — ชัดกว่า comment กระจาย
-4. สำหรับ generated/vendor files → exclude ที่ tool config ไม่ใช่ suppression ใน file
+1. enable unused-directive reporting in the tool config — `reportUnusedDisableDirectives` (eslint ≥9 default), biome `linter` diagnostics, `#![warn(unused_attributes)]`
+2. lint rule/CI check — fail on suppressions without a reason comment (eslint `eslint-plugin-eslint-comments`/`@eslint-community/eslint-comments` `require-description`; biome nursery `noSuppressionWithoutReason` if available; a custom `rg` gate such as `rg -l '(ts-ignore|eslint-disable|noqa|nolint)(?!\s*-\s*\w)'`)
+3. config-level exceptions move to the root config (`.eslintrc` overrides, `biome.json` overrides) — clearer than scattered comments
+4. for generated/vendor files → exclude in the tool config, not with a suppression in the file
 
 ### 5. Verify
 
-> Goal: suppressions หายจริงและ code ยังผ่าน
+> Goal: suppressions are actually gone and the code still passes
 
-1. re-scan scope — count suppressions ก่อน/หลัง (`stale`/`lazy`/`blanket` → 0, `justified` เหลือพร้อม reason)
-2. ทำ `/run-lint` + `/run-typecheck` — ไม่มี errors ใหม่หลังลบ suppression
-3. ทำ `/run-verify` — tests ผ่าน behavior ไม่เปลี่ยน (suppression เป็น no-op ทาง runtime แต่ fix ข้างในเปลี่ยน code)
+1. re-scan the scope — count suppressions before/after (`stale`/`lazy`/`blanket` → 0, `justified` remaining with a reason)
+2. Do `/run-lint` + `/run-typecheck` — no new errors after removing the suppression
+3. Do `/run-verify` — tests pass, behavior unchanged (a suppression is a runtime no-op but the fix inside changes the code)
 4. `/report-before-after` — count per category: stale removed, lazy fixed, justified kept (with reasons), config-exceptions moved
 
 ## Rules
 
 ### 1. Fix, Don't Silence
 
-- ลบ suppression แล้วปล่อย lint/typecheck พัง = fail — ทุก suppression ที่ลบต้องแก้ underlying issue หรือ move ไป config override ที่เหมาะกว่า
-- ห้ามแทน `@ts-ignore` ด้วย `any` cast เพื่อหลบ — นั่นคือ suppression รูปแบบอื่น (แก้ types จริง)
+- Removing a suppression then letting lint/typecheck break = fail — every suppression removed must fix the underlying issue or move to a more suitable config override
+- Never replace `@ts-ignore` with an `any` cast to dodge it — that is suppression in another form (fix the types for real)
 
 ### 2. Justified Suppression Format
 
-- suppression ที่เหลือต้องมี: named rule (ห้าม blanket disable), narrowest scope (`next-line` > block > file > crate), reason comment ภาษาอังกฤษบนบรรทัดเดียวกันหรือเหนือ, issue/ticket link ถ้าเป็น workaround
-- security suppressions ต้องมี documented exception + expiry — ไม่มี exception → แก้ root cause เสมอ
+- A remaining suppression must have: a named rule (no blanket disable), the narrowest scope (`next-line` > block > file > crate), an English reason comment on the same line or above, an issue/ticket link if it is a workaround
+- security suppressions must have a documented exception + expiry — no exception → always fix the root cause
 
 ### 3. Generated And Vendor Code
 
-- generated code, vendored code, minified bundles → exclude ที่ tool config ไม่ใช่ suppress ใน file (files ถูก regenerate แล้ว suppression หายอยู่ดี)
+- generated code, vendored code, minified bundles → exclude in the tool config, not suppress in the file (the files get regenerated and the suppression disappears anyway)
 
 ### 4. Preserve Behavior
 
-- suppression removal ต้องไม่เปลี่ยน runtime behavior — fix ข้างในต้องผ่าน tests เดิม
-- ไม่ mix กับ feature work — commit แยกตาม category (stale → fixes → config moves)
+- suppression removal must not change runtime behavior — the fix inside must pass the existing tests
+- Do not mix with feature work — commit separately per category (stale → fixes → config moves)
 
 ### 5. Don't Over-Police
 
-- suppression ที่ justified ดีอยู่แล้ว (named rule + reason + scope แคบ) → เก็บไว้ ไม่ต้อง "fix" (`/dont-over-engineer`)
-- test files มี leniency มากกว่า — `@ts-expect-error` ใน negative tests คือ feature ไม่ใช่ suppression
+- A suppression that is already well justified (named rule + reason + narrow scope) → keep it, no need to "fix" (`/dont-over-engineer`)
+- test files have more leniency — `@ts-expect-error` in negative tests is a feature, not a suppression
 
-- ใช้ /deep-review-codebase ถ้าจำเป็น
-- ใช้ /deep-review-codebase ถ้าจำเป็น
-- ใช้ /run-lint ถ้าจำเป็น
-- ใช้ /run-typecheck ถ้าจำเป็น
+- Use /deep-review-codebase if necessary
+- Use /deep-review-codebase if necessary
+- Use /run-lint if necessary
+- Use /run-typecheck if necessary
 
 ## Expected Outcome
 
-- stale/blanket/lazy suppressions เหลือ 0 — เหลือเฉพาะ justified พร้อม named rule + reason + narrowest scope
-- security suppressions ทุกตัวมี documented exception หรือถูกแก้ root cause
-- config บังคับ: unused-directive reporting + reason-required gate
-- ผ่าน lint/typecheck/test/build — behavior เดิม
+- stale/blanket/lazy suppressions are down to 0 — leaving only justified ones with a named rule + reason + narrowest scope
+- every security suppression has a documented exception or was fixed at the root cause
+- the config enforces: unused-directive reporting + a reason-required gate
+- passes lint/typecheck/test/build — behavior unchanged

@@ -1,6 +1,6 @@
 ---
 name: grouping
-description: จัดกลุ่ม items ตามหมวดหมู่หรือคุณลักษณะ
+description: Group items by category or attribute
 argument-hint: "[scope]"
 related:
   - follow-best-practice
@@ -10,11 +10,11 @@ related:
 
 ## Goal
 
-จัดกลุ่ม items ตามหมวดหมู่หรือคุณลักษณะที่เกี่ยวข้อง
+Group items by related category or attribute
 
 ## Scope
 
-ใช้สำหรับจัดกลุ่ม code, files, workflows, หรือ data structures ใน project
+Used to group code, files, workflows, or data structures in a project
 
 ## Execute
 
@@ -22,50 +22,50 @@ related:
 
 > Goal: Identify Groups
 
-ระบุหมวดหมู่ที่เหมาะสม
+Identify the appropriate categories
 
-1. วิเคราะห์ items ที่มี
-2. ระบุคุณลักษณะที่เหมือนกัน
-3. กำหนด criteria สำหรับการจัดกลุ่ม
+1. Analyze the existing items
+2. Identify the shared attributes
+3. Define the criteria for grouping
 
 ### 2. Create Groups
 
 > Goal: Create Groups
 
-สร้าง groups ตาม criteria
+Create groups per the criteria
 
-1. จัดกลุ่ม items ตาม criteria
-2. ตั้งชื่อ groups ให้ชัดเจน
-3. จัดเรียง items ภายในแต่ละ group
+1. Group the items per the criteria
+2. Name the groups clearly
+3. Order the items within each group
 
 ### 3. Organize Structure
 
 > Goal: Organize Structure
 
-จัดโครงสร้างตาม groups
+Organize the structure per the groups
 
-1. สร้าง directories หรือ modules สำหรับแต่ละ group
-2. ย้าย items ไปยัง groups ที่เหมาะสม
-3. ตรวจสอบ structure ถูกต้อง
+1. Create directories or modules for each group
+2. Move the items to the appropriate groups
+3. Check that the structure is correct
 
 ## Rules
 
-- จัดกลุ่มตามความสัมพันธ์
-- ใช้ criteria ที่ชัดเจน
-- ถ้า folder มีไฟล์มากเกินไป ให้ grouping
-- หลีกเลี่ยง groups ที่ซ้อนทับ
-- รักษา consistency ทั่วทั้ง project
-- จัดกลุ่มตาม domain หรือ feature
-- จัดกลุ่มตาม layer (ui, logic, data)
-- จัดกลุ่มตาม type (components, utils, types)
-- ใช้ barrel exports สำหรับ groups
+- Group by relationship
+- Use clear criteria
+- If a folder has too many files, group them
+- Avoid overlapping groups
+- Maintain consistency throughout the project
+- Group by domain or feature
+- Group by layer (ui, logic, data)
+- Group by type (components, utils, types)
+- Use barrel exports for groups
 
-- ใช้ /follow-best-practice ถ้าจำเป็น
-- ใช้ /suggest-next-action ถ้าจำเป็น
-- ใช้ /resolve-errors ถ้าจำเป็น
+- Use /follow-best-practice if needed
+- Use /suggest-next-action if needed
+- Use /resolve-errors if needed
 
 ## Expected Outcome
 
-- Items ถูกจัดกลุ่มอย่างเหมาะสม
-- Structure ที่ชัดเจนและ maintainable
-- ง่ายต่อการค้นหาและ navigate
+- Items are grouped appropriately
+- A clear and maintainable structure
+- Easy to search and navigate

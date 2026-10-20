@@ -1,14 +1,12 @@
 # create-skills-from-manifest (merged content)
 
-> หมายเหตุ: เนื้อหาเดิมอ้าง path Windsurf เก่า — ใช้ %APPDATA%\devin\skills แทน
-
 ## Goal
 
-สร้าง skills ที่ขาดจาก dependencies ใน package manifest ที่ยังไม่มีใน global
+Create the skills missing from the dependencies in the package manifest that do not yet exist in the global
 
 ## Scope
 
-ครอบคลุมการอ่าน package manifest, เช็ค skills ใน global, และสร้าง skills ที่ขาด
+Covers reading the package manifest, checking the global skills, and creating the missing skills
 
 ## Execute
 
@@ -16,107 +14,107 @@
 
 > Goal: Read Package Manifest
 
-1. อ่าน `package.json` หรือ `Cargo.toml` จาก workspace
-2. ดึงรายชื่อ dependencies ที่มี skills ใน Cascade
-3. กรองเฉพาะ dependencies ที่มี official skills
+1. Read `package.json` or `Cargo.toml` from the workspace
+2. Extract the list of dependencies that have skills in the Devin global skills
+3. Filter to only the dependencies that have official skills
 
 ### 2. Check Skills In Global
 
 > Goal: Check Skills In Global
 
-1. อ่านรายการ skills ใน `C:\Users\Veerapong\.codeium\windsurf\skills`
-2. เปรียบเทียบ dependencies กับ skills ที่มีอยู่
-3. ระบุ skills ที่ยังไม่มีใน global
+1. Read the list of skills in `%APPDATA%\devin\skills`
+2. Compare the dependencies with the existing skills
+3. Identify the skills that do not yet exist in the global
 
 ### 3. Create Missing Skills
 
 > Goal: Create Missing Skills
 
-1. ทำ `/update-devin-global-skills` สำหรับแต่ละ skill ที่ขาด
-2. สร้าง folder structure ตามมาตรฐาน
-3. เขียน SKILL.md index และ content files
-4. ใช้ `/learn` (web) ก่อนเขียนเนื้อหา
+1. Run `/update-devin-global-skills` for each missing skill
+2. Create the folder structure per the standard
+3. Write the SKILL.md index and content files
+4. Use `/learn` (web) before writing the content
 
 ### 4. Update Test Specs
 
-> Goal: สร้าง/อัปเดต `<workspace>/specs/` สำหรับ test specs
+> Goal: Create/update `<workspace>/specs/` for test specs
 
-1. ทำ `/update-specs` เพื่อสร้าง/อัปเดต `specs/overview.md` และ `specs/SPEC.md`
-2. ตรวจว่า spec files สอดคล้องกับ project type และ dependencies
-3. ถ้า fail → retry (max 3 → stop/report)
+1. Run `/update-specs` to create/update `specs/overview.md` and `specs/SPEC.md`
+2. Check that the spec files match the project type and dependencies
+3. If it fails → retry (max 3 → stop/report)
 
 ### 5. Validate And Finalize
 
 > Goal: Validate And Finalize
 
-1. ตรวจสอบว่า skills ทั้งหมดถูกสร้างเสร็จ
-2. ใช้ `/deep-review-codebase` สำหรับทุกไฟล์
-3. ตรวจสอบ folder structure ถูกต้อง
-4. ใช้ `/update-references` หากมี file operations
+1. Verify that all skills have been created
+2. Use `/deep-review-codebase` for every file
+3. Verify the folder structure is correct
+4. Use `/update-references` if there are file operations
 
 ## Rules
 
 ### 1. Package Manifest Detection
 
-ตรวจสอบประเภท package manifest:
+Check the package manifest type:
 
-- `package.json` สำหรับ JavaScript/TypeScript projects
-- `Cargo.toml` สำหรับ Rust projects
-- `pyproject.toml` หรือ `requirements.txt` สำหรับ Python projects
+- `package.json` for JavaScript/TypeScript projects
+- `Cargo.toml` for Rust projects
+- `pyproject.toml` or `requirements.txt` for Python projects
 
 ### 2. Skills Mapping
 
-แมป dependencies กับ skills ที่มีใน Cascade:
+Map the dependencies to the skills available in the Devin global skills:
 
-- อ่าน skills list จาก Cascade system
-- ตรวจสอบว่า dependency มี official skill หรือไม่
-- กรองเฉพาะ dependencies ที่มี skills ในระบบ
+- Read the skills list from `%APPDATA%\devin\skills`
+- Check whether the dependency has an official skill
+- Filter to only the dependencies that have skills in the system
 
 ### 3. Global Skills Location
 
-ตำแหน่ง global skills:
+Location of the global skills:
 
-- `C:\Users\Veerapong\.codeium\windsurf\skills`
-- ตรวจสอบโฟลเดอร์ skill แต่ละตัว
-- อ่าน SKILL.md เพื่อยืนยันว่า skill มีอยู่จริง
+- `%APPDATA%\devin\skills`
+- Check each skill folder
+- Read SKILL.md to confirm the skill actually exists
 
 ### 4. Batch Creation
 
-สร้าง skills แบบ batch:
+Create skills in a batch:
 
-- สร้าง skills ที่ขาดทั้งหมดในครั้งเดียว
-- ใช้ `/update-devin-global-skills` สำหรับแต่ละ skill
-- รักษาความสม่ำเสมอทั้งหมด
+- Create all the missing skills at once
+- Use `/update-devin-global-skills` for each skill
+- Maintain consistency throughout
 
 ### 5. Error Handling
 
-จัดการกับข้อผิดพลาด:
+Handle errors:
 
-- ข้าม dependencies ที่ไม่มี skills
-- ข้าม skills ที่มีอยู่แล้ว
-- บันทึก skills ที่สร้างไม่สำเร็จ
+- Skip dependencies that have no skills
+- Skip skills that already exist
+- Record the skills that failed to be created
 
-- ใช้ /use-scripts ถ้าจำเป็น
-- ใช้ /check-reference ถ้าจำเป็น
-- ใช้ /report-config-files ถ้าจำเป็น
+- Use /use-scripts if needed
+- Use /check-reference if needed
+- Use /report-config-files if needed
 
 ## Expected Outcome
 
-- Skills ทั้งหมดจาก dependencies ถูกสร้างใน global
-- Folder structure ถูกต้องตามมาตรฐาน
-- Content มีคุณภาพและสมบูรณ์
-- ไม่มี duplicate skills
+- All skills from the dependencies are created in the global
+- The folder structure is correct per the standard
+- The content is high quality and complete
+- No duplicate skills
 
 ## Common Mistakes
 
-- ลืมตรวจสอบว่า dependency มี skill ในระบบหรือไม่
-- สร้าง skills ที่มีอยู่แล้วใน global
-- ไม่ใช้ `/update-devin-global-skills` ในการสร้าง
-- ไม่ตรวจสอบ folder structure หลังสร้าง
+- Forgetting to check whether the dependency has a skill in the system
+- Creating skills that already exist in the global
+- Not using `/update-devin-global-skills` to create them
+- Not checking the folder structure after creation
 
 ## Anti-Patterns
 
-- ❌ สร้าง skills โดยไม่ตรวจสอบ dependencies ที่มีอยู่
-- ❌ สร้าง skills แบบ manual ไม่ตามมาตรฐาน
-- ❌ ข้าม `/learn` (web) ก่อนเขียนเนื้อหา
-- ❌ ไม่ตรวจสอบคุณภาพ content
+- ❌ Creating skills without checking the existing dependencies
+- ❌ Creating skills manually without following the standard
+- ❌ Skipping `/learn` (web) before writing the content
+- ❌ Not checking the content quality

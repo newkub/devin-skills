@@ -1,6 +1,6 @@
 ---
 name: learn-from-web
-description: เรียนรู้จาก web sources — official docs, DeepWiki, Context7 — แล้วสกัดความรู้หรือสร้าง learning path
+description: Learn from web sources — official docs, DeepWiki, Context7 — then extract knowledge or build a learning path
 argument-hint: "[url-or-topic]"
 related:
   - learn
@@ -12,110 +12,111 @@ related:
   - create-report-in-dot-devin
   - check-reference
   - use-scripts
+  - use-lightpanda
 ---
 
 ## Goal
 
-เรียนรู้และสกัดความรู้จาก web sources — official docs, DeepWiki, Context7, Web Search — แล้วสรุปเป็น learning path, content, หรือ reference files ครอบคลุม features, APIs และ use cases
+Learn and extract knowledge from web sources — official docs, DeepWiki, Context7, Web Search — then summarize it into a learning path, content, or reference files covering features, APIs, and use cases
 
 ## Scope
 
-- ใช้เมื่อต้องเรียนรู้จาก URL/docs/article/repo ภายนอก — ไม่ใช่ codebase ในเครื่อง (ใช้ `/learn-from-codebase`), ไม่ใช่ CLI binary (ใช้ `/learn-from-cli`), ไม่ใช่ `.d.ts` API surface (ใช้ `/check-types-definition`)
-- ครอบคลุม: official docs, guides, API references, blog posts, GitHub repos
-- Output: learning path ในแชท, content files, หรือ `references/` ของ skill — ไม่แก้ code
-- ดูเพิ่มเติม: `/deep-research` (cross-check หลายแหล่ง/เสี่ยงสูง), `/learn` (dispatcher)
+- Use when you need to learn from an external URL/docs/article/repo — not a local codebase (use `/learn-from-codebase`), not a CLI binary (use `/learn-from-cli`), not a `.d.ts` API surface (use `/check-types-definition`)
+- Covers: official docs, guides, API references, blog posts, GitHub repos
+- Output: a learning path in chat, content files, or a skill's `references/` — does not modify code
+- See also: `/deep-research` (cross-check multiple sources/high risk), `/learn` (dispatcher)
 
 ## Execute
 
 ### 1. Gather Sources
 
-> Goal: รวบรวมแหล่งข้อมูลที่น่าเชื่อถือ
+> Goal: Gather trustworthy sources
 
-1. ถ้า user ให้ URL → `webfetch` อ่านตรงๆ ก่อน
-2. ถ้าเป็น topic → `web_search` หา official docs ก่อน (docs > blog > forum)
-3. ใช้ `crw` tools (`crw_scrape`, `crw_map`, `crw_crawl`) สำหรับ deep site crawl เมื่อต้องการหลายหน้า
-4. ระบุ source หลัก 1-3 แหล่ง + supporting สูงสุด 5 แหล่ง
+1. If the user provides a URL → `webfetch` to read it directly first
+2. If it is a topic → `web_search` to find the official docs first (docs > blog > forum)
+3. Use the `crw` tools (`crw_scrape`, `crw_map`, `crw_crawl`) for deep site crawl when you need multiple pages
+4. Identify 1-3 primary sources + at most 5 supporting sources
 
 ### 2. Research Systematically
 
-> Goal: สกัดความรู้จาก official docs อย่างครบถ้วน
+> Goal: Extract knowledge from official docs comprehensively
 
-ทำตาม [references/web-research.md](references/web-research.md) — ลำดับ `Official Docs` → `DeepWiki` → `Context7` → `Web Search` พร้อม knowledge extraction และ validation
+Follow [references/web-research.md](references/web-research.md) — the order `Official Docs` → `DeepWiki` → `Context7` → `Web Search` with knowledge extraction and validation
 
 ### 3. Identify Critical Path
 
-> Goal: หาเส้นทาง "เข้าใจได้เร็วสุด"
+> Goal: Find the "fastest route to understanding"
 
-1. เรียงลำดับการอ่าน: overview → concepts หลัก → getting started → 1-2 flows แบบ end-to-end
-2. ตัด: marketing pages, changelogs, legacy docs ที่ไม่ใช้แล้ว
-3. ระบุส่วนที่ต้องอ่านจริง vs skim ได้
+1. Order the reading: overview → core concepts → getting started → 1-2 end-to-end flows
+2. Cut: marketing pages, changelogs, legacy docs no longer used
+3. Identify what must really be read vs what can be skimmed
 
 ### 4. Build Concept Ladder
 
-> Goal: concepts ที่ต้องรู้ก่อนอ่านแต่ละส่วน
+> Goal: The concepts that must be known before reading each part
 
-1. ระบุ prerequisite knowledge ต่อ section
-2. ลิงก์กลับไป skills/`follow-*` ที่ตรง stack ถ้าเกี่ยว
-3. ระบุ "gotchas" — จุดที่ docs หลอกหรือ deprecated
+1. Identify the prerequisite knowledge for each section
+2. Link back to skills/`follow-*` that match the stack if relevant
+3. Identify "gotchas" — points where the docs mislead or are deprecated
 
 ### 5. Produce Output
 
-> Goal: ผลลัพธ์ตรง context การเรียก
+> Goal: The output matches the calling context
 
-- ถ้าเรียนเพื่อตัวเอง → เขียน learning path ตามโครงสร้างข้างล่าง
-- ถ้าถูกเรียกเพื่อ dependency ของ skill → เขียน reference files จริงตาม `update-devin-global-skills` (`## Conventions → Write References`) (บังคับ ห้ามข้าม)
-- ถ้าเขียน content หลายไฟล์ → ทำ `/check-reference` ทุกชิ้น และ `/use-scripts` ถ้า >10 ไฟล์
+- If learning for yourself → write a learning path following the structure below
+- If called as a dependency of a skill → write actual reference files per `update-devin-global-skills` (`## Conventions → Write References`) (mandatory, do not skip)
+- If writing content across many files → run `/check-reference` on each piece, and `/use-scripts` if >10 files
 
 ```markdown
 # Learning Path: <topic>
 
 ## Level 0: Big Picture (10 min)
-- อ่าน: <main docs URL> — overview/landing
-- เข้าใจ: <core concept diagram>
+- Read: <main docs URL> — overview/landing
+- Understand: <core concept diagram>
 
 ## Level 1: Concepts
-- อ่าน: <concepts URL> — domain terms และ mental model
+- Read: <concepts URL> — domain terms and mental model
 
 ## Level 2: Hands-on
-- ตาม: <tutorial/guide URL> — step-by-step จริง
+- Follow: <tutorial/guide URL> — a real step-by-step
 
 ## Level 3: Depth
 - API reference, edge cases, advanced topics
 
 ## Gotchas
-- <สิ่งที่ docs ไม่บอกหรือคนมักพลาด>
+- <what the docs do not tell you or what people often miss>
 
 ## Sources
-- <URL ทั้งหมดที่ใช้พร้อม one-line summary>
+- <all URLs used with a one-line summary>
 ```
 
-5. บันทึกด้วย `/create-report-in-dot-devin` ถ้า user ต้องการเก็บ
+5. Record it with `/create-report-in-dot-devin` if the user wants to keep it
 
 ## Rules
 
 ### 1. From Real Sources
 
-- ทุก step ต้องชี้ URL จริงที่ fetch แล้ว verify — ไม่ใช่ generic "อ่าน docs"
-- cite sources เสมอ — แต่ละ claim ต้อง trace กลับไปหา source ได้
-- ลำดับ source: `Official Docs` → `DeepWiki` → `Context7` → `Web Search`
+- Every step must point to a real URL that was fetched and verified — not a generic "read the docs"
+- Always cite sources — each claim must be traceable back to its source
+- Source order: `Official Docs` → `DeepWiki` → `Context7` → `Web Search`
 
 ### 2. Minimal Path
 
-- เลือกเส้นทางสั้นที่สุดที่ให้ความเข้าใจ 80% — ไม่ใช่ครอบทุกหน้า
-- ระบุสิ่งที่ข้ามและเหตุผล
+- Choose the shortest route that gives 80% understanding — not covering every page
+- State what is skipped and why
 
 ### 3. Freshness
 
-- ตรวจ last-updated ของ docs — เตือนถ้า stale หรือ deprecated
-- ถ้า source ต่อกันขัดแย้ง → ระบุและเลือก official/current
+- Check the last-updated of the docs — warn if stale or deprecated
+- If sources conflict with each other → state it and choose official/current
 
 ### 4. Content Quality
 
-- ใช้ backticks สำหรับ `tools`, `commands`, `paths`, `skill-name`
-- ไม่เกิน 250 บรรทัดต่อไฟล์ — ไม่มี TODO/MOCK/placeholder
+- Use backticks for `tools`, `commands`, `paths`, `skill-name`
+- No more than 250 lines per file — no TODO/MOCK/placeholder
 
 ## Expected Outcome
 
-- Learning path ที่ตามอ่านได้จริงพร้อม URLs และ concepts หรือ reference files จริงครบถ้วน
-- Source map ชัดเจนพร้อม citations
-- Gotchas ที่ช่วยเลี่ยงความเข้าใจผิด
+- A learning path that can actually be followed, with URLs and concepts, or a complete set of real reference files
+- A clear source map with citations
+- Gotchas that help avoid misunderstandings

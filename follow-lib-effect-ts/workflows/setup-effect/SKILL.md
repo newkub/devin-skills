@@ -63,7 +63,7 @@ Install Effect-TS and configure TypeScript/project structure so `Effect`, `Layer
 
 > Goal: typecheck and the smoke effect pass
 
-1. Run `bunx tsc --noEmit` until it passes
+1. Run `bun check` until it passes
 2. Write a small smoke effect (service + layer + run at the entry) and run it to get output
 3. If tests exist → `bunx vitest run` passes (use `it.effect` from `@effect/vitest`)
 4. If verification fails → run `/resolve-errors` max 3 rounds, then stop and report; if it passes → `/suggest-next-action`

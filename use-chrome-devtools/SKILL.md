@@ -11,6 +11,7 @@ related:
   - record-video-web-with-agents-browser
   - run-test
   - resolve-errors
+  - use-lightpanda
 ---
 
 ## Goal

@@ -141,7 +141,7 @@ A read-only reviewer contract for fan-out via `/use-subagents` — merged from t
 - frontmatter: `name` = dir (Critical if missing/mismatched), `description` ≤100 (Low if over, Info if unclear), `related` missing/unused (High), a `related` entry never mentioned in the body = orphan (Medium), abnormal circular chain (High)
 - sections: `Goal` → `Scope` → `Execute` → `Rules` → `Expected Outcome` — missing = Critical, wrong order = High; `## Execute` ≤10 steps (Medium), `### N.` + `> Goal:` + numbered list (missing Goal = High, bullets instead of a numbered list = Medium)
 - line count: missing `SKILL.md` = Critical; `SKILL.md` way over 250 = Critical, other files >250 = Medium, 251-260 = Low; TODO/MOCK/placeholder = High; `references/` kebab-case flat, has deps but no `references/` = Medium
-- style: backticks for tools/commands/paths/skill names (missing = Medium), no `**` bold (Medium), English headings Title Case (Low)
+- style: backticks for tools/commands/paths/skill names (missing = Medium), no `**` bold (Medium), English headings Title Case (Low), Thai prose instead of English (Medium)
 - template: prefix ↔ execute pattern per `update-devin-global-skills` `## Conventions → Templates`; `follow-*-architecture` → architecture pattern; mismatch without a stated reason in `## Scope` = High, unclear reason = Medium
 
 ### Hooks

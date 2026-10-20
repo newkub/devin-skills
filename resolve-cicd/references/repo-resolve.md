@@ -4,7 +4,7 @@
 
 
 
-ขั้นตอนสำหรับ `/resolve-cicd` เมื่อได้รับ repo หรือตรวจพบ repo ปัจจุบัน โดย resolve ทั้ง GitHub Actions และ Cloudflare Workers/Pages ทีตรงกับ repo นั้น
+Steps for `/resolve-cicd` when it receives a repo or detects the current repo, resolving both GitHub Actions and Cloudflare Workers/Pages that match that repo
 
 
 
@@ -12,7 +12,7 @@
 
 
 
-ตรวจสอบและแก้ไข CI/CD failures สำหรับ project/repo ทีระบุ ครอบคลุม GitHub Actions และ Cloudflare
+Inspect and fix CI/CD failures for the specified project/repo, covering GitHub Actions and Cloudflare
 
 
 
@@ -20,7 +20,7 @@
 
 
 
-ใช้กับ repo ปัจจุบันหรือ repo ที user ระบุ โดยหา worker/project ทีตรงกับ repo name แล้ว resolve
+Use with the current repo or a repo the user specifies, finding the worker/project that matches the repo name then resolving it
 
 
 
@@ -32,13 +32,13 @@
 
 
 
-> Goal: ระบุ repo ปัจจุบัน
+> Goal: Identify the current repo
 
-1. ถ้ามี argument `--repo` → ใช้ค่านั้น
+1. If there is a `--repo` argument → use that value
 
-2. ถ้าไม่มี → รัน `gh repo view --json nameWithOwner` หรือ `git remote -v` จาก current directory
+2. If not → run `gh repo view --json nameWithOwner` or `git remote -v` from the current directory
 
-3. ถ้าหาไม่พบ → ทำ `/ask-me`
+3. If not found → run `/ask-me`
 
 
 
@@ -46,13 +46,13 @@
 
 
 
-> Goal: แก้ไข GitHub Actions สำหรับ repo
+> Goal: Fix GitHub Actions for the repo
 
-1. ทำ `/resolve-github-actions-fails --repo <owner/repo>`
+1. Run `/resolve-github-actions-fails --repo <owner/repo>`
 
-2. ถ้าไม่มี local repo ต้องการ code fix → ใช้ `/search-project-in-drive-d <repo-name>`
+2. If there is no local repo and a code fix is needed → use `/search-project-in-drive-d <repo-name>`
 
-3. บันทึกผล runs ที resolve ได้และค้าง
+3. Record the runs that were resolved and those still pending
 
 
 
@@ -60,17 +60,17 @@
 
 
 
-> Goal: แก้ไข Cloudflare Workers/Pages ทีตรงกับ repo
+> Goal: Fix the Cloudflare Workers/Pages that match the repo
 
-1. หา worker name ทีตรงกับ repo name หรือ project name จาก `wrangler.toml`
+1. Find the worker name that matches the repo name or the project name from `wrangler.toml`
 
-2. ทำ `/resolve-cloudflare-worker-fails --worker <worker-name>` หรือ `/resolve-all-cloudflare-worker-fails --project <project-name>`
+2. Run `/resolve-cloudflare-worker-fails --worker <worker-name>` or `/resolve-all-cloudflare-worker-fails --project <project-name>`
 
-3. ถ้าไม่พบ worker ทีตรงกับ repo → ข้ามและบันทึกว่าไม่มี Cloudflare resource
+3. If no worker matching the repo is found → skip and record that there is no Cloudflare resource
 
-4. ถ้าพบ local project ทีตรงกัน → ใช้ `/search-project-in-drive-d <worker-name>` แล้ว `wrangler deploy`
+4. If a matching local project is found → use `/search-project-in-drive-d <worker-name>` then `wrangler deploy`
 
-5. ทำซ้ำสูงสุด 3 รอบ
+5. Repeat up to 3 rounds
 
 
 
@@ -78,13 +78,13 @@
 
 
 
-> Goal: ยืนยันว่า CI/CD ของ repo ผ่าน
+> Goal: Confirm that the repo's CI/CD passes
 
-1. รัน `gh run list --repo <owner/repo> --status failure --limit 10` อีกครั้ง
+1. Run `gh run list --repo <owner/repo> --status failure --limit 10` again
 
-2. ถ้ายังมี failure → กลับไปขั้นตอน 2 หรือ 3
+2. If there are still failures → return to step 2 or 3
 
-3. ถ้าผ่าน → ไป Report
+3. If it passes → go to Report
 
 
 
@@ -92,13 +92,13 @@
 
 
 
-> Goal: สรุปผล
+> Goal: Summarize the results
 
-1. ใช้ `/report table` คอลัมน์: No., Repo, CI Status, CD Status, Action Taken, Notes
+1. Use `/report table` with columns: No., Repo, CI Status, CD Status, Action Taken, Notes
 
-2. สรุป: resolve ได้, ค้าง, manual-fix-required
+2. Summary: resolved, pending, manual-fix-required
 
-3. ทำ `/suggest-next-action`
+3. Run `/suggest-next-action`
 
 
 
@@ -108,33 +108,33 @@
 
 ### 1. Scope
 
-- resolve เฉพาะ project/repo ทีตรงกับ repo ทีระบุ
+- Resolve only the project/repo that matches the specified repo
 
-- ไม่ขยับไป repo อื่นโดยอัตโนมัติ
+- Do not move to another repo automatically
 
 
 
 ### 2. Worker Matching
 
-- worker name สามารถตรงกับ repo name หรือ slug ของ project
+- The worker name can match the repo name or the project slug
 
-- ถ้าไม่ชัด → ใช้ Cloudflare API list workers/pages แล้ว filter ด้วย repo name
+- If unclear → use the Cloudflare API to list workers/pages then filter by repo name
 
 
 
 ### 3. Local Project
 
-- ใช้ `/search-project-in-drive-d` หา local project
+- Use `/search-project-in-drive-d` to find the local project
 
-- ถ้าไม่พบ → ทำเครื่องหมาย `manual-fix-required`
+- If not found → mark as `manual-fix-required`
 
 
 
 ### 4. Safety
 
-- ถาม user ก่อน deploy/redeploy worker ถ้ามีผลกระทบสูง
+- Ask the user before deploy/redeploy of a worker if the impact is high
 
-- ไม่ commit/push อัตโนมัติ
+- Do not commit/push automatically
 
 
 
@@ -142,8 +142,8 @@
 
 
 
-- GitHub Actions ของ repo ไม่มี failures ค้าง
+- The repo's GitHub Actions has no remaining failures
 
-- Cloudflare Workers/Pages ทีตรงกับ repo ถูก resolve หรือทำเครื่องหมาย manual-fix-required
+- Cloudflare Workers/Pages matching the repo are resolved or marked manual-fix-required
 
-- ตารางสรุป repo-scoped CI/CD status
+- A summary table of repo-scoped CI/CD status

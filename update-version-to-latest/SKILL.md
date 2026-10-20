@@ -22,7 +22,7 @@ Update dependencies, runtime, tools, CI versions, and versioned config in every 
 - Use the right tool per ecosystem: `bun`/`bunx taze` for Node/Bun, `cargo update` for Rust, `go get -u ./...` for Go, `pip install -U` or `uv` for Python
 - Supports monorepos: Moon, Turbo, pnpm workspace, Cargo workspace
 - One-shot run: dry-run → update → install → build → test → `/deep-test usage` → report
-- Executor ของ domain dependencies/runtime/tools/CI ตาม dispatch table ใน `/follow-up-to-date`
+- The executor for the dependencies/runtime/tools/CI domains per the dispatch table in `/follow-up-to-date`
 - Fast path: workflow `workflows/update-versions/SKILL.md` — a one-shot flow that updates every ecosystem (detect → dry-run → snapshot → update → install → diff report → verify) with no changelog analysis or separate batch commits; use the full Steps 1-8 flow when you need changelog analysis, a major migration, or separate batch commits
 
 ## Execute

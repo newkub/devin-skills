@@ -1,6 +1,6 @@
 ---
 name: idea-use-skills-relations
-description: สร้างไอเดีย skill relations — จุดที่ควรใช้ use-related-skills และ edges ที่ขาด
+description: Generate skill relation ideas — points where use-related-skills should be used and missing edges
 argument-hint: "[skill-name|family|all]"
 related:
   - use-related-skills
@@ -15,86 +15,86 @@ related:
 
 ## Goal
 
-สร้างไอเดียและ draft สำหรับปรับปรุง skill relations — วิเคราะห์ `related` graph ทั้งหมด หา edges ที่ขาด จุดที่ควรเรียก `use-related-skills` และโครงสร้าง relation ใหม่ที่ควรมี (ไม่ implement จริงจนกว่า user confirm → `/follow-your-suggestion`)
+Generate ideas and a draft for improving skill relations — analyze the whole `related` graph, find missing edges, points where `use-related-skills` should be invoked, and new relation structures that should exist (don't actually implement until the user confirms → `/follow-your-suggestion`)
 
 ## Scope
 
-ใช้เมื่อต้องการตรวจและขยาย relations ระหว่าง devin global skills:
+Use when you want to check and expand the relations between devin global skills:
 
-- skill ที่เขียน/แก้เสร็จแล้วแต่ยังไม่มี `related` หรือ `related` ตรงไม่ครบ
-- skills ที่ workflow ควรจบด้วย `/use-related-skills` แต่ไม่ได้เรียก (เช่น `create-*`, `update-*`, `new-*` skills)
-- relation ขาดความสมมาตร — A อ้าง B แต่ B ไม่อ้าง A กลับ
-- ไอเดีย skill ใหม่ประเภท relation (`use-*`, `follow-*`) ที่ยังไม่มี
+- skills that are written/edited but have no `related` yet, or whose `related` doesn't match completely
+- skills whose workflow should end with `/use-related-skills` but doesn't invoke it (e.g. `create-*`, `update-*`, `new-*` skills)
+- relations lacking symmetry — A references B but B doesn't reference A back
+- ideas for a new relation-type skill (`use-*`, `follow-*`) that don't exist yet
 
 ## Execute
 
 ### 1. Select Scope
 
-> Goal: ระบุขอบเขต skills ที่จะวิเคราะห์
+> Goal: Define the scope of skills to analyze
 
-1. ถ้า argument ระบุ skill/family → ใช้ตรงๆ; ถ้า `all` หรือไม่ระบุ → survey ทั้ง global skills directory
-2. ทำ `/list-devin-global-skills` เพื่อได้รายการ skills ทั้งหมดพร้อม `name`, `description`
-3. อ่าน `SKILL.md` frontmatter + `Execute` ของแต่ละ skill ใน scope
-4. ถ้า scope > 10 skills → ทำ `/create-plan-in-dot-devin` แทนการวิเคราะห์ในรอบเดียว
+1. If the argument specifies a skill/family → use it directly; if `all` or unspecified → survey the whole global skills directory
+2. Run `/list-devin-global-skills` to get the full list of skills with `name`, `description`
+3. Read the `SKILL.md` frontmatter + `Execute` of each skill in scope
+4. If scope > 10 skills → run `/create-plan-in-dot-devin` instead of analyzing in a single round
 
 ### 2. Build Relations Graph
 
-> Goal: มี map ของ relations ที่มีอยู่จริงก่อนเสนอไอเดีย
+> Goal: Have a map of existing relations before proposing ideas
 
-1. รวม `related` ของทุก skill เป็น directed edges `A -> B`
-2. รวม explicit invocations ใน body (`ทำ /skill-name`, `ใช้ /skill-name`) เป็น edges อีกชนิด
-3. หา edges ที่ชี้ไปยัง skill ที่ไม่มีอยู่จริง → broken references
-4. หา asymmetric pairs — `A.related` มี B แต่ `B.related` ไม่มี A — แล้วตัดสินใจว่าควร symmetric หรือตั้งใจ (ไม่ใช่ทุก pair ต้องสองทาง)
+1. Combine the `related` of all skills into directed edges `A -> B`
+2. Combine explicit invocations in the body (`run /skill-name`, `use /skill-name`) as another kind of edge
+3. Find edges pointing to a skill that doesn't actually exist → broken references
+4. Find asymmetric pairs — `A.related` has B but `B.related` doesn't have A — then decide whether they should be symmetric or intentional (not every pair needs to be two-way)
 
 ### 3. Identify Relation Gaps
 
-> Goal: หาจุดที่ relations ควรมีแต่ขาด
+> Goal: Find points where relations should exist but are missing
 
-1. skill ที่ `Execute` เรียก `/skill-name` แต่ไม่ได้ list ใน `related` → เพิ่ม edge เข้า `related`
-2. skill ประเภท `create-*`, `update-*`, `new-*` ที่แตะ `SKILL.md` หรือ `global_rules.md` แต่ไม่จบด้วย `/use-related-skills` → เสนอเพิ่ม step
-3. skills ที่ Goal/Scope ซ้อนทับกันแต่ไม่ link กัน (เช่น `idea-*` กับ `review-*` ใน domain เดียวกัน) → เสนอ complementary edges
-4. skill ที่ถูกเรียกบ่อยแต่ไม่มีใคร link กลับ → เสนอ reverse edges
-5. เปรียบเทียบกับผล `/search-skills` — skill ที่ search แนะนำร่วมกันแต่ `related` ไม่สะท้อน
+1. Skills whose `Execute` invokes `/skill-name` but doesn't list it in `related` → add an edge to `related`
+2. `create-*`, `update-*`, `new-*` type skills that touch `SKILL.md` or `global_rules.md` but don't end with `/use-related-skills` → propose adding a step
+3. Skills whose Goal/Scope overlaps but that aren't linked (e.g. `idea-*` and `review-*` in the same domain) → propose complementary edges
+4. Skills that are frequently invoked but that nobody links back to → propose reverse edges
+5. Compare with the results of `/search-skills` — skills that search recommends together but `related` doesn't reflect
 
 ### 4. Draft Relation Ideas
 
-> Goal: เขียน draft ต่อ idea ไม่แก้ไฟล์จริง
+> Goal: Write a draft per idea without editing files yet
 
-1. ต่อ idea ระบุ:
+1. Per idea, specify:
    - `type`: `add-related-edge`, `add-invocation-step`, `new-skill`, `remove-broken-ref`
-   - `source skill`, `target skill`, เหตุผล และ relation kind (`direct dependency`, `complementary`, `follow-up`, `alternative`)
-   - diff draft ของ frontmatter/Execute step ที่จะแก้ (ไม่ apply จนกว่า confirm)
-2. สำหรับ `new-skill` ideas → ระบุชื่อ รูป `<verb>-<domain>` และ draft `name`/`description`/`related` — implementation อยู่ที่ `/idea-new-devin-global-skills` + `/update-devin-global-skills`
-3. ทำ `/report` table: `No.`, `Type`, `Source`, `Target`, `Kind`, `Rationale`, `Priority` — continuous numbering ไม่ reset ระหว่าง runs
+   - `source skill`, `target skill`, the rationale, and the relation kind (`direct dependency`, `complementary`, `follow-up`, `alternative`)
+   - a draft diff of the frontmatter/Execute step to change (not applied until confirmed)
+2. For `new-skill` ideas → specify the name in the form `<verb>-<domain>` and draft `name`/`description`/`related` — implementation lives in `/idea-new-devin-global-skills` + `/update-devin-global-skills`
+3. Run `/report` table: `No.`, `Type`, `Source`, `Target`, `Kind`, `Rationale`, `Priority` — continuous numbering, no reset between runs
 
 ### 5. Validate And Handoff
 
-> Goal: ตรวจ draft และส่งต่อให้ skill ที่ implement จริง
+> Goal: Check the draft and hand off to the skill that actually implements
 
-1. ตรวจว่า target skill ทุกตัวมีอยู่จริง ไม่ซ้ำ `related` เดิม และไม่เสนอ self-reference
-2. จัดลำดับตาม impact: broken refs > missing invocation steps > missing edges > new-skill ideas
-3. ถ้า user confirm → ทำ `/follow-your-suggestion` แล้ว apply ผ่าน `/use-related-skills` (step Update Related Skills) หรือ `/update-devin-global-skills` — skill นี้คือ idea/draft เท่านั้น
-4. ถ้า draft แตะ `global_rules.md` → ระบุว่า apply ต้องผ่าน `/update-devin-harness`
-5. ถ้าไม่มี gaps → report ว่า graph สมบูรณ์แล้วและทำ `/suggest-next-action`
+1. Check that every target skill actually exists, doesn't duplicate the existing `related`, and isn't a self-reference
+2. Rank by impact: broken refs > missing invocation steps > missing edges > new-skill ideas
+3. If the user confirms → run `/follow-your-suggestion` then apply via `/use-related-skills` (the Update Related Skills step) or `/update-devin-global-skills` — this skill is idea/draft only
+4. If the draft touches `global_rules.md` → specify that applying must go through `/update-devin-harness`
+5. If there are no gaps → report that the graph is already complete and run `/suggest-next-action`
 
 ## Rules
 
 ### 1. Draft Only
 
-- ห้ามแก้ `SKILL.md`, `related` หรือ `global_rules.md` ใน skill นี้ — ออก draft เท่านั้น แล้ว handoff ให้ `/use-related-skills`, `/update-devin-global-skills` หรือ `/update-devin-harness`
-- ทุก idea ต้องอ้าง evidence จากไฟล์จริง (frontmatter, Execute steps) — ห้ามเดาจากชื่ออย่างเดียว
-- `related` edge ที่เสนอต้องสมเหตุสมผลทั้งทาง (`Goal`/`Scope`/`Execute` เกี่ยวข้องจริง) — ไม่ใช่ link ทุกอย่างเข้าด้วยกัน
+- Never edit `SKILL.md`, `related`, or `global_rules.md` in this skill — only produce a draft, then hand off to `/use-related-skills`, `/update-devin-global-skills`, or `/update-devin-harness`
+- Every idea must cite evidence from real files (frontmatter, Execute steps) — never guess from the name alone
+- Proposed `related` edges must make sense both ways (`Goal`/`Scope`/`Execute` genuinely related) — not just linking everything together
 
 ### 2. Relation Quality
 
-- ไม่บังคับ symmetry — เสนอ reverse edge เฉพาะเมื่อ target ควรรู้ว่ามี source เรียกใช้มัน
-- จำกัด `related` ≤ 10 entries ต่อ skill — ถ้าเกินให้เสนอเฉพาะที่เกี่ยวข้องสุดและเหตุผลว่าควรตัดอะไร
-- เมื่อเสนอ invocation step ให้เขียนตาม `update-devin-global-skills` (`## Conventions → Invoke Skills`)
-- continuous numbering ต่อจาก idea report เดิมถ้ามี — ไม่ลบไอเดียเก่า
+- Don't force symmetry — propose a reverse edge only when the target should know that a source invokes it
+- Limit `related` to ≤ 10 entries per skill — if it exceeds this, propose only the most relevant and explain what should be dropped
+- When proposing an invocation step, write it per `update-devin-global-skills` (`## Conventions → Invoke Skills`)
+- Continuous numbering continuing from the previous idea report if any — don't delete old ideas
 
 ## Expected Outcome
 
-- relations graph ของ skills ใน scope พร้อม broken/asymmetric edges ที่พบ
-- ตาราง ideas: edges ที่ควรเพิ่ม, จุดที่ควรเรียก `/use-related-skills`, skill ideas ใหม่
-- priority + rationale ต่อ idea พร้อม diff draft ที่ apply ได้ทันทีหลัง confirm
-- handoff path ชัดเจน (`/follow-your-suggestion` → `/use-related-skills` หรือ `/update-devin-global-skills`)
+- The relations graph of skills in scope with the broken/asymmetric edges found
+- An ideas table: edges to add, points where `/use-related-skills` should be invoked, new skill ideas
+- Priority + rationale per idea with a draft diff that can be applied immediately after confirmation
+- A clear handoff path (`/follow-your-suggestion` → `/use-related-skills` or `/update-devin-global-skills`)

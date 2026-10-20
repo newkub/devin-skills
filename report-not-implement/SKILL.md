@@ -54,7 +54,7 @@ Detect and report everything the codebase "claims to have but does not really ha
 
 > Goal: Things the user can see or invoke but that have no real effect
 
-1. dead UI: `onClick={() => {}}`, `href="#"`, permanently `disabled` without a condition, dialogs/modals/menus with no open logic, forms without a submit handler, `alert()`/`console.log` instead of an action, 'coming soon'/'ยังไม่พร้อม'/'暂未实现' messages
+1. dead UI: `onClick={() => {}}`, `href="#"`, permanently `disabled` without a condition, dialogs/modals/menus with no open logic, forms without a submit handler, `alert()`/`console.log` instead of an action, 'coming soon'/'not ready yet'/'暂未实现' messages
 2. Actually render and verify — do not just read source → use `/deep-test website` or `/deep-test e2e` click-through of every route, then classify each element as `works`/`fake`/`missing`
 3. unwired code: components/handlers/usecases that exist but nobody calls them (not registered on a route, not exported through a barrel, not mounted) → confirm with `/follow-tool-knip` before concluding
 4. config/env that code reads but is absent from `.env.example`/manifest → treat as not implemented (cannot really run) — use `/check-secrets env-vars`

@@ -13,68 +13,68 @@ related:
 
 ## Goal
 
-อ่านและสกัดความรู้จาก references ที่ user ชี้มาโดยตรง — หลายแหล่งผสมกัน (local files, GitHub repos, docs, skills) — แล้วสรุปเป็น patterns, conventions, หรือ knowledge ที่นำไปใช้กับ task ปัจจุบันได้ทันที
+Read and extract knowledge from references the user points to directly — several sources mixed together (local files, GitHub repos, docs, skills) — then summarize it into patterns, conventions, or knowledge that can be applied to the current task immediately
 
 ## Scope
 
-- ใช้เมื่อ user ให้ reference ชี้เป้า (`@file`, URL, repo, ชื่อ skill) — ถ้าเป็น web docs อย่างเดียว → `/learn-from-web`; codebase ในเครื่องล้วน → `/learn-from-codebase`; CLI binary → `/learn-from-cli`
-- ครอบคลุม: reference implementations, example repos, API docs, skill `references/` dirs, design/pattern docs
-- Output: สรุป patterns + conventions ในแชท, เขียน `references/` ให้ skill, หรือ apply เข้างาน — **ไม่ copy โค้ดตรงๆ** โดยไม่เข้าใจ
-- ตรวจความถูกต้องของ claims จาก references → `/check-reference`; cross-check หลายแหล่ง/เสี่ยงสูง → `/deep-research`
+- Use when the user gives a pointed reference (`@file`, URL, repo, skill name) — if it is web docs only → `/learn-from-web`; a purely local codebase → `/learn-from-codebase`; a CLI binary → `/learn-from-cli`
+- Covers: reference implementations, example repos, API docs, skill `references/` dirs, design/pattern docs
+- Output: summarize patterns + conventions in chat, write `references/` for a skill, or apply them into the work — **do not copy code directly** without understanding it
+- Verify the correctness of claims from references → `/check-reference`; cross-check multiple sources/high risk → `/deep-research`
 
 ## Execute
 
-### 1. รวบรวม References
+### 1. Gather References
 
-> Goal: รู้ว่ามีแหล่งไหนบ้างและอ่านได้ยังไง
+> Goal: Know which sources there are and how to read them
 
-1. `@file` / path → `read` โดยตรง; directory → list + read ไฟล์หลักก่อน (README, index, entry points)
-2. GitHub repo → `/learn-from-web` ผ่าน DeepWiki (`read_wiki_structure` → `read_wiki_contents` → `ask_wiki_question`)
-3. URL/docs → `webfetch` หรือ `crw_scrape`; library API → `context7` (`resolve` → `query-docs`)
-4. skill name → อ่าน `SKILL.md` + `references/` ใน `%APPDATA%\devin\skills\<name>/`
-5. จัดกลุ่ม: หลัก (source of truth ที่ต้องตาม) vs supporting (context เสริม)
+1. `@file` / path → `read` directly; directory → list + read the main files first (README, index, entry points)
+2. GitHub repo → `/learn-from-web` via DeepWiki (`read_wiki_structure` → `read_wiki_contents` → `ask_wiki_question`)
+3. URL/docs → `webfetch` or `crw_scrape`; library API → `context7` (`resolve` → `query-docs`)
+4. skill name → read `SKILL.md` + `references/` in `%APPDATA%\devin\skills\<name>/`
+5. Group them: primary (the source of truth to follow) vs supporting (supplementary context)
 
-### 2. อ่านแบบมีเป้าหมาย
+### 2. Read With Purpose
 
-> Goal: สกัดเฉพาะสิ่งที่ task ต้องใช้
+> Goal: Extract only what the task needs
 
-1. กำหนดคำถามก่อนอ่าน: task ต้องการอะไรจาก reference นี้ — API surface? patterns? conventions? pitfalls?
-2. อ่านตามลำดับ: overview → core patterns → examples ที่ใกล้ task → edge cases
-3. ข้าม: boilerplate, generated files, tests ที่ไม่เกี่ยว, marketing content
+1. Define the question before reading: what does the task need from this reference — API surface? patterns? conventions? pitfalls?
+2. Read in order: overview → core patterns → examples closest to the task → edge cases
+3. Skip: boilerplate, generated files, irrelevant tests, marketing content
 
-### 3. สกัด Knowledge
+### 3. Extract Knowledge
 
-> Goal: ได้ patterns ที่นำไปใช้ได้ ไม่ใช่แค่สรุป
+> Goal: Get patterns that can be applied, not just a summary
 
-1. สำหรับแต่ละ reference จด: **patterns** (ทำยังไง), **conventions** (กฎที่ต้องตาม), **constraints** (ห้าม/จำกัด), **gotchas** (จุดที่พังบ่อย)
-2. เทียบกับ codebase ปัจจุบัน — conventions ที่ต่างกันต้องชี้ชัดว่าจะ adopt หรือไม่
-3. เจอความขัดแย้งระหว่าง references → `/check-reference` หรือเลือกตาม official source
+1. For each reference note down: **patterns** (how it is done), **conventions** (rules to follow), **constraints** (prohibitions/limits), **gotchas** (frequent failure points)
+2. Compare against the current codebase — differing conventions must be explicitly called out as to whether to adopt them or not
+3. If you find a conflict between references → `/check-reference` or choose according to the official source
 
-### 4. Apply หรือ Persist
+### 4. Apply Or Persist
 
-> Goal: knowledge ไม่หายและนำไปใช้จริง
+> Goal: Knowledge does not get lost and is actually applied
 
-1. ถ้า task คือ implement → apply patterns เข้างานตาม conventions ของ project ปัจจุบัน (references เป็นแนว ไม่ใช่ต้นฉบับ)
-2. ถ้าเป็น knowledge ที่ใช้ซ้ำ → เขียนลง `references/` ของ skill ที่เกี่ยวข้อง หรือ `AGENTS.md` ถ้าเป็น project convention
-3. ถ้า user ขอสรุป → report แบบมีโครงสร้าง: source แต่ละแหล่ง + สิ่งที่สกัดได้ + จะใช้ยังไง
+1. If the task is to implement → apply the patterns into the work according to the current project's conventions (references are a guide, not the original)
+2. If it is reusable knowledge → write it into the `references/` of the relevant skill, or `AGENTS.md` if it is a project convention
+3. If the user asks for a summary → produce a structured report: each source + what was extracted + how it will be used
 
 ### 5. Report
 
-> Goal: user รู้ว่าเรียนรู้อะไรได้บ้าง
+> Goal: The user knows what was learned
 
-1. ทำ `/report` สรุป: references ที่อ่าน, patterns/conventions หลัก, สิ่งที่ apply หรือ persist ไป
-2. ชี้ gaps — reference ที่อ่านไม่ได้ หรือข้อมูลที่ขาด
+1. Run `/report` to summarize: references read, main patterns/conventions, what was applied or persisted
+2. Point out gaps — references that could not be read, or missing information
 
 ## Rules
 
-- อ่าน reference จริงก่อนสรุป — ห้ามเดาจากชื่อไฟล์/URL
-- Source หลักคือ official docs/code ต้นฉบับ — blog/forum เป็น supporting เท่านั้น
-- Apply ตาม conventions ของ project ปลายทางเสมอ — reference ไม่ได้ override project rules
-- References หลายแหล่งขัดกัน → ถาม user หรือเลือกตาม authority (official > community)
-- ไม่แก้ reference sources — อ่านอย่างเดียว
+- Read the actual reference before summarizing — never guess from the file name/URL
+- The primary source is the original official docs/code — blog/forum are supporting only
+- Always apply according to the destination project's conventions — references do not override project rules
+- If multiple references conflict → ask the user or choose according to authority (official > community)
+- Do not modify the reference sources — read only
 
 ## Expected Outcome
 
-- ได้ patterns/conventions ที่ชัดเจนจากทุก reference ที่ user ให้
-- Knowledge ถูก apply เข้างานหรือ persist ไว้ถูกที่
-- Report ระบุชัดว่าอ่านอะไร ได้อะไร และใช้ต่อยังไง
+- Clear patterns/conventions obtained from every reference the user provided
+- Knowledge applied into the work or persisted in the right place
+- A report stating clearly what was read, what was obtained, and how it is used next

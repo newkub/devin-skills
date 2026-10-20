@@ -9,98 +9,97 @@ related:
 ---
 ## Goal
 
-กู้คืนข้อมูลหรือทำความเข้าใจว่าเกิดอะไรขึ้นก่อนไฟล์เสียหาย เมื่อง git ไม่สามารถ restore ได้แล้ว โดยอ่านประวัติ Devin CLI session
+Recover data or understand what happened before the file was damaged, when git can no longer restore it, by reading the Devin CLI session history
 
 ## Scope
 
-ใช้เมื่องไฟล์หรือ workspace เสียหายรุนแรงจน `git restore` ไม่ช่วย ไม่มี backup อื่น และต้องสืบค้นว่า AI ทำอะไรไปก่อนหน้า
+Used when a file or workspace is badly damaged such that `git restore` does not help, there is no other backup, and you need to investigate what the AI did beforehand
 
 ## Execute
 
 ### 1. Assess Git State
 
-> Goal: ตรวจสอบ git state ก่อน
+> Goal: Check the git state first
 
-1. รัน `git status` ใน repo ที่เสียหาย
-2. ดู `git log -1 --format='%H %ci %s'` เพื่อรู้ last commit time
-3. ลอง `git diff` หรือ `git show HEAD:<file>` เพื่อดูว่าข้อมูลสำคัญยังอยู่ไหม
-4. ถ้าข้อมูลจำเป็นหายไปจาก git → ดำเนินการต่อ
+1. Run `git status` in the damaged repo
+2. Check `git log -1 --format='%H %ci %s'` to know the last commit time
+3. Try `git diff` or `git show HEAD:<file>` to see whether the important data is still there
+4. If the necessary data is missing from git → proceed
 
 ### 2. Inspect Devin Session History
 
-> Goal: อ่านประวัติ Devin CLI
+> Goal: Read the Devin CLI history
 
-1. ดูโฟลเดอร์ `C:\Users\Veerapong\AppData\Roaming\devin\cli\summaries`
-2. หาไฟล์ `history_*.md` ล่าสุด (เรียงตามชื่อหรือ modified time)
-3. อ่านไฟล์ summary ล่าสุดที่ตรงกับช่วงเวลาก่อนไฟล์เสียหาย
-4. ค้นหาคำสั่งที่ user ให้และ action ที่ agent ทำ
-5. ดูโฟลเดอร์ `C:\Users\Veerapong\AppData\Roaming\devin\cli` หา logs หรือ session files เพิ่มเติมถ้ามี
-6. บันทึกรายการ commands/files ที่เกี่ยวข้อง
+1. Look at the folder `C:\Users\Veerapong\AppData\Roaming\devin\cli\summaries`
+2. Find the latest `history_*.md` file (sorted by name or modified time)
+3. Read the latest summary file that matches the period before the file was damaged
+4. Search for the commands the user gave and the actions the agent took
+5. Look in the folder `C:\Users\Veerapong\AppData\Roaming\devin\cli` for additional logs or session files if any
+6. Record the list of related commands/files
 
 ### 3. Correlate With Last Commit
 
-> Goal: เทียบเวลา
+> Goal: Compare the times
 
-1. บันทึก last commit time จาก step 1
-2. บันทึกเวลาของไฟล์เสียหาย (`ls -la` หรือ `Get-ChildItem`)
-3. บันทึกเวลาของ Devin summary ล่าสุด
-4. สร้าง timeline: last commit → actions ที่ทำ → ไฟล์เสียหาย
+1. Record the last commit time from step 1
+2. Record the time of the damaged file (`ls -la` or `Get-ChildItem`)
+3. Record the time of the latest Devin summary
+4. Build a timeline: last commit → actions taken → file damaged
 
 ### 4. Report Findings
 
-> Goal: รายงานสิ่งที่พบ
+> Goal: Report what was found
 
-1. สรุปไฟล์ที่เสียหายและสาเหตุทีคาดการณ์
-2. ระบุ last commit time และสถานะ git
-3. รายงานคำสั่งหรือ actions สำคัญจาก Devin session
-4. ระบุข้อมูลที่ยังกู้คืนได้ (ถ้ามี) เช่นจาก temp files, summaries, logs
-5. ไม่แนะนำให้ทำการ restore เองโดยไม่ถาม user ก่อน
+1. Summarize the damaged files and the suspected cause
+2. Specify the last commit time and git state
+3. Report the important commands or actions from the Devin session
+4. Specify the data that can still be recovered (if any), such as from temp files, summaries, logs
+5. Do not recommend doing the restore yourself without asking the user first
 
 ### 5. Ask Next Step
 
-> Goal: ถาม user ว่าจะทำต่ออย่างไร
+> Goal: Ask the user how to proceed
 
-1. ใช้ `ask-me` skill เพื่อถาม user ด้วยตัวเลือกชัดเจน
-2. ตัวเลือกเช่น:
-   - ลองกู้คืนด้วย manual recovery จาก session logs
-   - ย้อนกลับไปทำงานที่ last commit แล้วค่อยทำใหม่
-   - ข้ามไฟล์นั้นไปและดำเนินการอื่น
-   - ให้ user ส่ง backup หรือ reference ที่เหลืออยู่
-3. อธิบาย risk ของแต่ละตัวเลือก
+1. Use the `ask-me` skill to ask the user with clear options
+2. Options such as:
+   - Try to recover manually from the session logs
+   - Go back to work at the last commit and redo it
+   - Skip that file and proceed with something else
+   - Have the user send the remaining backup or reference
+3. Explain the risk of each option
 
 ## Rules
 
 ### 1. Do Not Guess
 
-- ไม่คาดเดาว่าไฟล์มีอะไรก่อนเสียหาย
-- อ้างอิงเฉพาะข้อมูลที่อ่านได้จาก git, summaries, logs
-- ถ้าไม่มีหลักฐาน ให้บอก user ตรงๆ
+- Do not guess what the file contained before it was damaged
+- Reference only information that can be read from git, summaries, logs
+- If there is no evidence, tell the user directly
 
 ### 2. No Auto-Destructive Recovery
 
-- ไม่รัน `git clean`, `git reset --hard`, หรือลบไฟล์โดยไม่ถาม
-- ไม่เขียนทับไฟล์ทีอาจยังมีข้อมูล
-- ทำ backup ก่อน recovery ทุกครั้ง
+- Do not run `git clean`, `git reset --hard`, or delete files without asking
+- Do not overwrite files that may still contain data
+- Make a backup before every recovery
 
 ### 3. Session Privacy
 
-- อ่านเฉพาะ summaries ที่จำเป็น
-- ไม่แชร์ข้อมูลลับ (keys, tokens) ที่อาจพบใน logs
-- รายงานเฉพาะสิ่งที่เกี่ยวข้องกับไฟล์ที่เสียหาย
+- Read only the summaries that are necessary
+- Do not share secret data (keys, tokens) that may be found in logs
+- Report only what is related to the damaged files
 
 ### 4. Clear Communication
 
-- ใช้ภาษาไทยกระชับ
-- แสดง timeline เป็นข้อๆ
-- ไม่ตอบคำถามก่อนรวบรวมข้อมูลครบ
+- Use concise language
+- Show the timeline as bullet points
+- Do not answer questions before all the information has been gathered
 
-- ใช้ /deep-debug ถ้าจำเป็น
-- ใช้ /restore-files-from-git-log ถ้าจำเป็น
+- Use /deep-debug if necessary
+- Use /restore-files-from-git-log if necessary
 
 ## Expected Outcome
 
-- รู้ว่า git restore ช่วยไม่ได้จริงหรือไม่
-- ได้ timeline ของเหตุการณ์ก่อนเสียหาย
-- ได้รายงานคำสั่งและ actions สำคัญจาก Devin session
-- ผู้ใช้ได้รับตัวเลือกกู้คืนพร้อม risk และยืนยันก่อนทำ
-
+- Know whether git restore truly cannot help
+- Have a timeline of the events before the damage
+- Have a report of the important commands and actions from the Devin session
+- The user receives recovery options with risks and confirms before anything is done

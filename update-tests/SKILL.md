@@ -27,7 +27,7 @@ Use when you want tests written/updated comprehensively — pick layers by scope
 
 - If the suite hasn't been reviewed → run `/deep-review-codebase` first
 - If you only want to run tests → `/run-test <domain>` matching the layer, or `/run-test all`
-- If you want to improve test suite quality → `/deep-review-codebase-then-fix`
+- If you want to improve test suite quality → `/deep-review-codebase test then-fix`
 - If the scope spans many modules → dispatch via `/use-subagents`
 
 ## Execute

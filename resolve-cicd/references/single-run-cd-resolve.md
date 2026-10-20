@@ -8,13 +8,13 @@
 
 
 
-> Goal: ระบุ deployment target และ URL
+> Goal: Identify the deployment target and URL
 
-1. ใช้ `url-or-target` จาก argument ถ้ามี
+1. Use `url-or-target` from the argument if present
 
-2. ถ้าไม่มี → ค้นหาจาก env, deploy output, CI/CD log, section `references/targets` ใน `watch-deploy/SKILL.md`
+2. If not → search from env, deploy output, CI/CD log, the `references/targets` section in `watch-deploy/SKILL.md`
 
-3. ถ้ายังไม่ชัด → ทำ `/ask-me`
+3. If still unclear → run `/ask-me`
 
 
 
@@ -22,11 +22,11 @@
 
 
 
-> Goal: เลือก skill ทีเหมาะกับ CD target
+> Goal: Choose the skill that fits the CD target
 
-1. Cloudflare Pages: URL มี `.pages.dev` หรือ `wrangler` ใน output → ดำเนินการใน skill นี้ (`/resolve-cicd`) ถ้า fail → ทำ `/resolve-cloudflare-worker-fails` ก่อน re-deploy
+1. Cloudflare Pages: URL has `.pages.dev` or `wrangler` in the output → proceed within this skill (`/resolve-cicd`); if it fails → run `/resolve-cloudflare-worker-fails` before re-deploy
 
-2. Release/tag: version tag, release name, GitHub release → poll registry/tag endpoint จน live — `npm view <pkg>@<ver>`, `gh release view <tag>` (interval 30s, timeout 600s)
+2. Release/tag: version tag, release name, GitHub release → poll the registry/tag endpoint until live — `npm view <pkg>@<ver>`, `gh release view <tag>` (interval 30s, timeout 600s)
 
 3. Generic URL: Railway, Render, Fly.io, Netlify, custom domain → `/watch-deploy`
 
@@ -36,13 +36,13 @@
 
 
 
-> Goal: ติดตาม deployment จน live หรือ release สำเร็จ
+> Goal: Follow the deployment until live or the release succeeds
 
-1. เรียก skill ตาม platform
+1. Call the skill per platform
 
-2. ถ้า success → ไป Report
+2. If success → go to Report
 
-3. ถ้า fail, timeout, unhealthy → ไป Resolve
+3. If fail, timeout, unhealthy → go to Resolve
 
 
 
@@ -50,41 +50,41 @@
 
 
 
-> Goal: แก้ไขปัญหาแล้ว trigger ใหม่
+> Goal: Fix the problem then trigger again
 
-1. บันทึก `LAST_GREEN_SHA` ด้วย `git rev-parse HEAD` ถ้ายังไม่มี
+1. Record `LAST_GREEN_SHA` with `git rev-parse HEAD` if not yet present
 
-2. ทำ `/resolve-errors` วิเคราะห์ logs, errors, config
+2. Run `/resolve-errors` to analyze logs, errors, config
 
-3. ถ้าเป้น GitHub Actions fail → ทำ `/resolve-github-actions-fails` ก่อนแก้ไข
+3. If it is a GitHub Actions failure → run `/resolve-github-actions-fails` before fixing
 
-4. ถ้าเป้น Cloudflare Worker fail → ทำ `/resolve-cloudflare-worker-fails` ก่อน re-deploy
+4. If it is a Cloudflare Worker failure → run `/resolve-cloudflare-worker-fails` before re-deploy
 
-5. ถ้า failure มาจาก code/config → แก้ไขน้อยทีสุด
+5. If the failure comes from code/config → make the minimal fix
 
-6. ถ้า failure มาจาก workflow/CI setup → ทำ `/follow-tool-github-actions`, `/deep-review-codebase`, `/deep-review-codebase`, `/deep-review-codebase` ตามลักษณะ
+6. If the failure comes from workflow/CI setup → run `/follow-tool-github-actions`, `/setup-cicd`, or `/deep-review-codebase` as appropriate
 
-7. ถ้า failure มาจาก infra/secret/platform → ทำ `/deep-review-codebase`, `/follow-secret-manager`, `/setup-cicd` ตามลักษณะ
+7. If the failure comes from infra/secret/platform → run `/deep-review-codebase`, `/follow-secret-manager`, `/setup-cicd` as appropriate
 
-8. ถ้าเป้น CI: commit/push หรือ re-trigger pipeline ตาม platform กลับไป Watch Pipeline
+8. If it is CI: commit/push or re-trigger the pipeline per platform and return to Watch Pipeline
 
-9. ถ้าเป้น CD: re-deploy ตาม platform:
+9. If it is CD: re-deploy per platform:
 
    - Cloudflare → `/deploy-to-cloudflare`
 
    - Vercel → `/deploy-to-vercel`
 
-   - Railway → `/deploy-to-railway` หรือ `/run-deploy`
+   - Railway → `/deploy-to-railway` or `/run-deploy`
 
    - Generic → `/run-deploy`
 
    - Release → `/run-release`
 
-10. ถ้า re-run/re-deploy ไม่ได้ → stop และ report
+10. If re-run/re-deploy is not possible → stop and report
 
-11. กลับไป Watch Pipeline หรือ Watch Until Healthy
+11. Return to Watch Pipeline or Watch Until Healthy
 
-12. วนซ้ำสูงสุด 5 รอบ ถ้าเกิน → stop และ report
+12. Loop up to 5 rounds; if exceeded → stop and report
 
 
 
@@ -92,19 +92,19 @@
 
 
 
-> Goal: สรุปผล CI/CD
+> Goal: Summarize the CI/CD result
 
-1. ถ้า success/healthy/release สำเร็จ → report platform, target, duration, status
+1. If success/healthy/release succeeded → report platform, target, duration, status
 
-2. ถ้าไม่ผ่าน → report failures ทีเหลือ, root cause, last green SHA, next step
+2. If not passing → report the remaining failures, root cause, last green SHA, next step
 
-3. ใช้ `/report table` ด้วยคอลัมน์: No., Mode, Platform, Target, Status, Duration, Root Cause, Action
+3. Use `/report table` with columns: No., Mode, Platform, Target, Status, Duration, Root Cause, Action
 
-4. ทำ `/check-deployment-fails` เพื่อดู failures ทีค้างใน repo
+4. Run `/check-deployment-fails` to see the failures still pending in the repo
 
-5. ถ้า user ต้องการ cleanup → ทำ `/delete-cicd-fails` ก่อน next step
+5. If the user wants cleanup → run `/delete-cicd-fails` before the next step
 
-6. ทำ `/suggest-next-action`
+6. Run `/suggest-next-action`
 
 
 
@@ -114,83 +114,83 @@
 
 ### 1. Mode Detection
 
-- ถ้า argument เป้น run ID หรือมี CI config → เป้น CI
+- If the argument is a run ID or there is CI config → it is CI
 
-- ถ้า argument เป้น URL, version, หรือ deploy output → เป้น CD
+- If the argument is a URL, version, or deploy output → it is CD
 
-- ถ้าไม่ชัด → ใช้ `/ask-me`
+- If unclear → use `/ask-me`
 
 
 
 ### 2. Platform Detection
 
-- ตรวจหา CI/CD config หรือ URL pattern ก่อนเดา
+- Detect the CI/CD config or URL pattern before guessing
 
-- ถ้าไม่ชัด → ใช้ generic polling
+- If unclear → use generic polling
 
-- ถ้าเป้น release อย่างเดียว → poll registry/tag endpoint จน live แทนการ watch deploy URL
+- If it is a release only → poll the registry/tag endpoint until live instead of watching the deploy URL
 
 
 
 ### 3. No Initial Deploy
 
-- `/resolve-cicd` ไม่ trigger ครั้งแรกเอง
+- `/resolve-cicd` does not trigger the first time itself
 
-- ต้องถูกเรียกหลัง trigger แล้ว
+- Must be called after it has been triggered
 
-- ถ้ายังไม่มี trigger ให้ทำ `/run-deploy` หรือ push ก่อน
+- If there is no trigger yet, run `/run-deploy` or push first
 
 
 
 ### 4. Resolve And Retry
 
-- วน loop จนผ่านหรือถึงขีดจำกัด
+- Loop until it passes or the limit is reached
 
-- สูงสุด 5 รอบ ถ้าเกิน → stop และ report
+- Up to 5 rounds; if exceeded → stop and report
 
-- ถ้า failure เดิมซ้ำ 3 ครั้งขึ้นไป → circuit breaker, แนะนำ rollback
+- If the same failure repeats 3 times or more → circuit breaker, recommend rollback
 
 
 
 ### 5. Safety
 
-- บันทึก `LAST_GREEN_SHA` ก่อนแก้ไขทุกรอบ
+- Record `LAST_GREEN_SHA` before fixing every round
 
-- ถ้า fix สร้าง failure ใหม่หลัง 3 รอบ → แนะนำ revert กลับไป last green SHA
+- If the fix creates a new failure after 3 rounds → recommend reverting to the last green SHA
 
-- ห้าม force-push หรือ rewrite history
+- Do not force-push or rewrite history
 
-- ห้าม re-run/re-deploy ซ้ำแบบไร้เงื่อนไข
+- Do not re-run/re-deploy repeatedly without condition
 
 
 
 ### 6. Rollback Recommendation
 
-- ถ้า timeout หรือไม่ผ่านหลัง 5 รอบ → แนะนำ rollback command ตาม platform
+- If timeout or not passing after 5 rounds → recommend the rollback command per platform
 
-- ไม่ rollback อัตโนมัติ รอ user ตัดสินใจ
+- Do not roll back automatically; wait for the user to decide
 
-- ระบุ platform-specific rollback จาก section `references/targets` ใน `watch-deploy/SKILL.md`
+- Specify the platform-specific rollback from the `references/targets` section in `watch-deploy/SKILL.md`
 
 
 
 ### 7. Timeout
 
-- `perRoundTimeout` = 300 วินาที สำหรับ resolve + re-run/re-deploy
+- `perRoundTimeout` = 300 seconds for resolve + re-run/re-deploy
 
-- `ciWatchTimeout` = 900 วินาที สำหรับ pipeline ทีนาน
+- `ciWatchTimeout` = 900 seconds for long pipelines
 
-- `cdWatchTimeout` = 600 วินาที สำหรับ deployment ทีช้า
+- `cdWatchTimeout` = 600 seconds for slow deployments
 
-- ถ้าเกิน timeout → stop และ report
+- If the timeout is exceeded → stop and report
 
 
 
 ### 8. Partial Commit
 
-- ก่อน push fix ให้ stage เฉพาะไฟล์ทีเกี่ยวข้องกับ root cause
+- Before pushing a fix, stage only the files related to the root cause
 
-- ไม่ commit/push ไฟล์อื่นทีไม่เกี่ยวข้อง
+- Do not commit/push other unrelated files
 
 
 
@@ -198,13 +198,13 @@
 
 
 
-- CI pipeline ผ่าน หรือ CD live/healthy หรือ release สำเร็จ
+- The CI pipeline passes, or CD is live/healthy, or the release succeeded
 
-- รายงาน `/report table` สมบูรณ์
+- A complete `/report table` report
 
-- ระบุ next step ผ่าน `/suggest-next-action`
+- The next step specified through `/suggest-next-action`
 
-- ไม่มี auto-rollback โดยไม่แจ้ง user
+- No auto-rollback without informing the user
 
-- ถ้าไม่ผ่าน มี last green SHA และ rollback recommendation ชัดเจน
+- If not passing, there is a last green SHA and a clear rollback recommendation
 

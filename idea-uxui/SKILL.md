@@ -1,6 +1,6 @@
 ---
 name: idea-uxui
-description: สร้างไอเดีย UX/UI improvements และ features ใหม่ ตอบกลับในแชท ไม่สร้างไฟล์
+description: Generate UX/UI improvement and new feature ideas, reply in chat, create no files
 argument-hint: "[topic-or-url]"
 related:
   - idea
@@ -18,93 +18,92 @@ related:
 
 ## Goal
 
-สร้างไอเดีย UX/UI — improvements ต่อของเดิมและ features ใหม่ด้าน visual/interaction/usability — สรุปผลกลับในแชททันที โดยไม่สร้างไฟล์
+Generate UX/UI ideas — improvements to existing work and new features in visual/interaction/usability — and summarize the results back in chat immediately, without creating files
 
 ## Scope
 
-- วิเคราะห์ project context, routes/pages ที่มี และ prompt
-- สร้างไอเดีย `Extends` (ปรับ UX/UI ของเดิม) และ `New` (UX/UI feature ใหม่) พร้อมระบุ impact/effort/risk
-- ครอบคลุมมิติ: visual polish, layout/responsive, interaction/feedback, accessibility, design system consistency, empty/error/loading states
-- ตอบกลับในแชทด้วย markdown tables และ bullets
-- ไม่สร้าง report/plan ไฟล์ ไม่ implement
-- ถ้าต้องการ visual review ของ routes จริงก่อนคิดไอเดีย → ใช้ `/deep-review-codebase` (domain `review-uxui`)
-- ถ้าต้องการ implement → ส่งต่อ `/implement-to-production`
-- ไอเดียที่ user จะเอามาลงมือจริง แต่ยังไม่มีหลักฐาน demand/feasibility → คัดก่อนด้วย `/validate-idea`
+- Analyze the project context, existing routes/pages, and the prompt
+- Generate `Extends` ideas (improve existing UX/UI) and `New` ideas (new UX/UI features), specifying impact/effort/risk
+- Cover dimensions: visual polish, layout/responsive, interaction/feedback, accessibility, design system consistency, empty/error/loading states
+- Reply in chat with markdown tables and bullets
+- Don't create report/plan files, don't implement
+- If you want a visual review of real routes before thinking of ideas → use `/deep-review-codebase` (domain `review-uxui`)
+- If you want implementation → hand off to `/implement-to-production`
+- An idea the user will actually take action on but that has no demand/feasibility evidence yet → screen it first with `/validate-idea`
 
 ## Execute
 
 ### 1. Understand Context
 
-> Goal: เข้าใจ topic และ UX/UI ปัจจุบัน
+> Goal: Understand the topic and the current UX/UI
 
-1. รับ `<topic-or-url>` จาก argument หรือ conversation context
-2. ทำ `/deep-analyze` แบบ lightweight ถ้าต้องการ — ดู routes, components, design system ที่มี
-3. ถ้ามี web รันอยู่และต้องการ evidence → ใช้ `/deep-review-codebase` หรือ `/report-uxui` ก่อนคิดไอเดีย
-4. ถ้า topic ไม่ชัด → ใช้ `/suggest-next-action` ถาม user
+1. Take `<topic-or-url>` from the argument or conversation context
+2. Run `/deep-analyze` in a lightweight way if needed — look at existing routes, components, design system
+3. If a web server is running and you need evidence → use `/deep-review-codebase` or `/report-uxui` before thinking of ideas
+4. If the topic is unclear → use `/suggest-next-action` to ask the user
 
 ### 2. Generate Ideas
 
-> Goal: สร้างไอเดีย UX/UI
+> Goal: Generate UX/UI ideas
 
-1. สร้างไอเดีย `Extends` (ปรับหน้า/component/flow ที่มี) และ `New` (pattern/feature UX ใหม่ เช่น command palette, skeleton states, onboarding, dark mode, shortcuts)
-2. แต่ละกลุ่มไม่เกิน 10 ไอเดีย รวมไม่เกิน 20
-3. แต่ละ idea ระบุ: idea, description, ux dimension (visual/interaction/a11y/responsive/consistency), impact, effort, risk, mvp score (1-10)
-4. ลำดับเลขต่อเนื่อง: `Extends` เริ่ม 1, `New` ต่อจาก `Extends`
+1. Generate `Extends` ideas (improve existing pages/components/flows) and `New` ideas (new UX patterns/features such as command palette, skeleton states, onboarding, dark mode, shortcuts)
+2. No more than 10 ideas per group, no more than 20 in total
+3. For each idea specify: idea, description, ux dimension (visual/interaction/a11y/responsive/consistency), impact, effort, risk, mvp score (1-10)
+4. Sequential numbering: `Extends` starts at 1, `New` continues from `Extends`
 
 ### 3. Rank And Format
 
-> Goal: จัดลำดับและจัดรูปแบบตอบกลับ
+> Goal: Rank and format the reply
 
-1. จัดลำดับตาม MVP score สูง → ต่ำ
-2. สร้าง markdown tables ด้วย `/report table`
-3. ถ้ามี action ต่อเนื่องจาก idea ก่อนหน้า → ใช้ `/follow-your-suggestion`
-4. สรุป top 3-5 ideas สั้นๆ ด้วย bullets
-5. ระบุ phase: quick win, short-term, long-term
+1. Sort by MVP score high → low
+2. Build markdown tables with `/report table`
+3. If there is a follow-up action from the previous idea → use `/follow-your-suggestion`
+4. Summarize the top 3-5 ideas briefly with bullets
+5. Specify phase: quick win, short-term, long-term
 
 ### 4. Reply In Chat
 
-> Goal: ตอบกลับ user ทันที
+> Goal: Reply to the user immediately
 
-1. แสดง summary 1-2 บรรทัด
-2. แสดง tables ในแชท
-3. บอกว่าเป็นไอเดียสำหรับพิจารณา
-4. ถ้าต้องการ implement → แนะนำ `/implement-to-production`
-5. ถ้าต้องการถามต่อ → ใช้ `/suggest-next-action`
+1. Show a 1-2 line summary
+2. Show the tables in chat
+3. Say that these are ideas for consideration
+4. If implementation is wanted → recommend `/implement-to-production`
+5. If you want to ask more → use `/suggest-next-action`
 
 ## Rules
 
 ### 1. Chat Only
 
-- ตอบกลับในแชทเท่านั้น — ไม่สร้างไฟล์ใน `.devin/temp/report/` หรือ `.devin/temp/plan/` ไม่สร้าง web app ถาวร ไม่เรียก `/ship`
+- Reply in chat only — don't create files in `.devin/temp/report/` or `.devin/temp/plan/`, don't create a permanent web app, don't call `/ship`
 
 ### 2. Lightweight
 
-- ไม่ต้อง `/learn` (web) ลึก ยกเว้น user บอก — ใช้เวลาไม่เกิน 5-10 นาที
-- ไม่ต้องวิเคราะห์ codebase ละเอียด ถ้า context พอ
+- No deep `/learn` (web) needed unless the user says so — take no more than 5-10 minutes
+- Don't analyze the codebase in detail if the context is enough
 
 ### 3. UX Dimension Coverage
 
-- ทุก run ต้อง cover อย่างน้อย 3 มิติ: visual, interaction, a11y (ตาม `/deep-review-codebase` checklist)
-- ไอเดียต้อง actionable และอิง design system ที่มี (`/follow-design-system`) — ไม่เสนอ pattern ที่ขัดกันโดยไม่มีเหตุผล
+- Every run must cover at least 3 dimensions: visual, interaction, a11y (per the `/deep-review-codebase` checklist)
+- Ideas must be actionable and based on the existing design system (`/follow-design-system`) — don't propose conflicting patterns without reason
 
 ### 4. Suggest Deep Workflow
 
-- ถ้า user บอก "ทำ" หรือ "do now" → แนะนำ `/implement-to-production`
-- ถ้า user ต้องการ plan หรือ report → แนะนำ `/plan`
-- เมื่อ idea ใดถูก implement → ต้องทำ `/deep-test all` เสมอ
+- If the user says "do" or "do now" → recommend `/implement-to-production`
+- If the user wants a plan or report → recommend `/plan`
+- When any idea is implemented → always run `/deep-test all`
 
 ### 5. Format
 
-- ทุก table ต้องมีคอลัมน์ `No.` เป็นคอลัมน์แรก เรียง 1, 2, 3, ...
-- ใช้ `/report` สำหรับ tables — ไม่ตอบยาวเกินความจำเป็น
-- ใช้ `/enhance-prompt` ถ้า prompt คลุมเครือ
-- ใช้ /reframe ถ้าจำเป็น
+- Every table must have the `No.` column as the first column, ordered 1, 2, 3, ...
+- Use `/report` for tables — don't answer longer than necessary
+- Use `/enhance-prompt` if the prompt is vague
+- Use /reframe if necessary
 
 
 ## Expected Outcome
 
-- User ได้รับไอเดีย UX/UI ในแชททันที ครบหลายมิติ
-- มี tables สรุป Extends, New, ลำดับความสำคัญพร้อม ux dimension
-- ไม่มีไฟล์ถูกสร้าง ไม่มี implementation เกิดขึ้น
-- มีคำแนะนำถัดไปชัดเจน
-
+- The user gets UX/UI ideas in chat immediately, covering multiple dimensions
+- There are tables summarizing Extends, New, and priority with the ux dimension
+- No files are created and no implementation happens
+- Clear next-step recommendations

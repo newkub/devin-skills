@@ -1,6 +1,6 @@
 ---
 name: merge
-description: merge ไฟล์หรือ folder เข้าด้วยกันและลบ source เดิม
+description: merge files or folders together and delete the original source
 argument-hint: "[domain] | @files [destination]"
 allowed-tools:
   - read
@@ -29,106 +29,107 @@ related:
 
 ## Goal
 
-merge ไฟล์หรือโฟลเดอร์ต้นทางเข้าด้วยกันเป็นไฟล์หรือโฟลเดอร์ปลายทางเดียว แล้วลบ source เดิม
+merge source files or folders together into a single destination file or folder, then delete the original source
 
 ## Scope
 
-ใช้เมื่อต้องรวมเนื้อหาจากหลายไฟล์หรือหลายโฟลเดอร์เข้าด้วยกัน และลบ source หลัง merge — หรือเมื่อต้องการ merge git branch/PR ตาม domain
+Use when you need to combine content from multiple files or folders together and delete the source after merge — or when you need to merge a git branch/PR by domain
 
-- `git-branch` → merge feature branch เข้า target branch ด้วย `--no-ff`
-- `github-pr` → merge pull request ด้วย strategy ที่เหมาะสม
-- `all-branch-by-me-to-main` → merge ทุก branch ที่ user สร้างเข้า `main` แล้วลบ branch
+- `git-branch` → merge a feature branch into the target branch with `--no-ff`
+- `github-pr` → merge a pull request with the appropriate strategy
+- `all-branch-by-me-to-main` → merge every branch created by the user into `main` then delete the branches
 
 ## Execute
 
 ### 1. Identify Sources And Destination
 
-> Goal: รู้ว่าอะไรคือ source และ destination
+> Goal: know what is the source and the destination
 
-1. รับ `@files` เป็นรายการ source (ไฟล์หรือ folder) จาก argument หรือ context
-2. รับ `destination` จาก prompt หรือ context
-3. source อาจเป็นไฟล์หรือ folder หลายรายการ
-4. destination อาจเป็นไฟล์ใหม่ ไฟล์เดิม หรือ folder เป้าหมาย
-5. ถ้าไม่มี `@files` → ทำ `/ask-me` เพื่อขอรายการ source
-6. ถ้าไม่ชัดเจน → ทำ `/ask-me` ก่อนดำเนินการ
+1. Accept `@files` as the list of sources (files or folders) from the argument or context
+2. Accept `destination` from the prompt or context
+3. A source may be multiple files or folders
+4. The destination may be a new file, an existing file, or a target folder
+5. If there is no `@files` → do `/ask-me` to request the list of sources
+6. If it is unclear → do `/ask-me` before proceeding
 
 ### 2. Analyze Sources
 
-> Goal: เข้าใจเนื้อหาก่อน merge
+> Goal: understand the content before merge
 
-1. ทำ `/read-all-files` กับแต่ละ source ก่อน — อ่าน content ทั้งหมดเข้า context (concat ไฟล์ที่เกี่ยวข้อง, engine: `/check-file-relation`) แล้วค่อยทำ `/deep-analyze` — ห้ามวิเคราะห์จากชื่อไฟล์อย่างเดียว
-2. ถ้า source เป็นโฟลเดอร์ → `/read-all-files` ครอบคลุมทุก `SKILL.md` หรือไฟล์หลักในโฟลเดอร์
-3. บันทึกโครงสร้าง ความสัมพันธ์ และสิ่งทีซ้ำซ้อน
+1. Do `/read-all-files` on each source first — read all content into context (concat related files, engine: `/check-file-relation`) then do `/deep-analyze` — never analyze from file names alone
+2. If a source is a folder → `/read-all-files` covers every `SKILL.md` or main file in the folder
+3. Record the structure, relationships, and redundancy
 
 ### 3. Plan Merge
 
-> Goal: วางแผนการ merge อย่างปลอดภัย
+> Goal: plan the merge safely
 
-1. ทำ `/apply` mode `validate` เพื่อ validate ก่อน merge
-2. ระบุ references ทีอ้างอิงถึง source
-3. วางแผนการ update references ไปยัง destination
-4. ถ้ามี references ซับซ้อน → ทำ `/update-references` ล่วงหน้า
+1. Do `/apply` mode `validate` to validate before merge
+2. Identify references that point to the source
+3. Plan the update of references toward the destination
+4. If there are complex references → do `/update-references` in advance
 
 ### 4. Merge Content
 
-> Goal: รวม source เข้าด้วยกันอย่างถูกต้อง
+> Goal: combine the sources together correctly
 
-1. ถ้า source เป็นไฟล์ → อ่าน content ทั้งหมดแล้ว merge เข้า destination
-2. ถ้า source เป็นโฟลเดอร์ → รวบรวมไฟล์สำคัญ ลบ redundancy แล้ว merge เนื้อหา
-3. ใช้ `git mv` หรือ `git rm` ถ้าอยู่ใน git repo
-4. ตรวจสอบว่า merge ถูกต้องและไม่มี data loss
+1. If a source is a file → read all content then merge into the destination
+2. If a source is a folder → gather the important files, remove redundancy, then merge the content
+3. Use `git mv` or `git rm` if inside a git repo
+4. Check that the merge is correct and there is no data loss
 
 ### 5. Delete Old Sources
 
-> Goal: ลบ source เดิมหลัง merge
+> Goal: delete the original source after merge
 
-1. ลบไฟล์หรือโฟลเดอร์ source เดิมหลัง merge สำเร็จ
-2. ใช้ `git rm -r` สำหรับโฟลเดอร์ หรือ `git rm` สำหรับไฟล์
-3. ตรวจสอบว่าไม่มี references เก่าเหลือถ้า source ถูก reference
+1. Delete the original source files or folders after the merge succeeds
+2. Use `git rm -r` for folders or `git rm` for files
+3. Check that no old references remain if the source was referenced
 
 ### 6. Update References
 
-> Goal: ไม่ให้มี broken references จาก source ทีถูกลบ
+> Goal: ensure no broken references from the deleted source
 
-1. ทำ `/update-references` เพื่ออัปเดตทุก skills ทีอ้างอิงถึง source
-2. ทำ `/edit-relative` เมื่อ merge กระทบ relative paths, imports, markdown links หรือ semantic references (skill names, `related` lists) ของไฟล์อื่น — ครอบคลุมทั้ง path-level และ symbol-level updates
-3. ตรวจหา skills ที่เกี่ยวกับ file ops (`move-to`, `rename`, `all-this-patterns`, `edit-only`, `refactor`, `flatten-directory`) และอัปเดต references ให้ชี้ไป destination
-4. ใช้ `grep` ตรวจซ้ำเพื่อหา reference เก่าทีหลงเหลือ
+1. Do `/update-references` to update every skill that references the source
+2. Do `/edit-relative` when the merge affects relative paths, imports, markdown links, or semantic references (skill names, `related` lists) of other files — covering both path-level and symbol-level updates
+3. Check for skills related to file ops (`move-to`, `rename`, `all-this-patterns`, `edit-only`, `refactor`, `flatten-directory`) and update references to point to the destination
+4. Use `grep` to re-check for leftover old references
 
 ### 7. Validate
 
-> Goal: ตรวจสอบความถูกต้อง
+> Goal: verify correctness
 
-1. ทำ `/deep-validate` เพื่อตรวจ merge
-2. ตรวจหา broken references
-3. ตรวจ data loss
-4. ทำ `/report table` สรุป: `No.`, `Source`, `Destination`, `Status`, `Notes`
-5. ถ้ามีหลาย step ค้าง → ทำ `/report-progress`
+1. Do `/deep-validate` to check the merge
+2. Check for broken references
+3. Check for data loss
+4. Do `/report table` summarizing: `No.`, `Source`, `Destination`, `Status`, `Notes`
+5. If there are multiple pending steps → do `/report-progress`
 
 ### Skills
 
-> Goal: dispatch ไป skill ปลายทาง ตาม domain เมื่อ merge เป็น git branch/PR workflow
+> Goal: dispatch to the destination skill by domain when the merge is a git branch/PR workflow
 
 | Domain | Skill |
 |--------|----------|
-| `github-pr` | /merge-github-pr — merge PR ด้วย strategy ที่เหมาะสม |
-| `all-branch-by-me-to-main` | /merge-all-branch-by-me-to-main — merge ทุก branch ของ user เข้า `main` |
+| `git-branch` | `git merge --no-ff <branch>` — direct command (the former `merge-git-branch` skill was removed) |
+| `github-pr` | /merge-github-pr — merge the PR with the appropriate strategy |
+| `all-branch-by-me-to-main` | /merge-all-branch-by-me-to-main — merge every branch of the user into `main` |
 
-1. ถ้า argument ตรง domain ในตาราง → อ่าน `/merge-<domain>` แล้วทำตาม flow ในนั้น — ไม่ execute จากตารางนี้โดยตรง
-2. ถ้าเป็น `@files` merge → ทำตาม step 1-7 ด้านบน
+1. If the argument matches a domain in the table → follow the `Skill` column (read the skill file first when it is a `/skill`) — do not execute directly from this table
+2. If it is an `@files` merge → follow steps 1-7 above
 
 ## Rules
 
-- ตรวจสอบ merge ถูกต้องก่อนลบ source
-- รองรับทั้งไฟล์และโฟลเดอร์เป็น source
-- ใช้ git สำหรับ file operations ถ้าเป็นไปได้
-- ถ้ามี references ชี้ไปยัง source → ทำ `/update-references` ก่อนลบ
-- ถ้าต้องตัดสินใจระหว่างหลายตัวเลือก → ทำ `/deep-validate` แล้วเลือกสิ่งทีดีทีสุด
-- ทุก merge ต้องผ่าน `/apply` mode `validate` ก่อน
+- Verify the merge is correct before deleting the source
+- Support both files and folders as sources
+- Use git for file operations when possible
+- If there are references pointing to the source → do `/update-references` before deleting
+- If you must decide between multiple options → do `/deep-validate` then choose the best one
+- Every merge must pass `/apply` mode `validate` first
 
 ## Expected Outcome
 
-- ไฟล์หรือโฟลเดอร์ถูก merge เข้าด้วยกัน
-- source เดิมถูกลบ
-- ไม่มี data loss
-- ไม่มี broken references
+- Files or folders are merged together
+- The original source is deleted
+- No data loss
+- No broken references

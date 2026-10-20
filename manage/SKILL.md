@@ -1,6 +1,6 @@
 ---
 name: manage
-description: จัดการ context และ tasks หลายรายการ โดย rethink, จัดลำดับ, และ dispatch งานต่อไป
+description: Manage context and multiple tasks by rethinking, ordering, and dispatching the next work
 argument-hint: "[context-or-tasks]"
 related:
   - rethink
@@ -21,75 +21,75 @@ related:
 
 ## Goal
 
-จัดการ context และ tasks หลายรายการให้เป็นระเบียบ โดย rethink, จัดลำดับ priority, และ dispatch งานต่อไปให้ถูกต้อง
+Manage context and multiple tasks in an organized way by rethinking, ordering priority, and dispatching the next work correctly
 
 ## Scope
 
-ใช้เมื่อมี context หรือ tasks หลายรายการจนไม่รู้ว่าควรทำอะไรก่อน หรือต้องการให้ agent จัดการแทน ไม่แก้ไข code หรือไฟล์โดยตรง เป็น orchestrator เท่านั้น
+Use when there is context or multiple tasks to the point of not knowing what to do first, or when you want the agent to manage it instead. It does not edit code or files directly. It is an orchestrator only
 
 ## Execute
 
 ### 1. Gather Context
 
-> Goal: รวบรวมสิ่งที่ต้องจัดการ
+> Goal: gather what needs to be managed
 
-1. อ่าน todo list ปัจจุบัน
-2. อ่าน `git status` และ open files
-3. อ่านข้อความ/คำสั่งล่าสุดของ user
-4. ทำ `/report` สรุป context ทั้งหมด
+1. Read the current todo list
+2. Read `git status` and open files
+3. Read the user's latest message/command
+4. Do `/report` to summarize the entire context
 
 ### 2. Rethink And Prioritize
 
-> Goal: รู้ว่าอะไรสำคัญก่อน
+> Goal: know what is important first
 
-1. ทำ `/rethink` เพื่อวิเคราะห์ context หลายรายการ
-2. จัดลำดับ priority: urgent → high impact → blocking → low risk
-3. ระบุ dependencies ระหว่าง tasks
-4. ถ้า context ทับซ้อนหรือขัดแย้ง → ทำ `/ask-me`
+1. Do `/rethink` to analyze the multiple context items
+2. Order priority: urgent → high impact → blocking → low risk
+3. Identify dependencies between tasks
+4. If the context overlaps or conflicts → do `/ask-me`
 
 ### 3. Decide File Operation Mode
 
-> Goal: ถ้ามี file operations ให้เลือกรูปแบบทีเหมาะสม
+> Goal: if there are file operations, choose the appropriate form
 
-1. ถ้างานไม่เกี่ยวกับ file operations → ข้ามไป step ถัดไป
-2. ทำ `/rethink` โดยถามว่าควรใช้ file op แบบไหน:
-   - `/edit-only` — แก้ไขเฉพาะจุด
-   - `/refactor` — refactor code โดยรักษา behavior
-   - `/refactor` structure scope — ย้าย/จัดโครงสร้างไฟล์
-   - `/move-to` — ย้ายไฟล์/โฟลเดอร
-   - `/rename` — เปลี่ยนชื่อ identifier/ไฟล์ รวม batch rename
-   - `/all-this-patterns` — แก้หลายจุดตาม pattern
-3. เลือกตามผล `/rethink` โดย user confirm ถ้ามีหลายทางเลือกใกล้เคียงกัน
+1. If the work is not about file operations → skip to the next step
+2. Do `/rethink` by asking which file op form to use:
+   - `/edit-only` — edit only in place
+   - `/refactor` — refactor code while preserving behavior
+   - `/refactor` structure scope — move/restructure files
+   - `/move-to` — move files/folders
+   - `/rename` — rename identifiers/files including batch rename
+   - `/all-this-patterns` — edit multiple places by pattern
+3. Choose based on the `/rethink` result, with the user confirming if there are several closely comparable options
 
 ### 4. Dispatch Next Actions
 
-> Goal: ส่งงานไปยัง skill ที่ถูกต้อง
+> Goal: send work to the correct skill
 
-1. ถ้ามีงานค้างให้ทำต่อ → `/continue`
-2. ถ้าหลายงานอิสระให้ทำขนาน → `/follow-parallel`
-3. ถ้างานเสร็จแล้วให้ ship → `/ship`
-4. ถ้าต้อง planning → `/report-todo` แล้วทำตามลำดับ
-5. ถ้างานยาวหรือต้องวนซ้ำ → `/loop-until-complete`
+1. If there is pending work to continue → `/continue`
+2. If there are several independent tasks to do in parallel → `/follow-parallel`
+3. If the work is done and should ship → `/ship`
+4. If planning is needed → `/report-todo` then follow the order
+5. If the work is long or must loop → `/loop-until-complete`
 
 ### 5. Track And Report
 
-> Goal: ติดตามความคืบหน้า
+> Goal: track progress
 
-1. ทำ `/report-todo` อัปเดต status
-2. ทำ `/suggest-next-action` เมื่อจบแต่ละรอบ
-3. ถ้า user กด `.` → `/follow-enter-dot`
+1. Do `/report-todo` to update the status
+2. Do `/suggest-next-action` when each round finishes
+3. If the user presses `.` → `/follow-enter-dot`
 
 ## Rules
 
-- ไม่แก้ไขไฟล์โดยตรง เป็น orchestrator เท่านั้น
-- ทำ `/rethink` เสมอก่อนตัดสินใจเมื่อ context หลายรายการ
-- ถ้างานมีความเสี่ยงสูง → ขอ user ยืนยันก่อน
-- เก็บ todo list ให้อัปเดตตลอด
-- ไม่ข้าม validation หรือ `/report-progress`
+- Do not edit files directly. It is an orchestrator only
+- Always do `/rethink` before deciding when there are multiple context items
+- If the work is high risk → ask the user to confirm first
+- Keep the todo list updated at all times
+- Do not skip validation or `/report-progress`
 
 ## Expected Outcome
 
-- Context หลายรายการถูกจัดลำดับและเข้าใจ
-- งานถูก dispatch ไปยัง skill ทีเหมาะสม
-- Todo list อัปเดตและชัดเจน
-- User ทราบ action ถัดไป
+- Multiple context items are ordered and understood
+- Work is dispatched to the appropriate skill
+- The todo list is updated and clear
+- The user knows the next action

@@ -1,6 +1,6 @@
 ---
 name: no-hard-code
-description: หาและย้าย hardcoded values (secrets, URLs, magic strings/numbers, config) ไป env/config/constants
+description: Find and move hardcoded values (secrets, URLs, magic strings/numbers, config) to env/config/constants
 argument-hint: "[@files... | scope]"
 related:
   - refactor
@@ -17,95 +17,95 @@ related:
 
 ## Goal
 
-ลบ hardcoded values ออกจาก code — ย้ายไป env vars, config files, หรือ shared constants ตามประเภท เพื่อให้เปลี่ยนค่าได้โดยไม่แก้ code และไม่ leak secrets
+Remove hardcoded values from the code — move them to env vars, config files, or shared constants by type, so that values can be changed without editing code and secrets do not leak
 
 ## Scope
 
-- ถ้า user ระบุ `@files...` → เคลียร์เฉพาะไฟล์นั้น; ไม่ระบุ → scan scope ที่ให้มาหรือทั้ง project
-- secrets/credentials → route ไป `/check-secrets` + `/follow-secret-manager` (rotate ก่อนเสมอ)
-- user-facing strings → route ไป `/deep-review-codebase` (extraction ไป locale files)
-- config inconsistency ข้าม envs → route ไป `/deep-review-codebase`
-- mechanical batch หลายไฟล์ → `/use-astgrep rewrite` (dry-run + confirm ก่อนเขียนทับเสมอ)
+- If the user specifies `@files...` → clear only those files; if not specified → scan the given scope or the whole project
+- secrets/credentials → route to `/check-secrets` + `/follow-secret-manager` (always rotate first)
+- user-facing strings → route to `/deep-review-codebase` (extraction to locale files)
+- config inconsistency across envs → route to `/deep-review-codebase`
+- mechanical batch across many files → `/use-astgrep rewrite` (always dry-run + confirm before overwriting)
 
 ## Execute
 
 ### 1. Inventory Hardcoded Values
 
-> Goal: รู้ว่า hardcode อะไรอยู่ที่ไหน แยกตามประเภท
+> Goal: know what is hardcoded and where, split by type
 
-1. scan literals ใน scope — string literals, magic numbers, URLs, paths, ports, timeouts, thresholds, feature flags
-2. จัดกลุ่มตามประเภท: `secrets` (keys, tokens, passwords), `urls` (endpoints, hosts, redirect URIs), `env-specific` (booleans, limits ที่ต่างต่อ environment), `domain constants` (magic numbers/strings ที่เป็น business rule), `i18n strings` (user-facing text)
-3. flag false positives ออก — literals ใน tests/fixtures, schema defaults, protocol constants (`HTTP/1.1`), type discriminators
-4. ทำ `/check-secrets` ก่อนเสมอ — secret ที่ hardcode = incident ไม่ใช่ refactor
+1. scan literals in the scope — string literals, magic numbers, URLs, paths, ports, timeouts, thresholds, feature flags
+2. Group by type: `secrets` (keys, tokens, passwords), `urls` (endpoints, hosts, redirect URIs), `env-specific` (booleans, limits that differ per environment), `domain constants` (magic numbers/strings that are business rules), `i18n strings` (user-facing text)
+3. Flag false positives out — literals in tests/fixtures, schema defaults, protocol constants (`HTTP/1.1`), type discriminators
+4. Always do `/check-secrets` first — a hardcoded secret = an incident, not a refactor
 
 ### 2. Classify Destination
 
-> Goal: แต่ละค่าไปถูกที่ตาม nature ของมัน
+> Goal: each value goes to the right place by its nature
 
 | Type | Destination |
 |------|-------------|
-| secrets | env vars + secret manager (`/follow-secret-manager`) — ห้าม commit ค่าจริง |
-| urls/endpoints | env vars หรือ config ต่อ environment |
-| env-specific values | env vars พร้อม safe default + `.env.example` placeholder |
-| domain constants | `constants/` หรือ shared config module — หนึ่ง fact หนึ่ง source (`/follow-single-of-source`) |
-| magic numbers ที่อธิบายตัวเองไม่ได้ | named constant พร้อมชื่อบอก intent |
+| secrets | env vars + secret manager (`/follow-secret-manager`) — never commit the real value |
+| urls/endpoints | env vars or config per environment |
+| env-specific values | env vars with a safe default + `.env.example` placeholder |
+| domain constants | `constants/` or a shared config module — one fact one source (`/follow-single-of-source`) |
+| magic numbers that cannot explain themselves | a named constant with a name that states the intent |
 | i18n strings | `/deep-review-codebase` extraction flow |
 
 ### 3. Extract
 
-> Goal: code อ่านค่าจาก source เดียว ไม่มี literal กระจาย
+> Goal: the code reads values from a single source, no literals scattered around
 
-1. ย้ายค่าไป destination ตามตาราง — ใช้ existing config/env pattern ของ project ก่อนสร้างใหม่
-2. แทนที่ literal ด้วย reference (env lookup, config import, constant) — mechanical batch → `/use-astgrep rewrite`
-3. ถ้าค่าเดียวกันปรากฏหลายที่ → extract ครั้งเดียวแล้ว share — ห้ามคง duplicate
-4. เพิ่ม validation/fail-fast ที่ boundary ถ้าค่าขาดแล้วพังเงียบๆ (`/update-config`)
+1. Move the value to the destination per the table — use the project's existing config/env pattern before creating a new one
+2. Replace the literal with a reference (env lookup, config import, constant) — for a mechanical batch → `/use-astgrep rewrite`
+3. If the same value appears in several places → extract once then share — do not keep duplicates
+4. Add validation/fail-fast at the boundary if a missing value fails silently (`/update-config`)
 
 ### 4. Update References And Docs
 
-> Goal: consumers ทั้งหมดใช้ค่าจาก source ใหม่
+> Goal: all consumers use values from the new source
 
-1. ทำ `/update-references` สำหรับทุก site ที่เคยใช้ literal
-2. อัปเดต `.env.example`, deployment docs, README ถ้าเพิ่ม env var ใหม่
-3. secrets → เพิ่มใน `.gitignore` checks และ rotate ตาม `/follow-secret-manager` ถ้าเคย commit
+1. Do `/update-references` for every site that used the literal
+2. Update `.env.example`, deployment docs, and README if a new env var is added
+3. secrets → add to `.gitignore` checks and rotate per `/follow-secret-manager` if it was ever committed
 
 ### 5. Verify
 
-> Goal: ไม่มี hardcode เหลือและ behavior เดิม
+> Goal: no hardcoding remains and behavior is unchanged
 
-1. re-scan scope — literals เดิมต้องหาย (เหลือเฉพาะ false positives ที่ flag ไว้)
-2. ทำ `/run-verify` — tests/typecheck/build ผ่าน behavior ไม่เปลี่ยน
-3. app boot ด้วย env ใหม่ได้จริง — missing env fail fast ไม่ใช่ silent fallback เป็นค่าผิด
+1. re-scan the scope — the original literals must be gone (leaving only the false positives that were flagged)
+2. Do `/run-verify` — tests/typecheck/build pass, behavior is unchanged
+3. The app really boots with the new env — a missing env fails fast, not a silent fallback to a wrong value
 4. `/report-before-after` — count per type, files changed
 
 ## Rules
 
 ### 1. Preserve Behavior
 
-- refactor เท่านั้น — ค่าที่ app เห็นต้องเหมือนเดิมทุก environment ห้ามเปลี่ยนค่าจริงใน pass เดียวกัน
-- ห้าม mix กับ feature/fix ใน commit เดียว
+- Refactor only — the values the app sees must be identical in every environment, do not change real values in the same pass
+- Do not mix with a feature/fix in the same commit
 
 ### 2. Security First
 
-- secret ที่เคย commit = compromised → rotate ก่อน extract เสมอ
-- ห้ามย้าย secret ไป file ที่ commit ขึ้น repo — `.env` ต้องอยู่ใน `.gitignore`
+- A secret that was ever committed = compromised → always rotate before extract
+- Never move a secret to a file that is committed to the repo — `.env` must be in `.gitignore`
 
 ### 3. Don't Over-Extract
 
-- literals ที่เป็น protocol/format constants หรือใช้ครั้งเดียวและชัดเจน → ไม่ต้อง extract (`/dont-over-engineer`)
-- test fixtures/mocks ปล่อยไว้ เว้นแต่เป็น real secret
+- Literals that are protocol/format constants or used once and are clear → no need to extract (`/dont-over-engineer`)
+- Leave test fixtures/mocks alone unless they are a real secret
 
 ### 4. Single Source
 
-- ค่าเดียวกันต้องมี definition เดียว — extraction ต้อง consolidate ไม่ใช่ย้าย duplication ไป config
+- The same value must have a single definition — extraction must consolidate, not move duplication into config
 
-- ใช้ /refactor ถ้าจำเป็น
-- ใช้ /check-secrets ถ้าจำเป็น
-- ใช้ /update-config ถ้าจำเป็น
-- ใช้ /run-verify ถ้าจำเป็น
+- Use /refactor if necessary
+- Use /check-secrets if necessary
+- Use /update-config if necessary
+- Use /run-verify if necessary
 
 ## Expected Outcome
 
-- ไม่มี secrets, URLs, env-specific values, magic strings/numbers ฝังใน code
-- ทุกค่ามี source เดียวที่เปลี่ยนได้โดยไม่แก้ code
-- `.env.example`/docs อัปเดตครบ — app fail fast เมื่อ config ขาด
-- ผ่าน lint/typecheck/test/build — behavior เดิม
+- No secrets, URLs, env-specific values, magic strings/numbers embedded in the code
+- Every value has a single source that can be changed without editing code
+- `.env.example`/docs are fully updated — the app fails fast when config is missing
+- Passes lint/typecheck/test/build — behavior unchanged

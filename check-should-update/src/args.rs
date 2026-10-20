@@ -8,7 +8,7 @@ use crate::DEFAULT_REFS;
 #[command(
     name = "check-should-update",
     version,
-    about = "ตรวจสอบ git changes เพื่อตัดสินใจว่า target ต้องอัปเดทหรือไม่"
+    about = "Check git changes to decide whether a target needs updating"
 )]
 pub struct Args {
     /// Target path(s) to check

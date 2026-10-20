@@ -1,6 +1,6 @@
 ---
 name: idea-convert-my-global-cli-to-skills
-description: สร้างไอเดียและ draft แปลง CLI tools ที่ติดตั้งเป็น Devin skills
+description: Generate ideas and a draft to convert installed CLI tools into Devin skills
 argument-hint: "[cli-name]"
 related:
   - check-my-global-cli
@@ -15,118 +15,117 @@ related:
 
 ## Goal
 
-สร้างไอเดียและ draft สำหรับแปลง CLI tools ที่ติดตั้งบนเครื่อง หรือ CLI ที่ระบุ เป็น Devin skills ตามมาตรฐาน
+Generate ideas and a draft for converting CLI tools installed on the machine, or a specified CLI, into Devin skills per the standard
 
 ## Scope
 
-ใช้หลัง `/check-my-global-cli` หรือเมื่อต้องการ convert CLI ใดๆ เป็น skills:
+Use after `/check-my-global-cli` or when you want to convert any CLI into skills:
 
-- สำรวจ commands ของ installed CLI tools
-- ประเมิน command ใดควรเป็น skill
-- เขียน draft skill ตาม `/update-devin-global-skills`
-- รองรับทั้ง single CLI, multiple tools และ global CLI set
+- Survey the commands of installed CLI tools
+- Assess which commands should become skills
+- Write a draft skill per `/update-devin-global-skills`
+- Support a single CLI, multiple tools, and a global CLI set
 
 ## Execute
 
 ### 1. Select CLI Tools
 
-> Goal: ระบุ CLI ทีต้องการ convert
+> Goal: Identify the CLI to convert
 
-1. ดูรายการจาก `/check-my-global-cli` หรือถาม user
-2. ถ้าไม่มี report ทำ `/check-my-global-cli` เพื่อ list ทีติดตั้ง
-3. เลือก 1-3 tools ต่อรอบ — ถ้ามากกว่านั้นให้ทำ `/create-plan-in-dot-devin`
-4. ตรวจสอบ version, installation path และ global availability
+1. Look at the list from `/check-my-global-cli` or ask the user
+2. If there's no report, run `/check-my-global-cli` to list what's installed
+3. Select 1-3 tools per round — if more, run `/create-plan-in-dot-devin`
+4. Check version, installation path, and global availability
 
 ### 2. Explore Commands
 
-> Goal: เรียนรู้ command structure ของแต่ละ tool
+> Goal: Learn each tool's command structure
 
-1. ทำ `/learn` (cli) กับแต่ละ tool
-2. รัน `<tool> --help` และ `<tool> <command> --help`
-3. บันทึก:
-   - ชื่อ command และ subcommand
-   - flags/options ที่ใช้บ่อย
-   - input/output pattern, exit codes
-   - ตัวอย่างการใช้งานทั่วไป
+1. Run `/learn` (cli) with each tool
+2. Run `<tool> --help` and `<tool> <command> --help`
+3. Record:
+   - command and subcommand names
+   - frequently used flags/options
+   - input/output patterns, exit codes
+   - examples of common usage
 
 ### 3. Evaluate Conversion Candidates
 
-> Goal: ประเมินว่า command ไหนน่าเป็น skill
+> Goal: Assess which commands are worth becoming skills
 
-1. ใช้ criteria:
-   - ใช้บ่อยใน project หรือ workflow
-   - มี flags/options หลายตัว จำเป็นต้องมี guideline
-   - ใช้งานซับซ้อนหรือต้องจำลำดับขั้นตอน
-   - นำไปใช้ใน workspace อื่นได้
-2. ให้คะแนน 1-5 สำหรับแต่ละ command ในแต่ละ criterion
-3. รวมคะแนนและจัดลำดับ: High (≥14), Medium (9-13), Low (<9)
-4. รวม commands ที่คล้ายกันเป็น skill เดียวถ้า goal ตรงกัน
+1. Use criteria:
+   - Used often in the project or workflow
+   - Has many flags/options that need guidelines
+   - Complex to use or requires remembering the sequence of steps
+   - Reusable in other workspaces
+2. Score 1-5 for each command on each criterion
+3. Total the scores and rank: High (≥14), Medium (9-13), Low (<9)
+4. Group similar commands into one skill if the goal matches
 
 ### 4. Group And Prioritize
 
-> Goal: จัดกลุ่ม commands ตาม concern และ priority
+> Goal: Group commands by concern and priority
 
-1. แยก commands ทีซับซ้อนหรือใช้บ่อยมากเป็น skill เดียว
-2. รวม create/delete/list ของ resource เดียวกันเป็น skill เดียวถ้าเหมาะสม
-3. ระบุ low-priority commands ที่อาจไม่ต้องสร้าง skill
-4. กำหนดชื่อ skill ในรูป `<tool>-<command>` หรือ `<tool>-<purpose>`
+1. Split complex or very frequently used commands into their own skill
+2. Combine create/delete/list of the same resource into one skill if appropriate
+3. Identify low-priority commands that may not need a skill
+4. Define skill names in the form `<tool>-<command>` or `<tool>-<purpose>`
 
 ### 5. Draft Skills
 
-> Goal: เขียน draft skill สำหรับ candidates ที่เลือก
+> Goal: Write a draft skill for the selected candidates
 
-1. ใช้ `/update-devin-global-skills` สำหรับแต่ละ skill
-2. ใน draft ต้องระบุ:
-   - `name` ทีสื่อความหมาย
-   - `description` ≤100 ตัวอักษร
+1. Use `/update-devin-global-skills` for each skill
+2. In the draft, specify:
+   - a meaningful `name`
+   - `description` ≤100 characters
    - `triggers`, `allowed-tools`, `related`
    - `Goal`, `Scope`, `Execute`, `Rules`, `Expected Outcome`
-3. ใส่ `related` ไปยัง skills อื่นใน ecosystem เดียวกัน
-4. ทำ `/report table` เพื่อสรุป draft skills ทีสร้าง คอลัมน์: `No.`, `Skill`, `Command(s)`, `Priority`, `Notes`
+3. Add `related` pointing to other skills in the same ecosystem
+4. Run `/report table` to summarize the draft skills created, with columns: `No.`, `Skill`, `Command(s)`, `Priority`, `Notes`
 
 ### 6. Validate And Suggest
 
-> Goal: ตรวจสอบและนำเสนอทิศทางถัดไป
+> Goal: Verify and present the next direction
 
-1. ทำ `/deep-validate` ตรวจ frontmatter, references, เงื่อนไขต่างๆ
-2. ตรวจว่าไม่มีชื่อ skill ซ้ำด้วย `grep`
-3. ถ้า draft ผ่าน → ทำ `/update-devin-global-skills` เพื่อ commit หรือบันทึก skills
-4. ถ้าต้องปรับ → ทำ `/check-my-global-cli` อีกรอบหรือ `/learn` (cli)
-5. ถ้ามี action ต่อเนื่องจาก idea ก่อนหน้า → ใช้ `/follow-your-suggestion`
-6. ถ้าไม่มี candidates → ทำ `/suggest-next-action`
+1. Run `/deep-validate` to check frontmatter, references, and various conditions
+2. Check that there are no duplicate skill names with `grep`
+3. If the draft passes → run `/update-devin-global-skills` to commit or save the skills
+4. If it needs adjusting → run `/check-my-global-cli` again or `/learn` (cli)
+5. If there is a follow-up action from the previous idea → use `/follow-your-suggestion`
+6. If there are no candidates → run `/suggest-next-action`
 
 ## Rules
 
 ### 1. Conversion Criteria
 
-- สร้าง skill เฉพาะ command ทีมี justification ชัดเจน
-- ไม่ duplicate กับ skills ทีมีอยู่ — ทำ `grep` ชื่อคล้ายกันก่อน
-- หนึ่ง skill ครอบคลุม command หรือกลุ่ม commands ทีมี goal เดียวกัน
-- ไม่สร้าง skill สำหรับ command ทีทำงานเสร็จในบรรทัดเดียวและไม่มี options สำคัญ
+- Only create a skill for commands with a clear justification
+- Don't duplicate existing skills — `grep` for similar names first
+- One skill covers a command or group of commands with the same goal
+- Don't create a skill for commands that complete in one line and have no important options
 
 ### 2. Naming And Semantics
 
-- ชื่อ skill ควรสะท้อน command จริง เช่น `<tool>-<command>` หรือ `<tool>-<purpose>`
-- ใช้ flags/options เดิมของ CLI ใน instructions
-- รักษา exit codes และ error handling ของ CLI
-- หลีกเลี่ยงชื่อ generic เช่น `use-cli` หรือ `my-cli`
-- ถ้า command ใช้ใน project หลาย workspace ควรตั้งชื่อให้ทั่วไป
+- A skill name should reflect the real command, e.g. `<tool>-<command>` or `<tool>-<purpose>`
+- Use the CLI's original flags/options in the instructions
+- Preserve the CLI's exit codes and error handling
+- Avoid generic names like `use-cli` or `my-cli`
+- If a command is used across many workspaces, name it generically
 
 ### 3. Draft Quality
 
-- ใช้ภาษาไทยสำหรับเนื้อหา
-- ใช้ backticks สำหรับ `commands`, `tools`, `paths` และ skill references
-- ไม่เกิน 250 บรรทัดต่อ skill
-- ระบุ `allowed-tools` ตาม tools ที command เรียกโดยตรง
-- ใช้ /deep-test cli ถ้าจำเป็น
-- ใช้ /run-test ถ้าจำเป็น
+- Use Thai for the content
+- Use backticks for `commands`, `tools`, `paths` and skill references
+- No more than 250 lines per skill
+- Specify `allowed-tools` according to the tools the command calls directly
+- Use /deep-test cli if necessary
+- Use /run-test if necessary
 
 
 ## Expected Outcome
 
-- รายการ CLI tools และ commands ทีควรแปลงเป็น skills พร้อมคะแนน
-- กลุ่ม commands ทีจัดเป็น skill เดียวกันและ priority
-- draft skills สำหรับ High priority commands
-- ตารางสรุป commands, draft skill names และ next action
-- ทุก draft ผ่าน `/deep-validate` และไม่มีชื่อซ้ำ
-
+- A list of CLI tools and commands that should be converted into skills with scores
+- Groups of commands arranged into the same skill and priority
+- Draft skills for High priority commands
+- A summary table of commands, draft skill names, and next action
+- Every draft passes `/deep-validate` and has no duplicate names

@@ -1,6 +1,6 @@
 ---
 name: resolve-cicd-verify-resolved
-description: ยืนยันหลัง `/resolve-cicd` ว่า pipeline กลับมา green จริงบน remote — ไม่ใช่แค่ local fix ผ่าน
+description: Confirm after `/resolve-cicd` that the pipeline really came back green on the remote — not just that the local fix passed
 related:
   - resolve-cicd
 ---
@@ -9,7 +9,7 @@ related:
 
 
 
-ยืนยันหลัง `/resolve-cicd` ว่า pipeline กลับมา green จริงบน remote — ไม่ใช่แค่ local fix ผ่าน
+Confirm after `/resolve-cicd` that the pipeline really came back green on the remote — not just that the local fix passed
 
 
 
@@ -17,11 +17,11 @@ related:
 
 
 
-- ใช้เมื่อ parent dispatch มาที่ `verify` หรือเรียกหลัง resolve CI/CD failure
+- Use when the parent dispatches to `verify` or it is called after resolving a CI/CD failure
 
-- ครอบคลุม: re-run status, all jobs green, deploy target healthy
+- Covers: re-run status, all jobs green, deploy target healthy
 
-- Read-only: watch/ตรวจสอบ — ไม่แก้ไข
+- Read-only: watch/inspect — no edits
 
 
 
@@ -33,15 +33,15 @@ related:
 
 
 
-> Goal: ได้ผล run ใหม่จาก remote
+> Goal: Get the new run result from the remote
 
 
 
-1. ถ้า fix commit แล้ว → run ใหม่ auto-trigger — watch ด้วย `gh run watch` หรือ `gh run list`
+1. If the fix is committed → the new run auto-triggers — watch with `gh run watch` or `gh run list`
 
-2. ถ้าไม่ auto-trigger → `gh run rerun <run-id>` (หรือ `--failed` สำหรับ failed jobs เท่านั้น)
+2. If it does not auto-trigger → `gh run rerun <run-id>` (or `--failed` for failed jobs only)
 
-3. รอจน run complete — อย่า verdict ก่อน run จบ
+3. Wait until the run completes — do not give a verdict before the run finishes
 
 
 
@@ -49,15 +49,15 @@ related:
 
 
 
-> Goal: ไม่ใช่แค่ job ที่ fail — ทุก job ผ่าน
+> Goal: Not just the failed job — every job passes
 
 
 
-1. `gh run view <run-id>` — ทุก job เป็น `success`
+1. `gh run view <run-id>` — every job is `success`
 
-2. flag jobs ที่ skip/cancel โดยไม่ตั้งใจ
+2. Flag jobs that were skipped/cancelled unintentionally
 
-3. ถ้า job ใหม่ fail → verdict `not-resolved` พร้อม logs pointer
+3. If a new job fails → verdict `not-resolved` with a logs pointer
 
 
 
@@ -65,15 +65,15 @@ related:
 
 
 
-> Goal: CD side สำเร็จถ้ามี deploy
+> Goal: The CD side succeeds if there is a deploy
 
 
 
-1. Cloudflare: `wrangler deployments list` — deployment ใหม่ active
+1. Cloudflare: `wrangler deployments list` — the new deployment is active
 
-2. อื่นๆ: ตรวจ deploy step ใน run + target URL ตอบกลับ
+2. Others: check the deploy step in the run + the target URL responds
 
-3. ถ้า deploy target unhealthy → verdict `degraded`
+3. If the deploy target is unhealthy → verdict `degraded`
 
 
 
@@ -81,13 +81,13 @@ related:
 
 
 
-> Goal: สรุป pipeline status
+> Goal: Summarize the pipeline status
 
 
 
-1. ใช้ `/report` คอลัมน์: `No.`, `Job/Check`, `Result`, `Evidence`
+1. Use `/report` with columns: `No.`, `Job/Check`, `Result`, `Evidence`
 
-2. Verdict: `green` / `not-resolved` / `degraded` พร้อม run URL
+2. Verdict: `green` / `not-resolved` / `degraded` with the run URL
 
 
 
@@ -95,11 +95,11 @@ related:
 
 
 
-- verdict ต้องอิง remote run ล่าสุด — local pass ไม่พอ
+- The verdict must be based on the latest remote run — a local pass is not enough
 
-- ถ้า re-run fail → report กลับให้ `/resolve-cicd` loop ต่อ — ไม่แก้เอง
+- If the re-run fails → report back for `/resolve-cicd` to loop again — do not fix it yourself
 
-- ระบุ run URL + commit sha ในรายงานเสมอ
+- Always state the run URL + commit sha in the report
 
 
 
@@ -107,6 +107,6 @@ related:
 
 
 
-- Verdict จาก remote run จริง พร้อม run URL
+- A verdict from a real remote run with the run URL
 
-- รายการ jobs/deploys ที่ยังไม่ green ถ้ามี
+- A list of jobs/deploys that are not yet green, if any

@@ -1,6 +1,6 @@
 ---
 name: loop-until-complete
-description: ทำซ้ำงานจนกว่าจะเสร็จสมบูรณ์ หรือถึงจุดทีดีพอ โดยหยุดก่อน over-engineer
+description: Repeat work until it is fully complete, or reaches a good-enough point, stopping before over-engineering
 argument-hint: "[scope]"
 related:
   - deep-review-codebase
@@ -18,140 +18,140 @@ related:
 
 ## Goal
 
-ทำซ้ำงานจนกว่าจะบรรลุวัตถุประสงค์และเสร็จสมบูรณ์ หรือจนถึงจุดที "ดีพอ" คือ ไม่สามารถทำให้ดีกว่านี้ได้อีก หรือถ้ายังทำได้แต่ impact ไม่คุ้มกับต้นทุน โดยหยุดก่อน over-engineering
+Repeat work until the objective is achieved and it is fully complete, or until the "good enough" point where it cannot be made any better, or if it still can be done but the impact is not worth the cost, stopping before over-engineering
 
 ## Scope
 
-ใช้สำหรับการทำซ้ำงานทีต้อง verify จนกว่าจะผ่านเงื่อนไข หรืองานทีปรับปรุงได้หลายรอบ เช่น refactor, optimize, แก้ไข content, ปรับ UX, ออกแบบ schema — รวมการออกแบบ agentic loop ทีรันอัตโนมัติ (scheduled/trigger/long-running) ใน `### 8`
+Use for repeating work that must be verified until it passes the condition, or work that can be improved over multiple rounds such as refactor, optimize, editing content, adjusting UX, designing schema — including designing an agentic loop that runs automatically (scheduled/trigger/long-running) in `### 8`
 
 ## Execute
 
 ### 1. Define Loop Condition
 
-> Goal: กำหนดเงื่อนไขทีวัดผลได้
+> Goal: define a measurable condition
 
-1. ระบุวัตถุประสงค์ทีต้องบรรลุ
-2. กำหนดเงื่อนไขการหยุดทีชัดเจน
-3. ตั้งค่าจำนวนรอบสูงสุดถ้าจำเป็น
-4. ระบุ over-engineering indicators เช่น ไฟล์/บรรทัดเพิ่มขึ้นโดยไม่จำเป็น, abstraction เพิ่มแต่ไม่มี consumer, complexity สูงขึ้น
+1. Identify the objective that must be achieved
+2. Define a clear stop condition
+3. Set a maximum number of rounds if necessary
+4. Identify over-engineering indicators such as files/lines increasing unnecessarily, abstraction added with no consumer, complexity increasing
 
 ### 2. Establish Baseline
 
-> Goal: รู้จุดเริ่มต้นก่อนวนปรับปรุง
+> Goal: know the starting point before iterating improvements
 
-1. บันทึกสถานะปัจจุบันของงาน เช่น code, design, content, metrics
-2. ระบุตัวชี้วัดหลัก (KPIs) ทีจะใช้วัด improvement เช่น performance, readability, coverage, simplicity
-3. ถ้ามี test/lint/build อยู่ ให้รันเพื่อเก็บ baseline ก่อน
+1. Record the current state of the work such as code, design, content, metrics
+2. Identify the key indicators (KPIs) that will be used to measure improvement such as performance, readability, coverage, simplicity
+3. If there is test/lint/build, run them to capture the baseline first
 
 ### 3. Execute Loop
 
-> Goal: ทำงานซ้ำตามเงื่อนไข
+> Goal: do the work repeatedly per the condition
 
-1. เลือกสิ่งเดียวที improve ได้มากทีสุดในรอบนี้
-2. ใช้ minimal changes ในการปรับปรุง
-3. ทำงานตามขั้นตอนทีกำหนด
-4. ตรวจสอบเงื่อนไขการหยุด
-5. ถ้าผลลัพธ์ไม่ผ่าน ให้ทำ `/retry` เพื่อ recheck และแก้ไข
-6. ทำซ้ำถ้ายังไม่บรรลุเงื่อนไข
+1. Pick the single thing that can be improved the most this round
+2. Use minimal changes to improve
+3. Work according to the defined steps
+4. Check the stop condition
+5. If the result does not pass, do `/retry` to recheck and fix
+6. Repeat if the condition is not yet met
 
 ### 4. Check Diminishing Returns
 
-> Goal: ประเมินว่าคุ้มค่าหรือไม่ทีจะทำต่อ
+> Goal: assess whether it is worth continuing
 
-1. ถ้าผลลัพธ์เท่าเดิม หรือดีขึ้นไม่ถึง threshold ให้หยุด
-2. ถ้าจะดีขึ้นได้ต้องใช้ทรัพยากร/เวลา/ความซับซ้อนมากกว่าประโยชน์ทีได้ ให้หยุด
-3. ถ้าการปรับปรุงครั้งถัดไปทำให้ abstraction, dependency, หรือ complexity เพิ่มผิดสัดส่วน ให้หยุด
-4. ถ้ายังไม่ถึง max iterations และยังมี improvement ทีชัดเจน ให้ทำต่อ
+1. If the result is the same, or improves by less than the threshold, stop
+2. If improving further requires more resources/time/complexity than the benefit gained, stop
+3. If the next improvement increases abstraction, dependency, or complexity disproportionately, stop
+4. If the max iterations are not yet reached and there is still clear improvement, continue
 
 ### 5. Decide Continue Or Stop
 
-> Goal: ตัดสินใจอย่างมีเหตุผลว่าหยุดหรือทำต่อ
+> Goal: decide rationally whether to stop or continue
 
-1. ถ้า criteria ทั้งหมดผ่าน และไม่มี improvement ทีมีนัยสำคัญ ให้หยุด
-2. ถ้ายังไม่ผ่าน criteria แต่ improvement ลดลงจนไม่คุ้ม cost ให้หยุดและ report
-3. ถ้าพบวิธีทีดีกว่าที impact สูง ให้ทำต่อในรอบถัดไป
-4. ถ้าคิดไม่ออกว่าจะดีขึ้นอย่างไร ให้ทำ `/suggest-next-action` หรือ `/ask-me`
+1. If all criteria pass and there is no significant improvement, stop
+2. If the criteria are not yet met but the improvement has declined enough that it is not worth the cost, stop and report
+3. If a better approach with high impact is found, continue in the next round
+4. If you cannot think of how to make it better, do `/suggest-next-action` or `/ask-me`
 
 ### 6. Verify Completion
 
-> Goal: ตรวจสอบว่างานเสร็จสมบูรณ์
+> Goal: verify the work is fully complete
 
-1. ตรวจสอบวัตถุประสงค์บรรลุหรือไม่
-2. ตรวจสอบคุณภาพของผลลัพธ์
-3. ยืนยันว่าไม่มีงานค้าง
-4. รัน `/run-check` หรือ `/deep-validate` ครั้งสุดท้าย
+1. Check whether the objective is achieved
+2. Check the quality of the result
+3. Confirm there is no pending work
+4. Run `/run-check` or `/deep-validate` one final time
 
 ### 7. Finalize And Report
 
-> Goal: สรุปผลและส่งมอบ
+> Goal: summarize the result and deliver
 
-1. สรุปจำนวนรอบ, สิ่งทีเปลี่ยน, metrics before/after, และเหตุผลทีหยุด
-2. ทำ `/report` หรือ `/report-progress` แสดง progress ตามลำดับรอบ
-3. ถ้าพร้อม ให้ทำ `/ship` หรือ `/continue` ตาม context
+1. Summarize the number of rounds, what changed, metrics before/after, and the reason for stopping
+2. Do `/report` or `/report-progress` to show progress in round order
+3. If ready, do `/ship` or `/continue` per context
 
-### 8. Design Agentic Loop (Conditional — merged จาก `/follow-loop-engineering`)
+### 8. Design Agentic Loop (Conditional — merged from `/follow-loop-engineering`)
 
-> Goal: ออกแบบระบบทีหางาน แบ่งงาน มอบหมาย verify ผล บันทึกสถานะ และหยุดเมื่อถึง human gate ได้เอง
+> Goal: design a system that can find work, split work, delegate, verify results, persist state, and stop when reaching a human gate on its own
 
-1. กำหนด purpose: goal หลักของ loop, trigger (cron, git event, issue, notification, หรือ manual), stop condition ทีชัดเจน, max iterations หรือ budget กัน infinite loop
-2. Work discovery: scan แหล่งงาน — git diff, issues, PR comments, logs, metrics; ใช้ `/scan-codebase` / `grep` หา pattern ทีต้องแก้; จัดลำดับความสำคัญของงานทีเจอ; ไม่มีงาน → loop หยุดและ report
-3. Triage and isolate: จัดหมวดงาน (bug, refactor, test, docs, security); แยกแต่ละงาน into context อิสระ — branch หรือ worktree; บันทึก state ของงานลง `STATE.md`
-4. Implement and verify แบบไม่ขึ้นกัน: มอบหมายผ่าน `/use-subagents` — implementer agent และ verifier agent แยกกัน ไม่ใช้ context/state เดียวกัน; รัน test, lint, typecheck, build ตามความเหมาะสม; ไม่ผ่าน → ส่งกลับแก หรือข้ามไปงานถัดไป
-5. Persist state: อัปเดต `STATE.md` ด้วย งาน, ผล, การตัดสินใจ, รอบถัดไป + log, diff, test result, PR link; งานค้างข้าม session → `/save-to-todo-md`; state ต้องตรวจสอบย้อนกลับได้
-6. Human gates: ระบุ action ทีเสี่ยงหรือย้อนกลับไม่ได้ (publish, merge, push, delete, deploy) — สรุปผลและข้อเสนอก่อนถาม user; ไม่ทำ remote side effects โดยไม่ได้รับอนุญาต; ไม่อนุมัติ → บันทึกเหตุผลแล้วหยุดหรือข้าม
-7. Monitor and iterate: ติดตาม success rate, cost, review burden, จำนวน human gate; loop ทีสร้าง noise มากกว่าคุณค่า → ลดความถี่หรือลบ; ปรับ trigger, triage rule และ max iterations; รายงานทุกรอบด้วย `/report`
+1. Define the purpose: the main goal of the loop, the trigger (cron, git event, issue, notification, or manual), a clear stop condition, max iterations or a budget to prevent an infinite loop
+2. Work discovery: scan the sources of work — git diff, issues, PR comments, logs, metrics; use `/scan-codebase` / `grep` to find patterns that must be fixed; prioritize the work found; if there is no work → the loop stops and reports
+3. Triage and isolate: categorize the work (bug, refactor, test, docs, security); isolate each task into an independent context — a branch or worktree; record the task state in `STATE.md`
+4. Implement and verify independently: delegate via `/use-subagents` — a separate implementer agent and verifier agent, not sharing the same context/state; run test, lint, typecheck, build as appropriate; if it does not pass → send it back for fixing or skip to the next task
+5. Persist state: update `STATE.md` with the work, results, decisions, next round + log, diff, test result, PR link; pending work across sessions → `/save-to-todo-md`; the state must be traceable
+6. Human gates: identify risky or irreversible actions (publish, merge, push, delete, deploy) — summarize the result and proposal before asking the user; do not perform remote side effects without permission; if not approved → record the reason then stop or skip
+7. Monitor and iterate: track the success rate, cost, review burden, number of human gates; a loop that generates more noise than value → reduce the frequency or remove it; adjust the trigger, triage rule, and max iterations; report every round with `/report`
 
 ## Rules
 
 ### 1. Safety
 
-- ห้ามวนลูปไม่มีทีสิ้นสุด
-- ต้องมีเงื่อนไขการหยุดทีตรวจสอบได้จริง
-- ถ้าเกินจำนวนรอบสูงสุด ให้หยุดและรายงาน
-- ทำ dry run ก่อน action ทีเปลี่ยนแปลงเยอะ
+- Never loop infinitely
+- There must be a stop condition that is actually verifiable
+- If the maximum number of rounds is exceeded, stop and report
+- Do a dry run before actions that change a lot
 
 ### 2. Quality
 
-- ตรวจสอบคุณภาพของผลลัพธ์ก่อนหยุด
-- ใช้ minimal changes ในแต่ละรอบ
-- ทุกรอบต้องมีข้อมูลเปรียบเทียบ before/after
-- ใช้ตัวเลข, test result, lint score, หรือ metrics จริง ไม่ใช่ความรู้สึก
+- Check the quality of the result before stopping
+- Use minimal changes in each round
+- Every round must have before/after comparison data
+- Use numbers, test results, lint scores, or real metrics, not feelings
 
 ### 3. Stop Conditions
 
-- หยุดเมื่องานเสร็จสมบูรณ์ตาม criteria
-- หยุดเมื่องานดีพอตาม criteria ทีกำหนด
-- หยุดเมื่องานไม่สามารถดีขึ้นได้อีกโดยไม่เพิ่ม cost หรือ risk
-- หยุดเมื่องานถัดไปมี impact น้อยกว่าต้นทุน
-- ถ้าถึง max iterations ให้หยุดและ report สาเหตุ
+- Stop when the work is fully complete per the criteria
+- Stop when the work is good enough per the defined criteria
+- Stop when the work cannot be improved further without increasing cost or risk
+- Stop when the next work has less impact than the cost
+- If max iterations are reached, stop and report the reason
 
 ### 4. Over-Engineering Guardrails
 
-- ห้ามสร้าง abstraction, layer, dependency ใหม่ถ้าไม่จำเป็นจริงๆ
-- ห้าม optimize ส่วนทีไม่ใช่ bottleneck หรือไม่มี evidence
-- ห้ามเพิ่ม features หรือ config นอก scope ปัจจุบัน
-- ถ้ามีข้อสงสัยว่า over-engineer ให้ทำ `/dont-over-engineer`
+- Never create a new abstraction, layer, or dependency unless truly necessary
+- Never optimize a part that is not a bottleneck or has no evidence
+- Never add features or config outside the current scope
+- If in doubt about over-engineering, do `/dont-over-engineer`
 
-### 5. Agentic Loop Guardrails (merged จาก `/follow-loop-engineering`)
+### 5. Agentic Loop Guardrails (merged from `/follow-loop-engineering`)
 
-- ห้าม loop ไม่มีทีสิ้นสุด — ต้องมี stop condition + max iterations; เกินแล้ว → หยุดและรายงาน
-- ห้าม destructive action โดยไม่ผ่าน human gate; ไม่ทำ remote side effects โดยไม่ได้รับอนุญาต
-- implementer และ verifier ต้องไม่ใช้ context/state เดียวกัน; ทุกผลลัพธ์มี evidence — test output, diff, log
-- ติดตาม token/execution cost ต่อรอบ; ใช้ minimal context; loop ต้องทิ้ง audit trail (state, log, decision, ผล)
+- Never loop infinitely — there must be a stop condition + max iterations; once exceeded → stop and report
+- Never take a destructive action without passing a human gate; do not perform remote side effects without permission
+- The implementer and verifier must not share the same context/state; every result has evidence — test output, diff, log
+- Track token/execution cost per round; use minimal context; the loop must leave an audit trail (state, log, decision, result)
 
 ### 6. Related Skills
 
-- ใช้ `/retry` ถ้าจำเป็น
-- ใช้ `/run-until-pass` ถ้าจำเป็น
-- ใช้ `/suggest-next-action` ถ้าจำเป็น
-- ใช้ `/report-progress` ถ้าจำเป็น
+- Use `/retry` if necessary
+- Use `/run-until-pass` if necessary
+- Use `/suggest-next-action` if necessary
+- Use `/report-progress` if necessary
 
 ## Expected Outcome
 
-- งานทำซ้ำจนบรรลุวัตถุประสงค์หรือถึงจุดทีดีพอ
-- เงื่อนไขการหยุดชัดเจน
-- ผลลัพธ์มีคุณภาพและสมบูรณ์
-- ไม่เกิด over-engineering หรือ scope creep
-- มีบันทึกรอบ, metrics, และเหตุผลทีหยุด
-- ถ้าใช้เป็น agentic loop: มีเอกสารออกแบบ (goal, trigger, stop condition, max iterations, human gates) และ `STATE.md` ทีตรวจสอบย้อนกลับได้
-- ผลลัพธ์พร้อม validate และ ship
+- The work is repeated until the objective is achieved or the good-enough point is reached
+- The stop condition is clear
+- The result is of good quality and complete
+- No over-engineering or scope creep occurs
+- There is a record of rounds, metrics, and the reason for stopping
+- If used as an agentic loop: there is a design document (goal, trigger, stop condition, max iterations, human gates) and a traceable `STATE.md`
+- The result is ready to validate and ship

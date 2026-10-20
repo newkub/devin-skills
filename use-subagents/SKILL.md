@@ -147,7 +147,7 @@ These skills have subagent profiles for parallel independent work — the profil
 | 8 | `resolve-github-issue-by-me` | `SKILL.md ## Subagents` → `issue-implementer` | implement one issue until PR-ready |
 | 9 | `deep-research` | `SKILL.md ## Subagents` → `source-researcher` | deeply research one source/topic |
 | 10 | `deep-validate` | `SKILL.md ## Subagents` → `dimension-validator` | validate one dimension pass/fail + evidence |
-| 11 | `deep-review-codebase-then-fix` | `SKILL.md ## Subagents` → `fix-worker` | apply approved fixes for one module/domain |
+| 11 | `deep-review-codebase` | `SKILL.md ## Subagents` → `fix-worker` | apply approved fixes for one module/domain |
 | 12 | `sync-drive-d-submodules` | `SKILL.md ## Subagents` → `submodule-syncer` | sync one submodule on drive D |
 | 13 | `merge-all-branch-by-me-to-main` | `SKILL.md ## Subagents` → `branch-merger` | merge one branch into main |
 | 14 | `update-project` | `SKILL.md ## Subagents` → `project-updater`, `git-log-collector`, `project-files-updater`, `project-skills-updater`, `github-metadata-updater` | update a sub-project and collect inputs per domain |

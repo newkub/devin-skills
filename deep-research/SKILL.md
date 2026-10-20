@@ -13,6 +13,7 @@ related:
   - deep-review-codebase
   - improve
   - use-subagents
+  - use-lightpanda
 ---
 
 ## Goal

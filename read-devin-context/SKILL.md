@@ -1,6 +1,6 @@
 ---
 name: read-devin-context
-description: อ่านและสรุป devin context ทั้งหมดก่อนเริ่มงาน
+description: Read and summarize all devin context before starting work
 argument-hint: "[scope]"
 related:
   - reset-context
@@ -11,105 +11,105 @@ related:
 
 ## Goal
 
-สรุป devin context (global rules, skills, mcp, hooks, plugins, etc.) เพื่อเตรียม task และลดการตัดสินใจผิด
+Summarize devin context (global rules, skills, mcp, hooks, plugins, etc.) to prepare for the task and reduce wrong decisions
 
 ## Scope
 
-อ่าน context ทั้ง global และ project ที่มีผลต่อการทำงานของ devin รวมถึง `global_rules.md`, skills, mcp config, hooks, plugins
+Read both global and project context that affects how devin works, including `global_rules.md`, skills, mcp config, hooks, plugins
 
 ## Execute
 
 ### 1. Discover Context Paths
 
-> Goal: หา context directories ใน environment
+> Goal: Find context directories in the environment
 
-1. ตรวจหา global context:
-   - Windows: `%APPDATA%\devin` เช่น `C:\Users\<user>\AppData\Roaming\devin`
-   - Linux/macOS: `~/.config/devin` และ `~/.devin`
-2. ตรวจหา windsurf context:
+1. Check for global context:
+   - Windows: `%APPDATA%\devin`, e.g. `C:\Users\<user>\AppData\Roaming\devin`
+   - Linux/macOS: `~/.config/devin` and `~/.devin`
+2. Check for windsurf context:
    - `C:\Users\<user>\.codeium\windsurf\memories\global_rules.md`
    - `C:\Users\<user>\.codeium\windsurf\skills`
-3. ตรวจหา project context:
+3. Check for project context:
    - `.devin/`, `.windsurf/`, `.devin/skills/`, `.devin/mcp.json`, `.devin/hooks/`, `rules/`, `sgconfig.yml`
-4. ถ้าหาไม่เจอ path สำคัญ → รายงานและ skip
+4. If an important path is not found → report and skip
 
 ### 2. Read Global Rules
 
-> Goal: อ่าน global rules
+> Goal: Read global rules
 
-1. อ่าน `global_rules.md` จาก windsurf memories หรือ project `AGENTS.md`
-2. สรุปลำดับ steps, restrictions, และ required references
-3. ถ้าไฟล์ไม่มี → รายงานว่าไม่พบ global rules
+1. Read `global_rules.md` from windsurf memories or the project `AGENTS.md`
+2. Summarize the step order, restrictions, and required references
+3. If the file does not exist → report that no global rules were found
 
 ### 3. Read Skills
 
-> Goal: อ่าน skills context
+> Goal: Read skills context
 
-1. list skills ใน `%APPDATA%\devin\skills` (global skills)
-2. list skills ใน `C:\Users\<user>\.codeium\windsurf\skills` (windsurf skills)
-3. list project skills ใน `.devin/skills/` หรือ `.windsurf/skills/` ถ้ามี
-4. ถ้ามี skill ที่ตรงกับ task ให้ชี้เป้า และอ่าน `SKILL.md` หลักเฉพาะทีจำเป็น
+1. List skills in `%APPDATA%\devin\skills` (global skills)
+2. List skills in `C:\Users\<user>\.codeium\windsurf\skills` (windsurf skills)
+3. List project skills in `.devin/skills/` or `.windsurf/skills/` if any
+4. If there is a skill matching the task, point to it and read only the essential main `SKILL.md`
 
 ### 4. Read MCP Config
 
-> Goal: อ่าน mcp configuration
+> Goal: Read mcp configuration
 
-1. อ่าน `%APPDATA%\devin\mcp_config.json`
-2. ตรวจหา `.mcp.json` หรือ `mcp/` ใน project
-3. list ชื่อ mcp servers, commands, urls, และ disabled status
-4. ไม่ expose secrets หรือ credentials
+1. Read `%APPDATA%\devin\mcp_config.json`
+2. Check for `.mcp.json` or `mcp/` in the project
+3. List mcp server names, commands, urls, and disabled status
+4. Do not expose secrets or credentials
 
 ### 5. Read Hooks
 
-> Goal: อ่าน hooks ที่อาจมีผลต่อการทำงาน
+> Goal: Read hooks that may affect work
 
-1. list ไฟล์ใน `%APPDATA%\devin\hooks`
-2. list ไฟล์ใน `cli/plugins/*/hooks/` หรือ `cli/plugins/cache/*/hooks/`
-3. list hooks ใน project `.devin/hooks/`
-4. อ่านไฟล์ hook ที่สำคัญ (`*.ps1`, `*.mjs`, `*.json`) แต่ไม่อ่าน binary
+1. List files in `%APPDATA%\devin\hooks`
+2. List files in `cli/plugins/*/hooks/` or `cli/plugins/cache/*/hooks/`
+3. List hooks in the project `.devin/hooks/`
+4. Read important hook files (`*.ps1`, `*.mjs`, `*.json`) but do not read binaries
 
 ### 6. Read Plugins
 
-> Goal: อ่าน plugins/ extensions
+> Goal: Read plugins/extensions
 
-1. list ไฟล์/โฟลเดอร์ใน `%APPDATA%\devin\cli\plugins\cache`
-2. list `.devin/extensions` หรือ `plugins/` ใน project
-3. สรุป plugin names และ versions ถ้าหาได้
+1. List files/folders in `%APPDATA%\devin\cli\plugins\cache`
+2. List `.devin/extensions` or `plugins/` in the project
+3. Summarize plugin names and versions if obtainable
 
 ### 7. Summarize Context
 
-> Goal: สรุป context เพื่อใช้งาน
+> Goal: Summarize context for use
 
-1. สร้างตารางสรุป: context type | location | status | key points
-2. ระบุ context ที่ขาดหายหรืออาจล้าสมัย
-3. ทำ `ask-me` ถ้าพบ conflict หรือต้องตัดสินใจเรื่อง context
+1. Create a summary table: context type | location | status | key points
+2. Identify context that is missing or may be outdated
+3. Run `ask-me` if a conflict is found or a context decision is needed
 
 ## Rules
 
 ### Path Discovery
 
-- ใช้ `glob` หรือ `exec` เพื่อหา directories ก่อนอ่าน
-- ตรวจสอบว่า path มีอยู่จริงก่อน `read`
-- รองรับ Windows, Linux, macOS paths
+- Use `glob` or `exec` to find directories before reading
+- Check that the path really exists before `read`
+- Support Windows, Linux, macOS paths
 
 ### Safety
 
-- ไม่อ่าน binary, cache, logs, หรือไฟล์ sensitive
-- ไม่ expose secrets หรือ credentials จาก `mcp_config.json`
-- ถ้าไฟล์ใหญ่เกิน 250 บรรทัด ให้อ่านส่วนหัวและสรุป
+- Do not read binaries, cache, logs, or sensitive files
+- Do not expose secrets or credentials from `mcp_config.json`
+- If a file is longer than 250 lines, read the header and summarize
 
 ### Output
 
-- สรุปเป็นตารางหรือ bullet points กระชับ
-- ระบุ context ที่หาไม่เจอหรือขาดหาย
-- ไม่แก้ไข context ใน step นี้
+- Summarize as a table or concise bullet points
+- Identify context that is not found or missing
+- Do not modify context in this step
 
-- ใช้ /reset-context ถ้าจำเป็น
-- ใช้ /follow-context-engineering ถ้าจำเป็น
-- ใช้ /update-devin-global-skills ถ้าจำเป็น (devin context)
+- Use /reset-context if needed
+- Use /follow-context-engineering if needed
+- Use /update-devin-global-skills if needed (devin context)
 
 ## Expected Outcome
 
-- รายการ context ทั้งหมดพร้อม location และ status
-- สรุป key points จาก global rules, skills, mcp, hooks, plugins
-- ไม่มี context สำคัญขาดหายโดยไม่รายงาน
+- A list of all context with location and status
+- A summary of key points from global rules, skills, mcp, hooks, plugins
+- No important context is missing without being reported

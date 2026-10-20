@@ -40,10 +40,11 @@ const LATIN_WORD_RE = /[A-Za-z]{4,}/g;
 
 export function checkLanguage(m: SkillMeta, ctx: Context) {
   const rpath = relativePath(m.path, ctx.skillsRoot);
+  if (rpath.startsWith("convert-to-lang-th/")) return;
   const prose = m.nonCodeLines.map(textOutsideInlineCode).join("\n");
   const thai = (prose.match(THAI_RE) || []).length;
   const latinWords = (prose.match(LATIN_WORD_RE) || []).length;
-  if (latinWords > 80 && thai < latinWords * 0.05) {
-    ctx.addFinding({ file: rpath, line: 1, category: "style", severity: "Info", finding: "global skill appears all-English (should be Thai)", evidence: `thai chars: ${thai}, latin words: ${latinWords}` }, m.skill);
+  if (thai > 20) {
+    ctx.addFinding({ file: rpath, line: 1, category: "style", severity: "Info", finding: "global skill contains Thai (should be English)", evidence: `thai chars: ${thai}, latin words: ${latinWords}` }, m.skill);
   }
 }

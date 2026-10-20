@@ -2,11 +2,11 @@
 
 ## Goal
 
-แนะนำ devin global skills ที่เกี่ยวข้องและควรใช้ต่อจาก context ปัจจุบัน พร้อมสร้างไอเดีย skills ใหม่ที่ควรมี
+Recommend related devin global skills that should be used next from the current context, and generate ideas for new skills that should exist
 
 ## Scope
 
-ใช้หลังจากวิเคราะห์หรือทำงานกับ skill, task, file, หรือ project ใดๆ เพื่อวิเคราะห์และแนะนำ skills อื่นที่ควรใช้ร่วมกัน
+Use after analyzing or working with any skill, task, file, or project to analyze and recommend other skills that should be used together
 
 ## Execute
 
@@ -14,96 +14,96 @@
 
 > Goal: Analyze Current Context
 
-วิเคราะห์ context ปัจจุบันเพื่อเข้าใจ purpose และ input
+Analyze the current context to understand the purpose and input
 
-1. ถ้าเป็น skill → อ่าน frontmatter, `name`, `description`, `Goal`, `Scope` ของ `SKILL.md`
-2. ถ้าเป็น task, file, หรือ project → อ่านไฟล์ที่เกี่ยวข้องและระบุ requirements, patterns, technologies
-3. ระบุ `related` skills ที่มีอยู่แล้ว
-4. วิเคราะห์ `Execute` steps, `Rules`, หรือ requirements เพื่อเข้าใจการใช้งาน
-5. ระบุ skill category (`analysis`, `implementation`, `quality`, `deployment`, `maintenance`, `idea`)
+1. If it's a skill → read the frontmatter, `name`, `description`, `Goal`, `Scope` of `SKILL.md`
+2. If it's a task, file, or project → read the relevant files and identify requirements, patterns, technologies
+3. Identify the `related` skills that already exist
+4. Analyze the `Execute` steps, `Rules`, or requirements to understand the usage
+5. Identify the skill category (`analysis`, `implementation`, `quality`, `deployment`, `maintenance`, `idea`)
 
 ### 2. List Available Skills
 
 > Goal: List Available Skills
 
-รวบรวม devin global skills ทั้งหมดที่มีอยู่
+Gather all existing devin global skills
 
-1. อ่านไฟล์ `SKILL.md` ทั้งหมดใน `C:\Users\Veerapong\AppData\Roaming\devin\skills\`
-2. ดู `name` และ `description` ของแต่ละ skill
-3. จัดกลุ่มตาม category (`analysis`, `implementation`, `quality`, `deployment`, `maintenance`, `idea`)
-4. ตรวจสอบว่าไม่แนะนำ skill ที่อยู่ใน `related` แล้ว
+1. Read all `SKILL.md` files in `C:\Users\Veerapong\AppData\Roaming\devin\skills\`
+2. Look at the `name` and `description` of each skill
+3. Group by category (`analysis`, `implementation`, `quality`, `deployment`, `maintenance`, `idea`)
+4. Check that you don't recommend a skill that's already in `related`
 
 ### 3. Match Related Skills
 
 > Goal: Match Related Skills
 
-จับคู่ skills ที่เกี่ยวข้องกับ context ปัจจุบัน
+Match skills that are related to the current context
 
-1. วิเคราะห์ความเกี่ยวข้องจาก `Goal`, `Scope`, และ `Execute`
-2. จัดลำดับความเกี่ยวข้อง: `direct dependency`, `complementary`, `follow-up`, `alternative`
-3. ตรวจสอบว่า skills ที่แนะนำมีอยู่จริงใน `C:\Users\Veerapong\AppData\Roaming\devin\skills\`
-4. กรอง skills ที่ไม่เกี่ยวข้องออก
+1. Analyze the relevance from `Goal`, `Scope`, and `Execute`
+2. Rank the relevance: `direct dependency`, `complementary`, `follow-up`, `alternative`
+3. Check that the recommended skills actually exist in `C:\Users\Veerapong\AppData\Roaming\devin\skills\`
+4. Filter out irrelevant skills
 
 ### 4. Suggest Skills And New Ideas
 
 > Goal: Suggest Skills And New Ideas
 
-แนะนำ skills พร้อมเหตุผลและไอเดียใหม่
+Recommend skills with reasons and new ideas
 
-1. แนะนำ existing skills เป็นลิสต์พร้อมเหตุผลว่าทำไมควรใช้
-2. ระบุประเภทความเกี่ยวข้องในวงเล็บ (`direct dependency`, `complementary`, `follow-up`, `alternative`)
-3. ระบุเงื่อนไขการใช้งาน เช่น "ใช้เมื่อ..." หรือ "ใช้หลังจาก..."
-4. วิเคราะห์ gaps และเสนอไอเดีย skills ใหม่ที่ควรสร้าง
-5. ถ้า context ปัจจุบันเกี่ยวข้องกับ CLI หรือ tools → แนะนำ `/idea-convert-my-global-cli-to-skills`
-6. จัดลำดับจากที่เกี่ยวข้องมากที่สุดไปน้อยที่สุด
+1. Recommend existing skills as a list with reasons why they should be used
+2. Specify the relevance type in parentheses (`direct dependency`, `complementary`, `follow-up`, `alternative`)
+3. Specify usage conditions such as "use when..." or "use after..."
+4. Analyze gaps and propose ideas for new skills that should be created
+5. If the current context involves a CLI or tools → recommend `/idea-convert-my-global-cli-to-skills`
+6. Rank from most relevant to least relevant
 
 ### 5. Update Related Skills
 
 > Goal: Update Related Skills
 
-อัปเดต `related` ใน skill ปัจจุบัน (ถ้ามี)
+Update the `related` in the current skill (if any)
 
-1. ถ้า context เป็น skill → เพิ่ม skills ที่แนะนำเข้าไปใน `related` ของ `SKILL.md`
-2. ตรวจสอบว่าไม่ซ้ำซ้อนกับที่มีอยู่แล้ว
-3. ทำ `/update-references` เพื่ออัปเดต references ในไฟล์อื่นที่เกี่ยวข้อง
+1. If the context is a skill → add the recommended skills into the `related` of `SKILL.md`
+2. Check that it doesn't duplicate what already exists
+3. Run `/update-references` to update references in other relevant files
 
 ## Rules
 
 ### 1. Relevance Analysis
 
-- วิเคราะห์จาก `Goal`, `Scope`, และ `Execute` ไม่ใช่แค่ `name` หรือ `description`
-- พิจารณาทั้ง input และ output ของ context
-- ตรวจสอบว่า skills สามารถใช้ร่วมกันได้จริง
-- ไม่แนะนำ skill ที่ทำหน้าที่ซ้ำซ้อน
+- Analyze from `Goal`, `Scope`, and `Execute`, not just `name` or `description`
+- Consider both the input and output of the context
+- Check that the skills can actually be used together
+- Don't recommend a skill that does redundant work
 
 ### 2. Suggestion Format
 
-- ระบุชื่อ skill ด้วย backticks เช่น `skill-name`
-- ระบุเหตุผลสั้นกระชับ
-- ระบุประเภทความเกี่ยวข้องในวงเล็บ
-- สำหรับไอเดียใหม่ ระบุชื่อ proposed skill และ rationale
-- จัดลำดับจากมากไปน้อย
+- Specify the skill name with backticks, e.g. `skill-name`
+- Give a short, concise reason
+- Specify the relevance type in parentheses
+- For new ideas, specify the proposed skill name and rationale
+- Rank from most to least
 
 ### 3. Validation
 
-- ตรวจสอบว่า skills ที่แนะนำมีอยู่จริง
-- ตรวจสอบว่าไม่แนะนำ skill ตัวเอง
-- ตรวจสอบว่าไม่ซ้ำซ้อนกับ `related` ที่มีอยู่
-- ทำ `/check-reference` เพื่อยื่นยัน references มีอยู่จริง
+- Check that the recommended skills actually exist
+- Check that you don't recommend the skill itself
+- Check that it doesn't duplicate the existing `related`
+- Run `/check-reference` to confirm the references exist
 
 ### 4. Cross-Reference Update
 
-- อัปเดต `related` ทั้งสองไฟล์ (current และ suggested)
-- ใช้ `/update-references` สำหรับการอัปเดต
-- ตรวจสอบว่าไม่เพิ่ม reference ในไฟล์ที่ไม่เกี่ยวข้อง
+- Update `related` in both files (current and suggested)
+- Use `/update-references` for the update
+- Check that you don't add a reference in an irrelevant file
 
-- ใช้ /idea-features ถ้าจำเป็น
-- ใช้ /update-devin-global-skills ถ้าจำเป็น
+- Use /idea-features if necessary
+- Use /update-devin-global-skills if necessary
 
 ## Expected Outcome
 
-- Devin global skills ที่เกี่ยวข้องถูกแนะนำพร้อมเหตุผลชัดเจน
-- ไอเดีย skills ใหม่ที่ควรสร้างถูกระบุพร้อม rationale
-- `related` ใน frontmatter อัปเดตครบถ้วน
-- การเชื่อมโยงระหว่าง skills ชัดเจนขึ้น
-- ลดการพลาด skills ที่ควรใช้ร่วมกัน
+- Related devin global skills are recommended with clear reasons
+- Ideas for new skills that should be created are identified with rationale
+- `related` in the frontmatter is fully updated
+- The connections between skills are clearer
+- Fewer skills that should be used together are missed

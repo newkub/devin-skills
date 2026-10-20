@@ -9,7 +9,6 @@ related:
   - idea-features
   - prioritize
   - deep-review-codebase
-  - deep-review-codebase-then-fix
   - deep-validate
   - create-plan-in-dot-devin
   - refactor
@@ -73,7 +72,7 @@ Run `/deep-research` when choosing new deps or new patterns:
 > Goal: a plan that is correctly ordered and passes the quality gate
 
 1. Run `/prioritize` — Foundation → Dependencies → High impact → Critical path → High risk; arrange phases Foundation → Core → Polish → Test + task graph
-2. Run `/deep-review-codebase-then-fix` on the drafted plan content
+2. Run `/deep-review-codebase then-fix` on the drafted plan content
 3. Run `/deep-review-codebase` to check plan quality — if there are findings, fix and re-review until clean (max 3 rounds)
 4. Run `/deep-validate` to check for placeholders and missing steps — leave no TBD in tasks
 5. If a requirement has multiple high-risk options → write out options/risks then `/ask-me`

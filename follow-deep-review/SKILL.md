@@ -17,7 +17,7 @@ Ensure the next piece of work follows `/deep-review-codebase` — always have th
 
 Use before `/create-plan-in-dot-devin`, implementation, or refactoring that needs evidence from review — aggregate findings from a `/deep-review-codebase` report or dimensional reviews already run
 
-- See also: /deep-review-codebase, /deep-review-codebase
+- See also: /deep-review-codebase (the `then-fix` argument adds the fix pass)
 
 ## Execute
 
@@ -50,7 +50,7 @@ Use before `/create-plan-in-dot-devin`, implementation, or refactoring that need
 > Goal: summarize how the findings were used
 
 1. Run `/report` with columns: `No.`, `Finding`, `Severity`, `Action`, `Mapped To`
-2. Run `/suggest-next-action` — normally `/create-plan-in-dot-devin` or `/deep-review-codebase-then-fix`
+2. Run `/suggest-next-action` — normally `/create-plan-in-dot-devin` or `/deep-review-codebase then-fix`
 
 ## Rules
 
@@ -59,7 +59,7 @@ Use before `/create-plan-in-dot-devin`, implementation, or refactoring that need
 - Findings must be traceable — every action links back to its source finding
 - This skill does not fix findings — it only collects them and enforces that the next work follows them
 
-- Use /deep-review-codebase-then-fix if needed
+- Use /deep-review-codebase then-fix if needed
 - Use /loop-until-complete if needed
 
 ## Expected Outcome

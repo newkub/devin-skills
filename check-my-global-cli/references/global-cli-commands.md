@@ -91,6 +91,7 @@ Verified via `mise list` + `scoop list` — updated 2026-09-13 — Windows machi
 | `@shikijs/cli` | `shiki` | code highlighting |
 | `foam-cli` | `foam` | knowledge base |
 | `typescript` 7 (native tsc; `tsgo` folded back since 7.0 RC) | `tsc --noEmit` | fast typecheck |
+| `bun` (runtime, ≥ 1.4) | `bun check` | built-in parallel typecheck — same errors as `tsc`; no global install needed |
 | `vue-tsc`, `oxlint`, `oxfmt`, `biome`, `selene` | — | lint/format |
 | `vsce`, `@native-sdk/cli`, `@tanstack/intent`, `dprint` | — | packaging/format |
 

@@ -163,7 +163,7 @@ Update the project configuration so it is complete and consistent, reduce duplic
 1. Run `/deep-validate` to check structure and references
 2. Run the ecosystem's validation tools:
    - `moon check` or `moon run :check` (moonrepo)
-   - `tsc --noEmit` or `tsc -b` (TypeScript)
+   - `bun check` (Bun ≥ 1.4), `tsc --noEmit` or `tsc -b` (TypeScript)
    - `eslint .` (ESLint)
    - `prettier --check .` (Prettier)
    - `knip` (unused)

@@ -138,7 +138,7 @@ server.listen(3000)
 
 > Goal: verify correctness before delivery
 
-1. Run `bun run typecheck` or `tsc --noEmit` if using TypeScript
+1. Run `bun run typecheck` or `bun check` if using TypeScript
 2. Run `bun test` or the existing test suite
 3. Verify no reserved keywords are overridden
 4. Run `/report table` summarizing status with columns: `No.`, `Check`, `Status`, `Notes`

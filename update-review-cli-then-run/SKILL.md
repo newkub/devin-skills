@@ -87,7 +87,7 @@ Use with a monorepo that has or is building a `tools/review-codebase` CLI at the
 
 1. Create `src/adapters/file-utils.ts` (`walk`, `readText`, `getRel`), `src/adapters/git-grep.ts` (`gitGrep`, `gitGrepCount`), `src/domain/models.ts` (`CategoryFinding`, `CategoryResult`, `ReviewReport`), `src/application/review.ts` (import `runAllAnalyzers` from `tools-analyze`), `src/presentation/cli.ts` (entry point), `src/index.ts` (export `runReview`/`createReviewPorts`)
 2. Convert each analyzer's `CategoryResult` into a `ReviewReport` with score, grade, domain breakdown
-3. Define the `reviewWorkflow` map to review skills — must cover every `review-*` in `deep-review-codebase/SKILL.md` (54, except `review-github-pr` which is PR-scoped)
+3. Define the `reviewWorkflow` map to review skills — must cover every `review-*` label resolvable through the `Aliases` column of `deep-review-codebase/references/dimension-matrix.md` (except `review-github-pr`, which is PR-scoped)
 4. Any metric or review domain still without an analyzer → record it as an analyzer gap (name + review skill + missing metric) in `references/known-issues.md` and report it
 5. If an analyzer isn't fully implemented, add a `// TODO` comment with details
 6. If an AST-based analyzer is needed (structural patterns regex/git-grep can't do, e.g. function metrics, SRP counts, custom lint rules) → run `/use-astgrep-programmatic` to integrate `@ast-grep/napi` or `ast-grep scan --json` into `tools/analyze`/`tools/review-codebase` — findings must have file:line + rule id per ### 4. Evidence-Based
@@ -112,7 +112,7 @@ Use with a monorepo that has or is building a `tools/review-codebase` CLI at the
 2. Run `bun --filter tools-review-codebase review-codebase:json` to write `reports/review-report.json` inside the reviewed workspace (e.g. `apps/website/reports/review-report.json`) — never write to the root `reports/`
 3. stdout mode: `bun --filter tools-review-codebase review-codebase:json -- --out-file -`; custom path: `--out-file <path>`
 4. Record score, grade, domain breakdown, category coverage, findings count, analyzerErrors, falsePositiveRate
-5. Identify Critical/High findings → group per the `reviewWorkflow` map to the suitable `/review-*` (coverage complete per `deep-review-codebase/SKILL.md`)
+5. Identify Critical/High findings → group per the `reviewWorkflow` map to the suitable `/review-*` (coverage complete per the `Aliases` column of `deep-review-codebase/references/dimension-matrix.md`)
 6. Any metric/finding with no analyzer coverage → mark `in update-review-cli-then-run = N` as an analyzer gap
 7. If the result matches any Metric Trigger → run `/update-create-analyze-cli`, then do Steps 4-7 and re-run Step 8 (max 3 rounds):
    - `categories` fewer than 60
@@ -139,14 +139,14 @@ Use with a monorepo that has or is building a `tools/review-codebase` CLI at the
 
 1. Show the table output from Step 8 (re-run only when a refresh is needed — a full scan is expensive)
 2. Use `/report-review` to show a summary in chat (no files): domain scores, findings (Category, Finding, Severity, Location, Recommendation), recommended workflows
-3. Recommend `/review-*` workflows for each finding per the `reviewWorkflow` field — dispatch catalog: `deep-review-codebase/SKILL.md`
+3. Recommend `/review-*` workflows for each finding per the `reviewWorkflow` field — dispatch catalog: `deep-review-codebase/references/dimension-matrix.md` (`Aliases`) + `references/domain-map.md`
 4. Run `/suggest-next-action`
 
 ## CLI Output
 
 `review-codebase` table output must show every detail per category — never a lone score or one line per category
 
-- Findings table (per category): `No.` (always first, 1..n) | `Domain` | `Category` | `Score` | `Grade` | `C`/`H`/`M`/`L` finding counts by severity | `Status` = `new`/`existing`/`regression`/`fixed` vs the previous `reports/review-report.json` (feeds the 3 rounds of Step 8) | `Top Finding` | `Evidence` = `file:line` of the top finding — every row must have it, never a row without | `Fix Skill` = from the `reviewWorkflow` map (`/deep-review-codebase` domain `review-<domain>`; `/deep-review-codebase-then-fix` when a fix must be applied) | `Delta` = score diff vs the previous report when a baseline exists — sort Critical first, then lowest score first
+- Findings table (per category): `No.` (always first, 1..n) | `Domain` | `Category` | `Score` | `Grade` | `C`/`H`/`M`/`L` finding counts by severity | `Status` = `new`/`existing`/`regression`/`fixed` vs the previous `reports/review-report.json` (feeds the 3 rounds of Step 8) | `Top Finding` | `Evidence` = `file:line` of the top finding — every row must have it, never a row without | `Fix Skill` = from the `reviewWorkflow` map (`/deep-review-codebase` domain `review-<domain>`; `/deep-review-codebase then-fix` when a fix must be applied) | `Delta` = score diff vs the previous report when a baseline exists — sort Critical first, then lowest score first
 - Domain summary table (at the end): `No.`, `Domain`, `Score`, `Grade`, `Categories`, `Findings`, `Errors`, `FP%`, `Trend` (up/down/flat vs the previous run); footer row: overall score + grade, `categories N/60`, total analyzer errors, duration
 - non-TTY/CI → auto plain table, or use `--json`; narrow screen → drop `Top Finding` first, never `Evidence`/`Fix Skill`
 - Exit code: `exit 1` when any Metric Trigger fires (`categories < 60`, `score < 70`/`grade D/F`, `domain < 50`, `analyzerErrors > 0`, `falsePositiveRate > 20%`) — CI gate + pass/fail auto-detect in Step 8
@@ -196,9 +196,9 @@ Use with a monorepo that has or is building a `tools/review-codebase` CLI at the
 
 ### 4b. Review Coverage
 
-- The `reviewWorkflow` map must cover every `review-*` in `deep-review-codebase/SKILL.md` except `review-github-pr`
+- The `reviewWorkflow` map must cover every `review-*` label resolvable through the `Aliases` column of `deep-review-codebase/references/dimension-matrix.md` (except `review-github-pr`)
 - Every metric that `deep-review-codebase`/this skill marks as `in update-review-cli-then-run = N` → add an analyzer or record the gap with a reason in `references/known-issues.md`
-- deep-review-codebase dispatches `review-*` workspace by workspace per phase (entry → source → cross-cutting → meta) — the CLI must output findings that map back to those review skills
+- deep-review-codebase dispatches `review-*` one dimension at a time (per-artifact, tiered — labels resolved through the matrix `Aliases` column) — the CLI must output findings that map back to those review skills
 
 ### 5. Report Location
 
@@ -208,7 +208,7 @@ Use with a monorepo that has or is building a `tools/review-codebase` CLI at the
 
 ### 6. Review Independence
 
-- Do only the review/deep-review-codebase-then-fix CLI; never modify business logic
+- Do only the review `/deep-review-codebase` CLI; never modify business logic
 - Keep the review process separate from the fix process
 - Use `/deep-review-codebase` or this skill (run path) for a comprehensive quality gate
 
@@ -231,7 +231,7 @@ Use with a monorepo that has or is building a `tools/review-codebase` CLI at the
 - The `tools/review-codebase` CLI exists and runs at the project root
 - Review works via `bun run review-codebase`
 - Findings cover 60+ categories with evidence and severity
-- `reviewWorkflow` covers every `review-*` in `deep-review-codebase/SKILL.md` — analyzer gaps are recorded in `references/known-issues.md`
+- `reviewWorkflow` covers every `review-*` label resolvable through the `Aliases` column of `deep-review-codebase/references/dimension-matrix.md` — analyzer gaps are recorded in `references/known-issues.md`
 - Before-after review score is shown via table output
 - No analyzer errors
 - Summary table with top findings + recommended `/review-*` workflows per issue

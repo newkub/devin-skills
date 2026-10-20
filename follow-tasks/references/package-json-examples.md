@@ -14,7 +14,7 @@ The examples below default to `bun` for JS/TS; if the project uses another stack
   "scripts": {
     "dev": "bun run src/index.ts",
     "build": "bun build",
-    "typecheck": "tsc --noEmit",
+    "typecheck": "bun check",
     "lint": "biome lint",
     "format": "biome format --write",
     "test": "vitest run",
@@ -33,7 +33,7 @@ The examples below default to `bun` for JS/TS; if the project uses another stack
   "scripts": {
     "dev": "bun run src/index.ts",
     "build": "bun build",
-    "typecheck": "tsc --noEmit",
+    "typecheck": "bun check",
     "lint": "biome lint",
     "format": "biome format --write",
     "test": "vitest run",
@@ -59,8 +59,8 @@ The examples below default to `bun` for JS/TS; if the project uses another stack
     "dev": "bun run src/index.ts",
     "build": "bun build",
     "build:watch": "bun build --watch",
-    "typecheck": "tsc --noEmit",
-    "typecheck:watch": "tsc --noEmit --watch",
+    "typecheck": "bun check",
+    "typecheck:watch": "bun run --watch typecheck",
     "lint": "biome lint",
     "format": "biome format --write",
     "test": "vitest run",

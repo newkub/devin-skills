@@ -6,7 +6,6 @@ related:
   - review-issues
   - review-gaps
   - deep-review-codebase
-  - deep-review-codebase-then-fix
   - follow-parallel
   - report-review
   - create-plan-in-dot-devin
@@ -60,14 +59,14 @@ Review anything the user points at (code, docs, a feature area, a plan, a config
 > Goal: a prioritized report before any fix
 
 1. Merge the findings from `/review-issues`, `/review-gaps`, and the `### 2` inconsistency pass into one deduplicated list, ordered by severity — Critical/High first
-2. Produce a `/report-review` table (chat, no files): `No.`, `Area`, `Type` (issue|gap|inconsistency), `Finding`, `Severity`, `Evidence`, `Fix Skill`
+2. Produce a `/report-review` table (chat, no files) with its canonical columns, plus this dimension's extras: `Area`, `Type` (issue|gap|inconsistency) — the owner column is `Owner skill`
 3. If the user did not append `and fix` → ask which items to fix and wait for confirmation
 
 ### 4. Fix Confirmed Items
 
 > Goal: fix only what was confirmed, correctly
 
-1. Route each confirmed finding to `/deep-review-codebase-then-fix` by matching domain; findings with no matching domain are fixed directly from the evidence
+1. Route each confirmed finding to `/deep-review-codebase <scope> then-fix fix all` by matching domain (`fix all` because `and fix` already confirmed them); findings with no matching domain are fixed directly from the evidence
 2. Issue findings → fix at the cause (never suppress the symptom); gap findings → fill through the `/review-gaps` path so no new stub or `TODO` is left behind
 3. A finding that turns into a scoped improvement program rather than a single fix → hand it to `/improve <scope>`
 4. Large additions → always `/create-plan-in-dot-devin` before implementing; never skip
@@ -99,7 +98,7 @@ Review anything the user points at (code, docs, a feature area, a plan, a config
 - Use /review-gaps if needed
 - Use /follow-parallel if needed
 - Use /deep-review-codebase if needed
-- Use /deep-review-codebase-then-fix if needed
+- Use /deep-review-codebase <scope> then-fix if needed
 
 ## Expected Outcome
 

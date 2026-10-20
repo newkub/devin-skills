@@ -135,7 +135,7 @@ Latest: `@instantdb/react@1.0.67` (verified 2026-09-12); the CLI package is name
 
 > Goal: Confirm the implementation works
 
-1. Run `bunx tsc --noEmit` or `bun run build` to typecheck
+1. Run `bun check` or `bun run build` to typecheck
 2. Run the dev server and test real-time CRUD
 3. Run `npx instant-cli@latest status` to check the app connection
 4. If errors occur → do `resolve-errors` then revalidate

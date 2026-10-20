@@ -45,11 +45,11 @@ rg "createEffect|createMemo|createResource|createStore|produce|reconcile|createC
 1. `bun add solid-js@<target>` — RC: pin the exact version, no caret
 2. Upgrade the ecosystem packages together (router/meta/testing-library — peer deps must match)
 3. Apply breaking changes per the guide — do one primitive family at a time, fix errors group by group
-4. `bunx tsc --noEmit` after each batch — type errors reveal missed API changes
+4. `bun check` after each batch — type errors reveal missed API changes
 
 ### 4. Verify
 
-1. `bunx tsc --noEmit` clean
+1. `bun check` clean
 2. `/run-test` — component + store tests all pass
 3. `/run-dev` — smoke critical routes; reactivity regressions (stale UI, missing updates)
 4. fail → `/resolve-errors` max 3 rounds → report remaining blockers

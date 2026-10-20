@@ -1,195 +1,193 @@
 ---
 name: implement-to-production
-description: แปลง TODO/MOCK/FAKE/placeholder และ dead UI เป็น production code จริง end-to-end พร้อม improve
+description: Convert TODO/MOCK/dead UI into production code: baseline, implement with TDD, refactor, verify gate
 argument-hint: "[setup-infra|setup-coverage|deploy-production] [scope-or-plan]"
 related:
   - report-not-implement
-  - design-cli-prototype
-  - design-tui-prototype
-  - design-web-prototype
-  - design-html-prototype
   - deep-review-codebase
   - create-plan-in-dot-devin
   - refactor
+  - deep-test
+  - deep-validate
+  - improve
+  - ship
+  - run-verify
+  - use-subagents
   - use-lib-effective
   - use-my-packages-on-registry
-  - deep-test
-  - update-tests
-  - run-verify
-  - ship
-  - improve
-  - update-project
   - resolve-errors
+  - check-secrets
   - follow-secret-manager
-  - ask-me
 ---
 
 ## Goal
 
-แปลง TODO, MOCK, FAKE, STUB, placeholder และ dead UI เป็น production code จริง ครบทุกมิติ พร้อม architecture, security, observability และ rollback plan
+Convert TODO, MOCK, FAKE, STUB, placeholder, and dead UI into real production code across every dimension, with architecture, security, observability, and a rollback plan
 
 ## Scope
 
-> Argument routing: `setup-infra` (`infra`, `env`, `secrets`, `ci`, `observability`) → ทำ `### 3` ทั้ง readiness แล้ว report · `setup-coverage` (`coverage`) → ทำ `## Setup Coverage` ก่อนเริ่ม TDD loop · `deploy-production` (`deploy`, `production`) → ทำ `### 9` รวม deploy gate + post-deploy verify · ไม่ระบุ → steps 1-9 ตามลำดับ
+> Argument routing: `setup-infra` (`infra`, `env`, `secrets`, `ci`, `observability`) → do all of `### 3` readiness then report · `setup-coverage` (`coverage`) → do `## Setup Coverage` before starting the TDD loop · `deploy-production` (`deploy`, `production`) → do `### 9` including the deploy gate + post-deploy verify · none specified → steps 1-9 in order
 
-- input เป็น plan file (`.devin/temp/plan/<workspace>/`), `TODO.md` หรือ loose plan → ทำ `## Input Flows` ก่อน แล้วกลับ flow หลัก
-- แปลงทุก unfinished feature เป็น production code: schema, data, API, UX/UI, external services พร้อม infrastructure จริง end-to-end — ไม่รวมงานที่ควรเริ่มจาก architecture ใหม่ (ใช้ `/deep-review-codebase` ก่อน)
-- UI ที่ดูเสร็จแต่ใช้ไม่ได้จริงนับเป็น placeholder เช่นกัน — dead buttons, `onClick={() => {}}`, `href="#"`, `disabled` ถาวรโดยไม่มีเหตุผล, dialogs/menus/tabs ที่ไม่เปิด, forms ที่ submit ไม่ได้, 'coming soon' text — ต้อง wire ให้ทำงานจริงหรือลบออก
-- ทางเข้าเริ่มต้นคือ `/report-not-implement` (รู้ก่อนว่าอะไรยังไม่มีของ) → implement ทั้งหมดใน report → verify ด้วย `/deep-test` — ห้ามข้าม step แรกหรือเลือกทำเฉพาะบาง item
-- item ที่ยังไม่มี design ของ surface (CLI commands/flags, TUI screens, web layout) → ออกแบบก่อนลง code: `/design-cli-prototype` / `/design-tui-prototype` ตอบในแชท หรือ `/design-web-prototype` / `/design-html-prototype` เมื่อต้องเห็นจริง — ห้ามปล่อย stub ใหม่เหลือไว้หลัง implement
-- ครอบคลุม improvement รอบ scope งาน ไม่ใช่แค่ TODO items — หลัง implement ต้องผ่าน `/improve` domains ที่เกี่ยวข้อง และถ้า scope มี UI ต้องผ่าน `/improve uxui` (review UI ที่ render จริง ไม่ใช่แค่ source) ด้วย
+- input is a plan file (`.devin/temp/plan/<workspace>/`), `TODO.md`, or a loose plan → do `## Input Flows` first, then return to the main flow
+- Convert every unfinished feature into production code: schema, data, API, UX/UI, external services, with real end-to-end infrastructure — excluding work that should start from a new architecture (use `/deep-review-codebase` first)
+- UI that looks done but does not actually work also counts as a placeholder — dead buttons, `onClick={() => {}}`, `href="#"`, permanently `disabled` with no reason, dialogs/menus/tabs that do not open, forms that cannot submit, 'coming soon' text — it must be wired to actually work or removed
+- The starting entry point is `/report-not-implement` (know first what is still missing) → implement everything in the report → verify with `/deep-test` — never skip the first step or choose to do only some items
+- item with no design for the surface yet (CLI commands/flags, TUI screens, web layout) → design before writing code: `/design-cli-prototype` / `/design-tui-prototype` answer in chat, or `/design-web-prototype` / `/design-html-prototype` when it must be seen for real — never leave new stubs behind after implement
+- Cover improvements around the work scope, not just TODO items — after implement it must pass the relevant `/improve` domains, and if the scope has UI it must also pass `/improve uxui` (review the UI as actually rendered, not just the source)
 
 ## Execute
 
 ### 1. Review And Baseline
 
-> Goal: เข้าใจ scope และปัญหาก่อน implement
+> Goal: Understand the scope and problems before implementing
 
-1. ทำ `/review` pre-action gate — เลือกและรัน `review-*` ที่ตรง context แล้วทำ `/deep-review-codebase` ครบทุกมิติหา TODO/MOCK/placeholder และ issues
-2. ทำ `/report-not-implement` ทั้ง scope เป็น first step เสมอ (read-only) → ได้ตาราง work queue (`missing`/`fake`/`partial`/`unwired`/`promised`) ครอบคลุม markers, stub, dead UI, route/docs ที่ยังไม่มีของ; ห้ามเริ่ม implement โดยไม่มี report — codebase ใหญ่ → ให้ skill นั้น spawn profile `gap-scanner` ของตัวเองขนานตาม directory; ทำ `/deep-analyze` เพื่อเข้าใจ stack/context และ `/deep-research` ถ้าต้องหา external patterns
-3. input เป็น plan file / `TODO.md` / loose plan → ทำ `## Input Flows` ที่ตรงชนิดให้ครบก่อน
-4. บันทึก baseline: unfinished items จาก report, files, dependencies, infrastructure gaps — ต้องพึ่ง package ภายนอกที่ยังไม่ได้ติดตั้ง → รัน `/use-my-packages-on-registry` list packages ที่เราเป็น owner ไว้เป็นตัวเลือกแรกก่อนหา dep ภายนอก
-5. อ่าน `refactor/SKILL.md` `## Rules` ก่อนเริ่ม implement — code ใหม่ต้องผ่าน refactor standards ตั้งแต่เขียน (รวม SRP split `### 3`): 1 unit = 1 reason to change, ≤250 บรรทัด, preserve public API, minimal change
+1. Run the `/review` pre-action gate — pick and run the `review-*` that matches the context, then run `/deep-review-codebase` across every dimension to find TODO/MOCK/placeholder and issues
+2. Always run `/report-not-implement` for the whole scope as the first step (read-only) → get a work queue table (`missing`/`fake`/`partial`/`unwired`/`promised`) covering markers, stubs, dead UI, and missing routes/docs; never start implementing without a report — for a large codebase → have that skill spawn its own `gap-scanner` profile in parallel per directory; run `/deep-analyze` to understand the stack/context and `/deep-research` if you need to find external patterns
+3. If the input is a plan file / `TODO.md` / loose plan → complete the matching `## Input Flows` first
+4. Record the baseline and make it resumable: unfinished items from the report, files, dependencies, infrastructure gaps — keep the queue as a table with one `status` per item (`pending`/`in-progress`/`completed`/`blocked`) and update that row the moment the item closes (persist it to the plan file once `### 2.1` creates it; until then keep it in chat and copy it over), so a resumed or compacted session continues from the table instead of re-scanning; if you must rely on an external package that is not installed yet → run `/use-my-packages-on-registry` to list the packages we own as the first option before looking for external deps
+5. Read `refactor/SKILL.md` `## Rules` before starting implement — new code must meet the refactor standards from the moment it is written (including the SRP split `### 3`): 1 unit = 1 reason to change, ≤250 lines, preserve public API, minimal change
 
 ### 2. Review Architecture
 
-> Goal: ยืนยัน architecture ก่อนลงมือ
+> Goal: Confirm the architecture before starting
 
-1. ทำ `/create-plan-in-dot-devin` เสมอ (มี plan file แล้ว → อ่านและทำตาม) แล้วทำ `/deep-review-codebase` เพื่อดู boundary, layer, data flow
-2. implement ใน `packages/`, `crates/` หรือ `apps/` → ทำ `/follow-architecture` เพื่อเลือก+apply pattern ของ directory นั้น (`packages/`/`crates/` → `clean`, `apps/` → `layered`)
-3. architecture ไม่ชัดหรือต้องเปลี่ยน structure ใหญ่ → ทำ `/ask-me` ก่อน; ระบุ critical path: schema → data → API → UX/UI
+1. Always run `/create-plan-in-dot-devin` (if a plan file already exists → read it and follow it), then run `/deep-review-codebase` to inspect boundaries, layers, and data flow
+2. When implementing in `packages/`, `crates/`, or `apps/` → run `/follow-architecture` to pick + apply that directory's pattern (`packages/`/`crates/` → `clean`, `apps/` → `layered`)
+3. If the architecture is unclear or a big structure change is needed → run `/ask-me` first; identify the critical path: schema → data → API → UX/UI
+4. Draft the rollback plan here, before any code or migration is written (confirming it is executable happens in `### 9.6`): the method (`git revert <merge-commit>`, redeploy the previous version, platform rollback), the reverse path for each schema change (down-migration / restore from backup), and the current production version/revision recorded for later comparison — write it into the plan file so a destructive step never runs without one
 
 ### 3. Verify And Setup Infrastructure
 
-> Goal: env vars, secrets, CI, observability ครบและ verify ได้ก่อน implement
+> Goal: env vars, secrets, CI, and observability are complete and verifiable before implementing
 
-1. ตรวจ database: connection pool, indexes, migrations (pending vs applied ด้วย `/deep-review-codebase`), backup — และ API server: endpoints, rate limit, CORS, auth
-2. ทำ `/check-secrets env-vars` เทียบ `.env` / `.env.example` / code usage — อัปเดต `.env.example` ให้ครบทุก variable ที่ code ใช้ (ไม่ใส่ค่าจริง); ขาด credentials ที่ user ต้องให้ → `/ask-me` แล้ว stop รอ
-3. เก็บ secrets ผ่าน `/follow-secret-manager` — ห้าม commit; inject เข้า platform ตาม target (`wrangler secret put`, dashboard, CI secrets); ทำ `/check-secrets secrets-leak` ยืนยันไม่มี leak ใน code/config
-4. ตรวจ external services: credentials, API keys, endpoints, rate limits
-5. ตรวจ CI readiness: ทำ `/setup-cicd` หรือตรวจ workflows ที่มี — lint, typecheck, test, build ครบ, CI secrets ครบ; ติดตั้ง private package ของเราเองจาก registry → เก็บ registry token ด้วย `/follow-secret-manager` แล้ว auth ตาม package manager (`.npmrc`/`NPM_TOKEN`, `CARGO_REGISTRY_*`) ห้าม hardcode token ใน workflow; CI fail → แก้ให้เขียวก่อนไปต่อ
-6. Wire observability: structured logging สำหรับ external calls, metrics (response time, error rate), correlation IDs, error tracking/alerting ตาม stack — ไม่มี standard → `/ask-me`
-7. Report readiness checklist: app รัน local ด้วย env จริงได้, migrations applied, external services เชื่อมได้; infra ไม่พร้อมและแก้เองไม่ได้ → หยุด, report และ propose options ให้ user เลือก — sub-flow นี้เตรียมความพร้อมเท่านั้น ห้าม deploy หรือแก้ production resources
+1. Check the database: connection pool, indexes, migrations (pending vs applied via `/deep-review-codebase`), backup — and the API server: endpoints, rate limit, CORS, auth
+2. Run `/check-secrets env-vars` comparing `.env` / `.env.example` / code usage — update `.env.example` to include every variable the code uses (without real values); if credentials the user must provide are missing → `/ask-me` then stop and wait
+3. Store secrets via `/follow-secret-manager` — never commit; inject them into the platform per target (`wrangler secret put`, dashboard, CI secrets); run `/check-secrets secrets-leak` to confirm there is no leak in code/config
+4. Check external services: credentials, API keys, endpoints, rate limits
+5. Check CI readiness: run `/setup-cicd` or check the existing workflows — lint, typecheck, test, build all present, CI secrets complete; to install our own private package from the registry → store the registry token with `/follow-secret-manager`, then authenticate per package manager (`.npmrc`/`NPM_TOKEN`, `CARGO_REGISTRY_*`); never hardcode the token in the workflow; if CI fails → fix it to green before continuing
+6. Wire observability: structured logging for external calls, metrics (response time, error rate), correlation IDs, error tracking/alerting per stack — if there is no standard → `/ask-me`
+7. Report a readiness checklist: the app runs locally with real env, migrations applied, external services connect; if the infra is not ready and you cannot fix it yourself → stop, report, and propose options for the user to choose — this sub-flow only prepares readiness; never deploy or modify production resources
 
 ### 4. Implement Schema And Data Layer
 
-> Goal: schema, validation และ data layer สมบูรณ์
+> Goal: schema, validation, and data layer are complete
 
-1. สร้าง schema สำหรับ data models ที่ขาด + validation schemas และ types; ตรวจ type flow: schema → validation schema → API types → UI types
-2. สร้าง migrations ด้วย dry-run ก่อน apply — ถ้า destructive ต้อง user confirm
-3. แทนที่ mock data ด้วย real queries — implement repository/queries; project ใช้/เลือก ORM → ทำ `/follow-lib-drizzle` สำหรับ schema, migrations, queries (ORM อื่น → `/refactor` orm scope)
-4. สร้าง seed script สำหรับ test/dev; migrations/seed fail → `/resolve-errors` ก่อนดำเนินต่อ
+1. Create schemas for the missing data models + validation schemas and types; check the type flow: schema → validation schema → API types → UI types
+2. Create migrations with a dry-run before applying — if destructive, the user must confirm
+3. Replace mock data with real queries — implement repository/queries; if the project uses/chooses an ORM → run `/follow-lib-drizzle` for schema, migrations, queries (other ORM → `/refactor` orm scope)
+4. Create a seed script for test/dev; if migrations/seed fail → `/resolve-errors` before continuing
 
 ### 5. Implement API And UX/UI Layer
 
-> Goal: API handlers และ UX/UI เชื่อมกับ API จริง — ทุก interactive element ใช้งานได้ end-to-end
+> Goal: API handlers and UX/UI are connected to the real API — every interactive element works end-to-end
 
-1. Implement API handlers ที่ query data source จริง พร้อม validation, auth middleware, rate limit — project ใช้ oRPC → ทำ `/follow-lib-orpc` (contracts, procedures, typed errors); domain services/error handling ด้วย Effect → ทำ `/follow-lib-effect-ts`; ตรวจ API types ตรงกับ schema และ validation schemas
-2. แทนที่ mock data ใน components ด้วย real API calls — เชื่อมผ่าน lib ของ project: TanStack → ทำ `/follow-lib-tanstack-ecosystem` (`Query` = server state, `Form` = forms+validation, `Store` = client state)
-3. Implement form validation ด้วย schemas ที่ตรงกับ API และเชื่อม auth UI กับ auth service จริง
-4. กวาด UI ทั้งระบบก่อน — enumerate ทุก route และทุก interactive element จาก render จริง (ไม่ใช่จาก source) ด้วย `/deep-test website` แล้วไล่ code ของแต่ละ element ตาม chain: handler → API/usecase → data source → persistence; จำแนกเป็น `works`/`fake` (no-op, mock, hardcoded)/`missing` และเก็บเป็น checklist ลง plan ไฟล์
-5. Audit UI ให้ใช้งานได้จริงทุกจุด — ทุก button/link/nav/menu/tab/dialog/dropdown ทำงาน end-to-end: ไม่มี `onClick={() => {}}`, `href="#"`, `disabled` ถาวรโดยไม่มีเหตุผล, 'coming soon', `alert()` placeholder — wire เข้า real action หรือลบออก; แต่ละ element ที่เป็น `fake`/`missing` → spawn profile `feature-implementer` (ใน `## Subagents`) ทีละ item ขนานกัน โดย file sets ห้ามทับกัน
-6. ครบทุก UI state — loading, error (พร้อม retry), empty, success, disabled-during-submit — ทุก form submit ได้จริงและ feedback ชัดเจน; ถ้าเหมาะสม → optimistic updates; validation fail → `/resolve-errors`; หลัง implement ซ้ำ → sweep ด้วย `/deep-test website` อีกครั้ง — element ที่ยังใช้ไม่ได้จริง = งานยังไม่เสร็จ
+1. Implement API handlers that query the real data source with validation, auth middleware, rate limit — if the project uses oRPC → run `/follow-lib-orpc` (contracts, procedures, typed errors); for domain services/error handling with Effect → run `/follow-lib-effect-ts`; check that the API types match the schema and validation schemas
+2. Replace mock data in components with real API calls — wire through the project's lib: TanStack → run `/follow-lib-tanstack-ecosystem` (`Query` = server state, `Form` = forms+validation, `Store` = client state)
+3. Implement form validation with schemas that match the API and connect the auth UI to the real auth service
+4. Sweep the whole UI first — enumerate every route and every interactive element from a real render (not from the source) with `/deep-test website`, then trace each element's code along the chain: handler → API/usecase → data source → persistence; classify as `works`/`fake` (no-op, mock, hardcoded)/`missing` and keep it as a checklist in the plan file
+5. Audit the UI so it really works at every point — every button/link/nav/menu/tab/dialog/dropdown works end-to-end, with none of the dead-UI markers listed in `## Scope` left in the render — wire it to a real action or remove it; for each element that is `fake`/`missing` → spawn the `feature-implementer` profile (in `## Subagents`) one item at a time in parallel, with file sets that must not overlap (items sharing a file → serialize them)
+6. Cover every UI state — loading, error (with retry), empty, success, disabled-during-submit — every form actually submits and gives clear feedback; if appropriate → optimistic updates; if validation fails → `/resolve-errors`; after implementing again → sweep again with `/deep-test website` — an element that still does not actually work = the work is not done
 
 ### 6. Convert TODOs And Placeholders
 
-> Goal: ลบ TODO/FIXME/HACK และ placeholders ให้หมด
+> Goal: Remove TODO/FIXME/HACK and all placeholders
 
-1. อ่าน `TODO.md` ใน workspace ตรงๆ เพื่อรวบรวม pending items ก่อน implement (หรือ `/update-todo-md` เพื่ออ่าน/enhance prompt)
-2. ใช้ทุกรายการจาก `/report-not-implement` (step 1) เป็น queue — ไม่ต้องสแกน marker ซ้ำเอง; พบ item ใหม่ระหว่างทาง → เพิ่มลง queue ทันที; เฉพาะ hardcoded values ที่ report ยังไม่ครอบคลุม → ทำ `/check-secrets hardcoded-values`
-3. ถ้า input เป็น `TODO.md` ทั้งงาน → ทำ `## Input Flows` → `TODO.md`
-4. แทนที่ MOCK/FAKE/STUB ด้วย real implementations ตาม flow ของ skill นี้ — ทำจนครบทุก item ใน queue ห้ามเลือกทำเฉพาะบาง item แล้วรายงานว่าเสร็จ; items ที่ independent กันหลายตัว → spawn profile `feature-implementer` ทีละ item ขนานกัน (ส่ง contracts จากขั้น 4-5 ให้); features ที่ยัง `missing` จาก checklist ของ `### 5` ก็ทำด้วยวิธีเดียวกัน — เฉพาะ core business, งาน net-new ใหญ่ → `/idea-features` + `/create-plan-in-dot-devin` ก่อน
-5. implement แต่ละ feature/fix ด้วย `## TDD Loop` — เขียน failing test ที่ lock behavior ก่อน แล้วเขียน code ให้ผ่าน แล้ว refactor แยก commit
-6. ทำ `/use-lib-effective` ก่อนเขียน implementation ใหม่ — ใช้ dep ที่ติดตั้งอยู่หรือ preferred stack ให้เต็มประสิทธิภาพ; ต้องเพิ่ม dependency ใหม่ → ทำ `/use-my-packages-on-registry` ก่อน เพื่อติดตั้ง packages ที่เรา publish เองบน registry แล้วใช้ `/follow-lib-*` ของ package นั้น — ไม่มีตัวที่เหมาะค่อยเลือก dep ภายนอก
-7. หลัง implement เสร็จ → ทำ `/update-todo-md` เพื่ออัปเดต status ของ items ที่ทำเสร็จเป็น `done` หรือ `completed`
+1. If the project has a `TODO.md` → gather its pending items through `## Input Flows` → `TODO.md` (that bullet owns the artifact — do not parse the table ad hoc here), or `/update-todo-md` to read/enhance the prompt
+2. Use every item from `/report-not-implement` (step 1) as the queue — no need to scan for markers yourself again; if you find a new item along the way → add it to the queue immediately; only for hardcoded values the report does not cover → run `/check-secrets hardcoded-values`
+3. If the entire input is `TODO.md` → `## Input Flows` → `TODO.md` is also the ordering + status-tracking rule for the whole run
+4. Replace MOCK/FAKE/STUB with real implementations per this skill's flow — complete every item in the queue; never choose to do only some items and report it as done; for several independent items → spawn the `feature-implementer` profile one item at a time in parallel (pass it the contracts from steps 4-5); features still `missing` from the `### 5` checklist are handled the same way — only for core business, large net-new work → `/idea-features` + `/create-plan-in-dot-devin` first
+5. Implement each feature/fix with `## TDD Loop` — write a failing test that locks the behavior first, then write the code to pass, then refactor in a separate commit
+6. Run `/use-lib-effective` before writing a new implementation — use the installed deps or the preferred stack to their full potential; if a new dependency must be added → run `/use-my-packages-on-registry` first to install the packages we publish ourselves on the registry, then use that package's `/follow-lib-*` — only if there is no suitable one, choose an external dep
+7. After implement is done → run `/update-todo-md` to update the status of completed items to `done` or `completed`
 
 ### 7. Implement Security, Resilience And Observability
 
-> Goal: code ปลอดภัย resilient และติดตามได้เมื่อขึ้น production
+> Goal: code is secure, resilient, and observable in production
 
-1. ทำ `/deep-review-codebase` เพื่อหา vulnerabilities แล้วแก้ findings และ re-review ยืนยันว่าปิดครบ
-2. Validate/sanitize user inputs, ใช้ parameterized queries, ห้าม expose secrets — ทำ `/check-secrets secrets-leak` ก่อน ship
-3. Implement retry logic, exponential backoff, graceful degradation — ทำ `/deep-review-codebase` กับ mutation endpoints ให้ retry-safe
-4. ทำ `/deep-review-codebase` — ไม่มี throw ที่ไม่มี handler หรือ catch ที่ swallow errors; กับ endpoints ที่เปิดใหม่ — กัน abuse/brute force/cost exposure
-5. Observability ครบตาม `### 3` — structured logging, metrics, correlation IDs; ทำ `/improve platform` เพื่อหา gaps ครบทั้ง logging/metrics/tracing
-6. reviews หลาย domain บน changes เดียวกัน → spawn profile `review-sweeper` (ใน `## Subagents`) ทีละ domain ขนานกัน (read-only) แล้วรวม findings ก่อนแก้
+1. Run `/deep-review-codebase` to find vulnerabilities, then fix the findings and re-review to confirm they are all closed
+2. Validate/sanitize user inputs, use parameterized queries, never expose secrets — run `/check-secrets secrets-leak` before ship
+3. Implement retry logic, exponential backoff, graceful degradation — run `/deep-review-codebase` on mutation endpoints to make them retry-safe
+4. Run `/deep-review-codebase` — no throw without a handler or catch that swallows errors; for newly opened endpoints — prevent abuse/brute force/cost exposure
+5. Observability complete per `### 3` — structured logging, metrics, correlation IDs; run `/improve platform` to find gaps across logging/metrics/tracing
+6. For reviews across several domains on the same changes → spawn the `review-sweeper` profile (in `## Subagents`) one domain at a time in parallel (read-only), then merge the findings before fixing
 
 ### 8. Refactor And Cleanup
 
-> Goal: ปรับปรุงคุณภาพโค้ด ตรวจ references และ cleanup
+> Goal: Improve code quality, check references, and clean up
 
-1. ทำ `/refactor` เสมอหลัง implementation เสร็จ — ลด long files, SRP issues (`### 3` file/SRP bullet) และ import/exports ให้ผ่าน refactor rules ที่อ่านไว้ตอน step 1
-2. ทำ `/improve uxui` เสมอเมื่อ scope มี UI และ wire ใช้งานได้จริงตาม `### 5` แล้ว — prerequisites: dev server รันอยู่ (`/check-open-ports` แล้ว `/run-dev`, reuse ตัวที่รันตอน sweep ของ `### 5`) และ `scope` = ทุก route + element checklist จาก `### 5` พร้อม browser pass (`/watch-browser fix`) เพื่อ review UI ที่ render จริง; ทำจนครบทุก finding ห้ามทำแค่บางส่วน — project ไม่มี UI → ข้ามได้พร้อมรายงานเหตุผล
-3. ทำ `/improve` ใน domain อื่นที่แตะ — ไฟล์ที่แตะและระบบที่เกี่ยวข้อง (error handling, consistency, stability, a11y ตาม context); ไม่จำกัดแค่ TODO items
-4. ทำ `/update-references` ถ้ามี move/rename/delete; ทำ `/follow-tool-knip` — พิจารณาลบหรือ implement dead code ที่พบ
-5. ทำ `/update-project` เสมอหลัง implement + refactor เสร็จ — sync docs, config, rules, AGENTS.md, README, tooling ให้ตรง codebase ปัจจุบัน (ห้ามข้าม เพราะ docs จะ stale ก่อน verify gate); ทำ `/update-dot-devin` ถ้าโครงสร้าง `.devin/` เปลี่ยน; `/update-todo-md` ถ้า TODO.md items เปลี่ยน
+1. Always run `/refactor` after implementation is done — reduce long files, SRP issues (`### 3` file/SRP bullet), and import/exports so they pass the refactor rules read in step 1
+2. Always run `/improve uxui` when the scope has UI and it is wired to actually work per `### 5` — prerequisites: the dev server is running (`/check-open-ports` then `/run-dev`, reuse the one running during the `### 5` sweep) and `scope` = every route + the element checklist from `### 5` plus a browser pass (`/watch-browser fix`) to review the UI as actually rendered; do it until every finding is covered, never only partially — if the project has no UI → it may be skipped with a reported reason
+3. Run `/improve` in the other domains touched — the files touched and the related systems (error handling, consistency, stability, a11y per context); not limited to TODO items
+4. Run `/update-references` if there is a move/rename/delete; run `/follow-tool-knip` — consider removing or implementing the dead code found
+5. Always run `/update-project` after implement + refactor are done — sync docs, config, rules, AGENTS.md, README, and tooling to match the current codebase (never skip, because docs would be stale before the verify gate); run `/update-dot-devin` if the `.devin/` structure changed; `/update-todo-md` if the TODO.md items changed
 
 ### 9. Verify, Deploy Gate, Rollback Plan, And Finalize
 
-> Goal: code ผ่าน validation ครบก่อน ship/deploy — gate เขียว, deploy จริง, verify จริง, rollback plan พร้อม
+> Goal: code passes full validation before ship/deploy — green gate, real deploy, real verify, rollback plan ready
 
-1. ทำ `/ship verify-only` เป็น canonical verify gate (ห้าม duplicate gate เอง — reference `/ship` ตาม SSOT ของ repo): รัน `/deep-review-codebase` → `/deep-validate` → `/run-check` → `/update-tests` + `/deep-test all` → `/run-dev` + `/deep-test usage` ครบชุด แล้วหยุดก่อน push/merge — test gaps ที่เจอระหว่างทาง → `/improve tests` แล้วเขียน/แก้ specs ผ่าน `/update-tests`; ถ้า project มี coverage target → `/deep-test coverage` จนถึงเป้า (default 100%)
-2. ทำ `/run-verify` เพื่อตรวจ scan, format, lint, typecheck, test, build — ไม่ผ่าน → `/resolve-errors` แล้ว retry สูงสุด 3 ครั้ง; ยัง fail → stop report ห้าม deploy
-3. pre-ship sweep: scan debug leftovers ด้วย `rg "console\.(log|debug)|debugger"`, `/check-secrets secrets-leak` ยืนยันไม่มี secrets หลุด, และ `/run-audit` ตรวจ dependency vulnerabilities
-4. ทำ `/deep-test website` (Roleplay Mode) ครบทุก route ใน app (ไม่ใช่แค่ route ที่แตะ): ทุก interactive element, forms valid + invalid, flows หลัก, error/empty/loading states พร้อม evidence; จากนั้น codify flows ที่ผ่านเป็น Playwright suite ผ่าน `/deep-test e2e` — Playwright report คือ authoritative result
-5. ยืนยัน rollback plan แบบ executable ไม่ใช่แค่ note: ระบุ method (`git revert <merge-commit>`, redeploy เวอร์ชันเดิม, platform rollback) และบันทึก current production version/revision ไว้เทียบ; deploy เป็น destructive (DB migration, breaking API) → `/ask-me` confirm ก่อน
-6. ถ้าต้อง deploy จริง: ทำ `/run-deploy` หรือ `/follow-deploy` (dispatch ไป `deploy-to-<platform>`) — deploy staging/preview ก่อนถ้า platform รองรับ, เก็บ deployment URL + version/revision เสมอ
-7. post-deploy verify: smoke test critical paths บน production URL จริง, ตรวจ logs/metrics/error tracking ไม่มี error spike, เทียบ behavior กับผล `/run-check` ที่ผ่านมา — fail → execute rollback plan ทันทีแล้ว report
-8. ถ้างานซับซ้อนหรือหลาย workspace → ทำ deep pass เพิ่ม: front-load `/deep-thinking`, `/deep-analyze` สำหรับ high-impact changes, จัดลำดับ critical path (schema → data → API → UX) และกำหนด rollback plan ก่อนแต่ละ batch
-9. ถ้างานนี้ implement จาก GitHub issue ที่สร้างโดยฉัน → `/resolve-github-issue-by-me` เพื่อ comment ผลและปิด issue; งานค้าง/blocked/deferred → `/save-to-todo-md` เก็บ remaining items ลง `TODO.md`
-10. ทำ `/suggest-next-action` — ถ้าทุกอย่างผ่านและ user ต้องการขึ้น production → ทำ `/ship` ตัวเต็ม (commit/push → PR review gate → merge `main`) หรือ `/release-new-version` เมื่อต้องออก version
+1. Close the loop with the same instrument that opened it: re-run `/report-not-implement` on the same scope — the `### 1.4` queue must be fully `completed`/`blocked` (reason stated) and the new scan must report 0 `missing`/`fake`/`partial`/`unwired`/`promised`; any new marker (including one your own code just introduced) = close it before the gate, never gate around it
+2. Run `/ship verify-only` as the canonical verify gate (never duplicate the gate yourself — reference `/ship` per the repo's SSOT): run `/deep-review-codebase` → `/deep-validate` → `/run-check` → `/update-tests` + `/deep-test all` → `/run-dev` + `/deep-test usage` in full, then stop before push/merge — for test gaps found along the way → `/improve tests` then write/fix specs via `/update-tests`; if the project has a coverage target → `/deep-test coverage` until the target (default 100%)
+3. Run `/run-verify` to check scan, format, lint, typecheck, test, build — if it fails → `/resolve-errors` then retry up to 3 times; if it still fails → stop and report, never deploy
+4. pre-ship sweep: scan for debug leftovers with `rg "console\.(log|debug)|debugger"`, `/check-secrets secrets-leak` to confirm no secrets leaked, and `/run-audit` to check dependency vulnerabilities
+5. Run `/deep-test website` (Roleplay Mode) across every route in the app (not just the routes touched), in this order: routes reachable from the navigation → auth flows → owner/admin surfaces → error/empty/loading states; on a large app close the nav-reachable set first, then deep-link the routes named in the `### 5` checklist — every interactive element, forms valid + invalid, the main flows, with evidence recorded per route; then codify the passing flows into a Playwright suite via `/deep-test e2e` — the Playwright report is the authoritative result
+6. Confirm the rollback plan drafted in `### 2.4` is executable, not just a note: re-state the method (`git revert <merge-commit>`, redeploy the previous version, platform rollback) and record the current production version/revision for comparison; if the deploy is destructive (DB migration, breaking API) → `/ask-me` to confirm first
+7. If a real deploy is needed: run `/run-deploy` or `/follow-deploy` (dispatches to `deploy-to-<platform>`) — deploy staging/preview first if the platform supports it, always record the deployment URL + version/revision
+8. post-deploy verify: smoke test the critical paths on the real production URL, check logs/metrics/error tracking for no error spike, compare behavior against the passing `/run-check` results — if it fails → execute the rollback plan immediately then report
+9. If the work is complex or spans multiple workspaces → do an extra deep pass: front-load `/deep-thinking`, `/deep-analyze` for high-impact changes, order the critical path (schema → data → API → UX), and extend the `### 2.4` rollback plan for each batch before it starts
+10. If this work implements a GitHub issue I created → `/resolve-github-issue-by-me` to comment the result and close the issue; pending/blocked/deferred work → `/save-to-todo-md` to save the remaining items into `TODO.md`
+11. Run `/suggest-next-action` — if everything passes and the user wants to go to production → run the full `/ship` (commit/push → PR review gate → merge `main`) or `/release-new-version` when a version must be released
 
 ## TDD Loop
 
-> merged จาก `/follow-tdd` (จาก `references/tdd.md`) — ใช้กับทุกงานที่สร้าง/เปลี่ยน behavior; ข้ามได้เฉพาะ pure docs/config/style edits ที่ไม่มี runtime behavior; project ยังไม่มี test framework หรือ coverage tooling → ทำ `## Setup Coverage` (หรือ `/follow-tool-vitest`/`/follow-tool-nextest`) ก่อน; behavior contract ไม่ชัด → `/ask-me` ก่อนเขียน test
+> merged from `/follow-tdd` (from `references/tdd.md`) — applies to every task that creates/changes behavior; can be skipped only for pure docs/config/style edits with no runtime behavior; if the project has no test framework or coverage tooling yet → do `## Setup Coverage` (or `/follow-tool-vitest`/`/follow-tool-nextest`) first; if the behavior contract is unclear → `/ask-me` before writing the test
 
-1. Understand: อ่าน spec/issue/plan item/`TODO.md` row — expected input/output และ error cases ต้องระบุได้ในประโยคเดียว; เช็ค tests เดิมของ unit นั้น — extend แทน to duplicate; ทำทีละ smallest testable behavior (หนึ่ง function, หนึ่ง rule, หนึ่ง endpoint response)
-2. Write the failing test: หนึ่ง test = หนึ่ง behavior, ชื่อ state scenario + expectation (`rejects expired token` ไม่ใช่ `test1`); assert บน public contract จริง (return value, thrown error, HTTP status, rendered state) ไม่ใช่ internal calls; รันแล้วต้อง fail ด้วยเหตุผลที่คาด — pass ครั้งแรก = test ไม่ assert อะไรเลยหรือ feature มีอยู่แล้ว; ห้าม placeholder assertions/empty tests
-3. Make it pass: เขียน code แค่พอให้ test ผ่าน — ไม่ speculative branches, ไม่ extra features, ไม่ refactor ในขั้นนี้ (Two Hats); รันทั้ง suite ไม่ใช่แค่ test ใหม่ — test อื่นพัง → แก้ก่อนไปต่อ; เพิ่ม dep เฉพาะเมื่อ manifest/catalog รับรองแล้ว
-4. Refactor: rename, ลด duplication, split by concern — apply `/refactor` `## Rules` + `## Smells → Techniques`; re-run tests หลัง refactor ทีละครั้ง — suite แดงกลางทาง → revert เฉพาะ step นั้น; หยุดเมื่อ code อ่านชัด (`/dont-over-engineer`, rule of three); structural changes อยู่คนละ commit กับ implementation
-5. Repeat and integrate: วนข้อ 2-4 ทีละ behavior, `/git-commit` checkpoint ทุก green cycle; cover boundary cases ที่ implementation เผยออก: empty/invalid input, concurrent/duplicate calls, permission denied, upstream failure; property-based/fuzz → `/deep-test property`, database-backed → `/deep-test database`, cross-module contracts → `/deep-test contract`; จบ item → full suite + `/run-check` + `/run-verify`
-- ไม่มี production code โดยไม่มี failing test ที่ lock behavior ก่อน — test ที่เขียนหลัง code พิสูจน์ไม่ได้ว่า behavior ถูก lock; untested legacy code → characterization tests ก่อน (`/update-tests`)
-- หนึ่ง test asserts หนึ่ง behavior — หลาย behavior ใน test เดียว → split; หนึ่ง cycle commit หนึ่ง concern ไม่ mix refactor/fix/feature; ทุก cycle จบด้วย green suite ไม่ใช่ visual check; assertion ที่ไม่มีทาง fail = dead test → ตรวจ/แก้ผ่าน `/deep-test test-correctness`
+1. Understand: read the spec/issue/plan item/`TODO.md` row — the expected input/output and error cases must be describable in a single sentence; check the existing tests for that unit — extend instead of duplicating; work one smallest testable behavior at a time (one function, one rule, one endpoint response)
+2. Write the failing test: one test = one behavior, name it with scenario + expectation (`rejects expired token`, not `test1`); assert on the real public contract (return value, thrown error, HTTP status, rendered state), not internal calls; running it must fail for the expected reason — passing the first time = the test asserts nothing or the feature already exists; never use placeholder assertions/empty tests
+3. Make it pass: write just enough code for the test to pass — no speculative branches, no extra features, no refactor at this stage (Two Hats); run the whole suite, not just the new test — if another test breaks → fix it before continuing; add a dep only once the manifest/catalog sanctions it
+4. Refactor: rename, reduce duplication, split by concern — apply `/refactor` `## Rules` + `## Smells → Techniques`; re-run the tests after each refactor step — if the suite goes red midway → revert only that step; stop when the code reads clearly (`/dont-over-engineer`, rule of three); structural changes live in a different commit from the implementation
+5. Repeat and integrate: loop steps 2-4 one behavior at a time, `/git-commit` checkpoint on every green cycle; cover the boundary cases the implementation reveals: empty/invalid input, concurrent/duplicate calls, permission denied, upstream failure; property-based/fuzz → `/deep-test property`, database-backed → `/deep-test database`, cross-module contracts → `/deep-test contract`; finishing an item → full suite + `/run-check` + `/run-verify`
+- No production code without a failing test that locks the behavior first — a test written after the code cannot prove the behavior is locked; untested legacy code → characterization tests first (`/update-tests`)
+- One test asserts one behavior — multiple behaviors in a single test → split; one cycle commits one concern, never mixing refactor/fix/feature; every cycle ends with a green suite, not a visual check; an assertion that can never fail = a dead test → check/fix it via `/deep-test test-correctness`
 
 ## Input Flows
 
-> merged จาก `references/input-flows.md` — input เป็น artifact (plan file, `TODO.md`, loose plan) → แปลงเป็น task queue เดียวก่อน แล้วกลับ flow หลัก (`### 1`–`### 9`); input เป็น source of truth ของ scope ไม่ใช่ implementation strategy; ห้ามทำ task ที่ยังไม่ถูกถอดลง queue และห้าม task ซ้ำสองแหล่ง; อัปเดต status ในไฟล์ทันทีที่เสร็จแต่ละ task; งานค้าง/blocked → `/save-to-todo-md` ก่อนจบ session
+> merged from `references/input-flows.md` — if the input is an artifact (plan file, `TODO.md`, loose plan) → convert it into a single task queue first, then return to the main flow (`### 1`–`### 9`); the input is the source of truth for the scope, not the implementation strategy; never do a task that has not been extracted into the queue and never duplicate a task from two sources; update the status in the file immediately when each task is done; pending/blocked work → `/save-to-todo-md` before ending the session
 
-- Plan File (`.devin/temp/plan/<workspace>/<title-date>.md`): ระบุไฟล์จาก argument (path/title; ไม่มี → list แล้วถาม user เลือก) → สร้าง task list จาก task `status: pending` จัดลำดับตาม `## Execution Order` แล้วทำทีละข้อจาก critical path (ซับซ้อน → `/create-plan-in-dot-devin` ซ้ำก่อนลงมือ) → อัปเดต status `in-progress`/`completed` ระหว่างทำ → ทุก task `completed` → `/deep-validate` + `/run-verify` → ลบไฟล์แผนเมื่องานครบเท่านั้น (ห้ามลบก่อนยืนยัน) → รายงานสรุป; ต้องเปลี่ยนแผนหรือ task เสี่ยงสูง → `/ask-me` ก่อน; ถ้าแผนไม่ต้องลบไฟล์ → ใช้ bullet Loose Plan แทน
-- TODO.md (project root — ไม่มี → stop และ report): แยก table rows (Title/Description/Status/Priority/Created) → กรอง `pending`/`in-progress` เรียง priority high→medium→low, task ที่ไม่มี blocker ก่อน, created เก่า→ใหม่ → implement ทีละ task ด้วย flow หลัก (task ง่ายและมี state อยู่แล้ว → `/continue`; ซับซ้อน → `/create-plan-in-dot-devin` ก่อน; ไม่ชัดเจน → ถาม user) → mark `completed`/`blocked` พร้อมเหตุผลทันที เพิ่ม sub-task เมื่อจำเป็น → วนจนไม่มี `pending` (`blocked` เหลือ → report และถาม user) → ปิดท้าย `/deep-validate` → `/run-verify` → `/ship` → `/report` สรุปทุก task
-- Loose Plan (`AGENTS.md`/`PLAN.md`/เอกสารทั่วไป — merged จาก `/follow-plan`, ไม่ต้องลบไฟล์): อ่าน `AGENTS.md` ใน project root → ไม่พบ → หา `PLAN.md`, `plan.md`, `TODO.md` หรือ context ที่ user ให้ → สกัด steps จาก headings/bullets/numbered list (ไม่มี plan → stop และ report) → แปลงแต่ละ step เป็น workflow (`/name`), skill, shell command หรือ decision + ระบุลำดับ/dependencies (step ไม่ชัด → ถาม user) → สร้าง todo list, ทำทีละ step (มีหนึ่ง `in_progress` เท่านั้น), อ่าน workflow/skill file จริงก่อน invoke แล้วทำตาม `## Execute` ของมัน, ตรวจ `## Expected Outcome` ก่อน mark `completed`, workflow ที่มี sub-workflows → ทำ recursive — ไม่ตีความ "ทำ xxx" เป็น concept ต้องทำจริง, ไม่ทำ step ที่ไม่ได้ระบุใน plan โดยไม่ได้รับอนุญาต → step ไม่ผ่าน → `/resolve-errors` retry ≤3 ยังไม่ผ่าน → stop + report; user อนุญาตข้าม → mark ⏭️ → ทุก step จบ → รวมผลเป็นตาราง status (✅/❌/⏭️) แล้วกลับ flow หลัก; step เสี่ยงสูง (deploy, push, delete) → `/ask-me` ก่อน, ไม่ force push/force merge; งานค้าง → `/suggest-next-action`
+- Plan File (`.devin/temp/plan/<workspace>/<title-date>.md`): identify the file from the argument (path/title; if absent → list them and ask the user to choose) → build the task list from tasks with `status: pending`, order it per `## Execution Order`, then do them one at a time along the critical path (for complex ones → `/create-plan-in-dot-devin` again before starting) → update the status to `in-progress`/`completed` as you go → once every task is `completed` → `/deep-validate` + `/run-verify` → delete the plan file only when the work is complete (never delete before confirming) → report a summary; if the plan must change or a task is high-risk → `/ask-me` first; if the plan needs no file deletion → use the Loose Plan bullet instead
+- TODO.md (project root — if absent → stop and report): split the table rows (Title/Description/Status/Priority/Created) → filter `pending`/`in-progress`, sort priority high→medium→low, tasks with no blocker first, created oldest→newest → implement one task at a time with the main flow (for easy tasks whose state already exists → `/continue`; for complex ones → `/create-plan-in-dot-devin` first; if unclear → ask the user) → mark `completed`/`blocked` with a reason immediately, adding sub-tasks when needed → loop until there is no `pending` remaining (`blocked` remaining → report and ask the user) → finish with `/deep-validate` → `/run-verify` → `/ship` → `/report` summarizing every task
+- Loose Plan (`AGENTS.md`/`PLAN.md`/general docs — merged from `/follow-plan`, no file deletion needed): read `AGENTS.md` in the project root → if not found → look for `PLAN.md`, `plan.md`, `TODO.md`, or context the user provided → extract steps from headings/bullets/numbered lists (no plan → stop and report) → convert each step into a workflow (`/name`), skill, shell command, or decision + specify order/dependencies (unclear step → ask the user) → build a todo list, do one step at a time (only one `in_progress` at a time), read the actual workflow/skill file before invoking it then follow its `## Execute`, check its `## Expected Outcome` before marking `completed`, and for a workflow with sub-workflows → recurse — do not interpret "do xxx" as a concept, it must actually be done; never do a step not specified in the plan without permission → if a step fails → `/resolve-errors` retry ≤3, still failing → stop + report; if the user permits skipping → mark ⏭️ → once all steps are done → combine the results into a status table (✅/❌/⏭️) then return to the main flow; high-risk steps (deploy, push, delete) → `/ask-me` first, never force push/force merge; pending work → `/suggest-next-action`
 
 ## Setup Coverage
 
-> merged จาก `workflows/setup-coverage/` — dispatch จาก `## Scope` argument `setup-coverage`/`coverage`; ใช้เมื่อ project ยังไม่มี coverage tooling หรือต้อง setup ใหม่ก่อนเริ่ม TDD loop; รองรับ Bun/Node (vitest), Rust (llvm-cov), Go (built-in), Python (pytest-cov); setup tooling เท่านั้น — เขียน test → `/update-tests`, เติม gap coverage → `/improve coverage`
+> merged from `workflows/setup-coverage/` — dispatched from the `## Scope` argument `setup-coverage`/`coverage`; use it when the project has no coverage tooling yet or needs a fresh setup before starting the TDD loop; supports Bun/Node (vitest), Rust (llvm-cov), Go (built-in), Python (pytest-cov); tooling setup only — writing tests → `/update-tests`, closing coverage gaps → `/improve coverage`
 
-1. Detect ecosystem and state: ตรวจ manifest (`package.json`, `Cargo.toml`, `go.mod`, `pyproject.toml`), test framework ที่มี (vitest, cargo test/nextest, go test, pytest) และ coverage state เดิม (config, devDeps, CI step — idempotent check); ไม่มี test framework → `/use-related-skills` เพื่อหา `follow-tool-vitest` ฯลฯ ก่อน
-2. Install ตาม ecosystem (ใช้ tool มาตรฐานเท่านั้น — ห้ามซ้ำซ้อน; tool/version ไม่แน่ใจ → ดู official docs ก่อน install ห้ามเดา flags): Bun/Node → `@vitest/coverage-v8` (`vitest run --coverage`) · Rust → `cargo-llvm-cov` (`cargo llvm-cov`) · Go → built-in (`go test -coverprofile=coverage.out ./...`) · Python → `pytest-cov` (`pytest --cov`); ติดตั้งผ่าน package manager ของ project; เพิ่ม script `test:coverage` ใน manifest (ตาม `/follow-test` rules); ตั้ง coverage config ขั้นต่ำ — provider, include/exclude patterns, reporters
-3. Configure thresholds and output: ตั้ง output dir (เช่น `coverage/`) และเพิ่มใน `.gitignore` — coverage output ห้าม commit เสมอ; thresholds ตาม level ของ `/follow-test` (Minimal 70% / Standard ~85% / Complete ~90%+) ถ้า tool รองรับ — อย่าตั้งเกินจน block TDD loop; reporters: text สำหรับ terminal + html/lcov สำหรับ CI
-4. Wire CI and verify: เพิ่ม coverage step ใน CI workflow ถ้ามี — ยังไม่มี pipeline → `/setup-cicd`; รัน coverage command ต้องออก report สำเร็จ; ทำ `/deep-test coverage` ยืนยัน report ถูกต้อง (ยังไม่มี test suite → `/update-tests` ก่อนวัด); fail → `/resolve-errors` max 3 รอบ แล้ว stop report
+1. Detect ecosystem and state: check the manifest (`package.json`, `Cargo.toml`, `go.mod`, `pyproject.toml`), the existing test framework (vitest, cargo test/nextest, go test, pytest), and the existing coverage state (config, devDeps, CI step — idempotent check); if there is no test framework → `/use-related-skills` to find `follow-tool-vitest` etc. first
+2. Install per ecosystem (use only the standard tools — never redundant; if unsure about a tool/version → check the official docs before installing, never guess flags): Bun/Node → `@vitest/coverage-v8` (`vitest run --coverage`) · Rust → `cargo-llvm-cov` (`cargo llvm-cov`) · Go → built-in (`go test -coverprofile=coverage.out ./...`) · Python → `pytest-cov` (`pytest --cov`); install via the project's package manager; add a `test:coverage` script in the manifest (per `/follow-test` rules); set up a minimal coverage config — provider, include/exclude patterns, reporters
+3. Configure thresholds and output: set the output dir (e.g. `coverage/`) and add it to `.gitignore` — coverage output must never be committed; thresholds per the `/follow-test` level (Minimal 70% / Standard ~85% / Complete ~90%+) if the tool supports it — do not set them so high that they block the TDD loop; reporters: text for the terminal + html/lcov for CI
+4. Wire CI and verify: add a coverage step to the CI workflow if there is one — if there is no pipeline yet → `/setup-cicd`; running the coverage command must produce a report successfully; run `/deep-test coverage` to confirm the report is correct (if there is no test suite yet → `/update-tests` before measuring); if it fails → `/resolve-errors` max 3 rounds then stop and report
 
 ## Rules
 
-- No Mock In Production — เริ่มงานด้วย `/report-not-implement` เสมอ ปิดให้ครบทุก item — ทำไม่ได้ต้อง report เป็น blocked/deferred พร้อมเหตุผล ไม่ใช่หายไปเงียบๆ; ไม่มี mock implementations, simulated delay, in-memory stores แทน real services หรือ silent fallback ไป mock data ใน production code; UI ที่ render ได้แต่ใช้ไม่ได้ = mock — ทุก interactive element ต้องทำงานจริงหรือถูกลบออก
-- Type And Validation Flow — types flow: schema → validation schema → API types → UI types; ใช้ type inference จาก schema ไม่ประกาศ type ซ้ำ; หลีกเลี่ยง `any` ใช้ `unknown` แทน
-- Safety And User Confirmation — migrations destructive ต้อง dry-run + user confirm; external services ไม่พร้อม → report options ก่อน proceed; secrets/keys ไม่ hardcode — เก็บด้วย `/follow-secret-manager` เสมอ; gate ใน `### 9` ต้องเขียวก่อน deploy ไม่มี exception; เก็บ URL + version ทุก deploy
-- Minimal And Maintainable — อ่าน `/refactor` rules ก่อนลงมือ implement เสมอ และทำ `/refactor` หลัง implement เสร็จเสมอ (step 8) ไม่ข้าม; ทำ `/dont-over-engineer` — จะเขียนใหม่หรือเจอ duplicates → `/use-lib-effective`; dep ใหม่ → เช็ค packages ที่เราเป็น owner ด้วย `/use-my-packages-on-registry` ก่อน dep ภายนอก; รักษา public API ถ้าไม่จำเป็นต้องเปลี่ยน; ไฟล์ไม่เกิน 250 บรรทัด
-- Plan Always — ทุกงาน implement ต้องมี plan จาก `/create-plan-in-dot-devin` ก่อน — ห้ามเริ่ม Step 3 โดยไม่มี plan
-- Test First — ไม่มี production code โดยไม่มี failing test ที่ lock behavior ก่อน (ตาม `## TDD Loop`); project ยังไม่มี coverage tooling → ทำ `## Setup Coverage` ก่อนเพื่อวัดผลได้จริง; หลัง implement ครบทุก item → `/deep-test` ทุก domain ที่แตะ (`unit`/`integration`/`api`/`e2e`/`website`) จนเขียวก่อนเข้า verify gate ใน `### 9` — test ที่ยังไม่เขียว = งานยังไม่เสร็จ; แยก commit: test ที่ red → implementation ที่ green → refactor ตาม `### 8` ไม่ mix behavior
+- No Mock In Production — no mock implementations, simulated delay, in-memory stores instead of real services, or silent fallback to mock data in production code; the queue opened in `### 1.2` is closed in full — a promise that cannot be kept is reported blocked/deferred with a reason, never silently dropped (the dead-UI definition is owned by `## Scope`, the zero-new-marker check by `### 9.1`)
+- Type And Validation Flow — types flow: schema → validation schema → API types → UI types; use type inference from the schema, do not re-declare types; avoid `any`, use `unknown` instead
+- Safety And User Confirmation — destructive migrations require a dry-run + user confirm; if external services are not ready → report options before proceeding; never hardcode secrets/keys — always store them with `/follow-secret-manager`; the gate in `### 9` must be green before deploy, no exception; record the URL + version on every deploy
+- Minimal And Maintainable — always read the `/refactor` rules before implementing and always run `/refactor` after implement is done (step 8), never skip; follow `/dont-over-engineer` — before rewriting or when you find duplicates → `/use-lib-effective`; for a new dep → check the packages we own with `/use-my-packages-on-registry` before an external dep; preserve the public API unless it truly must change; files no longer than 250 lines
+- Plan Always — every implement task must have a plan from `/create-plan-in-dot-devin` first — never start Step 3 without a plan
+- Test First — no production code without a failing test that locks the behavior first; after implementing every item → `/deep-test` every domain touched (`unit`/`integration`/`api`/`e2e`/`website`) until green before entering the verify gate in `### 9` — a test that is not green = the work is not done (cycle order, coverage setup, and commit splitting are owned by `## TDD Loop`)
 
 ## Subagents
 
-> Goal: งานอิสระที่ spawn ทำขนานได้ผ่าน `/use-subagents` — profile inline ที่นี่; parent เป็นคนรวมผล + checkpoint commit + verify รวมเสมอ; inventory gaps ใช้ profile `gap-scanner` ของ `/report-not-implement` (owner เดียว ห้าม copy มาไว้ที่นี่)
+> Goal: independent work that can be spawned to run in parallel via `/use-subagents` — the profile lives inline here; the parent always aggregates results + checkpoint commits + verifies overall; for inventory gaps use the `gap-scanner` profile of `/report-not-implement` (single owner, do not copy it here)
 
-- `feature-implementer` — implement feature/gap item เดียว end-to-end (spawn ทีละ item ขนานกัน, file sets ห้ามทับกัน): inputs `item` (gap item จาก `/report-not-implement` หรือ plan file), `files` (scope ที่แก้ได้), `contracts` (types/schemas/API ที่ parent ให้ canonical มา — ห้าม redefine ซ้ำ), `conventions` (stack/libraries/style), `verify-cmd` (เช่น `bun test <path>`, `tsc --noEmit`); Execute: เขียน failing test ที่ lock expected behavior ก่อน (TDD) → implement ตาม `item` ใช้ dep ที่มีก่อน → เชื่อม `contracts` → รัน `verify-cmd` fail → แก้หรือรายงาน blocker → ลบ marker เดิมเมื่อ implement จริง; Output: ตาราง No./File/Change/Test (`pass`/`fail`/`skipped`)/Notes + files changed + new deps + markers removed + blockers; Constraints: ห้าม mock/stub/placeholder ใหม่, ไม่เพิ่ม dep เอง (ต้องใช้ package ที่ยังไม่ได้ติดตั้ง → blocker กลับพร้อมเหตุผล ให้ parent รัน `/use-my-packages-on-registry` ก่อน), ไม่ commit/push (parent checkpoint), secrets ห้าม hardcode — ขาด env/credentials → blocker ทันที, ห้าม `git push`/`rm -rf`
-- `review-sweeper` — review changes ทีละ domain ขนานกัน (read-only): inputs `domain` เดียว (`security`/`api`/`test`/`observability`/`resilience`), `scope` (ไฟล์/diff), `context`; Execute: อ่าน changes → review ตาม checklist ของ domain (security = injection/authz gaps/secrets leak/input validation, api = validation/error handling/rate limit/retry-safety, test = assertion-less tests/unhandled throws/swallowed errors, observability = logging/metrics/correlation IDs, resilience = retry/backoff/graceful degradation/timeouts) → รายงาน findings พร้อม severity ห้ามแก้ไขเอง; Output: ตาราง No./Severity (`critical`/`high`/`medium`/`low`)/Location/Finding/Suggested Fix + verdict `pass`/`pass-with-warnings`/`fail` + blocking count; Constraints: ห้าม write/edit, review เฉพาะ domain ที่ได้รับ, findings ต้องชี้ file:line จริงห้ามเดา
+- `feature-implementer` — implement a single feature/gap item end-to-end (spawn one item at a time in parallel, file sets must not overlap): inputs `item` (a gap item from `/report-not-implement` or a plan file), `files` (the scope it may edit), `contracts` (the types/schemas/API the parent provides as canonical — do not redefine them), `conventions` (stack/libraries/style), `verify-cmd` (e.g. `bun test <path>`, `bun check`); Execute: write a failing test that locks the expected behavior first (TDD) → implement per `item` using existing deps first → wire in `contracts` → run `verify-cmd`, if it fails → fix or report a blocker → remove the old marker once actually implemented; Output: a No./File/Change/Test (`pass`/`fail`/`skipped`)/Notes table + files changed + new deps + markers removed + blockers; Constraints: no new mock/stub/placeholder, do not add deps yourself (if a package that is not installed is needed → return a blocker with a reason, and have the parent run `/use-my-packages-on-registry` first), do not commit/push (the parent checkpoint), never hardcode secrets — if env/credentials are missing → blocker immediately, never `git push`/`rm -rf`
+- `review-sweeper` — review changes one domain at a time in parallel (read-only): inputs a single `domain` (`security`/`api`/`test`/`observability`/`resilience`), `scope` (files/diff), `context`; Execute: read the changes → review per the domain checklist (security = injection/authz gaps/secrets leak/input validation, api = validation/error handling/rate limit/retry-safety, test = assertion-less tests/unhandled throws/swallowed errors, observability = logging/metrics/correlation IDs, resilience = retry/backoff/graceful degradation/timeouts) → report findings with severity, do not fix them yourself; Output: a No./Severity (`critical`/`high`/`medium`/`low`)/Location/Finding/Suggested Fix table + verdict `pass`/`pass-with-warnings`/`fail` + blocking count; Constraints: no write/edit, review only the assigned domain, findings must point to a real file:line, never guess
 
 ## Expected Outcome
 
-- รู้รายการสิ่งที่ยังไม่ implement จริงทั้ง scope จาก `/report-not-implement` ก่อนเริ่ม แล้วปิดครบทุก item (หรือ report เป็น blocked/deferred พร้อมเหตุผล)
-- ไม่มี TODO/MOCK/placeholder ใน production code — รวม dead UI ทุกจุด; schema, validation, types, API, UX/UI สมบูรณ์และเชื่อมต่อกัน
-- ทุก interactive element ใช้งานได้จริง end-to-end — ผ่าน click-through จริงใน browser
-- improvements รอบ scope ถูกหาและแก้ครอบคลุมผ่าน `/improve`; UI ผ่าน `/improve uxui` บน render จริงครบทุก finding (หรือข้ามพร้อมเหตุผลถ้าไม่มี UI); dep ใหม่ที่จำเป็นถูกเลือกผ่าน `/use-my-packages-on-registry` ก่อน dep ภายนอก พร้อม verify ใน manifest/lockfile
-- infrastructure พร้อม production: security, observability, resilience — env/secrets ครบ, CI เขียว, observability wired
-- ผ่าน canonical verify gate `/ship verify-only` ครบชุด (รวม `/deep-test all` และ `/run-verify`) พร้อม handoff ไป `/ship` หรือ `/release-new-version`; ถ้า deploy → post-deploy verify ผ่านพร้อม URL + version
-- มี rollback plan แบบ executable และ suite เขียวตาม `## TDD Loop` ทุก behavior ที่ implement
+- Know the list of what is not really implemented across the scope from `/report-not-implement` before starting, then close every item (or report it as blocked/deferred with a reason) — the `### 9.1` re-scan comes back with 0 markers, and the queue in the plan file shows every item closed
+- No TODO/MOCK/placeholder in production code — including every dead UI point; schema, validation, types, API, UX/UI are complete and connected
+- Every interactive element actually works end-to-end — verified by a real click-through in the browser
+- Improvements around the scope are found and fixed comprehensively via `/improve`; the UI passes `/improve uxui` on a real render with every finding covered (or skipped with a reason if there is no UI); any needed new dep is chosen via `/use-my-packages-on-registry` before an external dep, verified in the manifest/lockfile
+- Infrastructure is production-ready: security, observability, resilience — env/secrets complete, CI green, observability wired
+- Passes the canonical verify gate `/ship verify-only` in full (including `/deep-test all` and `/run-verify`) with a handoff to `/ship` or `/release-new-version`; if deployed → post-deploy verify passes with URL + version
+- Has a rollback plan drafted in `### 2.4` before any destructive step ran and confirmed executable in `### 9.6`, plus a green suite per `## TDD Loop` for every behavior implemented

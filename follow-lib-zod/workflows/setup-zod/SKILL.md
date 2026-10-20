@@ -55,7 +55,7 @@ import { z } from 'zod'
 
 ### 5. Verify
 
-1. `bunx tsc --noEmit` clean
+1. `bun check` clean
 2. Smoke test: `z.string().parse('x')` in a unit test
 3. fail → `/resolve-errors` max 3 rounds
 

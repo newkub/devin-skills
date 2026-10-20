@@ -10,7 +10,6 @@ related:
   - deep-analyze
   - use-subagents
   - deep-review-codebase
-  - deep-review-codebase-then-fix
   - follow-parallel
   - report-review
   - deep-validate
@@ -29,7 +28,7 @@ Review the changed scope the way it will actually ship: split it into parts (wor
 - Thin pre-ship orchestrator: this skill reviews and fixes; it never commits, pushes, opens PRs, or merges — `/ship` owns every ship gate
 - Called from `/ship` step 2 → stop at the ship-readiness report and return control to `/ship` (never re-enter `/ship`)
 - Standalone use → finish with `/ship` when the verdict is `ready-for-ship`
-- One dimension only, no per-part fan-out → `/deep-review-codebase` directly; no findings to fix → skip step 5
+- One dimension only, no per-part fan-out → `/deep-review-codebase [scope] then-fix` directly; no findings to fix → skip step 5
 
 ## Execute
 
@@ -64,16 +63,16 @@ Review the changed scope the way it will actually ship: split it into parts (wor
 
 > Goal: one deduplicated, severity-ordered picture across all parts
 
-1. Collect every part-reviewer output; dedup by `file + rule` keeping the highest severity with combined evidence
+1. Collect every part-reviewer output; dedup by `file + rule/message-normalized + dimension` keeping the highest severity with combined evidence
 2. No findings in any part → jump to step 6
 3. Present the findings with `/report-review` — one table: `No. | Finding | Evidence (file:line) | Severity | Part | Owner skill`
 
 ### 5. Fix Per Part
 
-> Goal: findings are fixed by the canonical fixer, part by part
+> Goal: findings are fixed by the canonical reviewer+fixer, part by part
 
-1. Ask the user to confirm the fix list (`/ask-me`), except `dont-ask-me` mode → fix all Critical/High by safe default
-2. Run `/deep-review-codebase-then-fix` per part with the confirmed findings; parts with disjoint file sets → parallel `fix-worker` subagents via `/use-subagents`
+1. Confirm the fix list via `/ask-me` — per finding by default; called from `/ship` or in `dont-ask-me` mode → follow the report as-is (`/follow-your-suggestion`), never a severity subset
+2. Run `/deep-review-codebase <part> then-fix` per part with the confirmed findings — its step 7 fixes per `deep-review-codebase/references/domain-map.md`; parts with disjoint file sets → parallel `fix-worker` subagents via `/use-subagents`
 3. Mechanically enforceable or convention findings → persist per `/deep-review-codebase` step 5 (`/update-devin-project-rules`, `/update-astgrep-rules`) so they cannot silently recur
 
 ### 6. Re-Verify
@@ -105,7 +104,7 @@ Review the changed scope the way it will actually ship: split it into parts (wor
 ## Rules
 
 - `/ship` owns commit/push/PR/merge — this skill never performs them; when invoked from `/ship`, return the verdict instead of chaining back (no recursion)
-- Review subagents are report-only; every fix routes through `/deep-review-codebase-then-fix` — the canonical fixer
+- Review subagents are report-only; every fix runs in `/deep-review-codebase <part> then-fix` step 7 — the canonical reviewer+fixer
 - File sets stay disjoint across parts; dependent parts run in DAG waves, never together
 - Evidence first — every finding cites `file:line`; no severity from intuition
 - Hard limits: ≤ 10 parts, retry ×1 per subagent, fix/re-verify loop ≤ 3 rounds → then stop and report `blocked`

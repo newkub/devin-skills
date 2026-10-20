@@ -3,7 +3,7 @@ name: update-agents-md
 description: Create or update AGENTS.md so agents and subagents can read it and act on it
 argument-hint: "[scope]"
 related:
-  - deep-review-codebase-then-fix
+  - deep-review-codebase
   - follow-agents-md
   - update-devin
   - use-subagents
@@ -101,7 +101,7 @@ Use for writing and improving `AGENTS.md` in a project's root and workspaces fro
 ### 5. Skills Mapping
 
 - `### Skills` in the generated `AGENTS.md` stays simple — core: `/dont-ask-me`, `/ship`, `/report-progress`, `/save-to-todo-md`, `/suggest-next-action`, `/follow-your-suggestion`, `/git-commit-and-push`
-- Quality/improvement group (per project): `/deep-review-codebase`, `/deep-review-codebase-then-fix` (the fixer when a finding must be closed), `/deep-validate`, `/deep-test`, `/review-test` plus the matching `/improve-*`/`/optimize-*` variants
+- Quality/improvement group (per project): `/deep-review-codebase` (with `then-fix` when a finding must be closed), `/deep-validate`, `/deep-test`, `/review-test` plus the matching `/improve-*`/`/optimize-*` variants
 - Production-readiness group when the repo still has stubs/placeholders: `/implement-to-production` (fill them) instead of a free-form "finish it" step
 - Add only the project-specific skills that are truly needed
 

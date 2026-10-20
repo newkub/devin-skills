@@ -48,7 +48,7 @@ my-app/
 ### 3. package.json Essentials
 
 1. `"type": "module"`; `module`/`main` may point at `.ts` — Bun and bundlers understand it
-2. Scripts: `dev: bun --watch src/index.ts`, `start: bun src/index.ts`, `test: bun test`, `typecheck: tsc --noEmit`, `build: bun build src/index.ts --outdir dist`
+2. Scripts: `dev: bun --watch src/index.ts`, `start: bun src/index.ts`, `test: bun test`, `typecheck: bun check`, `build: bun build src/index.ts --outdir dist`
 3. Dev deps: `bun add -d typescript bun-types`; no `packageManager` field needed (`bun.lock` suffices); no `engines.bun` unless required
 
 ### 4. bunfig.toml Skeleton
@@ -72,7 +72,7 @@ coverage = true
 
 ### 6. Verify
 
-1. `bun run src/index.ts` runs TS directly; `bun test` passes (zero tests is a pass); `bunx tsc --noEmit` typechecks
+1. `bun run src/index.ts` runs TS directly; `bun test` passes (zero tests is a pass); `bun check` typechecks
 2. On failure → run `/resolve-errors`
 
 ### 7. Git Hygiene

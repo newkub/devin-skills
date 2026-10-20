@@ -11,7 +11,7 @@ related:
   - follow-create-web-mcp
   - resolve-errors
   - run-dev
-
+  - use-lightpanda
 ---
 
 ## Goal

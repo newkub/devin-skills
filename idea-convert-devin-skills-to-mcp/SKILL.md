@@ -1,6 +1,6 @@
 ---
 name: idea-convert-devin-skills-to-mcp
-description: สร้างไอเดียและ draft แปลง Devin skills เป็น MCP server (tools/resources/prompts)
+description: Generate ideas and a draft to convert Devin skills into an MCP server (tools/resources/prompts)
 argument-hint: "[skill-name|family]"
 related:
   - idea-convert-my-global-cli-to-skills
@@ -15,104 +15,104 @@ related:
 
 ## Goal
 
-สร้างไอเดียและ draft สำหรับแปลง Devin skills เป็น MCP server — map skill capabilities ไปยัง MCP primitives (tools, resources, prompts) ตามมาตรฐาน
+Generate ideas and a draft for converting Devin skills into an MCP server — map skill capabilities to MCP primitives (tools, resources, prompts) per the standard
 
 ## Scope
 
-ใช้เมื่อต้องการให้ skills เข้าถึงได้จาก MCP clients อื่น หรือรวม skill logic เข้ากับ MCP ecosystem:
+Use when you want skills to be accessible from other MCP clients or to integrate skill logic into the MCP ecosystem:
 
-- สำรวจ skills/families ที่มี executable logic (scripts, CLIs, data-returning checks)
-- ประเมินว่า skill ไหนเหมาะเป็น MCP tool/resource/prompt
-- เขียน draft MCP server design (ไม่ implement จริงจนกว่า user confirm → `/follow-your-suggestion`)
-- รองรับทั้ง single skill, skill family (`check-*`, `run-*`) และทั้ง repo
+- Survey skills/families that contain executable logic (scripts, CLIs, data-returning checks)
+- Assess which skills are suitable as an MCP tool/resource/prompt
+- Write a draft MCP server design (don't actually implement until the user confirms → `/follow-your-suggestion`)
+- Support single skills, skill families (`check-*`, `run-*`), and the whole repo
 
 ## Execute
 
 ### 1. Select Skills
 
-> Goal: ระบุ skills ที่จะ evaluate
+> Goal: Identify the skills to evaluate
 
-1. ถ้า argument ระบุ skill/family → ใช้ตรงๆ; ถ้าไม่ → ถาม user หรือ survey ทั้ง repo
-2. อ่าน `SKILL.md` + `src/`, `scripts/`, `references/` ของแต่ละ skill
-3. เลือก 1-5 skills ต่อรอบ — ถ้ามากกว่านั้นให้ทำ `/create-plan-in-dot-devin`
+1. If the argument specifies a skill/family → use it directly; if not → ask the user or survey the whole repo
+2. Read each skill's `SKILL.md` + `src/`, `scripts/`, `references/`
+3. Select 1-5 skills per round — if more, run `/create-plan-in-dot-devin`
 
 ### 2. Map Skill To MCP Primitives
 
-> Goal: แต่ละ skill ได้ primitive ที่ถูกต้อง ไม่บังคับทุกอย่างเป็น tool
+> Goal: Each skill gets the correct primitive; don't force everything to be a tool
 
 | Skill characteristic | MCP primitive |
 |---------------------|---------------|
-| executable action — script/CLI รันแล้วคืนผล | `tool` |
-| เอกสารอ้างอิง/read-only data (`references/`, catalogs) | `resource` |
-| workflow/instructions ล้วน (Goal/Execute/Rules) | `prompt` |
-| dispatcher ที่ route ไปหลาย actions | `prompt` + หลาย `tools` |
+| executable action — script/CLI that runs and returns a result | `tool` |
+| reference documents/read-only data (`references/`, catalogs) | `resource` |
+| pure workflow/instructions (Goal/Execute/Rules) | `prompt` |
+| dispatcher that routes to multiple actions | `prompt` + multiple `tools` |
 
-1. skill ที่เป็น workflow ล้วน (ไม่มี executable code) → ไม่ควรเป็น MCP tool — เป็น `prompt` หรือไม่ convert เลย
-2. skill ที่มี `src/`/`scripts/` → ห่อเป็น `tool` — input schema จาก CLI args, output จาก stdout/exit code
-3. `references/*.md`, catalogs → `resource` ให้ client ดึงเอง
+1. Skills that are pure workflow (no executable code) → shouldn't be an MCP tool — they're a `prompt` or shouldn't be converted at all
+2. Skills with `src/`/`scripts/` → wrap as a `tool` — input schema from CLI args, output from stdout/exit code
+3. `references/*.md`, catalogs → `resource` for the client to fetch itself
 
 ### 3. Evaluate Conversion Candidates
 
-> Goal: ประเมินว่า skill ไหนคุ้มเป็น MCP
+> Goal: Assess which skills are worth making into MCP
 
-1. ใช้ criteria:
-   - มี executable logic จริง (script/CLI/binary) — ไม่ใช่ prompt ล้วน
-   - ผลลัพธ์ structured ใช้ต่อได้ (JSON, findings, paths)
-   - มีประโยชน์ข้าม AI tools/clients ที่รองรับ MCP
-   - stateless หรือ state จัดการได้ผ่าน MCP lifecycle
-2. ให้คะแนน 1-5 ต่อ criterion แล้วรวม: High (≥14), Medium (9-13), Low (<9)
-3. Low → ข้าม — skill ที่เป็น pure instructions อยู่เป็น skill ต่อดีกว่า
+1. Use criteria:
+   - Has real executable logic (script/CLI/binary) — not pure prompt
+   - Structured, reusable results (JSON, findings, paths)
+   - Useful across AI tools/clients that support MCP
+   - Stateless, or state manageable via the MCP lifecycle
+2. Score 1-5 per criterion then total: High (≥14), Medium (9-13), Low (<9)
+3. Low → skip — skills that are pure instructions are better left as skills
 
 ### 4. Group Into Servers
 
-> Goal: จัดกลุ่ม tools เป็น server ตาม concern
+> Goal: Group tools into servers by concern
 
-1. รวม tools ที่ domain เดียวกันเป็น server เดียว เช่น `check-*` ast-grep metrics → `code-metrics` server
-2. ชื่อ server รูป `<domain>-mcp` หรือ `devin-<domain>`; ห้าม server เดียวรวมทุกอย่าง
-3. กำหนด transport: `stdio` (default, local) — `http` เฉพาะเมื่อต้อง remote
-4. เลือก implementation: Bun/TypeScript SDK `@modelcontextprotocol/sdk` (ตาม tech stack ของ repo)
+1. Combine tools of the same domain into one server, e.g. `check-*` ast-grep metrics → `code-metrics` server
+2. Server name in the form `<domain>-mcp` or `devin-<domain>`; never one server combining everything
+3. Set transport: `stdio` (default, local) — `http` only when remote is needed
+4. Choose implementation: Bun/TypeScript SDK `@modelcontextprotocol/sdk` (per the repo's tech stack)
 
 ### 5. Draft MCP Servers
 
-> Goal: เขียน draft design ต่อ server
+> Goal: Write a draft design per server
 
-1. ต่อ server ระบุ:
+1. Per server, specify:
    - `name`, `description`, transport
-   - tools: `name`, `description`, input schema (zod/JSON Schema), output shape — map จาก skill Execute steps
-   - resources: URI pattern สำหรับ references/catalogs
-   - prompts: workflow instructions จาก SKILL.md (Goal/Execute/Rules ย่อ)
-2. Draft `mcp.json`/`server.json` config entry สำหรับ registration
-3. ทำ `/report` table: `No.`, `Server`, `Tool/Resource/Prompt`, `Source Skill`, `Priority`, `Notes`
+   - tools: `name`, `description`, input schema (zod/JSON Schema), output shape — map from the skill's Execute steps
+   - resources: URI pattern for references/catalogs
+   - prompts: workflow instructions from SKILL.md (abbreviated Goal/Execute/Rules)
+2. Draft the `mcp.json`/`server.json` config entry for registration
+3. Run `/report` table: `No.`, `Server`, `Tool/Resource/Prompt`, `Source Skill`, `Priority`, `Notes`
 
 ### 6. Validate And Suggest
 
-> Goal: ตรวจสอบและนำเสนอทิศทางถัดไป
+> Goal: Verify and present the next direction
 
-1. ทำ `/deep-validate` ตรวจ draft — schema ครบ, ไม่มี tool ชื่อซ้ำ, transport เหมาะสม
-2. ทำ `/deep-review-codebase` ถ้ามี — review draft เทียบ MCP best practices
-3. ตรวจว่าไม่ duplicate กับ MCP servers ที่ติดตั้งอยู่แล้ว (`/check-my-global-cli` หรือ `.devin/config.json` mcpServers)
-4. ถ้า draft ผ่านและ user confirm ให้ convert → ทำ `/create-devin-global-mcp` ตาม draft (skill นี้คือ idea/draft เท่านั้น — implementation อยู่ที่ `/create-devin-global-mcp`); ถ้าไม่มี candidates → `/suggest-next-action`
+1. Run `/deep-validate` to check the draft — complete schema, no duplicate tool names, appropriate transport
+2. Run `/deep-review-codebase` if available — review the draft against MCP best practices
+3. Check that it doesn't duplicate already-installed MCP servers (`/check-my-global-cli` or `.devin/config.json` mcpServers)
+4. If the draft passes and the user confirms, convert → run `/create-devin-global-mcp` per the draft (this skill is idea/draft only — implementation lives in `/create-devin-global-mcp`); if there are no candidates → `/suggest-next-action`
 
 ## Rules
 
 ### 1. Conversion Criteria
 
-- ห้าม convert skill ที่เป็น pure instructions ให้เป็น tool — นั่นคือ prompt ไม่ใช่ executable capability
-- ไม่ duplicate กับ MCP servers ที่มีอยู่ — ตรวจติดตั้งก่อน
-- หนึ่ง tool = หนึ่ง action ที่ input/output ชัดเจน ไม่ห่อทั้ง workflow เป็น tool เดียว
-- tool names `snake_case` สื่อความหมาย: `<verb>_<noun>` เช่น `check_long_files`
+- Never convert a pure-instructions skill into a tool — that's a prompt, not an executable capability
+- Don't duplicate existing MCP servers — check what's installed first
+- One tool = one action with clear input/output; don't wrap a whole workflow into a single tool
+- Tool names `snake_case` and meaningful: `<verb>_<noun>` e.g. `check_long_files`
 
 ### 2. Draft Quality
 
-- input schema ต้องครบทุก flag/arg ที่ source skill ใช้จริง
-- output ต้อง structured (JSON) — ไม่คืน raw prose ถ้า consumer เป็น agent
-- ระบุ error cases: exit codes, missing deps, timeout
-- drafts เก็บใน `.devin/temp/plan/<workspace>/` หรือ report — ไม่เขียน server code จนกว่า confirm
-- เมื่อ confirm convert → ทำตาม `/create-devin-global-mcp` เสมอ (ห้าม implement MCP server เองใน skill นี้)
-- ใช้ /deep-review-codebase ถ้าจำเป็น
+- Input schema must cover every flag/arg the source skill actually uses
+- Output must be structured (JSON) — don't return raw prose if the consumer is an agent
+- Specify error cases: exit codes, missing deps, timeout
+- Store drafts in `.devin/temp/plan/<workspace>/` or the report — don't write server code until confirmed
+- When conversion is confirmed → always follow `/create-devin-global-mcp` (never implement an MCP server yourself in this skill)
+- Use /deep-review-codebase if necessary
 
 ## Expected Outcome
 
-- รายการ skills ที่เหมาะ convert พร้อมคะแนนและ primitive mapping
-- draft MCP server designs (tools/resources/prompts + config) สำหรับ High priority
-- ตารางสรุป server → source skills → next action
+- A list of skills suitable for conversion with scores and primitive mapping
+- Draft MCP server designs (tools/resources/prompts + config) for High priority
+- A summary table of server → source skills → next action

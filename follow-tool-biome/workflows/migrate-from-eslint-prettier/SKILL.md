@@ -5,7 +5,7 @@ argument-hint: "[project-path]"
 related:
   - follow-tool-biome
   - follow-tool-eslint
-  - deep-impact
+  - deep-analyze
   - run-lint
   - report-before-after
 ---
@@ -28,7 +28,7 @@ Move ESLint (+ Prettier) to Biome incrementally — `biome migrate` converts rul
 
 1. Run `eslint .` recording error/warning counts per rule (use `--format json` for a detailed diff)
 2. Run `prettier --check .` recording the original formatting state
-3. List all ESLint configs + plugins — do `/deep-impact` for a monorepo
+3. List all ESLint configs + plugins — do `/deep-analyze` for a monorepo
 4. Commit the state before starting — the rollback path must be ready
 
 ### 2. Install Biome And Migrate

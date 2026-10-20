@@ -1,11 +1,10 @@
 ---
 name: optimize
-description: หา optimization opportunities ใน scope — baseline → /deep-review-codebase → fix → re-measure ตาม scope-map
+description: Find optimization opportunities in the scope — baseline → /deep-review-codebase → fix → re-measure per scope-map
 argument-hint: "[scope]"
 related:
   - deep-optimize
   - deep-review-codebase
-  - deep-review-codebase-then-fix
   - improve
   - run-bench
   - report
@@ -15,55 +14,55 @@ related:
 
 ## Goal
 
-ตอบคำถาม "optimize อะไรได้บ้าง" สำหรับ scope ที่ user ระบุ — เป็น thin entry ที่ route scope ผ่าน `references/scope-map.md` (SSOT: signal → review domain) เข้า `/deep-review-codebase` แล้วทำ Measure → optimize → re-measure ตาม convention ใน skill นี้ ไม่ทำ optimization เอง
+Answer the question "what can be optimized" for the scope the user specifies — a thin entry that routes the scope through `references/scope-map.md` (SSOT: signal → review domain) into `/deep-review-codebase`, then does Measure → optimize → re-measure per the convention in this skill; it does not optimize itself
 
 ## Scope
 
-ใช้เมื่อ user สั่ง optimize ทั้ง scope โดยยังไม่เจาะ domain — เดิม route ไป `optimize-*` ตัวใดตัวหนึ่ง ตอนนี้ทุกมิติรวมที่นี่:
+Use when the user orders optimizing the whole scope without naming a domain — previously routed to one of the `optimize-*`; now every dimension is gathered here:
 
-- scope/metric ชัด (bundle, ci, cost, llm, docker, memory, network, perf, queries, startup, api-latency, cache, concurrency, images, mobile, storage, test-suite, web-vitals) → ใช้ `/optimize <scope>` ตรงๆ ตาม `references/scope-map.md`
-- scope กว้าง หรือ bottleneck ไม่ชัด → `/deep-optimize` fan-out ทุกมิติ แล้วรวม prioritized plan
-- ต้องการ improve คุณภาพทั่วไป ไม่ใช่ performance/cost → `/improve` แทน
-- ทุกรายการต้องผ่าน measure-first convention ของ skill นี้: ห้าม optimize แบบไม่วัด baseline
+- If the scope/metric is clear (bundle, ci, cost, llm, docker, memory, network, perf, queries, startup, api-latency, cache, concurrency, images, mobile, storage, test-suite, web-vitals) → use `/optimize <scope>` directly per `references/scope-map.md`
+- If the scope is broad or the bottleneck is unclear → `/deep-optimize` fans out across every dimension then merges a prioritized plan
+- If you want general quality improvement, not performance/cost → `/improve` instead
+- Every item must pass this skill's measure-first convention: never optimize without measuring a baseline
 
 ## References
 
-- `references/scope-map.md` — ตาราง SSOT: signal → `/optimize <scope>` → `/deep-review-codebase` domain (รวมจาก `/follow-optimize` เดียวที่ถูกยุบเข้า skill นี้ — ครอบครบ 18 สัญญาณ)
+- `references/scope-map.md` — the SSOT table: signal → `/optimize <scope>` → `/deep-review-codebase` domain (merges the single `/follow-optimize` that was folded into this skill — covers all 18 signals)
 
 ## Execute
 
 ### 1. Route And Baseline
 
-> Goal: เลือกมิติที่ถูก + มี evidence ก่อนแก้
+> Goal: pick the right dimension + have evidence before fixing
 
-1. รับ `scope` จาก argument — ถ้าไม่มี → ใช้ project ปัจจุบัน ถ้าไม่ชัด → `/ask-me`
-2. Lookup signal ใน scope จาก `references/scope-map.md` → ได้ `/deep-review-codebase` domain ที่ตรง
-3. เก็บ baseline metrics ตาม dimะนั้น (เวลา, size, cost, hit rate, p50/p95/p99) ผ่าน `/run-bench`/profiler เท่าที่มี — ห้ามข้าม
+1. Take `scope` from the argument — if absent → use the current project; if unclear → `/ask-me`
+2. Look up the signal in the scope from `references/scope-map.md` → get the matching `/deep-review-codebase` domain
+3. Record the baseline metrics for that dimension (time, size, cost, hit rate, p50/p95/p99) via `/run-bench`/profiler as available — never skip
 
 ### 2. Review
 
-> Goal: findings มี baseline รองรับ
+> Goal: findings are backed by a baseline
 
-1. ทำ `/deep-review-codebase` กับ scope นั้นใน domains จาก scope-map — report ผ่าน `/report-review`
-2. คัดเฉพาะ finding ที่วัดผลได้ (metric เปลี่ยนจริง) — ไม่มี evidence = ไม่แก้
+1. Run `/deep-review-codebase` on that scope in the domains from scope-map — report via `/report-review`
+2. Keep only the findings that are measurable (the metric actually changes) — no evidence = no fix
 
 ### 3. Fix And Re-Measure
 
-> Goal: ผลลัพธ์วัดได้จริง
+> Goal: the result is measurably real
 
-1. ทำ `/report` แสดง improvements: No., Finding, Metric ก่อน/หลัง, Fix domain แล้วดำเนินการแก้ต่อทันที
-2. ส่งแต่ละ finding ไป `/deep-review-codebase-then-fix` per domain
-3. re-measure เทียบ baseline ทุก fix — ไม่ดีขึ้น → revert; ทำ `/suggest-next-action` หลังแก้ครบ
+1. Run `/report-review` with the `Metric before/after` column appended (the baseline delta is this scope's evidence), then proceed to fix immediately
+2. Send each finding to `/deep-review-codebase <scope> then-fix fix all` per domain — `fix all` skips the per-finding confirm this skill already waived
+3. re-measure against the baseline for every fix — if it does not improve → revert; run `/suggest-next-action` after everything is fixed
 
 ## Rules
 
-- ไม่ทำ optimization เอง — route ผ่าน scope-map เข้า `/deep-review-codebase` หรือใช้ `/deep-optimize` เมื่อไม่ชัด — thin entry ไม่ hold domain logic
-- Measure → optimize → re-measure เสมอ — ห้าม premature optimization
-- ทุก plan/finding ต้อง prioritized ด้วย impact/effort พร้อม baseline evidence — ไม่มี evidence = ไม่แก้
-- metric-driven findings ที่หลุดมาจาก `/improve` รับ route ต่อที่นี่ — ไม่แก้ perf ใน improve path
+- Never optimize yourself — route through scope-map into `/deep-review-codebase`, or use `/deep-optimize` when unclear — a thin entry holds no domain logic
+- Always Measure → optimize → re-measure — no premature optimization
+- Every plan/finding must be prioritized by impact/effort with baseline evidence — no evidence = no fix
+- Metric-driven findings that escape from `/improve` are routed onward here — never fix perf in the improve path
 
 ## Expected Outcome
 
-- Prioritized optimization list พร้อม baseline/หลังแก้เปรียบเทียบ
-- Fixes ทั้งหมด route ผ่าน `/deep-review-codebase-then-fix` ตาม domain ของ scope-map
-- Metric ไม่ดีขึ้นถูก revert — จบด้วย `/suggest-next-action`
+- A prioritized optimization list with baseline/after comparison
+- All fixes routed through `/deep-review-codebase <scope> then-fix` per the scope-map domains
+- A metric that does not improve is reverted — ending with `/suggest-next-action`

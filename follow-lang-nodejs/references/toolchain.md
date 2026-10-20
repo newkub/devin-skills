@@ -15,7 +15,8 @@
 | `npm` | package manager, `npm init/install/run/test`, `npx` one-offs | bundled with `node` |
 | `corepack` | enable `pnpm`/`yarn` without global installs | bundled with `node` |
 | `node --test` | built-in test runner (`node:test` + `node:assert`) | bundled |
-| `tsc --noEmit` | typecheck for TypeScript projects | `bun add -d typescript @types/node` |
+| `bun check` | typecheck for TypeScript projects when Bun ≥ 1.4 is on the machine — same errors as `tsc`, parallel across cores, reads the project `tsconfig.json` | built in (Bun ≥ 1.4) |
+| `tsc --noEmit` | typecheck fallback when Bun is absent | `bun add -d typescript @types/node` |
 | `biome` | lint + format default (ESLint per project when required) | `bun add -d @biomejs/biome` |
 | `npm audit` / `pnpm audit` | dependency vulnerability check | bundled with the PM |
 | `c8` / built-in coverage | code coverage for `node --test` | check current recommendation via `/deep-research` |

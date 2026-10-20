@@ -132,7 +132,7 @@ For projects that need functional programming with Effect-TS — pick the workfl
 
 > Goal: typecheck and tests pass before delivery
 
-1. Run `bunx tsc --noEmit` until it passes
+1. Run `bun check` until it passes
 2. Run `bunx vitest run` until it passes
 3. Verify no `Effect.run*` exists in library/service code (allowed only at the entry point)
 
@@ -199,4 +199,4 @@ For projects that need functional programming with Effect-TS — pick the workfl
 - Project structure follows Effect architecture and dependency rules
 - Code uses `Effect.gen`, `Effect.fn`, `Data.TaggedError`, `Effect.Service`/`Context.Tag`, `Layer`, `Schedule`, `Schema`
 - Tests pass with `vitest` + `@effect/vitest`
-- `bunx tsc --noEmit` and `bunx vitest run` all pass
+- `bun check` and `bunx vitest run` all pass

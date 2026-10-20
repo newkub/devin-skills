@@ -1,6 +1,6 @@
 ---
 name: rename-project
-description: Rename project ทั่วทุกจุด ทั้ง local, GitHub, Cloudflare, secrets, env, และ code
+description: Rename a project everywhere — local, GitHub, Cloudflare, secrets, env, and code
 argument-hint: "[scope]"
 related:
   - follow-secret-manager
@@ -11,153 +11,153 @@ related:
 
 ## Goal
 
-Rename project จากชื่อเก่าเป้นชื่อใหม่อย่างสมบูรณ์ ครอบคลุม local directory, code references, git remote, GitHub repo, Cloudflare resources, secrets, environment variables, และ docs
+Rename a project from an old name to a new name completely, covering the local directory, code references, git remote, GitHub repo, Cloudflare resources, secrets, environment variables, and docs
 
 ## Scope
 
 - Local: directory name, file names, package metadata, config, source code strings
-- Git: remote URL, branch tracking, commit messages ล่าสุด (ถ้าจำเป็น)
+- Git: remote URL, branch tracking, recent commit messages (if necessary)
 - GitHub: repository name, workflows, secrets, Pages/Workers settings
 - Cloudflare: Worker name, D1 database name, Pages project name, KV namespaces, secrets, env vars
-- Verification: search old name, run typecheck/build/test, deploy, open live URL
+- Verification: search the old name, run typecheck/build/test, deploy, open the live URL
 
 ## Execute
 
 ### 1. Prepare
 
-> Goal: เก็บข้อมูลก่อนลงมือ
+> Goal: Gather information before starting
 
-1. สอบถามหรือระบุ `old-name` และ `new-name` ให้ชัดเจน
-2. สำรวจ references ทั้งหมดด้วย search:
+1. Ask for or specify `old-name` and `new-name` clearly
+2. Survey all references with search:
    ```bash
    rg -i "old-name" --hidden
    ```
-3. ระบุ cloud resources ทีเกี่ยวข้อง:
+3. Identify the related cloud resources:
    - Cloudflare Worker name
-   - D1 database name และ database_id
+   - D1 database name and database_id
    - Pages project name
    - GitHub repo name
-   - env variables / secrets ทีมีชื่อ project
-4. ตรวจสอบ auth:
-   - `gh auth status` สำหรับ GitHub
-   - `wrangler whoami` สำหรับ Cloudflare
-5. ถ้า auth ไม่พร้อม → ใช้ `/follow-secret-manager` หรือ `/open-web-for-config-secret` ก่อน
+   - env variables / secrets whose names contain the project
+4. Check auth:
+   - `gh auth status` for GitHub
+   - `wrangler whoami` for Cloudflare
+5. If auth is not ready → use `/follow-secret-manager` or `/open-web-for-config-secret` first
 
 ### 2. Dry Run (Optional but Recommended)
 
-> Goal: ลดความเสี่ยงก่อน rename จริง
+> Goal: Reduce risk before the actual rename
 
-1. สร้าง list ของไฟล์ทีต้องแก้ โดยไม่เปลี่ยนแปลงจริง
-2. สำหรับ cloud resources ใช้ `--dry-run` เช่น `wrangler deploy --dry-run`
-3. ถ้าพบ references เยอะมาก → ทำทีละ batch
+1. Build a list of files that need to be changed without actually changing anything
+2. For cloud resources use `--dry-run` such as `wrangler deploy --dry-run`
+3. If there are very many references → do it in batches
 
 ### 3. Rename Local
 
-> Goal: เปลี่ยนชื่อทั่วทุกจุดใน code
+> Goal: Change the name everywhere in the code
 
-1. ปิด IDE/terminal ทีใช้ project แล้ว rename directory:
+1. Close the IDE/terminal using the project then rename the directory:
    ```bash
    mv old-name new-name
    ```
-2. ถ้า Windows ไม่สามารถ rename ได้เนื่องจาก process lock → หา process แล้วปิด หรือรอแล้วลองใหม
-3. อัปเดต `package.json` fields:
+2. If Windows cannot rename it because a process locks it → find the process and close it, or wait and try again
+3. Update `package.json` fields:
    - `name`
    - `description`
    - `repository.url`
    - `homepage`
    - `bugs.url`
-4. อัปเดต config files:
-   - `wrangler.toml`: `name`, `database_name`, route, account_id (ถ้าเปลี่ยน account)
+4. Update config files:
+   - `wrangler.toml`: `name`, `database_name`, route, account_id (if the account changed)
    - `capacitor.config.ts`: app name, package, scheme
    - `index.html`: `<title>`
    - `public/manifest.webmanifest`: `name`, `short_name`
    - Android: `strings.xml`, `AndroidManifest.xml`, `build.gradle`
    - Play Store: `title.txt`, `full_description.txt`, `feature_graphic.svg`
-5. อัปเดต docs:
+5. Update docs:
    - `README.md`
    - `AGENTS.md`
    - `RELEASING.md`
    - `PRIVACY_POLICY.md`
    - `public/privacy-policy.html`
-6. อัปเดต source code:
+6. Update source code:
    - `src/lib/cloudflare.ts`
    - `src/lib/github.ts`
    - `worker/api/status.ts`
    - constants, titles, URLs
-7. Search อีกครั้งเพื่อตรวจว่าไม่มี old name เหลือ
+7. Search again to check that no old name remains
 
 ### 4. Update Git
 
-> Goal: sync local git กับ new name
+> Goal: Sync local git with the new name
 
-1. เปลี่ยน remote URL:
+1. Change the remote URL:
    ```bash
    git remote set-url origin git@github.com:<owner>/<new-name>.git
-   # หรือ https
+   # or https
    ```
-2. ตรวจ remote:
+2. Check the remote:
    ```bash
    git remote -v
    ```
-3. Commit การเปลี่ยนแปลง
+3. Commit the changes
 
 ### 5. Rename GitHub Repository
 
-> Goal: เปลี่ยนชื่อ repo บน GitHub
+> Goal: Change the repo name on GitHub
 
-1. ใช้ `gh` CLI:
+1. Use the `gh` CLI:
    ```bash
    gh repo rename <new-name> --repo <owner>/<old-name>
    ```
-   หรือไปที่ dashboard: `https://github.com/<owner>/<old-name>/settings`
-2. ตรวจ URL:
+   or go to the dashboard: `https://github.com/<owner>/<old-name>/settings`
+2. Check the URL:
    ```bash
    gh repo view <owner>/<new-name>
    ```
-3. อัปเดต workflows, README links, docs อีกครั้ง
+3. Update workflows, README links, docs again
 
 ### 6. Rename Cloudflare Resources
 
-> Goal: เปลี่ยนชื่อ Worker, D1, Pages ให้ตรง
+> Goal: Change the Worker, D1, Pages names to match
 
-1. Worker: เปลี่ยน `name` ใน `wrangler.toml` แล้ว deploy ใหม
+1. Worker: change `name` in `wrangler.toml` then deploy again
    ```bash
    wrangler deploy
    ```
-2. D1: ถ้าต้องการ rename database ให้ใช้ Cloudflare dashboard หรือ API
+2. D1: if the database needs to be renamed use the Cloudflare dashboard or API
    ```bash
-   # หรืออัปเดต database_name ใน wrangler.toml โดยไม่ต้องเปลี่ยน database_id
+   # or update database_name in wrangler.toml without changing database_id
    ```
-3. Pages project เก่า: ลบด้วย
+3. Old Pages project: delete it with
    ```bash
    wrangler pages project delete <old-name> --yes
    ```
 4. Secrets / env vars:
-   - ลบเก่าใน `wrangler secret` หรือ GitHub/GitLab secrets
-   - สร้างใหม่ในระบบทีต้องการ (ใช้ `/follow-secret-manager`)
-5. อัปเดต `.github/workflows/deploy.yml` ชี้ไปยัง secrets ใหม่
+   - Delete the old ones in `wrangler secret` or GitHub/GitLab secrets
+   - Create new ones in the required system (use `/follow-secret-manager`)
+5. Update `.github/workflows/deploy.yml` to point to the new secrets
 
 ### 7. Verify
 
-> Goal: ตรวจสอบว่า rename สมบูรณ์
+> Goal: Check that the rename is complete
 
-1. Search old name อีกครั้ง:
+1. Search for the old name again:
    ```bash
    rg -i "old-name" --hidden
    ```
-2. ยกเว้น historical docs, plan files, changelog → อาจเก็บไว้โดยระบุ
-3. รัน:
+2. Except historical docs, plan files, changelog → these may be kept with a note
+3. Run:
    ```bash
    bun typecheck
    bun run test
    bun run build
    ```
-4. Deploy แล้วเปิด live URL
-5. ทดสอบ endpoints, tabs, settings
+4. Deploy then open the live URL
+5. Test endpoints, tabs, settings
 
 ### 8. Commit And Push
 
-> Goal: sync ทุกอย่างขึ้น remote
+> Goal: Sync everything to the remote
 
 1. `git add -A`
 2. `git commit -m "chore: rename project to <new-name>"`
@@ -165,29 +165,29 @@ Rename project จากชื่อเก่าเป้นชื่อให�
 
 ### 9. Report
 
-> Goal: สรุปผลให้ user
+> Goal: Summarize the results for the user
 
-1. รายงาน local path, GitHub repo, Cloudflare Worker URL, D1 name
-2. ระบุสิ่งที cleanup ไปแล้ว
-3. ระบุขั้นตอนถัดไป (เช่น ทดสอบบนมือถือ, ตั้ง custom domain)
+1. Report the local path, GitHub repo, Cloudflare Worker URL, D1 name
+2. Specify what has been cleaned up
+3. Specify the next steps (e.g. test on mobile, set up a custom domain)
 
 ## Rules
 
-- ต้องได้รับ `new-name` ชัดเจนก่อนเริ่ม
-- ทำ dry-run ก่อน rename cloud resources ที่เป็น destructive
-- ไม่ลบ cloud resource โดยไม่ได้ confirmation
-- ใช้ `/follow-secret-manager` สำหรับ secrets ก่อน deploy
-- build/test/typecheck ผ่านก่อน push
-- ตรวจ old name ซ้ำอย่างน้อย 2 รอบ
-- ไม่ commit ก่อนตรวจสอบครบทุกจุด
+- `new-name` must be obtained clearly before starting
+- Do a dry-run before renaming destructive cloud resources
+- Do not delete a cloud resource without confirmation
+- Use `/follow-secret-manager` for secrets before deploying
+- build/test/typecheck must pass before pushing
+- Check the old name again at least 2 times
+- Do not commit before every point has been checked
 
-- ใช้ /deploy-to-cloudflare ถ้าจำเป็น
-- ใช้ /git-commit ถ้าจำเป็น
+- Use /deploy-to-cloudflare if necessary
+- Use /git-commit if necessary
 
 ## Expected Outcome
 
-- Project ถูก rename ทั่วทุกจุด
-- GitHub repo, Cloudflare Worker, D1, Pages ใช้ชื่อใหม่
-- ไม่มี old name หลงเหลือใน user-facing code
-- Deploy สำเร็จและ URL ใช้งานได
-- Git sync เรียบร้อย
+- The project is renamed everywhere
+- GitHub repo, Cloudflare Worker, D1, Pages use the new name
+- No old name remains in user-facing code
+- Deploy succeeds and the URL works
+- Git is synced successfully

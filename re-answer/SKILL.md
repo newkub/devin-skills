@@ -1,6 +1,6 @@
 ---
 name: re-answer
-description: ทบทวนคำถามและตอบใหม่อย่างละเอียดและครบถ้วนขึ้น
+description: Review the question and answer again more thoroughly and completely
 argument-hint: "[scope]"
 related:
   - report
@@ -13,89 +13,89 @@ related:
 
 ## Goal
 
-ทบทวนคำถามทีผู้ใช้ถาม วิเคราะห์ประเด็นทีอาจตอบไม่ครบ/ไม่ชัด แล้วตอบใหม่อย่างกระชับ ครบถ้วน และ actionable ขึ้น
+Review the question the user asked, analyze points that may have been answered incompletely or unclearly, then answer again more concisely, completely, and actionably
 
 ## Scope
 
-ใช้เมื่อผู้ใช้บอกว่าตอบไม่ดีพอ ตอบไม่ครบ หรือต้องการให้ทบทวนคำถามเดิมแล้วตอบใหม่
+Use when the user says the answer was not good enough or incomplete, or wants the original question reviewed and answered again
 
 ## Execute
 
 ### 1. Review Original Question And Answer
 
-> Goal: เข้าใจคำถามและประเด็นทีต้องตอบให้ชัดเจน
+> Goal: Understand the question and the points that must be answered clearly
 
-1. อ่านคำถามเดิมและคำตอบเดิมทีผู้ใช้ถามมา
-2. ระบุ keywords, intent, และ context ของคำถาม
-3. แยกคำถามออกเป็นประเด็นย่อย ๆ (sub-questions)
-4. ระบุว่าคำตอบเดิมครอบคลุมประเด็นไหนบ้าง ขาดหรือไม่ชัดตรงไหน
+1. Read the original question and the original answer the user asked about
+2. Identify the keywords, intent, and context of the question
+3. Break the question into sub-questions
+4. Identify which points the original answer covered and where it was missing or unclear
 
 ### 2. Identify Gaps
 
-> Goal: หาส่วนทีต้องปรับปรุง
+> Goal: Find the parts that need improvement
 
-1. ตรวจสอบว่าคำตอบเดิมตอบคำถามจริง ๆ หรือไม่
-2. ระบุข้อมูลทีขาด คลำเคลื่อน หรือต้องการ clarification
-3. พิจารณา perspective อื่น ๆ เช่น trade-offs, edge cases, prerequisites
-4. บันทึก gaps พร้อมเหตุผล
+1. Check whether the original answer really answers the question
+2. Identify information that is missing, inaccurate, or needs clarification
+3. Consider other perspectives such as trade-offs, edge cases, prerequisites
+4. Record the gaps along with the reasons
 
 ### 3. Re-answer With Three Column Table
 
-> Goal: ให้คำตอบใหม่ทีดีกวา
+> Goal: Provide a better new answer
 
-1. ตอบทีละประเด็นตามลำดับ
-2. ใช้ข้อมูลใหม่ หรือ context เพิ่มถ้ามี
-3. ทำให้คำตอบกระชับ ชัดเจน เป็นระบบ
-4. ถ้ามีหลายทางเลือก ให้เปรียบเทียบและแนะนำทางเลือกทีดีทีสุดพร้อมเหตุผล
-5. ใช้ `/report` สรุปเป็นตาราง 3 คอลัมน์:
-   - คอลัมน์ที่ 1: `ประเด็นคำถาม`
-   - คอลัมน์ที่ 2: `สิ่งที่ขาดหรือต้องทบทวน`
-   - คอลัมน์ที่ 3: `คำตอบใหม่ / การปรับปรุง`
-6. ถ้า table มีหลาย row ให้ group ตาม topic หรือ phase
+1. Answer each point in order
+2. Use new information or additional context if available
+3. Make the answer concise, clear, and systematic
+4. If there are multiple alternatives, compare them and recommend the best one with reasons
+5. Use `/report` to summarize as a 3-column table:
+   - Column 1: `Question point`
+   - Column 2: `What is missing or must be reviewed`
+   - Column 3: `New answer / Improvement`
+6. If the table has many rows, group by topic or phase
 
 ### 4. Validate And Suggest
 
-> Goal: ตรวจความครบถ้วนและแนะนำ next step
+> Goal: Check completeness and suggest the next step
 
-1. ทวนว่าทุก sub-question ได้รับคำตอบ
-2. ตรวจว่าคำตอบไม่ขัดแย้งกับข้อมูลเดิม
-3. ถ้ายังไม่แน่ใจ ให้ระบุความไม่แน่นอน
-4. ทำ `/suggest-next-action`
+1. Review that every sub-question received an answer
+2. Check that the answer does not contradict the original information
+3. If still unsure, state the uncertainty
+4. Run `/suggest-next-action`
 
 ## Rules
 
 ### 1. Honest Review
 
-- ยอมรับว่าคำตอบเดิมอาจขาดหรือผิดได้
-- ไม่ต้องปกป้องคำตอบเดิม
-- ระบุ gaps ตรง ๆ พร้อมเหตุผล
+- Accept that the original answer may be missing or wrong
+- No need to defend the original answer
+- State the gaps plainly with reasons
 
 ### 2. Evidence Based
 
-- คำตอบใหม่ต้องอิง context, data, หรือ conventions ที่มีอยู่
-- ถ้าไม่มีข้อมูลพอ ให้ระบุว่าเป็น assumption
+- The new answer must be based on the existing context, data, or conventions
+- If there is not enough information, state it as an assumption
 
 ### 3. Structured
 
-- แยกคำตอบเป็นประเด็น
-- ใช้ตาราง 3 คอลัมน์ใน `### 3. Re-answer With Three Column Table`
-- ทำ `/suggest-next-action` ท้ายเสมอ
+- Break the answer into points
+- Use a 3-column table in `### 3. Re-answer With Three Column Table`
+- Always run `/suggest-next-action` at the end
 
 ### 4. Concise
 
-- ไม่ตอบยาวเกินไป
-- หนึ่งประเด็นหนึ่งคำตอบ
-- ใช้ bullet points สำหรับรายละเอียดรอง
+- Do not answer too long
+- One point, one answer
+- Use bullet points for secondary details
 
-- ใช้ /rethink ถ้าจำเป็น
-- ใช้ /ask-again ถ้าจำเป็น
-- ใช้ /retry ถ้าจำเป็น
-- ใช้ /deep-thinking ถ้าจำเป็น
+- Use /rethink if needed
+- Use /ask-again if needed
+- Use /retry if needed
+- Use /deep-thinking if needed
 
 ## Expected Outcome
 
-- คำถามถูกแยกเป็นประเด็นย่อยได้ชัดเจน
-- ระบุ gaps ของคำตอบเดิมได้
-- คำตอบใหม่ครอบคลุมขึ้น กระชับขึ้น และ actionable ขึ้น
-- report ออกมาเป็นตาราง 3 คอลัมน์
-- มี next action ชัดเจน
+- The question is clearly broken into sub-questions
+- The gaps of the original answer are identified
+- The new answer is more complete, more concise, and more actionable
+- The report comes out as a 3-column table
+- There is a clear next action

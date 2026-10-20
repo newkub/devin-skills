@@ -55,7 +55,7 @@ Migrate the codebase from Zod v3 to v4 safely — import paths, API renames, err
 
 > Goal: typecheck, tests, and runtime smoke all pass
 
-1. Run `bunx tsc --noEmit` (do `/run-typecheck`) — type errors reveal the missed spots
+1. Run `bun check` (do `/run-typecheck`) — type errors reveal the missed spots
 2. Run tests (do `/run-test`) — especially schema validation tests and error-shape assertions
 3. Do `/deep-review-codebase` — no v3 APIs left
 4. Runtime smoke: parse real input through the changed schemas — check the error output shape

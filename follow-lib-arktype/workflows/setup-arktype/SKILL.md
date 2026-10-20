@@ -71,7 +71,7 @@ Install ArkType and configure TypeScript/editor so `type()` syntax and `scope()`
 
 > Goal: smoke check that the setup really works
 
-1. Run `bunx tsc --noEmit` until it passes
+1. Run `bun check` until it passes
 2. Run a smoke test: parse real data through the `type()` you created — get the output or `ArkErrors` correctly
 3. If verification fails → run `/resolve-errors` max 3 rounds, then stop and report; if it passes → `/suggest-next-action`
 

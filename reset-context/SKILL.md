@@ -1,6 +1,6 @@
 ---
 name: reset-context
-description: ลบ context ของบทสนทนาและ/หรือ reset มุมมองต่อไฟล์เป้าหมาย โดยเริ่มวิเคราะห์ใหมจากระบบไฟล์
+description: Delete the conversation's context and/or reset the view of the target file, starting analysis fresh from the file system
 argument-hint: "[optional-target-or-task]"
 allowed-tools:
   - read
@@ -32,131 +32,131 @@ related:
 
 ## Goal
 
-ลบ context ทั้งหมดของบทสนทนาก่อนหน้า และ/หรือ reset มุมมองต่อไฟล์เป้าหมาย โดยเริ่มวิเคราะห์ใหมทั้งหมดจากระบบไฟล์ปัจจุบันและ input ใหมของผู้ใช้
+Delete all context from the previous conversation and/or reset the view of the target file, starting a complete fresh analysis from the current file system and the user's new input
 
 ## Scope
 
-ใช้เมื่อผู้ใช้พูด `reset-context`, ต้องการลบการวิเคราะห์ก่อนหน้า, หรือเริ่มงานใหม
+Use when the user says `reset-context`, wants to discard the previous analysis, or starts new work
 
-- ถ้าไม่ระบุ target → reset ระดับ session
-- ถ้าระบุ target เป็นไฟล์หรือ directory → reset มุมมองต่อไฟล์/ไดเรกทอรีนั้น โดยทำตามขั้นตอน `Assume Reset Context For Target` ด้านล่าง
-- ไม่ลบไฟล์ใด ๆ แต่ reset แบบจำลองความเข้าใจของบทสนทนาหรือไฟล์
+- If no target is specified → reset at the session level
+- If a target file or directory is specified → reset the view of that file/directory by following the `Assume Reset Context For Target` steps below
+- Does not delete any files, but simulates resetting the conversation's or file's understanding
 
-ดูเพิ่มเติม: `/scan-codebase`, `/use-astgrep`, `/review-devin-global-harness`, `/deep-thinking`, `/plan`, `/refactor`, `/use-scripts`, `/implement-to-production`, `/deep-validate`, `/run-verify`
+See also: `/scan-codebase`, `/use-astgrep`, `/review-devin-global-harness`, `/deep-thinking`, `/plan`, `/refactor`, `/use-scripts`, `/implement-to-production`, `/deep-validate`, `/run-verify`
 
 ## Execute
 
 ### 1. Reset Mental Context
 
-> Goal: ล้าง assumptions ทั้งหมดจาก context ก่อนหน้า
+> Goal: Clear all assumptions from the previous context
 
-1. ละเลยข้อสรุป การวิเคราะห์ แผน และผลลัพธ์บางส่วนจาก turn ก่อนหน้า
-2. ไม่ตั้งสมมติฐานว่าสถานะก่อนหน้ายังเป็นจริงอยู่
-3. ถือว่า target file หรืองานถัดไป เป็นไฟล์/งานแรกของ session ใหม
-4. ไม่อ้างถึงการตัดสินใจก่อนหน้า เว้นแต่ผู้ใช้ขอให้อ้างถึงโดยชัดแจ้ง
+1. Disregard the conclusions, analysis, plans, and partial results from previous turns
+2. Do not assume the previous state is still true
+3. Treat the target file or next task as the first file/task of a new session
+4. Do not reference previous decisions unless the user explicitly asks to reference them
 
 ### 2. Identify Reset Scope
 
-> Goal: ระบุว่าจะ reset ระดับใด
+> Goal: Identify which level to reset
 
-1. ถ้าผู้ใช้ไม่ระบุ target → ไป `Re-Read State From Disk` สำหรับ workspace ทั้งหมด
-2. ถ้าผู้ใช้ระบุ target เป็นไฟล์หรือ directory → ไป `Assume Reset Context For Target`
-3. ถ้าไม่แน่ใจ → ถามผู้ใช้ด้วย `/ask-me`
+1. If the user does not specify a target → go to `Re-Read State From Disk` for the entire workspace
+2. If the user specifies a target file or directory → go to `Assume Reset Context For Target`
+3. If unsure → ask the user with `/ask-me`
 
 ### 3. Re-Read State From Disk
 
-> Goal: อ่านสถานะใหมจากระบบไฟล์
+> Goal: Read the new state from the file system
 
-1. ไม่พึ่งพา memory สำหรับเนื้อหาไฟล์ สถานะ workspace หรือผลลัพธ์ของ tool
-2. อ่านไฟล์หรือ directory ที่ระบุใหม
-3. ใช้ `todo_write` เพื่อติดตามเฉพาะงานใหม ไม่ใช่งานเก่า
+1. Do not rely on memory for file contents, workspace state, or tool results
+2. Re-read the specified files or directories
+3. Use `todo_write` to track only the new work, not the old work
 
 ### 4. Re-Plan From Scratch
 
-> Goal: วางแผนงานใหมจากสถานะไฟล์ปัจจุบัน
+> Goal: Plan the new work from the current file state
 
-1. ถ้าผู้ใช้ให้งานใหม ให้วางแผนงานนั้นโดยอิสระ
-2. ใช้ `/deep-thinking` เพื่อวิเคราะห์ปัญหาใหมโดยไม่มีอคติจากก่อนหน้า
-3. ใช้ `/plan` เพื่อสร้างแผนใหมจากสถานะไฟล์ปัจจุบัน
-4. ไม่นำแผนเก่ากลับมาใช้ เว้นแต่ผู้ใช้ขอให้ทำ
+1. If the user gives new work, plan that work independently
+2. Use `/deep-thinking` to analyze the new problem without bias from before
+3. Use `/plan` to create a new plan from the current file state
+4. Do not reuse the old plan unless the user asks to
 
 ### 5. Assume Reset Context For Target
 
-> Goal: วิเคราะห์และแก้ไข target เหมือนเป็นครั้งแรก
+> Goal: Analyze and fix the target as if for the first time
 
-1. อ่าน target file ทั้งไฟล์ ไม่ข้ามบรรทัด
-2. อ่าน `imports`, `exports`, dependencies และ reverse dependencies
-3. ทำ `/scan-codebase` พร้อม `/use-astgrep` และ `/review-devin-global-harness`
-4. ทำ `/deep-thinking` เพื่อวิเคราะห์โครงสร้าง, issues, และ improvements
-5. ทำ `/follow-best-practice` และ `/deep-review-codebase` เพื่อเทียบมาตรฐาน
-6. ทำ `/plan` เพื่อวางแผนการแก้ไขตาม findings ใหม
-7. ทำ `/refactor` และ `/use-scripts` ก่อน implement ถ้าจำเป็น
-8. ทำ `/implement-to-production` เพื่อส่งมอบ code สมบูรณ์
+1. Read the entire target file, skipping no lines
+2. Read `imports`, `exports`, dependencies, and reverse dependencies
+3. Run `/scan-codebase` along with `/use-astgrep` and `/review-devin-global-harness`
+4. Run `/deep-thinking` to analyze the structure, issues, and improvements
+5. Run `/follow-best-practice` and `/deep-review-codebase` to compare against standards
+6. Run `/plan` to plan the fixes according to the new findings
+7. Run `/refactor` and `/use-scripts` before implementing if needed
+8. Run `/implement-to-production` to deliver complete code
 
 ### 6. Confirm Before Continuing
 
-> Goal: ยืนยันก่อนดำเนินการ
+> Goal: Confirm before proceeding
 
-1. สรุปสิ่งที่เข้าใจเกี่ยวกับงานใหมหรือ target
-2. ถามผู้ใช้ให้ยืนยันหรือชี้แจง หากงานมีขนาดใหญ่หรือมีความเสี่ยง
-3. เริ่มงานได้เมื่ target และขอบเขตชัดเจนแล้ว
+1. Summarize your understanding of the new work or target
+2. Ask the user to confirm or clarify if the work is large or risky
+3. Start work once the target and scope are clear
 
 ### 7. Validate
 
-> Goal: ตรวจสอบผลลัพธ์ใหมทั้งหมด
+> Goal: Validate all the new results
 
-1. ทำ `/deep-validate` เพื่อตรวจสอบความถูกต้อง
-2. ทำ `/run-verify` เพื่อรัน lint, typecheck, scan
+1. Run `/deep-validate` to check correctness
+2. Run `/run-verify` to run lint, typecheck, scan
 
 ## Rules
 
 ### 1. No Memory Assumptions
 
-- ไม่ตั้งสมมติฐานว่าไฟล์ ข้อผิดพลาด หรือการแก้ไขก่อนหน้ายังมีผล
-- อ่านไฟล์ซ้ำก่อนอ้างถึง
-- ตรวจสอบสถานะ workspace ซ้ำก่อนรันคำสั่ง
+- Do not assume files, errors, or previous fixes still apply
+- Re-read files before referencing them
+- Re-check the workspace state before running a command
 
 ### 2. No Context Reference
 
-- ห้ามอ้างอิง conclusions, analysis, หรือ decisions จากการสนทนาก่อนหน้า
-- ห้ามสมมติว่า `code` ก่อนหน้าถูกต้องโดยไม่พิสูจน์
-- ทุกการตัดสินใจต้องมาจากการอ่านไฟล์จริงในปัจจุบัน
+- Never reference conclusions, analysis, or decisions from the previous conversation
+- Never assume previous `code` is correct without proving it
+- Every decision must come from reading the actual current files
 
 ### 3. Fresh Analysis
 
-- วิเคราะห์งานใหมตั้งแต่ต้น
-- ถ้าเคยพูดถึงไฟล์ใด ให้อ่านไฟล์นั้นอีกครั้ง
-- ถ้าเคยรันคำสั่งใด และผลลัพธ์นั้นมีความสำคัญ ให้รันซ้ำ
-- อ่านไฟล์ทั้งไฟล์ ไม่ข้ามส่วนใด
-- วิเคราะห์ใหมทั้งหมดเหมือนไม่เคยเห็นไฟล์นี้มาก่อน
+- Analyze the new work from the beginning
+- If a file has been mentioned before, read that file again
+- If a command was run before and its result matters, re-run it
+- Read the whole file, skipping no part
+- Analyze everything again as if you had never seen this file
 
 ### 4. Evidence-Based
 
-- ทุก assumption ต้องมี evidence จากไฟล์จริง
-- ทุกการตัดสินใจต้องอ้างอิงจาก code ที่อ่านได้
-- ไม่เดาจาก context หรือ memory
+- Every assumption must have evidence from the real files
+- Every decision must cite code that was actually read
+- Do not guess from context or memory
 
 ### 5. Complete Independence
 
-- ถ้ามี progress notes หรือ shared notes จาก context เดิม ให้อ่านแต่ไม่เชื่อโดยไม่พิสูจน์
-- ถ้ามี `TODO` หรือ `FIXME` ในไฟล์ ให้ตรวจสอบว่ายังเกี่ยวข้องหรือไม่
-- ถ้ามี `comments` อธิบายการแก้ไขก่อนหน้า ให้ตรวจสอบว่ายังถูกต้องหรือไม่
+- If there are progress notes or shared notes from the old context, read them but do not believe them without proof
+- If there is a `TODO` or `FIXME` in a file, check whether it is still relevant
+- If there are `comments` explaining a previous fix, check whether they are still correct
 
 ### 6. Independence And Safety
 
-- ไม่สืบทอด todo ค้าง การกระทำที่ค้างอยู่ หรือปัญหาที่ยังไม่ได้แก้จาก turn ก่อนหน้า
-- สร้างรายการ `todo_write` ใหมสำหรับงานใหม
-- ถ้าผู้ใช้ต้องการ resume งานเก่า ต้องบอกโดยชัดแจ้ง
-- ไม่ดำเนินการทำลายล้างตามสมมติฐานจาก context ก่อนหน้า
-- ยืนยัน target และ action ก่อนเปลี่ยนไฟล์เสมอ
-- ถ้าสงสัย ให้ถามมากกว่าตั้งสมมติฐาน
+- Do not inherit leftover todos, pending actions, or unresolved problems from previous turns
+- Create a new `todo_write` list for the new work
+- If the user wants to resume old work, they must say so explicitly
+- Do not perform destructive actions based on assumptions from the previous context
+- Always confirm the target and action before changing files
+- If in doubt, ask rather than assume
 
 ## Expected Outcome
 
-- บทสนทนาดำเนินต่อโดยไม่มีสมมติฐานจาก turn ก่อนหน้า
-- ไฟล์และสถานะ workspace ถูกอ่านใหมจาก disk ก่อนตัดสินใจ
-- งานใหมหรือ target ได้รับการวางแผนและติดตามโดยอิสระ
-- ผู้ใช้ได้รับข้อความยืนยันสั้น ๆ ว่า context ได้ถูก reset แล้ว
-- การวิเคราะห์และแก้ไข target ที่ไม่ถูกจำกัดด้วย context เดิม
-- ลด confirmation bias และ assumptions ที่ผิด
-- ค้นพบปัญหาที่อาะมองข้ามจาก context เดิม
+- The conversation continues without assumptions from previous turns
+- Files and workspace state are re-read from disk before deciding
+- The new work or target is planned and tracked independently
+- The user receives a short confirmation that the context has been reset
+- Analysis and fixes of the target are not constrained by the old context
+- Reduces confirmation bias and wrong assumptions
+- Discovers problems that were overlooked due to the old context

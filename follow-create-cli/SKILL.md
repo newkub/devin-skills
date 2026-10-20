@@ -55,8 +55,8 @@ Use when creating a new CLI or CLI tools (e.g. `tools/review-codebase`, `tools/a
 
 > Goal: check CLI quality after creation
 
-1. Run `/deep-review-codebase-then-fix` to inspect design, structure, UX, and error handling
-2. Fix according to the findings from `/deep-review-codebase-then-fix`
+1. Run `/deep-review-codebase` to inspect design, structure, UX, and error handling
+2. Fix the findings via `/deep-review-codebase then-fix`
 3. Run lint and tests per the chosen stack
 
 ### 5. Integrate Into Workspace

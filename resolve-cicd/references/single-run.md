@@ -4,27 +4,9 @@
 
 
 
-เรียก skill โดย `/resolve-cicd [run-id|url]` หรือรันด้วย helper script:
+Call the skill with `/resolve-cicd [run-id|url]` (e.g. `/resolve-cicd --run-id 12345678` or `/resolve-cicd --url https://github.com/<owner>/<repo>/actions/runs/12345678`)
 
-
-
-```bash
-
-bun "%APPDATA%\devin\skills\resolve-cicd\\scripts\resolve-cicd.ts" \
-
-  [--run-id <id> | --url <url>] \
-
-  [--max-retries 5] \
-
-  [--no-retry]
-
-```
-
-
-
-- helper รองรับ GitHub Actions (CI) แบบเต็มรูปแบบ
-
-- CD mode จะส่งต่อให้ `/watch-deploy` ตาม target — release/tag → poll registry endpoint จน live (`npm view`, `gh release view <tag>`)
+- This flow watches and resolves with `gh`/platform CLIs and the `resolve-*` skills below — there is no helper script
 
 
 
@@ -32,7 +14,7 @@ bun "%APPDATA%\devin\skills\resolve-cicd\\scripts\resolve-cicd.ts" \
 
 
 
-ติดตาม CI/CD pipeline หลังจากถูก trigger ตรวจสอบวาผ่าน, live/healthy, หรือ release สำเร็จ ถ้าไม่ผ่านให้ resolve และ re-run/re-deploy จนกว่าจะผ่าน
+Follow the CI/CD pipeline after it is triggered, checking whether it passes, is live/healthy, or the release succeeded. If it does not pass, resolve and re-run/re-deploy until it passes
 
 
 
@@ -40,17 +22,17 @@ bun "%APPDATA%\devin\skills\resolve-cicd\\scripts\resolve-cicd.ts" \
 
 
 
-ใช้หลังจาก:
+Use after:
 
 - push code
 
 - `/run-deploy`, `/deploy-to-*`, `/ship`, `/run-release`
 
-- หรือเมื่อได้รับ `run-id` หรือ `url-or-target` จาก argument
+- Or when `run-id` or `url-or-target` is received from the argument
 
 
 
-ครอบคลุม:
+Covers:
 
 - CI: GitHub Actions, GitLab CI, Azure DevOps, CircleCI, Jenkins
 
@@ -58,13 +40,13 @@ bun "%APPDATA%\devin\skills\resolve-cicd\\scripts\resolve-cicd.ts" \
 
 
 
-สำหรับ CI platform เฉพาะจะส่งต่อ `/resolve-github-actions-fails`
+For a specific CI platform it forwards to `/resolve-github-actions-fails`
 
-สำหรับ CD platform เฉพาะจะส่งต่อ `/watch-deploy` (release/tag → poll registry/tag endpoint จน live)
+For a specific CD platform it forwards to `/watch-deploy` (release/tag → poll the registry/tag endpoint until live)
 
 
 
-ไม่รวม trigger ครั้งแรก — ต้องถูก trigger โดย `/run-deploy`, `/deploy-to-*`, `/run-release` หรือ push ก่อน
+Does not include the first trigger — it must be triggered by `/run-deploy`, `/deploy-to-*`, `/run-release`, or a push first
 
 
 
@@ -76,23 +58,23 @@ bun "%APPDATA%\devin\skills\resolve-cicd\\scripts\resolve-cicd.ts" \
 
 
 
-> Goal: ระบุวาเป้น CI หรือ CD
+> Goal: Determine whether it is CI or CD
 
-1. ถ้าได้รับ `run-id` จาก argument → เป้น CI
+1. If `run-id` is received from the argument → it is CI
 
-2. ถ้าได้รับ `url-or-target` จาก argument → เป้น CD
+2. If `url-or-target` is received from the argument → it is CD
 
-3. ถ้าไม่มี argument → ค้นหาจาก:
+3. If there is no argument → search from:
 
    - environment variable `DEPLOY_URL`, `PREVIEW_URL`, `VERCEL_URL`, `CF_PAGES_URL`
 
-   - CI/CD log ล่าสุดทีมี run ID หรือ URL
+   - The latest CI/CD log that has a run ID or URL
 
-   - section `references/targets` ใน `watch-deploy/SKILL.md`
+   - the `references/targets` section in `watch-deploy/SKILL.md`
 
-   - `references/runs.md` ใน `/resolve-cicd`
+   - `references/runs.md` in `/resolve-cicd`
 
-4. ถ้ายังไม่ชัด → ทำ `/ask-me`
+4. If still unclear → run `/ask-me`
 
 
 
@@ -100,13 +82,13 @@ bun "%APPDATA%\devin\skills\resolve-cicd\\scripts\resolve-cicd.ts" \
 
 
 
-> Goal: ระบุ CI platform
+> Goal: Identify the CI platform
 
-1. หา CI config files (`.github/workflows/*`, `.gitlab-ci.yml`, `azure-pipelines.yml`, `.circleci/config.yml`, `Jenkinsfile`)
+1. Find CI config files (`.github/workflows/*`, `.gitlab-ci.yml`, `azure-pipelines.yml`, `.circleci/config.yml`, `Jenkinsfile`)
 
-2. เรียงตามลำดับ: GitHub Actions → GitLab CI → Azure DevOps → CircleCI → Jenkins
+2. Order by sequence: GitHub Actions → GitLab CI → Azure DevOps → CircleCI → Jenkins
 
-3. ถ้าไม่พบ config → ทำ `/deep-review-codebase`, `/deep-review-codebase`, `/deep-review-codebase` หรือ `/ask-me`
+3. If no config is found → run `/deep-review-codebase` or `/ask-me`
 
 
 
@@ -114,13 +96,13 @@ bun "%APPDATA%\devin\skills\resolve-cicd\\scripts\resolve-cicd.ts" \
 
 
 
-> Goal: เตรียม CLI และ run ID
+> Goal: Prepare the CLI and run ID
 
-1. ตรวจ CLI: `gh`, `glab`, `az`, `circleci`, `jenkins-cli`
+1. Check the CLI: `gh`, `glab`, `az`, `circleci`, `jenkins-cli`
 
-2. ถ้า `run-id` มาจาก argument → ใช้ค่านั้น
+2. If `run-id` comes from the argument → use that value
 
-3. ถ้าไม่มี → หา run ล่าสุด:
+3. If not → find the latest run:
 
    - GitHub Actions: `gh run list --limit 5`
 
@@ -132,7 +114,7 @@ bun "%APPDATA%\devin\skills\resolve-cicd\\scripts\resolve-cicd.ts" \
 
    - Jenkins: latest build API
 
-4. ถ้าไม่มี active run → report และ stop
+4. If there is no active run → report and stop
 
 
 
@@ -140,21 +122,21 @@ bun "%APPDATA%\devin\skills\resolve-cicd\\scripts\resolve-cicd.ts" \
 
 
 
-> Goal: ติดตาม CI จนสิ้นสุด
+> Goal: Follow CI until it ends
 
-1. ถ้า GitHub Actions → ทำ `/resolve-github-actions-fails [run-id]` แล้ว return ผล
+1. If GitHub Actions → run `/resolve-github-actions-fails [run-id]` then return the result
 
 2. GitLab CI: `glab pipeline trace <pipeline-id>`
 
-3. Azure DevOps: `az pipelines runs show --id <run-id>` poll ทุก 10 วิ
+3. Azure DevOps: `az pipelines runs show --id <run-id>` poll every 10 sec
 
 4. CircleCI: poll API
 
 5. Jenkins: poll build status
 
-6. ถ้า pass → ไป Report
+6. If pass → go to Report
 
-7. ถ้า fail, cancel, timeout → ไป Resolve
+7. If fail, cancel, timeout → go to Resolve
 
 
 

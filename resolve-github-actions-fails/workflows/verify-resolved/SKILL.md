@@ -1,51 +1,51 @@
 ---
 name: resolve-github-actions-fails-verify-resolved
-description: ยืนยันหลัง `/resolve-github-actions-fails` ว่า workflow runs กลับมา success จริงบน GitHub
+description: Confirm after `/resolve-github-actions-fails` that the workflow runs truly return to success on GitHub
 related:
   - resolve-github-actions-fails
 ---
 
 ## Goal
 
-ยืนยันหลัง `/resolve-github-actions-fails` ว่า workflow runs กลับมา success จริงบน GitHub
+Confirm after `/resolve-github-actions-fails` that the workflow runs truly return to success on GitHub
 
 ## Scope
 
-- ใช้เมื่อ parent dispatch มาที่ `verify` หรือเรียกหลัง resolve workflow failures
-- Read-only: watch/ตรวจสอบ — ไม่แก้ไข
+- Used when the parent dispatches to `verify` or called after resolving workflow failures
+- Read-only: watch/inspect — do not modify
 
 ## Execute
 
 ### 1. Watch Latest Run
 
-> Goal: ได้ผล run ที่มี fix
+> Goal: Get the result of the run with the fix
 
-1. `gh run list --limit 5` — หา run ล่าสุดที่มี fix commit
-2. `gh run watch <run-id> --exit-status` — รอจนจบพร้อม exit code
-3. ถ้าไม่มี run ใหม่ → `gh run rerun <run-id>` หรือ `gh workflow run` ตาม trigger
+1. `gh run list --limit 5` — find the latest run that has the fix commit
+2. `gh run watch <run-id> --exit-status` — wait until it finishes with the exit code
+3. If there is no new run → `gh run rerun <run-id>` or `gh workflow run` per the trigger
 
 ### 2. Verify Success
 
-> Goal: run ผ่านทั้ง workflow
+> Goal: The run passes the whole workflow
 
-1. `gh run view <run-id>` — conclusion = `success` ทุก job
-2. flag jobs ที่ fail ใหม่หรือ skipped unexpectedly
-3. เทียบ failure เดิมกับผลใหม่ — root cause เดิมต้องไม่กลับมา
+1. `gh run view <run-id>` — conclusion = `success` for every job
+2. flag jobs that newly fail or are skipped unexpectedly
+3. compare the original failure with the new result — the original root cause must not return
 
 ### 3. Report
 
-> Goal: สรุปผล
+> Goal: Summarize the result
 
-1. ใช้ `/report` คอลัมน์: `No.`, `Run/Job`, `Result`, `Evidence`
-2. Verdict: `resolved` / `not-resolved` พร้อม run URL
+1. Use `/report` columns: `No.`, `Run/Job`, `Result`, `Evidence`
+2. Verdict: `resolved` / `not-resolved` along with the run URL
 
 ## Rules
 
-- verdict จาก `--exit-status` หรือ run conclusion จริงเท่านั้น
-- ถ้า fail → report กลับให้ parent loop — ไม่แก้เอง
-- ระบุ run URL เสมอ
+- verdict only from `--exit-status` or the actual run conclusion
+- If it fails → report back to the parent loop — do not fix it yourself
+- Always specify the run URL
 
 ## Expected Outcome
 
-- Verdict จาก run จริงพร้อม URL
-- รายการ jobs ที่ยัง fail ถ้ามี
+- A verdict from the actual run along with the URL
+- A list of jobs that still fail, if any

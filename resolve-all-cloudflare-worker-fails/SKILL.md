@@ -1,7 +1,7 @@
 ---
 name: resolve-all-cloudflare-worker-fails
 argument-hint: "[--worker <worker-name>] [--project <pages-project>]"
-description: ตรวจสอบและแก้ไข Cloudflare Workers/Pages ที deployment ล้มเหลวทั้งหมดใน account
+description: Inspect and fix every Cloudflare Workers/Pages deployment that failed in the account
 related:
   - resolve-errors
   - search
@@ -15,96 +15,96 @@ related:
 
 ## Goal
 
-List ทุก Cloudflare Workers/Pages functions ทีมีปัญหา แล้ว resolve ให้หมดใน account เดียว
+List every Cloudflare Workers/Pages function that has problems, then resolve them all in a single account
 
 ## Scope
 
-ใช้เมื่อต้องการตรวจสอบและแก้ไข workers ที deploy ไม่ผ่านหรือมี runtime errors ใน Cloudflare account ของผู้ใช้ โดยใช้ `wrangler` หรือ Cloudflare API
+Use when you need to inspect and fix workers that fail to deploy or have runtime errors in the user's Cloudflare account, using `wrangler` or the Cloudflare API
 
 ## Execute
 
 ### 1. Verify wrangler Authentication
 
-> Goal: ยืนยันว่า wrangler พร้อมและ authenticated
-1. รัน `wrangler --version`
-2. รัน `wrangler whoami`
-3. ถ้าไม่ authenticated → ทำ `/ask-me` เพื่อให้ user รัน `wrangler login`
-4. บันทึก account ID โดยไม่ expose ใน output
+> Goal: Confirm that wrangler is ready and authenticated
+1. Run `wrangler --version`
+2. Run `wrangler whoami`
+3. If not authenticated → run `/ask-me` so the user runs `wrangler login`
+4. Record the account ID without exposing it in output
 
 ### 2. Get Account ID And Token
 
-> Goal: ได้ account ID และ token เพื่อ query API
-1. หา account ID จาก `wrangler whoami`, `CLOUDFLARE_ACCOUNT_ID` env var หรือ `wrangler.toml`
-2. ใช้ token จาก `wrangler` credentials หรือ `CLOUDFLARE_API_TOKEN` env var
-3. ถ้าหาไม่พบ → ทำ `/ask-me` เพื่อให้ user ระบุ
+> Goal: Obtain the account ID and token to query the API
+1. Find the account ID from `wrangler whoami`, the `CLOUDFLARE_ACCOUNT_ID` env var, or `wrangler.toml`
+2. Use the token from `wrangler` credentials or the `CLOUDFLARE_API_TOKEN` env var
+3. If not found → run `/ask-me` so the user specifies it
 
 ### 3. List Failing Deployments
 
-> Goal: หา workers/pages ทีมีปัญหา
-1. เรียก API `GET /client/v4/accounts/{account_id}/workers/scripts` และ `GET /client/v4/accounts/{account_id}/pages/projects`
-2. หรือใช้ `wrangler` commands `deployments list --name <worker>` ถ้ามี worker name
-3. รับรายการ: worker/project, type, latest deployment, status, errors/notes
-4. ถ้าไม่มี failures → report ว่างานเสร็จแล้ว stop
+> Goal: Find the workers/pages that have problems
+1. Call the API `GET /client/v4/accounts/{account_id}/workers/scripts` and `GET /client/v4/accounts/{account_id}/pages/projects`
+2. Or use the `wrangler` command `deployments list --name <worker>` if there is a worker name
+3. Receive the list: worker/project, type, latest deployment, status, errors/notes
+4. If there are no failures → report that the work is done and stop
 
 ### 4. Resolve Each Failure
 
-> Goal: แก้ไข workers/pages ทีล้มเหลวทีละตัว
-1. สำหรับแต่ละ worker ทีมีปัญหา:
-   - รัน `wrangler tail <worker_name> --format json` สั้นๆ เพื่อหา runtime errors
-   - รัน `wrangler deployments list --name <worker_name>` เพื่อดู history
-   - ถ้าพบปัญหา clear → ทำ `/resolve-errors` แล้ว retry deploy
-2. หา local repo ด้วย `/search-project-in-drive-d <worker_name>`
-3. ถ้า project มี local repo:
+> Goal: Fix the failing workers/pages one at a time
+1. For each worker that has a problem:
+   - Briefly run `wrangler tail <worker_name> --format json` to find runtime errors
+   - Run `wrangler deployments list --name <worker_name>` to see the history
+   - If the problem is clear → run `/resolve-errors` then retry the deploy
+2. Find the local repo with `/search-project-in-drive-d <worker_name>`
+3. If the project has a local repo:
    - `git status` / `git pull`
-   - `wrangler deploy` หรือ `wrangler pages deploy`
-   - รอผลแล้ว recheck deployment
-4. ถ้าไม่มี local repo หรือไม่สามารถ deploy ได้ → บันทึกเป็น `manual-fix-required`
-5. ทำซ้ำสูงสุด 3 รอบต่อ worker
-6. ถ้า deploy ใหม่ fail → ขยับไปทำตัวถัดไป และ report ไว้
+   - `wrangler deploy` or `wrangler pages deploy`
+   - Wait for the result then recheck the deployment
+4. If there is no local repo or it cannot be deployed → record as `manual-fix-required`
+5. Repeat up to 3 rounds per worker
+6. If the new deploy fails → move on to the next one and report it
 
 ### 5. Build Report
 
-> Goal: รายงานผลเป็นตาราง
-1. ใช้ `/report` คอลัมน์: No., Worker, Type, Latest Deployment, Status, Action Taken, Errors / Notes
-2. เรียงตาม Worker name
-3. ระบุสรุป: จำนวนทั้งหมด, ที resolve ได้, ทีค้าง manual-fix-required
+> Goal: Report the results as a table
+1. Use `/report` with columns: No., Worker, Type, Latest Deployment, Status, Action Taken, Errors / Notes
+2. Sort by Worker name
+3. State the summary: total count, those resolved, those left as manual-fix-required
 
 ### 6. Suggest Next Action
 
-> Goal: แนะนำขั้นตอนถัดไป
-1. ทำ `/suggest-next-action` เพื่อแนะนำ redeploy เพิม, check logs, หรือ `/resolve-github-actions-fails`
+> Goal: Suggest the next step
+1. Run `/suggest-next-action` to suggest additional redeploys, checking logs, or `/resolve-github-actions-fails`
 
 ## Rules
 
 ### 1. Safety
-- ถาม user ก่อน deploy/redeploy แต่ละ worker ถ้ามีผลกระทบสูง
-- ไม่ delete worker หรือ config โดยไม่ได้รับอนุญาต
-- rollback ได้ถ้า deploy ใหม่ fail
+- Ask the user before deploying/redeploying each worker if the impact is high
+- Do not delete a worker or config without permission
+- Rollback is possible if the new deploy fails
 
 ### 2. Secret Safety
-- ไม่ expose `CLOUDFLARE_API_TOKEN`, account ID หรือ credentials ใน output
-- ใช้ env vars หรือ `wrangler` credentials เท่านั้น
-- mask token ใน logs
+- Do not expose `CLOUDFLARE_API_TOKEN`, account ID, or credentials in output
+- Use env vars or `wrangler` credentials only
+- Mask the token in logs
 
 ### 3. Auth Required
-- ต้อง login ด้วย `wrangler login` หรือมี `CLOUDFLARE_API_TOKEN` ก่อน
-- ถ้าไม่มีสิทธิ์ `Workers Scripts:Read/Edit` ให้ report
+- Must log in with `wrangler login` or have `CLOUDFLARE_API_TOKEN` first
+- If lacking `Workers Scripts:Read/Edit` permission, report it
 
 ### 4. Rate Limit
-- อย่า query เร็วเกินไป ถ้า workers มาก ให้ batch
-- ถ้า API คืน 429 ให้รอและ retry
+- Do not query too fast; if there are many workers, batch them
+- If the API returns 429, wait and retry
 
 ### 5. Local Project Matching
-- ใช้ `/search-project-in-drive-d` หา project ใน `D:\` ทีตรงกับ worker name
-- ถ้าไม่พบ → ทำเครื่องหมาย `manual-fix-required`
-- ใช้ /run-check ถ้าจำเป็น
-- ใช้ /run-test all ถ้าจำเป็น
-- ใช้ /run-until-pass ถ้าจำเป็น
+- Use `/search-project-in-drive-d` to find a project in `D:\` that matches the worker name
+- If not found → mark as `manual-fix-required`
+- Use /run-check if necessary
+- Use /run-test all if necessary
+- Use /run-until-pass if necessary
 
 ## Expected Outcome
 
-- รายการ Cloudflare Workers/Pages พร้อมสถานะล่าสุด
-- Workers ทีล้มเหลวถูก resolve หรือทำเครื่องหมาย `manual-fix-required`
-- ตารางที sort ตาม worker name
-- รายงานผลการ deploy และข้อผิดพลาดทียังเหลือ
+- List of Cloudflare Workers/Pages with their latest status
+- Failed workers are resolved or marked `manual-fix-required`
+- A table sorted by worker name
+- A report of deployment results and any remaining errors
 

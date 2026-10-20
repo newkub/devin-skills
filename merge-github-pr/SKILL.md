@@ -1,6 +1,6 @@
 ---
 name: merge-github-pr
-description: Merge pull request ด้วย strategy ทีเหมาะสม พร้อม validate ก่อน merge
+description: Merge a pull request with the appropriate strategy, with validation before merge
 argument-hint: "[scope|verify]"
 related:
   - resolve-github-pr
@@ -15,98 +15,98 @@ related:
 
 ## Goal
 
-Merge pull request ด้วยวิธีทีเหมาะสม (merge, squash, rebase) พร้อมตรวจสอบ CI, review approval และ conflicts
+Merge a pull request with the appropriate method (merge, squash, rebase) along with checking CI, review approval, and conflicts
 
 ## Scope
-- สำหรับ skills ที่เกี่ยวข้อง: `refactor-commit`, `git-commit`, `git-push`, `deep-validate`, `open-github`, `review-github-pr`
+- For related skills: `refactor-commit`, `git-commit`, `git-push`, `deep-validate`, `open-github`, `review-github-pr`
 
-ใช้เมื่อ PR พร้อม merge ต้องการเลือก strategy อย่างถูกต้องและ merge อย่างปลอดภัย
+Use when a PR is ready to merge, you need to choose the strategy correctly and merge safely
 
 ## Execute
 
 ### 1. Read PR Info
 
-> Goal: อ่านข้อมูล PR
+> Goal: read the PR information
 
-1. รัน `gh pr view <pr>` เพื่อดู title, body, branch, base, status
-2. บันทึก PR number, branch, author
-3. ถ้าไม่มี PR number → ทำ `/ask-me`
+1. Run `gh pr view <pr>` to see title, body, branch, base, status
+2. Record the PR number, branch, author
+3. If there is no PR number → do `/ask-me`
 
 ### 2. Check Merge Requirements
 
-> Goal: ตรวจสอบเงื่ือนไขก่อน merge
+> Goal: check the conditions before merge
 
-1. รัน `gh pr checks <pr>` หรือ `gh pr view <pr> --json statusCheckRollup`
-2. ตรวจสอบ review approval: `gh pr view <pr> --json reviews`
-3. ตรวจสอบ conflicts: `gh pr view <pr> --json mergeStateStatus`
-4. ถ้า CI ไม่ผ่าน → ทำ `/resolve-errors` ก่อน merge
-5. ถ้ามี conflicts → ทำ `/resolve-github-pr` หรือ merge base branch
+1. Run `gh pr checks <pr>` or `gh pr view <pr> --json statusCheckRollup`
+2. Check review approval: `gh pr view <pr> --json reviews`
+3. Check conflicts: `gh pr view <pr> --json mergeStateStatus`
+4. If CI does not pass → do `/resolve-errors` before merge
+5. If there are conflicts → do `/resolve-github-pr` or merge the base branch
 
 ### 3. Choose Merge Strategy
 
-> Goal: เลือก strategy ทีเหมาะสม
+> Goal: choose the appropriate strategy
 
-1. ดู project conventions หรือ `CONTRIBUTING.md`
-2. เลือก:
-   - `--merge` ถ้าต้องการเก็บ commit history
-   - `--squash` ถ้าต้องการ commit เดียว (default สำหรับ feature branch)
-   - `--rebase` ถ้าต้องการ linear history
-3. ถ้าไม่ชัด → ถาม user ด้วย `/ask-me`
+1. Look at project conventions or `CONTRIBUTING.md`
+2. Choose:
+   - `--merge` if you want to keep the commit history
+   - `--squash` if you want a single commit (default for a feature branch)
+   - `--rebase` if you want a linear history
+3. If unclear → ask the user with `/ask-me`
 
 ### 4. Final Checks
 
-> Goal: ตรวจสอบครั้งสุดท้าย
+> Goal: final verification
 
-1. ทำ `/scan-codebase` บน diff ของ PR — snapshot โครงสร้าง/patterns/quality ก่อน merge
-2. ถ้า PR แตะ manifest/lockfile หรือ code ด้าน auth/payment/secrets → ทำ `/scan-security` และแก้ Critical/High ให้จบก่อน merge
-3. ทำ `/run-check` (lint, typecheck, tests)
-4. ทำ `/run-test` สำหรับ critical paths
-5. ตรวจสอบว่า branch ที merge เป็ต สมบูรณ์
+1. Do `/scan-codebase` on the PR diff — snapshot the structure/patterns/quality before merge
+2. If the PR touches manifest/lockfile or auth/payment/secrets code → do `/scan-security` and resolve Critical/High before merge
+3. Do `/run-check` (lint, typecheck, tests)
+4. Do `/run-test` for critical paths
+5. Check that the branch being merged is complete
 
 ### 5. Merge
 
-> Goal: ทำการ merge
+> Goal: perform the merge
 
-1. รัน `gh pr merge <pr> --<strategy>`
-2. ถ้าต้องใช้ admin privilege → เพิ่ม `--admin`
-3. ถ้ามี auto-merge → ใช้ `gh pr merge <pr> --auto`
-4. รอจน merge สำเร็จ
+1. Run `gh pr merge <pr> --<strategy>`
+2. If admin privilege is needed → add `--admin`
+3. If there is auto-merge → use `gh pr merge <pr> --auto`
+4. Wait until the merge succeeds
 
 ### Workflows
 
-> Goal: dispatch post-merge verification แยกจาก merge flow
+> Goal: dispatch post-merge verification separately from the merge flow
 
 | Argument | Workflow |
 |----------|----------|
-| `verify`, `verify-merge` | `## Merged Details → verify-merge` — PR merged บน remote, base updated, cleanup ครบ |
+| `verify`, `verify-merge` | `## Merged Details → verify-merge` — PR merged on the remote, base updated, cleanup complete |
 
-1. ถ้า argument เป็น `verify` → อ่าน `## Merged Details → verify-merge` แล้วทำตาม flow — ไม่ merge ใหม่
-2. ถ้าไม่ระบุ → ทำ Steps 1-7 ตามปกติ โดย Step 6 อ่าน workflow `verify-merge` มา execute ก่อน cleanup
+1. If the argument is `verify` → read `## Merged Details → verify-merge` then follow the flow — do not merge again
+2. If not specified → do Steps 1-7 as normal, where Step 6 reads the `verify-merge` workflow to execute before cleanup
 
 ### 6. Verify And Cleanup
 
-> Goal: ยืนยันและ cleanup
+> Goal: confirm and cleanup
 
-1. ทำตาม `## Merged Details → verify-merge` — ยืนยัน PR merged บน remote ก่อน
-2. รัน `git fetch` และ `git pull` บน base branch
-3. ลบ local branch ถ้าไม่ต้องการ `git branch -d <branch>`
-4. รัน `gh pr delete-branch <pr>` ถ้าต้องการ
+1. Follow `## Merged Details → verify-merge` — confirm the PR is merged on the remote first
+2. Run `git fetch` and `git pull` on the base branch
+3. Delete the local branch if not needed `git branch -d <branch>`
+4. Run `gh pr delete-branch <pr>` if wanted
 
 ### 7. Report
 
-> Goal: สรุปผล
+> Goal: summarize the result
 
-1. รายงาน PR number, strategy, final status
-2. ระบุ branch ทีถูกลบหรือคงไว้
+1. Report the PR number, strategy, final status
+2. Specify the branches that were deleted or kept
 
 ## Rules
 
-- ไม่ merge ถ้า CI ไม่ผ่าน
-- ไม่ merge ถ้า scan gate ไม่ผ่าน — `/scan-codebase` ต้องไม่มี finding ระดับ Critical/High ใน diff; ถ้ามีต้องแก้ก่อน merge
-- ไม่ merge ถ้ามี unresolved conflicts
-- ไม่ merge โดยไม่มี approval (ยกเว้น user สั่ง)
-- ใช้ strategy ตาม project conventions
-- ทำ final checks ก่อน merge เสมอ
+- Do not merge if CI does not pass
+- Do not merge if the scan gate does not pass — `/scan-codebase` must have no Critical/High findings in the diff; if there are any they must be fixed before merge
+- Do not merge if there are unresolved conflicts
+- Do not merge without approval (unless the user instructs)
+- Use the strategy per project conventions
+- Always do the final checks before merge
 
 ## Merged Details
 
@@ -114,62 +114,61 @@ Merge pull request ด้วยวิธีทีเหมาะสม (merge, s
 
 ##### Goal
 
-ยืนยันหลัง `gh pr merge` ว่า PR merged จริงบน remote, base branch อัปเดต และ cleanup ครบ — เรียก standalone หลัง merge เสร็จ
+Confirm after `gh pr merge` that the PR is actually merged on the remote, the base branch is updated, and cleanup is complete — call standalone after the merge finishes
 
 ##### Scope
 
-- ใช้เมื่อ `/merge-github-pr` dispatch มาที่ `verify` หรือเรียกหลัง merge
-- ครอบคลุม: PR state บน remote, base branch sync, merge commit บน remote, branch cleanup
-- Read-only: ตรวจสอบ — ไม่ re-merge
+- Use when `/merge-github-pr` dispatches to `verify` or calls it after merge
+- Covers: PR state on the remote, base branch sync, merge commit on the remote, branch cleanup
+- Read-only: verify — do not re-merge
 
 ##### Execute
 
 ###### 1. Verify PR State
 
-> Goal: PR เป็น merged จริงบน GitHub
+> Goal: the PR is actually merged on GitHub
 
 1. `gh pr view <pr> --json state,mergedAt,mergeCommit` — state = `MERGED`
-2. บันทึก merge commit sha และ strategy ที่ใช้
-3. flag ถ้า state เป็น `CLOSED` โดยไม่ merge หรือยัง `OPEN` (auto-merge pending)
+2. Record the merge commit sha and the strategy used
+3. Flag if the state is `CLOSED` without merging or still `OPEN` (auto-merge pending)
 
 ###### 2. Verify Base Branch
 
-> Goal: base branch บน remote มี merge commit
+> Goal: the base branch on the remote has the merge commit
 
-1. `git fetch origin` แล้ว `git log origin/<base> --oneline -3` — merge commit อยู่บน remote
-2. `gh pr checks <pr>` หรือดู CI run บน base หลัง merge — post-merge CI ผ่านหรือกำลังรัน
-3. flag ถ้า merge commit ไม่อยู่บน remote base
+1. `git fetch origin` then `git log origin/<base> --oneline -3` — the merge commit is on the remote
+2. `gh pr checks <pr>` or look at the CI run on the base after merge — post-merge CI passes or is running
+3. Flag if the merge commit is not on the remote base
 
 ###### 3. Verify Cleanup
 
-> Goal: branch hygiene หลัง merge
+> Goal: branch hygiene after merge
 
-1. `gh pr view <pr> --json headRefName` → ตรวจ remote branch ถูกลบหรือยัง (`git ls-remote --heads origin <branch>`)
+1. `gh pr view <pr> --json headRefName` → check whether the remote branch has been deleted (`git ls-remote --heads origin <branch>`)
 2. local branch cleanup: `git branch --merged <base>`
-3. flag stale branches ที่ merge แล้วแต่ยังอยู่
+3. Flag stale branches that are merged but still present
 
 ###### 4. Report
 
-> Goal: สรุป merge status
+> Goal: summarize the merge status
 
-1. ใช้ `/report` คอลัมน์: `No.`, `Check`, `Result`, `Evidence`
-2. Verdict: `merged-clean` / `merged-pending-ci` / `not-merged` พร้อม items ที่ค้าง
+1. Use `/report` columns: `No.`, `Check`, `Result`, `Evidence`
+2. Verdict: `merged-clean` / `merged-pending-ci` / `not-merged` along with pending items
 
 ##### Rules
 
-- evidence ต้องมาจาก remote (`gh`/`git ls-remote`) ไม่ใช่ local state เพียงอย่างเดียว
-- auto-merge pending ≠ merged — รายงานเป็น pending
-- ไม่ delete branches ใน workflow นี้ — รายงานให้ caller ทำ
+- Evidence must come from the remote (`gh`/`git ls-remote`), not local state alone
+- auto-merge pending ≠ merged — report it as pending
+- Do not delete branches in this workflow — report so the caller does it
 
 ##### Expected Outcome
 
-- ยืนยัน PR merged บน remote พร้อม merge commit sha
-- รายการ cleanup ที่ค้างถ้ามี
+- Confirm the PR is merged on the remote with the merge commit sha
+- The list of pending cleanup, if any
 
 ## Expected Outcome
 
-- PR ถูก merge สำเร็จ
-- Base branch อัปเดต
-- Branch ทีใช้งานเสร็จถูก cleanup
-- สรุปผลชัดเจน
-
+- The PR is merged successfully
+- The base branch is updated
+- Branches that are done being used are cleaned up
+- A clear summary

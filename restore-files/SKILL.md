@@ -1,6 +1,6 @@
 ---
 name: restore-files
-description: กู้คืน files/state — จาก git log, devin history, dotfiles หรือ deleted files ผ่าน top-level skills
+description: Recover files/state — from git log, devin history, dotfiles, or deleted files via top-level skills
 argument-hint: "[domain|verify]"
 related:
   - check-git-logs
@@ -13,11 +13,11 @@ related:
 
 ## Goal
 
-Dispatch ไป skill ปลายทาง ตาม restore source — parent ทำ routing เท่านั้น
+Dispatch to the destination skill according to the restore source — the parent only does routing
 
 ## Scope
 
-- argument คือ domain; ถ้าไม่ระบุ → `/ask-me` เลือก domain
+- The argument is a domain; if not specified → `/ask-me` to choose a domain
 
 ## Execute
 
@@ -25,26 +25,26 @@ Dispatch ไป skill ปลายทาง ตาม restore source — parent 
 
 | Domain | Skill |
 |---|---|
-| `uncommitted`, `working-tree`, `discard` | /git-restore — discard changes/unstage/กู้จาก HEAD ผ่าน `git restore` |
-| `revert-commit` | /git-revert — ย้อน committed change ด้วย inverse commit |
-| `deleted-file` | /restore-files-deleted-file — กู้ไฟล์ที่ถูกลบ |
-| `from-devin-history` | /restore-files-from-devin-history — กู้จาก Devin session history |
-| `from-git-log` | /restore-files-from-git-log — กู้จาก git log ถอยหลังจนเจอ |
-| `from-my-dotfiles` | /restore-files-from-my-dotfiles — กู้ config จาก dotfiles repo |
-| `verify` | `## Merged Details → verify-restore` — ยืนยัน restored files ตรง source (hash/fidelity) |
+| `uncommitted`, `working-tree`, `discard` | /git-restore — discard changes/unstage/recover from HEAD via `git restore` |
+| `revert-commit` | /git-revert — undo a committed change with an inverse commit |
+| `deleted-file` | /restore-files-deleted-file — recover a deleted file |
+| `from-devin-history` | /restore-files-from-devin-history — recover from Devin session history |
+| `from-git-log` | /restore-files-from-git-log — recover from git log walking backward until found |
+| `from-my-dotfiles` | /restore-files-from-my-dotfiles — recover config from the dotfiles repo |
+| `verify` | `## Merged Details → verify-restore` — confirm restored files match the source (hash/fidelity) |
 
-1. ระบุ domain จาก argument (เช่น `/restore-files-from-git-log`)
-2. ถ้า domain รองรับ → ทำตาม `/restore-files-<domain>` ทั้ง flow แล้วทำตาม `## Merged Details → verify-restore` เพื่อยืนยัน fidelity
-3. ถ้า argument เป็น `verify` → ทำตาม `## Merged Details → verify-restore` อย่างเดียว (standalone re-verify)
-4. ถ้าไม่ระบุหรือไม่รู้จัก domain → `/ask-me` เลือก domain
+1. Identify the domain from the argument (e.g. `/restore-files-from-git-log`)
+2. If the domain is supported → follow the full `/restore-files-<domain>` flow then follow `## Merged Details → verify-restore` to confirm fidelity
+3. If the argument is `verify` → follow only `## Merged Details → verify-restore` (standalone re-verify)
+4. If the domain is not specified or unknown → `/ask-me` to choose a domain
 
 ## Rules
 
-- parent ทำ dispatch เท่านั้น — ห้าม duplicate workflow ของ skill ปลายทาง
-- restore ที่ overwrite ไฟล์ปัจจุบันต้อง confirm ก่อนเสมอ
+- The parent only dispatches — do not duplicate the destination skill's workflow
+- A restore that overwrites the current file must always be confirmed first
 
-- ใช้ /check-git-logs ถ้าจำเป็น
-- ใช้ /git-file-history ถ้าจำเป็น
+- Use /check-git-logs if necessary
+- Use /git-file-history if necessary
 
 ## Merged Details
 
@@ -52,58 +52,58 @@ Dispatch ไป skill ปลายทาง ตาม restore source — parent 
 
 ##### Goal
 
-ยืนยันหลัง restore ว่าไฟล์กลับมาครบและตรงกับ source จริง — fidelity check ที่ restore skills ทุกตัวควรเรียกต่อท้าย
+Confirm after a restore that the files came back completely and match the actual source — a fidelity check that every restore skill should call at the end
 
 ##### Scope
 
-- ใช้เมื่อ `/restore-files` dispatch มาที่ `verify` หรือเรียกหลัง restore เสร็จ
-- ครอบคลุม: file presence, content fidelity (hash), expected paths, partial restore detection
-- Read-only: ตรวจสอบ — ไม่ re-restore
+- Used when `/restore-files` dispatches to `verify`, or called after a restore finishes
+- Covers: file presence, content fidelity (hash), expected paths, partial restore detection
+- Read-only: check — do not re-restore
 
 ##### Execute
 
 ###### 1. Check Presence
 
-> Goal: ทุกไฟล์ที่ควร restore อยู่ครบ
+> Goal: Every file that should be restored is present
 
-1. เทียบรายการไฟล์ที่ restore กับ expected list (จาก restore output หรือ source manifest)
-2. flag ไฟล์ที่ขาดหรือถูก restore ไปผิด path
+1. Compare the list of restored files against the expected list (from the restore output or source manifest)
+2. flag files that are missing or were restored to the wrong path
 
 ###### 2. Check Fidelity
 
-> Goal: content ตรงกับ source
+> Goal: content matches the source
 
-1. ถ้า restore จาก git → เทียบ `git hash-object <file>` กับ blob ใน commit ต้นทาง
-2. ถ้า restore จาก copy/backup → เทียบ `Get-FileHash` SHA256 กับ source
-3. ถ้า restore จาก Devin history → เทียบ content กับ recorded snapshot
-4. flag ไฟล์ที่ hash ไม่ตรง — partial write หรือ encoding drift
+1. If restored from git → compare `git hash-object <file>` against the blob in the source commit
+2. If restored from a copy/backup → compare `Get-FileHash` SHA256 against the source
+3. If restored from Devin history → compare the content against the recorded snapshot
+4. flag files with a mismatched hash — partial write or encoding drift
 
 ###### 3. Check Consistency
 
-> Goal: restored files ทำงานร่วมกับ repo ได้
+> Goal: Restored files work together with the repo
 
-1. ถ้า restore เป็น code → `bun run typecheck` หรือ build best-effort
-2. ตรวจ imports/references ที่ไฟล์ใหม่อ้างถึงยังมีอยู่
-3. flag restored file ที่อ้างถึง paths/deps ที่ไม่มีแล้ว
+1. If the restore is code → `bun run typecheck` or best-effort build
+2. Check that the imports/references the new files refer to still exist
+3. flag a restored file that references paths/deps that no longer exist
 
 ###### 4. Report
 
-> Goal: สรุป restore fidelity
+> Goal: Summarize restore fidelity
 
-1. ใช้ `/report` คอลัมน์: `No.`, `Path`, `Status`, `Expected`, `Actual`, `Notes`
-2. Verdict: `faithful` / `partial` / `mismatched` พร้อมรายการที่ต้อง re-restore
+1. Use `/report` columns: `No.`, `Path`, `Status`, `Expected`, `Actual`, `Notes`
+2. Verdict: `faithful` / `partial` / `mismatched` along with the list that needs re-restore
 
 ##### Rules
 
-- hash mismatch = รายงานทันที — ห้ามถือว่า restore สำเร็จ
-- ถ้า source ไม่มีให้เทียบ (เช่น deleted file ไม่มีต้นฉบับเหลือ) → ระบุ verification method ที่ใช้แทน (e.g. git show)
-- ไม่แก้ไฟล์ที่ restore มา — ถ้าต้องแก้ report กลับให้ restore ใหม่
+- hash mismatch = report immediately — do not assume the restore succeeded
+- If there is no source to compare against (e.g. a deleted file with no original left) → specify the verification method used instead (e.g. git show)
+- Do not edit restored files — if editing is needed, report back for a new restore
 
 ##### Expected Outcome
 
-- ตาราง fidelity ต่อไฟล์พร้อม verdict
-- รายการไฟล์ที่ต้อง re-restore ถ้า partial
+- A per-file fidelity table with a verdict
+- A list of files that need re-restore if partial
 
 ## Expected Outcome
 
-- caller ถูก dispatch ไป skill ปลายทาง ที่ตรง source แล้วกู้คืนตาม flow นั้น
+- The caller is dispatched to the destination skill that matches the source and recovers according to that flow

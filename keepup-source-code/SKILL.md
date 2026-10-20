@@ -1,6 +1,6 @@
 ---
 name: keepup-source-code
-description: ทำให้ source code ทันสมัย — ตรวจ staleness signals แล้ว dispatch update-* ที่ตรง domain
+description: Keep source code current — detect staleness signals, then dispatch the update-* matching the domain
 argument-hint: "[scope]"
 related:
   - update-project
@@ -23,72 +23,72 @@ related:
 
 ## Goal
 
-รักษา source code ให้ทันสมัยและ sync กับ dependencies, config, codegen และ docs เสมอ — ตรวจหาส่วนที่ stale แล้ว dispatch ไปยัง `update-*`/`check-*` ที่ตรง domain จนผ่าน validation (เป็น executor ของ domain source code ตามหลัก `/follow-up-to-date`)
+Keep the source code current and always in sync with dependencies, config, codegen, and docs — detect the parts that are stale, then dispatch to the `update-*`/`check-*` matching the domain until it passes validation (acting as the executor for the source code domain following `/follow-up-to-date`)
 
 ## Scope
 
-ใช้เมื่อต้องการให้ code ไม่ล้าสมัย — เช่น หลัง bump deps, เปลี่ยน config, อัปเดต upstream, หรือเป็น periodic maintenance ไม่ใช่สำหรับ implement feature ใหม่
+Use when you want the code not to go out of date — e.g., after bumping deps, changing config, updating upstream, or as periodic maintenance; not for implementing a new feature
 
 ## Execute
 
 ### 1. Detect Staleness Signals
 
-> Goal: รู้ว่าอะไรใน project stale
+> Goal: Know what in the project is stale
 
-1. ทำ `/check-should-update` ดู git changes เพื่อประเมินว่า target ต้องอัปเดต
-2. ทำ `/deep-review-codebase` scope `deprecated-apis` หา code ที่ใช้ deprecated APIs/dependencies
-3. ทำ `/deep-review-codebase` scope `content-outdate` ตรวจ skills/docs/specs ที่ล้าสมัย
-4. ทำ `/deep-review-codebase` domain `review-config` ตรวจ config ที่ drift จาก defaults
-5. ตรวจ manifest drift — `package.json`/`Cargo.toml`/`go.mod` เปลี่ยนแต่ lockfile หรือ code ไม่ตาม
-6. รวม signals เป็น list: `{area, signal, severity}`
+1. Run `/check-should-update` to look at git changes and assess whether a target needs updating
+2. Run `/deep-review-codebase` scope `deprecated-apis` to find code using deprecated APIs/dependencies
+3. Run `/deep-review-codebase` scope `content-outdate` to check skills/docs/specs that are outdated
+4. Run `/deep-review-codebase` domain `review-config` to check config that has drifted from defaults
+5. Check manifest drift — `package.json`/`Cargo.toml`/`go.mod` changed but the lockfile or code did not follow
+6. Combine the signals into a list: `{area, signal, severity}`
 
 ### 2. Map Signal To Update
 
-> Goal: เลือก update-* ที่ตรงกับแต่ละ signal
+> Goal: Choose the update-* that matches each signal
 
 | No. | Signal | Dispatch To |
 |-----|--------|-------------|
-| 1 | deps/runtime/tools เก่า | `/update-version-to-latest` |
-| 2 | config drift หรือ missing | `/update-config` |
-| 3 | public API/exports เปลี่ยน | `/update-usage-md` + `/update-features-md` |
-| 4 | docs ล้าสมัย | `/update-docs` |
-| 5 | tests ไม่ครอบ code ใหม่ | `/update-tests` |
-| 6 | generated code/artifacts stale | re-run generator (codegen, ast-grep rules, specs) |
-| 7 | หลาย workspace drift พร้อมกัน | `/update-project` |
+| 1 | old deps/runtime/tools | `/update-version-to-latest` |
+| 2 | config drift or missing | `/update-config` |
+| 3 | public API/exports changed | `/update-usage-md` + `/update-features-md` |
+| 4 | outdated docs | `/update-docs` |
+| 5 | tests do not cover new code | `/update-tests` |
+| 6 | stale generated code/artifacts | re-run generator (codegen, ast-grep rules, specs) |
+| 7 | several workspaces drift at once | `/update-project` |
 
 ### 3. Apply Updates
 
-> Goal: แก้ staleness ทีละ domain
+> Goal: Fix staleness one domain at a time
 
-1. ทำตามลำดับ: Foundation (deps/config) → Code → Docs/Tests
-2. dispatch ตาม mapping table ทีละ domain — อย่ารวมหลาย domain ในแก้ไขเดียว
-3. ถ้า signal ไม่มี update skill ตรง → แก้ manual ด้วย minimal change
-4. บันทึกสิ่งที่แก้ไปต่อ domain
+1. Follow the order: Foundation (deps/config) → Code → Docs/Tests
+2. Dispatch according to the mapping table one domain at a time — do not combine several domains in one edit
+3. If a signal has no matching update skill → fix it manually with a minimal change
+4. Record what was fixed per domain
 
 ### 4. Validate
 
-> Goal: ยืนยัน code ทันสมัยและไม่พัง
+> Goal: Confirm the code is current and not broken
 
-1. ทำ `/run-check` เพื่อ lint, typecheck, scan
-2. ทำ `/deep-validate` ถ้ามีการแก้หลายไฟล์
-3. ถ้าไม่ผ่าน → `/resolve-errors` แล้ว recheck (max 3 รอบ → stop/report)
+1. Run `/run-check` to lint, typecheck, scan
+2. Run `/deep-validate` if several files were edited
+3. If it does not pass → `/resolve-errors` then recheck (max 3 rounds → stop/report)
 
 ### 5. Report
 
-> Goal: สรุป staleness ที่พบและแก้
+> Goal: Summarize the staleness found and fixed
 
-1. ทำ `/report` เป็น table: `No.`, `Area`, `Signal`, `Action`, `Status`
-2. ทำ `/suggest-next-action` แนะนำ periodic keepup หรือขั้นตอนถัดไป
+1. Run `/report` as a table: `No.`, `Area`, `Signal`, `Action`, `Status`
+2. Run `/suggest-next-action` to recommend a periodic keepup or the next step
 
 ## Rules
 
-- detect ก่อนแก้เสมอ — ห้าม update โดยไม่มี signal ว่า stale
-- dispatch ไป `update-*` skill ที่ตรง domain — ห้ามเขียน update logic เองถ้ามี skill อยู่
-- minimal change — แก้เฉพาะส่วนที่ stale ไม่ refactor เพิ่ม
-- ทุก domain ที่แก้ต้องผ่าน `/run-check` ก่อนจบ
+- Always detect before fixing — never update without a signal that it is stale
+- Dispatch to the `update-*` skill matching the domain — do not write the update logic yourself if a skill exists
+- Minimal change — fix only the stale parts, do not refactor further
+- Every domain fixed must pass `/run-check` before finishing
 
 ## Expected Outcome
 
-- ทุก staleness signal ถูก resolve หรือมีเหตุผลที่ defer
-- code, config, docs, tests sync กันและผ่าน validation
-- report แสดงครบว่า area ไหนแก้อะไร
+- Every staleness signal is resolved or has a reason for being deferred
+- code, config, docs, tests are in sync and pass validation
+- The report fully shows which area had what fixed

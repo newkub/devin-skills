@@ -3,7 +3,7 @@ name: follow-tool-vitepress-setup-vitepress
 description: Install VitePress, create the docs structure and a basic `.vitepress/config.ts`
 argument-hint: "[scope]"
 related:
-  - follow-gitignore
+  - update-gitignore
   - follow-lang-typescript
   - follow-tool-vite
   - run-docs
@@ -34,7 +34,7 @@ Use for a project that doesn't have VitePress yet — init, `docs/` layout, basi
 1. Create `docs/` at the root with the `.vitepress/` config directory inside
 2. Monorepo: create `docs/package.json` (`vitepress` dependency + `dev`/`build`/`preview` scripts) and add `docs` to `workspaces` in the root
 3. Single project: put scripts in the root `package.json` as `dev:docs`/`build:docs`/`preview:docs`
-4. Do `/follow-gitignore` — `docs/.gitignore` covering `node_modules/`, `.vitepress/dist/`, `.vitepress/cache/`
+4. Do `/update-gitignore` — `docs/.gitignore` covering `node_modules/`, `.vitepress/dist/`, `.vitepress/cache/`
 5. Do `/follow-lang-typescript` — `docs/tsconfig.json` for type checking the `.vitepress/` (`noEmit: true`, `types: ["vitepress"]`)
 
 ### 3. Install And Config
@@ -70,7 +70,7 @@ Use for a project that doesn't have VitePress yet — init, `docs/` layout, basi
 
 - If `.vitepress/` already exists → verify only, never re-init
 
-- Use /follow-gitignore if needed
+- Use /update-gitignore if needed
 - Use /follow-lang-typescript if needed
 - Use /follow-tool-vite if needed
 - Use /run-docs if needed

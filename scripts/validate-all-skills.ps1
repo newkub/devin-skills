@@ -62,7 +62,7 @@ function Test-FalsePositive {
         if ($Line -match $pattern) { return $true }
     }
     # Additional check: lines containing Thai text + TODO/MOCK/placeholder are almost always instructions
-    # (e.g., "ตรวจ TODO", "ลบ placeholder", "ห้าม mock", "ใช้ placeholder")
+    # (e.g., "check TODO", "remove placeholder", "do not mock", "use placeholder")
     # Detect Thai characters (U+0E00-U+0E7F) on the same line as TODO/MOCK/placeholder
     if ($Line -match '[\u0E00-\u0E7F]') {
         if ($Line -match 'TODO|MOCK|placeholder|mock') { return $true }

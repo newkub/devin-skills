@@ -1,6 +1,6 @@
 ---
 name: idea-merge
-description: สร้างไอเดีย merge หรือ consolidate สิ่งทีซ้ำซ้อนตาม context
+description: Generate ideas to merge or consolidate redundant things according to context
 argument-hint: "[target]"
 related:
   - scan-codebase
@@ -15,119 +15,118 @@ related:
 
 ## Goal
 
-สร้างไอเดียการ merge หรือ consolidate สิ่งทีซ้ำซ้อนให้เป็นหน่วยเดียว โดย context-aware และ continuous numbering
+Generate ideas for merging or consolidating redundant things into a single unit, in a context-aware way with continuous numbering
 
 ## Scope
 
-ใช้เมื่อต้องการวิเคราะห์ว่าควร merge อะไรเข้าด้วยกัน:
+Use when you want to analyze what should be merged together:
 - files, skills, folders, workflows, configs
 - code modules, libraries, services
-- หรือ repository artifacts ใด ๆ ทีซ้ำซ้อน
+- or any redundant repository artifacts
 
-ไม่ลงมือ execute merge — ส่งต่อ `/merge` ต่อเมื่อได้ไอเดียและ user confirm
+Don't execute the merge yourself — hand off to `/merge` only once you have ideas and the user confirms
 
 ## Execute
 
 ### 1. Analyze Context
 
-> Goal: รวบรวม context ก่อนสร้างไอเดีย merge
+> Goal: Gather context before generating merge ideas
 
-1. ระบุ target จาก argument หรือ context ปัจจุบัน
-2. ถ้า target เป็น repo/โฟลเดอร → ทำ `/scan-codebase`
-3. ถ้า target เป็น skills → ทำ `/review-devin-global-harness` หรือ `/review-devin-global-harness`
-4. อ่านไฟล์/artifacts ของแต่ละ candidate เพื่อเปรียบเทียบ Goal, Scope, Execute
-5. ตรวจสอบ line counts, references, และ section overlap
+1. Identify the target from the argument or current context
+2. If the target is a repo/folder → run `/scan-codebase`
+3. If the target is skills → run `/review-devin-global-harness`
+4. Read the files/artifacts of each candidate to compare Goal, Scope, Execute
+5. Check line counts, references, and section overlap
 
 ### 2. Identify Merge Candidates
 
-> Goal: ระบุคู่หรือกลุ่มทีควร merge
+> Goal: Identify pairs or groups that should be merged
 
-1. ระบุสิ่งทีมี description, purpose, หรือ behavior ทับซ้อน
-2. ระบุสิ่งทีอยู่ในกลุ่มเดียวกันและถูกเรียกใช้คู่กันบ่อย
-3. ระบุสิ่งทีอ้างถึงกันอย่างหนาแน่น (references, imports, calls)
-4. ระบุสิ่งทีมี line count น้อยและเป็นส่วนย่อยของสิ่งทีใหญ่กว่า
-5. ระบุ spelling inconsistencies หรือชื่อทีควร rename พร้อม merge
+1. Identify things whose description, purpose, or behavior overlaps
+2. Identify things in the same group that are frequently invoked together
+3. Identify things that reference each other densely (references, imports, calls)
+4. Identify things with a small line count that are a subset of something larger
+5. Identify spelling inconsistencies or names that should be renamed along with a merge
 
 ### 3. Evaluate Merge Options
 
-> Goal: ประเมินวิธีทีเหมาะสม
+> Goal: Assess the appropriate approaches
 
-1. ประเมินแต่ละ opportunity ตามเงื่อนไข:
-   - `merge` — ถ้าซ้ำซ้อนหรือ changes together
-   - `rename` — ถ้าชื่อผิดหรือไม่สื่อความหมาย
-   - `keep` — ถ้า cohesion สูงและไม่มี benefit ชัดเจน
-2. ทำ `/dont-over-engineer` เพื่อกรองไอเดียทีซับซ้อนเกินไป
-3. พิจารณา target (ตัวรับ) และ source(s) (ตัวทีจะลบ/ยุบ)
-4. ตรวจสอบว่า merged output จะไม่เกิน 250 บรรทัด/จำกัดทีกำหนด
+1. Assess each opportunity against the conditions:
+   - `merge` — if redundant or changes together
+   - `rename` — if the name is wrong or unclear
+   - `keep` — if cohesion is high and there's no clear benefit
+2. Run `/dont-over-engineer` to filter out overly complex ideas
+3. Consider the target (the receiver) and the source(s) (what will be deleted/absorbed)
+4. Check that the merged output won't exceed 250 lines/the specified limit
 
 ### 4. Plan Merge Strategy
 
-> Goal: วางแผนการ merge สำหรับแต่ละคู่/กลุ่ม
+> Goal: Plan the merge for each pair/group
 
-1. ระบุ target และ source(s) ชัดเจน
-2. ระบุ sections, files, หรือ config ทีจะย้าย
-3. ระบุ references, imports, links ทีต้องอัปเดต
-4. วางแผนการลบ source หลัง merge เสร็จ
-5. ระบุลำดับการ merge ถ้ามีหลายคู่
+1. Specify the target and source(s) clearly
+2. Specify the sections, files, or config that will move
+3. Specify the references, imports, links that must be updated
+4. Plan the deletion of the source after the merge is done
+5. Specify the merge order if there are multiple pairs
 
 ### 5. Generate Ideas
 
-> Goal: สร้างไอเดีย merge แบบ actionable
+> Goal: Generate actionable merge ideas
 
-1. สร้างไอเดียสำหรับแต่ละ opportunity
-2. ใช้ continuous numbering ต่อจากไอเดียเดิมถ้ามี
-3. ระบุ scope: `quick win`, `short-term`, `long-term`
-4. ระบุ impact, effort และ action: `merge`, `rename`, `keep`
-5. ระบุ target, source(s), และสิ่งทีจะย้าย
+1. Generate an idea for each opportunity
+2. Use continuous numbering continuing from previous ideas if any
+3. Specify scope: `quick win`, `short-term`, `long-term`
+4. Specify impact, effort and action: `merge`, `rename`, `keep`
+5. Specify the target, source(s), and what will move
 
 ### 6. Report
 
-> Goal: รายงานไอเดียและ next action
+> Goal: Report ideas and the next action
 
-1. ทำ `/report table`
-2. คอลัมน์: No., Source(s), Target, Issue, Idea, Action, Scope, Impact, Effort
-3. จัดลำดับตาม impact/effort ratio
-4. ถ้ามี action ต่อเนื่องจาก idea ก่อนหน้า → ใช้ `/follow-your-suggestion`
-5. ทำ `/suggest-next-action`
-6. ถ้าพร้อม execute → แนะนำให้ทำ `/merge` หรือ `/rename`
+1. Run `/report table`
+2. Columns: No., Source(s), Target, Issue, Idea, Action, Scope, Impact, Effort
+3. Sort by impact/effort ratio
+4. If there is a follow-up action from the previous idea → use `/follow-your-suggestion`
+5. Run `/suggest-next-action`
+6. If ready to execute → recommend running `/merge` or `/rename`
 
 ## Rules
 
 ### 1. Context-Aware
 
-- ไม่จำกัดเฉพาะ files หรือ skills — รองรับทุก artifact ตาม context
-- ระบุประเภทของ target และ source ในแต่ละไอเดีย
-- ใช้ `/ask-me` ถ้า target ไม่ชัด
-- ใช้ `/follow-single-of-source` ถ้าจำเป็น
+- Don't limit to files or skills — support any artifact according to context
+- Specify the type of target and source in each idea
+- Use `/ask-me` if the target is unclear
+- Use `/follow-single-of-source` if necessary
 
 ### 2. Evidence-Based
 
-- ทุกไอเดียต้องมาจาก analysis จริง
-- ระบุ file path, skill name, section overlap, หรือ references ทีเกี่ยวข้อง
-- อ้างอิง line counts, duplicates, หรือ description overlap
+- Every idea must come from real analysis
+- Specify file paths, skill names, section overlap, or the relevant references
+- Cite line counts, duplicates, or description overlap
 
 ### 3. Actionable And Numbered
 
-- ใช้ continuous numbering
-- ระบุ action ชัดเจน: `merge`, `rename`, `keep`
-- ระบุ target, source(s), และเนื้อหาทีจะย้าย
+- Use continuous numbering
+- Specify the action clearly: `merge`, `rename`, `keep`
+- Specify the target, source(s), and the content that will move
 
 ### 4. No Over-Engineering
 
-- ไม่เสนอ merge ทีไม่มี benefit ชัดเจน
-- ไม่ merge เพื่อลดจำนวนอย่างเดียว
-- ทำ `/dont-over-engineer`
+- Don't propose a merge without a clear benefit
+- Don't merge just to reduce the count
+- Run `/dont-over-engineer`
 
 ### 5. Line Count Safety
 
-- ตรวจสอบว่า merged output จะไม่เกิน 250 บรรทัด
-- ถ้าเกิน → แนะนำ trim หรือ split ก่อน merge
-- ระบุ estimated line count หลัง merge
+- Check that the merged output won't exceed 250 lines
+- If it exceeds → recommend trimming or splitting before merging
+- Specify the estimated line count after the merge
 
 ## Expected Outcome
 
-- รายการไอเดีย merge แบบ continuous numbering
-- ทุกไอเดียมี source(s), target, action, scope, impact, effort
-- ตาราง `/report` พร้อม next action
-- ไอเดียพร้อม execute ด้วย `/merge`
-
+- A list of merge ideas with continuous numbering
+- Every idea has source(s), target, action, scope, impact, effort
+- A `/report` table with the next action
+- Ideas ready to execute with `/merge`

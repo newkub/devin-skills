@@ -46,7 +46,7 @@ Use when a project needs real SEO data + agent workflows without a paid suite �
 
 1. Keyword research: seed topic → volume/KD/intent + live SERPs → cluster and save keywords to the workspace
 2. Rank tracking: add tracked keywords/competitors; review position deltas over time
-3. Site audit: crawl target pages, surface technical issues with file-level evidence → route fixes through `/improve seo` / `/deep-review-codebase-then-fix`
+3. Site audit: crawl target pages, surface technical issues with file-level evidence → route fixes through `/improve seo` / `/deep-review-codebase seo then-fix`
 4. AI visibility: review AI mentions/citations/prompts for the brand
 5. Every agent run persists as an OpenSEO report — share the link instead of pasting tables
 

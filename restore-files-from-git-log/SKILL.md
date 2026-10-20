@@ -1,6 +1,6 @@
 ---
 name: restore-files-from-git-log
-description: กู้คืนไฟล์จาก git log โดยเริ่มจาก commit ล่าสุดถอยหลังจนกว่าจะพบ
+description: Restore files from git log, starting from the latest commit and walking backward until found
 argument-hint: "[scope]"
 related:
   - restore-files
@@ -13,84 +13,83 @@ related:
 
 ## Goal
 
-กู้คืนไฟล์ที่ถูกลบหรือแก้ไข โดยดูจาก commit ล่าสุดก่อน ถ้าไม่พบให้เดินกลับไปใน `git log` จนกว่าจะพบไฟล์ที่ต้องการ
+Restore a deleted or modified file by looking at the latest commit first; if not found, walk back through `git log` until the desired file is found
 
 ## Scope
 
-ใช้สำหรับ restore ไฟล์จาก commit ในประวัติ git โดยเริ่มจาก commit ล่าสุดและเดินกลับทีละ commit
-ไม่ใช้สำหรับ restore จาก stash หรือ reflog — ใช้ `/follow-tool-git` แทน
+Used to restore a file from a commit in the git history, starting from the latest commit and walking back one commit at a time
+Not used to restore from stash or reflog — use `/follow-tool-git` instead
 
-ดูเพิ่มเติม: /restore-files-from-my-dotfiles
+See also: /restore-files-from-my-dotfiles
 
 ## Execute
 
 ### 1. Identify Target Files
 
-> Goal: ระบุไฟล์ที่ต้องการ restore จาก context หรือถามผู้ใช้
+> Goal: Identify the file to restore from context or by asking the user
 
-1. ระบุไฟล์ที่ต้องการ restore จาก context
-2. ถ้า context ไม่ชัด → ถามผู้ใช้ด้วย `/ask-me`
-3. ถ้าผู้ใช้ไม่ตอบ → stop
+1. Identify the file to restore from context
+2. If the context is unclear → ask the user with `/ask-me`
+3. If the user does not answer → stop
 
 ### 2. Check Latest Commit
 
-> Goal: ดู commit ล่าสุดว่ามีไฟล์ที่ต้องการหรือไม่
+> Goal: See whether the latest commit contains the desired file
 
-1. รัน `git log -1 --name-status` เพื่อดูไฟล์ที่เปลี่ยนแปลงใน commit ล่าสุด
-2. รัน `git show HEAD:<file-path>` เพื่อตรวจสอบว่าไฟล์มีอยู่ใน commit ล่าสุดหรือไม่
-3. ถ้าพบไฟล์ → ไป Step 4 Restore Files
-4. ถ้าไม่พบ → ไป Step 3 Walk Back Through Log
+1. Run `git log -1 --name-status` to see the files changed in the latest commit
+2. Run `git show HEAD:<file-path>` to check whether the file exists in the latest commit
+3. If the file is found → go to Step 4 Restore Files
+4. If not found → go to Step 3 Walk Back Through Log
 
 ### 3. Walk Back Through Log
 
-> Goal: เดินกลับไปใน git log ทีละ commit จนกว่าจะพบไฟล์ที่ต้องการ
+> Goal: Walk back through git log one commit at a time until the desired file is found
 
-1. รัน `git log --oneline --all -- <file-path>` เพื่อดู commits ที่แก้ไฟล์เป้าหมาย
-2. ถ้าไม่พบ commit ใด → ไฟล์อาจไม่เคยอยู่ใน git → stop และ report
-3. ระบุ commit hash ล่าสุดที่มีไฟล์เป้าหมาย
-4. รัน `git show <commit-hash>:<file-path>` เพื่อยืนยันว่าไฟล์มีอยู่ใน commit นั้น
+1. Run `git log --oneline --all -- <file-path>` to see the commits that changed the target file
+2. If no commit is found → the file may never have been in git → stop and report
+3. Identify the latest commit hash that has the target file
+4. Run `git show <commit-hash>:<file-path>` to confirm that the file exists in that commit
 
 ### 4. Restore Files
 
-> Goal: กู้คืนไฟล์จาก commit ที่พบ
+> Goal: Recover the file from the commit that was found
 
-1. รัน `git restore --source=<commit-hash> <file-path>` เพื่อ restore ไฟล์จาก commit ที่พบ
-2. ถ้า restore หลายไฟล์ → รัน `git restore --source=<commit-hash> <file-1> <file-2> ...`
-3. ตรวจสอบด้วย `git status` ว่าไฟล์ถูก restore แล้ว
+1. Run `git restore --source=<commit-hash> <file-path>` to restore the file from the commit that was found
+2. If restoring multiple files → run `git restore --source=<commit-hash> <file-1> <file-2> ...`
+3. Verify with `git status` that the files have been restored
 
 ### 5. Verify Restoration
 
-> Goal: ตรวจสอบความถูกต้องของไฟล์ที่ restore
+> Goal: Check the correctness of the restored files
 
-1. รัน `git diff <file-path>` เพื่อดูสิ่งที่เปลี่ยนแปลงหลัง restore
-2. ตรวจสอบเนื้อหาไฟล์ว่าถูกต้อง
-3. รัน `git status` เพื่อยืนยันสถานะของ working directory
+1. Run `git diff <file-path>` to see what changed after the restore
+2. Check the file content for correctness
+3. Run `git status` to confirm the state of the working directory
 
 ## Rules
 
 ### Restore Strategy
 
-> Goal: restore ไฟล์อย่างปลอดภัย ไม่ทำลาย working directory
+> Goal: Restore files safely without destroying the working directory
 
-- ใช้ `git restore --source=<commit-hash>` เสมอ ไม่ใช้ `git checkout <commit-hash> -- <file>` เพราะ restore สามารถยกเลิกได้ง่ายกว่า
-- ถ้าไฟล์มีการเปลี่ยนแปลงใน working directory → ถามผู้ใช้ก่อน restore เพื่อยืนยัน
-- ไม่ใช้ `git reset --hard` เพราะเป็น destructive action
+- Always use `git restore --source=<commit-hash>`, do not use `git checkout <commit-hash> -- <file>` because restore is easier to undo
+- If the file has changes in the working directory → ask the user before restoring to confirm
+- Do not use `git reset --hard` because it is a destructive action
 
 ### Walk Back Strategy
 
-> Goal: เดินกลับใน git log อย่างมีประสิทธิภาพ
+> Goal: Walk back through git log efficiently
 
-- ใช้ `git log -- <file-path>` เพื่อกรองเฉพาะ commits ที่แก้ไฟล์เป้าหมาย ไม่ต้องเดินทุก commit
-- ถ้าไฟล์ถูกลบ → ใช้ `git log --diff-filter=D -- <file-path>` เพื่อหา commit ที่ลบไฟล์
-- ระบุ commit hash ที่ชัดเจนก่อน restore เสมอ
+- Use `git log -- <file-path>` to filter only the commits that changed the target file, no need to walk every commit
+- If the file was deleted → use `git log --diff-filter=D -- <file-path>` to find the commit that deleted the file
+- Always specify a clear commit hash before restoring
 
-- ใช้ /deep-debug ถ้าจำเป็น
-- ใช้ /check-git-logs ถ้าจำเป็น
+- Use /deep-debug if necessary
+- Use /check-git-logs if necessary
 
 ## Expected Outcome
 
-1. ไฟล์ที่ต้องการถูก restore กลับไปยัง working directory
-2. ไฟล์มาจาก commit ที่ใกล้ที่สุดที่มีไฟล์นั้น
-3. Working directory มีการเปลี่ยนแปลงที่สามารถตรวจสอบได้ด้วย `git status`
-4. ผู้ใช้สามารถ commit ไฟล์ที่ restore ได้ด้วย `/git-commit`
-
+1. The desired file is restored back to the working directory
+2. The file comes from the nearest commit that has that file
+3. The working directory has changes that can be verified with `git status`
+4. The user can commit the restored file with `/git-commit`

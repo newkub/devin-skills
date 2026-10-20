@@ -1,6 +1,6 @@
 ---
 name: restore-files-from-my-dotfiles
-description: กู้คืน dotfiles จาก git log ของ chezmoi repo แล้ว chezmoi apply
+description: Restore dotfiles from the git log of the chezmoi repo then chezmoi apply
 argument-hint: "[scope]"
 related:
   - restore-files
@@ -14,120 +14,119 @@ related:
 
 ## Goal
 
-กู้คืน dotfiles บนเครื่องจาก git log ของ chezmoi source repo แล้ว apply กลับไปยัง target path
+Restore dotfiles on the machine from the git log of the chezmoi source repo then apply them back to the target path
 
 ## Scope
 
-ใช้เมื่อ dotfiles บนเครื่องหายหรือเสียหาย และต้องการ restore จากประวัติของ dotfiles repo ทีจัดการด้วย chezmoi
+Used when dotfiles on the machine are lost or damaged and need to be restored from the history of a dotfiles repo managed with chezmoi
 
-ดูเพิ่มเติม: /restore-files-from-git-log, /follow-tool-git, /check-git-logs, /deep-debug, /git-commit
+See also: /restore-files-from-git-log, /follow-tool-git, /check-git-logs, /deep-debug, /git-commit
 
 ## Execute
 
 ### 1. Locate Dotfiles Repo
 
-> Goal: หา local chezmoi source repo
+> Goal: Find the local chezmoi source repo
 
-1. รัน `chezmoi source-path` เพื่อหา source directory
-2. ถ้าไม่มี chezmoi → ลอง path ทั่วไป:
+1. Run `chezmoi source-path` to find the source directory
+2. If chezmoi is not available → try the common paths:
    - Windows: `$env:USERPROFILE\.local\share\chezmoi`
    - macOS/Linux: `~/.local/share/chezmoi`
-3. ตรวจสอบว่าเป็น git repo ด้วย `git rev-parse --is-inside-work-tree`
-4. ถ้าไม่ใช่ git repo → stop และ report
+3. Check that it is a git repo with `git rev-parse --is-inside-work-tree`
+4. If it is not a git repo → stop and report
 
 ### 2. Identify Target Dotfile
 
-> Goal: ระบุ dotfile ทีต้องการ restore
+> Goal: Identify the dotfile to restore
 
-1. รับ target จาก argument (ชื่อไฟล์หรือ chezmoi target path)
-2. ถ้าไม่มี → ทำ `/ask-me` ให้ user ระบุ
-3. แปลง target เป็น chezmoi source path ด้วย `chezmoi source-path <target>`
-4. ถ้าไม่พบ source path → แจ้งว่า target ไม่ถูกจัดการโดย chezmoi
+1. Take the target from the argument (file name or chezmoi target path)
+2. If not provided → run `/ask-me` to have the user specify it
+3. Convert the target to a chezmoi source path with `chezmoi source-path <target>`
+4. If the source path is not found → report that the target is not managed by chezmoi
 
 ### 3. Check Git Log
 
-> Goal: ดูประวัติการเปลี่ยนแปลงของ target
+> Goal: See the change history of the target
 
-1. รัน `git log --oneline -- <source-path>` ใน dotfiles repo
-2. ถ้าไม่มีประวัติ → แจ้งว่าไฟล์ไม่เคยมีใน git
-3. รัน `git log --diff-filter=D --oneline -- <source-path>` หากต้องการหา commit ทีลบไฟล์
-4. แสดง 10 commit ล่าสุดพร้อม date และ message
+1. Run `git log --oneline -- <source-path>` in the dotfiles repo
+2. If there is no history → report that the file was never in git
+3. Run `git log --diff-filter=D --oneline -- <source-path>` if the commit that deleted the file needs to be found
+4. Show the 10 latest commits with date and message
 
 ### 4. Choose Commit
 
-> Goal: เลือก commit ทีจะ restore
+> Goal: Choose the commit to restore
 
-1. ถ้า user ระบุ commit hash → ใช้ hash นั้น
-2. ถ้า user ระบุ keyword/date → ค้นหา commit ที match
-3. ถ้าไม่ระบุ → ใช้ latest commit ทียังมีไฟล์
-4. ยืนยันกับ user ก่อน restore ด้วย `/ask-me` หรือ `/suggest-next-action`
+1. If the user specifies a commit hash → use that hash
+2. If the user specifies a keyword/date → search for a matching commit
+3. If not specified → use the latest commit that still has the file
+4. Confirm with the user before restoring with `/ask-me` or `/suggest-next-action`
 
 ### 5. Backup Current State
 
-> Goal: สำรองไฟล์ปัจจุบันก่อน overwrite
+> Goal: Back up the current file before overwriting
 
-1. หา target path บนเครื่องด้วย `chezmoi target-path <source-path>`
-2. สำรองด้วย `Copy-Item <target> <target>.<timestamp>.bak` หรือ `cp <target> <target>.<timestamp>.bak`
-3. บันทึก backup path
+1. Find the target path on the machine with `chezmoi target-path <source-path>`
+2. Back up with `Copy-Item <target> <target>.<timestamp>.bak` or `cp <target> <target>.<timestamp>.bak`
+3. Record the backup path
 
 ### 6. Restore Source
 
-> Goal: กู้คืน source file จาก commit
+> Goal: Recover the source file from the commit
 
-1. รัน `git restore --source=<commit> <source-path>` ใน dotfiles repo
-2. ตรวจสอบ `git diff` ว่า source เปลี่ยนไปตามต้องการ
-3. ถ้า restore หลายไฟล์ → ทำซ้ำต่อ file
+1. Run `git restore --source=<commit> <source-path>` in the dotfiles repo
+2. Check `git diff` that the source changed as desired
+3. If restoring multiple files → repeat per file
 
 ### 7. Apply Dotfile
 
-> Goal: apply กลับไปยังเครื่อง
+> Goal: Apply back to the machine
 
-1. รัน `chezmoi apply --dry-run <target>` เพื่อดูผลลัพธ์
-2. ถ้า user ยืนยัน → รัน `chezmoi apply <target>`
-3. ถ้าไม่มี chezmoi → คัดลอก source file ไปยัง target path ด้วย `Copy-Item`/`cp`
-4. ตรวจสอบว่า target path มีเนื้อหาที่ restore แล้ว
+1. Run `chezmoi apply --dry-run <target>` to see the result
+2. If the user confirms → run `chezmoi apply <target>`
+3. If chezmoi is not available → copy the source file to the target path with `Copy-Item`/`cp`
+4. Check that the target path has the restored content
 
 ### 8. Build Report
 
-> Goal: สรุปผล
+> Goal: Summarize the results
 
-1. ใช้ `/report` คอลัมน์:
+1. Use `/report` columns:
    - No.
    - Target
    - Source Path
    - Commit
    - Backup Path
    - Status
-2. ระบุสรุปจำนวน files ที restore
+2. Specify a summary of the number of files restored
 
 ## Rules
 
 ### 1. Safety
 
-- ถาม user ก่อน overwrite ทุกครั้ง
-- สำรองไฟล์ปัจจุบันก่อน apply
-- ไม่ใช้ `git reset --hard`
-- ใช้ `git restore --source=<commit>` เสมอ
+- Ask the user before every overwrite
+- Back up the current file before applying
+- Do not use `git reset --hard`
+- Always use `git restore --source=<commit>`
 
 ### 2. Scope
 
-- ใช้เฉพาะ dotfiles ที chezmoi จัดการ
-- ถ้า dotfiles repo ไม่ใช่ chezmoi → ใช้ `git restore` แล้วคัดลอกเอง
+- Use only with dotfiles managed by chezmoi
+- If the dotfiles repo is not chezmoi → use `git restore` then copy manually
 
 ### 3. Cross Platform
 
-- Windows: ใช้ `chezmoi` หรือ `Copy-Item`
-- macOS/Linux: ใช้ `chezmoi` หรือ `cp`
+- Windows: use `chezmoi` or `Copy-Item`
+- macOS/Linux: use `chezmoi` or `cp`
 
 ### 4. Verify
 
-- ตรวจสอบ target file หลัง apply
-- รัน `chezmoi diff <target>` ถ้า apply ไม่สมบูรณ์
+- Check the target file after applying
+- Run `chezmoi diff <target>` if the apply is incomplete
 
 ## Expected Outcome
 
-- Dotfile ถูก restore จาก git log ของ dotfiles repo
-- Target path บนเครื่องมีเนื้อหาตาม commit ทีเลือก
-- มี backup ของไฟล์เดิม
-- รายงานผล restore ครบถ้วน
-
+- The dotfile is restored from the git log of the dotfiles repo
+- The target path on the machine has the content of the chosen commit
+- There is a backup of the original file
+- A complete report of the restore result

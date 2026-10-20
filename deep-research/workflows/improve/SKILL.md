@@ -5,7 +5,6 @@ argument-hint: "[area-or-topic]"
 related:
   - deep-research
   - deep-review-codebase
-  - deep-review-codebase-then-fix
   - improve
   - optimize
   - report
@@ -13,7 +12,7 @@ related:
 
 ## Goal
 
-Research improvement opportunities for a given project/area — current best practices, modern alternatives, known issues/pitfalls, benchmarks — then hand the findings to the `/improve` thin entry (scope-map → review → fix) or `/deep-review-codebase-then-fix` after user confirm
+Research improvement opportunities for a given project/area — current best practices, modern alternatives, known issues/pitfalls, benchmarks — then hand the findings to the `/improve` thin entry (scope-map → review → fix) or `/deep-review-codebase then-fix` after user confirm
 
 ## Scope
 
@@ -50,7 +49,7 @@ Use when you want research-driven improvement — e.g. "is this stack still curr
 > Goal: Feed the findings into the improvement convention
 
 1. Produce a `/report` table of findings with sources
-2. Route per `improve/references/scope-map.md` — findings matching a scope → `/improve <scope>`; metric-driven → `/optimize <scope>` (`optimize/references/scope-map.md`); no match → `/deep-review-codebase` domain + `/deep-review-codebase-then-fix` after user confirm
+2. Route per `improve/references/scope-map.md` — findings matching a scope → `/improve <scope>`; metric-driven → `/optimize <scope>` (`optimize/references/scope-map.md`); no match → `/deep-review-codebase` domain + `then-fix` after user confirm
 3. If this is this repo (devin skills) → `/improve devin-global-skills`
 
 ## Rules

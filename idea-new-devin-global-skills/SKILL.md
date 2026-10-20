@@ -1,6 +1,6 @@
 ---
 name: idea-new-devin-global-skills
-description: สร้างไอเดีย devin global skills ใหม่หรือปรับปรุง refactor, merge, rename, extract
+description: Generate ideas for new devin global skills or improvements — refactor, merge, rename, extract
 argument-hint: "[scope]"
 related:
   - idea-use-skills-relations
@@ -19,107 +19,106 @@ related:
 
 ## Goal
 
-สร้างไอเดียสำหรับ devin global skills ใหม่หรือปรับปรุง ให้ครบถ้วน ไม่ซ้ำซ้อน และสอดคล้องกับ repo ปัจจุบัน
+Generate ideas for new or improved devin global skills, so they are complete, non-redundant, and consistent with the current repo
 
 ## Scope
 
-ใช้เมื่อต้องการหาไอเดียปรับปรุง skills repo โดยวิเคราะห์ duplicates, overlap, missing, outdated, structure และ global CLI conventions
+Use when you want to find ideas to improve the skills repo by analyzing duplicates, overlap, missing, outdated, structure, and global CLI conventions
 
 ## Execute
 
 ### 1. Analyze Current State
 
-> Goal: เข้าใจสถานะปัจจุบันของ skills repo
+> Goal: Understand the current state of the skills repo
 
-1. ทำ `/review-devin-global-harness` สำหรับ quality conventions
-2. ทำ `/review-devin-global-harness` เพื่อหา broken references
-3. ทำ `/scan-codebase` เพื่อหา duplicated logic หรือ overlapping skills
-4. ทำ `/report-file-structure` เพื่อดูโครงสร้างปัจจุบัน
-5. ทำ `/check-my-global-cli` เพื่อตรวจ CLI tools ที่ติดตั้งและหาไอเดีย skill ใหม่
-6. ทำ `/follow-devin-global-skills` เพื่อตรวจ conventions ของ global skills
+1. Run `/review-devin-global-harness` for quality conventions
+2. Run `/check-skills-structure` to find broken references and structure gaps
+3. Run `/scan-codebase` to find duplicated logic or overlapping skills
+4. Run `/report-file-structure` to see the current structure
+5. Run `/check-my-global-cli` to check installed CLI tools and find new skill ideas
+6. Run `/follow-devin-global-skills` to check the conventions of global skills
 
 ### 2. Identify Opportunities
 
-> Goal: หาจุดที่ควรปรับปรุง
+> Goal: Find points that should be improved
 
-1. หา skills ที่ชื่อคล้ายกันหรือทำงานซ้ำกัน
-2. หา skills ที่ reference ซ้ำกันหรือ circular
-3. หา skills ที่ frontmatter ไม่ครบหรือ description ยาวเกิน
-4. หา skills ที่ยัง force architecture เดิมแบบไม่ conditional
-5. หา skills ที่ควร extract เป็น references/templates
-6. ถ้ามี uncertainty เรื่อง impact → ใช้ `/follow-math-concepts`
+1. Find skills with similar names or that do the same work
+2. Find skills that reference each other redundantly or circularly
+3. Find skills with incomplete frontmatter or a description that's too long
+4. Find skills that still force the old architecture without being conditional
+5. Find skills that should be extracted into references/templates
+6. If there's uncertainty about impact → use `/follow-math-concepts`
 
 ### 3. Generate Ideas
 
-> Goal: สร้างรายการไอเดีย
+> Goal: Generate a list of ideas
 
-1. แยกแต่ละไอเดียตาม `/follow-single-responsibility`
-2. ใช้ `/report table` สำหรับรูปแบบ output คอลัมน์: `No.`, `Idea`, `Category`, `Impact`, `Effort`, `Scope`
-3. แบ่งหมวดหมู่:
+1. Separate each idea per `/follow-single-responsibility`
+2. Use `/report table` for the output format; columns: `No.`, `Idea`, `Category`, `Impact`, `Effort`, `Scope`
+3. Divide into categories:
    - Merge/Remove
    - Rename
    - Extract references
    - Add missing skills
    - Update conventions
-4. ระบุ references:
-   - `/<skill-name>` ที่เกี่ยวข้อง
-   - ไฟล์/โฟลเดอร์ paths
-   - URLs ถ้าจำเป็น
+4. Specify references:
+   - the related `/<skill-name>`
+   - file/folder paths
+   - URLs if necessary
 
 ### 4. Prioritize
 
-> Goal: เรียงลำดับไอเดีย
+> Goal: Rank the ideas
 
-1. ใช้ `/rethink` กับแต่ละไอเดีย ตอบ keep/revise/replace/defer
-2. ประเมิน impact กับ effort
-3. เรียงลำดับตาม foundation → high impact → low risk
-4. ถ้ามี trade-offs หลายตัว → ใช้ `/follow-math-concepts`
+1. Use `/rethink` on each idea and answer keep/revise/replace/defer
+2. Assess impact against effort
+3. Rank by foundation → high impact → low risk
+4. If there are many trade-offs → use `/follow-math-concepts`
 
 ### 5. Report
 
-> Goal: นำเสนอไอเดีย
+> Goal: Present the ideas
 
-1. ทำ `/report table` ด้วย numbered หลัก + bullet ย่อย
-2. แสดง `## Summary` ก่อน
-3. แสดง `## Refactor Ideas` ตามลำดับ priority
-4. ถ้ามี action ต่อเนื่องจาก idea ก่อนหน้า → ใช้ `/follow-your-suggestion`
-5. แสดง `## References` ที่เกี่ยวข้อง
-6. ท้ายด้วย `## Next Action` ชี้ไปยัง `/update-devin-global-skills` หรือ `/refactor`
+1. Run `/report table` with numbered main items + sub-bullets
+2. Show `## Summary` first
+3. Show `## Refactor Ideas` in priority order
+4. If there is a follow-up action from the previous idea → use `/follow-your-suggestion`
+5. Show the related `## References`
+6. End with `## Next Action` pointing to `/update-devin-global-skills` or `/refactor`
 
 ## Rules
 
 ### 1. Single Responsibility Per Idea
 
-- แต่ละไอเดียทำสิ่งเดียว
-- ถ้าพบ "และ" หลายตัว → แบ่งย่อย
-- ไม่รวม implement และ idea ในข้อเดียว
+- Each idea does one thing
+- If you find multiple "and"s → split it up
+- Don't combine implementation and idea in one item
 
 ### 2. Evidence Based
 
-- อ้างอิงถึง skills/files จริงเท่านั้น
-- ใช้ `/deep-research` ถ้าต้องหา best practices
-- ไม่สร้าง reference ที่ไม่มีอยู่
+- Only cite real skills/files
+- Use `/deep-research` if you need to find best practices
+- Don't create references that don't exist
 
 ### 3. Backward Compatibility
 
-- ไอเดีย rename หรือ merge ต้องคิดถึง references
-- ระบุ migration steps
-- ใช้ `/update-references` ถ้า implement
+- Rename or merge ideas must consider references
+- Specify migration steps
+- Use `/update-references` if you implement
 
 ### 4. Output Format
 
-- ใช้ numbered + bullet
-- ใส่ references: `/<skill-name>`, `references/<file>.md`, URLs
-- ไม่เกิน 250 บรรทัด
+- Use numbered + bullet
+- Include references: `/<skill-name>`, `references/<file>.md`, URLs
+- No more than 250 lines
 
-- ใช้ `/follow-math-concepts` ถ้าจำเป็น
-- ใช้ /deep-review-codebase ถ้าจำเป็น
+- Use `/follow-math-concepts` if necessary
+- Use /deep-review-codebase if necessary
 
 
 ## Expected Outcome
 
-- รายการไอเดียสำหรับ devin skills repo
-- แต่ละไอเดียมี single responsibility, priority, impact
-- มี references ครบถ้วน
-- พร้อมส่งต่อให้ `/refactor` หรือ `/update-devin-global-skills`
-
+- A list of ideas for the devin skills repo
+- Each idea has a single responsibility, priority, impact
+- References are complete
+- Ready to hand off to `/refactor` or `/update-devin-global-skills`

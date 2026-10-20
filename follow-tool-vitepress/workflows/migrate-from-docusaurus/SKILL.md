@@ -4,7 +4,7 @@ description: Migrate a docs site from Docusaurus to VitePress — content, front
 argument-hint: "[scope]"
 related:
   - follow-tool-vitepress
-  - follow-gitignore
+  - update-gitignore
   - run-docs
 ---
 
@@ -83,7 +83,7 @@ Use when a project has a Docusaurus site and wants to switch to VitePress — do
 - Use /use-astgrep if needed
 - Use link check with lychee or markdown-link-check if needed
 - Use /follow-tool-vitepress if needed
-- Use /follow-gitignore if needed
+- Use /update-gitignore if needed
 - Use /run-docs if needed
 
 ## Expected Outcome

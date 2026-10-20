@@ -1,7 +1,7 @@
 ---
 name: rename
-description: เปลี่ยนชื่อ identifier, file, directory หรือ skill รวม batch rename ตาม pattern พร้อมอัปเดต references
-argument-hint: "[old-name] [new-name] หรือ <pattern> <replacement> [path]"
+description: Rename identifiers, files, directories, or skills including batch rename by pattern with reference updates
+argument-hint: "[old-name] [new-name] or <pattern> <replacement> [path]"
 related:
   - update-references
   - check-long-files
@@ -15,47 +15,47 @@ related:
 
 ## Goal
 
-เปลี่ยนชื่อ identifier (variable, function, type, class, interface, enum) ใน code ด้วย ast-grep และอัปเดท references ทั้งหมดอย่างปลอดภัย
+Rename identifiers (variable, function, type, class, interface, enum) in code with ast-grep and update all references safely
 
 ## Scope
 
-Rename code identifiers ด้วย ast-grep, หรือ rename file/skill/directory พร้อม update context: `name`, `description`, `related`, `AGENTS.md`, `global_rules.md`, paths — รวม mass/batch file rename ตาม pattern (merged จาก `/batch-rename-files` เดิม)
+Rename code identifiers with ast-grep, or rename files/skills/directories with context updates: `name`, `description`, `related`, `AGENTS.md`, `global_rules.md`, paths — including mass/batch file rename by pattern (merged from the old `/batch-rename-files`)
 
 ## Execute
 
 ### 1. Identify Rename Target
 
-> Goal: ระบุ identifier ที่จะ rename และ scope ของการเปลี่ยนแปลง
+> Goal: Identify the identifier to rename and the scope of the change
 
-1. ระบุ identifier เดิมและชื่อใหม่ที่ต้องการ
-2. ระบุประเภท: variable, function, type, class, interface, enum, property
-3. ระบุ language: TypeScript, JavaScript, Rust, Python, etc.
-4. ตรวจสอบว่าชื่อใหม่ไม่ขัดแย้งกับ identifier ที่มีอยู่แล้ว
-5. ถ้าชื่อใหม่ซ้ำกับ identifier ที่มีอยู่ → stop และ report
+1. Identify the old identifier and the desired new name
+2. Identify the type: variable, function, type, class, interface, enum, property
+3. Identify the language: TypeScript, JavaScript, Rust, Python, etc.
+4. Check that the new name does not conflict with an existing identifier
+5. If the new name duplicates an existing identifier → stop and report
 
 ### 2. Search All References
 
-> Goal: ค้นหา references ทั้งหมดของ identifier เดิมก่อน rename
+> Goal: Find all references to the old identifier before renaming
 
-1. ใช้ `ast-grep run -p '$OLD_NAME' --lang <lang> <path>` เพื่อค้นหาทุก occurrence
-2. ใช้ `grep_search` สำหรับค้นหาใน config files, markdown, และ non-code files
-3. จำแนก references: definition, call site, type annotation, import/export
-4. บันทึกจำนวน references ที่พบเพื่อ verify หลัง rename
-5. ถ้าไม่พบ references → stop และ report
+1. Use `ast-grep run -p '$OLD_NAME' --lang <lang> <path>` to find every occurrence
+2. Use `grep_search` to search config files, markdown, and non-code files
+3. Classify references: definition, call site, type annotation, import/export
+4. Record the number of references found to verify after the rename
+5. If no references are found → stop and report
 
 ### 3. Rename With Ast-grep
 
-> Goal: ใช้ ast-grep สำหรับ rename identifier ทั้ง definition และ usage
+> Goal: Use ast-grep to rename the identifier in both definition and usage
 
-1. Batch rewrite หลายไฟล์ → ทำ `/use-astgrep rewrite` (dry-run + diff preview + confirm ในตัว) แทนรัน `--rewrite` ตรงๆ:
+1. Batch rewrite multiple files → run `/use-astgrep rewrite` (dry-run + diff preview + confirm built in) instead of running `--rewrite` directly:
    ```sh
    ast-grep run -p 'oldName' --rewrite 'newName' --lang ts <path>
    ```
-2. ใช้ interactive mode เพื่อ review ทุก change ก่อน apply — `-i`/`--interactive` หรือ flow ของ `/use-astgrep rewrite`:
+2. Use interactive mode to review every change before applying — `-i`/`--interactive` or the `/use-astgrep rewrite` flow:
    ```sh
    ast-grep run -p 'oldName' --rewrite 'newName' --lang ts -i <path>
    ```
-3. สำหรับ rename ที่ต้อง match เฉพาะประเภท (เช่น function เท่านั้น) ให้สร้าง YAML rule (apply ผ่าน `/use-astgrep rewrite` rule-file flow):
+3. For renames that must match only a specific type (e.g. functions only), create a YAML rule (apply via the `/use-astgrep rewrite` rule-file flow):
    ```yaml
    id: rename-function
    language: TypeScript
@@ -63,7 +63,7 @@ Rename code identifiers ด้วย ast-grep, หรือ rename file/skill/di
      pattern: oldName($$$ARGS)
    fix: newName($$$ARGS)
    ```
-4. สำหรับ rename ที่ต้อง match หลายรูปแบบพร้อมกัน ใช้ YAML doc separator (`---`) เพื่อ define หลาย rules ในไฟล์เดียว:
+4. For renames that must match several patterns at once, use the YAML doc separator (`---`) to define multiple rules in a single file:
    ```yaml
    id: rename-def
    language: TypeScript
@@ -77,68 +77,68 @@ Rename code identifiers ด้วย ast-grep, หรือ rename file/skill/di
      pattern: oldName($$$ARGS)
    fix: newName($$$ARGS)
    ```
-5. รัน `ast-grep scan --config <rule.yml> --update` เพื่อ apply ทุก rules
-6. ถ้า ast-grep ไม่ match บางกรณี → ใช้ `edit` หรือ `multi_edit` แก้ manually
+5. Run `ast-grep scan --config <rule.yml> --update` to apply all rules
+6. If ast-grep does not match some cases → use `edit` or `multi_edit` to fix manually
 
 ### 4. Update Non-Code References
 
-> Goal: อัปเดท references ในไฟล์ที่ ast-grep ไม่ครอบคลุม
+> Goal: Update references in files that ast-grep does not cover
 
-1. ทำ `/update-references` เพื่ออัปเดท references ใน config files, markdown, JSON, YAML
-2. ค้นหาด้วย `grep_search` อีกครั้งเพื่อยืนยันว่าไม่มีชื่อเดิมเหลือ
-3. อัปเดท documentation ที่อ้างอิง identifier เดิม
-4. อัปเดท test files ที่อ้างอิง identifier เดิม
-5. อัปเดท comments ที่อ้างอิง identifier เดิม
+1. Run `/update-references` to update references in config files, markdown, JSON, YAML
+2. Search again with `grep_search` to confirm that no old name remains
+3. Update documentation that references the old identifier
+4. Update test files that reference the old identifier
+5. Update comments that reference the old identifier
 
 ### 5. Validate Changes
 
-> Goal: ตรวจสอบว่า rename สมบูรณ์และไม่ทำลาย code
+> Goal: Check that the rename is complete and does not break code
 
-1. รัน `grep_search` ค้นหาชื่อเดิมอีกครั้ง → ต้องไม่พบ (ยกเว้นใน git history หรือ comments ที่ไม่เกี่ยวข้อง)
-2. รัน typecheck: `tsc --noEmit` หรือ `bun run typecheck`
-3. รัน lint: `biome lint` หรือ `bun run lint`
-4. รัน tests: `bun run test` หรือ `vitest run`
-5. ถ้า validation ไม่ผ่าน → ทำ `/resolve-errors` และ fix จนผ่าน (max 3 ครั้ง → stop/report)
+1. Run `grep_search` to search for the old name again → it must not be found (except in git history or unrelated comments)
+2. Run typecheck: `bun check` (Bun) or `tsc --noEmit`, or the `typecheck` script
+3. Run lint: `biome lint` or `bun run lint`
+4. Run tests: `bun run test` or `vitest run`
+5. If validation fails → run `/resolve-errors` and fix until it passes (max 3 attempts → stop/report)
 
 ### 6. Rename File Or Skill
 
-> Goal: เปลี่ยนชื่อไฟล์, directory, หรือ skill พร้อม update context
+> Goal: Rename a file, directory, or skill with context updates
 
-1. ถ้า rename skill → เปลี่ยนชื่อ directory ด้วย `git mv`
-2. อัปเดท `name` ใน frontmatter ให้ตรง directory name
-3. อัปเดท `description` ถ้าชื่อเปลี่ยนทำให้ความหมายเปลี่ยน
-4. อัปเดท `related` ถ้ามี skill ที่เปลี่ยนชื่อ
-5. อัปเดท body ทั้งหมด: `/<old-name>` → `/<new-name>`, paths, และ markdown links
-6. อัปเดท `AGENTS.md` และ `global_rules.md` ถ้ามี slash references
-7. ทำ `/update-references` ทั่ว repo
-8. ทำ `/review-devin-global-harness` ยืนยันครบ
+1. If renaming a skill → rename the directory with `git mv`
+2. Update `name` in the frontmatter to match the directory name
+3. Update `description` if the changed name changes the meaning
+4. Update `related` if any skill was renamed
+5. Update the whole body: `/<old-name>` → `/<new-name>`, paths, and markdown links
+6. Update `AGENTS.md` and `global_rules.md` if they contain slash references
+7. Run `/update-references` across the repo
+8. Run `/review-devin-global-harness` to confirm completeness
 
 ### 7. Batch Rename Files By Pattern
 
-> Goal: rename ไฟล์จำนวนมากตาม pattern — preview + collision handling + reference updates
+> Goal: Rename many files by pattern — preview + collision handling + reference updates
 
-1. รับ pattern + replacement — literal/regex (`-replace`), case transforms, numbering; ระบุ scope: recursive, include/exclude patterns
-2. Preview `old → new` mapping ทุกไฟล์ก่อนเสมอ (dry-run default); flag issues: collisions (หลายไฟล์ map ไปชื่อเดียวกัน), no-ops, case-only (Windows case-insensitive fs ต้อง two-phase via temp name), locked files (ตรวจ locked files ด้วย handle/Resource Monitor)
-3. Confirm แล้วค่อย rename — `git mv` ใน repo เพื่อรักษา history; collisions → two-phase (temp name ก่อน); error >0 ใน critical scope → หยุดทั้ง batch
-4. ทำ `/update-references` เสมอ — imports, requires, config, docs; ค้น filename เดิมด้วย `/search-files-patterns`; reference update ที่เป็น AST pattern → `/use-astgrep rewrite`
-5. Verify: build/tests/lint ผ่าน; `/report` สรุป renamed / skipped / failed + undo path (`git revert`)
+1. Take a pattern + replacement — literal/regex (`-replace`), case transforms, numbering; specify scope: recursive, include/exclude patterns
+2. Always preview the `old → new` mapping for every file first (dry-run default); flag issues: collisions (multiple files map to the same name), no-ops, case-only (Windows case-insensitive fs needs two-phase via temp name), locked files (check locked files with handle/Resource Monitor)
+3. Confirm before renaming — `git mv` in the repo to preserve history; collisions → two-phase (temp name first); error >0 in critical scope → stop the whole batch
+4. Always run `/update-references` — imports, requires, config, docs; search the old filename with `/search-files-patterns`; reference updates that are AST patterns → `/use-astgrep rewrite`
+5. Verify: build/tests/lint pass; `/report` summarizes renamed / skipped / failed + undo path (`git revert`)
 
 ## Rules
 
 ### 1. Ast-grep First
 
-ใช้ ast-grep เป็นเครื่องมือหลักสำหรับ rename:
+Use ast-grep as the primary tool for renaming:
 
-- ใช้ `--rewrite` flag สำหรับ ad-hoc rename แบบเร็ว
-- ใช้ YAML rule กับ `fix` field สำหรับ rename ที่ซับซ้อนหรือต้อง match เฉพาะประเภท
-- ใช้ `--interactive` flag เมื่อต้อง review ทุก change ก่อน apply
-- ใช้ meta-variables (`$OLD`, `$$$ARGS`) เพื่อ capture และ replay ใน fix
-- ใช้ `transform` สำหรับ case conversion (เช่น camelCase → PascalCase)
-- อ้างอิง `/use-astgrep` สำหรับการใช้งาน ast-grep โดยละเอียด
+- Use the `--rewrite` flag for quick ad-hoc renames
+- Use a YAML rule with the `fix` field for complex renames or ones that must match only a specific type
+- Use the `--interactive` flag when every change must be reviewed before applying
+- Use meta-variables (`$OLD`, `$$$ARGS`) to capture and replay in the fix
+- Use `transform` for case conversion (e.g. camelCase → PascalCase)
+- Refer to `/use-astgrep` for detailed ast-grep usage
 
 ### 2. Match All Occurrence Types
 
-Rename ต้องครอบคลุมทุกรูปแบบการใช้งาน:
+A rename must cover every usage pattern:
 
 - Function: definition, call site, type reference, import/export
 - Variable: declaration, usage, destructuring, reassignment
@@ -149,43 +149,43 @@ Rename ต้องครอบคลุมทุกรูปแบบการ�
 
 ### 3. Safety And Scope Control
 
-ป้องกันการ rename ผิดตัว:
+Prevent renaming the wrong thing:
 
-- ใช้ `kind: identifier` ใน rule เพื่อจำกัดเฉพาะ identifier nodes
-- ใช้ `constraints` เพื่อกรองเฉพาะ identifier ที่ต้องการ
-- ใช้ `files` และ `ignores` ใน rule เพื่อจำกัด scope
-- ตรวจสอบว่าชื่อใหม่ไม่ซ้ำกับ identifier ที่มีอยู่ก่อน rename
-- ใช้ `--interactive` เมื่อไม่แน่ใจว่า match ถูกต้องทุกตัว
+- Use `kind: identifier` in the rule to restrict to identifier nodes only
+- Use `constraints` to filter only the identifiers wanted
+- Use `files` and `ignores` in the rule to limit the scope
+- Check that the new name does not duplicate an existing identifier before renaming
+- Use `--interactive` when unsure whether every match is correct
 
 ### 4. YAML Rule For Complex Rename
 
-ใช้ YAML rule เมื่อ ad-hoc `--rewrite` ไม่เพียงพอ:
+Use a YAML rule when ad-hoc `--rewrite` is not enough:
 
-- ใช้ YAML doc separator (`---`) เพื่อ define หลาย rules ในไฟล์เดียว
-- แยก rule สำหรับ definition และ call site อย่างชัดเจน
-- ใช้ `transform` สำหรับ case conversion หรือ string manipulation
-- ใช้ `rewriters` สำหรับ nested transformation
-- เก็บ rule ไว้ใน `rules/` หา้งต้องการ reuse
+- Use the YAML doc separator (`---`) to define multiple rules in a single file
+- Separate rules for definition and call site clearly
+- Use `transform` for case conversion or string manipulation
+- Use `rewriters` for nested transformation
+- Keep rules in `rules/` if they need to be reused
 
 ### 5. Batch File Rename
 
-- Preview `old → new` mapping ครบก่อน execute — ไม่ rename เองโดยไม่ confirm; collisions/no-ops ต้อง resolve ก่อน
-- ใช้ `git mv` ใน repo — history ต้องไม่หาย; case-only rename บน Windows ต้อง two-phase via temp
-- `/update-references` บังคับทุกครั้งหลัง mass rename — verify ไม่มีชื่อเดิมเหลือก่อนจบ
+- Preview the complete `old → new` mapping before executing — do not rename without confirming; collisions/no-ops must be resolved first
+- Use `git mv` in the repo — history must not be lost; case-only rename on Windows must be two-phase via temp
+- `/update-references` is mandatory every time after a mass rename — verify no old name remains before finishing
 
 ### 6. Validation Checklist
 
-ตรวจสอบหลัง rename ทุกครั้ง:
+Verify after every rename:
 
-- ค้นหาชื่อเดิมด้วย `grep_search` → ต้องไม่พบใน code files
-- Typecheck ผ่าน
-- Lint ผ่าน
-- Tests ผ่าน
-- จำนวน references ใหม่ตรงกับจำนวน references เดิมที่บันทึกไว้
+- Search for the old name with `grep_search` → it must not be found in code files
+- Typecheck passes
+- Lint passes
+- Tests pass
+- The number of new references matches the number of old references recorded
 
 ## Expected Outcome
 
-- identifier ถูก rename สมบูรณ์ในทุก occurrence
-- ไม่มี broken references ใน code, config, และ docs
-- Typecheck, lint, และ tests ผ่าน
-- ประวัติการ rename สามารถ track ผ่าน git diff
+- The identifier is renamed completely across every occurrence
+- No broken references in code, config, and docs
+- Typecheck, lint, and tests pass
+- The rename history can be tracked via git diff

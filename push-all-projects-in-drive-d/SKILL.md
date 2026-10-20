@@ -1,6 +1,6 @@
 ---
 name: push-all-projects-in-drive-d
-description: push unpushed commits ทุก git project ใน drive D ผ่าน check-unpush + git-push ต่อ repo
+description: Push unpushed commits in every git project on drive D via check-unpush + git-push per repo
 argument-hint: "[filter]"
 allowed-tools:
   - exec
@@ -21,104 +21,104 @@ related:
 
 ## Goal
 
-push commits ที่ยังไม่ขึ้น remote ของทุก git project ใน `D:\` อย่างปลอดภัย — scan ด้วย `/check-unpush` ก่อน แล้ว push ต่อ repo/branch ผ่าน `/git-push` โดยไม่ rewrite history
+Safely push the commits that are not yet on the remote for every git project in `D:\` — scan with `/check-unpush` first, then push per repo/branch via `/git-push` without rewriting history
 
 ## Scope
 
-ใช้เมื่อต้องการ push งานที่ commit แล้วทุก repo ใน `D:\` ในครั้งเดียว รองรับ `filter` ตามชื่อ/keyword — ไม่รวม commit (ใช้ `/commit-all-projects-in-drive-d` ก่อนถ้ายัง dirty)
+Use when you want to push already-committed work for every repo in `D:\` at once. Supports a `filter` by name/keyword — does not include committing (use `/commit-all-projects-in-drive-d` first if still dirty)
 
 ## Execute
 
 ### 1. List Target Projects
 
-> Goal: ระบุ project ที่จะ push
+> Goal: Identify the projects to push
 
-1. ถ้า user ระบุ `filter` → ทำ `/search-project-in-drive-d <filter>` เพื่อกรอง project
-2. ถ้าไม่ระบุ → ทำ `/list-projects-git-in-drive-d` เพื่อรายการทั้งหมด
-3. ตรวจสอบว่าได้รายการอย่างน้อย 1 project ถ้าไม่มี → stop และ report
+1. If the user specifies a `filter` → run `/search-project-in-drive-d <filter>` to filter projects
+2. If not specified → run `/list-projects-git-in-drive-d` for the full list
+3. Check that the list has at least 1 project; if none → stop and report
 
 ### 2. Check Unpush Per Project
 
-> Goal: เหลือเฉพาะ repos/branches ที่มี commits ค้าง push
+> Goal: Keep only the repos/branches with commits waiting to be pushed
 
-1. ทำ `/check-unpush` กับทุก project ใน list — `git status -sb`, `git log '@{u}..HEAD' --oneline`, `for-each-ref` upstream tracking
-2. ข้าม repo ที่ `clean` — ไม่มี ahead commits
-3. Flag repos ที่ `no-remote`, `unreachable`, `gone` upstream หรือ `no-upstream` branches — แยกไว้ report
-4. Flag repos ที่ behind remote ด้วย — push จะถูก reject ต้อง pull ก่อน
-5. แสดงรายการ repos/branches ที่จะ push พร้อม ahead counts
+1. Run `/check-unpush` on every project in the list — `git status -sb`, `git log '@{u}..HEAD' --oneline`, `for-each-ref` upstream tracking
+2. Skip repos that are `clean` — no ahead commits
+3. Flag repos that are `no-remote`, `unreachable`, have a `gone` upstream, or `no-upstream` branches — set aside for the report
+4. Also flag repos that are behind the remote — the push will be rejected, so a pull is needed first
+5. Show the list of repos/branches to push with ahead counts
 
 ### 3. Confirm Push Plan
 
-> Goal: user เลือก scope ก่อน push
+> Goal: The user chooses the scope before pushing
 
-1. ถาม user ด้วย `/ask-me`:
-   - `current` — push เฉพาะ branch ปัจจุบันต่อ repo (default)
-   - `all-branches` — push ทุก local branch ที่ ahead
-   - `select` — user เลือก repos
-   - `dry-run` — แสดง push plan โดยไม่ push
-2. ถามว่า `no-upstream` branches จะ `git push -u origin <branch>` เลยหรือ skip
-3. ถ้า user ไม่ตอบ → stop และ report — ห้าม push โดยไม่ confirm
+1. Ask the user with `/ask-me`:
+   - `current` — push only the current branch per repo (default)
+   - `all-branches` — push every local branch that is ahead
+   - `select` — the user selects repos
+   - `dry-run` — show the push plan without pushing
+2. Ask whether `no-upstream` branches should be `git push -u origin <branch>` directly or skipped
+3. If the user does not answer → stop and report — never push without confirmation
 
 ### 4. Push Each Project
 
-> Goal: push ครบทุก repo/branch ที่เลือก
+> Goal: Push every selected repo/branch
 
-1. วนลูป sequential ตาม list
-2. ทำ `/git-push` ต่อ repo/branch — `git push` ปกติเท่านั้น
-3. `no-upstream` branches ที่ user อนุญาต → `git push -u origin <branch>`
-4. repos ที่ behind → ข้ามและ report ว่าต้อง `git pull` ก่อน — ห้าม force push
-5. ถ้า unpushed commits รก/เละ → แนะนำ `/refactor-commit` แทนการ push และข้าม repo นั้น
-6. ถ้ามากกว่า 5 repos ที่ independent → อาจใช้ `/use-subagents` แบ่งต่อ repo แล้วรวม reports
+1. Loop sequentially through the list
+2. Run `/git-push` per repo/branch — normal `git push` only
+3. For `no-upstream` branches the user allows → `git push -u origin <branch>`
+4. For repos that are behind → skip and report that `git pull` is needed first — never force push
+5. If the unpushed commits are messy → recommend `/refactor-commit` instead of pushing, and skip that repo
+6. If there are more than 5 independent repos → you may use `/use-subagents` to split per repo, then merge the reports
 
 ### 5. Verify
 
-> Goal: ยืนยันว่า commits ขึ้น remote ครบ
+> Goal: Confirm that the commits are all on the remote
 
-1. รัน `/check-unpush` ซ้ำกับ repos ที่ push แล้ว
-2. repos ที่ยัง ahead → ระบุสาเหตุ (rejected, unreachable, skipped)
+1. Re-run `/check-unpush` on the repos that were pushed
+2. For repos still ahead → state the cause (rejected, unreachable, skipped)
 
 ### 6. Report Summary
 
-> Goal: สรุปผลการ push
+> Goal: Summarize the push results
 
-1. ใช้ `/report` คอลัมน์: `No.`, `Project`, `Path`, `Branch`, `Pushed`, `Status`
+1. Use `/report` with columns: `No.`, `Project`, `Path`, `Branch`, `Pushed`, `Status`
 2. Status: `pushed`, `clean`, `skipped`, `error`, `no-remote`, `behind`, `flagged`
-3. ระบุ count แต่ละประเภท
-4. ทำ `/suggest-next-action`
+3. State the count of each type
+4. Run `/suggest-next-action`
 
 ## Rules
 
 ### 1. Drive D Scope Only
 
-- ทำงานเฉพาะ paths ที่ขึ้นต้นด้วย `D:\` หรือ `/mnt/d` (WSL)
-- ไม่แตะ drives อื่นโดยไม่ได้รับอนุญาต
-- ตรวจสอบ drive letter ก่อน execute ทุกครั้ง
+- Work only on paths starting with `D:\` or `/mnt/d` (WSL)
+- Do not touch other drives without permission
+- Check the drive letter before every execution
 
 ### 2. Confirm Before Push
 
-- ต้องผ่าน `/ask-me` confirmation ก่อน push เสมอ — dry run แสดง plan ก่อน
-- ห้าม `git push --force`, `--force-with-lease` หรือ rewrite pushed history โดยเด็ดขาด
-- ห้าม push repo ที่ behind remote — report ให้ pull ก่อน
+- Always pass an `/ask-me` confirmation before pushing — dry run shows the plan first
+- Never `git push --force`, `--force-with-lease`, or rewrite pushed history under any circumstances
+- Never push a repo that is behind the remote — report that a pull is needed first
 
 ### 3. Network Aware
 
-- ถ้า remote unreachable → flag `unreachable` ข้าม repo นั้น ไม่ retry loop
-- ใช้ timeout สั้นสำหรับ remote checks — offline → report จาก local tracking info
+- If the remote is unreachable → flag `unreachable`, skip that repo, do not retry-loop
+- Use a short timeout for remote checks — if offline → report from local tracking info
 
 ### 4. No Commit
 
-- skill นี้ push เท่านั้น — ไม่ commit, ไม่แก้ working tree
-- ถ้า repo ยัง dirty → แนะนำ `/commit-all-projects-in-drive-d` ก่อน
+- This skill only pushes — no committing, no modifying the working tree
+- If a repo is still dirty → recommend `/commit-all-projects-in-drive-d` first
 
 ### 5. Idempotency
 
-- รันซ้ำแล้วไม่ push ซ้ำ — repo/branch ที่ up-to-date ถูก skip เสมอ
+- Re-running does not push again — up-to-date repos/branches are always skipped
 
-- ใช้ /check-uncommit ถ้าจำเป็น
-- ใช้ /refactor-commit ถ้าจำเป็น
+- Use /check-uncommit if needed
+- Use /refactor-commit if needed
 
 ## Expected Outcome
 
-- ทุก repo ที่ ahead ใน `D:\` ถูก push ขึ้น remote (หรือ skip พร้อมเหตุผล)
-- ไม่มี force push หรือ history rewrite เกิดขึ้น
-- รายงานสรุป status ทุก repo/branch พร้อม repos ที่ต้อง pull หรือมีปัญหา remote
+- Every repo that is ahead in `D:\` is pushed to the remote (or skipped with a reason)
+- No force push or history rewrite occurs
+- A summary report of the status of every repo/branch, along with repos needing a pull or having remote problems

@@ -1,6 +1,6 @@
 ---
 name: resolve-github-issue-by-me
-description: รวบรวม issues ที่ฉันสร้าง → implement ทีละ issue → comment สรุปและปิด อย่างถูกต้อง
+description: Collect issues I created → implement each issue → comment a summary and close correctly
 argument-hint: "[issue-or-repo-or-filter]"
 related:
   - implement-to-production
@@ -16,114 +16,114 @@ related:
 
 ## Goal
 
-รวบรวม GitHub issues ทั้งหมดที่สร้างโดยฉัน (`@me`) แล้ว implement ทีละ issue ผ่าน `/implement-to-production` จนครบ จากนั้น comment สรุปผลและปิดแต่ละ issue ด้วย evidence ที่ถูกต้อง
+Collect all GitHub issues created by me (`@me`) then implement each issue via `/implement-to-production` until complete, then comment the result and close each issue with correct evidence
 
 ## Scope
 
-- จัดการเฉพาะ open issues ที่ authenticated user เป็น author (`gh issue list --author @me`)
-- ถ้าระบุ issue number → resolve เฉพาะ issue นั้น (verify implementation แล้ว comment + close)
-- implement แต่ละ issue ด้วย `/implement-to-production` ตามลำดับ priority
-- ไม่แตะ issues ของผู้อื่น และไม่ implement เกิน scope ของแต่ละ issue
-- ถ้า issue เดียวต้องการ plan ก่อน → ใช้ `/create-plan-in-dot-devin` สำหรับ issue เดี่ยว
-- ถ้า issue เชื่อมกับ PR → ใช้ `/resolve-github-pr` ให้ merge ปิด issue อัตโนมัติ
+- Handle only open issues where the authenticated user is the author (`gh issue list --author @me`)
+- If an issue number is specified → resolve only that issue (verify the implementation then comment + close)
+- Implement each issue with `/implement-to-production` in priority order
+- Do not touch others' issues and do not implement beyond the scope of each issue
+- If a single issue needs a plan first → use `/create-plan-in-dot-devin` for the single issue
+- If an issue is linked to a PR → use `/resolve-github-pr` so the merge closes the issue automatically
 
 ## Execute
 
 ### 1. Verify Repository And Auth
 
-> Goal: ยืนยัน repo และ identity
+> Goal: Confirm the repo and identity
 
-1. รัน `gh auth status` และ `gh repo view`
-2. ถ้าอยู่นอก repo ใช้ `--repo owner/repo` ทุกคำสั่ง
-3. รับ `<issue-or-repo-or-filter>` จาก argument ถ้ามี
-4. ถ้าเข้าถึง repo ไม่ได้ → stop และ report
+1. Run `gh auth status` and `gh repo view`
+2. If outside the repo use `--repo owner/repo` for every command
+3. Receive `<issue-or-repo-or-filter>` from the argument if present
+4. If the repo cannot be accessed → stop and report
 
 ### 2. List My Open Issues
 
-> Goal: รวบรวม issues ที่ฉันสร้าง
+> Goal: Collect the issues I created
 
-1. รัน `gh issue list --author @me --state open --limit 50 --json number,title,labels,createdAt` หรือใช้ `/list-github-issue`
-2. ถ้าระบุ issue number → ใช้ `gh issue view <issue>` ตรวจสอบว่า author เป็นฉัน
-3. จัดลำดับตาม labels/priority ถ้ามี มิเช่นนั้นเรียงตาม createdAt เก่า → ใหม่
-4. แสดงรายการ issues ให้ user ดูก่อน implement
-5. ถ้าไม่มี open issues → report และจบ
-6. ถ้า issues มี dependencies กัน → เรียงลำดับให้ issue ที่ถูก block ทำทีหลัง
+1. Run `gh issue list --author @me --state open --limit 50 --json number,title,labels,createdAt` or use `/list-github-issue`
+2. If an issue number is specified → use `gh issue view <issue>` to check that the author is me
+3. Sort by labels/priority if present, otherwise by createdAt old → new
+4. Show the list of issues to the user before implementing
+5. If there are no open issues → report and finish
+6. If issues have dependencies on each other → order so that blocked issues are done later
 
 ### 3. Confirm Scope
 
-> Goal: ยืนยันกับ user ก่อน implement หลาย issues
+> Goal: Confirm with the user before implementing multiple issues
 
-1. สรุปจำนวน issues และลำดับที่จะทำ
-2. ใช้ `/ask-me` ให้ user เลือก: ทำทั้งหมด, เลือกบาง issue, หรือยกเลิก
-3. บันทึกรายการ issue ที่ user อนุมัติเป็น queue
+1. Summarize the number of issues and the order to be done
+2. Use `/ask-me` to let the user choose: do all, select some issues, or cancel
+3. Record the list of issues the user approved as the queue
 
 ### 4. Implement Each Issue
 
-> Goal: ทำ `/implement-to-production` ทีละ issue ตาม queue
+> Goal: Run `/implement-to-production` for each issue in the queue
 
-1. อ่าน issue ด้วย `gh issue view <issue> --comments` เพื่อดู acceptance criteria และ context
-2. สร้าง branch ตาม project conventions ถ้า issue ต้องการ code changes
-3. ทำ `/implement-to-production` โดยใช้ issue body และ comments เป็น requirements
-4. ทำ `/run-verify` หลัง implement แต่ละ issue — ถ้าไม่ผ่านให้แก้ก่อนไป issue ถัดไป
-5. บันทึก commits และ PR (ถ้ามี) ที่เชื่อมกับ issue
+1. Read the issue with `gh issue view <issue> --comments` to see the acceptance criteria and context
+2. Create a branch per project conventions if the issue requires code changes
+3. Run `/implement-to-production` using the issue body and comments as requirements
+4. Run `/run-verify` after implementing each issue — if it does not pass, fix before moving to the next issue
+5. Record the commits and PR (if any) linked to the issue
 
 ### 5. Resolve Each Issue
 
-> Goal: comment สรุปและปิด issue หลัง implement เสร็จ
+> Goal: Comment a summary and close the issue after implementation is complete
 
-1. ตรวจว่า acceptance criteria ครบตาม commits/PRs ที่เชื่อมโยง — ถ้ามี PR ยังไม่ merge → ทำ `/resolve-github-pr` ก่อน
-2. รัน `gh issue comment <issue> --body "<summary>"` — สรุปสิ่งที่ implement พร้อม evidence (commit hash, PR number, verification results)
-3. รัน `gh issue close <issue> --reason completed` สำหรับ issue ที่ implement ครบ
-4. รัน `gh issue close <issue> --reason "not planned"` เฉพาะเมื่อ user ยืนยันว่าไม่ทำแล้ว
-5. ถ้า PR มี `Closes #<issue>` อยู่แล้ว → ตรวจว่า GitHub ปิดอัตโนมัติหลัง merge
-6. ถ้า issue ยังไม่เสร็จสมบูรณ์ → comment ความคืบหน้าแทนการปิด และเก็บไว้ใน queue
+1. Check that the acceptance criteria are fully met per the linked commits/PRs — if there is a PR not yet merged → run `/resolve-github-pr` first
+2. Run `gh issue comment <issue> --body "<summary>"` — summarize what was implemented with evidence (commit hash, PR number, verification results)
+3. Run `gh issue close <issue> --reason completed` for issues fully implemented
+4. Run `gh issue close <issue> --reason "not planned"` only when the user confirms it will not be done
+5. If the PR already has `Closes #<issue>` → check that GitHub closes it automatically after merge
+6. If the issue is not yet fully complete → comment the progress instead of closing and keep it in the queue
 
 ### 6. Report Summary
 
-> Goal: รายงานผลรวมทั้งหมด
+> Goal: Report the overall results
 
-1. สรุปจำนวน issues: implemented, resolved, skipped, failed พร้อม URL
-2. ระบุ issues ที่ค้างพร้อมสาเหตุ
-3. แนะนำ next action ถ้ามี issues เหลือ
+1. Summarize the number of issues: implemented, resolved, skipped, failed along with URLs
+2. Identify the remaining issues with reasons
+3. Suggest the next action if issues remain
 
 ### Subagents
 
-> Goal: parallelize implementation เมื่อ issues independent กัน
+> Goal: parallelize implementation when issues are independent
 
-- ใช้ profile `issue-implementer` (`## Merged Details → issue-implementer`) เมื่อ queue มีหลาย issues ที่ไม่มี dependencies กันและ user อนุมัติ parallel — spawn ทีละ issue ผ่าน `/use-subagents` โดยแต่ละ agent แยก branch ของตัวเอง แล้ว parent comment+close ทีละ issue หลัง merge
-- ถ้า issues มี dependencies กัน → ทำ sequential ตาม `### 3. Sequential Discipline` ไม่ spawn parallel
+- Use the profile `issue-implementer` (`## Merged Details → issue-implementer`) when the queue has many issues with no dependencies on each other and the user approves parallel — spawn one per issue via `/use-subagents`, with each agent on its own branch, then the parent comments+closes each issue after merge
+- If issues have dependencies on each other → do it sequentially per `### 3. Sequential Discipline`, do not spawn parallel
 
 ## Rules
 
 ### 1. My Issues Only
 
-- ประมวลผลเฉพาะ issues ที่ `--author @me` เท่านั้น
-- ไม่ implement, ปิด หรือ comment ใน issues ของผู้อื่นโดยไม่ได้รับอนุญาต
-- ตรวจสอบ author ก่อนทุก issue
+- Process only issues with `--author @me`
+- Do not implement, close, or comment on others' issues without permission
+- Verify the author before every issue
 
 ### 2. Confirm Before Batch
 
-- ต้องให้ user confirm รายการ issues ก่อน implement หลายรายการ
-- ไม่ implement โดยไม่แสดง queue ให้ user เห็นก่อน
-- user สามารถเลือก subset หรือยกเลิกได้
+- The user must confirm the list of issues before implementing multiple
+- Do not implement without showing the queue to the user first
+- The user can select a subset or cancel
 
 ### 3. Sequential Discipline
 
-- ทำทีละ issue ให้เสร็จและ verify ผ่านก่อนไป issue ถัดไป
-- ถ้า issue ไหน fail → หยุด report และถาม user ว่าจะข้ามหรือแก้ต่อ
-- แต่ละ issue แยก branch/commits ตาม project conventions
+- Do one issue at a time to completion and verify it passes before moving to the next issue
+- If any issue fails → stop, report, and ask the user whether to skip or continue fixing
+- Each issue gets its own branch/commits per project conventions
 
 ### 4. Evidence Before Close
 
-- ทุก issue ที่ implement เสร็จต้อง comment สรุปผลก่อนปิด
-- ปิด issue เฉพาะเมื่อมี evidence: merged PR, commits หรือ verification ผ่าน
-- ถ้า `/implement-to-production` fail กลางคัน → ไม่ resolve issue นั้น
-- `gh issue delete` เป็น destructive ต้องถาม user ก่อนเสมอ แนะนำใช้ `close` แทน
+- Every implemented issue must have a summary comment before closing
+- Close an issue only when there is evidence: merged PR, commits, or verification passing
+- If `/implement-to-production` fails midway → do not resolve that issue
+- `gh issue delete` is destructive and must always ask the user first; suggest using `close` instead
 
 ### 5. Scope Per Issue
 
-- implement เฉพาะสิ่งที่ issue ระบุ ไม่ขยาย scope
-- ถ้าพบงานเพิ่มเติม → สร้าง issue ใหม่ผ่าน `/create-github-issue` แทนการทำเกิน scope
+- Implement only what the issue specifies, do not expand the scope
+- If extra work is found → create a new issue via `/create-github-issue` instead of doing beyond the scope
 
 ## Merged Details
 
@@ -131,59 +131,59 @@ related:
 
 ##### Role
 
-Subagent สำหรับ implement GitHub issue เดียวแบบครบวงจร — อ่าน issue และ comments, วาง plan, implement, verify จนได้ PR-ready changes — ใช้เมื่อ queue มีหลาย issues ที่ independent กันและ user อนุมัติ parallel implementation
+A subagent for implementing a single GitHub issue end to end — read the issue and comments, lay out a plan, implement, verify until you have PR-ready changes — used when the queue has many independent issues and the user approves parallel implementation
 
 ##### Inputs
 
-- `issue`: issue number หรือ URL เช่น `#123`
-- `repo`: `owner/repo` หรือใช้ current repo
-- `branch-convention`: naming pattern ของ project เช่น `feat/issue-123-<slug>`
-- `verify-commands`: commands สำหรับ verify เช่น `bun run test`, `bun run lint`
+- `issue`: issue number or URL such as `#123`
+- `repo`: `owner/repo` or use the current repo
+- `branch-convention`: the project's naming pattern such as `feat/issue-123-<slug>`
+- `verify-commands`: commands for verification such as `bun run test`, `bun run lint`
 
 ##### Tools
 
 - `exec` — `gh issue view <n> --comments`, `git checkout -b`, `git add/commit`, verify commands
-- `read`, `grep`, `find_file_by_name` — อ่าน code ที่เกี่ยว
+- `read`, `grep`, `find_file_by_name` — read the related code
 - `edit`, `write` — implement changes
 
 ##### Execute
 
-1. อ่าน issue ด้วย `gh issue view <issue> --comments` — ดึง acceptance criteria และ context จาก comments
-2. ยืนยันว่า issue เป็น `--author @me` ตาม scope ของ parent — ถ้าไม่ใช่คืน `skipped`
-3. วาง implementation plan สั้นจาก acceptance criteria — ถ้าซับซ้อนให้ทำ `/create-plan-in-dot-devin`
-4. สร้าง branch ตาม `branch-convention`
-5. Implement เฉพาะสิ่งที่ issue ระบุ — ถ้าพบงานเพิ่มเติมให้บันทึกไว้แนะนำ `/create-github-issue` ไม่ทำเอง
-6. รัน `verify-commands` — lint, typecheck, tests ผ่านก่อนคืน
-7. Commit ตาม conventional commits — ไม่ push และไม่เปิด PR เอง เว้นแต่ parent สั่ง
+1. Read the issue with `gh issue view <issue> --comments` — pull the acceptance criteria and context from the comments
+2. Confirm the issue is `--author @me` per the parent's scope — if not, return `skipped`
+3. Lay out a short implementation plan from the acceptance criteria — if complex, run `/create-plan-in-dot-devin`
+4. Create a branch per `branch-convention`
+5. Implement only what the issue specifies — if extra work is found, record it and suggest `/create-github-issue` rather than doing it yourself
+6. Run `verify-commands` — lint, typecheck, tests pass before returning
+7. Commit per conventional commits — do not push and do not open a PR yourself unless the parent instructs
 
 ##### Output Contract
 
-คืนผลลัพธ์เป็น implementation summary ของ issue เดียว:
+Return the result as the implementation summary of a single issue:
 
 | Field | Value |
 |-------|-------|
 | Issue | `#123` |
 | Branch | `feat/issue-123-x` |
 | Commits | `abc1234`, `def5678` |
-| Files Changed | list พร้อม `added`/`modified` |
+| Files Changed | list with `added`/`modified` |
 | Verify | `lint: pass`, `typecheck: pass`, `test: pass` |
 | Status | `done` / `blocked` / `skipped` |
-| Acceptance | checklist pass/fail ต่อข้อ |
+| Acceptance | checklist pass/fail per item |
 
-- ถ้า `blocked` → ระบุสาเหตุและสิ่งที่ทำค้างไว้
+- If `blocked` → state the reason and what was left unfinished
 
 ##### Constraints
 
-- Implement เฉพาะ scope ของ issue — ห้ามขยายหรือแก้ส่วนอื่น
-- แยก branch/commits ของ issue นี้ — ห้ามแตะ branch หรือ issue อื่น
-- ไม่ push, ไม่เปิด PR, ไม่ปิด issue เอง — parent comment+close เองหลัง merge
-- verify ต้องผ่านก่อนคืน `done` — ถ้า fail เกิน 3 รอบคืน `blocked`
-- ถ้า issue ไม่ใช่ของ `@me` หรือ requirements ไม่ชัด → คืน `skipped`/`blocked` ให้ parent ถาม user
+- Implement only the issue's scope — do not expand or modify other parts
+- Keep this issue's branch/commits separate — do not touch other branches or issues
+- Do not push, do not open a PR, do not close the issue yourself — the parent comments+closes after merge
+- verify must pass before returning `done` — if it fails more than 3 rounds return `blocked`
+- If the issue is not one of `@me` or the requirements are unclear → return `skipped`/`blocked` so the parent asks the user
 
 ## Expected Outcome
 
-- Open issues ที่ฉันสร้างทั้งหมดถูก implement ผ่าน `/implement-to-production`
-- แต่ละ issue ที่เสร็จถูก comment สรุปและปิดด้วย reason ที่ถูกต้อง
-- Issues ที่ยังไม่เสร็จได้รับ comment ความคืบหน้า
-- Verification ผ่านสำหรับทุก issue ที่ implement
-- รายงานสรุปครบ: implemented, resolved, skipped, failed พร้อม URL
+- All open issues I created are implemented via `/implement-to-production`
+- Each completed issue is commented with a summary and closed with the correct reason
+- Issues not yet complete receive a progress comment
+- Verification passes for every implemented issue
+- A complete summary report: implemented, resolved, skipped, failed along with URLs
