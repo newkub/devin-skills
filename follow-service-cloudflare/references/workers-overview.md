@@ -35,7 +35,7 @@ bun add -D @cloudflare/workers-types
 Verify installation:
 
 ```sh
-npx wrangler --version
+bunx wrangler --version
 ```
 
 ## Create A New Worker Project
@@ -142,24 +142,24 @@ The `fetch` handler receives three parameters: `request`, `env`, and `context`. 
 
 | Command | Description |
 |---|---|
-| `npx wrangler dev` | Start local dev server on `http://localhost:8787` |
-| `npx wrangler dev --port 8787` | Start dev server on custom port |
-| `npx wrangler dev --local` | Local-only mode |
-| `npx wrangler dev --remote` | Access remote resources |
-| `npx wrangler deploy` | Deploy to production |
-| `npx wrangler deploy --env staging` | Deploy to specific environment |
-| `npx wrangler deploy --dry-run` | Preview deployment without deploying |
-| `npx wrangler types` | Generate `worker-configuration.d.ts` |
-| `npx wrangler secret put KEY_NAME` | Set a secret |
-| `npx wrangler secret list` | List secrets |
-| `npx wrangler secret delete KEY_NAME` | Delete a secret |
-| `npx wrangler d1 create my-db` | Create D1 database |
-| `npx wrangler d1 execute my-db --command "SELECT 1"` | Execute SQL on D1 |
-| `npx wrangler kv namespace create CACHE` | Create KV namespace |
-| `npx wrangler r2 bucket create my-bucket` | Create R2 bucket |
-| `npx wrangler tail` | Stream live logs from deployed Worker |
-| `npx wrangler login` | Authenticate with Cloudflare account |
-| `npx wrangler whoami` | Check authentication status |
+| `bunx wrangler dev` | Start local dev server on `http://localhost:8787` |
+| `bunx wrangler dev --port 8787` | Start dev server on custom port |
+| `bunx wrangler dev --local` | Local-only mode |
+| `bunx wrangler dev --remote` | Access remote resources |
+| `bunx wrangler deploy` | Deploy to production |
+| `bunx wrangler deploy --env staging` | Deploy to specific environment |
+| `bunx wrangler deploy --dry-run` | Preview deployment without deploying |
+| `bunx wrangler types` | Generate `worker-configuration.d.ts` |
+| `bunx wrangler secret put KEY_NAME` | Set a secret |
+| `bunx wrangler secret list` | List secrets |
+| `bunx wrangler secret delete KEY_NAME` | Delete a secret |
+| `bunx wrangler d1 create my-db` | Create D1 database |
+| `bunx wrangler d1 execute my-db --command "SELECT 1"` | Execute SQL on D1 |
+| `bunx wrangler kv namespace create CACHE` | Create KV namespace |
+| `bunx wrangler r2 bucket create my-bucket` | Create R2 bucket |
+| `bunx wrangler tail` | Stream live logs from deployed Worker |
+| `bunx wrangler login` | Authenticate with Cloudflare account |
+| `bunx wrangler whoami` | Check authentication status |
 
 ## CI/CD With GitHub Actions
 
@@ -187,7 +187,7 @@ Use `CLOUDFLARE_API_TOKEN` environment variable for automated deployments. Do no
 Wrangler 4.68+ can auto-detect frameworks and generate configuration:
 
 ```sh
-npx wrangler deploy
+bunx wrangler deploy
 ```
 
 When run without a config file, Wrangler will:

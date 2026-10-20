@@ -37,8 +37,8 @@ pub async fn main(req: Request, env: Env, _ctx: worker::Context) -> Result<Respo
 ## 4. Run And Deploy
 
 ```sh
-npx wrangler dev      # local dev — identical to the TS path
-npx wrangler deploy   # configure routes/zones in the wrangler config first
+bunx wrangler dev      # local dev — identical to the TS path
+bunx wrangler deploy   # configure routes/zones in the wrangler config first
 ```
 
 - Deploy/watch/rollback reuse this skill's workflows (`workflows/deploy-worker/`, `workflows/verify-connection/`) — workers-rs changes nothing in tooling

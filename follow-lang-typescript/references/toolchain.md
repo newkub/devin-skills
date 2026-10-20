@@ -17,7 +17,7 @@
 | `vitest` | unit test runner (native TS, no compile step) | `npm install -D vitest` |
 | `expect-type` | type-level assertions in tests | `npm install -D expect-type` |
 | `tstyche` | dedicated type-test runner (public type contracts, multi-TS-version targets) — `/follow-lib-tstyche` | `npm install -D tstyche` |
-| `type-coverage` | measure `any` usage — `npx type-coverage --detail` | `npm install -D type-coverage` |
+| `type-coverage` | measure `any` usage — `bunx type-coverage --detail` | `npm install -D type-coverage` |
 | `tsdown` / `bunup` | library bundlers (ESM/CJS/dts) when publishing a package | `npm install -D tsdown` / `bunup` |
 | `dts-buddy` / `arethetypeswrong` | public-API type checking for published packages | `npm install -D` per need |
 | `mise.toml` + `engines` | runtime pin — one source of truth | project files |

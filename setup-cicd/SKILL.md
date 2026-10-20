@@ -139,8 +139,8 @@ jobs:
           # Add the release command matching the detected platform
           # npm: npm publish
           # crates: cargo publish
-          # vscode: npx vsce publish
-          # webstore: npx chrome-webstore-upload
+          # vscode: bunx vsce publish
+          # webstore: bunx chrome-webstore-upload
           # docker: docker build . -t <image>:<tag> && docker push <image>:<tag>
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

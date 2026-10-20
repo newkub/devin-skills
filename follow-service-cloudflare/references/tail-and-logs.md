@@ -6,7 +6,7 @@
 ## Basic Usage
 
 ```bash
-npx wrangler tail [WORKER]
+bunx wrangler tail [WORKER]
 ```
 
 When run from a project directory with `wrangler.jsonc`, the worker name is inferred automatically
@@ -48,29 +48,29 @@ Each log event has these fields:
 
 ```bash
 # Stream production logs
-npx wrangler tail --env production
+bunx wrangler tail --env production
 
 # Errors only
-npx wrangler tail --status error
+bunx wrangler tail --status error
 
 # Filter by IP (debug user issues)
-npx wrangler tail --ip 203.0.113.42
-npx wrangler tail --ip self --status error
+bunx wrangler tail --ip 203.0.113.42
+bunx wrangler tail --ip self --status error
 
 # Sample 10% (high-traffic Workers)
-npx wrangler tail --sampling-rate 0.1
+bunx wrangler tail --sampling-rate 0.1
 
 # Filter by method + search
-npx wrangler tail --method POST --search "TypeError"
+bunx wrangler tail --method POST --search "TypeError"
 
 # Filter by header
-npx wrangler tail --header "X-Debug-Id:7f3a"
+bunx wrangler tail --header "X-Debug-Id:7f3a"
 
 # JSON output + jq
-npx wrangler tail --format=json | jq .event.request.url
+bunx wrangler tail --format=json | jq .event.request.url
 
 # Compact triage for failed requests
-npx wrangler tail --status error --format json | jq -c '{
+bunx wrangler tail --status error --format json | jq -c '{
   t: (.eventTimestamp / 1000 | todate),
   outcome,
   url: .event.request.url,

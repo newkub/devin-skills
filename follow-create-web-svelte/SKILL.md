@@ -151,7 +151,7 @@ Migrating from Svelte 4:
 - `export let prop` → `let { prop } = $props()`
 - `on:click` → `onclick`
 - Slots → Snippets (`{#snippet}` and `{@render}`)
-- Use `npx sv migrate svelte-5` for auto migration
+- Use `bunx sv migrate svelte-5` for auto migration
 - Old and new syntax can be mixed during migration
 
 ### 5. Code Quality

@@ -8,7 +8,7 @@ SolidJS port of shadcn/ui — copy-in components, Kobalte primitives, Tailwind s
 - Built on Kobalte primitives — accessibility (ARIA, keyboard nav, focus) comes with the primitives; don't replace them with raw divs
 - Tailwind + CSS variables theme — tokens (`--primary`, `--background`) drive the theme; components reference vars, not hardcoded colors
 - `cn()` utility (clsx + tailwind-merge) for class composition — use it everywhere classes merge
-- Add components via the CLI (`npx shadcn-solid@latest add ...`) — pick only what you use, review the diff before committing
+- Add components via the CLI (`bunx shadcn-solid@latest add ...`) — pick only what you use, review the diff before committing
 
 ## Common Pitfalls
 

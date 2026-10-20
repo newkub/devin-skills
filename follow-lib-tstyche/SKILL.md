@@ -27,7 +27,7 @@ Use when the task involves `tstyche` — install, config, type assertions, testi
 
 - Boundary: TSTyche only checks types — the runner never executes code; runtime behavior tests stay with `vitest`/`bun test` (`/follow-tool-vitest`, `/deep-test`); inline type assertions inside vitest suites stay with `expect-type`; this skill covers the tstyche tool end to end
 - Latest: `tstyche@7.2.5` (verified 2026-10-15) — MIT, `node >= 22`, peer `typescript >= 5.4` (TypeScript 7 not yet supported — falls back to 6.0)
-- Official agent skills also ship at `tstyche/tstyche-skills` (`npx skills add tstyche/tstyche-skills`) — this repo's skill is the Devin-standard equivalent
+- Official agent skills also ship at `tstyche/tstyche-skills` (`bunx skills add tstyche/tstyche-skills`) — this repo's skill is the Devin-standard equivalent
 - References: [apis](references/apis.md) · [cli](references/cli.md) · See best-practices/ for recommended patterns and pitfalls
 
 ## Execute

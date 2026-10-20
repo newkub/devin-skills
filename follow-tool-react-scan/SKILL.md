@@ -35,7 +35,7 @@ Use `follow-tool-react-scan` for React projects or workflows
 
 > Goal: pick how to integrate react-scan into the project
 
-1. CLI auto-setup: `bunx -y react-scan@latest init` detects the framework and installs automatically
+1. CLI auto-setup: `bunx react-scan@latest init` detects the framework and installs automatically
 2. CLI URL scan: `bunx react-scan@latest <url>` to scan any site without changing code
 3. Script tag for quick testing or legacy apps without a build
 4. NPM package for production apps needing control and TypeScript

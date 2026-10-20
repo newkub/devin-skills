@@ -3,7 +3,7 @@
 | key | value |
 |-----|-------|
 | package | `chrome-devtools-mcp` (npm, GoogleChromeLabs) |
-| install/register | `bunx -y chrome-devtools-mcp@1.10.1` or `npx -y chrome-devtools-mcp@1.10.1` as a stdio MCP server |
+| install/register | `bunx chrome-devtools-mcp@1.10.1` as a stdio MCP server |
 | stable version | `1.10.1` (published 2026-09-23, verified 2026-10-03) |
 | requires | Chrome installed locally (launch/connect via CDP) |
 | docs/repo | https://github.com/ChromeDevTools/chrome-devtools-mcp |

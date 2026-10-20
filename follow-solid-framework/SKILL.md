@@ -41,7 +41,7 @@ Choose from the Scope table — if unclear, default = `start` (full-stack) or as
 > Goal: scaffold the project and get the dev server running
 
 1. Run `/deep-research` + `/follow-best-practice` to confirm the latest versions per `/update-devin-global-skills`, then `/deep-review-codebase` to summarize the stack
-2. Scaffold: `bun create vite@latest my-app -- --template solid` (spa) or `npx @tanstack/cli@latest create --framework solid` / gitpick `TanStack/router` example `solid/start-basic` (start variants)
+2. Scaffold: `bun create vite@latest my-app -- --template solid` (spa) or `bunx @tanstack/cli@latest create --framework solid` / gitpick `TanStack/router` example `solid/start-basic` (start variants)
 3. Modules: `src/modules/<feature>/` (components + hooks + schemas + types + `index.ts` barrel), shared UI `src/components/`, infra `src/lib/` — canonical file structure in `templates/`
 
 ### 2. Dependencies

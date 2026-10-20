@@ -189,7 +189,7 @@ Configure per ESLint 10 standards
 - Put the `prettier` config last
 - Do not use `.eslintignore` in ESLint 10 — use `ignores` in the flat config
 - Config lookup in v10 starts from the linted file's directory upward (not cwd) — pass `--config <path>` to keep the old behavior
-- Migrate from v9 → v10 with the codemod `npx codemod @eslint/v9-to-v10` (Codemod Registry — not an npm package; has sub-codemods `@eslint/v9-to-v10-config`, `-custom-rules`, `-ruletester`, `-linter-api`) per the official guide `https://eslint.org/docs/latest/use/migrate-to-10.0.0`
+- Migrate from v9 → v10 with the codemod `bunx codemod @eslint/v9-to-v10` (Codemod Registry — not an npm package; has sub-codemods `@eslint/v9-to-v10-config`, `-custom-rules`, `-ruletester`, `-linter-api`) per the official guide `https://eslint.org/docs/latest/use/migrate-to-10.0.0`
 - Check plugin compatibility with ESLint 10 before upgrading (`typescript-eslint`, `eslint-plugin-*`)
 
 - Use `/follow-create-plugins` (eslint) if needed

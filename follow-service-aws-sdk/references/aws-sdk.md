@@ -197,7 +197,7 @@ try {
 Use the codemod for automated migration:
 
 ```sh
-npx aws-sdk-js-codemod -i src/
+bunx aws-sdk-js-codemod -i src/
 ```
 
 Key changes in v3:

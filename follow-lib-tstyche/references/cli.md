@@ -1,6 +1,6 @@
 | key | value |
 |-----|-------|
-| binary | `tstyche` (`bunx tstyche` / `npx tstyche`) |
+| binary | `tstyche` (`bunx tstyche`) |
 | default run | `tstyche` — runs all files matched by `testFileMatch` |
 | file selection | `tstyche <search...>` — case-insensitive match on path relative to cwd, within `testFileMatch` only |
 

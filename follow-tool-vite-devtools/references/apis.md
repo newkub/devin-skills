@@ -28,7 +28,7 @@
 | `@vitejs/devtools-rolldown` | build analysis (module graph, chunks, assets, plugins, treemap, session compare) |
 | `@vitejs/devtools-vite` | plugin inspector + module transforms (upstream: "work in progress") |
 | `@vitejs/devtools-vitest` | Vitest UI in the dock |
-| `@vitejs/devtools-oxc` | Oxlint/Oxfmt inspector — runs standalone via `npx @vitejs/devtools-oxc` |
+| `@vitejs/devtools-oxc` | Oxlint/Oxfmt inspector — runs standalone via `bunx @vitejs/devtools-oxc` |
 
 | Client injector subpath | Mode (use when Vite does not serve HTML — JS-only entry, middleware, backend) |
 |-------------------------|------------------------------------------------------------------------------|
@@ -58,7 +58,7 @@
 | Not present in project | shows as a dock launcher — pressing installs on demand, then restart the dev server |
 | Already present | mounts automatically |
 | Vitest | dock appears when the project depends on `vitest`; launching installs `@vitest/ui` and runs `vitest --ui` as an iframe |
-| Oxc | standalone via `npx @vitejs/devtools-oxc`; if Vite Plus is detected, oxlint/oxfmt run through `vp` |
+| Oxc | standalone via `bunx @vitejs/devtools-oxc`; if Vite Plus is detected, oxlint/oxfmt run through `vp` |
 
 | Layer | Package | Scope |
 |-------|---------|-------|

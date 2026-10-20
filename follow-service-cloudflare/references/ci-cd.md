@@ -15,7 +15,7 @@ jobs:
         with:
           node-version: '22'
       - run: npm ci
-      - run: npx wrangler deploy --env production
+      - run: bunx wrangler deploy --env production
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
 ```

@@ -19,6 +19,9 @@ When a project needs:
 - Deploying to a provider via a preset — https://nitro.build/deploy
 - A server engine for a meta-framework (TanStack Start, Analog, Nuxt already use Nitro)
 
+- recommended patterns and pitfalls are in `best-practices/`
+- end-to-end usage recipes per application scenario (code verified against https://nitro.build docs) are in `usecases/`: REST API/CRUD, auth & middleware, webhook receiver, realtime WebSocket, SSE streaming, background tasks/cron, static/prerender & route rules, deploy to Cloudflare Workers
+
 ## Execute
 
 ### 1. Install
@@ -92,6 +95,21 @@ export default {
 | Middleware/plugins/hooks/runtimeConfig | `workflows/config-middleware/SKILL.md` |
 | Deploy per preset/provider | `workflows/deploy-preset/SKILL.md` |
 
+### Use Cases
+
+Building a whole feature (not just wiring one layer)? Start from the matching `usecases/<scenario>.md` — it has the doc-verified handler code and pitfalls:
+
+| Scenario | Use case |
+|----------|----------|
+| JSON API, dynamic routes, validation, errors | `usecases/rest-api-crud.md` |
+| JWT/session guards, middleware order, `event.context` | `usecases/auth-middleware.md` |
+| Stripe/GitHub webhook, signature + async + idempotency | `usecases/webhook-handler.md` |
+| Chat/rooms, presence, pub/sub topics | `usecases/realtime-websocket.md` |
+| One-way live feeds, LLM token streaming | `usecases/sse-streaming.md` |
+| Migrations/cleanup, cron schedules, `runTask` | `usecases/background-tasks.md` |
+| Blog/docs, prerender, cache/SWR, on-demand revalidate | `usecases/static-prerender.md` |
+| Edge deploy, D1/KV/R2 bindings, secrets | `usecases/edge-cloudflare.md` |
+
 ## Rules
 
 - `nitro()` v3 does not accept `preset` in options — use the `NITRO_PRESET` env var or `nitro.config.ts`
@@ -99,6 +117,7 @@ export default {
 - Secrets always via env/`wrangler secret` — never hardcode in config
 - Check https://nitro.build or `/deep-research` for the latest preset names and provider docs
 - See best-practices/ for recommended patterns and pitfalls
+- See usecases/ for feature-level recipes with doc-verified code
 
 ## Expected Outcome
 

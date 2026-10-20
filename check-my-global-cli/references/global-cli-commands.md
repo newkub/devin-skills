@@ -143,7 +143,7 @@ Verified via `mise list` + `scoop list` — updated 2026-09-13 — Windows machi
 | Tool | Primary Command |
 |------|-------------|
 | `amp`, `@openai/codex`, `opencode`, `stakpak/agent`, `devin`, `qoder` (`@qoder-ai/qodercli`) | coding agents |
-| `skills` (npm) | `npx skills add` — skill installer |
+| `skills` (npm) | `bunx skills add` — skill installer |
 | `aube`, `elio`, `rmux`, `rmz`, `rush` | misc agents/terminals |
 | `television` (tv) | fuzzy picker |
 | `loc` / `rloc` | LOC counters |

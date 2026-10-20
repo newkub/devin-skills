@@ -47,7 +47,7 @@ Use for projects that already have `drizzle-kit` installed — focused on execut
 Latest: `drizzle-kit@0.31.11` (verified 2026-09-26)
 
    - `bunx drizzle-kit studio`
-   - `npx drizzle-kit studio`
+   - `bunx drizzle-kit studio`
    - `pnpm dlx drizzle-kit studio`
    - `yarn dlx drizzle-kit studio`
 2. If `package.json` has a `studio` script → use `bun studio` or `npm run studio`
@@ -87,7 +87,7 @@ Latest: `drizzle-kit@0.31.11` (verified 2026-09-26)
 ### 1. Package Manager
 
 - Use `bunx` as the default if the project uses Bun
-- Use `npx` if Bun is not available
+- Never `npx` — it is denied by policy; if Bun is missing, install it first
 - Use `pnpm dlx` or `yarn dlx` according to the lockfile
 
 ### 2. Port And URL

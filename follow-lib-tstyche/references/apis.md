@@ -13,7 +13,7 @@
 | test file globs (default) | `**/*.tst.*`, `**/__typetests__/*.test.*`, `**/typetests/*.test.*` |
 | fixture globs (default) | `**/__fixtures__/*.{ts,tsx}`, `**/fixtures/*.{ts,tsx}` |
 | TS version store | global cache — `%LocalAppData%/TSTyche` (Windows), `$XDG_DATA_HOME/TSTyche` / `$HOME/.local/share/TSTyche` (Linux), `$HOME/Library/TSTyche` (macOS) |
-| official agent skills | `tstyche/tstyche-skills` (`npx skills add tstyche/tstyche-skills`) |
+| official agent skills | `tstyche/tstyche-skills` (`bunx skills add tstyche/tstyche-skills`) |
 
 ## Exports (from `tstyche`)
 

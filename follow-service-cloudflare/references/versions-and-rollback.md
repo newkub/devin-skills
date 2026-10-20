@@ -17,9 +17,9 @@
 Upload a new version without deploying it immediately
 
 ```bash
-npx wrangler versions upload [PATH]
-npx wrangler versions upload --tag "v1.2.3" --message "Feature release"
-npx wrangler versions upload --dry-run
+bunx wrangler versions upload [PATH]
+bunx wrangler versions upload --tag "v1.2.3" --message "Feature release"
+bunx wrangler versions upload --dry-run
 ```
 
 | Flag | Description |
@@ -36,19 +36,19 @@ Deploy a version that was already uploaded; supports traffic splitting
 
 ```bash
 # Interactive
-npx wrangler versions deploy
+bunx wrangler versions deploy
 
 # Deploy 100%
-npx wrangler versions deploy --version-id <ID>
+bunx wrangler versions deploy --version-id <ID>
 
 # Traffic split (shorthand @)
-npx wrangler versions deploy <v1>@80 <v2>@20
+bunx wrangler versions deploy <v1>@80 <v2>@20
 
 # By tag
-npx wrangler versions deploy --version-tag v1.0.0@100
+bunx wrangler versions deploy --version-tag v1.0.0@100
 
 # Non-interactive
-npx wrangler versions deploy <ID>@100 -y
+bunx wrangler versions deploy <ID>@100 -y
 ```
 
 | Flag | Description |
@@ -63,15 +63,15 @@ npx wrangler versions deploy <ID>@100 -y
 ### `wrangler versions list`
 
 ```bash
-npx wrangler versions list
-npx wrangler versions list --json
+bunx wrangler versions list
+bunx wrangler versions list --json
 ```
 
 ### `wrangler versions view`
 
 ```bash
-npx wrangler versions view <VERSION-ID>
-npx wrangler versions view <VERSION-ID> --json
+bunx wrangler versions view <VERSION-ID>
+bunx wrangler versions view <VERSION-ID> --json
 ```
 
 ### `wrangler versions secret`
@@ -89,45 +89,45 @@ Roll back to the previous version immediately with 100% of traffic
 
 ```bash
 # Auto rollback to latest stable
-npx wrangler rollback
+bunx wrangler rollback
 
 # Rollback to specific version
-npx wrangler rollback <VERSION-ID>
+bunx wrangler rollback <VERSION-ID>
 
 # With message
-npx wrangler rollback --message "Rolling back due to errors"
+bunx wrangler rollback --message "Rolling back due to errors"
 
 # Non-interactive
-npx wrangler rollback <VERSION-ID> -y
+bunx wrangler rollback <VERSION-ID> -y
 ```
 
 ### `wrangler deployments`
 
 ```bash
-npx wrangler deployments list
-npx wrangler deployments status
+bunx wrangler deployments list
+bunx wrangler deployments status
 ```
 
 ## Gradual Deployment Workflow
 
 ```bash
 # 1. Upload new version
-npx wrangler versions upload --tag "v2.0.0" --message "New feature"
+bunx wrangler versions upload --tag "v2.0.0" --message "New feature"
 
 # 2. Canary: 10% new, 90% old
-npx wrangler versions deploy --version-tag v2.0.0@10 --version-tag v1.0.0@90
+bunx wrangler versions deploy --version-tag v2.0.0@10 --version-tag v1.0.0@90
 
 # 3. Monitor with tail
-npx wrangler tail --status error --version-id <v2-id>
+bunx wrangler tail --status error --version-id <v2-id>
 
 # 4. Increase to 50%
-npx wrangler versions deploy --version-tag v2.0.0@50 --version-tag v1.0.0@50
+bunx wrangler versions deploy --version-tag v2.0.0@50 --version-tag v1.0.0@50
 
 # 5. Complete 100%
-npx wrangler versions deploy --version-tag v2.0.0@100
+bunx wrangler versions deploy --version-tag v2.0.0@100
 
 # Emergency rollback
-npx wrangler rollback --message "Revert breaking change"
+bunx wrangler rollback --message "Revert breaking change"
 ```
 
 ## deploy vs versions deploy

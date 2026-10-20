@@ -64,7 +64,7 @@ For TypeScript projects — type system, code quality, testing, documentation. P
 
 1. Use `vitest` for unit testing; type-safe mocks with `vi.fn()`/`vi.spyOn()`
 2. Assert types with `expect-type` (`expectTypeOf(add(1, 2)).toEqualTypeOf<number>()`) in runtime suites; for a dedicated type-test layer (public API type contracts, multi-TypeScript-version targets) use `tstyche` per `/follow-lib-tstyche`
-3. Check type coverage with `type-coverage` (`npx type-coverage --detail`) — target: no `any` in the codebase
+3. Check type coverage with `type-coverage` (`bunx type-coverage --detail`) — target: no `any` in the codebase
 4. Run `/run-test` and `/run-typecheck` until green
 
 ### 5. Setup Documentation

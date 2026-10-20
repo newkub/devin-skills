@@ -24,7 +24,7 @@
 bun add -D wrangler
 ```
 
-Or run ad-hoc: `bunx wrangler` / `npx wrangler` (requires Node >= 22).
+Or run ad-hoc: `bunx wrangler` (requires Node >= 22).
 
 ## Secondary Packages
 

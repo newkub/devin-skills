@@ -62,14 +62,14 @@ Not included:
    - Python: `pip install instantdb` (used together with `follow-lang-python`)
 Latest: `@instantdb/react@1.0.67` (verified 2026-09-12); the CLI package is named `instant-cli` (not `@instantdb/cli`, which does not exist on npm)
 
-2. Install the CLI for dev: `bun add -D instant-cli` or use `npx instant-cli@latest`
+2. Install the CLI for dev: `bun add -D instant-cli` or use `bunx instant-cli@latest`
 3. Confirm the dependencies are in `package.json`
 
 ### 3. Initialize App
 
 > Goal: Create the starting schema, perms, and env config
 
-1. Run `npx instant-cli@latest init` (or `bunx instant-cli init`)
+1. Run `bunx instant-cli@latest init`
 2. Select an Instant app or create a new one via the CLI
 3. Check that `instant.schema.ts`, `instant.perms.ts`, `.env.local` were created
 4. Confirm `NEXT_PUBLIC_INSTANT_APP_ID` or `VITE_INSTANT_APP_ID` is set
@@ -82,7 +82,7 @@ Latest: `@instantdb/react@1.0.67` (verified 2026-09-12); the CLI package is name
 2. Edit `instant.schema.ts` to add entities, fields, links, rooms
 3. Use `i.entity({ ... })`, `i.string()`, `i.boolean()`, `i.date()` per the docs
 4. Mark `unique`, `indexed`, `optional` as needed
-5. Run `npx instant-cli@latest push schema` to push to production
+5. Run `bunx instant-cli@latest push schema` to push to production
 
 ### 5. Create Client
 
@@ -118,7 +118,7 @@ Latest: `@instantdb/react@1.0.67` (verified 2026-09-12); the CLI package is name
 1. If using built-in auth: read [references/instantdb-configuration.md](references/instantdb-configuration.md) about magic codes and OAuth
 2. Configure `instant.perms.ts` with `allow`/`bind` rules
 3. Use `auth.id`, `auth.email` in permission rules
-4. Run `npx instant-cli@latest push perms` when permissions change
+4. Run `bunx instant-cli@latest push perms` when permissions change
 5. If using Clerk/Firebase Auth → follow the official docs guides
 
 ### 8. Use Advanced Features
@@ -137,7 +137,7 @@ Latest: `@instantdb/react@1.0.67` (verified 2026-09-12); the CLI package is name
 
 1. Run `bun check` or `bun run build` to typecheck
 2. Run the dev server and test real-time CRUD
-3. Run `npx instant-cli@latest status` to check the app connection
+3. Run `bunx instant-cli@latest status` to check the app connection
 4. If errors occur → do `resolve-errors` then revalidate
 
 ### 10. Update References

@@ -40,7 +40,7 @@ For a fresh TypeScript project; live-check the latest stable TypeScript and its 
 
 ### 4. Verify
 
-1. `bun check` (or `tsc --noEmit`) clean → lint/format check clean → `vitest run` green → `npx type-coverage --detail` shows no `any`
+1. `bun check` (or `tsc --noEmit`) clean → lint/format check clean → `vitest run` green → `bunx type-coverage --detail` shows no `any`
 2. On failure → run `/resolve-errors`
 
 ## Rules

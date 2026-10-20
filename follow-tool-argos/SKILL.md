@@ -63,7 +63,7 @@ export default defineConfig({
 
 > Goal: visual diffs become a PR check
 
-1. Run `npx playwright test` on CI with `ARGOS_TOKEN` set (GitHub Actions also supports OIDC/tokenless auth)
+1. Run `bunx playwright test` on CI with `ARGOS_TOKEN` set (GitHub Actions also supports OIDC/tokenless auth)
 2. First run on the default branch establishes the baseline; PR builds compare against it and post a check
 3. Review the build in Argos: approve intended changes (approved builds become future baselines), request fixes on regressions
 4. Watch the flaky badge/stability score — unstable screenshots get fixed at the source, not ignored

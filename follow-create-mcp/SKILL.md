@@ -95,7 +95,7 @@ See also: `/deep-review-codebase`, `/follow-lang-rust`, `/follow-lang-typescript
 1. Run the server with the stack's command, e.g. `cargo run` or `bun run dev`
 2. Test with the MCP inspector or a compatible client
 3. Verify that tools can be listed and invoked
-4. If the transport is stdio → test spawning through a client such as Claude Code or `npx @modelcontextprotocol/inspector` (official inspector package)
+4. If the transport is stdio → test spawning through a client such as Claude Code or `bunx @modelcontextprotocol/inspector` (official inspector package)
 
 ### 7. Ship
 

@@ -42,7 +42,7 @@ Install the InstantDB SDK per framework, run `instant-cli init` to link the app,
 
 > Goal: Link the Instant app and create config files
 
-1. Run `npx instant-cli@latest init` (or `bunx instant-cli init`)
+1. Run `bunx instant-cli@latest init`
 2. Pick an existing Instant app or create a new one via the CLI — if there is no account → stop and tell the user
 3. Check that `instant.schema.ts`, `instant.perms.ts`, `.env.local` were created
 4. Confirm the env app id is set — `NEXT_PUBLIC_INSTANT_APP_ID` or `VITE_INSTANT_APP_ID` per framework

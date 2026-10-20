@@ -22,7 +22,7 @@ Use the `playwriter` CLI (or the registered `playwriter` MCP server) to control 
 Use when you need browser automation on the user's real Chrome — already-logged-in sites, JS-heavy SPAs (Instagram, X, dashboards), cookie consent/login walls, sites that need existing extensions/cookies, flows that require collaborating with the user (captcha, consent) — the CLI sends Playwright code through a local WebSocket relay (`localhost:19988`) to the Chrome extension
 
 - Boundary: pick the tool per `/use-chrome-devtools` `## Tool Selection` (canonical) — live inspect/debug (console, network detail, CSS cascade, perf, Lighthouse) → `chrome-devtools-mcp`; fresh-browser automation, record, PDF, a11y audit, batch/CI that don't need login state → `/use-agent-browser`; E2E test suite → `/deep-test e2e`/`/follow-tool-playwright`; automation on the user's real Chrome → `playwriter` (this skill)
-- MCP mode: the `playwriter` server registered in `mcp_config.json` (`bunx -y playwriter@latest`) — it exposes a single `execute` tool for Playwright code; CLI mode uses `playwriter -s <id> -e '<code>'`
+- MCP mode: the `playwriter` server registered in `mcp_config.json` (`bunx playwriter@latest`) — it exposes a single `execute` tool for Playwright code; CLI mode uses `playwriter -s <id> -e '<code>'`
 - If a site renders with JS (fetch/curl only gets an empty shell) → use playwriter right away; don't waste time on `webfetch`/`curl`
 
 ## Execute

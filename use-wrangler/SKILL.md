@@ -26,7 +26,7 @@ Use when the task involves Cloudflare Workers, Pages, KV, D1, R2, Queues, or Dur
 
 > Goal: wrangler is ready and authenticated
 
-1. `bunx wrangler --version` or `npx wrangler --version` — latest `4.151.0 (verified 2026-10-15)`, requires Node >= 22
+1. `bunx wrangler --version` — latest `4.151.0 (verified 2026-10-15)`, requires Node >= 22
 2. `bunx wrangler whoami` to check auth — if not logged in → tell the user to run `wrangler login` (never log in for them)
 3. Check `wrangler.toml` or `wrangler.jsonc` at the project root
 4. Run `bunx wrangler types` if you need to regenerate `worker-configuration.d.ts` to match the bindings

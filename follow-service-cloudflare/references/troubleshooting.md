@@ -110,10 +110,10 @@ Use the `nodejs_compat` flag instead of the deprecated `--node-compat`:
 ## Debug Mode
 
 ```bash
-WRANGLER_LOG=debug npx wrangler deploy
-WRANGLER_LOG_PATH=./logs/ npx wrangler deploy
-WRANGLER_LOG_SANITIZE=false npx wrangler deploy
-npx wrangler dev --log-level debug
+WRANGLER_LOG=debug bunx wrangler deploy
+WRANGLER_LOG_PATH=./logs/ bunx wrangler deploy
+WRANGLER_LOG_SANITIZE=false bunx wrangler deploy
+bunx wrangler dev --log-level debug
 ```
 
 ## Network And Proxy Issues

@@ -27,7 +27,7 @@ When you want a truly native desktop app (Metal/Direct2D/software renderer), not
 - Platforms: macOS (primary, Metal), Windows (Direct2D/DirectWrite + software fallback), Linux (software renderer via blit); iOS/Android host-tier (experimental, multi-window on desktop only)
 - The state system is TEA: `Model` readonly record + `Msg` union + `update(model,msg): Model | [Model, Cmd<Msg>]`; the view derives from the model through markup
 - Every app embeds an automation server (file-based protocol) — snapshot/drive/screenshot possible when built with `-Dautomation=true`
-- `native skills get <core|native-ui|ts-core|ts-services|automation|zig>` returns deep content from the installed CLI (discovery stub via `npx skills add vercel-labs/native`)
+- `native skills get <core|native-ui|ts-core|ts-services|automation|zig>` returns deep content from the installed CLI (discovery stub via `bunx skills add vercel-labs/native`)
 
 ## Execute
 

@@ -25,7 +25,7 @@ Use for on-demand full-codebase or focused security review executed by the codin
 
 > Goal: get the skill into the agent store
 
-1. `npx skills add https://github.com/cloudflare/security-audit-skill --skill security-audit` (add `--global` for user-level)
+1. `bunx skills add https://github.com/cloudflare/security-audit-skill --skill security-audit` (add `--global` for user-level)
 2. For Devin: keep it available per `/follow-devin-global-skills`; verify the validators run: `node validate-findings.cjs` / `node validate-coverage-ledger.cjs` exist in the skill dir
 
 ### 2. Recon (Phase 1)

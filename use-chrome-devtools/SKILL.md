@@ -51,7 +51,7 @@ Canonical matrix for choosing a browser/web tool — other skills reference back
 
 Latest: `chrome-devtools-mcp@1.10.1` (verified 2026-10-03)
 
-1. Call `mcp_list_servers` looking for `chrome-devtools-mcp` — if missing → run `/update-devin-global-mcp` to register it with `bunx -y chrome-devtools-mcp@1.10.1` (or `npx -y`)
+1. Call `mcp_list_servers` looking for `chrome-devtools-mcp` — if missing → run `/update-devin-global-mcp` to register it with `bunx chrome-devtools-mcp@1.10.1`
 2. Always call `mcp_list_tools` on the server before calling anything — never guess tool names or arguments (full list in `references/tools.md`)
 3. If register/launch fails → fall back to `/use-agent-browser` (CLI)
 

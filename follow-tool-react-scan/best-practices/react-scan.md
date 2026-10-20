@@ -4,7 +4,7 @@ React performance scanner — automatically finds unnecessary renders
 
 ## Recommended Patterns
 
-- Run in dev mode: `npx react-scan` or the script tag — the overlay highlights re-rendering components + counts
+- Run in dev mode: `bunx react-scan` or the script tag — the overlay highlights re-rendering components + counts
 - Focus on abnormal render counts — a component that renders on every parent render while its props don't change = memo candidate
 - Use with realistic interactions — click through real flows, not an idle page
 - Prioritize: high-frequency renders (per keystroke/scroll/mousemove) > one-off renders

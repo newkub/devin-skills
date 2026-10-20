@@ -36,7 +36,7 @@ Use when writing/running natural-language tests or automation ("click the login 
    export MIDSCENE_MODEL_FAMILY="qwen3"               # family flags replace the old MIDSCENE_USE_QWEN_VL
    ```
 2. `OPENAI_API_KEY` is still supported (deprecated); optional: `MIDSCENE_MODEL_PROTOCOL=openai-responses`, `MIDSCENE_MODEL_RETRY_COUNT/_TIMEOUT`, roles can be split (`MIDSCENE_PLANNING_MODEL_*`, `MIDSCENE_INSIGHT_MODEL_*`)
-3. verify: `npx midscene model verify`
+3. verify: `bunx midscene model verify`
 
 ### 2. Web Setup (Playwright Is the Main Path)
 
@@ -84,8 +84,8 @@ await agent.aiAssert('Every product in the search results has a price below $100
 2. Vitest: `there is no @midscene/web/vitest plugin anymore` — the official pattern is the Playwright+Vitest demo (`vitest.config.ts` set `testTimeout: 1800_000`, use `PlaywrightAgent` in the test, custom reporter)
 3. YAML + CLI: write `tasks/flow` YAML (`ai:`, `aiAssert:`, `sleep:`) then `midscene ./flow.yaml` (`@midscene/cli`, Node 20.19+/22.12+/24+, auto-loads `.env`) — legacy YAML is in maintenance mode; the new path is `Midscene Test` (`@midscene/test`, Beta): `midscene-test create`, `cases/*.yaml` + `midscene.config.ts` TS nodes, `midscene-test nodes` exports a Node Spec
 4. Bridge mode: control an already-open Chrome through an extension — `AgentOverChromeBridge` from `@midscene/web/bridge-mode`, CLI `--bridge`
-5. Native platforms: `@midscene/android` (`AndroidAgent`+adb), `@midscene/ios` (`IOSAgent`/WebDriverAgent), `@midscene/harmony` (HDC), `@midscene/computer` (`agentForComputer()`, RDP: `agentForRDPComputer()`) + Playgrounds (`npx --yes @midscene/computer-playground`)
-6. Agent Skills for coding agents: `npx skills add web-infra-dev/midscene-skills` (drives `npx @midscene/{web,android,ios,computer}`)
+5. Native platforms: `@midscene/android` (`AndroidAgent`+adb), `@midscene/ios` (`IOSAgent`/WebDriverAgent), `@midscene/harmony` (HDC), `@midscene/computer` (`agentForComputer()`, RDP: `agentForRDPComputer()`) + Playgrounds (`bunx @midscene/computer-playground`)
+6. Agent Skills for coding agents: `bunx skills add web-infra-dev/midscene-skills` (drives `bunx @midscene/{web,android,ios,computer}`)
 7. `MCP servers were retired since >1.9.8` — never register Midscene as an MCP
 
 ### 5. Caching And Reports
@@ -94,15 +94,15 @@ await agent.aiAssert('Every product in the search results has a price below $100
 
 1. cache = AI planning steps (prompt as key) + web XPath locates; enable `cache: { id }` or `cache: true` (auto id); strategies: `read-write` (default), `read-only` (+`agent.flushCache()` manual), `write-only`; legacy `MIDSCENE_CACHE=1`+`cacheId`
 2. cache files live in `./midscene_run/cache/*.cache.yaml` — `commit them for CI or persist the cache across runs`, otherwise every run pays for a fresh plan; XPath cache doesn't work on canvas/cross-origin iframe/closed Shadow DOM; prune with `flushCache({ cleanUnused: true })`
-3. reports: interactive HTML at `./midscene_run/report/*.html`; convert to markdown with `reportFileToMarkdown` or `npx @midscene/web report-tool --action to-markdown`
+3. reports: interactive HTML at `./midscene_run/report/*.html`; convert to markdown with `reportFileToMarkdown` or `bunx @midscene/web report-tool --action to-markdown`
 
 ### 6. Run And Validate
 
 > Goal: confirm the usage really works
 
-1. smoke script: `npx tsx demo.ts` (the demo uses the §3 snippet) → see the actions actually happen + a new HTML report in `./midscene_run/report/`
+1. smoke script: `bunx tsx demo.ts` (the demo uses the §3 snippet) → see the actions actually happen + a new HTML report in `./midscene_run/report/`
 2. suite: `bunx playwright test` (or `midscene ./flow.yaml`) → green + merged reporter output
-3. failing because of the model → run `npx midscene model verify` before debugging the test; failing because of the UI → `/update-tests`; a genuinely broken flow → `/resolve-errors` (same pipeline as `/deep-test e2e`)
+3. failing because of the model → run `bunx midscene model verify` before debugging the test; failing because of the UI → `/update-tests`; a genuinely broken flow → `/resolve-errors` (same pipeline as `/deep-test e2e`)
 
 ## Rules
 
@@ -126,7 +126,7 @@ await agent.aiAssert('Every product in the search results has a price below $100
 
 ## Expected Outcome
 
-- VLM config passes `npx midscene model verify`
+- VLM config passes `bunx midscene model verify`
 - able to write/run NL tests via both the fixture and the direct agent; an HTML report is produced every run
 - cache setup is correct (files in `./midscene_run/cache`, strategy matches the use case)
 - the right integration is chosen (Playwright/Puppeteer/Vitest-pattern/YAML/Midscene Test/Bridge/native) and no retired path is used

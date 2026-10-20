@@ -15,9 +15,9 @@ Cron Triggers run a Worker on a schedule
 Apply trigger changes (for the versions workflow)
 
 ```bash
-npx wrangler triggers deploy --name my-worker --triggers "*/5 * * * *"
-npx wrangler triggers deploy --name my-worker --triggers "*/5 * * * *" "0 0 * * *"
-npx wrangler triggers deploy --name my-worker --triggers "0 * * * *" --dry-run
+bunx wrangler triggers deploy --name my-worker --triggers "*/5 * * * *"
+bunx wrangler triggers deploy --name my-worker --triggers "*/5 * * * *" "0 0 * * *"
+bunx wrangler triggers deploy --name my-worker --triggers "0 * * * *" --dry-run
 ```
 
 | Flag | Alias | Description |
@@ -138,7 +138,7 @@ export default {
 ## Testing Locally
 
 ```bash
-npx wrangler dev --test-scheduled
+bunx wrangler dev --test-scheduled
 ```
 
 Test endpoints:

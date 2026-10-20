@@ -19,9 +19,9 @@ bun add @instantdb/react-native  # React Native
 CLI and scaffolder (run via `npx`/`bunx`, no install needed):
 
 ```sh
-npx instant-cli@latest login
-npx create-instant-app --next      # scaffold Next.js + Instant
-npx create-instant-app --vite-react
+bunx instant-cli@latest login
+bunx create-instant-app --next      # scaffold Next.js + Instant
+bunx create-instant-app --vite-react
 ```
 
 ### Version

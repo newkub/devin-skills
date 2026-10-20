@@ -1,8 +1,8 @@
 | Command | Use when |
 |---|---|
-| `npx workflow inspect runs` | list/inspect local runs (`.workflow-data/`) |
-| `npx workflow inspect runs --backend @workflow/world-postgres` | inspect a remote world |
-| `npx skills add https://github.com/vercel/workflow --skill migrating-workflow-v4-to-v5` | v4→v5 migration skill for coding agents |
+| `bunx workflow inspect runs` | list/inspect local runs (`.workflow-data/`) |
+| `bunx workflow inspect runs --backend @workflow/world-postgres` | inspect a remote world |
+| `bunx skills add https://github.com/vercel/workflow --skill migrating-workflow-v4-to-v5` | v4→v5 migration skill for coding agents |
 
 | Env var | Meaning |
 |---|---|

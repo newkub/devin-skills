@@ -125,6 +125,7 @@ For creating or improving projects that run on the Bun runtime, single package a
 - Dependency lifecycle scripts don't run unless listed in `trustedDependencies`
 - Install strategy: `isolated` for new monorepos (blocks phantom dependencies), `hoisted` for single packages
 - Supply-chain protection: `--minimum-release-age` / `[install] minimumReleaseAge`; CI uses `bun ci`
+- `bunx <pkg>` replaces `npx <pkg>` one-for-one — `npx` is denied by policy (`%APPDATA%\devin\config.json` → `permissions.deny`), so translate any `npx` command in a doc or error message to `bunx` before running it; `bunx` never prompts, so drop `-y`/`--yes`
 
 ### 3. Project Configuration
 

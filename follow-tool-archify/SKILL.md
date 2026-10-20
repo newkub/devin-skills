@@ -26,7 +26,7 @@ Use when a diagram must be explored, shared, or presented — not when inline ma
 
 > Goal: get the agent skill + zero-dependency CLI
 
-1. `npx skills add tt-a1i/archify -g` (installs into the agent's skills dir; `npx skills use tt-a1i/archify@archify --agent codex` to try without installing)
+1. `bunx skills add tt-a1i/archify -g` (installs into the agent's skills dir; `bunx skills use tt-a1i/archify@archify --agent codex` to try without installing)
 2. CLI check: `node archify/bin/archify.mjs doctor`
 3. Optional: set `ARCHIFY_UPDATE_CHECK_DISABLED=1` to disable its release-reminder network call
 

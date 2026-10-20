@@ -15,20 +15,20 @@ D1 migrations for versioning database schema changes
 
 ```bash
 # 1. Create migration
-npx wrangler d1 migrations create my-db create_user_table
+bunx wrangler d1 migrations create my-db create_user_table
 # Creates migrations/0001_create_user_table.sql
 
 # 2. Edit SQL file
 # Add CREATE TABLE, ALTER TABLE, etc.
 
 # 3. Apply to local
-npx wrangler d1 migrations apply my-db --local
+bunx wrangler d1 migrations apply my-db --local
 
 # 4. Apply to remote
-npx wrangler d1 migrations apply my-db --remote
+bunx wrangler d1 migrations apply my-db --remote
 
 # 5. List unapplied
-npx wrangler d1 migrations list my-db
+bunx wrangler d1 migrations list my-db
 ```
 
 ## Flags
@@ -102,8 +102,8 @@ If a migration fails, the system rolls back automatically — previous migration
 D1 has no separate `rollback` command — use Time Travel instead:
 
 ```bash
-npx wrangler d1 time-travel info my-db
-npx wrangler d1 time-travel restore my-db --bookmark=<BOOKMARK_ID>
+bunx wrangler d1 time-travel info my-db
+bunx wrangler d1 time-travel restore my-db --bookmark=<BOOKMARK_ID>
 ```
 
 ## Best Practices

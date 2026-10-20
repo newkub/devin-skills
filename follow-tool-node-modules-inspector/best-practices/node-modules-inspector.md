@@ -4,7 +4,7 @@ Interactive node_modules analysis — dep tree, sizes, and health audit
 
 ## Recommended Patterns
 
-- `npx node-modules-inspector` (or a devDep) — launches the interactive UI; use for periodic dep audits
+- `bunx node-modules-inspector` (or a devDep) — launches the interactive UI; use for periodic dep audits
 - Analyze: install size, duplicate versions, dependency depth, outdated packages, licenses
 - Tackle duplicate packages first — several versions of one dep = bundle bloat + potential bugs
 - Compare the lockfile vs node_modules — drift indicates a dirty install

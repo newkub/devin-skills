@@ -55,7 +55,7 @@ For `import`ing modules via `HTTPS URL` with automatic `tree-shaking`, `bundling
 1. Create a `<script type="importmap">` and map specifiers to `esm.sh` URLs
 2. For trailing slashes, change `?` to `&` after the version, e.g. `https://esm.sh/react-dom@19.3.0&dev/`
 3. Combine `?external` with `import maps` so the `browser` resolves the dependency itself
-4. Use the `esm.sh` CLI (`npx esm.sh add <pkg>`, `npx esm.sh tidy`) to automatically add/clean imports in the `<script type="importmap">` of `index.html` — see `references/cli.md`
+4. Use the `esm.sh` CLI (`bunx esm.sh add <pkg>`, `bunx esm.sh tidy`) to automatically add/clean imports in the `<script type="importmap">` of `index.html` — see `references/cli.md`
 
 ### 4. Use Advanced Features
 

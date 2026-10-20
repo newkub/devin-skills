@@ -24,7 +24,7 @@ Set/edit InstantDB configuration — `instant.schema.ts`, `instant.perms.ts`, en
 
 1. Read the existing `instant.schema.ts` and `instant.perms.ts`
 2. Do `/check-secrets env-vars` to identify missing or wrongly prefixed app id vars
-3. Run `npx instant-cli@latest pull` if the latest config must be synced from the server before editing
+3. Run `bunx instant-cli@latest pull` if the latest config must be synced from the server before editing
 4. If no config files exist at all → do `workflows/setup-instantdb/SKILL.md` instead
 
 ### 2. Update Schema
@@ -49,10 +49,10 @@ Set/edit InstantDB configuration — `instant.schema.ts`, `instant.perms.ts`, en
 
 > Goal: apply config and confirm typecheck passes
 
-1. Run `npx instant-cli@latest push schema` when the schema changes
-2. Run `npx instant-cli@latest push perms` when permissions change
+1. Run `bunx instant-cli@latest push schema` when the schema changes
+2. Run `bunx instant-cli@latest push perms` when permissions change
 3. Run `bun check` or `bun run build` to typecheck schema types
-4. Run `npx instant-cli@latest status` to confirm the connection — if it fails → `resolve-errors` max 3 rounds
+4. Run `bunx instant-cli@latest status` to confirm the connection — if it fails → `resolve-errors` max 3 rounds
 5. If new links/rooms exist → update the parent's references and do `/update-references`
 
 ## Rules

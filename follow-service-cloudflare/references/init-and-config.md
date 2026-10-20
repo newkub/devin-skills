@@ -4,7 +4,7 @@
 ## Initialize A New Project
 
 ```sh
-npx wrangler init my-project
+bunx wrangler init my-project
 ```
 
 This creates:
@@ -56,7 +56,7 @@ Cloudflare recommends `wrangler.jsonc` for new projects. Supported since Wrangle
 Define environment-specific configs under `env`:
 
 ```sh
-npx wrangler deploy --env staging
+bunx wrangler deploy --env staging
 ```
 
 Bindings (`vars`, `kv_namespaces`, etc.) are not inherited — define them explicitly per environment.

@@ -15,7 +15,7 @@ Component development + docs — quality stories, addons only as needed
 - Stories ≠ docs alone — stories that aren't really tested go stale; play functions + test-runner make stories = tests
 - Mock data realism — stories with fake-shaped data only miss real bugs; mirror real API shapes
 - SB is not where you fix CSS — visual bugs found in stories → fix the component, not the story wrapper
-- Version upgrades: storybook major migrations have codemods (`npx storybook upgrade`) — run them instead of a manual rewrite
+- Version upgrades: storybook major migrations have codemods (`bunx storybook upgrade`) — run them instead of a manual rewrite
 - Build time: storybook build is slow in monorepos — cache `.storybook` outputs + lazy compilation flags
 
 ## Testing Integration

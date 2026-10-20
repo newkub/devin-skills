@@ -16,7 +16,7 @@ Run it via the package runner:
 ```sh
 bunx wrangler <command>
 # or
-npx wrangler <command>
+bunx wrangler <command>
 ```
 
 ## Version

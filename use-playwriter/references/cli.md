@@ -6,7 +6,7 @@ Source: https://playwriter.dev/docs/cli · https://playwriter.dev/docs/skill (ve
 
 | command | description | options |
 |---------|-------------|---------|
-| `npm i -g playwriter` | install CLI globally | use `bunx playwriter@latest`/`npx playwriter@latest` without install — always `@latest` for first session command |
+| `npm i -g playwriter` | install CLI globally | use `bunx playwriter@latest` without install — always `@latest` for first session command |
 | `playwriter logfile` | print relay server log path | `~/.playwriter/relay-server.log` + `cdp.jsonl` alongside |
 | `playwriter skill` | print full agent instructions | run once before recorder work — never truncate output |
 | `playwriter browser install` | download Chrome for Testing | required once for `--browser headless` if no Chrome |
@@ -48,7 +48,7 @@ Source: https://playwriter.dev/docs/cli · https://playwriter.dev/docs/skill (ve
 | command | description | options |
 |---------|-------------|---------|
 | `playwriter stream start|stop|status` | live stream tab to RTMP via ffmpeg | survives CLI exit — see docs/streaming |
-| `playwriter serve --token <t>` | host relay for remote access | pair with `npx -y traforo -p 19988` tunnel |
+| `playwriter serve --token <t>` | host relay for remote access | pair with `bunx traforo -p 19988` tunnel |
 | `playwriter cloud login` | auth for cloud browsers | or env `PLAYWRITER_API_KEY` |
 
 ## Env Vars

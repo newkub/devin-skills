@@ -23,7 +23,7 @@ Measure test suite quality with mutation testing — make small code changes (mu
 
 1. Detect the stack from the manifest — pick the matching tool (`/follow-tool-stryker-mutator` for JS/TS)
 2. Always limit the scope: choose important or recently changed modules/files — repo-wide mutation testing takes a very long time
-3. Install the tool if missing (`npx stryker`, `cargo install cargo-mutants`)
+3. Install the tool if missing (`bunx stryker`, `cargo install cargo-mutants`)
 
 ## 2. Run Baseline
 

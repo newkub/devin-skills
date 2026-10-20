@@ -112,7 +112,7 @@ lightpanda fetch --dump markdown https://example.com   # agent-readable text
    - Windows + binary on WSL: `command: "wsl.exe"`, `args: ["-d", "<distro>", "--", "<absolute-linux-path>", "mcp"]` — use an absolute path (e.g. `/root/.local/bin/lightpanda`), not a bare `lightpanda`, because the host spawn is not a login shell and the WSL-side PATH may not cover `~/.local/bin` (verified 2026-10-13 — the JSON-RPC `initialize` handshake over stdio succeeded)
    - devin global: add an entry in `%APPDATA%\devin\mcp_config.json` per `/create-devin-global-mcp` (back up before editing)
 3. variants: `lightpanda mcp --port 8000` (HTTP, POST /mcp), `--cdp-port <n>` (also opens a CDP server)
-4. Cloud MCP via `mcp-remote`: `npx -y mcp-remote https://euwest.cloud.lightpanda.io/mcp?token=<TOKEN>` (WIP — not all tools are available)
+4. Cloud MCP via `mcp-remote`: `bunx mcp-remote https://euwest.cloud.lightpanda.io/mcp?token=<TOKEN>` (WIP — not all tools are available)
 5. main tools: `goto`, `search`, `markdown`, `html`, `extract`, `evaluate`, `click`, `fill`, `scroll`, `hover`, `press`, `selectOption`, `waitForSelector`, `screenshot` (text-layout only), `getUrl`, `getCookies`, `consoleLogs`, `session_new/list/close`; resources `mcp://page/markdown`, `mcp://page/html`
 
 ### 5. Validate Usage

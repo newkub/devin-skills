@@ -10,12 +10,12 @@
 Local dev server for Pages
 
 ```bash
-npx wrangler pages dev [DIRECTORY]
-npx wrangler pages dev ./dist
-npx wrangler pages dev --port 3000 --ip 127.0.0.1 ./dist
-npx wrangler pages dev ./dist --kv=MY_KV --d1=MY_DB
-npx wrangler pages dev ./dist --live-reload
-npx wrangler pages dev --local-protocol=https ./dist
+bunx wrangler pages dev [DIRECTORY]
+bunx wrangler pages dev ./dist
+bunx wrangler pages dev --port 3000 --ip 127.0.0.1 ./dist
+bunx wrangler pages dev ./dist --kv=MY_KV --d1=MY_DB
+bunx wrangler pages dev ./dist --live-reload
+bunx wrangler pages dev --local-protocol=https ./dist
 ```
 
 | Flag | Description |
@@ -36,11 +36,11 @@ npx wrangler pages dev --local-protocol=https ./dist
 Deploy static assets
 
 ```bash
-npx wrangler pages deploy [DIRECTORY]
-npx wrangler pages deploy ./dist
-npx wrangler pages deploy ./dist --branch=feature/new
-npx wrangler pages deploy ./dist --project-name=my-site
-npx wrangler pages deploy ./dist --commit-hash=abc123 --commit-message="Add feature"
+bunx wrangler pages deploy [DIRECTORY]
+bunx wrangler pages deploy ./dist
+bunx wrangler pages deploy ./dist --branch=feature/new
+bunx wrangler pages deploy ./dist --project-name=my-site
+bunx wrangler pages deploy ./dist --commit-hash=abc123 --commit-message="Add feature"
 ```
 
 | Flag | Description |
@@ -61,9 +61,9 @@ npx wrangler pages deploy ./dist --commit-hash=abc123 --commit-message="Add feat
 | `wrangler pages project delete [NAME]` | Delete project |
 
 ```bash
-npx wrangler pages project create my-site --production-branch main
-npx wrangler pages project list --json
-npx wrangler pages project delete my-site --yes
+bunx wrangler pages project create my-site --production-branch main
+bunx wrangler pages project list --json
+bunx wrangler pages project delete my-site --yes
 ```
 
 ### `wrangler pages deployment`
@@ -75,10 +75,10 @@ npx wrangler pages project delete my-site --yes
 | `wrangler pages deployment delete [ID]` | Delete deployment |
 
 ```bash
-npx wrangler pages deployment list --environment=production
-npx wrangler pages deployment tail --environment=preview
-npx wrangler pages deployment tail --format=json
-npx wrangler pages deployment delete <ID> --force
+bunx wrangler pages deployment list --environment=production
+bunx wrangler pages deployment tail --environment=preview
+bunx wrangler pages deployment tail --format=json
+bunx wrangler pages deployment delete <ID> --force
 ```
 
 ### `wrangler pages secret`
@@ -91,8 +91,8 @@ npx wrangler pages deployment delete <ID> --force
 | `wrangler pages secret delete KEY` | Delete secret |
 
 ```bash
-npx wrangler pages secret put API_KEY --project-name=my-app
-npx wrangler pages secret bulk ./secrets.json --env=preview
+bunx wrangler pages secret put API_KEY --project-name=my-app
+bunx wrangler pages secret bulk ./secrets.json --env=preview
 ```
 
 ### `wrangler pages functions build`
@@ -100,9 +100,9 @@ npx wrangler pages secret bulk ./secrets.json --env=preview
 Compile Pages Functions into a single Worker
 
 ```bash
-npx wrangler pages functions build [DIRECTORY]
-npx wrangler pages functions build --minify --sourcemap
-npx wrangler pages functions build --watch
+bunx wrangler pages functions build [DIRECTORY]
+bunx wrangler pages functions build --minify --sourcemap
+bunx wrangler pages functions build --watch
 ```
 
 ### `wrangler pages download config`
@@ -110,8 +110,8 @@ npx wrangler pages functions build --watch
 Download the dashboard config as a wrangler file
 
 ```bash
-npx wrangler pages download config my-site
-npx wrangler pages download config my-site --force
+bunx wrangler pages download config my-site
+bunx wrangler pages download config my-site --force
 ```
 
 ## Configuration

@@ -88,9 +88,9 @@ const data = await webhook;
 
 > Goal: observe and verify
 
-1. `npx workflow inspect runs` (local) / `--backend @workflow/world-postgres` (remote)
+1. `bunx workflow inspect runs` (local) / `--backend @workflow/world-postgres` (remote)
 2. `/run-dev` so the dev server runs real workflows → `/run-test` e2e through the workflow entry
-3. v4 → v5: `npx skills add https://github.com/vercel/workflow --skill migrating-workflow-v4-to-v5`, then let the agent migrate (v5: inline steps, batched writes, compressed payloads — up to ~80% compute cost on Vercel)
+3. v4 → v5: `bunx skills add https://github.com/vercel/workflow --skill migrating-workflow-v4-to-v5`, then let the agent migrate (v5: inline steps, batched writes, compressed payloads — up to ~80% compute cost on Vercel)
 
 ## Rules
 

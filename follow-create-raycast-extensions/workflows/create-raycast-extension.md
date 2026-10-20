@@ -11,7 +11,7 @@ Workflow for creating a Raycast extension.
 
 2. Create new extension
    ```bash
-   npx @raycast/api@latest create
+   bunx @raycast/api@latest create
    ```
 
 3. Choose template
@@ -42,7 +42,7 @@ Workflow for creating a Raycast extension.
 
 8. Publish to store
    ```bash
-   npx @raycast/api@latest publish
+   bunx @raycast/api@latest publish
    ```
 
 ## Example: Simple Command

@@ -83,7 +83,7 @@ Use for work involving the Vite ecosystem devtools framework
 1. Rolldown (`@vitejs/devtools-rolldown`) — module graph/chunk/asset/treemap/flamegraph, plugin hook cost, package duplication, session compare (do `/follow-tool-rolldown`)
 2. Vite (`@vitejs/devtools-vite`) — plugin inspector + module transforms in pipeline order (do `/follow-tool-vite`)
 3. Vitest (`@vitejs/devtools-vitest`) — test UI in the dock; the dock appears only when the project has `vitest`; launching installs `@vitest/ui` and runs `vitest --ui` as an iframe (do `/follow-tool-vitest`)
-4. Oxc (`@vitejs/devtools-oxc`) — oxlint/oxfmt inspector + ESLint/Prettier/Biome migration; runs standalone via `npx @vitejs/devtools-oxc`; if Vite Plus is detected it runs through `vp`
+4. Oxc (`@vitejs/devtools-oxc`) — oxlint/oxfmt inspector + ESLint/Prettier/Biome migration; runs standalone via `bunx @vitejs/devtools-oxc`; if Vite Plus is detected it runs through `vp`
 5. Integrations not yet in the project appear as a launcher in the dock — pressing it installs on demand, then restart the dev server; ones already present mount automatically
 
 ### 7. Version Notes

@@ -144,7 +144,7 @@ Develop and test on native platforms
 
 > Goal: migrate between major versions and test thoroughly
 
-1. Migrate a major version: `bun add -D @capacitor/cli@latest` then run `npx cap migrate` — review breaking changes of every plugin and update SDK targets per Rules §1
+1. Migrate a major version: `bun add -D @capacitor/cli@latest` then run `bunx cap migrate` — review breaking changes of every plugin and update SDK targets per Rules §1
 2. Don't use `cap migrate` in a monorepo — migrate manually (see Rules §6)
 3. Check the new major's platform gotchas (e.g. Capacitor 8: `@capacitor/system-bars` replaces `adjustMarginsForEdgeToEdge`, iOS `appendUserAgent` whitespace fix)
 4. Test on many real devices + emulators — plugin functionality, offline/network transitions, push/local notifications, deep links, OTA flow + rollback, biometrics, app lifecycle, WebView edge cases (process termination, memory pressure)

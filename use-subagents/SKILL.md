@@ -66,8 +66,8 @@ See more: /follow-agents-md
 
 > Goal: Pick the role that fits each subtask
 
-1. Choose a profile from the subagent profiles available in the system prompt
-2. Pick a profile such as fixer, debugger, refactor, qa, security, architect
+1. Run `/list-devin-global-subagents` — it enumerates every global profile in `%APPDATA%\devin\agents`; also use the profiles listed in the system prompt
+2. Pick the profile that matches the subtask's role (e.g. `fixer`, `debugger`, `refactor`, `qa`, `security-auditor`, `architect`)
 3. If there is no role you need → use `subagent_general` or `subagent_explore`
 4. If unsure → run `/ask-me` first
 5. Give complete context in the prompt

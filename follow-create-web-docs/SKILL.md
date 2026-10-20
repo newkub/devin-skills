@@ -41,7 +41,7 @@ Use when you want a small docs site for a repo — not a heavyweight docs framew
 
 > Goal: Vue + Vite app ready for Comark
 
-1. Always prefer `create-docs` (the canonical generator) — `bunx create-docs` (or `npx create-docs`, repo: `wrikka/create-docs`) scaffolds the whole site per this spec; if the generator isn't usable (not published yet/network) → fall back to the manual steps below
+1. Always prefer `create-docs` (the canonical generator) — `bunx create-docs` (repo: `wrikka/create-docs`) scaffolds the whole site per this spec; if the generator isn't usable (not published yet/network) → fall back to the manual steps below
 2. Manual fallback: `bun create vite <name> --template vue-ts` (or add it to the existing repo as `site/` or `docs-site/`)
 3. `bun add @comark/vue` plus plugins as needed (shiki for code highlight)
 4. Comark Vue usage: `<Markdown>` must be inside `<Suspense>`, use `:value` or a slot

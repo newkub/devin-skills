@@ -32,7 +32,7 @@ bun add -D supabase
 Pin the version in `package.json` for team consistency. Run commands through your package runner:
 
 ```sh
-npx supabase --help
+bunx supabase --help
 #### or
 pnpm supabase --help
 #### or

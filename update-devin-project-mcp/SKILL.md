@@ -36,9 +36,9 @@ Use when a project needs to integrate with MCP servers such as `agent-browser`, 
 2. Use the schema: `{ "mcpServers": { "<name>": { "command": "...", "args": [...], "env": {...} } } }`
 3. Add/update servers:
    - `agent-browser`: `agent-browser mcp --tools core`
-   - `ast-grep`: `npx @ast-grep/cli` (if present)
-   - `github`: `npx -y @github/github-mcp-server`
-4. Use `npx -y` for package-based servers
+   - `ast-grep`: `bunx @ast-grep/cli` (if present)
+   - `github`: `bunx @github/github-mcp-server`
+4. Use `bunx` for package-based servers (it never prompts — no `-y` needed)
 5. Use `bun` if the project uses bun
 
 ### 3. Register Servers In Global Config
@@ -75,7 +75,7 @@ Use when a project needs to integrate with MCP servers such as `agent-browser`, 
 
 ### 2. Local First
 
-- Use local packages or `npx -y` first
+- Use local packages or `bunx` first
 - If a global install is required → state it clearly
 
 ### 3. Validate JSON
