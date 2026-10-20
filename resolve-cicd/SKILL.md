@@ -4,7 +4,6 @@ description: Watch CI (GitHub Actions) and CD (Cloudflare, deploy targets) then 
 argument-hint: "[--repo <owner/repo> | --run-id <id> | --url <url> | verify]"
 related:
   - resolve-errors
-  - git-commit
   - use-wrangler
   - run-check
   - loop-until-complete

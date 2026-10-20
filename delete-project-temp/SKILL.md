@@ -4,8 +4,6 @@ description: Safely delete a project's .devin/temp/ (reports, plans) with dry-ru
 argument-hint: ""
 related:
   - delete
-  - cleanup
-  - cleanup-artifact
   - create-plan-in-dot-devin
   - create-report-in-dot-devin
   - deep-review-codebase

@@ -31,9 +31,10 @@ Use when you want to optimize across many dimensions at once — report-only by 
 
 > Goal: divide the target into dimension slices that can be reviewed independently
 
-1. Accept `[path-or-target]` — unspecified = full repo; `--diff` = only files in `git diff`
-2. Run `/scan-codebase` to identify hot paths, build outputs, manifests, data layer, UI layer
-3. Split into dimension lanes (non-overlapping file ownership):
+1. Run `/deep-thinking` — fix the goal, the measurable metric per lane, and what "better" means before scanning
+2. Accept `[path-or-target]` — unspecified = full repo; `--diff` = only files in `git diff`
+3. Run `/scan-codebase` to identify hot paths, build outputs, manifests, data layer, UI layer
+4. Split into dimension lanes (non-overlapping file ownership):
 
 | Lane | Dimension | What to check |
 |------|-----------|---------|

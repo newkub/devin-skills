@@ -6,9 +6,7 @@ related:
   - use-bun-native-api
   - deep-review-codebase
   - follow-tool-vite
-  - learn
   - follow-deploy
-  - follow-create-mobile
 
 ---
 ## Goal
@@ -27,7 +25,7 @@ Use for developing and maintaining Capacitor 8 mobile apps in a monorepo, coveri
 
 > Goal: check and prepare the environment before starting development
 
-1. Run `/deep-research` + `/follow-best-practice` to confirm the latest versions and requirements of the current Capacitor major, then run `/review-dependencies` to summarize the tech stack
+1. Run `/deep-research` + `/follow-best-practice` to confirm the latest versions and requirements of the current Capacitor major, then run `/run-bench-deps` to summarize the tech stack
 2. Verify Node.js >= 22 (Capacitor 8 requirement)
 3. Verify the latest Android Studio version supported by Capacitor (check with `/deep-research`)
 4. Verify Xcode >= 26.0 for iOS development (Capacitor 8 requirement — the toolchain always bundles Swift)

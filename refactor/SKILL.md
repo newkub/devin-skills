@@ -13,8 +13,6 @@ related:
   - use-subagents
   - follow-tool-knip
   - dont-over-engineer
-  - report-before-after
-  - follow-agents-md
   - follow-architecture
   - deep-validate
   - refactor-skills
@@ -65,13 +63,13 @@ Handed off elsewhere: config drift → `/update-config` · hardcoded values → 
 
 > Goal: one unit = 1 reason to change; one technique at a time → `/run-check` green → `/git-commit` checkpoint; red → revert that step only
 
-- **file/SRP** — group responsibilities by reason to change → Extract Method → Extract Class/Module → Move Method/Field; one content kind per file (`types.ts`/`constants.ts`/`schema.ts` or the domain name); keep the public API through a barrel so consumers don't change; no real violation → stop (`/dont-over-engineer`)
-- **concerns** — classify each block with `file:line` evidence (presentation/domain/data/io/config/orchestration) → extract leaf-first, one concern at a time, callers keep only orchestration
-- **structure** — naming via `/rename`; >250-line or multi-responsibility files → file/SRP; folder >10–15 flat files → group by domain; relocate via `/relocation` (dry-run + confirm); public API through the barrel, alias imports instead of `../../../`
-- **workspace/monorepo/codebase** — order foundation → dependents → applications; work one workspace/batch at a time with verify + checkpoint after each; independent files → parallel via `/use-subagents` (read in parallel, edit sequentially, no overlapping scope); nothing skipped silently — report anything not done with the reason
-- **shared** — extract only with ≥2 real consumers → `packages/shared`, layer-correct leaf-first; rewire consumers one at a time via `/update-references`; verify the package is a leaf (`/follow-tool-madge`); coincidental similarity stays duplicated
-- **orm** — move data access onto the project's one type-safe ORM behind a repository boundary (interfaces use business types, never import the ORM); drizzle → `/follow-lib-drizzle`; boundary validation → `/follow-tool-data-validation`
-- **architecture** — do not restructure layers here; run `/follow-architecture` and return for the file-level passes it exposes
+- `file/SRP` — group responsibilities by reason to change → Extract Method → Extract Class/Module → Move Method/Field; one content kind per file (`types.ts`/`constants.ts`/`schema.ts` or the domain name); keep the public API through a barrel so consumers don't change; no real violation → stop (`/dont-over-engineer`)
+- `concerns` — classify each block with `file:line` evidence (presentation/domain/data/io/config/orchestration) → extract leaf-first, one concern at a time, callers keep only orchestration
+- `structure` — naming via `/rename`; >250-line or multi-responsibility files → file/SRP; folder >10–15 flat files → group by domain; relocate via `/relocation` (dry-run + confirm); public API through the barrel, alias imports instead of `../../../`
+- `workspace/monorepo/codebase` — order foundation → dependents → applications; work one workspace/batch at a time with verify + checkpoint after each; independent files → parallel via `/use-subagents` (read in parallel, edit sequentially, no overlapping scope); nothing skipped silently — report anything not done with the reason
+- `shared` — extract only with ≥2 real consumers → `packages/shared`, layer-correct leaf-first; rewire consumers one at a time via `/update-references`; verify the package is a leaf (`/follow-tool-madge`); coincidental similarity stays duplicated
+- `orm` — move data access onto the project's one type-safe ORM behind a repository boundary (interfaces use business types, never import the ORM); drizzle → `/follow-lib-drizzle`; boundary validation → `/follow-tool-data-validation`
+- `architecture` — do not restructure layers here; run `/follow-architecture` and return for the file-level passes it exposes
 
 ### 4. Update References
 

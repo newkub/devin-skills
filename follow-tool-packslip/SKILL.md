@@ -1,14 +1,7 @@
 ---
 name: follow-tool-packslip
-description: publish signed release manifests (packslip) for artifacts — digests, platforms, bin paths installers can verify
+description: Publish signed release manifests (packslip) — digests, platforms, bin paths
 argument-hint: "[scope]"
-related:
-  - follow-tool-mise
-  - follow-tool-fnox
-  - follow-tool-usage
-  - setup-cicd
-  - run-release
-  - ship
 ---
 
 ## Goal

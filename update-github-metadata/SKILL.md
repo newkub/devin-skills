@@ -1,14 +1,12 @@
 ---
 name: update-github-metadata
-description: Update GitHub repo metadata (description, homepage, topics, default branch) and branch protection to match the project
+description: Update repo metadata (description, topics, homepage) and branch protection
 argument-hint: "[owner/repo]"
 related:
   - git-push
   - update-project
   - follow-dot-github
-  - list-github
   - list-cloudflare-projects
-  - create-github
   - ask-me
 
 ---

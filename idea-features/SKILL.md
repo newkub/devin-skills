@@ -1,6 +1,6 @@
 ---
 name: idea-features
-description: Generate 30 feature ideas (extends + new + platform) — answer with a single table in chat, ordered by impact, create no files
+description: Generate 30 feature ideas in one chat table ordered by impact, create no files
 argument-hint: "[topic]"
 related:
   - idea
@@ -9,7 +9,6 @@ related:
   - design-tui-prototype
   - design-html-prototype
   - design-web-prototype
-  - deep-analyze
   - learn-from-codebase
   - reframe
   - ask-me
@@ -22,7 +21,7 @@ related:
 
 ## Goal
 
-Generate 30 feature ideas for a project/topic — covering `extends` (extend what exists), `new` (net-new capability), and `platform` (cross-cutting: auth, security, performance, stability, release, observability) — answer in chat as a **single table** ordered by impact, create no files at all
+Generate 30 feature ideas for a project/topic — covering `extends` (extend what exists), `new` (net-new capability), and `platform` (cross-cutting: auth, security, performance, stability, release, observability) — answer in chat as a `single table` ordered by impact, create no files at all
 
 ## Scope
 
@@ -48,7 +47,7 @@ Generate 30 feature ideas for a project/topic — covering `extends` (extend wha
 
 > Goal: 30 ideas with all columns filled, no placeholders
 
-Always generate **30 items**, mixing `extends` + `new` + `platform` according to the proportion of the chosen topic — every row of the table must have all 9 columns:
+Always generate `30 items`, mixing `extends` + `new` + `platform` according to the proportion of the chosen topic — every row of the table must have all 9 columns:
 
 | Column | Content |
 |---------|---------|
@@ -66,8 +65,8 @@ Always generate **30 items**, mixing `extends` + `new` + `platform` according to
 
 > Goal: One table, read in order of importance
 
-1. **Sort by Impact: High → Medium → Low** — within the same impact, put `new`/`platform` that unlock other work first; renumber `No.` after sorting
-2. Answer in chat as a **single markdown table** with all 30 rows — no grouping, create no files, serve nothing
+1. `Sort by Impact: High → Medium → Low` — within the same impact, put `new`/`platform` that unlock other work first; renumber `No.` after sorting
+2. Answer in chat as a `single markdown table` with all 30 rows — no grouping, create no files, serve nothing
 3. End with a short summary: the proportion of extends/new/platform, the number of High-impact, the top 3 ideas recommended to start with + reasons
 4. Run `/suggest-next-action` — ideas the user confirms → `/create-plan-in-dot-devin` → `/implement-to-production`
 

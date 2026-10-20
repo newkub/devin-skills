@@ -55,10 +55,10 @@ Schema.encode(Todo)(todo)                   // domain → wire format
 
 ### 4. Patterns
 
-1. **Tagged errors as schemas**: `Schema.TaggedError` — serialize errors across RPC/HTTP
-2. **Config/env validation**: decode env into a typed config at boot
-3. **Message/payload schemas**: RPC, queue payloads — validate in both directions
-4. **Arbitrary** (testing): `Arbitrary.make(Todo)` for fast-check random data
+1. `Tagged errors as schemas`: `Schema.TaggedError` — serialize errors across RPC/HTTP
+2. `Config/env validation`: decode env into a typed config at boot
+3. `Message/payload schemas`: RPC, queue payloads — validate in both directions
+4. `Arbitrary` (testing): `Arbitrary.make(Todo)` for fast-check random data
 
 ## Rules
 

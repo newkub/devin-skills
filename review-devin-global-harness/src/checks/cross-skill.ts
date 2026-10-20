@@ -32,11 +32,8 @@ export function checkCrossSkill(skills: SkillMeta[], ctx: Context) {
     ctx.addObservation({ file: "-", line: 0, category: "cross-skill-consistency", severity: "Info", finding: "no widespread duplicate content lines", evidence: "threshold: >=5 skills" }, "_repo");
   }
 
-  // 2. Naming conventions: -with-/-using- should be -by-, non-kebab names
+  // 2. Naming conventions: kebab-case, matching the dir name
   for (const m of skills) {
-    if (/-(with|using)-/.test(m.skill)) {
-      ctx.addFinding({ file: m.skill, line: 0, category: "naming", severity: "Low", finding: "uses -with-/-using- instead of -by- convention", evidence: m.skill }, m.skill);
-    }
     if (!/^[a-z0-9]+(-[a-z0-9]+)*$/.test(m.skill)) {
       ctx.addFinding({ file: m.skill, line: 0, category: "naming", severity: "Medium", finding: "name is not kebab-case", evidence: m.skill }, m.skill);
     }

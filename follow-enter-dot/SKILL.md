@@ -4,7 +4,6 @@ description: Handle the "." trigger: check state, then choose continue, commit/p
 argument-hint: "[scope]"
 related:
   - continue
-  - idea
   - idea-features
   - follow-your-suggestion
   - git-commit

@@ -5,7 +5,6 @@ argument-hint: "[file]"
 related:
   - deep-review-codebase
   - ask-me
-  - learn
   - follow-best-practice
   - dont-over-engineer
   - use-scripts

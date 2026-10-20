@@ -4,7 +4,6 @@ description: Install and configure UnoCSS v66 with presetWind4 and transformers
 argument-hint: "[scope]"
 related:
   - follow-unocss-theme
-  - follow-design-system
   - follow-lib-css
   - follow-tool-formatter
   - follow-best-practice

@@ -26,8 +26,8 @@ function Card(props: { title: string; children?: JSX.Element }) {
 }
 ```
 
-- **Render-once**: the component body runs once — only reactive expressions in JSX update
-- **Never destructure props immediately** — `const { title } = props` destroys reactivity; use `props.title` in JSX or `mergeProps`/`splitProps`
+- `Render-once`: the component body runs once — only reactive expressions in JSX update
+- `Never destructure props immediately` — `const { title } = props` destroys reactivity; use `props.title` in JSX or `mergeProps`/`splitProps`
 
 ```ts
 const [local, rest] = splitProps(props, ['title', 'variant'])

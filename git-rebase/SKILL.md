@@ -3,10 +3,7 @@ name: git-rebase
 description: Safely rebase a branch — onto main, autosquash fixups, complete conflict flow
 argument-hint: "[onto-branch|abort|continue]"
 related:
-  - git-commit
-  - git-push
   - check-merge-conflicts
-  - check-git-logs
   - resolve-errors
   - run-check
 ---

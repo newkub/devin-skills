@@ -36,24 +36,40 @@ Use for project-level hooks such as `post_write_code` for lint, typecheck, forma
 2. Create `run-lint.ts`, `run-typecheck.ts` as needed
 3. Use the shebang `#!/usr/bin/env bun`
 4. Parse JSON input from stdin
-5. Use `try/catch` for error handling
-6. Use `process.exit(0)` for success, `process.exit(1)` for failure
+5. `try/catch` for error handling
+6. Exit `0` on success and on "nothing to report" — a non-zero exit turns a warning into a blocking error; reserve `exit 1` for a genuine failure
+7. Print exactly one JSON object to stdout — no `Write-Output`/`console.log` diagnostics alongside it (a second line breaks the hook parser); send human text to stderr or into `additionalContext`
 
-### 3. Configure hooks.json
+### 3. Configure hooks
 
 > Goal: register hooks with events
 
-1. Create `.devin/hooks/hooks.json`
-2. Set `post_write_code` for `run-lint.ts`
-3. Use `show_output: true`
-4. Example:
+1. Global: `%APPDATA%\devin\config.json` → `hooks` (what Devin CLI reads today)
+2. Project: `.devin/hooks/hooks.json` — same event names and per-event shape
+3. Events: `PreToolUse`, `PostToolUse`, `UserPromptSubmit`, `SessionStart`, `Stop` — `post_write_code` is not an event
+4. `matcher` is a regex over the tool name (e.g. `^(write|edit)$`); omit it to run on every tool call
+5. `command` is a single string, plus `timeout` in seconds — keep it short (5s); never write files from a hook (it re-triggers itself)
+6. Example:
 
 ```json
 {
-  "hooks": [
-    { "event": "post_write_code", "command": ["bun", ".devin/hooks/run-lint.ts"], "show_output": true }
-  ]
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "^(write|edit|multi_edit)$",
+        "hooks": [
+          { "type": "command", "command": "pwsh %APPDATA%\\devin\\hooks\\check-long-files.ps1", "timeout": 5 }
+        ]
+      }
+    ]
+  }
 }
+```
+
+7. Output contract for a `PostToolUse` hook — one JSON object, nothing else:
+
+```json
+{ "hookSpecificOutput": { "hookEventName": "PostToolUse", "additionalContext": "message for the agent" } }
 ```
 
 ### 4. Validate

@@ -5,7 +5,6 @@ argument-hint: "[framework]"
 related:
   - follow-lib-tanstack-ecosystem
   - resolve-errors
-  - follow-tool-vite-devtools
 ---
 
 ## Goal

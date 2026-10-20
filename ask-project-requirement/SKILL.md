@@ -4,7 +4,6 @@ description: Gather requirements via /ask-me with multi-select/multi-step questi
 argument-hint: "[topic]"
 related:
   - ask-me
-  - update-docs
   - alternative
   - ship
   - plan

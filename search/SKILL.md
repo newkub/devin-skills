@@ -4,7 +4,6 @@ description: Cross-source search — files, GitHub stars, npm, Raindrop, MCP, sk
 argument-hint: "[domain]"
 related:
   - follow-tool-crw
-  - learn
   - use-astgrep
   - ask-me
   - report

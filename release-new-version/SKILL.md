@@ -7,7 +7,6 @@ related:
   - follow-release
   - run-release
   - watch-deploy
-  - deep-review-codebase
   - gen-changelog-md
   - resolve-errors
   - report

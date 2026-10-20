@@ -3,8 +3,6 @@ name: git-branch
 description: Create/switch/rename branches per convention — upstream tracking and local branch cleanup
 argument-hint: "[create|switch|rename|cleanup] [name]"
 related:
-  - git-commit
-  - git-push
   - cleanup-git-branch
   - delete-git-branch
   - check-unpush

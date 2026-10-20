@@ -1,6 +1,6 @@
 ---
 name: review
-description: General review of a named scope — find issues, gaps, and inconsistencies with evidence, then fix after confirm
+description: General review of a scope — issues, gaps, inconsistencies with evidence, then fix
 argument-hint: "[scope-or-area]"
 related:
   - review-issues

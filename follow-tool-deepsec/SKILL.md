@@ -65,9 +65,9 @@ bunx deepsec report       # quick overview
 
 > Goal: pick the right credential route
 
-1. **Vercel AI Gateway** (default): Vercel login happens automatically during init
-2. **Own key**: `MY_KEY=... bunx deepsec init --agent codex --model-auth direct --ai-provider openai --ai-api-key-env MY_KEY` — deepsec stores only the *name* of the env var, never the key; put it in `.deepsec/.env.local` for later runs
-3. **Local subscriptions**: `--model-auth local` when the `claude`/`codex` CLI is already logged in — except `sandbox`, which still requires `AI_GATEWAY_API_KEY`
+1. `Vercel AI Gateway` (default): Vercel login happens automatically during init
+2. `Own key`: `MY_KEY=... bunx deepsec init --agent codex --model-auth direct --ai-provider openai --ai-api-key-env MY_KEY` — deepsec stores only the *name* of the env var, never the key; put it in `.deepsec/.env.local` for later runs
+3. `Local subscriptions`: `--model-auth local` when the `claude`/`codex` CLI is already logged in — except `sandbox`, which still requires `AI_GATEWAY_API_KEY`
 
 ### 5. Review Artifacts
 

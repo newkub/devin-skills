@@ -1,6 +1,6 @@
 ---
 name: follow-lib-tanstack-form
-description: Use TanStack Form end to end — fields, Standard Schema validation, arrays, async validators, granular reactivity
+description: Use TanStack Form end to end — fields, Standard Schema validation, arrays, async validators
 argument-hint: "[framework] [schema-lib]"
 related:
   - follow-lib-tanstack-ecosystem
@@ -75,12 +75,12 @@ const form = useForm({
 
 > Goal: cover real forms
 
-1. **Array fields**: `mode="array"` + `field.pushValue(v)`/`removeValue(i)`/`swapValues` — dynamic lists (skills, line items)
-2. **Granular subscribe**: `<form.Subscribe selector={(s) => s.canSubmit}>` — re-render only the derived slice
-3. **Composable fields**: wrap `form.Field` into shared input components via `createFormHook` + `fieldComponents`/`formComponents`
-4. **Linked fields**: `listeners` on a field → recompute other fields when the value changes
-5. **Server submit errors**: catch in `onSubmit` → map into field errors or a form-level error display
-6. **Reset/persist**: `formApi.reset()`, draft autosave via subscribe + storage
+1. `Array fields`: `mode="array"` + `field.pushValue(v)`/`removeValue(i)`/`swapValues` — dynamic lists (skills, line items)
+2. `Granular subscribe`: `<form.Subscribe selector={(s) => s.canSubmit}>` — re-render only the derived slice
+3. `Composable fields`: wrap `form.Field` into shared input components via `createFormHook` + `fieldComponents`/`formComponents`
+4. `Linked fields`: `listeners` on a field → recompute other fields when the value changes
+5. `Server submit errors`: catch in `onSubmit` → map into field errors or a form-level error display
+6. `Reset/persist`: `formApi.reset()`, draft autosave via subscribe + storage
 
 ### 5. Verify
 

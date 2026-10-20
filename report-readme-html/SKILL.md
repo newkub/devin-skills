@@ -8,7 +8,6 @@ related:
   - update-docs
   - open-web
   - create-files-in-os-temp
-  - run-docs
 ---
 
 ## Goal

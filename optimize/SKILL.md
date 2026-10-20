@@ -1,6 +1,6 @@
 ---
 name: optimize
-description: Find optimization opportunities in the scope — baseline → /deep-review-codebase → fix → re-measure per scope-map
+description: Find optimization opportunities — baseline, deep review, fix, re-measure
 argument-hint: "[scope]"
 related:
   - deep-optimize

@@ -5,7 +5,6 @@ argument-hint: "[file]"
 related:
   - check-git-logs
   - list-brave-browser-history
-  - restore-files
   - follow-git-flow
   - resolve-errors
   - follow-best-practice

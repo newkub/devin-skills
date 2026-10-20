@@ -3,7 +3,6 @@ name: review-github-pr
 description: Review the whole pull request before merge — diff, commits, PR metadata, CI, code changes
 argument-hint: "[pr-number]"
 related:
-  - list-github
   - merge
   - resolve-errors
   - report
@@ -12,6 +11,7 @@ related:
   - deep-thinking
   - deep-analyze
   - deep-validate
+  - use-subagents
 
 ---
 
@@ -132,28 +132,28 @@ Every round starts with the deep pre-pass — run `/deep-thinking` → `/deep-an
 
 ### pr-reviewer — review one PR slice (per-domain/per-file-group) and return findings with severity
 
-- **Inputs**: `pr-diff-scope` (file list or diff range owned, e.g. `src/api/**`, commits `a..b`, or a domain such as `security`); `conventions` (project conventions such as `AGENTS.md`, style guide, PR checklist); `pr-context` (optional: PR number, base/head branch, title, description)
-- **Tools**: model `sonnet` — `read`, `grep`, `find_file_by_name`; `exec` only read-only (`gh pr diff`, `gh pr view`, `git diff`, `git log`); never `edit`/`write` on source (read-only reviewer)
-- **Execute**:
+- `Inputs`: `pr-diff-scope` (file list or diff range owned, e.g. `src/api/**`, commits `a..b`, or a domain such as `security`); `conventions` (project conventions such as `AGENTS.md`, style guide, PR checklist); `pr-context` (optional: PR number, base/head branch, title, description)
+- `Tools`: model `sonnet` — `read`, `grep`, `find_file_by_name`; `exec` only read-only (`gh pr diff`, `gh pr view`, `git diff`, `git log`); never `edit`/`write` on source (read-only reviewer)
+- `Execute`:
   - Read the diff of the scope only (`gh pr diff <pr>` or `git diff`) — do not read files outside the scope
   - Read the surrounding code of each hunk to understand context before judging
   - Check per the received domain checklist, e.g. security → injection/auth/secrets, tests → coverage/assertions
   - Assign severity to every finding with real evidence from diff; never guess
   - Summarize the slice verdict: `approve` / `comment` / `request-changes`
-- **Output**: findings table `| No. | File | Line | Severity | Finding | Recommendation |`; `severity` = `critical`/`high`/`medium`/`low`/`info`; end with the slice verdict and the finding count per severity; if no findings → return `approve` with a short reason
-- **Constraints**: review only — never modify source or push commits; focus on the received scope only, never review the whole PR or files outside the slice; every finding needs a `file path` + `line` or `commit reference`; don't duplicate findings outside the scope (other slices have their own agents); if the scoped diff has no changes → return `approve` immediately noting the scope is empty
+- `Output`: findings table `| No. | File | Line | Severity | Finding | Recommendation |`; `severity` = `critical`/`high`/`medium`/`low`/`info`; end with the slice verdict and the finding count per severity; if no findings → return `approve` with a short reason
+- `Constraints`: review only — never modify source or push commits; focus on the received scope only, never review the whole PR or files outside the slice; every finding needs a `file path` + `line` or `commit reference`; don't duplicate findings outside the scope (other slices have their own agents); if the scoped diff has no changes → return `approve` immediately noting the scope is empty
 
 ### pr-checklist-reviewer — check the PR per dimensions using the criteria in this file as criteria (report-only)
 
-- **Inputs**: `scope` (target path/directory to review); `dimensions` (optional: a subset of checklist dimensions — default all); `findings-file` (optional: baseline output to cross-check)
-- **Tools**: model `sonnet` — `read`, `exec`, `grep`, `glob`, `find_file_by_name`; never `edit`/`write` (read-only reviewer)
-- **Execute**:
+- `Inputs`: `scope` (target path/directory to review); `dimensions` (optional: a subset of checklist dimensions — default all); `findings-file` (optional: baseline output to cross-check)
+- `Tools`: model `sonnet` — `read`, `exec`, `grep`, `glob`, `find_file_by_name`; never `edit`/`write` (read-only reviewer)
+- `Execute`:
   - Read each `dimensions`' criteria from the section mapped in the next bullet, then actually check (read/grep/glob) — every finding needs a `file:line` + evidence
   - dimension → parent section: `fetch-pr-context`→`### 1`, `pr-metadata`→`### 2`, `code-changes`→`### 3`, `validate-findings`→`### 4`, `governance`→`### 5`, `scoring`→`### 7`, `report-and-recommend`→`### 8`, `deep-pr-review`→`### 9`, `checklist`→`## Rules → Full-Dimension Checklist`
   - Classify severity: `Critical` / `High` / `Medium` / `Low` / `Info`
   - False positive → discard; outside scope → `info` only
-- **Output**: table `| No. | Dimension | Severity | File | Finding | Suggestion |`; sorted `Critical`→`Info`; end with a score per dimension + overall; report both strengths and weaknesses
-- **Constraints**: read-only — never modify any file (fixing is the job of the parent's `## Fix`); never guess — no evidence no finding; responsible only for the received `dimensions`, don't cross into other dimensions
+- `Output`: table `| No. | Dimension | Severity | File | Finding | Suggestion |`; sorted `Critical`→`Info`; end with a score per dimension + overall; report both strengths and weaknesses
+- `Constraints`: read-only — never modify any file (fixing is the job of the parent's `## Fix`); never guess — no evidence no finding; responsible only for the received `dimensions`, don't cross into other dimensions
 
 ## Rules
 

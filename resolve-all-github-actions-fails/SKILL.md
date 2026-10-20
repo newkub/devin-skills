@@ -1,12 +1,11 @@
 ---
 name: resolve-all-github-actions-fails
 argument-hint: "[--owner <user-or-org>]"
-description: List and resolve GitHub Actions workflow runs that fail in every repo of the account, then delete the failed runs
+description: Resolve failing GitHub Actions runs in every repo of the account, then delete them
 related:
   - resolve-github-actions-fails
   - all-github-repo
   - delete-cicd-fails
-  - resolve-errors
   - report
   - suggest-next-action
   - ask-me

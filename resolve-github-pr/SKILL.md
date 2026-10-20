@@ -3,8 +3,6 @@ name: resolve-github-pr
 description: Resolve pull requests via merge, squash, or rebase per project conventions
 argument-hint: "[scope]"
 related:
-  - create-github
-  - list-github
   - merge
 ---
 

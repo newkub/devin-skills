@@ -5,7 +5,6 @@ argument-hint: "[scope]"
 related:
   - search
   - use-astgrep
-  - list-devin
   - use-related-skills
   - create-similar
   - ask-me

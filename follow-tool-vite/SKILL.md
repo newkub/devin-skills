@@ -12,7 +12,6 @@ related:
   - follow-create-plugins
   - follow-tool-biome
   - follow-lang-typescript
-  - follow-tool-vite-devtools
 
 ---
 

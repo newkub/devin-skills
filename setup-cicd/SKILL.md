@@ -11,7 +11,6 @@ related:
   - deep-review-codebase
   - run-verify
   - run-test
-  - follow-tool-mr-boxington
   - ship
   - report
   - suggest-next-action

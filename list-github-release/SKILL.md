@@ -3,9 +3,7 @@ name: list-github-release
 description: Show all releases of a given repo on GitHub
 argument-hint: "[repo]"
 related:
-  - list-git
   - resolve-errors
-  - list-github
   - report
   - run-release
 

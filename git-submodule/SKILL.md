@@ -5,8 +5,6 @@ argument-hint: "[add|init|update|status] [path]"
 related:
   - convert-git-submodules
   - delete-git-submodules
-  - git-push
-  - git-commit
   - resolve-errors
 ---
 

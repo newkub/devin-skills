@@ -1,6 +1,6 @@
 ---
 name: publish-package-to-registry
-description: Auto-detect the registry, then publish the package to npm, crates.io, GitHub Packages, or another registry
+description: Detect the registry, then publish to npm, crates.io, GitHub Packages, or other
 argument-hint: "[scope]"
 related:
   - follow-secret-manager

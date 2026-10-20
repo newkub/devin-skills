@@ -24,8 +24,8 @@ Use for a repo without Renovate yet — install method, token, workflow trigger.
 
 > Goal: pick how to deploy Renovate
 
-1. **Mend Renovate GitHub App** — install the app from GitHub Marketplace on the repo/org — no self-hosting, config via `renovate.json` only
-2. **Self-hosted via GitHub Actions** — create `.github/workflows/renovate.yml` running `renovatebot/github-action` — fits when you need control of the schedule/runner (check the parent skill or official docs for versions)
+1. `Mend Renovate GitHub App` — install the app from GitHub Marketplace on the repo/org — no self-hosting, config via `renovate.json` only
+2. `Self-hosted via GitHub Actions` — create `.github/workflows/renovate.yml` running `renovatebot/github-action` — fits when you need control of the schedule/runner (check the parent skill or official docs for versions)
 3. Other self-hosted modes (docker, npm cli) — see official docs
 
 ### 2. Setup Token (Self-hosted)

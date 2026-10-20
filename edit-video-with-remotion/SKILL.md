@@ -9,7 +9,6 @@ related:
   - use-bun-native-api
   - follow-lib-animejs
   - follow-lib-iconify
-  - run-build
 
 ---
 

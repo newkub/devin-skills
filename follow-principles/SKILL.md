@@ -14,7 +14,6 @@ related:
   - report
   - suggest-next-action
   - scan-codebase
-  - search
   - deep-analyze
   - ask-me
   - check-reference

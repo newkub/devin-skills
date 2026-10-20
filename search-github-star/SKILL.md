@@ -4,10 +4,8 @@ name: search-github-star
 description: Search repositories from GitHub stars with the gh CLI
 argument-hint: "[query]"
 related:
-  - list-github
   - all-github-repo
   - follow-tool-crw
-  - learn
 
 ---
 

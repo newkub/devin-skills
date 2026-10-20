@@ -5,7 +5,6 @@ argument-hint: "[title-or-auto]"
 related:
   - list-todo-gist
   - save-to-todo-md
-  - update-todo-md
   - report-progress
   - report
 ---

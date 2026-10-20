@@ -4,7 +4,6 @@ description: Convert bitmap images to SVG with a bunx CLI
 argument-hint: "[input]"
 related:
   - convert
-  - idea
   - draw-svg-image
 
 ---

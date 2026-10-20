@@ -1,6 +1,6 @@
 ---
 name: report-not-implement
-description: Report what is not yet implemented: markers/MOCK/stub, dead UI, route without substance, things docs promise
+description: Report what is not implemented: MOCK/stub, dead UI, empty routes, doc promises
 argument-hint: "[scope-or-path]"
 related:
   - report

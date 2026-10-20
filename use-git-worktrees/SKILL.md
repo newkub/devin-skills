@@ -3,14 +3,12 @@ name: use-git-worktrees
 description: "Full git worktree lifecycle: create, work, merge back, and cleanup"
 argument-hint: "[branch-name] [base-branch]"
 related:
-  - list-git
   - delete
   - cleanup
   - resolve-merge-conflicts
   - refactor-commit
   - report
   - suggest-next-action
-  - follow-tool-mr-boxington
 
 ---
 

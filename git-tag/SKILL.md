@@ -4,8 +4,6 @@ description: Manage git tags — annotated release tags, semver, sync with manif
 argument-hint: "[create|list|push|delete] [version]"
 related:
   - deep-review-codebase
-  - git-push
-  - git-commit
   - run-release
   - report
 ---

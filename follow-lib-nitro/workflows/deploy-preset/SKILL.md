@@ -39,9 +39,9 @@ the Nitro app's deploy path — run after `setup-nitro`; Cloudflare-specific dep
 
 > Goal: complete provider-specific wiring
 
-1. **Cloudflare**: preset `cloudflare-module` + `wrangler.jsonc` (bindings/secrets) → `/follow-service-cloudflare` for d1/kv/r2 + deploy
-2. **Vercel/Netlify**: the preset generates the provider layout — check `vercel.json`/`netlify.toml` requirements
-3. **Self-host (bun/node)**: process manager (pm2/systemd/docker) + `PORT`/`HOST` env
+1. `Cloudflare`: preset `cloudflare-module` + `wrangler.jsonc` (bindings/secrets) → `/follow-service-cloudflare` for d1/kv/r2 + deploy
+2. `Vercel/Netlify`: the preset generates the provider layout — check `vercel.json`/`netlify.toml` requirements
+3. `Self-host (bun/node)`: process manager (pm2/systemd/docker) + `PORT`/`HOST` env
 4. Statics: `.output/public/` is served automatically on every preset — or a separate CDN
 
 ### 3. Secrets And Bindings

@@ -8,7 +8,6 @@ related:
   - follow-create-sdk
   - deep-review-codebase
   - follow-your-suggestion
-  - follow-create-mobile
   - follow-create-bot
 
 ---

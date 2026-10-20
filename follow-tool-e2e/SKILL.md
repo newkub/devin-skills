@@ -53,9 +53,9 @@ test('member upgrades to Pro', async ({ app, agent, screen }) => {
 });
 ```
 
-- **Goal** — `agent.act('one goal per call', { params })` — the agent picks its own actions; use `unique()` for values that change every run so the replay cache still works; use `Secret` for passwords (the model never sees the real value)
-- **Assertion** — `agent.assert` (current screen), `agent.waitFor` (wait until a real condition; the model is called only when the screen changes), `agent.extract` → Standard Schema (e.g. Zod); `{ vision: true }` when pixels must be judged (chart/layout)
-- **Locator** — `screen.getByRole/getByLabel/getByTestId` (that priority order), `.filter()/.first()/.nth()` when multiple nodes match, actions `tap/fill/swipe`, `expect(locator)` retries until pass/timeout — costs no model call
+- `Goal` — `agent.act('one goal per call', { params })` — the agent picks its own actions; use `unique()` for values that change every run so the replay cache still works; use `Secret` for passwords (the model never sees the real value)
+- `Assertion` — `agent.assert` (current screen), `agent.waitFor` (wait until a real condition; the model is called only when the screen changes), `agent.extract` → Standard Schema (e.g. Zod); `{ vision: true }` when pixels must be judged (chart/layout)
+- `Locator` — `screen.getByRole/getByLabel/getByTestId` (that priority order), `.filter()/.first()/.nth()` when multiple nodes match, actions `tap/fill/swipe`, `expect(locator)` retries until pass/timeout — costs no model call
 
 ### 3. Structure And Run
 

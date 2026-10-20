@@ -3,7 +3,6 @@ name: restore-files-from-my-dotfiles
 description: Restore dotfiles from the git log of the chezmoi repo then chezmoi apply
 argument-hint: "[scope]"
 related:
-  - restore-files
   - follow-tool-git
   - check-git-logs
   - deep-debug

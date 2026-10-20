@@ -3,11 +3,9 @@ name: git-sync
 description: Sync the local repo with its remote — fetch/pull strategy, submodules and fork sync
 argument-hint: "[pull|fetch|fork] [remote/branch]"
 related:
-  - git-branch
   - git-rebase
   - git-submodule
   - check-unpush
-  - check-uncommit
   - resolve-errors
 ---
 

@@ -6,7 +6,6 @@ related:
   - update-project-skills
   - update-devin-global-skills
   - update-dot-devin
-  - update-devin
   - update-docs
   - review-devin-global-harness
   - scan-codebase

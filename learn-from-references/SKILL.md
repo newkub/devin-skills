@@ -19,7 +19,7 @@ Read and extract knowledge from references the user points to directly — sever
 
 - Use when the user gives a pointed reference (`@file`, URL, repo, skill name) — if it is web docs only → `/learn-from-web`; a purely local codebase → `/learn-from-codebase`; a CLI binary → `/learn-from-cli`
 - Covers: reference implementations, example repos, API docs, skill `references/` dirs, design/pattern docs
-- Output: summarize patterns + conventions in chat, write `references/` for a skill, or apply them into the work — **do not copy code directly** without understanding it
+- Output: summarize patterns + conventions in chat, write `references/` for a skill, or apply them into the work — `do not copy code directly` without understanding it
 - Verify the correctness of claims from references → `/check-reference`; cross-check multiple sources/high risk → `/deep-research`
 
 ## Execute
@@ -46,7 +46,7 @@ Read and extract knowledge from references the user points to directly — sever
 
 > Goal: Get patterns that can be applied, not just a summary
 
-1. For each reference note down: **patterns** (how it is done), **conventions** (rules to follow), **constraints** (prohibitions/limits), **gotchas** (frequent failure points)
+1. For each reference note down: `patterns` (how it is done), `conventions` (rules to follow), `constraints` (prohibitions/limits), `gotchas` (frequent failure points)
 2. Compare against the current codebase — differing conventions must be explicitly called out as to whether to adopt them or not
 3. If you find a conflict between references → `/check-reference` or choose according to the official source
 

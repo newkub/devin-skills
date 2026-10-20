@@ -4,7 +4,6 @@ description: Format code and resolve formatter issues
 argument-hint: "[scope]"
 related:
   - deep-review-codebase
-  - convert
   - follow-best-practice
   - suggest-next-action
   - run-check

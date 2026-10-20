@@ -12,7 +12,6 @@ triggers:
   - user
   - model
 related:
-  - list-github
   - search
   - report
   - suggest-next-action

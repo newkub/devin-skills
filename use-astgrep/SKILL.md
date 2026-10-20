@@ -5,10 +5,8 @@ argument-hint: "[scan|rewrite|transform|migration|scope]"
 related:
   - update-astgrep-rules
   - check-code-structure
-  - replace
   - search-with-astgrep
   - use-astgrep-programmatic
-  - migration-with-astgrep
   - deep-review-codebase
 ---
 

@@ -3,11 +3,9 @@ name: update-devin-harness
 description: Keep global rules, global skills, and global subagents mutually aligned
 argument-hint: "[scope]"
 related:
-  - update-devin
   - update-devin-global-skills
   - update-devin-global-rules
   - update-devin-global-subagents
-  - list-devin
   - use-related-skills
   - deep-validate
   - check-reference

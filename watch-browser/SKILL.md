@@ -6,7 +6,6 @@ related:
   - use-agent-browser
   - use-chrome-devtools
   - use-mcp
-  - update-devin
   - resolve-errors
   - deep-debug
   - run-dev

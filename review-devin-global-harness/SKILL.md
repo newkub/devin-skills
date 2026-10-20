@@ -1,6 +1,6 @@
 ---
 name: review-devin-global-harness
-description: Review the whole devin harness — skills, subagents, hooks, MCP, global rules — aligned, no redundancy
+description: Review the whole devin harness — skills, subagents, hooks, MCP, rules — aligned
 argument-hint: "[skills|subagents|hooks|mcp|rules|broken-refs|relations|all]"
 allowed-tools:
   - exec
@@ -12,11 +12,9 @@ allowed-tools:
 related:
   - update-devin-global-skills
   - follow-single-of-source
-  - update-devin
   - deep-validate
   - follow-deep
   - check-reference
-  - search-skills
   - update-devin-harness
   - deep-review-codebase
   - update-references

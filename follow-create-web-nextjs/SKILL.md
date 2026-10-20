@@ -4,8 +4,6 @@ description: Guidelines for structuring and developing Next.js 16 applications
 argument-hint: "[scope]"
 related:
   - deep-review-codebase
-  - follow-create-web
-  - follow-create-mobile
   - follow-best-practice
   - setup-cicd
   - run-dev

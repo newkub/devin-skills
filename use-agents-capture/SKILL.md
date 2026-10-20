@@ -79,16 +79,16 @@ bun D:/newkub/agents-capture/src/presentation/cli.ts <mode> [options]
 
 ### route-capturer — capture one route across every device size and return artifact paths (use when many routes must be captured in parallel)
 
-- **Inputs**: `route` (a single path to capture, e.g. `/request`, `/examples/form`), `base-url` (dev/prod URL, e.g. `http://localhost:3000`), `devices` (e.g. `desktop,mobile` or custom `wide=1920x1080`), `components` (optional — selector map, e.g. `nav=header,form=form`), `out-dir` (e.g. `.devin/temp/report/<workspace>/captures-<ts>/`), `browser-session` (optional — `agent-browser` session info if the parent already opened one)
-- **Tools**: `exec` (run `bun <skill-dir>/src/all.ts` or the `agent-browser` CLI), `read` (read `manifest.json` and check for errors)
-- **Execute**:
+- `Inputs`: `route` (a single path to capture, e.g. `/request`, `/examples/form`), `base-url` (dev/prod URL, e.g. `http://localhost:3000`), `devices` (e.g. `desktop,mobile` or custom `wide=1920x1080`), `components` (optional — selector map, e.g. `nav=header,form=form`), `out-dir` (e.g. `.devin/temp/report/<workspace>/captures-<ts>/`), `browser-session` (optional — `agent-browser` session info if the parent already opened one)
+- `Tools`: `exec` (run `bun <skill-dir>/src/all.ts` or the `agent-browser` CLI), `read` (read `manifest.json` and check for errors)
+- `Execute`:
   1. Confirm `base-url` responds before capturing — if it's down, return `error` immediately
   2. Run `bun src/all.ts --base <base-url> --routes <route> --devices <devices> --out <out-dir>` for the single route across every device
   3. If `components` are given → add `--components "<name>=<selector>@<route>"`
   4. Read `manifest.json` and check this route's errors
   5. Collect all artifact paths that were produced
-- **Output**: artifacts table `| No. | Artifact | Path | Device | Status |` — `status`: `ok`/`failed` with the error message on failure; close with a summary of total artifacts, failed count, and the `manifest.json` path
-- **Constraints**: Handle one route only, never capture other routes — read-only against the target, don't modify the captured site's code (no write/edit); `--wait` must be long enough for hydration + fonts to load — increase it for slow SPAs; a per-device capture failure is recorded in the output as `failed` — never abort the whole run; artifacts must land only in the parent-assigned `out-dir`, never committed to the repo
+- `Output`: artifacts table `| No. | Artifact | Path | Device | Status |` — `status`: `ok`/`failed` with the error message on failure; close with a summary of total artifacts, failed count, and the `manifest.json` path
+- `Constraints`: Handle one route only, never capture other routes — read-only against the target, don't modify the captured site's code (no write/edit); `--wait` must be long enough for hydration + fonts to load — increase it for slow SPAs; a per-device capture failure is recorded in the output as `failed` — never abort the whole run; artifacts must land only in the parent-assigned `out-dir`, never committed to the repo
 
 ## Expected Outcome
 

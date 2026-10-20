@@ -6,7 +6,6 @@ related:
   - follow-create-web
   - follow-lang-kotlin
   - deep-review-codebase
-  - follow-create-mobile
   - follow-create-mobile-cross-with-capacitor
   - ask-me
 ---

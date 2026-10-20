@@ -3,10 +3,8 @@ name: create-programatic-video-with-fframes
 description: Create programmatic videos with fframes — Rust SVG scenes, ffmpeg encode, Skia GPU preview
 argument-hint: "[video-idea-or-scope]"
 related:
-  - follow-lang-rust
   - edit-video-with-remotion
   - create-video-story
-  - run-check
   - resolve-errors
 ---
 

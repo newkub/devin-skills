@@ -23,7 +23,7 @@ Use when adding/editing addons or the main.ts config — init/framework setup li
 > Goal: Read the existing config before editing
 
 1. Read `.storybook/main.ts` — the current `framework`, `stories`, `addons`
-2. Check the Storybook version — **important**: in v10+ controls/actions/interactions/viewport/backgrounds are core features (no need to install `@storybook/addon-essentials`/`addon-interactions`); earlier versions rely on essentials — always check the version in `package.json` first
+2. Check the Storybook version — `important`: in v10+ controls/actions/interactions/viewport/backgrounds are core features (no need to install `@storybook/addon-essentials`/`addon-interactions`); earlier versions rely on essentials — always check the version in `package.json` first
 3. Check the addons already installed in devDependencies
 
 ### 2. Configure Addons

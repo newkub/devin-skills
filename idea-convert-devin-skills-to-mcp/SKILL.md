@@ -3,9 +3,7 @@ name: idea-convert-devin-skills-to-mcp
 description: Generate ideas and a draft to convert Devin skills into an MCP server (tools/resources/prompts)
 argument-hint: "[skill-name|family]"
 related:
-  - idea-convert-my-global-cli-to-skills
   - create-devin-global-mcp
-  - update-devin-global-skills
   - deep-review-codebase
   - check-my-global-cli
   - create-plan-in-dot-devin

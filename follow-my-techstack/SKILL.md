@@ -1,6 +1,6 @@
 ---
 name: follow-my-techstack
-description: Use the canonical tech stack catalog as the default choice when selecting or using dependencies in a project
+description: Use the canonical tech stack catalog as the default for dependency choices
 argument-hint: "[category-or-need]"
 related:
   - deep-review-codebase

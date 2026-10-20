@@ -3,8 +3,6 @@ name: create-git-branch
 description: Create a new git branch the right way
 argument-hint: "[branch-name]"
 related:
-  - cleanup
-  - delete
   - ship
 
 ---

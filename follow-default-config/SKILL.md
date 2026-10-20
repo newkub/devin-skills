@@ -4,10 +4,7 @@ description: Config convention — keep only overrides; never restate defaults (
 argument-hint: "[config-path]"
 related:
   - check-types-definition
-  - update-config
   - update-devin-global-skills
-  - deep-review-codebase
-  - report
 ---
 
 ## Goal

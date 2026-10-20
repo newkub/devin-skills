@@ -3,12 +3,9 @@ name: check-my-global-cli
 description: Report installed CLI tools and commands to assess converting them into devin skills
 argument-hint: "[scope]"
 related:
-  - learn
-  - idea
   - suggest-next-action
   - report
   - run-test
-  - search-skills
 
 ---
 

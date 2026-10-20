@@ -3,7 +3,6 @@ name: create-cloudflare-deploy-button
 description: Add a Deploy to Cloudflare button to README so others can deploy the project in one click
 argument-hint: "[repo-url] [--subdir <path>] [--paid]"
 related:
-  - create-cloudflare
   - follow-service-cloudflare
   - deploy-to-cloudflare
   - update-docs

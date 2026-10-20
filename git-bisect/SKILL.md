@@ -4,10 +4,6 @@ description: Binary search for the commit that introduced a bug — manual marks
 argument-hint: "[<good-sha> <bad-sha>|run <script>]"
 related:
   - deep-debug
-  - check-git-logs
-  - git-file-history
-  - run-test
-  - resolve-errors
 ---
 
 ## Goal

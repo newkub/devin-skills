@@ -4,11 +4,8 @@ description: Load secrets from encrypted files / vaults / cloud into app env via
 argument-hint: "[scope]"
 related:
   - follow-tool-mise
-  - follow-tool-packslip
-  - follow-tool-usage
   - check-secrets
   - follow-tool-gitleaks
-  - setup-cicd
 ---
 
 ## Goal

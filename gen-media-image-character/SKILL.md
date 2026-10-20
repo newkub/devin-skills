@@ -3,7 +3,6 @@ name: gen-media-image-character
 description: Generate consistent character images from description, style, pose, and expression
 argument-hint: "[character-description] [output]"
 related:
-  - gen-media
   - draw-svg-image
   - convert
   - create-video-story

@@ -5,7 +5,6 @@ argument-hint: "<context>"
 related:
   - scan-codebase
   - report
-  - list-git
   - report-git-diff
 
 ---

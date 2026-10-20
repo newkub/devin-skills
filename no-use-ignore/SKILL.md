@@ -1,10 +1,8 @@
 ---
 name: no-use-ignore
-description: Find and remove ignore comments (ts-ignore, eslint-disable, biome-ignore, noqa) by fixing the root cause
+description: Remove ignore comments (ts-ignore, eslint-disable, biome-ignore, noqa), fix root cause
 argument-hint: "[@files... | scope]"
 related:
-  - refactor
-  - no-hard-code
   - deep-review-codebase
   - run-lint
   - run-typecheck
@@ -12,7 +10,6 @@ related:
   - use-astgrep
   - report-before-after
   - dont-over-engineer
-  - improve
 ---
 
 ## Goal

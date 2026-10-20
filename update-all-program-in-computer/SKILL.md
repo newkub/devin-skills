@@ -108,17 +108,17 @@ Use when you want to update every tool on the machine to its latest version with
 
 ### program-updater — check and update a single program through a package manager, then return updated/skipped/failed
 
-- **Inputs**: `program` (the name of one program to update, e.g. `ripgrep`, `node`, `git`), `package-manager` (optional — the manager that must be used; when omitted, auto-detect in the order `mise` → OS package manager), `allow-major` (optional — whether a major version bump is allowed, defaulting to whatever is safe for the manager)
-- **Tools**: `exec` only — version checks and upgrade commands: `mise use -g`, `scoop update`, `choco upgrade`, `winget upgrade`, `brew upgrade`, `cargo install-update`, `npm update -g` (never `write`/`edit`)
-- **Execute**:
+- `Inputs`: `program` (the name of one program to update, e.g. `ripgrep`, `node`, `git`), `package-manager` (optional — the manager that must be used; when omitted, auto-detect in the order `mise` → OS package manager), `allow-major` (optional — whether a major version bump is allowed, defaulting to whatever is safe for the manager)
+- `Tools`: `exec` only — version checks and upgrade commands: `mise use -g`, `scoop update`, `choco upgrade`, `winget upgrade`, `brew upgrade`, `cargo install-update`, `npm update -g` (never `write`/`edit`)
+- `Execute`:
   1. Check that the program is installed and which manager handles it — check `mise ls`, `scoop list`, `winget list`, etc.
   2. If the program was not installed through a package manager → return `skipped` with the reason
   3. Record the version before the update (`<program> --version` or the manager's list output)
   4. Run the update with non-interactive flags (`-y`, `--yes`, `--no-confirm`) — if the command forces interaction → return `skipped` so the user runs it manually
   5. Check the version after the update and compare before/after
   6. Do a short smoke check that the program still runs (`--version` or `--help`)
-- **Output**: one per-program field table `| Field | Value |` — Program, Manager, Before, After, Status (`updated`/`skipped`/`failed`/`already-latest`), Note (the reason when skipped/failed)
-- **Constraints**: Global packages only — never touch project-local dependencies; use `exec` only, never `write`/`edit`; try `mise` first when the program is under mise — do not mix package managers for the same program; always use non-interactive flags — if that is impossible, return `skipped` rather than hanging on input; own a single program — never `update *` or `upgrade --all`; if the program risks breaking the system (OS-level tools) → return `skipped` so the parent asks the user
+- `Output`: one per-program field table `| Field | Value |` — Program, Manager, Before, After, Status (`updated`/`skipped`/`failed`/`already-latest`), Note (the reason when skipped/failed)
+- `Constraints`: Global packages only — never touch project-local dependencies; use `exec` only, never `write`/`edit`; try `mise` first when the program is under mise — do not mix package managers for the same program; always use non-interactive flags — if that is impossible, return `skipped` rather than hanging on input; own a single program — never `update *` or `upgrade --all`; if the program risks breaking the system (OS-level tools) → return `skipped` so the parent asks the user
 
 ## Expected Outcome
 

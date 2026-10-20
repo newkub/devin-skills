@@ -1,21 +1,14 @@
 ---
 name: follow-solid-framework
-description: SolidJS app dispatcher — SPA (TanStack Router) / full-stack TanStack Start, deploy CF Workers or Nitro
+description: SolidJS dispatcher — SPA via TanStack Router or full-stack Start on CF Workers
 argument-hint: "[spa|start|nitro-bun|nitro-cf]"
 related:
   - follow-lib-solidjs
-  - follow-lib-tanstack-ecosystem
-  - follow-lib-unocss
   - follow-lib-nitro
   - follow-lib-drizzle
   - follow-lib-orpc
   - follow-lib-effect-ts
-  - follow-service-cloudflare
-  - follow-tool-vite
-  - follow-lang-typescript
-  - follow-single-responsibility
   - follow-web-standard
-  - run-dev
 ---
 
 ## Goal
@@ -73,7 +66,7 @@ Optional: `zod` (validator), `effect` (`/follow-lib-effect-ts`), `@orpc/*` (`/fo
 
 > Goal: configure Vite correctly for the chosen variant
 
-**spa — 2 patterns** (pick one or the other):
+`spa — 2 patterns` (pick one or the other):
 
 ```ts
 // (a) pure Router — a true SPA, unrelated to Start
@@ -93,7 +86,7 @@ plugins: [
 ]
 ```
 
-**start — Cloudflare canonical (dept-saw path)** uses `@cloudflare/vite-plugin`, not nitro:
+`start — Cloudflare canonical (dept-saw path)` uses `@cloudflare/vite-plugin`, not nitro:
 ```ts
 plugins: [
   tsConfigPaths(),
@@ -104,7 +97,7 @@ plugins: [
 ]
 ```
 
-**nitro variants** — always `viteSolid({ ssr: true })` after `tanstackStart()`:
+`nitro variants` — always `viteSolid({ ssr: true })` after `tanstackStart()`:
 ```ts
 import { nitro } from 'nitro/vite'
 
@@ -138,17 +131,17 @@ Set up `check`/`verify`/`ci` + `scan` (ast-grep rules) per `/follow-tasks` Minim
 
 1. `createFileRoute`/`createRootRoute` file-based — `routeTree.gen.ts` is generated, never edit
 2. `defaultPreload: 'intent'` + `scrollRestoration: true` + `validateSearch`
-3. `import 'virtual:uno.css'` in `__root.tsx`/entry — **never `@import` in css** (postcss resolves it as a file → ENOENT)
+3. `import 'virtual:uno.css'` in `__root.tsx`/entry — `never @import in css` (postcss resolves it as a file → ENOENT)
 
 ### 6. Full-Stack Only (start/nitro-*)
 
 > Goal: add server functions and SSR wiring when the variant is full-stack
 
-1. **Server fns**: `createServerFn({ method })` + `.validator()` + `.handler()` — internal RPC; the client calls it like a local fn then `router.invalidate()`
-2. **Server routes**: `src/routes/api/*.ts` `server.handlers` — for webhooks/external only; wildcard `api.$.ts`
-3. **Server-only**: `.server.ts` / `serverOnly()` guard — never import DB/secrets into the client bundle
-4. **Drizzle**: `src/lib/schema.ts` = source of truth; `drizzle.config.ts` + `migrations/` per `/follow-lib-drizzle`
-5. **DB adapter** per target:
+1. `Server fns`: `createServerFn({ method })` + `.validator()` + `.handler()` — internal RPC; the client calls it like a local fn then `router.invalidate()`
+2. `Server routes`: `src/routes/api/*.ts` `server.handlers` — for webhooks/external only; wildcard `api.$.ts`
+3. `Server-only`: `.server.ts` / `serverOnly()` guard — never import DB/secrets into the client bundle
+4. `Drizzle`: `src/lib/schema.ts` = source of truth; `drizzle.config.ts` + `migrations/` per `/follow-lib-drizzle`
+5. `DB adapter` per target:
    - CF → `drizzle(env.DB)` with `drizzle-orm/d1`; bindings in `wrangler.jsonc` → `d1_databases`
    - nitro-bun → `bun:sqlite` via `sqlite-proxy`; auto-migrate/seed at startup if the DB is empty
    - runtime-detect adapter → see `dept-saw/src/lib/db.server.ts`
@@ -157,18 +150,18 @@ Set up `check`/`verify`/`ci` + `scan` (ast-grep rules) per `/follow-tasks` Minim
 
 > Goal: produce a passing production build and deploy to the variant's target
 
-**spa**: `bun run build` → static `dist/` (embeddable in Tauri/Capacitor — `vite.config.spa.ts` + `spa.prerender` per dept-saw)
+`spa`: `bun run build` → static `dist/` (embeddable in Tauri/Capacitor — `vite.config.spa.ts` + `spa.prerender` per dept-saw)
 
-**start (CF canonical)**: `bun run build` → `wrangler deploy`; bindings declared in `wrangler.jsonc` only; secrets via `wrangler secret put`; rollback via `wrangler rollback`
+`start (CF canonical)`: `bun run build` → `wrangler deploy`; bindings declared in `wrangler.jsonc` only; secrets via `wrangler secret put`; rollback via `wrangler rollback`
 
-**nitro-bun**: `bun run build` → `.output/`; run `bun .output/server/index.mjs` (port from `PORT`/`NITRO_PORT`); Docker `FROM oven/bun` + `COPY .output`; the sqlite file is a runtime artifact, don't commit it
+`nitro-bun`: `bun run build` → `.output/`; run `bun .output/server/index.mjs` (port from `PORT`/`NITRO_PORT`); Docker `FROM oven/bun` + `COPY .output`; the sqlite file is a runtime artifact, don't commit it
 
-**nitro-cf**: `bun run build` → `wrangler.jsonc` pointing `"main": ".output/server/index.mjs"` + `"assets": {"directory": ".output/public"}` + `compatibility_flags: ["nodejs_compat"]` → `wrangler deploy` — ref https://nitro.build/deploy/providers/cloudflare
+`nitro-cf`: `bun run build` → `wrangler.jsonc` pointing `"main": ".output/server/index.mjs"` + `"assets": {"directory": ".output/public"}` + `compatibility_flags: ["nodejs_compat"]` → `wrangler deploy` — ref https://nitro.build/deploy/providers/cloudflare
 
 ## Rules
 
-- **spa**: client-only — no `createServerFn`/`.server.ts`/server imports
-- **start variants**: `.validator()` on every server fn that takes input; server routes for external HTTP only; never inline server code in components
+- `spa`: client-only — no `createServerFn`/`.server.ts`/server imports
+- `start variants`: `.validator()` on every server fn that takes input; server routes for external HTTP only; never inline server code in components
 - Nitro preset via the `NITRO_PRESET` env or `nitro({ preset })` — env is safer (some nitro versions' types don't accept the option); see all presets in `/follow-lib-nitro`
 - CF bindings declared in `wrangler.jsonc` only — code reads them via typed `env.*`
 - Never combine `@cloudflare/vite-plugin` with the nitro-cf path in one config — pick one route (`start` = vite-plugin, `nitro-cf` = nitro)

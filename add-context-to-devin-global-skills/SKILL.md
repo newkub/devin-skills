@@ -17,12 +17,10 @@ triggers:
   - user
   - model
 related:
-  - list-devin
   - new-skills
   - update-devin-global-skills
   - use-related-skills
   - review-devin-global-harness
-  - idea
   - list-devin-session
   - ask-me
 ---

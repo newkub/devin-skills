@@ -3,7 +3,6 @@ name: create-social-cover-image
 description: Create social media cover images sized and branded per platform
 argument-hint: "[platform] [topic]"
 related:
-  - gen-media
   - draw-svg-image
   - follow-design-system
   - report

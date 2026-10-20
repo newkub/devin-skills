@@ -49,12 +49,12 @@ The `dimension-matrix.md` row name → the Domain row above it (the matrix names
 | `containers` | docker |
 | `bundle-size` | bundle+assets+build speed |
 | `usage-examples` | usage |
-| `code-quality`, `typesafe`, `repo-hygiene` | quality/types |
+| `code-quality`, `repo-hygiene` | quality/types |
 | `observability`, `iac-cloud-config`, `serverless-runtime-constraints` | observability / iac / platform |
 
 ## Label resolution
 
-The `improve`/`optimize` scope-maps name review targets with legacy `review-<label>` words; those are not skills. Resolve a label by stripping `review-` and taking **every** `dimension-matrix.md` row whose `Aliases` cell lists it (a label may map to several dimensions — e.g. `frontend` → `rendering-strategy`, `uxui`, `form`), plus the `always` tier. `review-issues` and `review-gaps` are exempt: they are real skills and may be called directly. A label found on no row is a matrix gap — dispatch the `always` tier plus the closest artifact-match rows and report the gap, never invent a dimension.
+The `improve`/`optimize` scope-maps name review targets with legacy `review-<label>` words; those are not skills. Resolve a label by stripping `review-` and taking **every** `dimension-matrix.md` row whose `Aliases` cell lists it **or whose row name equals it** (a label may map to several dimensions — e.g. `frontend` → `routing-deeplinks`, `rendering-strategy`, `uxui`, `form`), plus the `always` tier. `review-issues` and `review-gaps` are exempt: they are real skills and may be called directly. A label found on no row is a matrix gap — dispatch the `always` tier plus the closest artifact-match rows and report the gap, never invent a dimension.
 
 ## Fix boilerplate
 

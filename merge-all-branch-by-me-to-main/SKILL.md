@@ -3,10 +3,8 @@ name: merge-all-branch-by-me-to-main
 description: Merge only branches created by the user into main, then delete all old branches, leaving only main
 argument-hint: "[--dry-run] [--remote] [--force-unmerged]"
 related:
-  - list-git
   - merge
   - delete
-  - cleanup
   - resolve-merge-conflicts
   - refactor-commit
   - git-push
@@ -131,17 +129,17 @@ If you need to merge branches that are not yours → you must check the branch o
 
 ### branch-merger — merge a single branch of the user into `main` then return a merged/conflict report
 
-- **Inputs**: `branch` (the single branch to merge, e.g. `feature/x`), `repo-path` (the path of the repo), `strategy` (optional — `merge` default or `rebase` per project convention), `conflict-policy` (optional — `resolve` = agent fixes it itself, `report` = stop and return the conflict, `ours`/`theirs`), `verify-commands` (optional — commands after merge such as `bun run test`, `bun run build`), `delete-after` (optional — `true` = delete the local branch after a successful merge, using `git branch -d` only)
-- **Tools**: `exec` — git commands `git switch`, `git merge`, `git rebase`, `git status`, `git diff`, `git log`, `git branch -d`; `read`/`edit` — read and resolve conflict files only when `conflict-policy` = `resolve`; no `git push` — the parent does the push/finalize
-- **Execute**:
+- `Inputs`: `branch` (the single branch to merge, e.g. `feature/x`), `repo-path` (the path of the repo), `strategy` (optional — `merge` default or `rebase` per project convention), `conflict-policy` (optional — `resolve` = agent fixes it itself, `report` = stop and return the conflict, `ours`/`theirs`), `verify-commands` (optional — commands after merge such as `bun run test`, `bun run build`), `delete-after` (optional — `true` = delete the local branch after a successful merge, using `git branch -d` only)
+- `Tools`: `exec` — git commands `git switch`, `git merge`, `git rebase`, `git status`, `git diff`, `git log`, `git branch -d`; `read`/`edit` — read and resolve conflict files only when `conflict-policy` = `resolve`; no `git push` — the parent does the push/finalize
+- `Execute`:
   1. Confirm the branch belongs to the user: `git log -1 --format='%an <%ae>' <branch>` compared to `git config user.name`/`user.email` — if it does not match return `skipped`
   2. `git switch main` and confirm main is current per the state the parent prepared
   3. Try merging `git merge <branch>` (`--no-ff` if the strategy defines it) or `git rebase main` on the branch then fast-forward
   4. If there is a conflict → per `conflict-policy`: `resolve` = fix the files then `git add` + continue; `report` = `git merge --abort` then return `conflict` with the file list
   5. Run `verify-commands` — on failure → report `failed` and specify how you reverted or left the state
   6. If `delete-after` and the merge succeeded → `git branch -d <branch>` (never `-D`)
-- **Output**: a table `| No. | Branch | Strategy | Result | Conflicts | Verify | Deleted |` — `result`: `merged`/`conflict`/`failed`/`skipped`; if `conflict` → attach a conflict files table (`file`, `reason` content/add-delete, `suggested resolution`); close with the merge commit hash and the number of commits that entered main
-- **Constraints**: responsible for only a single branch, never merge/delete another branch; never force-push, `git branch -D`, or delete `main`/protected branches; if a merge fails partway → `git merge --abort`/`git rebase --abort` to return to the original state before reporting; `delete-after` uses `-d` only — if unmerged, return `skipped` rather than forcing; every action must be recoverable via `git reflog` — specify reflog hints if `failed`
+- `Output`: a table `| No. | Branch | Strategy | Result | Conflicts | Verify | Deleted |` — `result`: `merged`/`conflict`/`failed`/`skipped`; if `conflict` → attach a conflict files table (`file`, `reason` content/add-delete, `suggested resolution`); close with the merge commit hash and the number of commits that entered main
+- `Constraints`: responsible for only a single branch, never merge/delete another branch; never force-push, `git branch -D`, or delete `main`/protected branches; if a merge fails partway → `git merge --abort`/`git rebase --abort` to return to the original state before reporting; `delete-after` uses `-d` only — if unmerged, return `skipped` rather than forcing; every action must be recoverable via `git reflog` — specify reflog hints if `failed`
 
 ## Expected Outcome
 

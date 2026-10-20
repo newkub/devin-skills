@@ -6,11 +6,7 @@ related:
   - use-agent-browser
   - use-chrome-devtools
   - use-midscenejs
-  - follow-tool-playwright
   - create-devin-global-mcp
-  - deep-research
-  - learn-from-web
-  - resolve-errors
 
 ---
 
@@ -22,14 +18,14 @@ Use Lightpanda — the headless browser designed for automation and AI agents ("
 
 Use when you need a browser with real JS execution (V8) but no pixel rendering — DOM scraping, crawling, form interaction, and network-observable automation that must be far faster and lighter on memory than Chrome
 
-- Boundary (per `/use-chrome-devtools` `## Tool Selection` — canonical): need real screenshots, visual/layout, CSS, fonts, extensions → use real Chrome (`agent-browser`/`chrome-devtools-mcp`/`/use-midscenejs` — Midscene needs rendered images, so it **cannot be paired with Lightpanda**)
+- Boundary (per `/use-chrome-devtools` `## Tool Selection` — canonical): need real screenshots, visual/layout, CSS, fonts, extensions → use real Chrome (`agent-browser`/`chrome-devtools-mcp`/`/use-midscenejs` — Midscene needs rendered images, so it `cannot be paired with Lightpanda`)
 - Lightpanda is a good fit for: content extraction, DOM-based E2E logic, headless crawling, agent tools via MCP
 
 ## Facts (verified 2026-10-20)
 
 - v1.0.0 GA (2026-10-02, first stable); latest release v1.0.1 (2026-10-15) — production-ready; written in Zig, JS engine is V8 (the same one Chrome uses), AGPL-3.0, repo `lightpanda-io/browser` (~36k stars)
 - Claims from lightpanda.io: "9x faster" (5s vs Chrome 46s) and "16x less memory" (123MB vs 2GB) on a chromedp run of 933 real pages (AWS EC2 m5.large)
-- No native Windows binary — Windows must run it via **WSL2**; Linux binaries are glibc-linked (Alpine/musl won't work)
+- No native Windows binary — Windows must run it via `WSL2`; Linux binaries are glibc-linked (Alpine/musl won't work)
 - Telemetry is on by default — disable with `LIGHTPANDA_DISABLE_TELEMETRY=true`
 
 ## Execute
@@ -100,7 +96,7 @@ lightpanda fetch --dump markdown https://example.com   # agent-readable text
 
 > Goal: let agents call browser tools via MCP — a native subcommand with no npm package needed
 
-1. MCP speaks JSON-RPC 2.0 over **stdio** — the host spawns it directly; there is no need to run `serve` first (CDP `serve` is a separate route)
+1. MCP speaks JSON-RPC 2.0 over `stdio` — the host spawns it directly; there is no need to run `serve` first (CDP `serve` is a separate route)
 2. Register in the client config (`mcpServers` entry):
    ```json
    {

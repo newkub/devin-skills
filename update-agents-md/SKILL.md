@@ -5,7 +5,6 @@ argument-hint: "[scope]"
 related:
   - deep-review-codebase
   - follow-agents-md
-  - update-devin
   - use-subagents
   - report-workspace-graph
   - follow-monorepo

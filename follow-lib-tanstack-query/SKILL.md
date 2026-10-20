@@ -1,6 +1,6 @@
 ---
 name: follow-lib-tanstack-query
-description: Use TanStack Query end to end — setup, queries/mutations, caching, infinite queries, prefetch, optimistic updates, persistence
+description: Use TanStack Query end to end — queries, mutations, caching, infinite queries, prefetch
 argument-hint: "[framework] [feature]"
 related:
   - follow-lib-tanstack-ecosystem
@@ -54,19 +54,19 @@ const queryClient = new QueryClient({
 
 > Goal: use queries in every shape
 
-1. **Basic**: `useQuery({ queryKey: ['todos', filters], queryFn })` — queryKey is an array, include every variable queryFn uses
-2. **Dependent**: `useQuery({ ..., enabled: !!userId })` — the query waits on a dependency
-3. **Select**: `select: (data) => data.map(...)` — transform + subscribe only to the derived value (fewer re-renders)
-4. **Infinite**: `useInfiniteQuery({ queryKey, queryFn: ({pageParam}) => fetch(pageParam), initialPageParam: 0, getNextPageParam })` + `fetchNextPage`/`hasNextPage`
-5. **Shared options**: `queryOptions({ queryKey, queryFn })` — reuse across `useQuery`, `ensureQueryData`, and prefetch
-6. **Suspense**: `useSuspenseQuery` when using `<Suspense>` boundaries (v5 splits the hook)
+1. `Basic`: `useQuery({ queryKey: ['todos', filters], queryFn })` — queryKey is an array, include every variable queryFn uses
+2. `Dependent`: `useQuery({ ..., enabled: !!userId })` — the query waits on a dependency
+3. `Select`: `select: (data) => data.map(...)` — transform + subscribe only to the derived value (fewer re-renders)
+4. `Infinite`: `useInfiniteQuery({ queryKey, queryFn: ({pageParam}) => fetch(pageParam), initialPageParam: 0, getNextPageParam })` + `fetchNextPage`/`hasNextPage`
+5. `Shared options`: `queryOptions({ queryKey, queryFn })` — reuse across `useQuery`, `ensureQueryData`, and prefetch
+6. `Suspense`: `useSuspenseQuery` when using `<Suspense>` boundaries (v5 splits the hook)
 
 ### 4. Mutation And Cache Patterns
 
 > Goal: correct writes + invalidation
 
 1. `useMutation({ mutationFn, onSuccess })` + `queryClient.invalidateQueries({ queryKey: ['todos'] })` — invalidate only the affected subtree
-2. **Optimistic update**: `onMutate` → `cancelQueries` + `getQueryData` snapshot + `setQueryData` optimistic → `onError` rollback → `onSettled` invalidate:
+2. `Optimistic update`: `onMutate` → `cancelQueries` + `getQueryData` snapshot + `setQueryData` optimistic → `onError` rollback → `onSettled` invalidate:
 
    ```ts
    useMutation({
@@ -82,9 +82,9 @@ const queryClient = new QueryClient({
    })
    ```
 
-3. **Prefetch**: `queryClient.prefetchQuery` on hover/route load — fewer loading spinners
-4. **Polling**: `refetchInterval: 5000` or a function-based interval
-5. **Persist cache**: `persistQueryClient` + an async storage persister for offline/resume
+3. `Prefetch`: `queryClient.prefetchQuery` on hover/route load — fewer loading spinners
+4. `Polling`: `refetchInterval: 5000` or a function-based interval
+5. `Persist cache`: `persistQueryClient` + an async storage persister for offline/resume
 
 ### 5. Devtools And Testing
 

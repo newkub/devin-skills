@@ -4,7 +4,6 @@ description: Generate skill relation ideas — points where use-related-skills s
 argument-hint: "[skill-name|family|all]"
 related:
   - use-related-skills
-  - read-related
   - idea-new-devin-global-skills
   - update-devin-global-skills
   - update-devin-harness

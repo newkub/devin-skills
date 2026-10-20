@@ -6,7 +6,6 @@ related:
   - update-docs
   - review-devin-global-harness
   - use-subagents
-  - update-devin
   - create-plan-in-dot-devin
 
 ---

@@ -5,7 +5,6 @@ argument-hint: "[scope]"
 related:
   - report-file-structure
   - report
-  - list-devin
   - suggest-next-action
 
 ---

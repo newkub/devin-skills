@@ -2,10 +2,6 @@
 name: sync-drive-d-submodules
 description: Sync and update git submodules in the D drive against their remote repositories
 argument-hint: "[scope]"
-related:
-  - convert
-  - delete
-  - list-git
 
 ---
 
@@ -137,17 +133,17 @@ Commit submodule updates if desired
 
 ### submodule-syncer — sync a single git submodule in drive D to its latest remote and report its status
 
-- **Inputs**: `repo-path` (path of the repo on drive D, e.g. `D:\projects\app`), `submodule-path` (path of the single submodule within the repo, e.g. `libs/shared`), `branch` (optional — the remote branch to track, e.g. `main` — defaults per `.gitmodules`), `commit` (optional — `true` if the parent wants the update staged/committed in the main repo)
-- **Tools**: `exec` — git commands `git submodule status`, `git submodule update --remote`, `git status`, `git diff`; `read` — read `.gitmodules` and config; `edit`/`write` forbidden — everything goes through git commands only
-- **Execute**:
+- `Inputs`: `repo-path` (path of the repo on drive D, e.g. `D:\projects\app`), `submodule-path` (path of the single submodule within the repo, e.g. `libs/shared`), `branch` (optional — the remote branch to track, e.g. `main` — defaults per `.gitmodules`), `commit` (optional — `true` if the parent wants the update staged/committed in the main repo)
+- `Tools`: `exec` — git commands `git submodule status`, `git submodule update --remote`, `git status`, `git diff`; `read` — read `.gitmodules` and config; `edit`/`write` forbidden — everything goes through git commands only
+- `Execute`:
   1. Confirm `repo-path` is on drive D (`D:` or `/mnt/d`) — otherwise return `error` immediately
   2. Record the pre-update state: `git submodule status <submodule-path>` and check for uncommitted changes in the submodule
   3. If the submodule has local changes or a detached HEAD with pending work → return `skipped` with a reason, never force
   4. Run `git submodule update --remote <submodule-path>` and check for conflicts
   5. Verify: `git submodule status` again, confirm the new commit and that the main repo shows the pointer diff
   6. If `commit` = `true` → `git add <submodule-path>` with a commit message describing the update (no push)
-- **Output**: status table `| No. | Submodule | Repo | Before | After | Status |` — `status`: `updated`/`already-current`/`skipped`/`conflict`/`error` with details; state the committed status `staged`/`committed`/`uncommitted` per the `commit` input; on `conflict`/`error` → attach the git output, the cause, and rollback advice
-- **Constraints**: responsible for one submodule only, never touch other submodules/repos; drive D only — paths outside drive D return `error`; no `--force`, `git checkout -f`, or discarding local changes — on finding changes, return `skipped`; never push to remote — the parent decides to push after merging results; on network error → retry up to 2 rounds then return `error`
+- `Output`: status table `| No. | Submodule | Repo | Before | After | Status |` — `status`: `updated`/`already-current`/`skipped`/`conflict`/`error` with details; state the committed status `staged`/`committed`/`uncommitted` per the `commit` input; on `conflict`/`error` → attach the git output, the cause, and rollback advice
+- `Constraints`: responsible for one submodule only, never touch other submodules/repos; drive D only — paths outside drive D return `error`; no `--force`, `git checkout -f`, or discarding local changes — on finding changes, return `skipped`; never push to remote — the parent decides to push after merging results; on network error → retry up to 2 rounds then return `error`
 
 ## Expected Outcome
 

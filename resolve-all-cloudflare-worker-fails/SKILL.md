@@ -4,7 +4,6 @@ argument-hint: "[--worker <worker-name>] [--project <pages-project>]"
 description: Inspect and fix every Cloudflare Workers/Pages deployment that failed in the account
 related:
   - resolve-errors
-  - search
   - report
   - suggest-next-action
   - ask-me

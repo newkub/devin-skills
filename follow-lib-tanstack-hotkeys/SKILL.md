@@ -14,7 +14,7 @@ Use TanStack Hotkeys fully — type-safe keyboard shortcuts: modifier combos, ke
 
 ## Scope
 
-For keyboard shortcuts — command palette, navigation, editor actions — **0.x**: always check `https://tanstack.com/hotkeys/latest` before implementing
+For keyboard shortcuts — command palette, navigation, editor actions — `0.x`: always check `https://tanstack.com/hotkeys/latest` before implementing
 
 - part of TanStack ecosystem — selection/dispatch lives in `/follow-lib-tanstack-ecosystem`
 
@@ -57,10 +57,10 @@ useHotkey('Shift+?', () => setHelpOpen(true), { preventDefault: true })
 
 > Goal: good shortcut UX
 
-1. **Command palette** = the canonical use case — `Mod+K` palette + register commands through the same hotkeys
-2. **Help overlay** — `Shift+?` shows the app's shortcut cheat sheet
-3. **Conflict audit** — maintain a registry of all app shortcuts (code review checklist)
-4. **Accessibility** — shortcuts supplement, never replace, pointer paths; document them in help
+1. `Command palette` = the canonical use case — `Mod+K` palette + register commands through the same hotkeys
+2. `Help overlay` — `Shift+?` shows the app's shortcut cheat sheet
+3. `Conflict audit` — maintain a registry of all app shortcuts (code review checklist)
+4. `Accessibility` — shortcuts supplement, never replace, pointer paths; document them in help
 
 ### 5. Verify
 

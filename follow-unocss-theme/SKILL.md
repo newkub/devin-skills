@@ -1,11 +1,9 @@
 ---
 name: follow-unocss-theme
 description: UnoCSS theme — theme.css tokens → uno.config.ts map → theme utilities only → biome lint
+argument-hint: "[workspace]"
 related:
   - follow-lib-unocss
-  - follow-design-system
-  - improve
-  - follow-create-biome-plugin
   - run-lint
 ---
 
@@ -34,7 +32,7 @@ Use for every theme task in a UnoCSS project (v66+/`presetWind4`) — first-time
 1. use semantic tokens only — components use `bg-primary`/`text-muted-foreground`, never `bg-blue-500`
 2. every surface token has the full sub-keys per role: `DEFAULT`, `hover`, `active`, `foreground` — a missing `foreground` = broken contrast in dark mode
 3. full names, no abbreviations (`--color-background` not `--bg`; `--color-muted-foreground` not `--mut`) — readable and greppable
-4. store values as **channel components** (`--color-primary: 221 83% 53%`), then the config wraps them with `hsl(var(--color-primary))` → enables `bg-primary/50` (opacity modifier)
+4. store values as `channel components` (`--color-primary: 221 83% 53%`), then the config wraps them with `hsl(var(--color-primary))` → enables `bg-primary/50` (opacity modifier)
 5. non-color tokens: `--radius-*`, `--shadow-*`, `--font-*` — map into the theme keys `fontFamily`/`radius`/`shadow`; others (maxWidth, minHeight, fontSize, zIndex, gridTemplateColumns) can go directly into `theme`
 6. the standard token set + full examples in `references/tokens.md` — surface set: `background`, `foreground`, `surface{DEFAULT,elevated,foreground}`, `muted{DEFAULT,foreground}`, `border{DEFAULT,hover}`, `accent{DEFAULT,hover,foreground}`, `primary`, `secondary`, `success`, `warning`, `destructive`, `focus`, `overlay`, `skeleton{DEFAULT,shine}`
 
@@ -63,9 +61,9 @@ Use for every theme task in a UnoCSS project (v66+/`presetWind4`) — first-time
 1. read the existing `uno.config.*` — merge `theme`/`rules`/`variants` with what is there; never overwrite the whole file
 2. use wind4 theme keys: `font`, `radius`, `shadow`, `breakpoint`, `ease`, `spacing`, `colors` (+ `fontFamily`/`maxWidth`/`zIndex`/`animation` allowed); avoid renamed wind3 names
 3. a new token must be added to both the light and dark blocks at once + mapped in `theme.colors`
-4. the UI uses **theme utilities directly** — `bg-surface`, `text-muted-foreground`, `border-border`, `rounded-md`, `shadow-lg`, `ring-focus/40`, `bg-primary-hover` … no shortcut layer in the config
+4. the UI uses `theme utilities directly` — `bg-surface`, `text-muted-foreground`, `border-border`, `rounded-md`, `shadow-lg`, `ring-focus/40`, `bg-primary-hover` … no shortcut layer in the config
    - for layout/sizing values use the normal wind4 utilities (`p-6`, `gap-3`, `max-w-content`)
-   - for frequently repeated colors/spacing, **add a token** in `theme`, do not create a shortcut
+   - for frequently repeated colors/spacing, `add a token` in `theme`, do not create a shortcut
 5. `rules`/`variants` are the last resort only — use the theme first
 
 ### 5. Dark Mode
@@ -73,8 +71,8 @@ Use for every theme task in a UnoCSS project (v66+/`presetWind4`) — first-time
 > Goal: dark mode works through CSS variables — the UI needs no `dark:` variant
 
 1. the dark mode switch lives at the CSS variable layer (`theme.css`), not the utility layer — choose a selector: `.dark` class (paired with `presetWind4({ dark: 'class' })`), `[data-theme="dark"]`, or `prefers-color-scheme`
-2. with `dark: 'class'` → toggle `.dark` on `<html>`; with `[data-theme]` → set the attribute on `:root` — **never set `dark: 'media'` together with a `.dark` selector** (the selector would never apply)
-3. because tokens change value on their own → **the UI must not write `dark:` variants with theme colors**; `dark:` is allowed only for non-theme edge cases (e.g. a media asset)
+2. with `dark: 'class'` → toggle `.dark` on `<html>`; with `[data-theme]` → set the attribute on `:root` — `never set dark: 'media' together with a .dark selector` (the selector would never apply)
+3. because tokens change value on their own → `the UI must not write dark: variants with theme colors`; `dark:` is allowed only for non-theme edge cases (e.g. a media asset)
 4. toggle/persist/FOUC guard — inline script before CSS, `localStorage`, then set the class/attribute; snippets in `references/tokens.md`
 
 ### 6. Lint — Enforce Theme Usage
@@ -89,8 +87,8 @@ Use for every theme task in a UnoCSS project (v66+/`presetWind4`) — first-time
 
    `--json` for report/CI — exit `1` on Critical/High; checks: token parity (light↔dark), config-map orphans/missing, foreground pairs, palette hardcode, `dark:` redundant, undefined tokens, dark wiring
 2. set up linter enforcement:
-   - **Biome** → a `.grit` plugin per `references/biome-plugin.md` (forbid `dark:` + palette classes), with scope restricted via `overrides` in `biome.jsonc`
-   - **ESLint** → `@unocss/eslint-plugin` flat config (`unocss.configs.flat`) gives `unocss/order` autofix + `unocss/blocklist`
+   - `Biome` → a `.grit` plugin per `references/biome-plugin.md` (forbid `dark:` + palette classes), with scope restricted via `overrides` in `biome.jsonc`
+   - `ESLint` → `@unocss/eslint-plugin` flat config (`unocss.configs.flat`) gives `unocss/order` autofix + `unocss/blocklist`
 3. extra class checks: dynamic class template literals must be full class names the scanner can see; conflicting utilities (`p-2 p-4`); `content.filesystem` must cover the real extensions; classes with no CSS at all → `scripts/check-dead-classes.ts`
 
 ### 7. Verify And Fix
@@ -110,9 +108,9 @@ Use for every theme task in a UnoCSS project (v66+/`presetWind4`) — first-time
 
 - `theme.css` is the single source of truth — never hardcode color values in `uno.config.ts` (map through `hsl(var(--*))` / `var(--*)` only) and never hardcode in the UI
 - token names must match exactly between `theme.css` and `uno.config.ts`, all of them; use full names, no abbreviations
-- **never duplicate the UnoCSS reset** — `presetWind4` preflights already handle `*{box-sizing}`, `body{margin:0}`, and normalization of `button`/`input`/`select`/`textarea`
-- the UI uses **theme utilities** from the `uno.config.ts` theme only — no palette classes (`bg-blue-500`, `text-gray-600`) except `black`/`white`/`transparent`; no shortcut layer
-- **no `dark:` variant in the UI** — tokens already switch through CSS variables
+- `never duplicate the UnoCSS reset` — `presetWind4` preflights already handle `*{box-sizing}`, `body{margin:0}`, and normalization of `button`/`input`/`select`/`textarea`
+- the UI uses `theme utilities` from the `uno.config.ts` theme only — no palette classes (`bg-blue-500`, `text-gray-600`) except `black`/`white`/`transparent`; no shortcut layer
+- `no dark: variant in the UI` — tokens already switch through CSS variables
 - the light and dark blocks must carry the identical token set (except non-color tokens that do not change)
 - every surface token must have a `*-foreground` pair
 - class/icon names assembled from variables must be full names visible to the UnoCSS scanner — never rely on a hand-maintained safelist

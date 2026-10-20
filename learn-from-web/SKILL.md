@@ -1,6 +1,6 @@
 ---
 name: learn-from-web
-description: Learn from web sources — official docs, DeepWiki, Context7 — then extract knowledge or build a learning path
+description: Learn from web sources — official docs, DeepWiki, Context7 — then extract or plan
 argument-hint: "[url-or-topic]"
 related:
   - learn
@@ -8,11 +8,9 @@ related:
   - check-types-definition
   - learn-from-codebase
   - deep-research
-  - report
   - create-report-in-dot-devin
   - check-reference
   - use-scripts
-  - use-lightpanda
 ---
 
 ## Goal

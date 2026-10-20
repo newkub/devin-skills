@@ -3,8 +3,6 @@ name: follow-tool-openseo
 description: OpenSEO (every-app/open-seo) — MIT self-hosted SEO platform, MCP + agent skills, BYO DataForSEO
 argument-hint: "[workflow: keyword-research|rank-tracking|backlinks|site-audit|ai-visibility]"
 related:
-  - follow-my-techstack
-  - deep-research
   - create-cloudflare
   - follow-service-cloudflare
   - open-web-for-config-secret

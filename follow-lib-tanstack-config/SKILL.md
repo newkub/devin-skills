@@ -14,7 +14,7 @@ Use TanStack Config — the configuration and tooling TanStack itself uses to bu
 
 ## Scope
 
-Use when maintaining/publishing library packages — **not app config**; app projects don't need it (use tsdown/tsup/vite per `follow-tool-*` instead)
+Use when maintaining/publishing library packages — `not app config`; app projects don't need it (use tsdown/tsup/vite per `follow-tool-*` instead)
 
 - part of TanStack ecosystem — selection/dispatch lives in `/follow-lib-tanstack-ecosystem`
 

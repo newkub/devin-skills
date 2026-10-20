@@ -51,9 +51,9 @@ export default defineEventHandler(async (event) => {
 
 ### 3. Advanced
 
-1. **WebSockets**: `defineWebSocketHandler` — nitro v3 ws support (cross-platform)
-2. **Tasks**: `defineTask` + `tasks:` config for scheduled/queued jobs (`nitro task run`)
-3. **Route-specific middleware**: `middleware/` in route dirs or `event.context` guards
+1. `WebSockets`: `defineWebSocketHandler` — nitro v3 ws support (cross-platform)
+2. `Tasks`: `defineTask` + `tasks:` config for scheduled/queued jobs (`nitro task run`)
+3. `Route-specific middleware`: `middleware/` in route dirs or `event.context` guards
 
 ### 4. Verify
 

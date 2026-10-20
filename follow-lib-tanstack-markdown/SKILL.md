@@ -1,6 +1,6 @@
 ---
 name: follow-lib-tanstack-markdown
-description: Use TanStack Markdown end to end — document model, streaming-safe parsing, AI output, custom renderers
+description: Use TanStack Markdown end to end — document model, streaming parsing, renderers
 argument-hint: "[use-case]"
 related:
   - follow-lib-tanstack-ecosystem
@@ -15,7 +15,7 @@ Use TanStack Markdown fully — parse markdown → serializable document model �
 
 ## Scope
 
-Use when rendering markdown, especially **streaming AI output** (append-safe incremental parse) or docs transported as JSON — for plain static markdown, `marked`/`remark` suffice
+Use when rendering markdown, especially `streaming AI output` (append-safe incremental parse) or docs transported as JSON — for plain static markdown, `marked`/`remark` suffice
 
 - part of TanStack ecosystem — selection/dispatch lives in `/follow-lib-tanstack-ecosystem`
 

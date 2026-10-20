@@ -3,7 +3,6 @@ name: resolve-merge-conflicts
 description: Safely resolve git merge conflicts without losing changes
 argument-hint: "[scope|verify]"
 related:
-  - idea
   - merge
   - git-commit
 ---

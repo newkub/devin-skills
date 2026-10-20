@@ -4,7 +4,6 @@ description: Read/concat all or only related files in a project for analysis —
 argument-hint: "all | patterns <glob> | related <entry-file>"
 related:
   - check-file-relation
-  - all-this-patterns
   - deep-analyze
   - report-file-structure
   - read-devin-context

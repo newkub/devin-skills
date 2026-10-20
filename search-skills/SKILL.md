@@ -8,7 +8,6 @@ related:
   - suggest-next-action
   - resolve-errors
   - follow-tool-crw
-  - learn
 
 ---
 

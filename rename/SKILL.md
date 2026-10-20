@@ -1,10 +1,9 @@
 ---
 name: rename
-description: Rename identifiers, files, directories, or skills including batch rename by pattern with reference updates
+description: Rename identifiers, files, directories, or skills in batch with reference updates
 argument-hint: "[old-name] [new-name] or <pattern> <replacement> [path]"
 related:
   - update-references
-  - check-long-files
   - search-files-patterns
   - review-devin-global-harness
   - resolve-errors

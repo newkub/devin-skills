@@ -8,7 +8,6 @@ related:
   - scan-codebase
   - check-should-update
   - dont-over-engineer
-  - all-workspace
   - all-this-patterns
   - ask-me
   - run-check

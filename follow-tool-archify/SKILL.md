@@ -5,8 +5,6 @@ argument-hint: "[subject-to-diagram]"
 related:
   - create-mermaid-diagram
   - draw-excalidraw
-  - report-architecture-diagram
-  - follow-my-techstack
   - deep-analyze
 ---
 

@@ -39,7 +39,7 @@ app.post('/users', ({ body }) => body, {
 
 - Schema keys: `body`, `query`, `params`, `headers`, `cookie`, `response`
 - Coercion built-ins: `t.Numeric()`, `t.BooleanString()`, `t.File()`/`t.Files()` (uploads)
-- Validated values **replace** raw — handler sees typed+coerced data
+- Validated values `replace` raw — handler sees typed+coerced data
 
 ### 2. TypeBox Essentials
 

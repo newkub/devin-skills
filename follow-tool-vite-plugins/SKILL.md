@@ -6,11 +6,9 @@ related:
   - follow-tool-vite
   - follow-create-plugins
   - follow-create-vite-plugin
-  - scan-codebase
   - search-github-star
   - search-raindrop
   - report
-  - follow-tool-vite-devtools
 ---
 
 ## Goal

@@ -4,7 +4,6 @@ description: Create and update project skills in .devin/skills/ per the update-d
 argument-hint: "[scope]"
 related:
   - deep-analyze
-  - list-devin
   - update-devin-global-skills
   - check-monorepo
   - deep-validate
@@ -27,7 +26,7 @@ Use to create or update skills in the project's `.devin/skills/` directory — c
 
 > Goal: Know the project structure, dependencies, and existing skills
 
-1. Run `/prepare-skills-context` to detect the AI tool and select a template
+1. Detect the AI tool in use (Devin, Claude Code, Cursor, ...) and select the matching template from `templates/`
 2. Check whether the project has a `.devin/skills/` directory:
    - If yes → read all existing skills
    - If no → create the `.devin/skills/` directory

@@ -7,7 +7,6 @@ related:
   - follow-service-cloudflare
   - follow-secret-manager
   - follow-best-practice
-  - learn
   - setup-cicd
 
 ---

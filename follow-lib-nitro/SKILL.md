@@ -1,13 +1,10 @@
 ---
 name: follow-lib-nitro
-description: Use Nitro as a server engine — vite plugin, presets (bun/node/cloudflare/deno), portable .output, deploy providers
+description: Use Nitro as a server engine — vite plugin, presets, portable .output, deploy providers
 argument-hint: "[scope]"
 related:
-  - follow-tool-vite
-  - follow-solid-framework
   - follow-service-cloudflare
   - deep-research
-  - run-dev
 ---
 
 ## Goal
@@ -44,7 +41,7 @@ export default defineConfig({
 })
 ```
 
-- Nitro v3 `nitro()` **does not accept a `preset` option** — set the preset via the `NITRO_PRESET` env var or `nitro.config.ts`:
+- Nitro v3 `nitro()` `does not accept a preset option` — set the preset via the `NITRO_PRESET` env var or `nitro.config.ts`:
   ```ts
   process.env.NITRO_PRESET ??= 'bun'   // in vite.config.ts before defineConfig
   ```

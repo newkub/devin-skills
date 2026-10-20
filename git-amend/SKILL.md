@@ -3,10 +3,7 @@ name: git-amend
 description: Safely amend the latest commit — check pushed first, staged changes, and message edit
 argument-hint: "[--no-edit|message]"
 related:
-  - git-commit
-  - git-push
   - git-rebase
-  - check-git-logs
   - ask-me
 ---
 

@@ -5,32 +5,25 @@ argument-hint: "[feature-or-component]"
 related:
   - follow-create-desktop-tauri
   - follow-lib-gpui-kit
-  - follow-lang-typescript
-  - follow-lang-zig
-  - follow-create-mobile
-  - follow-my-techstack
-  - improve
-  - deep-research
-  - follow-devin-global-skills
 
 ---
 
 ## Goal
 
-Build and maintain native desktop applications correctly with the Native SDK (Vercel Labs) — TypeScript app logic in `src/core.ts` + declarative markup in `.native` files, then ahead-of-time compiled (AOT) to native code so the shipped binary has **no browser/WebView/JS runtime/interpreter**
+Build and maintain native desktop applications correctly with the Native SDK (Vercel Labs) — TypeScript app logic in `src/core.ts` + declarative markup in `.native` files, then ahead-of-time compiled (AOT) to native code so the shipped binary has `no browser/WebView/JS runtime/interpreter`
 
 ## Scope
 
 When you want a truly native desktop app (Metal/Direct2D/software renderer), not a webview shell — the `native` CLI, `ts-core`/`zig-core` templates, the app model (TEA/Elm), markup, Cmd/Sub effects, persistence/SQLite, automation, testing, packaging, security
 
 - Boundary: Tauri = Rust backend + web frontend (webview shell) → `/follow-create-desktop-tauri`; GPUI Kit = Rust-only components/entity model → `/follow-lib-gpui-kit`; Native SDK = TS+markup AOT, no runtime in the binary
-- Mobile (iOS/Android) is **Experimental** — verified on simulators/emulators only; desktop is the mature surface
+- Mobile (iOS/Android) is `Experimental` — verified on simulators/emulators only; desktop is the mature surface
 - WebViews still work as an optional path (embed a web page/host an existing frontend) — not the default path
 
 ## Facts (verified 2026-10-13)
 
 - Repo `vercel-labs/native` (Apache-2.0, ~7.8k stars, active); npm `@native-sdk/cli` 0.10.1; docs at native-sdk.dev
-- Requires **Zig 0.16.0** (the CLI downloads it into `~/.native/toolchains/` with checksum) + **Node 24+** for the TS scaffold/checker — Node is used only at build/dev time and is not in the binary
+- Requires `Zig 0.16.0` (the CLI downloads it into `~/.native/toolchains/` with checksum) + `Node 24+` for the TS scaffold/checker — Node is used only at build/dev time and is not in the binary
 - Platforms: macOS (primary, Metal), Windows (Direct2D/DirectWrite + software fallback), Linux (software renderer via blit); iOS/Android host-tier (experimental, multi-window on desktop only)
 - The state system is TEA: `Model` readonly record + `Msg` union + `update(model,msg): Model | [Model, Cmd<Msg>]`; the view derives from the model through markup
 - Every app embeds an automation server (file-based protocol) — snapshot/drive/screenshot possible when built with `-Dautomation=true`

@@ -3,7 +3,6 @@ name: gen-media-3d-model
 description: Generate a 3D model from a prompt or image with an AI CLI
 argument-hint: "[prompt]"
 related:
-  - gen-media
   - gen-changelog-md
 ---
 

@@ -3,7 +3,6 @@ name: list-git-branch
 description: Show local and remote branches with latest info
 argument-hint: "[scope]"
 related:
-  - list-github
   - report
   - follow-tool-git
 ---

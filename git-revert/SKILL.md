@@ -3,11 +3,7 @@ name: git-revert
 description: Safely revert commits with a new inverse commit — no history rewrite
 argument-hint: "[sha|range|merge-sha]"
 related:
-  - git-commit
-  - git-push
   - check-git-logs
-  - git-file-history
-  - check-merge-conflicts
   - run-check
   - resolve-errors
 ---

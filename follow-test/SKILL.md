@@ -3,7 +3,6 @@ name: follow-test
 description: Set up and use end-to-end testing strategies including regression testing per standard
 argument-hint: "[config-test-env] [scope]"
 related:
-  - deep-review-codebase
   - follow-math-concepts
   - follow-monorepo
 

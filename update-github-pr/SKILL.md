@@ -3,7 +3,6 @@ name: update-github-pr
 description: Edit GitHub pull request title, body, labels, reviewers, base branch with `gh pr edit`
 argument-hint: "[pr-number] [repo]"
 related:
-  - create-github
   - merge
   - resolve-github-pr
 

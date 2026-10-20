@@ -43,8 +43,16 @@ if (await gitmodulesFile.exists()) {
 const findings: Finding[] = [];
 
 const urlRegex = /https?:\/\/\S+/g;
-const placeholderRegex = /^(skill-name|some-skill|example-skill|my-skill|any-skill)$/;
+const placeholderRegex = /^(skill-name|plugin-name|some-skill|example-skill|my-skill|any-skill)$/;
 const fileExtRegex = /\.(md|ts|tsx|js|jsx|json|toml|yaml|yml|lock|rs|go|py|txt|svg|png|jpg|jpeg|webp|gif|pdf)$/i;
+// Slash commands of other products, and slash-list words in prose.
+const FOREIGN_SLASH_TOKENS = new Set([
+  "non-color", "feature-check", "edge-cases", "web-proto",
+  "add-dir", "accept-edits", "rm-session", "reload-plugins", "agents", "workspace", "title", "ls",
+  "seo-audit", "keyword-research", "competitor-analysis", "seo-coach",
+]);
+// Historical notes keep a deleted skill's old name on purpose (`merged from \`/x\``).
+const historicalRegex = /merged\s+(?:from|into|the|`)|folded into|renamed from|replaced by|deleted without merge|was deleted/;
 
 // Single-word nouns that often appear as false positives after a slash.
 // We still only report if the match is a command-like reference, so lowercase single
@@ -96,67 +104,47 @@ function findBodyRefs(text: string, file: string, skill: string): void {
       continue;
     }
     if (inCode) continue;
+    if (historicalRegex.test(line)) continue;
 
-    // Walk through inline code boundaries so we don't match inside backticks.
-    let cursor = 0;
-    const chunks = line.split("`");
-    for (let ci = 0; ci < chunks.length; ci++) {
-      const chunk = chunks[ci];
-      const chunkStart = cursor;
-      cursor += chunk.length + 1; // +1 for the backtick
+    // Scan the whole line: skill refs live inside backticks, which the old
+    // chunk-based walk skipped entirely. Parity tells opening from closing.
+    for (const m of line.matchAll(/\/([a-zA-Z][a-zA-Z0-9]*(?:-[a-zA-Z0-9]+)*)(?![-\w/])/g)) {
+      const ref = m[1];
+      const slashIndex = m.index!;
+      const prevChar = slashIndex > 0 ? line[slashIndex - 1] : "";
 
-      if (ci % 2 === 1) continue; // inside backticks
-      if (!chunk.includes("/")) continue;
+      if (prevChar === "`") {
+        let ticks = 0;
+        for (let k = 0; k < slashIndex; k++) if (line[k] === "`") ticks++;
+        // Even = the slash follows a CLOSING backtick, i.e. a prose slash-list.
+        if (ticks % 2 === 0) continue;
+      } else if (prevChar && !/[\s([{:;,"\u2014\u2022*+=~-]/.test(prevChar)) continue;
 
-      for (const m of chunk.matchAll(/\/([a-zA-Z0-9-]+)/g)) {
-        const ref = m[1];
-        const slashIndex = chunkStart + m.index!;
+      const after = line.slice(slashIndex + ref.length + 1);
+      const before = line.slice(0, slashIndex);
 
-        // Character before the slash
-        const prevChar = slashIndex > 0 ? line[slashIndex - 1] : "";
+      if (isUrl(line, slashIndex)) continue;
+      if (placeholderRegex.test(ref)) continue;
+      if (FOREIGN_SLASH_TOKENS.has(ref)) continue;
+      if (looksLikeFilePath(before, after)) continue;
+      if (ref.endsWith("-")) continue;
+      if (ref.startsWith("-")) continue;
 
-        // Slash must be a command reference: preceded by delimiter or whitespace.
-        // Skip word/word, Thai/English, paths, and URLs.
-        if (prevChar && !/[\s([{<>:;,\"'?!`—•*+=~\-]/.test(prevChar)) continue;
+      // Skip A / B / C separator lists by looking ahead
+      const nextNonSpace = after.match(/^\s*(.)/);
+      if (nextNonSpace && nextNonSpace[1] === "/") continue;
 
-        const afterStart = slashIndex + ref.length + 1;
-        const after = line.slice(afterStart);
-        const before = line.slice(0, slashIndex);
+      if (!isSkillRef(ref)) continue;
 
-        // Skip URLs
-        if (isUrl(line, slashIndex)) continue;
-
-        // Skip placeholders / wildcards
-        if (placeholderRegex.test(ref)) continue;
-
-        // Skip file paths
-        if (looksLikeFilePath(before, after)) continue;
-
-        // Skip trailing hyphen (deploy-to-*) or partial refs
-        if (ref.endsWith("-")) continue;
-        if (ref.startsWith("-")) continue;
-
-        // Skip A / B / C separator lists by looking ahead
-        const nextNonSpace = after.match(/^\s*(.)/);
-        if (nextNonSpace && nextNonSpace[1] === "/") {
-          // But only if the previous char is not a clear command trigger.
-          // Most skill usages have a space or delimiter before the slash.
-          continue;
-        }
-
-        // Only treat as a skill reference if it looks like one
-        if (!isSkillRef(ref)) continue;
-
-        if (!skillDirs.has(ref)) {
-          findings.push({
-            skill,
-            file,
-            line: i + 1,
-            ref,
-            type: "body",
-            severity: "Warning",
-          });
-        }
+      if (!skillDirs.has(ref)) {
+        findings.push({
+          skill,
+          file,
+          line: i + 1,
+          ref,
+          type: "body",
+          severity: "Warning",
+        });
       }
     }
   }
@@ -183,7 +171,7 @@ function parseRelated(text: string): { skill: string; refs: { ref: string; line:
       refs.push({ ref: line.slice(4).trim(), line: i + 2 });
     }
   }
-  return refs.length ? [{ skill: name, refs, line: 0 }] : [];
+  return refs.length ? [{ skill: name, refs }] : [];
 }
 
 for (const skill of skillDirs) {

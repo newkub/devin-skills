@@ -3,7 +3,6 @@ name: follow-lib-shadcn-solid
 description: shadcn/ui port for SolidJS - accessible, customizable copy-paste components
 argument-hint: "[scope]"
 related:
-  - follow-create-web
   - follow-lib-animejs
   - follow-lib-unocss
   - follow-lib-zaidan-ui

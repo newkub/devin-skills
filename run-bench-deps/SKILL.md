@@ -3,9 +3,7 @@ name: run-bench-deps
 description: Benchmark deps — CLI table (installed vs latest, bundle, status, health) to decide upgrade/swap
 argument-hint: "[scope] [--json] [--top N]"
 related:
-  - run-bench
   - update-version-to-latest
-  - check-should-update
   - improve
   - optimize
   - report

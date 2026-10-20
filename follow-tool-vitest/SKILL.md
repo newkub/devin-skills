@@ -3,12 +3,10 @@ name: follow-tool-vitest
 description: Install and set up Vitest 5 for unit testing with Vite
 argument-hint: "[scope]"
 related:
-  - deep-review-codebase
   - follow-tool-vite
   - follow-tool-playwright
   - update-tests
   - run-test
-  - follow-tool-vite-devtools
   - follow-lib-tstyche
 
 ---

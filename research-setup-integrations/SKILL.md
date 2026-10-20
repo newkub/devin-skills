@@ -4,12 +4,8 @@ description: Find plugins, extensions, providers, marketplace integrations from 
 argument-hint: "[tool-or-integration]"
 related:
   - deep-research
-  - update-devin-global-skills
   - update-config
-  - setup-cicd
-  - follow-tool-usage
   - check-reference
-  - follow-best-practice
   - report
 ---
 

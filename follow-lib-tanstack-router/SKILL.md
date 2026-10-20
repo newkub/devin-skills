@@ -1,6 +1,6 @@
 ---
 name: follow-lib-tanstack-router
-description: Use TanStack Router end to end — file routes, loaders, search param validation, type-safe navigation, layouts, SSR data
+description: Use TanStack Router end to end — file routes, loaders, search validation, type-safe nav
 argument-hint: "[react|solid]"
 related:
   - follow-lib-tanstack-ecosystem
@@ -30,7 +30,7 @@ bun add @tanstack/react-router
 bun add -D @tanstack/router-plugin   # file-based routes + code splitting
 ```
 
-1. Vite plugin: `tanstackRouter({ target: 'react', autoCodeSplitting: true })` in `vite.config.ts` **before** the react plugin — auto-generates `routeTree.gen.ts`
+1. Vite plugin: `tanstackRouter({ target: 'react', autoCodeSplitting: true })` in `vite.config.ts` `before` the react plugin — auto-generates `routeTree.gen.ts`
 2. `src/main.tsx`:
 
    ```tsx
@@ -56,9 +56,9 @@ bun add -D @tanstack/router-plugin   # file-based routes + code splitting
 
 > Goal: type-safe URL state + data loading
 
-1. **Params**: `$postId` → `useParams({ from: '/posts/$postId' })` typed for both name and value
-2. **Search**: `validateSearch: (s) => ({ page: Number(s.page ?? 1) })` or a zod/standard schema — `useSearch` typed
-3. **Loader**: `loader: ({ params }) => fetchPost(params.postId)` + `Route.useLoaderData()` — cache/staleTime via router options (`defaultPreload: 'intent'` = preload on hover)
+1. `Params`: `$postId` → `useParams({ from: '/posts/$postId' })` typed for both name and value
+2. `Search`: `validateSearch: (s) => ({ page: Number(s.page ?? 1) })` or a zod/standard schema — `useSearch` typed
+3. `Loader`: `loader: ({ params }) => fetchPost(params.postId)` + `Route.useLoaderData()` — cache/staleTime via router options (`defaultPreload: 'intent'` = preload on hover)
 4. Route context: `beforeLoad` for auth guards/redirects (`throw redirect({ to: '/login' })`)
 
 ### 4. Navigation And States

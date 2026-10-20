@@ -1,12 +1,9 @@
 ---
 name: follow-lib-gpui-kit
-description: Use GPUI Kit (gpui-kit crate) to build desktop apps with Rust/GPUI — components, themes, Entity/Render
+description: Use GPUI Kit (gpui-kit) for Rust/GPUI desktop apps — components, themes, Entity/Render model
 argument-hint: "[component-or-feature]"
 related:
   - follow-lang-rust
-  - follow-create-rust-cli
-  - follow-lib-native-sdk
-  - follow-my-techstack
   - deep-research
   - learn-from-web
   - deep-validate
@@ -22,8 +19,10 @@ When a project installs or develops the `gpui-kit` crate (Rust) — components, 
 
 - docs site: <https://gpui-kit.com> (has an `llms-full.txt` combining all docs into one file)
 - the `gpui-kit` crate bundles GPUI + GPUI Base + GPUI Component + default icon assets in a single dependency — `use gpui_kit::*` re-exports GPUI essentials, components live under `gpui_kit::component::*`
-- API reference: `docs.rs/gpui-component` and `docs.rs/gpui-kit`
-- the full component catalog is in ; the app skeleton is in 
+- API reference: `docs.rs/gpui-kit` and `docs.rs/gpui-component`
+- full component catalog, feature flags, API tables, and platform requirements are in `references/apis.md`
+- recommended patterns and pitfalls are in `best-practices/components.md` and `best-practices/state-model.md`
+- end-to-end usage recipes per application domain (code verified against official docs) are in `usecases/`: app shell, forms/inputs, data tables & charts, chat UIs, overlays & command palette, dock + editor, settings/theme/i18n, async/streaming, testing/a11y, WebAssembly
 
 ## Execute
 
@@ -32,15 +31,15 @@ When a project installs or develops the `gpui-kit` crate (Rust) — components, 
 > Goal: confirm the real version before writing code
 
 1. Check the project's `Cargo.toml` for `gpui-kit`
-2. Run `cargo search gpui-kit --limit 3` or `/deep-research` to confirm the latest version (docs show v0.7.0 as latest)
-3. Install with `cargo add gpui-kit` — don't hard-pin a version in the skill (verify live every time)
+2. Run `cargo search gpui-kit --limit 3` or `cargo info gpui-kit` (or `/deep-research`) to confirm the latest version — verify live every time, no version pin in this skill
+3. Install with `cargo add gpui-kit`
 4. Pull metadata + links from the official docs via `/learn-from-web`
 
 ### 2. Scaffold App Skeleton
 
 > Goal: boot the app correctly per the official pattern
 
-1. `main()` calls `application().with_assets(assets::Assets).run(|cx| { init(cx); open_window(WindowOptions::default(), cx, |_, cx| cx.new(|_| MyView)).expect(...) })` — see the full skeleton in 
+1. `main()` calls `application().with_assets(assets::Assets).run(|cx| { init(cx); open_window(WindowOptions::default(), cx, |_, cx| cx.new(|_| MyView)).expect(...) })` — full skeleton in `best-practices/components.md` (`### App Shell`), API tables in `references/apis.md`
 2. `init(cx)` must be called before opening a window or creating components — it initializes Kit layers + component themes
 3. `open_window` wraps the view in a `Root` automatically (Root owns the dialog/sheet/notification overlays) — return the content view directly, never build a `Root` yourself
 4. the view struct implements `Render` — `render(&mut self, _: &mut Window, cx: &mut Context<Self>) -> impl IntoElement`
@@ -59,11 +58,12 @@ When a project installs or develops the `gpui-kit` crate (Rust) — components, 
 
 > Goal: pick the right component and use its API correctly
 
-1. Choose from the catalog in  — import pattern `use gpui_kit::component::<name>::<Type>;`
-2. Builder pattern: `Checkbox::new("id").label("...").checked(self.flag).on_change(cx.listener(|v, checked, _, cx| { v.flag = *checked; cx.notify(); }))`
-3. Shared traits: `Sizable` (`text_xs`/`text_sm`/`text_base`/`text_lg`) and `Disableable` (`disabled(bool)`) — import the trait with `use gpui_kit::component::Sizable as _;`
-4. Layout with `div()`/`v_flex()`/`h_flex()` + tailwind-style methods (`flex_col`, `size_full`, `gap_2`, `p_4`, `items_center`, `justify_center`)
-5. `on_change` emits the requested value — the owner stores the value itself and calls `cx.notify()` (controlled component pattern)
+1. Choose from the catalog in `references/apis.md` — import pattern `use gpui_kit::component::<name>::<Type>;`
+2. Building a whole feature (sidebar shell, chat thread, DataTable, command palette, settings screen, dock workspace, streaming tasks)? Start from the matching `usecases/<domain>.md` — it has the verified wiring and pitfalls
+3. Builder pattern: `Checkbox::new("id").label("...").checked(self.flag).on_change(cx.listener(|v, checked, _, cx| { v.flag = *checked; cx.notify(); }))`
+4. Shared traits: `Sizable` (`text_xs`/`text_sm`/`text_base`/`text_lg`) and `Disableable` (`disabled(bool)`) — import the trait with `use gpui_kit::component::Sizable as _;`
+5. Layout with `div()`/`v_flex()`/`h_flex()` + tailwind-style methods (`flex_col`, `size_full`, `gap_2`, `p_4`, `items_center`, `justify_center`)
+6. `on_change` emits the requested value — the owner stores the value itself and calls `cx.notify()` (controlled component pattern)
 
 ### 5. Background Work And Events
 
@@ -71,7 +71,7 @@ When a project installs or develops the `gpui-kit` crate (Rust) — components, 
 
 1. `cx.spawn(async move |this, cx| ...)` = a foreground task on the UI thread — update the entity via `this.update(cx, |view, cx| ...)` or a `WeakEntity`
 2. `cx.background_spawn(async move { ... })` = heavy work on the worker pool — return owned `Send` data only, never mutate the entity directly
-3. `Task<T>` handle: drop = cancel — always keep the handle in a struct field if the work must continue; use a request_id to guard against stale results
+3. `Task<T>` handle: drop = cancel — always keep the handle in a struct field if the work must continue; use a request_id to guard against stale results — full pattern in `usecases/async-and-streaming.md`
 4. keyboard/action: `Action` derive + `cx.bind_keys`/`KeyBinding` per the guide docs
 
 ### 6. Verify
@@ -79,7 +79,7 @@ When a project installs or develops the `gpui-kit` crate (Rust) — components, 
 > Goal: build + test pass
 
 1. `cargo build` — fix errors until it passes (GPUI needs platform deps: see `/docs/installation`)
-2. UI tests use the GPUI test harness (`cargo test` mounts the view in a test window — examples in getting-started)
+2. UI tests use the GPUI test harness (`#[gpui_kit::test]` + `test-support` dev-dep — levels, wiring, and gotchas in `usecases/testing-and-a11y.md`)
 3. Run `/deep-validate` before shipping
 
 ## Rules
@@ -98,8 +98,9 @@ When a project installs or develops the `gpui-kit` crate (Rust) — components, 
 
 ### 3. Single Dependency
 
-- Use `gpui-kit` alone — don't add `gpui`, `gpui-component`, `gpui-base` separately (the kit re-exports them)
-- Platform system deps (fontconfig, x11, vulkan, etc. on Linux; MSVC on Windows) per `/docs/installation`
+- Use `gpui-kit` alone — don't add `gpui`, `gpui-component`, `gpui-base` separately (the kit re-exports them as `gpui_kit::component`, `gpui_kit::base`, `gpui_kit::assets`, `gpui_kit::platform`)
+- Platform system deps (fontconfig, x11, vulkan, etc. on Linux; MSVC + CMake on Windows) per `/docs/installation` — table in `references/apis.md`
+- Engine selection is a Cargo feature (`gpui-fast`), never a separate dependency — same imports, no `[patch]`
 
 ### 4. Licensing
 
@@ -108,6 +109,7 @@ When a project installs or develops the `gpui-kit` crate (Rust) — components, 
 - Use /deep-research if needed
 - Use /follow-lang-rust if needed
 - See best-practices/ for recommended patterns and pitfalls
+- See usecases/ for feature-level recipes with doc-verified code
 
 ## Expected Outcome
 

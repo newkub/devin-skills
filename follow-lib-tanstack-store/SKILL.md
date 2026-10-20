@@ -15,7 +15,7 @@ Use TanStack Store fully — a framework-agnostic client state store: stores, fi
 
 ## Scope
 
-Use for **client state** (UI state, drafts, prefs, ephemeral) — for server state use `follow-query`/`follow-db`; a good Zustand-style store replacement when you're already in the TanStack ecosystem
+Use for `client state` (UI state, drafts, prefs, ephemeral) — for server state use `follow-query`/`follow-db`; a good Zustand-style store replacement when you're already in the TanStack ecosystem
 
 - part of TanStack ecosystem — selection/dispatch lives in `/follow-lib-tanstack-ecosystem`
 
@@ -72,11 +72,11 @@ batch(() => {                          // collapse into one notification
 
 > Goal: real-world usage covered
 
-1. **Modular stores**: split stores by domain (`userStore`, `uiStore`) — not one god-store
-2. **Action functions**: export an `updateTheme()` helper next to the store instead of scattering `setState` across the codebase
-3. **Persist**: subscribe → `localStorage` or pair with a DB `localStorageCollectionOptions`
-4. **Outside React**: the core `Store` works in vanilla/node — adapters are only needed when binding to the UI
-5. **Testing**: create a fresh store instance per test, or reset via `setState` in `beforeEach`
+1. `Modular stores`: split stores by domain (`userStore`, `uiStore`) — not one god-store
+2. `Action functions`: export an `updateTheme()` helper next to the store instead of scattering `setState` across the codebase
+3. `Persist`: subscribe → `localStorage` or pair with a DB `localStorageCollectionOptions`
+4. `Outside React`: the core `Store` works in vanilla/node — adapters are only needed when binding to the UI
+5. `Testing`: create a fresh store instance per test, or reset via `setState` in `beforeEach`
 
 ### 5. Verify
 

@@ -1,6 +1,6 @@
 ---
 name: research-dependencies
-description: alias → /deep-research dependencies (research dependencies — analyze manifest, compare, fast/modern deps)
+description: alias → /deep-research dependencies — analyze manifest, compare, fast/modern deps
 argument-hint: "[package or manifest]"
 related:
   - deep-research

@@ -3,7 +3,6 @@ name: read-related
 description: Read and summarize related skills recursively
 argument-hint: "[skill-name]"
 related:
-  - idea-use-skills-relations
   - review-devin-global-harness
   - report
   - suggest-next-action

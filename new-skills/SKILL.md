@@ -10,7 +10,6 @@ related:
   - deep-review-codebase
   - scan-codebase
   - review-devin-global-harness
-  - update-devin
   - deep-validate
   - update-references
 

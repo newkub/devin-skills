@@ -6,8 +6,6 @@ triggers:
   - user
   - model
 related:
-  - follow-agents-md
-  - update-agents-md
   - deep-review-ship
   - deep-review-codebase
   - deep-validate
@@ -20,16 +18,9 @@ related:
   - merge-all-branch-by-me-to-main
   - resolve-merge-conflicts
   - release-new-version
-  - watch-browser
   - resolve-errors
-  - resolve-cicd
-  - suggest-next-action
   - report
-  - refactor
   - update-project
-  - improve
-  - optimize
-  - dont-ask-me
 ---
 
 ## Goal

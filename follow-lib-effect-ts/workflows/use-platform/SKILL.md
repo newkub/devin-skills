@@ -64,7 +64,7 @@ const HttpLive = HttpRouter.Default.pipe(Layer.provide(BunHttpServer.layer({ por
 
 ## Rules
 
-- Install the platform package **matching the runtime** — `platform-node` ≠ `platform-bun` context layers
+- Install the platform package `matching the runtime` — `platform-node` ≠ `platform-bun` context layers
 - All IO (fs/http/process) goes through platform services — substitute with Layers in tests
 - Reuse the `HttpClient` instance — don't call `fetch` directly when inside the effect world
 - Check the runtime support matrix — some services (Terminal, Socket) don't exist on some platforms

@@ -6,8 +6,6 @@ related:
   - deep-test
   - follow-tool-e2e
   - follow-my-techstack
-  - follow-create-mobile
-  - run-test
 ---
 
 ## Goal

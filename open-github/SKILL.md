@@ -3,7 +3,6 @@ name: open-github
 description: Open GitHub pages in a browser — repo, issue, PR, secrets, or org/personal repos
 argument-hint: "[repo|issue|pr|secrets|org|personal] [owner/repo] [#n]"
 related:
-  - list-github
   - all-github-repo
 
 ---

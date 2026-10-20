@@ -8,12 +8,9 @@ related:
   - rethink
   - research-setup-integrations
   - follow-best-practice
-  - learn
   - check-reference
-  - deep-review-codebase
   - improve
   - use-subagents
-  - use-lightpanda
 ---
 
 ## Goal
@@ -80,11 +77,11 @@ Use for work that needs deep information from many sources, e.g. comparing libra
 
 ### source-researcher — research a single source/topic in depth and return findings with confidence
 
-- **Inputs**: `topic` (what to research, e.g. `bun test coverage`, `hono middleware`), `source` (the single source it owns: `official-docs`/`github-repo`/`changelog`/`npm-registry`), `source-url` (optional — the source's specific URL, e.g. repo URL or docs root), `focus-questions` (optional — the specific questions to answer from this source)
-- **Tools**: `web_search`, `webfetch` (search/read a source), `mcp_call_tool` (DeepWiki, Context7, GitHub MCP when the source is a repo/docs), `read`, `grep` (local references/cached docs)
-- **Execute**: 1) Confirm the assigned source and identify its most authoritative entry point (docs root, `CHANGELOG.md`, releases page) 2) Pull the primary data by source type: docs → guides/API reference, repo → README/issues/commits, registry → versions/metadata 3) Answer the `focus-questions` if present — every answer must cite a verifiable URL 4) Check freshness: latest version, update date, breaking changes, maintenance status 5) Assign confidence per finding: `high` (official/primary), `medium` (secondary), `low` (inferred)
-- **Output**: findings table `| No. | Finding | Source URL | Freshness | Confidence |` ending with a source summary (topic coverage, the gaps this source cannot answer, the latest version/date found); if a source is unreachable → return an `error` with the reason and suggested alternative sources
-- **Constraints**: research only the one assigned source — never cross into other sources (the parent already divided the work); every finding needs a verifiable `source-url`, never answer from memory; always state version/date — flag old data as `stale`; if a source contradicts other data → note the conflict, don't adjudicate it; keep only findings that answer the `topic` — no more than ~10 findings per source; read-only — never use `edit`/`write` (report only, no code changes)
+- `Inputs`: `topic` (what to research, e.g. `bun test coverage`, `hono middleware`), `source` (the single source it owns: `official-docs`/`github-repo`/`changelog`/`npm-registry`), `source-url` (optional — the source's specific URL, e.g. repo URL or docs root), `focus-questions` (optional — the specific questions to answer from this source)
+- `Tools`: `web_search`, `webfetch` (search/read a source), `mcp_call_tool` (DeepWiki, Context7, GitHub MCP when the source is a repo/docs), `read`, `grep` (local references/cached docs)
+- `Execute`: 1) Confirm the assigned source and identify its most authoritative entry point (docs root, `CHANGELOG.md`, releases page) 2) Pull the primary data by source type: docs → guides/API reference, repo → README/issues/commits, registry → versions/metadata 3) Answer the `focus-questions` if present — every answer must cite a verifiable URL 4) Check freshness: latest version, update date, breaking changes, maintenance status 5) Assign confidence per finding: `high` (official/primary), `medium` (secondary), `low` (inferred)
+- `Output`: findings table `| No. | Finding | Source URL | Freshness | Confidence |` ending with a source summary (topic coverage, the gaps this source cannot answer, the latest version/date found); if a source is unreachable → return an `error` with the reason and suggested alternative sources
+- `Constraints`: research only the one assigned source — never cross into other sources (the parent already divided the work); every finding needs a verifiable `source-url`, never answer from memory; always state version/date — flag old data as `stale`; if a source contradicts other data → note the conflict, don't adjudicate it; keep only findings that answer the `topic` — no more than ~10 findings per source; read-only — never use `edit`/`write` (report only, no code changes)
 
 ## Expected Outcome
 

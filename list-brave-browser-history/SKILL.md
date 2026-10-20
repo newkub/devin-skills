@@ -3,7 +3,6 @@ name: list-brave-browser-history
 description: List web browsing history from the Brave browser
 argument-hint: "[scope]"
 related:
-  - search
   - list-recent-bookmark-raindrop
   - run-dev
 ---

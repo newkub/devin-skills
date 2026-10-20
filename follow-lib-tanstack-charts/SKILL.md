@@ -15,7 +15,7 @@ Use TanStack Charts fully — grammar-of-graphics charting: data + axes + series
 
 ## Scope
 
-For data visualization — **0.x (beta)**: the API may change, check `https://tanstack.com/charts/latest` before implementing; if you need a much more mature lib → consider Recharts/d3 via `/ask-me`
+For data visualization — `0.x (beta)`: the API may change, check `https://tanstack.com/charts/latest` before implementing; if you need a much more mature lib → consider Recharts/d3 via `/ask-me`
 
 - part of TanStack ecosystem — selection/dispatch lives in `/follow-lib-tanstack-ecosystem`
 
@@ -53,11 +53,11 @@ import { Chart } from '@tanstack/react-charts'
 
 > Goal: real charts
 
-1. **Multiple series**: normalized data shape `{ label, s1, s2 }` + a separate axis per key
-2. **Time series**: the primary axis `getValue` returns a Date — time scaling is automatic
-3. **Responsive**: the container has a clear size — the chart follows its parent
-4. **Theming**: colors via series options — map them to the app's design tokens
-5. **Loading/empty**: handle `data: []` and loading states yourself (headless-ish)
+1. `Multiple series`: normalized data shape `{ label, s1, s2 }` + a separate axis per key
+2. `Time series`: the primary axis `getValue` returns a Date — time scaling is automatic
+3. `Responsive`: the container has a clear size — the chart follows its parent
+4. `Theming`: colors via series options — map them to the app's design tokens
+5. `Loading/empty`: handle `data: []` and loading states yourself (headless-ish)
 
 ### 4. Verify
 

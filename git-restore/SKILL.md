@@ -5,11 +5,7 @@ argument-hint: "[files...|--staged|--source <ref>]"
 related:
   - restore-files
   - git-revert
-  - check-git-logs
-  - git-file-history
   - check-uncommit
-  - ask-me
-  - resolve-errors
 ---
 
 ## Goal

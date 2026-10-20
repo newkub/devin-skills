@@ -9,11 +9,11 @@ related:
 
 ## Goal
 
-Use TanStack Intent — the standard way to pack **agent skills** into an npm package so consumers can install that lib's skills into their agent tooling
+Use TanStack Intent — the standard way to pack `agent skills` into an npm package so consumers can install that lib's skills into their agent tooling
 
 ## Scope
 
-Use when maintaining an npm package and you want to ship skills (e.g. Devin/Claude/Cursor-compatible skills) with the package — for package authors, not app developers — **0.x**: check `https://tanstack.com/intent/latest` before implementing
+Use when maintaining an npm package and you want to ship skills (e.g. Devin/Claude/Cursor-compatible skills) with the package — for package authors, not app developers — `0.x`: check `https://tanstack.com/intent/latest` before implementing
 
 - part of TanStack ecosystem — selection/dispatch lives in `/follow-lib-tanstack-ecosystem`
 

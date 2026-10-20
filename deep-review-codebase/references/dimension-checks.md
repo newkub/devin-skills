@@ -82,7 +82,7 @@ A `capture` row means: run the matrix `Tool/skill` first, then dispatch the revi
 | `routing-deeplinks` | deep link to every key view state opens that state directly; URL/params are the state source; no redirect loops; missing routes give real 404/410 |
 | `theming-dark-mode` | colors come only from theme tokens; contrast passes WCAG in both modes; no hardcoded hex outside token definitions |
 | `rendering-strategy` | per-route SSR/ISR/CSR choice matches intent; revalidation serves fresh content within the stated window; streaming delivers first paint early |
-| `graphql-oas-surface` | depth/complexity limits enforced; introspection off in production; field-level authz holds; resolver N+1 bounded by measured dataloader/profile evidence |
+| `graphql-oas-surface` | depth/complexity limits enforced; introspection off in production; field-level authz holds; resolver N+1 bounded by measured dataloader/profile evidence; the documented OpenAPI/GraphQL surface matches the shipped schema (`oasdiff`/`graphql-inspector` diff empty or explained) |
 | `webhook-lifecycle` | outgoing delivery retries with backoff, dead-letters after bound, replay path exists, every payload signed and verifiable |
 | `state-machine-integrity` | every transition not in the declared diagram is rejected; concurrent transitions to the same state resolve deterministically; no orphan terminal state |
 | `backfill-migration` | backfill runs in bounded batches with throttle, is resumable/idempotent, and the dual-write window states its consistency rule |
@@ -132,7 +132,7 @@ A `capture` row means: run the matrix `Tool/skill` first, then dispatch the revi
 | `slo-error-budget` | each claimed SLO has a measurement source and a stated error-budget policy |
 | `multi-region-failover` | failover between regions is drilled with recorded evidence, not just configured |
 
-Notes:
+## Notes
 
 - Severity, evidence type, N/A condition, gate, and enforcement are the matrix row's columns — never restated here. `upgrade/downgrade` triggers are the only legal way to move off the matrix `Default severity`; cite the trigger in the report's `Risk` column.
 - When a `capture` row's tool is missing on the machine, resolve via `/download-program`; if unavailable on the platform (e.g. Lightpanda on Windows — see `use-lightpanda`), mark the dimension `failed (tool-unavailable)` in the ledger, not `skipped`.

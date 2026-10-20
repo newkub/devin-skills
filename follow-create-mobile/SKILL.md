@@ -5,7 +5,6 @@ argument-hint: "[domain]"
 related:
   - follow-create-web
   - follow-best-practice
-  - follow-tool-maestro
   - implement-to-production
   - ask-me
 

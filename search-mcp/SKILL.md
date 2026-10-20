@@ -5,10 +5,7 @@ description: Search for relevant and interesting MCP and internet resources
 argument-hint: "[query]"
 related:
   - follow-create-mcp
-  - list-devin
-  - update-devin
   - follow-tool-crw
-  - learn
 
 ---
 

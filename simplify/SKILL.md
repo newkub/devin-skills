@@ -6,9 +6,6 @@ related:
   - refactor
   - refactor-skills
   - check-long-files
-  - improve
-  - improve-writing
-  - deep-validate
   - report
   - suggest-next-action
 

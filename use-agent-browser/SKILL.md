@@ -5,13 +5,11 @@ argument-hint: "[url]"
 related:
   - watch-browser
   - run-test
-  - use-agents-capture
   - follow-tool-playwright
   - use-chrome-devtools
   - follow-create-web-mcp
   - resolve-errors
   - run-dev
-  - use-lightpanda
 ---
 
 ## Goal

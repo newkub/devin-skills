@@ -1,6 +1,6 @@
 ---
 name: resolve-errors
-description: Fix errors systematically, quickly, and precisely — identify the root cause, make the minimal fix, use scripts to automate
+description: Fix errors systematically — root cause, minimal fix, scripts to automate
 argument-hint: "[scope|verify]"
 related:
   - rethink
@@ -16,7 +16,6 @@ related:
   - run-until-pass
   - check-secrets
   - open-web-for-config-secret
-  - use-lightpanda
 ---
 
 ## Goal

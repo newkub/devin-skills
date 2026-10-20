@@ -8,9 +8,7 @@ related:
   - follow-create-plugins
   - follow-create-sdk
   - follow-harness-engineering
-  - search
   - update-devin-global-skills
-  - update-devin
   - report
 
 ---

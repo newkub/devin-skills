@@ -6,12 +6,10 @@ related:
   - loop-until-complete
   - follow-enter-dot
   - follow-agents-md
-  - update-devin
   - report
   - ask-me
   - ship
   - continue
-  - idea
   - rethink
 
 ---

@@ -5,10 +5,8 @@ argument-hint: "[action] [repo]"
 related:
   - follow-dot-github
   - resolve-github-issue-by-me
-  - create-github
   - update-github-issue
   - ask-me
-  - list-github
   - deep-validate
 
 ---

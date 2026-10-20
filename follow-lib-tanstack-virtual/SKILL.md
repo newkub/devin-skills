@@ -1,6 +1,6 @@
 ---
 name: follow-lib-tanstack-virtual
-description: Use TanStack Virtual end to end — lists, window scroll, grids, dynamic sizes, infinite scroll, table rows
+description: Use TanStack Virtual end to end — lists, grids, window scroll, dynamic sizes
 argument-hint: "[framework] [mode]"
 related:
   - follow-lib-tanstack-ecosystem
@@ -60,17 +60,17 @@ return (
 
 > Goal: pick the virtualizer matching the layout
 
-1. **Fixed container** — `useVirtualizer` + a scroll element (above)
-2. **Window scroll** — `useWindowVirtualizer` when scrolling on the window/document
-3. **2D grid** — pair a row + column virtualizer (or `lanes` for masonry)
-4. **Dynamic heights** — `measureElement` ref + `data-index` (above) — good for chat feeds/cards
-5. **Sticky headers** — check the `vItem.lane`/sticky patterns in the docs
+1. `Fixed container` — `useVirtualizer` + a scroll element (above)
+2. `Window scroll` — `useWindowVirtualizer` when scrolling on the window/document
+3. `2D grid` — pair a row + column virtualizer (or `lanes` for masonry)
+4. `Dynamic heights` — `measureElement` ref + `data-index` (above) — good for chat feeds/cards
+5. `Sticky headers` — check the `vItem.lane`/sticky patterns in the docs
 
 ### 4. Patterns
 
 > Goal: composition with other libs
 
-1. **Infinite scroll**: tail virtual item + `useInfiniteQuery` (`follow-query`) — call `fetchNextPage` when the index nears the end:
+1. `Infinite scroll`: tail virtual item + `useInfiniteQuery` (`follow-query`) — call `fetchNextPage` when the index nears the end:
 
    ```ts
    const lastItem = virtualItems[virtualItems.length - 1]
@@ -79,9 +79,9 @@ return (
    }, [lastItem?.index])
    ```
 
-2. **Table rows**: virtualize the tbody of `follow-table` — spacer rows + `translateY`
-3. **Keyboard nav**: `virtualizer.scrollToIndex(i)` for active-item scroll-into-view
-4. **Padding/gap**: `paddingStart`/`gap` options — don't put margin on the items
+2. `Table rows`: virtualize the tbody of `follow-table` — spacer rows + `translateY`
+3. `Keyboard nav`: `virtualizer.scrollToIndex(i)` for active-item scroll-into-view
+4. `Padding/gap`: `paddingStart`/`gap` options — don't put margin on the items
 
 ### 5. Verify
 

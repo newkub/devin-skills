@@ -4,9 +4,6 @@ description: Set up and use gitleaks to scan secrets in git history, staged chan
 argument-hint: "[scope]"
 related:
   - check-secrets
-  - follow-monorepo
-  - setup-cicd
-  - follow-tool-git
   - follow-tool-mise
 ---
 

@@ -29,9 +29,9 @@ For projects that need type-safe database access on PostgreSQL, MySQL, SQLite, S
 
 Boundaries:
 - Use this skill only when the project selects/uses Drizzle ORM
-- For ORM-agnostic data access patterns (repository pattern, mappers) → use `/refactor` orm scope (`refactor/SKILL.md` `### 3` **orm** bullet → repository boundary)
+- For ORM-agnostic data access patterns (repository pattern, mappers) → use `/refactor` orm scope (`refactor/SKILL.md` `### 3` `orm` bullet → repository boundary)
 - If the task focuses on the `drizzle-kit` CLI (generate/migrate/push/studio) → use `/follow-tool-drizzle-kit`
-- Other ORMs (Prisma, TypeORM) are out of scope — do `/refactor` orm scope (`refactor/SKILL.md` `### 3` **orm** bullet → one type-safe ORM) instead
+- Other ORMs (Prisma, TypeORM) are out of scope — do `/refactor` orm scope (`refactor/SKILL.md` `### 3` `orm` bullet → one type-safe ORM) instead
 
 - References: [apis](references/apis.md) | [cli](references/cli.md) 
 ## Execute
@@ -173,7 +173,7 @@ Boundaries:
 - v1.0 RC: `drizzle-orm@rc` + `drizzle-kit@rc` (currently `1.0.0-rc.4`, verified 2026-09-13) with breaking changes: `relations()` → `defineRelations()`, `getTableColumns` → `getColumns`, `--strict` removed, migration folder v3
 - Check the version in `package.json` before choosing APIs
 
-- Use `/refactor` orm scope (`refactor/SKILL.md` `### 3` **orm** bullet → repository boundary) if you need an ORM-agnostic data access pattern
+- Use `/refactor` orm scope (`refactor/SKILL.md` `### 3` `orm` bullet → repository boundary) if you need an ORM-agnostic data access pattern
 - Use `/follow-tool-drizzle-kit` if the task focuses on the drizzle-kit CLI
 - Use /run-drizzle-studio if needed
 - Use /follow-lib-zod if Zod is the validator

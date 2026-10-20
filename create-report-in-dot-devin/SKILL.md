@@ -7,7 +7,6 @@ related:
   - report-file-structure
   - suggest-next-action
   - report
-  - idea
   - deep-analyze
   - scan-codebase
   - open-files-in-web

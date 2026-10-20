@@ -1,10 +1,9 @@
 ---
 name: report-review
-description: Report review findings as chat tables (No./Finding/Action/Evidence/Severity/Risk/Priority/Owner skill/Status), no files
+description: Report review findings as one chat table (No./Action/Evidence/Severity/Status)
 argument-hint: "[scope-or-findings-source]"
 related:
   - deep-review-codebase
-  - run-review
   - report
   - create-report-in-dot-devin
   - suggest-next-action

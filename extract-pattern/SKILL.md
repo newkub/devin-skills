@@ -4,7 +4,6 @@ description: Write pattern rules from the provided data
 argument-hint: "[pattern]"
 related:
   - deep-review-codebase
-  - learn
   - follow-best-practice
 
 ---

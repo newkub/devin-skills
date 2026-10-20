@@ -5,7 +5,6 @@ argument-hint: "[scope]"
 related:
   - report
   - suggest-next-action
-  - update-devin
 ---
 
 ## Goal

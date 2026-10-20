@@ -3,7 +3,6 @@ name: gen-media-ai-videos
 description: Generate videos with AI via bunx CLI
 argument-hint: "[prompt]"
 related:
-  - gen-media
   - gen-subtitle-video
 ---
 

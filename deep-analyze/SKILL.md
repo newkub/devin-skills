@@ -5,7 +5,6 @@ argument-hint: "[scope|report]"
 related:
   - deep-thinking
   - scan-codebase
-  - check-long-files
   - check-code-structure
   - use-astgrep
   - report-deep

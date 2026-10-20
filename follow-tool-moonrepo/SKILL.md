@@ -195,17 +195,17 @@ For projects that choose moonrepo as the monorepo orchestrator instead of turbor
 
 ### project-configurator — configure or verify one project's `moon.yml` + task definitions in the monorepo
 
-- **Inputs**: `project-path` (e.g. `apps/web`, `packages/ui`, `crates/cli`), `stack` (`bun`/`node`/`rust` — detect from the manifest if not given), `shared-config` (path to `.moon/tasks/all.yml` if present), `mode` (`configure` writes/edits moon.yml, `verify` only inspects and reports)
-- **Tools**: `read`, `grep`, `find_file_by_name`, `exec` — every mode; `edit`/`write` only in mode `configure`
-- **Execute**:
+- `Inputs`: `project-path` (e.g. `apps/web`, `packages/ui`, `crates/cli`), `stack` (`bun`/`node`/`rust` — detect from the manifest if not given), `shared-config` (path to `.moon/tasks/all.yml` if present), `mode` (`configure` writes/edits moon.yml, `verify` only inspects and reports)
+- `Tools`: `read`, `grep`, `find_file_by_name`, `exec` — every mode; `edit`/`write` only in mode `configure`
+- `Execute`:
   1. Read the project's `package.json` scripts (JS/Bun) or `Cargo.toml` (Rust)
   2. Read `.moon/tasks/all.yml` and any shared config affecting the project
   3. Check the project's current `moon.yml` (if any)
   4. mode `configure`: write `moon.yml` with standard task names (`build`, `dev`, `test`, `lint`, `typecheck`, `check`), correct `deps` (`^build` for build), `outputs` for build tasks, `inputs` covering sources+configs, `runInCI: false` for dev/serve tasks
   5. mode `verify`: check task coverage, missing `deps`, missing `outputs`, `runInCI` violations, then report
   6. Run `moon project <name>` to confirm the project is detected correctly
-- **Output**: an updated `moon.yml` (mode configure) or a verification report (mode verify) + a list of task issues: missing deps, missing outputs, wrong runInCI, naming drift
-- **Constraints**: edit only the assigned project's `moon.yml` — never touch `.moon/` workspace config or other projects; follow the shared config's existing task names, don't invent new conventions; don't change `package.json`/`Cargo.toml` scripts — report them as findings instead; mode `verify` writes no files
+- `Output`: an updated `moon.yml` (mode configure) or a verification report (mode verify) + a list of task issues: missing deps, missing outputs, wrong runInCI, naming drift
+- `Constraints`: edit only the assigned project's `moon.yml` — never touch `.moon/` workspace config or other projects; follow the shared config's existing task names, don't invent new conventions; don't change `package.json`/`Cargo.toml` scripts — report them as findings instead; mode `verify` writes no files
 
 ## Expected Outcome
 

@@ -7,7 +7,6 @@ related:
   - update-usage-md
   - design-cli-prototype
   - design-tui-prototype
-  - design-web-prototype
   - ask-me
   - apply
   - report

@@ -3,7 +3,6 @@ name: create-cloudflare-worker
 description: Create a Cloudflare Workers project with Git connect and Cloudflare Access setup
 argument-hint: "[project-name]"
 related:
-  - create-cloudflare
   - deploy-to-cloudflare
   - follow-secret-manager
   - open-web-for-config-secret

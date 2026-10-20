@@ -3,7 +3,6 @@ name: gen-subtitle-video
 description: Generate .srt subtitles from a video with a bunx CLI
 argument-hint: "[video-path]"
 related:
-  - convert
   - gen-voice
 ---
 

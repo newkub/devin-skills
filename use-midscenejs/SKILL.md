@@ -4,8 +4,6 @@ description: Use Midscene.js — AI vision GUI agent + natural-language E2E test
 argument-hint: "[scope]"
 related:
   - follow-tool-playwright
-  - follow-tool-vitest
-  - use-agent-browser
   - use-chrome-devtools
   - use-lightpanda
   - update-tests
@@ -21,7 +19,7 @@ Use Midscene.js correctly — an open-source "AI-powered vision" GUI Agent + E2E
 
 Use when writing/running natural-language tests or automation ("click the login button", "aiQuery the price list") on web (Playwright/Puppeteer), desktop (computer), Android/iOS/HarmonyOS — a good fit for flows with fragile selectors or frequently changing UI
 
-- Boundary (per `/use-chrome-devtools` `## Tool Selection` — canonical): need deterministic selector tests → plain `/follow-tool-playwright`; pixel-free DOM scraping → `/use-lightpanda` (**Midscene needs real screenshots, so it cannot work with Lightpanda**); Midscene fits NL-driven flow/assert + visual locate
+- Boundary (per `/use-chrome-devtools` `## Tool Selection` — canonical): need deterministic selector tests → plain `/follow-tool-playwright`; pixel-free DOM scraping → `/use-lightpanda` (`Midscene needs real screenshots, so it cannot work with Lightpanda`); Midscene fits NL-driven flow/assert + visual locate
 - Maintainer: `web-infra-dev` (ByteDance web-infra — the same team behind Rspack), MIT, v1.15.3 (verified 2026-10-13)
 
 ## Execute
@@ -83,19 +81,19 @@ await agent.aiAssert('Every product in the search results has a price below $100
 > Goal: pick the right alternative path — don't use a dead route
 
 1. Puppeteer: `new PuppeteerAgent(page)` / `PuppeteerPageAgent` from `@midscene/web/puppeteer`; multi-tab → `PuppeteerBrowserAgent`
-2. Vitest: **there is no `@midscene/web/vitest` plugin anymore** — the official pattern is the Playwright+Vitest demo (`vitest.config.ts` set `testTimeout: 1800_000`, use `PlaywrightAgent` in the test, custom reporter)
-3. YAML + CLI: write `tasks/flow` YAML (`ai:`, `aiAssert:`, `sleep:`) then `midscene ./flow.yaml` (`@midscene/cli`, Node 20.19+/22.12+/24+, auto-loads `.env`) — legacy YAML is in maintenance mode; the new path is **Midscene Test** (`@midscene/test`, Beta): `midscene-test create`, `cases/*.yaml` + `midscene.config.ts` TS nodes, `midscene-test nodes` exports a Node Spec
+2. Vitest: `there is no @midscene/web/vitest plugin anymore` — the official pattern is the Playwright+Vitest demo (`vitest.config.ts` set `testTimeout: 1800_000`, use `PlaywrightAgent` in the test, custom reporter)
+3. YAML + CLI: write `tasks/flow` YAML (`ai:`, `aiAssert:`, `sleep:`) then `midscene ./flow.yaml` (`@midscene/cli`, Node 20.19+/22.12+/24+, auto-loads `.env`) — legacy YAML is in maintenance mode; the new path is `Midscene Test` (`@midscene/test`, Beta): `midscene-test create`, `cases/*.yaml` + `midscene.config.ts` TS nodes, `midscene-test nodes` exports a Node Spec
 4. Bridge mode: control an already-open Chrome through an extension — `AgentOverChromeBridge` from `@midscene/web/bridge-mode`, CLI `--bridge`
 5. Native platforms: `@midscene/android` (`AndroidAgent`+adb), `@midscene/ios` (`IOSAgent`/WebDriverAgent), `@midscene/harmony` (HDC), `@midscene/computer` (`agentForComputer()`, RDP: `agentForRDPComputer()`) + Playgrounds (`npx --yes @midscene/computer-playground`)
 6. Agent Skills for coding agents: `npx skills add web-infra-dev/midscene-skills` (drives `npx @midscene/{web,android,ios,computer}`)
-7. **MCP servers were retired since >1.9.8** — never register Midscene as an MCP
+7. `MCP servers were retired since >1.9.8` — never register Midscene as an MCP
 
 ### 5. Caching And Reports
 
 > Goal: fast and correct in CI
 
 1. cache = AI planning steps (prompt as key) + web XPath locates; enable `cache: { id }` or `cache: true` (auto id); strategies: `read-write` (default), `read-only` (+`agent.flushCache()` manual), `write-only`; legacy `MIDSCENE_CACHE=1`+`cacheId`
-2. cache files live in `./midscene_run/cache/*.cache.yaml` — **commit them for CI or persist the cache across runs**, otherwise every run pays for a fresh plan; XPath cache doesn't work on canvas/cross-origin iframe/closed Shadow DOM; prune with `flushCache({ cleanUnused: true })`
+2. cache files live in `./midscene_run/cache/*.cache.yaml` — `commit them for CI or persist the cache across runs`, otherwise every run pays for a fresh plan; XPath cache doesn't work on canvas/cross-origin iframe/closed Shadow DOM; prune with `flushCache({ cleanUnused: true })`
 3. reports: interactive HTML at `./midscene_run/report/*.html`; convert to markdown with `reportFileToMarkdown` or `npx @midscene/web report-tool --action to-markdown`
 
 ### 6. Run And Validate

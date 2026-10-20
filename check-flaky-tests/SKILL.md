@@ -7,7 +7,6 @@ related:
   - run-test
   - follow-test
   - deep-test
-  - deep-review-codebase
   - report
   - suggest-next-action
   - ask-me

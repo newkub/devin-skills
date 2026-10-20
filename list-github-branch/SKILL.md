@@ -3,8 +3,6 @@ name: list-github-branch
 description: Show all branches of a given repo on GitHub
 argument-hint: "[repo]"
 related:
-  - list-git
-  - cleanup
   - report
 ---
 

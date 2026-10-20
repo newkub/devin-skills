@@ -4,7 +4,6 @@ argument-hint: "[--repo <owner/repo> | verify]"
 description: Inspect and fix failed GitHub Actions workflow runs for the current repo or the specified repo
 related:
   - resolve-errors
-  - search
   - report
   - suggest-next-action
   - ask-me

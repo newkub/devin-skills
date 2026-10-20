@@ -1,6 +1,6 @@
 ---
 name: create-plan-in-dot-devin
-description: Canonical analyze+plan — deep analysis, then an implementation-ready plan as a durable GitHub issue (fallback .devin/temp/plan/ when no remote)
+description: Canonical analyze+plan — deep analysis, then an implementation-ready plan as a GitHub issue
 argument-hint: "[topic|scope] [chat-only] [file-only]"
 related:
   - deep-plan

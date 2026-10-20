@@ -5,10 +5,8 @@ argument-hint: "[path] [--yes] [--deep] [--min MB]"
 related:
   - cleanup-files-in-project
   - cleanup-files-in-computer
-  - cleanup
   - ask-me
   - report
-  - follow-tool-mr-boxington
 ---
 
 ## Goal

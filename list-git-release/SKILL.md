@@ -3,7 +3,6 @@ name: list-git-release
 description: List git tags and releases from the local repo with version, date, notes
 argument-hint: "[scope]"
 related:
-  - list-git
   - report
   - run-release
 ---

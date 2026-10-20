@@ -5,9 +5,6 @@ argument-hint: "[target-path-or-scope]"
 related:
   - follow-tool-deepsec
   - deep-review-codebase
-  - analyze-attack-surface
-  - check-secrets
-  - follow-my-techstack
 ---
 
 ## Goal

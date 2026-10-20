@@ -3,7 +3,6 @@ name: follow-lib-solidjs
 description: Develop Solid.js applications with fine-grained reactivity and performance optimization
 argument-hint: "[task]"
 related:
-  - follow-create-web
   - follow-lang-typescript
   - follow-tool-vite
   - follow-create-plugins

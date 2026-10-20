@@ -3,7 +3,6 @@ name: list-devin-session
 description: List all Devin sessions with title, mode, model, and last activity time
 argument-hint: "[limit] [keyword]"
 related:
-  - list-devin
   - list-request-devin-session
   - search-request-in-devin-session
   - report

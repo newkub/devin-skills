@@ -1,6 +1,6 @@
 ---
 name: follow-lib-tanstack-highlight
-description: Use TanStack Highlight end to end — syntax highlighting, themes, languages, SSR with markdown integration
+description: Use TanStack Highlight end to end — syntax highlighting, themes, languages, SSR
 argument-hint: "[language-scope]"
 related:
   - follow-lib-tanstack-ecosystem
@@ -49,10 +49,10 @@ bun add @tanstack/highlight
 
 > Goal: real usage
 
-1. **SSR/precompute**: static content → highlight at build/server time to cut client work + bundle
-2. **Markdown fences**: hook `code` nodes from the `follow-markdown` doc model
-3. **Line features**: line numbers/diff highlights via wrapper markup over the token output
-4. **Language scope**: register/lazy-load only the languages actually used — bundle size
+1. `SSR/precompute`: static content → highlight at build/server time to cut client work + bundle
+2. `Markdown fences`: hook `code` nodes from the `follow-markdown` doc model
+3. `Line features`: line numbers/diff highlights via wrapper markup over the token output
+4. `Language scope`: register/lazy-load only the languages actually used — bundle size
 
 ### 5. Verify
 

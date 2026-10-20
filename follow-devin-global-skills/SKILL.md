@@ -3,7 +3,6 @@ name: follow-devin-global-skills
 description: Read and use the skills available in global and project (.devin/skills) stores as appropriate
 argument-hint: "[skill-name]"
 related:
-  - list-devin
   - search-skills
   - update-project-skills
   - check-reference

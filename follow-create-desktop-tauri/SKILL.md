@@ -3,9 +3,7 @@ name: follow-create-desktop-tauri
 description: Create desktop apps with Tauri, Solid + TanStack Router, and a Rust backend
 argument-hint: "[scope]"
 related:
-  - follow-create-web
   - follow-create-plugins
-  - follow-create-mobile
   - follow-lib-native-sdk
   - follow-best-practice
   - setup-cicd

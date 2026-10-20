@@ -6,7 +6,6 @@ related:
   - follow-create-web
   - deploy-to-cloudflare
   - follow-create-devin-project-skills
-  - create-cloudflare
   - add-context-to-devin-global-skills
 ---
 

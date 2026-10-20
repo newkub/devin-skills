@@ -61,11 +61,11 @@ export const env = Env.parse(process.env)   // fail-fast at boot
 
 ### 4. Data Sources
 
-1. **Request bodies/params/query**: validate before business logic
-2. **External API responses**: validate if trust is low; skip if it's an internal type-safe contract (perf)
-3. **File uploads/JSON files**: parse → validate → use
-4. **WebSocket/stream payloads**: validate per message
-5. **Queue/job payloads**: validate on consume
+1. `Request bodies/params/query`: validate before business logic
+2. `External API responses`: validate if trust is low; skip if it's an internal type-safe contract (perf)
+3. `File uploads/JSON files`: parse → validate → use
+4. `WebSocket/stream payloads`: validate per message
+5. `Queue/job payloads`: validate on consume
 
 ## Rules
 

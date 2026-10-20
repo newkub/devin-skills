@@ -3,7 +3,6 @@ name: run-cleanup
 description: Run cleanup tasks to delete build artifacts and cache
 argument-hint: "[scope]"
 related:
-  - check-long-files
   - cleanup-files-in-computer
   - cleanup-files-in-project
   - cleanup

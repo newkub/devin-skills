@@ -1,6 +1,6 @@
 ---
 name: follow-lib-workflow-sdk
-description: Use Workflow SDK (workflow-sdk.dev, Vercel) end to end — durable functions "use workflow"/"use step", sleep/hooks/webhooks, Worlds adapters, deploy + inspect
+description: Use Vercel Workflow SDK — durable functions, sleep/hooks, Worlds adapters
 argument-hint: "[framework-or-world]"
 allowed-tools:
   - exec
@@ -35,7 +35,7 @@ Use when a feature needs long-running/multi-step logic that withstands failures:
 > Goal: integrate it into the framework in use
 
 1. `bun add workflow` via `/run-install` + the framework integration per the docs (Next.js/Vite/Hono/Start, etc.)
-2. Local dev uses the **Local World** automatically — state lives in `.workflow-data/` (gitignored), no config needed
+2. Local dev uses the `Local World` automatically — state lives in `.workflow-data/` (gitignored), no config needed
 3. Structure: `workflows/<name>/index.ts` (workflow fns) + `steps.ts` or a `steps/` folder + `workflows/shared/` — separate files help avoid bundler bugs
 
 ### 2. Write Workflows
@@ -80,9 +80,9 @@ const data = await webhook;
 
 > Goal: pick the backend matching the environment
 
-1. **Local** — the dev default, `.workflow-data/`
-2. **Vercel** — zero config; durable storage + a managed queue + dashboard observability + multi-region; **you must enable "Enable access to System Environment Variables"**, otherwise `VERCEL_DEPLOYMENT_ID` is missing → it falls back to the Local World → fails on a read-only FS
-3. **Custom** — `WORKFLOW_TARGET_WORLD=@workflow/world-postgres` + `DATABASE_URL=...`, or build your own World
+1. `Local` — the dev default, `.workflow-data/`
+2. `Vercel` — zero config; durable storage + a managed queue + dashboard observability + multi-region; `you must enable "Enable access to System Environment Variables"`, otherwise `VERCEL_DEPLOYMENT_ID` is missing → it falls back to the Local World → fails on a read-only FS
+3. `Custom` — `WORKFLOW_TARGET_WORLD=@workflow/world-postgres` + `DATABASE_URL=...`, or build your own World
 
 ### 5. Inspect And Test
 

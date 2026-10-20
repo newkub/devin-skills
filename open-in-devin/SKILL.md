@@ -4,7 +4,6 @@ description: Open a directory or file in a new Devin session
 argument-hint: "[path]"
 related:
   - create-report-in-dot-devin
-  - list-devin
 ---
 
 ## Goal

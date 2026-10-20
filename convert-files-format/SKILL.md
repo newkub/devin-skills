@@ -3,7 +3,6 @@ name: convert-files-format
 description: Convert files between formats with bunx CLIs, covering images and documents.
 argument-hint: "[input] [output-format]"
 related:
-  - convert
   - ask-me
   - run-lint
   - run-format

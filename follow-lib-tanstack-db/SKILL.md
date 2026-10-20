@@ -15,7 +15,7 @@ Use TanStack DB fully — a reactive client store: collections, live queries (fi
 
 ## Scope
 
-Use when you need a local-first/reactive data layer that queries client-side like a DB — versus `follow-query` (plain server cache) — **0.x**: the API may change, check the latest docs before implementing
+Use when you need a local-first/reactive data layer that queries client-side like a DB — versus `follow-query` (plain server cache) — `0.x`: the API may change, check the latest docs before implementing
 
 - part of TanStack ecosystem — selection/dispatch lives in `/follow-lib-tanstack-ecosystem`
 

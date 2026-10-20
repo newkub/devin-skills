@@ -3,7 +3,6 @@ name: restore-files-from-git-log
 description: Restore files from git log, starting from the latest commit and walking backward until found
 argument-hint: "[scope]"
 related:
-  - restore-files
   - deep-debug
   - check-git-logs
   - follow-tool-git

@@ -4,7 +4,6 @@ description: Ask and route to the follow-create-* skill that best fits the build
 argument-hint: "[skill-name-or-goal]"
 related:
   - ask-me
-  - search
   - report
   - ship
   - update-references
@@ -12,7 +11,6 @@ related:
   - run-test
   - update-tests
   - update-devin-global-skills
-  - update-devin
   - follow-create-web
   - follow-create-cli
   - follow-create-rust-cli

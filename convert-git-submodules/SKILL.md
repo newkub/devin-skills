@@ -3,10 +3,8 @@ name: convert-git-submodules
 argument-hint: "[directory]"
 description: Convert a repo directory into a git submodule: create a remote repo, push content, then add it back.
 related:
-  - create-github
   - git-commit
   - git-push
-  - list-git
   - delete
   - update-references
   - update-gitignore

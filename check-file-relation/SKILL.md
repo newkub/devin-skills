@@ -4,13 +4,8 @@ description: Check file import relations + concat all or related files into one 
 argument-hint: "<dir> [--all|--from <file>|--summary|--json] [--ext|--include|--order|--pattern|--max-lines]"
 related:
   - read-all-files
-  - follow-create-cli
-  - update-devin-global-skills
   - deep-review-codebase
-  - check-long-files
   - check-code-structure
-  - analyze-file-structure
-  - run-check
 
 ---
 

@@ -6,7 +6,6 @@ related:
   - create-mermaid-diagram
   - deep-review-codebase
   - report
-  - search
   - run-drizzle-studio
   - suggest-next-action
 ---

@@ -5,9 +5,7 @@ argument-hint: "[scope]"
 related:
   - follow-create-sdk
   - update-devin-global-skills
-  - update-devin
   - ask-me
-  - search
   - follow-harness-engineering
   - deep-review-codebase
 

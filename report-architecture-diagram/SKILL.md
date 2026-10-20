@@ -4,8 +4,6 @@ description: Draw an architecture diagram with ANSI box-drawing in chat from the
 argument-hint: "[scope]"
 related:
   - scan-codebase
-
-  - follow-tool-archify
   - report
   - suggest-next-action
 ---

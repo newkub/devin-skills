@@ -2,8 +2,6 @@
 name: restore-files-deleted-file
 description: Recover deleted files — from the recycle bin, git history, or editor backups
 argument-hint: "<path-or-name>"
-related:
-  - restore-files
 ---
 
 ## Goal

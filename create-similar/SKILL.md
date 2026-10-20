@@ -6,9 +6,7 @@ related:
   - update-devin-global-skills
   - deep-review-codebase
   - use-related-skills
-  - transform
   - deep-validate
-  - search
 ---
 
 ## Goal

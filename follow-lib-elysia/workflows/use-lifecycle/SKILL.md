@@ -58,7 +58,7 @@ app
 
 ### 4. Scoped Hooks And Guards
 
-- Hooks default = **local** (the instance that defines them) — `.as('global')` / `.as('scoped')` propagate to `.use()` consumers
+- Hooks default = `local` (the instance that defines them) — `.as('global')` / `.as('scoped')` propagate to `.use()` consumers
 - `guard({ beforeHandle: fn, schema keys })` — apply inside the block only
 - Plugin pattern: `new Elysia({ prefix }).derive().onError()` self-contained → `.use(plugin)`
 

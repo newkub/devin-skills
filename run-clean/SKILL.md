@@ -3,7 +3,6 @@ name: run-clean
 description: Clean build artifacts and cache to start fresh
 argument-hint: "[scope]"
 related:
-  - check-long-files
   - follow-best-practice
   - suggest-next-action
   - resolve-errors

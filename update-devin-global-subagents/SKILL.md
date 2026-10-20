@@ -4,7 +4,6 @@ description: Create, update, and orchestrate global subagents via AGENT.md and j
 argument-hint: "[agent-name]"
 related:
   - update-devin
-  - list-devin
   - review-devin-global-harness
   - follow-agents-md
   - update-docs

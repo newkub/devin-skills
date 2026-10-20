@@ -17,7 +17,6 @@ related:
   - follow-create-bot
   - resolve-github-issue-by-me
   - create-plan-in-dot-devin
-  - create-github
   - run-verify
   - resolve-errors
   - setup-cicd

@@ -8,9 +8,7 @@ related:
   - check-types-definition
   - follow-deterministic
   - update-docs
-  - report-file-structure
   - deep-review-codebase
-  - suggest-next-action
 ---
 
 ## Goal

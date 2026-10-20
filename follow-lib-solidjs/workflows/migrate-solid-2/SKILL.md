@@ -15,7 +15,7 @@ Migrate a Solid 1.x codebase → Solid 2.0 — detect usage of changed APIs, app
 
 ## Scope
 
-major version upgrade — do it when the project is on `solid-js` 1.x and needs to move to 2.x; **always check the latest official migration guide first** — v2 was at RC stage when this skill was written, APIs may change
+major version upgrade — do it when the project is on `solid-js` 1.x and needs to move to 2.x; `always check the latest official migration guide first` — v2 was at RC stage when this skill was written, APIs may change
 
 ## Execute
 
@@ -26,7 +26,7 @@ bun pm ls solid-js            # or npm ls solid-js
 ```
 
 - `solid-js@^1.x` → this migration path; `@2.x`/`-rc` → use the new APIs directly
-- **Fetch the official migration guide first**: https://docs.solidjs.com/ — RC stage = APIs still moving; check the latest source, don't guess from this skill
+- `Fetch the official migration guide first`: https://docs.solidjs.com/ — RC stage = APIs still moving; check the latest source, don't guess from this skill
 
 ### 2. Audit API Usage
 
@@ -56,7 +56,7 @@ rg "createEffect|createMemo|createResource|createStore|produce|reconcile|createC
 
 ## Rules
 
-- **RC version = pin exact** — never use `^` on a prerelease
+- `RC version = pin exact` — never use `^` on a prerelease
 - The official migration guide = source of truth — this skill gives the workflow only; see the docs for API details
 - Migrate per-family (signals → stores → resources → SSR) — don't upgrade a large codebase all at once
 - Ecosystem packages must upgrade together — mixed major versions collide on peer deps

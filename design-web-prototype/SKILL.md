@@ -12,7 +12,6 @@ related:
   - follow-lib-unocss
   - follow-tool-vite
   - follow-design-system
-  - learn-from-cli
   - create-files-in-os-temp
   - check-open-ports
   - open-web

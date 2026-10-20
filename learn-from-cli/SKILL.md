@@ -3,7 +3,6 @@ name: learn-from-cli
 description: Learn a CLI tool from --help, subcommands, machine-readable output; summarize capability
 argument-hint: "[cli-command]"
 related:
-  - learn
   - learn-from-web
   - check-types-definition
   - check-my-global-cli

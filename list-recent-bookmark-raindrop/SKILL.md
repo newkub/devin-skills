@@ -3,7 +3,6 @@ name: list-recent-bookmark-raindrop
 description: List recent bookmarks from Raindrop.io sorted by created
 argument-hint: "[collection]"
 related:
-  - search
   - deep-review-codebase
   - report
 ---

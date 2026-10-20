@@ -68,7 +68,7 @@ Options: `base` (`/__devframes/`), `plugins` (keys or `'all'`), `mcp` (`'auto'|t
      `wrikka-vite-devtools:ssr-inject` middleware inserts `<base>embedded.js` before `</body>` of the
      streamed HTML (Vite's `transformIndexHtml` never runs)
 2. pick element → submit comment → status flips `queued` → `running` → `done`; logs stream on `agent-logs`
-3. Hub **Comments** tab — Inbox (poll, filters, Re-run, streamed logs), New comment, Ideas, Diagnostics
+3. Hub `Comments` tab — Inbox (poll, filters, Re-run, streamed logs), New comment, Ideas, Diagnostics
 4. MCP: `POST <base>__mcp` with an `Origin` header matching the Vite server; `tools/list` aggregates
    `wrikka-vite-devtools_*` ids plus `devframes_plugin_*`, `devframes_service_git_*`
 

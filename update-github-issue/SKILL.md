@@ -3,7 +3,6 @@ name: update-github-issue
 description: Edit GitHub issue title, body, comments, labels, assignees, metadata with `gh issue edit`
 argument-hint: "[issue-number] [repo]"
 related:
-  - create-github
   - ask-me
 
 ---

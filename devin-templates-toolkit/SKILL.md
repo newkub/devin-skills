@@ -6,7 +6,6 @@ related:
   - devin-scripts-toolkit
   - follow-create-web
   - follow-create-plugins
-  - create-cloudflare
   - setup-cicd
   - update-project
   - write-how-to

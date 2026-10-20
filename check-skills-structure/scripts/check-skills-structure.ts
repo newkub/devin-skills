@@ -152,6 +152,29 @@ function inspect(dir: string): Row {
   if (fm.keys.length === 0) r.warn.push("no frontmatter");
   if (r.lines > 250) r.warn.push(`${r.lines} lines >250`);
 
+  // Body-level conventions (update-devin-global-skills): a `related` entry must be
+  // mentioned in the body, `related` stays <=15, and no ** bold outside code.
+  const body = text.replace(/^---\r?\n[\s\S]*?\r?\n---/, "");
+  const orphan = fm.related.filter((ref) => {
+    const re = new RegExp(`(^|[^A-Za-z0-9-])${ref.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}([^A-Za-z0-9-]|$)`);
+    return !re.test(body);
+  });
+  if (orphan.length) r.warn.push(`related not in body: ${orphan.join(", ")}`);
+  if (fm.related.length > 15) r.warn.push(`related ${fm.related.length} >15`);
+
+  let fence = false;
+  let bold = 0;
+  for (const line of body.split(/\r?\n/)) {
+    if (/^\s*(```|~~~)/.test(line)) {
+      fence = !fence;
+      continue;
+    }
+    if (fence) continue;
+    const outside = line.split("`").filter((_, i) => i % 2 === 0).join("");
+    if (/\*\*[^*]+\*\*/.test(outside)) bold++;
+  }
+  if (bold) r.warn.push(`${bold} line(s) with ** bold`);
+
   const refFiles = dirList(join(dir, "references"), ".md");
   const wfDirs = nestedList(join(dir, "workflows"), "SKILL.md");
   const subFiles = [...dirList(join(dir, "subagents"), ".md"), ...nestedList(join(dir, "subagents"), "AGENT.md").map((n) => `${n}/AGENT.md`)];
@@ -188,7 +211,8 @@ function inspect(dir: string): Row {
   return r;
 }
 
-const NON_SKILL_DIRS = new Set(["scripts", "templates", "references", "guide", "examples"]);
+// `reports/` is gitignored review output (see .gitignore) — never a skill package
+const NON_SKILL_DIRS = new Set(["scripts", "templates", "references", "guide", "examples", "reports"]);
 // a submodule checkout has a `.git` FILE (not a dir) — it ships its own package, not a skill
 const isSubmodule = (name: string) => {
   const g = join(root, name, ".git");

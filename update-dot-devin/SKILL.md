@@ -5,7 +5,6 @@ argument-hint: "[scope]"
 related:
   - check-monorepo
   - deep-analyze
-  - update-devin
   - update-project-skills
   - update-devin-project-rules
   - update-devin-global-skills

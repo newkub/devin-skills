@@ -22,7 +22,7 @@ Use when you need a framework/frontend-specific plugin — universal plugins (`u
 
 > Goal: pick from the maintained list — grouped by category
 
-**Framework adapters**
+`Framework adapters`
 
 | Plugin | Purpose |
 |--------|---------|
@@ -34,7 +34,7 @@ Use when you need a framework/frontend-specific plugin — universal plugins (`u
 | `vite-plugin-laravel` (laravel) | Laravel backend integration |
 | `fastify-vite` | Fastify SSR integration |
 
-**Routing / meta-framework**
+`Routing / meta-framework`
 
 | Plugin | Purpose |
 |--------|---------|
@@ -46,7 +46,7 @@ Use when you need a framework/frontend-specific plugin — universal plugins (`u
 | `iles` | islands-architecture site generator |
 | `tanstack-start` | TanStack Start — Nitro powered (see `/follow-solid-framework`) |
 
-**Styling / CSS**
+`Styling / CSS`
 
 | Plugin | Purpose |
 |--------|---------|
@@ -54,7 +54,7 @@ Use when you need a framework/frontend-specific plugin — universal plugins (`u
 | `vite-plugin-windicss` | dead — migrate to UnoCSS |
 | `tailwindcss` (v4+) | use the official `@tailwindcss/vite` plugin |
 
-**Assets / media**
+`Assets / media`
 
 | Plugin | Purpose |
 |--------|---------|
@@ -64,7 +64,7 @@ Use when you need a framework/frontend-specific plugin — universal plugins (`u
 | `unplugin-icons` | icon components (see unified) |
 | `vite-plugin-singlefile` | inline JS+CSS into a single HTML — embed/offline apps |
 
-**DX / tooling**
+`DX / tooling`
 
 | Plugin | Purpose |
 |--------|---------|
@@ -76,7 +76,7 @@ Use when you need a framework/frontend-specific plugin — universal plugins (`u
 | `vite-plugin-csp-guard` | CSP headers/meta management |
 | `vite-plugin-vue-preview` | Vue SFC preview |
 
-**Platform / packaging**
+`Platform / packaging`
 
 | Plugin | Purpose |
 |--------|---------|

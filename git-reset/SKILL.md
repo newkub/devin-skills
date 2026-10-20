@@ -6,9 +6,7 @@ related:
   - git-restore
   - git-revert
   - git-stash
-  - check-git-logs
   - ask-me
-  - resolve-errors
 ---
 
 ## Goal
@@ -30,7 +28,7 @@ Use `git reset` to move HEAD/index/working tree back with the right mode — und
 |------|------|-------|--------------|----------|
 | `--soft` | moves | keeps | keeps | squash the latest commits into one commit |
 | `--mixed` | moves | resets | keeps | uncommit but keep changes as unstaged |
-| `--hard` | moves | resets | resets | delete everything back to the ref — **destructive** |
+| `--hard` | moves | resets | resets | delete everything back to the ref — `destructive` |
 
 ### 2. Safety Check
 

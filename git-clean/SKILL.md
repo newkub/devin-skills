@@ -5,7 +5,6 @@ argument-hint: "[-fd|-fdx|paths...]"
 related:
   - git-restore
   - git-stash
-  - check-uncommit
   - cleanup-files-in-project
   - ask-me
 ---

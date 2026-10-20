@@ -1,6 +1,6 @@
 ---
 name: no-hard-code
-description: Find and move hardcoded values (secrets, URLs, magic strings/numbers, config) to env/config/constants
+description: Move hardcoded values (secrets, URLs, magic strings) to env/config/constants
 argument-hint: "[@files... | scope]"
 related:
   - refactor

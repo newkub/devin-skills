@@ -6,10 +6,7 @@ related:
   - create-slide-in-newkub-slides
   - run-dev
   - ship
-  - follow-create-web
-  - follow-create-mobile
   - follow-best-practice
-  - setup-cicd
   - deep-review-codebase
 
 ---
@@ -127,11 +124,7 @@ Create and develop presentation slides with Slidev (Vite + Vue + Markdown), both
     serif: 'Noto Sans Thai'
     mono: 'Noto Sans Thai'
   ```
-- Or add Google Fonts in `styles/index.css`:
-  ```css
-  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@400;700&display=swap');
-  body { font-family: 'Noto Sans Thai', sans-serif; }
-  ```
+- Or import the same font in `styles/index.css` with the Google Fonts `@import url(...)` + `font-family` rule
 
 ### 4. Markdown Syntax
 
@@ -183,63 +176,41 @@ Create and develop presentation slides with Slidev (Vite + Vue + Markdown), both
 
 ### 6. Feature Reference
 
-Compact usage table (synced from upstream `skills/slidev/SKILL.md` — full docs at https://sli.dev)
-
-#### Code & Editor
+Compact table (synced from upstream `skills/slidev/SKILL.md` — full docs at https://sli.dev)
 
 | Feature | Usage |
 |---------|-------|
-| Line highlighting | ```` ```ts {2,3} ```` |
-| Click-based highlighting | ```` ```ts {1\|2-3\|all} ```` |
-| Line numbers | `lineNumbers: true` or `{lines:true}` |
-| Scrollable code | `{maxHeight:'100px'}` |
-| Code tabs | `::code-group` (requires `comark: true`) |
-| Monaco editor | ```` ```ts {monaco} ```` |
-| Runnable code | ```` ```ts {monaco-run} ```` |
-| Edit files in slide | `<<< ./file.ts {monaco-write}` |
-| Code animations | ```` ````md magic-move ```` |
-| TypeScript types hover | ```` ```ts twoslash ```` |
-| Import code snippet | `<<< @/snippets/file.js` |
-
-#### Diagrams & Math
-
-| Feature | Usage |
-|---------|-------|
-| Mermaid diagrams | ```` ```mermaid ```` |
-| PlantUML diagrams | ```` ```plantuml ```` |
-| LaTeX math | `$inline$` or `$$block$$` |
-
-#### Presenter & Recording
-
-| Feature | Usage |
-|---------|-------|
-| Camera recording | Press `G` while presenting |
-| Timer | `duration: 30min`, `timer: countdown` |
-| Remote control | `slidev --remote` |
-| Ruby text (notes) | `notesAutoRuby:` |
-| Slide hooks | `onSlideEnter()`, `onSlideLeave()` |
-| Navigation API | `$nav`, `useNav()`, `$slidev` composables |
-
-#### Export & Build
-
-| Feature | Usage |
-|---------|-------|
-| PDF/PPTX/PNG | `slidev export` (requires `playwright-chromium`) |
-| Static SPA | `slidev build` + `--router-mode` |
-| Bundle PDF | `download: true` in the headmatter |
-| Remote assets | remote URLs are cached automatically during build |
-| OG image | `seoMeta.ogImage` or `og-image.png` |
-| SEO meta | `seoMeta:` block |
-
-#### Editor & Tools
-
-| Feature | Usage |
-|---------|-------|
-| Side editor | click the edit icon in dev mode |
-| VS Code extension | `antfu.slidev` |
-| Prettier | `prettier-plugin-slidev` |
-| Eject theme | `slidev theme eject` |
-| MCP server | `slidev mcp` or the `/__mcp` endpoint |
+| Code: line highlighting | ```` ```ts {2,3} ```` |
+| Code: click-based highlighting | ```` ```ts {1\|2-3\|all} ```` |
+| Code: line numbers | `lineNumbers: true` or `{lines:true}` |
+| Code: scrollable | `{maxHeight:'100px'}` |
+| Code: tabs | `::code-group` (requires `comark: true`) |
+| Code: Monaco editor | ```` ```ts {monaco} ```` |
+| Code: runnable | ```` ```ts {monaco-run} ```` |
+| Code: edit files in slide | `<<< ./file.ts {monaco-write}` |
+| Code: animations | ```` ````md magic-move ```` |
+| Code: TypeScript types hover | ```` ```ts twoslash ```` |
+| Code: import snippet | `<<< @/snippets/file.js` |
+| Diagram: Mermaid | ```` ```mermaid ```` |
+| Diagram: PlantUML | ```` ```plantuml ```` |
+| Math: LaTeX | `$inline$` or `$$block$$` |
+| Presenter: camera recording | Press `G` while presenting |
+| Presenter: timer | `duration: 30min`, `timer: countdown` |
+| Presenter: remote control | `slidev --remote` |
+| Presenter: ruby text | `notesAutoRuby:` |
+| Presenter: slide hooks | `onSlideEnter()`, `onSlideLeave()` |
+| Presenter: navigation API | `$nav`, `useNav()`, `$slidev` composables |
+| Export: PDF/PPTX/PNG | `slidev export` (requires `playwright-chromium`) |
+| Export: static SPA | `slidev build` + `--router-mode` |
+| Export: bundle PDF | `download: true` in the headmatter |
+| Export: remote assets | remote URLs are cached automatically during build |
+| Export: OG image | `seoMeta.ogImage` or `og-image.png` |
+| Export: SEO meta | `seoMeta:` block |
+| Tool: side editor | click the edit icon in dev mode |
+| Tool: VS Code extension | `antfu.slidev` |
+| Tool: Prettier | `prettier-plugin-slidev` |
+| Tool: eject theme | `slidev theme eject` |
+| Tool: MCP server | `slidev mcp` or the `/__mcp` endpoint |
 
 ### 7. Built-in Layouts
 
@@ -255,19 +226,6 @@ Compact usage table (synced from upstream `skills/slidev/SKILL.md` — full docs
 | `section` | Section divider |
 | `fact` / `statement` | Data/statement display |
 | `intro` / `end` | Intro/end slides |
-
-### 8. Development Workflow
-
-- Run the dev server at the root directory (newkub) or the project directory (standalone)
-- Track and fix errors immediately
-- Verify the dev server works
-- Export the slides when ready to share
-
-- Use /create-slide-in-newkub-slides if needed
-- Use /follow-create-mobile-cross-with-capacitor if needed (create slide slidev)
-- Use /follow-best-practice if needed
-- Use /setup-cicd if needed
-- Use /deep-review-codebase if needed
 
 ## Expected Outcome
 

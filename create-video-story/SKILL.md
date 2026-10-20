@@ -3,7 +3,6 @@ name: create-video-story
 description: Build a video from a story outline — scenes, images, voice, and subtitles end to end
 argument-hint: "[topic]"
 related:
-  - gen-media
   - gen-voice
   - gen-subtitle-video
   - follow-lib-remotion

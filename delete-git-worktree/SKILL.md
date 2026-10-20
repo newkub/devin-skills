@@ -3,9 +3,7 @@ name: delete-git-worktree
 description: Safely delete the specified git worktree
 argument-hint: "[scope]"
 related:
-  - list-git
   - use-git-worktrees
-  - cleanup
   - delete
 
 ---

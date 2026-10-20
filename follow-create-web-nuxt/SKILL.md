@@ -3,8 +3,6 @@ name: follow-create-web-nuxt
 description: Create or improve Nuxt 4 projects with Universal Rendering and Nitro
 argument-hint: "[scope]"
 related:
-  - follow-create-web
-  - follow-create-mobile
   - follow-best-practice
   - setup-cicd
   - deep-review-codebase

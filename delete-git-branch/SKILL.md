@@ -3,7 +3,6 @@ name: delete-git-branch
 description: Safely delete a local or remote git branch
 argument-hint: "[scope]"
 related:
-  - list-git
   - refactor-commit
   - resolve-github-pr
 

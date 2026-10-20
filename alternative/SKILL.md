@@ -19,7 +19,6 @@ triggers:
   - model
 related:
   - deep-research
-  - learn
   - compare-competitors
   - apply
   - follow-best-practice

@@ -1,6 +1,6 @@
 ---
 name: follow-lib-tanstack-pacer
-description: Use TanStack Pacer end to end — debounce, throttle, rate limit, queue, batch — hooks and core classes
+description: Use TanStack Pacer end to end — debounce, throttle, rate limit, queue, batch
 argument-hint: "[framework] [utility]"
 related:
   - follow-lib-tanstack-ecosystem
@@ -15,7 +15,7 @@ Use TanStack Pacer fully — debounce, throttle, rate limit, queue, batch across
 
 ## Scope
 
-Use instead of ad-hoc `setTimeout` utilities — search inputs, scroll/resize, API rate limiting, sequential tasks, batched updates — **0.x**: verify the latest API in the docs before implementing
+Use instead of ad-hoc `setTimeout` utilities — search inputs, scroll/resize, API rate limiting, sequential tasks, batched updates — `0.x`: verify the latest API in the docs before implementing
 
 - part of TanStack ecosystem — selection/dispatch lives in `/follow-lib-tanstack-ecosystem`
 

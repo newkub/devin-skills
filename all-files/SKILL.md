@@ -6,7 +6,6 @@ related:
   - deep-analyze
   - deep-validate
   - resolve-errors
-  - refactor
 ---
 
 ## Goal

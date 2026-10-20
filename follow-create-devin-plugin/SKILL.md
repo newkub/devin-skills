@@ -5,7 +5,6 @@ argument-hint: "[plugin-name]"
 related:
   - follow-create-sdk
   - update-devin-global-skills
-  - update-devin
   - deep-review-codebase
   - ship
   - update-references

@@ -3,7 +3,6 @@ name: git-worktree
 description: Manage git worktrees — work on multiple branches at once without stash/switch
 argument-hint: "[add|list|remove] [path] [branch]"
 related:
-  - git-branch
   - cleanup-worktree
   - delete-git-worktree
   - git-stash

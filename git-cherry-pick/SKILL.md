@@ -4,9 +4,7 @@ description: Cherry-pick commits across branches correctly — single, range, me
 argument-hint: "[sha|range]"
 related:
   - git-revert
-  - git-commit
   - check-git-logs
-  - check-merge-conflicts
   - resolve-errors
 ---
 

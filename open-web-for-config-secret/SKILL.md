@@ -8,7 +8,6 @@ related:
   - follow-create-web
   - follow-deploy
   - deploy-to-cloudflare
-  - create-cloudflare
   - deploy-to-vercel
   - deploy-to-railway
   - run-dev

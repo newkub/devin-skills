@@ -11,17 +11,11 @@ related:
   - compare-competitors
   - bench-competitors
   - deep-analyze
-  - search-npm-libraries
-  - run-bench-deps
   - reframe
   - prioritize
   - pick-bestest
   - ask-me
   - create-plan-in-dot-devin
-  - design-cli-prototype
-  - design-tui-prototype
-  - design-html-prototype
-  - design-web-prototype
   - report-review
   - suggest-next-action
 
@@ -29,7 +23,7 @@ related:
 
 ## Goal
 
-Decide whether an idea deserves building **before** any work — turn it into a falsifiable claim, gather evidence, score it, and return one verdict (`GO` / `PIVOT` / `NO-GO`) with the reasons and the next skill; answer in chat, write no files
+Decide whether an idea deserves building `before` any work — turn it into a falsifiable claim, gather evidence, score it, and return one verdict (`GO` / `PIVOT` / `NO-GO`) with the reasons and the next skill; answer in chat, write no files
 
 ## Scope
 

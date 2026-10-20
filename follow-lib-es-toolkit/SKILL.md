@@ -1,11 +1,10 @@
 ---
 name: follow-lib-es-toolkit
-description: Use es-toolkit for JS/TS utility functions — tree-shakeable, type-safe, faster than Lodash, with /compat
+description: Use es-toolkit for JS/TS utilities — tree-shakeable, type-safe, faster than Lodash
 argument-hint: "[target-or-scope]"
 related:
   - follow-lang-typescript
   - follow-lang-javascript
-  - follow-lang-bun
   - follow-lib-remedajs
   - use-lib-effective
   - follow-best-practice

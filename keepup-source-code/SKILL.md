@@ -11,7 +11,6 @@ related:
   - update-tests
   - update-config
   - deep-review-codebase
-  - improve
   - check-should-update
   - run-check
   - deep-validate

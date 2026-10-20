@@ -3,7 +3,6 @@ name: report-prompt-from-image
 description: Build an image generation prompt from a picture with AI vision via bunx CLI
 argument-hint: "[image-path] [style]"
 related:
-  - gen-media
   - report
 ---
 

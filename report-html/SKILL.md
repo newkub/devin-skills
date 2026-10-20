@@ -1,8 +1,8 @@
 ---
 name: report-html
-description: Build a single interactive HTML file for a browser report with tables, dropdowns, sort/filt...
+description: Build a single interactive HTML report with tables, dropdowns, sort and filter
+argument-hint: "[scope]"
 related:
-  - visualize-in-web
   - open-web
 ---
 
@@ -24,7 +24,7 @@ Create a single HTML file that presents a project analysis, an analysis, or a fe
 
 > Goal: Have clean, structured data before rendering
 
-1. Run `/analyze-project` or the main skill that produced the data (e.g. `/idea-features`)
+1. Run `/deep-analyze` or the main skill that produced the data (e.g. `/idea-features`)
 2. Convert the result into a JavaScript array of objects or 2D arrays
 3. Ensure each row has a unique `id` and every required field
 4. Add computed fields for `group` and `searchText` if needed

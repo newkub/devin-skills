@@ -5,7 +5,6 @@ argument-hint: "[setup-wrangler|config-bindings|deploy-worker|migrate-pages-to-w
 related:
   - follow-secret-manager
   - open-web-for-config-secret
-  - create-cloudflare
   - deploy-to-cloudflare
   - resolve-errors
   - follow-tool-mise
@@ -216,8 +215,8 @@ Note: if the installed Wrangler version does not support the `build` subcommand,
 
 All domain details have been extracted into real files:
 
-- **workflows/**: `setup-wrangler`, `config-bindings`, `deploy-worker`, `migrate-pages-to-workers`, `verify-connection`, `use-d1`, `use-storage`, `use-jobs` — dispatched per the `### Workflows` table above
-- **references/**: `apis`, `bindings`, `ci-cd`, `commands`, `d1-migrations`, `init-and-config`, `install-and-auth`, `overview`, `package-manifest`, `pages`, `routes`, `tail-and-logs`, `triggers-and-cron`, `troubleshooting`, `versions-and-rollback`, `website`, `workers-overview`, `workers-rs`
+- `workflows/`: `setup-wrangler`, `config-bindings`, `deploy-worker`, `migrate-pages-to-workers`, `verify-connection`, `use-d1`, `use-storage`, `use-jobs` — dispatched per the `### Workflows` table above
+- `references/`: `apis`, `bindings`, `ci-cd`, `commands`, `d1-migrations`, `init-and-config`, `install-and-auth`, `overview`, `package-manifest`, `pages`, `routes`, `tail-and-logs`, `triggers-and-cron`, `troubleshooting`, `versions-and-rollback`, `website`, `workers-overview`, `workers-rs`
 
 
 ##### Source

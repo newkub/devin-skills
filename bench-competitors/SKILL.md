@@ -14,7 +14,6 @@ related:
   - create-plan-in-dot-devin
   - implement-to-production
   - report
-  - idea
   - ask-me
   - suggest-next-action
   - ship

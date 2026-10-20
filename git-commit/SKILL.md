@@ -6,7 +6,6 @@ related:
   - run-check
   - run-verify
   - follow-tool-hk
-  - list-git
   - refactor-commit
   - deep-review-codebase
   - ship

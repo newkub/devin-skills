@@ -4,8 +4,6 @@ description: Record WebM/MP4 video from a web page with the `agent-browser recor
 argument-hint: "[url]"
 related:
   - use-agent-browser
-  - record-video-terminal-with-asciinema
-  - use-agents-capture
   - resolve-errors
 ---
 

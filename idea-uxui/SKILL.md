@@ -8,7 +8,6 @@ related:
   - deep-review-codebase
   - follow-design-system
   - report-uxui
-  - watch-browser
   - deep-analyze
   - report
   - enhance-prompt

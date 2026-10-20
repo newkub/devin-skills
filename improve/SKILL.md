@@ -1,12 +1,10 @@
 ---
 name: improve
-description: Find what to improve in the scope — review via /deep-review-codebase then fix every finding via /deep-review-codebase <scope> then-fix immediately
+description: Find what to improve in the scope, then fix every finding via deep-review then-fix
 argument-hint: "[scope]"
 related:
   - deep-review-codebase
   - optimize
-  - improve-usage-md
-  - improve-writing
   - report
   - suggest-next-action
   - ask-me

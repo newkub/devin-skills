@@ -36,7 +36,7 @@ export default defineConfig({
 })
 ```
 
-- nitro v3 `nitro()` **does not accept a `preset` option** — set it via the `NITRO_PRESET` env or `nitro.config.ts`
+- nitro v3 `nitro()` `does not accept a preset option` — set it via the `NITRO_PRESET` env or `nitro.config.ts`
 - pick one method (env or config file) — never set conflicting values
 
 ```ts

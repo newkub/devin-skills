@@ -192,12 +192,12 @@ Every type uses the same shape — one key per section, each `[{ text: '<Section
 
 ### Template: Sidebar Sections
 
-- **Development** (every type, sidebar-only, `collapsed: true`): Setup, Architecture, Workflows, Testing, Deployment, Troubleshooting → `/development/<page>`
-- **Extensibility** (one key per `<section>` ∈ `guides`, `examples`, `integrations`, `plugins`, `adapters`, `ecosystem`; copy ONLY sections whose directory exists in `docs/`, `collapsed: false`): Overview → `/<section>/`, then one item per child page → `/<section>/<slug>`; `ecosystem` may also list Awesome List (`/ecosystem/awesome`, if a curated list exists) and Showcase (`/ecosystem/showcase`, if community examples exist)
-- **Roadmap** (`collapsed: false`): Overview → `/roadmap/`
-- **Commands** (`cli`, CLI-shaped `tool`; `collapsed: false`): Overview → `/commands/`, one item per command → `/commands/<name>`
-- **Features** (`saas-product`): one item per product area → `/features/<area>`; **Operations** (`saas-product`, `collapsed: true`): Observability, Runbooks, Incidents, Scaling → `/operations/<page>`
-- **Workspaces** (monorepo): `{ text: 'Workspaces', link: '/project/workspaces' }` appended to `/project/`, plus `/workspaces/` = Overview → `/workspaces/` and one item per workspace → `/workspaces/<name>`
+- `Development` (every type, sidebar-only, `collapsed: true`): Setup, Architecture, Workflows, Testing, Deployment, Troubleshooting → `/development/<page>`
+- `Extensibility` (one key per `<section>` ∈ `guides`, `examples`, `integrations`, `plugins`, `adapters`, `ecosystem`; copy ONLY sections whose directory exists in `docs/`, `collapsed: false`): Overview → `/<section>/`, then one item per child page → `/<section>/<slug>`; `ecosystem` may also list Awesome List (`/ecosystem/awesome`, if a curated list exists) and Showcase (`/ecosystem/showcase`, if community examples exist)
+- `Roadmap` (`collapsed: false`): Overview → `/roadmap/`
+- `Commands` (`cli`, CLI-shaped `tool`; `collapsed: false`): Overview → `/commands/`, one item per command → `/commands/<name>`
+- `Features` (`saas-product`): one item per product area → `/features/<area>`; `Operations` (`saas-product`, `collapsed: true`): Observability, Runbooks, Incidents, Scaling → `/operations/<page>`
+- `Workspaces` (monorepo): `{ text: 'Workspaces', link: '/project/workspaces' }` appended to `/project/`, plus `/workspaces/` = Overview → `/workspaces/` and one item per workspace → `/workspaces/<name>`
 - Page content: `docs/commands/<name>.md` = usage (`<cli-name> <command> [options]`), options table (flag / type / default / description), a real invocation example with expected output, exit-code table; `docs/workspaces/<name>.md` = purpose, key directories/entry points, workspace-scoped commands (e.g. `bun --filter <name> <script>`), dependencies on other workspaces or external packages
 
 ### Template: Homepage

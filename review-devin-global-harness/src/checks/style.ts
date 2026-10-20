@@ -23,12 +23,14 @@ export function checkStyle(m: SkillMeta, ctx: Context) {
     }
   }
 
-  // Heading Title Case
+  // Heading Title Case. Kebab headings are the documented shape for subagent
+  // profiles (`### <role> — ...`, per update-devin-global-skills) and file pointers.
   for (let i = 0; i < m.bodyLines.length; i++) {
     const l = m.bodyLines[i];
     if (/^#{2,3}\s+[a-z]/.test(l)) {
       const heading = l.replace(/^#{2,3}\s+/, "");
-      if (!/^`.*`$/.test(heading)) {
+      const isKebabProfile = /^[a-z0-9][a-z0-9-]*(?:\/[a-z0-9-]+)*(?:\s+—.*)?$/.test(heading);
+      if (!isKebabProfile && !/^`.*`$/.test(heading)) {
         ctx.addFinding({ file: rpath, line: i + 1, category: "style", severity: "Low", finding: "heading is not Title Case", evidence: l }, m.skill);
       }
     }

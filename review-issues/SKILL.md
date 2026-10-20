@@ -1,6 +1,6 @@
 ---
 name: review-issues
-description: Review a scope for issues — wrong or broken behavior proven from the source — with evidence, then fix after confirm
+description: Review a scope for issues — broken behavior proven from source, then fix
 argument-hint: "[scope-or-area]"
 related:
   - review
@@ -14,6 +14,7 @@ related:
   - deep-thinking
   - deep-analyze
   - deep-validate
+  - use-subagents
 ---
 
 ## Goal
@@ -91,6 +92,9 @@ Check the surface against this issue catalog:
 ### 3. Confirmation And Formatting
 - Don't fix without confirmation unless the user puts `and fix` in the command
 - Never use `*` bold markers — use backticks for emphasis; every report table starts with a `No.` column
+
+### 4. Parallelism
+- Use `/use-subagents` if needed — review independent areas in parallel, one subagent per area with non-overlapping file sets
 
 ## Expected Outcome
 

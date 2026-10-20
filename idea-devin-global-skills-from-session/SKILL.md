@@ -5,7 +5,6 @@ argument-hint: "[min-candidates]"
 related:
   - idea
   - add-context-to-devin-global-skills
-  - list-devin
   - update-devin-global-skills
   - report
 

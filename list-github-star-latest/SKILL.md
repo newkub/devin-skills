@@ -3,7 +3,6 @@ name: list-github-star-latest
 description: List starred repositories on GitHub with latest support, language filter, and search
 argument-hint: "[username] [--lang <language>] [--limit <n>]"
 related:
-  - list-github
   - all-github-repo
   - search
   - report

@@ -5,7 +5,6 @@ description: Inspect and fix the specified Cloudflare Worker or Pages project
 related:
   - resolve-errors
   - list-cloudflare-projects
-  - search
   - report
   - suggest-next-action
   - ask-me

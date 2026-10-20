@@ -4,7 +4,6 @@ description: Recover badly damaged files from Devin session history when git res
 argument-hint: "[file]"
 related:
   - deep-debug
-  - restore-files
   - ask-me
 ---
 ## Goal

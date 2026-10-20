@@ -4,10 +4,7 @@ description: Argos (argos-ci) — open-source visual testing with Playwright SDK
 argument-hint: "[project-or-test-file]"
 related:
   - deep-test
-  - follow-tool-playwright
-  - follow-my-techstack
   - run-test
-  - follow-tool-storybook
 ---
 
 ## Goal

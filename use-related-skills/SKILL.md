@@ -3,8 +3,6 @@ name: use-related-skills
 description: Find related skills and propose new skill ideas
 argument-hint: "[skill-name]"
 related:
-  - idea-use-skills-relations
-  - list-devin
   - scan-codebase
   - check-reference
   - update-references

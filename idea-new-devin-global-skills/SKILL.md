@@ -3,7 +3,6 @@ name: idea-new-devin-global-skills
 description: Generate ideas for new devin global skills or improvements — refactor, merge, rename, extract
 argument-hint: "[scope]"
 related:
-  - idea-use-skills-relations
   - check-my-global-cli
   - deep-review-codebase
   - follow-devin-global-skills

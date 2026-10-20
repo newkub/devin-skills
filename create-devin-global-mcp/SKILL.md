@@ -14,11 +14,9 @@ allowed-tools:
   - mcp_call_tool
 related:
   - follow-create-mcp
-  - update-devin
   - deep-review-codebase
   - deep-validate
   - ship
-  - use-lightpanda
 ---
 
 ## Goal

@@ -9,8 +9,6 @@ related:
   - setup-cicd
   - resolve-errors
   - follow-tool-mise
-  - follow-tool-fnox
-  - follow-tool-packslip
   - research-setup-integrations
 ---
 

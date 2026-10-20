@@ -1,6 +1,6 @@
 ---
 name: follow-up-to-date
-description: Keep everything current before use — detect staleness per domain, dispatch to the real updater skills
+description: Keep everything current before use — detect staleness, dispatch the real updaters
 argument-hint: "[scope]"
 related:
   - keepup-source-code

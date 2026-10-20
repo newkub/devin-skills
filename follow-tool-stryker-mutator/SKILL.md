@@ -3,7 +3,6 @@ name: follow-tool-stryker-mutator
 description: Set up and use Stryker Mutator for mutation testing in JavaScript/TypeScript projects
 argument-hint: "[scope]"
 related:
-  - deep-review-codebase
   - follow-test
   - update-tests
   - run-test

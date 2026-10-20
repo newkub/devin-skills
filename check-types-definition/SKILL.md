@@ -3,13 +3,10 @@ name: check-types-definition
 description: Inspect lib/config types as a CLI table — name, type, options, default, comment — TS/Rust/other
 argument-hint: "<package-or-path> [--json]"
 related:
-  - learn
   - learn-from-web
   - learn-from-cli
   - follow-default-config
-  - use-lib-effective
   - report
-  - improve
   - follow-lib-tstyche
 ---
 

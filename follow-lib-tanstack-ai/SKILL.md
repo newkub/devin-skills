@@ -14,7 +14,7 @@ Use TanStack AI fully — a provider-agnostic AI SDK: server-side `chat()` + ada
 
 ## Scope
 
-For AI features not bound to a single provider (chat, tools, agents, streaming UI) — **0.x**: the API changes fast, always check `https://tanstack.com/ai/latest` before implementing
+For AI features not bound to a single provider (chat, tools, agents, streaming UI) — `0.x`: the API changes fast, always check `https://tanstack.com/ai/latest` before implementing
 
 - part of TanStack ecosystem — selection/dispatch lives in `/follow-lib-tanstack-ecosystem`
 
@@ -73,11 +73,11 @@ const { messages, sendMessage, isLoading, stop } = useChat({
 
 > Goal: cover real use cases
 
-1. **Tools**: `toolDefinition` — server tools (`.server(fn)`), client tools (interactive UI), approval-required tools
-2. **Structured output**: `outputSchema` on chat options → typed JSON response
-3. **Agent loop**: tools + maxIterations — the model calls tools repeatedly until done
-4. **MCP**: connect MCP servers as tool sources (check the latest API — 0.x changes fast)
-5. **Headless**: `@tanstack/ai-client` used outside framework UI — custom chat state management
+1. `Tools`: `toolDefinition` — server tools (`.server(fn)`), client tools (interactive UI), approval-required tools
+2. `Structured output`: `outputSchema` on chat options → typed JSON response
+3. `Agent loop`: tools + maxIterations — the model calls tools repeatedly until done
+4. `MCP`: connect MCP servers as tool sources (check the latest API — 0.x changes fast)
+5. `Headless`: `@tanstack/ai-client` used outside framework UI — custom chat state management
 
 ### 5. Verify
 

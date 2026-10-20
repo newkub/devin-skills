@@ -3,7 +3,6 @@ name: follow-create-browser-extensions-wxt
 description: "Build browser extensions with WXT + Manifest V3 on Chrome, Firefox, Edge"
 argument-hint: "[scope]"
 related:
-  - follow-tasks
   - follow-lang-typescript
   - follow-tool-github-actions
   - run-dev

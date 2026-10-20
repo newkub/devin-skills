@@ -4,8 +4,6 @@ description: Collect issues I created → implement each issue → comment a sum
 argument-hint: "[issue-or-repo-or-filter]"
 related:
   - implement-to-production
-  - create-github
-  - list-github
   - create-plan-in-dot-devin
   - run-verify
   - resolve-github-pr

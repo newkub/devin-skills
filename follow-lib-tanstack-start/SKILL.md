@@ -70,7 +70,7 @@ export const addTodo = createServerFn({ method: 'POST' })
 
 1. API routes: `src/routes/api/todos.ts` → `createFileRoute('/api/todos')({ server: { handlers: { GET, POST } } })` for external/webhook consumers
 2. Middleware: `createMiddleware()` — a request/response pipeline for auth, logging, rate-limit; can be chained onto server functions
-3. Choose correctly: **server functions** = app-internal RPC, **API routes** = external HTTP contract
+3. Choose correctly: `server functions` = app-internal RPC, `API routes` = external HTTP contract
 
 ### 5. SSR, Streaming, Deploy
 

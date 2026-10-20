@@ -25,6 +25,7 @@ List the global hooks configured for devin from common config paths
 > Goal: find existing hook files
 
 1. Search in global paths:
+   - `%APPDATA%\devin\config.json` → the `hooks` key (where Devin CLI actually stores live hooks)
    - `C:\Users\Veerapong\.config\devin\hooks.json`
    - `C:\Users\Veerapong\.config\devin\hooks.yaml`
    - `C:\Users\Veerapong\.codeium\windsurf\hooks.json`

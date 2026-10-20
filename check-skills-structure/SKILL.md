@@ -20,7 +20,7 @@ related:
 
 ## Goal
 
-Inspect the structure of skill packages in `%APPDATA%\devin\skills\` — frontmatter fields, `references/`, `workflows/`, `subagents/`, `best-practices/`, `src/`, `scripts/`, MCP, website — with a single CLI command that outputs a bullet list + findings
+Inspect the structure of skill packages in `%APPDATA%\devin\skills\` — frontmatter fields, `references/`, `workflows/`, `subagents/`, `best-practices/`, `src/`, `scripts/`, MCP, website — with a single CLI command that outputs a bullet list + findings, including the body-level rules (every `related` entry mentioned in the body, `related` <=15, no `**` bold outside code)
 
 ## Scope
 
@@ -43,7 +43,7 @@ bun "check-skills-structure/scripts/check-skills-structure.ts" --detail         
 bun "check-skills-structure/scripts/check-skills-structure.ts" <custom-root>       # another repo
 ```
 
-Besides the bullet counts, use `--skill <name>` or `--detail` to see the **actual names** per skill — `related`, `references`, `workflows`, `subagents`, `best-practices`, `scripts`, `frontmatter-missing`
+Besides the bullet counts, use `--skill <name>` or `--detail` to see the `actual names` per skill — `related`, `references`, `workflows`, `subagents`, `best-practices`, `scripts`, `frontmatter-missing`
 
 ### 2. Interpret Output
 
@@ -65,8 +65,8 @@ Besides the bullet counts, use `--skill <name>` or `--detail` to see the **actua
 
 > Goal: handle the warnings found
 
-1. `[WARN]` per skill: `no SKILL.md`, `name!=dir`, `no description`, `desc >100 chars`, `no frontmatter`, `>250 lines`
-2. severity: Critical = `no SKILL.md`/`no frontmatter`; High = `name!=dir`; Warning = `no description`/`desc >100 chars`/`>250 lines`
+1. `[WARN]` per skill: `no SKILL.md`, `name!=dir`, `no description`, `desc >100 chars`, `no frontmatter`, `>250 lines`, `related not in body`, `related >15`, `** bold`
+2. severity: Critical = `no SKILL.md`/`no frontmatter`; High = `name!=dir`; Warning = `no description`/`desc >100 chars`/`>250 lines`/`related not in body`/`related >15`/`** bold`
 3. findings that need fixing → `/update-devin-global-skills`; deep lint → `/review-devin-global-harness`; per-skill validation → `/deep-validate`
 
 ## Rules

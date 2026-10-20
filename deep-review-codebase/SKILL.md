@@ -1,7 +1,7 @@
 ---
 name: deep-review-codebase
 description: Review any scope over every applicable dimension, then fix findings with `then-fix`
-argument-hint: "[path-or-target] [dimension] [--diff] [then-fix] [fix-all|follow-your-suggestion]"
+argument-hint: "[path-or-target] [dimension] [--diff] [then-fix] [fix all|follow-your-suggestion]"
 related:
   - deep-thinking
   - deep-analyze
@@ -13,15 +13,11 @@ related:
   - update-astgrep-rules
   - update-review-cli-then-run
   - follow-deep
-  - list-workspaces
   - suggest-next-action
   - review-issues
   - review-gaps
-  - fix
   - resolve-errors
-  - report-before-after
   - ask-me
-  - follow-parallel
 ---
 
 ## Goal
@@ -53,14 +49,14 @@ Every run follows the seven principles in order; a run without `then-fix` stops 
 2. Seed candidates from `references/dimension-matrix.md`: all `always` tiers; `artifact-match` only when the scope holds that artifact; `on-demand` only when the user asked (a `[dimension]` argument narrows the run to that row + the always tier); `/deep-thinking` may still drop a seeded row (record the reason) and may add a row the matrix lacks. Read each kept row's `Evidence`, `CLI domain`, `Gate`, and `N/A condition` now — they decide cost, slice source, cadence, and whether a skip is even legal
 3. Pick the mode: `[path-or-target]` limits scope; `--diff` reviews only files changed per `git diff` (one full scan per day/release, diff otherwise); `then-fix` enables step 7
 4. Set a hard budget: workspaces (enumerate a monorepo with `/list-workspaces`) ≤ 10 per run, subagent dispatches ≤ 30 — over budget → keep `always` tier first, then `artifact-match` by risk; prefer rows whose `Gate` is `pr`/`release` and demote `nightly` rows first; record `skipped (budget)` with reasons in the ledger
-5. Create the progress ledger `reports/.deep-review-codebase-<time>.ledger.json` — seed one entry per announced dimension up front: `{dispatched: {dimension: {workspace, tier, evidence: cli|capture|manual, status}}, startedAt}`; update on every dispatch; it makes coverage verifiable and the run resumable
+5. Create the progress ledger `reports/.deep-review-codebase-<time>.ledger.json` — seed one entry per announced dimension up front: `{dispatched: {dimension: {workspace, tier, evidence: cli|capture|manual, status}}, startedAt}`; update on every dispatch; it makes coverage verifiable and the run resumable — resume by reusing the scope's existing `reports/.deep-review-codebase-*.ledger.json` and skipping entries already at `done`/`covered-capture`/`covered-manual`, never by rerunning completed work
 
 ### 2. Run once
 
 > Goal: one deterministic full scan, sliced — never rerun the CLI per dimension
 
 1. Manual pre-pass first (`git status`, spot-read changed files, check report freshness); CLI/analyzer issues → record in `update-review-cli-then-run/references/known-issues.md` before continuing
-2. Prepare the analyzer: `tools/review-codebase` (or `/update-review-cli-then-run` to create it; the Rust `linter` CLI is a drop-in alternative); if neither is available, use whatever deterministic scan the project has (`run-check`, linters) and say so in the report
+2. Prepare the analyzer: `tools/review-codebase` (or `/update-review-cli-then-run` to create it; the Rust `linter` CLI is a drop-in alternative); if neither is available, use whatever deterministic scan the project has (`/run-check`, linters) and say so in the report
 3. Run ONE full scan → `reports/review-report.json`; store score/grade/dimension breakdown/baseline delta; note each dispatched row's `CLI domain` so rounds 2+ can rerun one slice (`--domain <quality|security|structure|config|deps>`) instead of rescanning — a row whose `CLI domain` is `—` has no slice and must go the `capture`/`manual` route
 4. Validate the output schema before dispatch (keys, severity, evidence, `fixSkill` present per finding; `falsePositiveRate`/`analyzerErrors` sane) — broken output goes to `/update-review-cli-then-run`, not around it
 5. Use `/use-scripts` to slice the JSON into `reports/.deep-review-codebase-<time>/findings-<dimension>.json` — one dimension per file, deterministic, no parsing in the parent context
@@ -74,7 +70,7 @@ Every run follows the seven principles in order; a run without `then-fix` stops 
 3. A dimension with ≤ 2 findings → the parent analyzes it itself; independent dimensions → parallel batches ≤ 10 (`/follow-parallel`)
 4. A dimension with no CLI slice (row `Evidence: capture|manual`) → dispatch it anyway: run the matrix `Tool/skill` first, then review with that output as input — mark `covered-capture`/`covered-manual` in the ledger; a dimension may stay with the parent only under the ≤ 2-findings rule — never silently drop it
 5. On timeout/crash/parse error or matrix tool unavailable on the platform → mark `failed` (`failed (tool-unavailable)`) in the ledger and carry the error into the report; merge results and dedup by `file + rule + dimension` (keep highest severity, combined evidence)
-6. Any metric the analyzer misses → `CLI domain` is `—` for the row, or its `Enforcement` is `cli-check` and no rule fires → hand off to `/update-review-cli-then-run` as an analyzer gap; a dimension with no reliable tool at all → note it as a matrix gap in the report
+6. A row with `CLI domain: —` has no slice — that is a routing fact, not a gap: dispatch it by `capture`/`manual` (step 4). A *durable* analyzer gap is narrower — `Enforcement: cli-check` and no rule fires, or a rule fires without landing in its `CLI domain` → hand off to `/update-review-cli-then-run`; an `Enforcement: none` row is measurement-only (`### 5` step 3) and is never handed off; a dimension with no reliable tool at all → note it as a matrix gap in the report
 
 ### 4. Report
 
@@ -93,7 +89,7 @@ Every run follows the seven principles in order; a run without `then-fix` stops 
 1. Findings whose matrix `Enforcement` is `devin-rule` (natural-language conventions/agent guidance) → `/update-devin-project-rules` (author `.devin/rules/*.md` for the workspace type)
 2. Findings whose `Enforcement` is `ast-grep` (imports, patterns, API misuse, naming) → `/update-astgrep-rules` (AST rules + `sgconfig.yml`)
 3. Findings whose `Enforcement` is `cli-check` → `/update-review-cli-then-run` adds the analyzer check (and a rule-id prefix that lands the row in its `CLI domain`); analyzer bugs → `update-review-cli-then-run/references/known-issues.md`. `Enforcement: test` → `/update-tests` asserts the invariant. `Enforcement: none` → state in the report that the row is measurement-only and cannot be made durable
-4. After persisting, re-scan the same scope to confirm the finding now fails loudly or is gone — a rule that doesn't fire on the original violation is not durable
+4. After persisting, re-run the analyzer on the original violation only (`--diff` or the single file named in the evidence — never a full rescan, per `## Rules`) to confirm the finding now fails loudly or is gone — a rule that doesn't fire on the original violation is not durable
 
 ### 6. Route
 
@@ -120,16 +116,16 @@ Every run follows the seven principles in order; a run without `then-fix` stops 
 
 ### fix-worker — apply the fixes the user approved within a single module/domain, then verify and return changed files + results (use when findings span several modules that can be fixed in parallel without collision)
 
-- **Inputs**: `findings` (the approved findings for this module/domain — finding id, severity, `file:line`, recommendation), `scope` (the single module/domain it owns, e.g. `src/auth/`, `domain=security`, `package=ui`), `fix-guides` (optional — the matching `references/domain-map.md` route or a domain workflow `SKILL.md`), `verify-commands` (optional — e.g. `bun run typecheck`, `bun run test`)
-- **Tools**: `read`, `grep`, `find_file_by_name` (read fix guides and the source to be fixed), `edit`/`write` (apply only the approved fixes), `exec` (run lint, typecheck, tests after each fix)
-- **Execute**:
+- `Inputs`: `findings` (the approved findings for this module/domain — finding id, severity, `file:line`, recommendation), `scope` (the single module/domain it owns, e.g. `src/auth/`, `domain=security`, `package=ui`), `fix-guides` (optional — the matching `references/domain-map.md` route or a domain workflow `SKILL.md`), `verify-commands` (optional — e.g. `bun run typecheck`, `bun run test`)
+- `Tools`: `read`, `grep`, `find_file_by_name` (read fix guides and the source to be fixed), `edit`/`write` (apply only the approved fixes), `exec` (run lint, typecheck, tests after each fix)
+- `Execute`:
   1. Read the fix route for the matching domain (per `references/domain-map.md`) — if none exists, fix directly per the finding's recommendation
   2. Rank findings by severity — `critical` first, then fix one at a time
   3. Each fix must preserve the original behavior — minimal diff, no refactoring beyond the finding
   4. Verify immediately after each fix with `verify-commands` or checks the scope supports
   5. If a fix breaks a check → revert that fix and mark it `failed` with the reason, then continue
-- **Output**: table `| No. | Finding | Status | Changed Files | Verify Result |` — `status`: `fixed`/`failed`/`skipped` (out of scope or missing approval); close with a summary of total fixed/failed/skipped, all changed files, and aggregate verify (`pass`/`fail`); if aggregate verify fails → list the reverted fixes and residual risk
-- **Constraints**: fix only the findings in the `findings` list within the assigned `scope` — never touch another module's findings; never apply unapproved fixes — if unclear, mark `skipped` with a reason; every fix must pass its own verify — on failure revert immediately, never leave a broken state; never touch files outside `scope` unless a finding requires it (e.g. a shared import) — must be noted in the output; never commit — the worker returns changed files and the parent's caller (`/deep-review-codebase` itself, or `/deep-review-ship` → `/ship`) owns committing
+- `Output`: table `| No. | Finding | Status | Changed Files | Verify Result |` — `status`: `fixed`/`failed`/`skipped` (out of scope or missing approval); close with a summary of total fixed/failed/skipped, all changed files, and aggregate verify (`pass`/`fail`); if aggregate verify fails → list the reverted fixes and residual risk
+- `Constraints`: fix only the findings in the `findings` list within the assigned `scope` — never touch another module's findings; never apply unapproved fixes — if unclear, mark `skipped` with a reason; every fix must pass its own verify — on failure revert immediately, never leave a broken state; never touch files outside `scope` unless a finding requires it (e.g. a shared import) — must be noted in the output; never commit — the worker returns changed files and the parent's caller (`/deep-review-codebase` itself, or `/deep-review-ship` → `/ship`) owns committing
 
 ## Rules
 
@@ -139,7 +135,7 @@ Every run follows the seven principles in order; a run without `then-fix` stops 
 - One scan per run — subagents share slices; re-review after fixes uses `--diff`, never a full rescan
 - Budget and ledger are hard contracts — over budget marks `skipped (budget)`; a dropped dimension in the ledger is a reporting bug; every dimension announced in `Think` step 2 must appear in the ledger
 - Severity cites the matrix `Default severity` + the upgrade/downgrade trigger in the same cell (`dimension-checks.md` `## Notes`); moving off the default without the trigger is not evidence
-- Row parity is a contract — `dimension-matrix.md` and `dimension-checks.md` hold the same dimension names, one row each; a name in one file and not the other, or a matrix cell contradicting the checks statement, is a reporting bug to fix before the run continues
+- Row parity is a contract — `dimension-matrix.md` and `dimension-checks.md` hold the same dimension names, one row each, and `bun scripts/verify-matrix.ts` proves it (row parity/order, `Evidence`/`Enforcement` vs `CLI domain`, alias collisions, `Fix owner` reachability) before any run; a name in one file and not the other, or a matrix cell contradicting the checks statement, is a reporting bug to fix before the run continues
 - The matrix is candidate data only — it never replaces `/deep-thinking`, never freezes into a mandatory catalog, and stale pins are fixed via `/deep-research` then that reference
 - Fix routing follows the `references/domain-map.md` lookup order: domain row → `## Dimension-name aliases` → the matrix `Fix owner` → `/ask-me` only when none matches (report it as a matrix gap); a legacy `review-<label>` resolves through the matrix `Aliases` column, never by fuzzy name
 - Never judge a dimension absent because "there probably isn't a problem" — skip only for the row's `N/A condition`, with that condition quoted as the ledger reason

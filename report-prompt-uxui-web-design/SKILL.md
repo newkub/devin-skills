@@ -7,7 +7,6 @@ related:
   - report-uxui-all-routes
   - scan-codebase
   - visualize-in-web
-  - follow-design-system
   - report
 ---
 

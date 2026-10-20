@@ -4,8 +4,6 @@ description: Manage git stash — safe push/pop/apply/list, with untracked and n
 argument-hint: "[push|pop|apply|list|drop] [name|index]"
 related:
   - git-restore
-  - git-commit
-  - check-uncommit
   - resolve-errors
 ---
 

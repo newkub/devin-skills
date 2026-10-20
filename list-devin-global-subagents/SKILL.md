@@ -2,8 +2,6 @@
 name: list-devin-global-subagents
 description: List all global subagents in the devin agents repo with details
 argument-hint: "[scope]"
-related:
-  - update-devin
 ---
 
 ## Goal

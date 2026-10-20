@@ -1,14 +1,11 @@
 ---
 name: review-gaps
-description: Review a scope for gaps — what the surface promises but does not deliver — with evidence, then fill after confirm
+description: Review a scope for gaps — promised but not delivered — with evidence, then fill
 argument-hint: "[scope-or-area]"
 related:
   - review
   - review-issues
-  - design-cli-prototype
-  - design-tui-prototype
   - design-web-prototype
-  - design-html-prototype
   - report-not-implement
   - implement-to-production
   - deep-review-codebase
@@ -20,6 +17,7 @@ related:
   - deep-thinking
   - deep-analyze
   - deep-validate
+  - use-subagents
 ---
 
 ## Goal
@@ -96,6 +94,9 @@ Review one dimension only: `gaps` — capability the scope promises but does not
 
 ### 4. Formatting
 - Never use `*` bold markers — use backticks for emphasis; every report table starts with a `No.` column
+
+### 5. Parallelism
+- Use `/use-subagents` if needed — review independent areas in parallel, one subagent per area with non-overlapping file sets
 
 ## Expected Outcome
 

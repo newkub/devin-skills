@@ -14,7 +14,6 @@ related:
   - resolve-errors
   - run-check
   - run-build
-  - run-verify
 
 ---
 
@@ -154,16 +153,16 @@ Follow `workflows/report-findings/SKILL.md` — merge findings into a severity m
 
 ### dimension-validator — validate only one dimension of the scope and return a verdict with evidence
 
-- **Inputs**: `dimension` (`tests`/`lint`/`types`/`docs`/`refs`/`security`/`runtime`), `scope` (path or validation target, e.g. workspace, file list, feature), `success-criteria` (optional: the parent's passing criteria, e.g. `typecheck 0 errors`), `ecosystem` (optional: `bun`/`pnpm`/`cargo` to pick the right commands)
-- **Tools**: `read`, `grep`, `find_file_by_name`, `exec` (run validation commands such as `bun run test`, `bun run lint`, `bun run typecheck`)
-- **Execute**:
+- `Inputs`: `dimension` (`tests`/`lint`/`types`/`docs`/`refs`/`security`/`runtime`), `scope` (path or validation target, e.g. workspace, file list, feature), `success-criteria` (optional: the parent's passing criteria, e.g. `typecheck 0 errors`), `ecosystem` (optional: `bun`/`pnpm`/`cargo` to pick the right commands)
+- `Tools`: `read`, `grep`, `find_file_by_name`, `exec` (run validation commands such as `bun run test`, `bun run lint`, `bun run typecheck`)
+- `Execute`:
   1. Determine the `dimension`'s command/checklist from the detected ecosystem, e.g. `types` → typecheck, `tests` → test suite, `refs` → imports/links
   2. Run the dimension's primary check, capturing the raw output and exit code
   3. Check the dimension's supplementary items, e.g. `types` → `any`, `@ts-ignore`; `docs` → README drift; `refs` → broken imports
   4. Classify severity per failure: `critical`/`high`/`medium`/`low` with `file:line` evidence
   5. Summarize the dimension verdict: `pass` / `fail` / `skip` (this dimension isn't in scope)
-- **Output**: a `| No. | Check | Result | Severity | Evidence |` table (e.g. `1` | `bun run typecheck` | `fail` | `high` | `src/x.ts:42`); the first line is the `pass`/`fail`/`skip` verdict with a short reason; always attach the commands run and their exit codes — the verdict must be reproducible; if a check cannot run → return `error` with the cause, never report it as `pass`
-- **Constraints**: read-only — `edit`/`write` forbidden; validate only the assigned dimension, never cross into another; report only — never modify code/config/tests and never run auto-fixes (`--fix`, `--write`); every failure needs evidence from real output, don't guess from code without running it; if a dimension doesn't apply to the scope → return `skip` with a reason, don't fabricate results; on an infra error → retry at most 3 times then return `error`
+- `Output`: a `| No. | Check | Result | Severity | Evidence |` table (e.g. `1` | `bun run typecheck` | `fail` | `high` | `src/x.ts:42`); the first line is the `pass`/`fail`/`skip` verdict with a short reason; always attach the commands run and their exit codes — the verdict must be reproducible; if a check cannot run → return `error` with the cause, never report it as `pass`
+- `Constraints`: read-only — `edit`/`write` forbidden; validate only the assigned dimension, never cross into another; report only — never modify code/config/tests and never run auto-fixes (`--fix`, `--write`); every failure needs evidence from real output, don't guess from code without running it; if a dimension doesn't apply to the scope → return `skip` with a reason, don't fabricate results; on an infra error → retry at most 3 times then return `error`
 
 ## Expected Outcome
 

@@ -4,7 +4,6 @@ description: List git worktrees in the repo with branch and status
 argument-hint: "[scope]"
 related:
   - use-git-worktrees
-  - cleanup
   - report
 ---
 

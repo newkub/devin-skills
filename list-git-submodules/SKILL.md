@@ -4,8 +4,6 @@ description: List git submodules in the repo with status
 argument-hint: "[scope]"
 related:
   - list-projects-git-in-drive-d
-  - delete
-  - convert
   - report
 ---
 

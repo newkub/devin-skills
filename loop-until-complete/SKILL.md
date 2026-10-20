@@ -1,9 +1,8 @@
 ---
 name: loop-until-complete
-description: Repeat work until it is fully complete, or reaches a good-enough point, stopping before over-engineering
+description: Repeat work until fully complete or good enough, stopping before over-engineering
 argument-hint: "[scope]"
 related:
-  - deep-review-codebase
   - run-until-pass
   - retry
   - use-subagents

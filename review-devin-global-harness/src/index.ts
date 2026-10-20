@@ -1,4 +1,5 @@
 import { Glob } from "bun";
+import { existsSync, statSync } from "node:fs";
 import { dirname, join, relative } from "node:path";
 import { checkFrontmatter } from "./checks/frontmatter";
 import { checkLineCount } from "./checks/line-count";
@@ -37,6 +38,14 @@ for (const d of new Glob("*/SKILL.md").scanSync(SKILLS_ROOT)) {
   skillDirs.add(dirname(d as string));
 }
 
+// Skill submodules are separate repos with their own review; they stay resolvable
+// as reference targets but are not scanned against this repo's conventions.
+const submoduleSkills = new Set<string>();
+for (const dir of skillDirs) {
+  const dotGit = join(SKILLS_ROOT, dir, ".git");
+  if (existsSync(dotGit) && statSync(dotGit).isFile()) submoduleSkills.add(dir);
+}
+
 const ctx = {
   skillsRoot: SKILLS_ROOT,
   skillDirs,
@@ -45,6 +54,7 @@ const ctx = {
 };
 
 for (const skill of skillDirs) {
+  if (submoduleSkills.has(skill)) continue;
   const skillPath = join(SKILLS_ROOT, skill, "SKILL.md");
   const skillFile = Bun.file(skillPath);
   if (!(await skillFile.exists())) continue;
@@ -119,6 +129,7 @@ else if (score >= 60) grade = "D";
 const report = {
   meta: {
     totalSkills: skills.length,
+    submoduleSkills: [...submoduleSkills],
     skillsWithIssues: new Set(findings.map((f) => f.skill)).size,
     totalFindings: findings.length,
     totalObservations: observations.length,

@@ -1,6 +1,6 @@
 ---
 name: reset-context
-description: Delete the conversation's context and/or reset the view of the target file, starting analysis fresh from the file system
+description: Delete session context and/or reset the target file view, re-analyze from disk
 argument-hint: "[optional-target-or-task]"
 allowed-tools:
   - read

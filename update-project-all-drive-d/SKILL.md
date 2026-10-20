@@ -10,7 +10,6 @@ allowed-tools:
   - read
 related:
   - list-projects-git-in-drive-d
-  - search
   - sync-drive-d-submodules
   - update-project
   - check-should-update
@@ -141,9 +140,9 @@ Use when you want to sync/update every project in `D:\` in one pass. Supports a 
 
 ### project-updater — Update one project dir on drive D (pull, submodules, checks) and return an update report
 
-- **Inputs**: `project-path` (absolute path of the project, e.g. `D:\projects\my-app`), `mode` (`quick` = fetch+pull / `submodules` = includes submodule sync / `full` = includes `/update-project`), `default-branch` (optional — branches allowed to pull, default `main`/`master`)
-- **Tools**: `exec` — git commands `git status --porcelain`, `git fetch --prune`, `git pull --ff-only`, `git submodule update --init --recursive`, `git rev-list`, `git branch --show-current`, `git rev-parse`; `read`/`find_file_by_name` — check `package.json`, `.gitmodules`, `.devin`, `AGENTS.md`
-- **Execute**:
+- `Inputs`: `project-path` (absolute path of the project, e.g. `D:\projects\my-app`), `mode` (`quick` = fetch+pull / `submodules` = includes submodule sync / `full` = includes `/update-project`), `default-branch` (optional — branches allowed to pull, default `main`/`master`)
+- `Tools`: `exec` — git commands `git status --porcelain`, `git fetch --prune`, `git pull --ff-only`, `git submodule update --init --recursive`, `git rev-list`, `git branch --show-current`, `git rev-parse`; `read`/`find_file_by_name` — check `package.json`, `.gitmodules`, `.devin`, `AGENTS.md`
+- `Execute`:
   1. Verify `project-path` starts with `D:\` and is a git repo — if not, return `skipped`
   2. Run `git status --porcelain` and `git branch --show-current` — record dirty state and branch
   3. Run `git rev-list --left-right --count HEAD...@{upstream}` — record behind/ahead
@@ -152,8 +151,8 @@ Use when you want to sync/update every project in `D:\` in one pass. Supports a 
   6. In `submodules`/`full` mode with `.gitmodules` → `git submodule update --init --recursive`
   7. In `full` mode with `package.json`/`.devin`/`AGENTS.md` → run `/update-project`
   8. Record before/after commit hashes
-- **Output**: a per-project field table `| Field | Value |` — Project, Path, Branch, Before, After, Action (`pull`/`pull+submodules`/`pull+update-project`/`skipped`), Status (`updated`/`skipped`/`error`/`already-latest`); give a reason when `skipped` or `error`
-- **Constraints**: Scoped to `D:\` only — never touch other drives; no force pull, no `git push --force`, never `git push`/`git reset --hard`/`git clean`, never commit or push for the user; do not touch projects that are dirty or off the default branch; responsible for a single project — never touch other projects; idempotent — a project already at latest returns `already-latest` with nothing further
+- `Output`: a per-project field table `| Field | Value |` — Project, Path, Branch, Before, After, Action (`pull`/`pull+submodules`/`pull+update-project`/`skipped`), Status (`updated`/`skipped`/`error`/`already-latest`); give a reason when `skipped` or `error`
+- `Constraints`: Scoped to `D:\` only — never touch other drives; no force pull, no `git push --force`, never `git push`/`git reset --hard`/`git clean`, never commit or push for the user; do not touch projects that are dirty or off the default branch; responsible for a single project — never touch other projects; idempotent — a project already at latest returns `already-latest` with nothing further
 
 ## Expected Outcome
 

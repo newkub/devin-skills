@@ -14,11 +14,8 @@ related:
   - update-agents-md
   - update-tests
   - update-specs
-  - update-examples
   - update-project-skills
-  - update-github-metadata
   - update-version-to-latest
-  - keepup-source-code
   - use-subagents
   - deep-review-codebase
 
@@ -183,57 +180,57 @@ Boundary: a quick root sync — for a comprehensive pre-release update with a de
 
 ### git-log-collector — Collect git log and diff stat for one workspace (Step 1; 1 agent per workspace)
 
-- **Inputs**: `project-path`, `log-count` (optional, default 5)
-- **Tools**: `read`, `exec` (`git log`, `git diff`, `git status`)
-- **Execute**: run `git log --oneline -<log-count>` recording hash+message for every commit → run `git diff HEAD~1 --stat` recording changed files → no new commits or not a git repo → report `no-changes`
-- **Output**: structured summary — `project-path`, latest commits (hash+message), changed-files list with stats, `no-changes` flag
-- **Constraints**: read-only, never modify/create files; work only inside `project-path`; deterministic (same input yields the same report)
-- **Full detail**: `references/subagent-git-log-collector.md`
+- `Inputs`: `project-path`, `log-count` (optional, default 5)
+- `Tools`: `read`, `exec` (`git log`, `git diff`, `git status`)
+- `Execute`: run `git log --oneline -<log-count>` recording hash+message for every commit → run `git diff HEAD~1 --stat` recording changed files → no new commits or not a git repo → report `no-changes`
+- `Output`: structured summary — `project-path`, latest commits (hash+message), changed-files list with stats, `no-changes` flag
+- `Constraints`: read-only, never modify/create files; work only inside `project-path`; deterministic (same input yields the same report)
+- `Full detail`: `references/subagent-git-log-collector.md`
 
 ### project-files-updater — Update project files by domain (Step 3; 1 agent per `domain`)
 
-- **Inputs**: `domain` (`config`|`docs`|`rules`|`specs`|`examples`|`gitignore`|`vscode`|`todo`|`contributing`), `changed-info` (optional — summary from Steps 1-2 to prioritize), `root-path` (optional, default cwd)
-- **Tools**: `read`, `grep`, `find_file_by_name`, `exec`, `edit`
-- **Execute**: identify the files in the `domain` (`config`→`package.json`/`tsconfig.json`/`biome.jsonc`/`mise.toml`/`.moon/`; `docs`→`docs/`/`README.md`/`USAGE.md`/`FEATURES.md`/`CHANGELOG.md`; `rules`→`rules/`/`sgconfig.yml`; `specs`→`<workspace>/specs/`; `examples`→`examples/`; `gitignore`→`.gitignore`; `vscode`→`.vscode/`; `todo`→`TODO.md`; `contributing`→`CONTRIBUTING.md`) → run `/update-config`/`/update-docs`/`/update-astgrep-rules`/`/update-specs`/`/update-examples`/`/update-gitignore`/`/update-dot-vscode`/`/update-todo-md`/`/update-contributing` → use `changed-info` to skip files that haven't drifted and never rewrite unchanged files
-- **Output**: structured summary — the `domain` handled, files updated (path+reason), skills invoked and their results, blockers/cross-domain conflicts
-- **Constraints**: work only inside the given `domain`, never touch other domains; no commits; deterministic; no files/not needed → report `skipped`
-- **Full detail**: `references/subagent-project-files-updater.md`
+- `Inputs`: `domain` (`config`|`docs`|`rules`|`specs`|`examples`|`gitignore`|`vscode`|`todo`|`contributing`), `changed-info` (optional — summary from Steps 1-2 to prioritize), `root-path` (optional, default cwd)
+- `Tools`: `read`, `grep`, `find_file_by_name`, `exec`, `edit`
+- `Execute`: identify the files in the `domain` (`config`→`package.json`/`tsconfig.json`/`biome.jsonc`/`mise.toml`/`.moon/`; `docs`→`docs/`/`README.md`/`USAGE.md`/`FEATURES.md`/`CHANGELOG.md`; `rules`→`rules/`/`sgconfig.yml`; `specs`→`<workspace>/specs/`; `examples`→`examples/`; `gitignore`→`.gitignore`; `vscode`→`.vscode/`; `todo`→`TODO.md`; `contributing`→`CONTRIBUTING.md`) → run `/update-config`/`/update-docs`/`/update-astgrep-rules`/`/update-specs`/`/update-examples`/`/update-gitignore`/`/update-dot-vscode`/`/update-todo-md`/`/update-contributing` → use `changed-info` to skip files that haven't drifted and never rewrite unchanged files
+- `Output`: structured summary — the `domain` handled, files updated (path+reason), skills invoked and their results, blockers/cross-domain conflicts
+- `Constraints`: work only inside the given `domain`, never touch other domains; no commits; deterministic; no files/not needed → report `skipped`
+- `Full detail`: `references/subagent-project-files-updater.md`
 
 ### project-updater — Update one sub-project/workspace (Step 3 per-workspace; 1 agent per `project-path`)
 
-- **Inputs**: `project-path`, `update-scope` (optional, e.g. `deps`/`config`/`docs`), `shared-rules` (optional — reference files from the root that must be synced)
-- **Tools**: `read`, `grep`, `find_file_by_name`, `exec`, `edit`
-- **Execute**: run `git log --oneline -5` + `git diff HEAD~1 --stat` in `project-path` → sync config drift against `shared-rules`/root conventions (tsconfig, lint, format, gitignore) → update docs only where they drifted → if sharing config/deps with other sub-projects → report a warning, don't fix them
-- **Output**: structured summary — `project-path`, latest commits (hash+message), config/docs changed (file list+reason), blockers/shared-dependency warnings
-- **Constraints**: work only inside `project-path`, never modify the root or other sub-projects; no commits; deterministic; workspaces sharing config/deps → sequential + pass `shared-rules`
-- **Full detail**: `references/subagent-project-updater.md`
+- `Inputs`: `project-path`, `update-scope` (optional, e.g. `deps`/`config`/`docs`), `shared-rules` (optional — reference files from the root that must be synced)
+- `Tools`: `read`, `grep`, `find_file_by_name`, `exec`, `edit`
+- `Execute`: run `git log --oneline -5` + `git diff HEAD~1 --stat` in `project-path` → sync config drift against `shared-rules`/root conventions (tsconfig, lint, format, gitignore) → update docs only where they drifted → if sharing config/deps with other sub-projects → report a warning, don't fix them
+- `Output`: structured summary — `project-path`, latest commits (hash+message), config/docs changed (file list+reason), blockers/shared-dependency warnings
+- `Constraints`: work only inside `project-path`, never modify the root or other sub-projects; no commits; deterministic; workspaces sharing config/deps → sequential + pass `shared-rules`
+- `Full detail`: `references/subagent-project-updater.md`
 
 ### agents-md-updater — Write or refresh the `AGENTS.md` of one workspace (Step 4; 1 agent per workspace)
 
-- **Inputs**: `workspace-path`, `shared-rules` (optional — root conventions the workspace must reference instead of duplicating), `changed-info` (optional)
-- **Tools**: `read`, `grep`, `find_file_by_name`, `exec`, `edit`
-- **Execute**: detect the workspace manifest (none → `skipped`) → run `git log --oneline -5` + `git diff HEAD~1 --stat` to find stale sections → run `/update-agents-md` scoped to `workspace-path` (`### Follow Techstack Skills` table from the real manifest, `### Follow Architecture`, `### Ship`, accurate `uses:`) → validate with `/deep-validate`
-- **Output**: structured summary — `workspace-path`, sections written/updated with the reason, dependencies mapped, validation result, gaps the parent must fix (root workspace table row)
-- **Constraints**: write only `<workspace-path>/AGENTS.md`, never the root/other workspaces/source code; no commits; deterministic; submodule workspace (own remote) or no manifest → report `skipped`
-- **Full detail**: `references/subagent-agents-md-updater.md`
+- `Inputs`: `workspace-path`, `shared-rules` (optional — root conventions the workspace must reference instead of duplicating), `changed-info` (optional)
+- `Tools`: `read`, `grep`, `find_file_by_name`, `exec`, `edit`
+- `Execute`: detect the workspace manifest (none → `skipped`) → run `git log --oneline -5` + `git diff HEAD~1 --stat` to find stale sections → run `/update-agents-md` scoped to `workspace-path` (`### Follow Techstack Skills` table from the real manifest, `### Follow Architecture`, `### Ship`, accurate `uses:`) → validate with `/deep-validate`
+- `Output`: structured summary — `workspace-path`, sections written/updated with the reason, dependencies mapped, validation result, gaps the parent must fix (root workspace table row)
+- `Constraints`: write only `<workspace-path>/AGENTS.md`, never the root/other workspaces/source code; no commits; deterministic; submodule workspace (own remote) or no manifest → report `skipped`
+- `Full detail`: `references/subagent-agents-md-updater.md`
 
 ### project-skills-updater — Update project skills in .devin/skills/ (Step 5; parallel with the Step 3 domains)
 
-- **Inputs**: `project-path`, `changed-info` (optional — identifies skills that need syncing)
-- **Tools**: `read`, `grep`, `find_file_by_name`, `exec`, `edit`
-- **Execute**: run `/update-project-skills` to create/update skills per the codebase → use `changed-info` to map the features/flows that changed → skills needing sync → verify via `/deep-validate` (frontmatter, references, no broken links) → confirm the root `AGENTS.md` references all new skills → report a gap if any are missing
-- **Output**: structured summary — skills created/updated/removed (path+reason), validation results, AGENTS.md gaps for the parent to fix
-- **Constraints**: modify only `.devin/skills/`, never touch root docs/code (never edit `AGENTS.md` itself — the parent handles it); no commits; `.devin/skills/` missing/not needed → report `skipped`
-- **Full detail**: `references/subagent-project-skills-updater.md`
+- `Inputs`: `project-path`, `changed-info` (optional — identifies skills that need syncing)
+- `Tools`: `read`, `grep`, `find_file_by_name`, `exec`, `edit`
+- `Execute`: run `/update-project-skills` to create/update skills per the codebase → use `changed-info` to map the features/flows that changed → skills needing sync → verify via `/deep-validate` (frontmatter, references, no broken links) → confirm the root `AGENTS.md` references all new skills → report a gap if any are missing
+- `Output`: structured summary — skills created/updated/removed (path+reason), validation results, AGENTS.md gaps for the parent to fix
+- `Constraints`: modify only `.devin/skills/`, never touch root docs/code (never edit `AGENTS.md` itself — the parent handles it); no commits; `.devin/skills/` missing/not needed → report `skipped`
+- `Full detail`: `references/subagent-project-skills-updater.md`
 
 ### github-metadata-updater — Sync GitHub repo metadata and branch protection (Step 6; remote-only, never touches local files)
 
-- **Inputs**: `repo` (optional — owner/repo, default detected from the git remote), `check-protection` (optional, default true)
-- **Tools**: `exec` (`gh repo view`, `gh api`, `gh repo edit`, `git remote -v`), `read`
-- **Execute**: run `/update-github-metadata` to sync description/homepage/topics with `README.md` + `package.json` → if `check-protection` → run `/update-github-metadata` `### 6. Protect Branches` to check branch protection on `main`/integration branches → confirm metadata matches project conventions
-- **Output**: structured summary — metadata fields changed (before → after), branch protection status, permission errors or blockers (gh auth, repo not found)
-- **Constraints**: remote mutations only (`gh api`/`gh repo edit`), never modify local files; no push, no commit (the parent handles it); no remote or gh auth failure → report `blocked`, don't fail
-- **Full detail**: `references/subagent-github-metadata-updater.md`
+- `Inputs`: `repo` (optional — owner/repo, default detected from the git remote), `check-protection` (optional, default true)
+- `Tools`: `exec` (`gh repo view`, `gh api`, `gh repo edit`, `git remote -v`), `read`
+- `Execute`: run `/update-github-metadata` to sync description/homepage/topics with `README.md` + `package.json` → if `check-protection` → run `/update-github-metadata` `### 6. Protect Branches` to check branch protection on `main`/integration branches → confirm metadata matches project conventions
+- `Output`: structured summary — metadata fields changed (before → after), branch protection status, permission errors or blockers (gh auth, repo not found)
+- `Constraints`: remote mutations only (`gh api`/`gh repo edit`), never modify local files; no push, no commit (the parent handles it); no remote or gh auth failure → report `blocked`, don't fail
+- `Full detail`: `references/subagent-github-metadata-updater.md`
 
 ## Expected Outcome
 

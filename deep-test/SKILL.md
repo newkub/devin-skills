@@ -7,7 +7,6 @@ related:
   - run-test
   - deep-thinking
   - deep-analyze
-  - deep-review-codebase
   - deep-validate
   - update-tests
   - resolve-errors
@@ -18,7 +17,6 @@ related:
   - follow-tool-playwright
   - report-review
   - use-subagents
-  - watch-browser
   - ask-me
 
 ---
@@ -111,11 +109,11 @@ Use when tests must run or a test domain must be analyzed deeply — unit, integ
 
 ### route-checker — test one API route group and return pass/fail per route with evidence
 
-- **Inputs**: `route-group` (the list of routes it owns, e.g. `GET /api/users`, `GET /api/users/{id}`), `base-url` (target, e.g. `http://localhost:3000`), `method-policy` (safe methods only by default, or `allow-write` once the user confirms), `headers` (optional — auth headers, e.g. `Authorization: Bearer <token>`; the parent must mask before reporting), `timeout`/`slow-threshold` (optional — default timeout and `slow` threshold)
-- **Tools**: `exec` — run `bun <skill-dir>/scripts/check-routes.ts` or the `scripts/check-routes.ps1` fallback (only `bun *check-routes.ts *` and `*check-routes.ps1 *` are allowed), `read` — read the manifest/results file
-- **Execute**: 1) write the group's route list to a temp routes file or pass it via `--routes` 2) run `bun scripts/check-routes.ts --base <base-url> --routes-file <file> --out <result-file>` 3) dynamic segments `{id}` are replaced with `1` by the script 4) classify each route: `ok` (2xx/expected), `redirect` (3xx), `protected` (401/403), `slow` (>3000ms), `critical` (4xx/5xx/timeout/DNS/TLS), `skipped` (non-safe method), `missing` (404) 5) if every route fails with the same pattern → flag it as a group-level issue (e.g. wrong base path), not per-route
-- **Output**: a per-route table `| No. | Method | Route | Status | Expected | Time (ms) | Severity | Evidence |` ending with a group summary (tested, skipped, ok, protected, critical, missing) plus the persisted result file path
-- **Constraints**: fire only `GET`/`HEAD`/`OPTIONS` unless the parent passes `allow-write` confirmed by the user; never fire at production if the parent did not state confirmation; always mask credentials/tokens — never return real secrets; every route must have a tested or skipped result with a reason — never guess a status; only handle the assigned route group, do not fire routes outside the group; read-only — no `write`/`edit`
+- `Inputs`: `route-group` (the list of routes it owns, e.g. `GET /api/users`, `GET /api/users/{id}`), `base-url` (target, e.g. `http://localhost:3000`), `method-policy` (safe methods only by default, or `allow-write` once the user confirms), `headers` (optional — auth headers, e.g. `Authorization: Bearer <token>`; the parent must mask before reporting), `timeout`/`slow-threshold` (optional — default timeout and `slow` threshold)
+- `Tools`: `exec` — run `bun <skill-dir>/scripts/check-routes.ts` or the `scripts/check-routes.ps1` fallback (only `bun *check-routes.ts *` and `*check-routes.ps1 *` are allowed), `read` — read the manifest/results file
+- `Execute`: 1) write the group's route list to a temp routes file or pass it via `--routes` 2) run `bun scripts/check-routes.ts --base <base-url> --routes-file <file> --out <result-file>` 3) dynamic segments `{id}` are replaced with `1` by the script 4) classify each route: `ok` (2xx/expected), `redirect` (3xx), `protected` (401/403), `slow` (>3000ms), `critical` (4xx/5xx/timeout/DNS/TLS), `skipped` (non-safe method), `missing` (404) 5) if every route fails with the same pattern → flag it as a group-level issue (e.g. wrong base path), not per-route
+- `Output`: a per-route table `| No. | Method | Route | Status | Expected | Time (ms) | Severity | Evidence |` ending with a group summary (tested, skipped, ok, protected, critical, missing) plus the persisted result file path
+- `Constraints`: fire only `GET`/`HEAD`/`OPTIONS` unless the parent passes `allow-write` confirmed by the user; never fire at production if the parent did not state confirmation; always mask credentials/tokens — never return real secrets; every route must have a tested or skipped result with a reason — never guess a status; only handle the assigned route group, do not fire routes outside the group; read-only — no `write`/`edit`
 
 ## Expected Outcome
 

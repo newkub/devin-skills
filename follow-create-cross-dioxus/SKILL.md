@@ -3,8 +3,6 @@ name: follow-create-cross-dioxus
 description: Set up and develop Desktop, Web, and Mobile applications with the Dioxus Rust framework
 argument-hint: "[scope]"
 related:
-  - follow-create-web
-  - follow-create-mobile
   - follow-best-practice
   - setup-cicd
   - deep-review-codebase

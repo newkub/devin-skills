@@ -1,6 +1,6 @@
 ---
 name: follow-lib-tanstack-table
-description: Use TanStack Table end to end — columns, row models, sorting/filtering/pagination, selection, grouping, server-side, virtualization
+description: Use TanStack Table end to end — columns, sorting/filtering, selection, grouping, server-side
 argument-hint: "[framework] [feature]"
 related:
   - follow-lib-tanstack-ecosystem
@@ -15,7 +15,7 @@ Use TanStack Table (v9) fully — headless datagrid: columns, row models, sortin
 
 ## Scope
 
-Works with data tables of any size — headless = the library manages state/logic, **you render the UI entirely yourself**; many rows → `follow-virtual`
+Works with data tables of any size — headless = the library manages state/logic, `you render the UI entirely yourself`; many rows → `follow-virtual`
 
 - part of TanStack ecosystem — selection/dispatch lives in `/follow-lib-tanstack-ecosystem`
 
@@ -76,13 +76,13 @@ const table = useReactTable({
 
 > Goal: the features actually used
 
-1. **Sorting**: `column.getToggleSortingHandler()` + `getIsSorted()`; multi-sort `enableMultiSort`
-2. **Filtering**: global (`setGlobalFilter`) + per-column (`column.setFilterValue`) + `filterFns` custom
-3. **Pagination**: `nextPage`/`previousPage`/`setPageIndex`/`setPageSize`
-4. **Selection**: `row.getToggleSelectedHandler()` + `table.getSelectedRowModel()` bulk actions
-5. **Grouping/expanding**: `getGroupedRowModel` + `row.getIsExpanded()`/`toggleExpanded`
-6. **Column features**: `column.toggleVisibility()`, pinning `column.pin('left')`, resizing `enableColumnResizing`
-7. **Server-side**: `manualPagination`/`manualSorting`/`manualFiltering` + `pageCount` — the table doesn't process, fetch via `follow-query`
+1. `Sorting`: `column.getToggleSortingHandler()` + `getIsSorted()`; multi-sort `enableMultiSort`
+2. `Filtering`: global (`setGlobalFilter`) + per-column (`column.setFilterValue`) + `filterFns` custom
+3. `Pagination`: `nextPage`/`previousPage`/`setPageIndex`/`setPageSize`
+4. `Selection`: `row.getToggleSelectedHandler()` + `table.getSelectedRowModel()` bulk actions
+5. `Grouping/expanding`: `getGroupedRowModel` + `row.getIsExpanded()`/`toggleExpanded`
+6. `Column features`: `column.toggleVisibility()`, pinning `column.pin('left')`, resizing `enableColumnResizing`
+7. `Server-side`: `manualPagination`/`manualSorting`/`manualFiltering` + `pageCount` — the table doesn't process, fetch via `follow-query`
 
 ### 5. Render And Verify
 

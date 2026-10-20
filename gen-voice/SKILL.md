@@ -4,7 +4,6 @@ description: Generate speech audio from text with a bunx TTS CLI
 argument-hint: "[text]"
 related:
   - gen-subtitle-video
-  - gen-media
 ---
 
 ## Goal

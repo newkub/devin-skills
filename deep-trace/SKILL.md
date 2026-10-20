@@ -8,7 +8,6 @@ related:
   - run-profiler
   - watch-browser
   - use-astgrep
-  - search
   - report
   - follow-tool-git
 

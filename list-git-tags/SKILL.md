@@ -5,8 +5,6 @@ argument-hint: "[scope]"
 related:
   - follow-tool-git
   - report
-  - list-github
-  - list-git
 ---
 
 ## Goal

@@ -12,6 +12,7 @@ related:
   - deep-thinking
   - deep-analyze
   - deep-validate
+  - use-subagents
 ---
 
 ## Goal
@@ -90,6 +91,7 @@ Every run starts with the deep pre-pass — run `/deep-thinking` → `/deep-anal
 - Every finding must have evidence from code or config
 - If the role is unclear → ask first
 - Hand off to one role at a time — no mixed perspectives; for multiple viewpoints, run one role at a time or use `/deep-review-codebase`
+- Use `/use-subagents` if needed — review independent areas through different roles in parallel, one subagent per role
 - Do not deploy or run anything for real
 
 ## Expected Outcome

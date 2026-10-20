@@ -21,7 +21,7 @@ Learn from reference sources (official docs, URLs, local files, codebase, CLI, t
 
 ## Scope
 
-Use when there is new/newer reference material (e.g., docs that were just updated, release notes, API reference, a codebase that changed) and the relevant skills need to catch up — **it differs from the other `learn-from-*` skills in that this one "writes back into the skills"**, not just extracting knowledge; it is not a pure coverage check (use `/improve coverage`) and not a review (use `/deep-review-codebase`)
+Use when there is new/newer reference material (e.g., docs that were just updated, release notes, API reference, a codebase that changed) and the relevant skills need to catch up — `it differs from the other learn-from-* skills in that this one "writes back into the skills"`, not just extracting knowledge; it is not a pure coverage check (use `/improve coverage`) and not a review (use `/deep-review-codebase`)
 
 ## Execute
 
