@@ -6,7 +6,7 @@ Check visual regression by capturing screenshots of routes/components and compar
 - Covers page-level screenshots via `agent-browser` or Playwright and component-level via Storybook/Playwright component tests
 - Report only: reports diffs, never auto-approves or reverts
 
-> Pre-Run: always run `/deep-review` (domain `review-test`) first — never skip; if findings are blockers, fix or report before running
+> Pre-Run: always run `/deep-review` (dimension `tests`) first — never skip; if findings are blockers, fix or report before running
 
 ## Run Quick Path
 

@@ -86,7 +86,7 @@ Use when you want to optimize across many dimensions at once — report-only by 
 - preserved behavior: an optimization must not change output/public API (except deliberate performance fixes)
 - Use /deep-optimize when needed (deep-dive a single lane)
 - Use /deep-analyze when needed (root cause unclear)
-- Use /deep-review when needed (all review-*, not just optimization)
+- Use `/deep-review` when needed (all dimensions, not just optimization)
 - Use /deep-test load to gather perf evidence for throughput/latency lanes
 
 ## Expected Outcome

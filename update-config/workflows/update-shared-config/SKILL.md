@@ -22,7 +22,7 @@ Consolidate tool config and dependency versions duplicated across workspaces int
 
 > Goal: See which config is genuinely duplicated and worth consolidating
 
-1. Run `/deep-review` domain `review-config` — find configs duplicated or drifting across workspaces
+1. Run `/deep-review` dimension `config` — find configs duplicated or drifting across workspaces
 2. Compare config per domain: `tsconfig*.json`, `eslint.config.*`, `prettier.config.*`, `vitest.config.*`, build configs
 3. Compare dependency versions across package manifests — find version drift and duplicates
 4. Keep only candidates genuinely duplicated in 2+ workspaces — never consolidate speculatively
@@ -46,7 +46,7 @@ Consolidate tool config and dependency versions duplicated across workspaces int
 
 1. Run `/update-references` — delete the duplicated child configs, keeping only workspace-specific overrides
 2. Run the ecosystem validators: `tsc -b`, `eslint .`, `prettier --check .`, then reinstall to resolve the catalog
-3. Run `/deep-review` domain `review-config` again — confirm only one canonical config remains per domain
+3. Run `/deep-review` dimension `config` again — confirm only one canonical config remains per domain
 4. If it fails → revert that batch and fix; up to 3 rounds → stop/report
 
 ## Rules

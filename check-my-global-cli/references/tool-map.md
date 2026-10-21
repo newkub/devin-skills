@@ -30,7 +30,7 @@
 | count LOC | `scc` / `loc` / `rloc` | installed | `/follow-tool-loc` |
 | disk usage | `dua` / `duf` | installed | `/cleanup-files-in-computer` |
 | secrets scan | `gitleaks` | installed | `/check-secrets` |
-| copy-paste detection | `jscpd` | installed | `/review-code-quality` |
+| copy-paste detection | `jscpd` | installed | `/deep-review` (`code-quality`) |
 | reuse existing code / dedup | `rg` + `sg` + `jscpd` | installed | `/use-lib-effective` `### 5` |
 | semantic/doc search | DeepWiki / Context7 MCP / `ctx7` | MCP config | `/learn-from-web`, `/deep-research` |
 | compare subject vs competitors | DeepWiki / Context7 MCP / `crw` | MCP config | `/compare-competitors` |
@@ -44,8 +44,8 @@
 | JSON query | `jq` / `fx` | installed | `/use-scripts` |
 | YAML/TOML/XML query | `yq` | installed | `/use-scripts` |
 | structured pipelines | `nu` (nushell) | installed | `/use-nu-shell`, `/use-scripts` |
-| pretty diff | `delta` / `git-split-diffs` | installed | `/review-diff` |
-| .env lint | `dotenv-linter` | installed | `/deep-review` domain `review-config` |
+| pretty diff | `delta` / `git-split-diffs` | installed | `/report-git-diff` |
+| .env lint | `dotenv-linter` | installed | `/deep-review` dimension `config` |
 | secrets injection | `infisical` / `phase` | installed (scoop) | `/open-web-for-config-secret` |
 
 ## Git And GitHub
@@ -71,11 +71,11 @@
 | monorepo tasks | `moon` / `task` | installed | `/follow-monorepo` |
 | version bumps | `taze` / `changelogen` | installed | `/follow-tool-taze`, `/follow-tool-changelogen` |
 | lint/format JS/TS | `biome` / `oxlint` / `oxfmt` | installed | `/run-lint`, `/run-format` |
-| test coverage to target | project coverage runner (`vitest`/`jest`/`c8`/`cargo-llvm-cov` per project) | per project | `/run-test coverage` → `/review-test coverage` |
+| test coverage to target | project coverage runner (`vitest`/`jest`/`c8`/`cargo-llvm-cov` per project) | per project | `/run-test coverage` (→ `/deep-test coverage`) |
 | fast typecheck | `tsc` (`typescript@7` native) / `vue-tsc` | installed | `/run-typecheck` |
 | watch + rerun | `watchexec` | installed | `/run-watch` |
-| benchmark commands | `hyperfine` | installed | `/review-performance` |
-| optimize app end-to-end (review→fix→measure) | `rg`/`sg` + build output + profilers | installed | `/review-optimize` |
+| benchmark commands | `hyperfine` | installed | `/deep-review` (`performance`) |
+| optimize app end-to-end (review→fix→measure) | `rg`/`sg` + build output + profilers | installed | `/optimize perf` |
 | CI local run | `act` | installed | `/follow-tool-act` |
 | git hooks | `hk` / `lefthook` | installed | `/follow-tool-hk` |
 | clone template | `giget` | installed | `/create-*` |
@@ -127,7 +127,7 @@
 | containers | `podman` / `docker-compose` / `druk` / `oxker` | installed | `/follow-create-docker` |
 | k8s | `kubectl` / `k9s` / `helm` | installed | infra skills |
 | IaC | `terraform` | installed | infra skills |
-| database TUI | `rainfrog` | installed | `/review-database` |
+| database TUI | `rainfrog` | installed | `/deep-review` (`database`) |
 | releases | `gh release` | same as gh | `/run-release` |
 
 ## AI And Agents

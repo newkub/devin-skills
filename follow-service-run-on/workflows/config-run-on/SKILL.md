@@ -22,7 +22,7 @@ Set/edit RunsOn runner configuration — `.github/runs-on.yml` runner definition
 > Goal: Know the current runner config before editing
 
 1. Read `.github/runs-on.yml` and workflows that already use `runs-on:`
-2. Do `/deep-review` domain `review-config` if the config must be compared with the deployed stack
+2. Do `/deep-review` dimension `config` if the config must be compared with the deployed stack
 3. If no config is found → do `workflows/setup-run-on/SKILL.md` first
 
 ### 2. Define Runners

@@ -32,7 +32,7 @@ Use when prose or instructions must be reviewed for quality before or after ship
 
 1. Take `target` from argument — file, folder, or document; if missing → the file(s) just changed in this session; if unclear → `/ask-me`
 2. Identify the reader and purpose (follow steps / understand a concept / take action) — record both, they calibrate every criterion below
-3. Run the deep pre-pass `/deep-thinking` → `/deep-analyze` before judging (review-* convention)
+3. Run the deep pre-pass `/deep-thinking` → `/deep-analyze` before judging (deep-review convention)
 
 ### 2. Assess Against Criteria
 

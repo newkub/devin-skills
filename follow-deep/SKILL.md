@@ -39,7 +39,7 @@ See also: /deep-review
 > Goal: pick the deep- workflows relevant to the task context
 
 1. Analysis → `deep-analyze` (includes scripts/review CLI)
-2. Review → `deep-review` (comprehensive) or `/review-*` (specific dimension)
+2. Review → `/deep-review` (comprehensive) or `/deep-review <scope> <dimension>` (specific dimensions)
 3. Planning → `plan`
 4. Refactoring → `refactor`
 5. Testing → `run-test`

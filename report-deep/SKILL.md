@@ -40,7 +40,7 @@ Use to create a deep report after reviewing a codebase or analyzing a system —
    3. Analyze Cause: root cause of the problem
    4. Set Solutions: actionable and specific fixes
    5. Set Severity: Critical > High > Medium > Low
-   6. Set Review Workflow: the `/review-*` workflow from AGENTS.md
+   6. Set Review Workflow: the `/deep-review` dimension(s) from `deep-review/references/dimension-matrix.md`
    7. Identify Evidence: the code snippet or pattern that triggered the finding
 2. False positive → note in the Cause column: `False positive: <reason>`
 3. Sort by severity: Critical first, then High
@@ -52,7 +52,7 @@ Use to create a deep report after reviewing a codebase or analyzing a system —
 
 1. Use `/report` to format the table
 2. Create a table with 7 columns: Scope, File, Cause, Solutions, Severity, Review Workflow, Evidence
-3. Group by `reviewWorkflow` to link to `/review-*` workflows from AGENTS.md
+3. Group by `reviewWorkflow` to link to the `/deep-review` dimensions
 4. Within each group, sort by severity: Critical first, then High
 5. Filter to show only categories with findings (don't show pass)
 6. Every row must have verifiable evidence
@@ -83,7 +83,7 @@ Use to create a deep report after reviewing a codebase or analyzing a system —
 > Goal: recommend next actions based on findings
 
 1. Use `/suggest-next-action` per the prioritized findings
-2. Recommend the `/review-*` workflow for each finding based on the `reviewWorkflow` field
+2. Recommend the `/deep-review` dimension for each finding based on the `reviewWorkflow` field
 3. Recommend `/update-agents-md` if AGENTS.md doesn't match current dependencies
 > Goal: clear action items prioritized
 
@@ -100,12 +100,12 @@ The deep-report table has 7 columns in order:
 | Cause | Root cause of the problem | Yes |
 | Solutions | Actionable and specific fixes | Yes |
 | Severity | Critical > High > Medium > Low | Yes |
-| Review Workflow | `/review-*` workflow from AGENTS.md | Yes |
+| Review Workflow | `/deep-review` dimension from the matrix | Yes |
 | Evidence | Code snippet or pattern that triggered the finding | Yes |
 
 ### 2. Grouping
 
-- Group by `reviewWorkflow` to link to `/review-*` workflows
+- Group by `reviewWorkflow` to link to the `/deep-review` dimensions
 - Within each group, sort by severity: Critical first, then High
 - Use headers for grouping per `/report`
 

@@ -28,7 +28,7 @@ Configure Better Auth providers (social OAuth, email/password options) and plugi
 
 1. Read the whole `auth.ts` file — identify the existing database, plugins, providers
 2. Check the env vars in use (`BETTER_AUTH_*`, provider `CLIENT_ID`/`CLIENT_SECRET`)
-3. Run `/deep-review` domain `review-config` if you suspect config differs across envs — if no config is found → do `setup-auth` instead
+3. Run `/deep-review` dimension `config` if you suspect config differs across envs — if no config is found → do `setup-auth` instead
 
 ### 2. Configure Social Providers
 

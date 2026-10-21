@@ -18,4 +18,4 @@
 ## Flow
 
 - `scan` (free) → review candidates → `process` (paid) → `revalidate` (cut FPs) → `export`/`report`
-- findings → triage into the `/deep-review` `review-security` domain or the project's fix pipeline
+- findings → triage into the `/deep-review` `security` dimension or the project's fix pipeline

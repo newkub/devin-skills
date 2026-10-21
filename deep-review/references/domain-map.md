@@ -40,7 +40,7 @@ Fix routing table for `deep-review` `### 7. Fix` — every finding is fixed by t
 
 ## Dimension-name aliases
 
-The `dimension-matrix.md` row name → the Domain row above it (the matrix names dimensions, this table names domains). A dimension not listed here — including everything the old catch-all `others (...)` row used to hold — routes by its matrix `Fix owner`, which exists on every row. The `review-<label>` skills used by the `improve`/`optimize` scope-maps are not here either — they resolve through the matrix `Aliases` column (see `## Label resolution`).
+The `dimension-matrix.md` row name → the Domain row above it (the matrix names dimensions, this table names domains). A dimension not listed here — including everything the old catch-all `others (...)` row used to hold — routes by its matrix `Fix owner`, which exists on every row. The `review-<label>` names used by the `improve`/`optimize` scope-maps are not here either — each resolves through the matrix `Aliases` column to `references/dimensions/<label>.md` (see `## Label resolution`).
 
 | Matrix dimension | Domain row |
 |------------------|------------|
@@ -54,7 +54,7 @@ The `dimension-matrix.md` row name → the Domain row above it (the matrix names
 
 ## Label resolution
 
-The `improve`/`optimize` scope-maps name review targets as `review-<label>` — each name is a real thin skill at the repo root that delegates here; invoke `/review-<label>` for one dimension or `/deep-review` for a whole-scope pass. The skill resolves its label by stripping `review-` and taking **every** `dimension-matrix.md` row whose `Aliases` cell lists it **or whose row name equals it** (a label may map to several dimensions — e.g. `frontend` → `routing-deeplinks`, `rendering-strategy`, `uxui`, `form`), plus the `always` tier. `review-issues` and `review-gaps` are exempt: they hold their own work. A label found on no row is a matrix gap — dispatch the `always` tier plus the closest artifact-match rows and report the gap, never invent a dimension; `scripts/verify-matrix.ts` proves every scope-map label has a `review-<label>/SKILL.md`.
+The `improve`/`optimize` scope-maps name review targets as `review-<label>` — each name is answered by one bundle at `references/dimensions/<label>.md`; read that file for one dimension or run `/deep-review` for a whole-scope pass. The bundle resolves its label by taking **every** `dimension-matrix.md` row whose `Aliases` cell lists it **or whose row name equals it** (a label may map to several dimensions — e.g. `frontend` → `routing-deeplinks`, `rendering-strategy`, `uxui`, `form`), plus the `always` tier. `review-issues` and `review-gaps` are exempt: they hold their own work. A label found on no row is a matrix gap — dispatch the `always` tier plus the closest artifact-match rows and report the gap, never invent a dimension; `scripts/verify-matrix.ts` proves every scope-map label has a bundle.
 
 ## Fix boilerplate
 

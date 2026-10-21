@@ -35,7 +35,7 @@ Use when editing theme tokens of an existing setup — covers CSS variables, bas
 1. Edit the variable values in `:root` and the dark block together — every changed token must exist in both modes
 2. Make `--radius` the single source of corner radius — components use `rounded-md` etc. derived from it
 3. Add new semantic tokens (e.g. `success`, `warning`) named per the existing convention, then map them into the CSS framework's utilities
-4. Run `/deep-review` domain `review-config` if unsure the tokens match what components reference
+4. Run `/deep-review` dimension `config` if unsure the tokens match what components reference
 
 ### 3. Customize Component Variants
 

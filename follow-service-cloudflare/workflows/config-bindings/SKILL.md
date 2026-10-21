@@ -25,7 +25,7 @@ Set/edit bindings and environments in `wrangler.toml`/`wrangler.jsonc` so the Wo
 > Goal: Understand the existing config before editing
 
 1. Read the existing `wrangler.toml` or `wrangler.jsonc` — if not found → do `workflows/setup-wrangler` or `wrangler init` first
-2. Do `/deep-review` domain `review-config` if the config is suspected to mismatch real resources
+2. Do `/deep-review` dimension `config` if the config is suspected to mismatch real resources
 3. Identify the bindings to add/edit from the argument or code usage (`env.MY_KV`, etc.)
 
 ### 2. Provision Resources

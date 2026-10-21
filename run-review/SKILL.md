@@ -1,6 +1,6 @@
 ---
 name: run-review
-description: Run the review CLI, analyze its metrics, route findings to review-* skills, then report
+description: Run the review CLI, analyze its metrics, route findings to their deep-review dimensions, then report
 argument-hint: "[scope]"
 related:
   - update-review-cli
@@ -15,7 +15,7 @@ related:
 
 ## Goal
 
-Run the deterministic review CLI once, analyze the metrics it produces, route every finding to its `review-*` owner, and report — the run path that `update-review-cli` builds the analyzer for and `deep-review` slices per dimension
+Run the deterministic review CLI once, analyze the metrics it produces, route every finding to its `/deep-review` dimension owner, and report — the run path that `update-review-cli` builds the analyzer for and `deep-review` slices per dimension
 
 ## Scope
 
@@ -50,18 +50,18 @@ Use when a project needs a measured quality gate — the review CLI exists (or i
 
 > Goal: Decide whether the CLI is good enough to trust this run
 
-1. Check every trigger: `categories < 60`, overall `score < 70` or grade `D`/`F`, any domain `score < 50`, `analyzerErrors > 0`, `falsePositiveRate > 20%`, `reviewWorkflow` not covering the `review-*` labels resolvable through the `Aliases` column of `deep-review/references/dimension-matrix.md`
+1. Check every trigger: `categories < 60`, overall `score < 70` or grade `D`/`F`, any domain `score < 50`, `analyzerErrors > 0`, `falsePositiveRate > 20%`, `reviewWorkflow` not covering the scope-map dimension labels resolvable through the `Aliases` column of `deep-review/references/dimension-matrix.md`
 2. `analyzerErrors > 0` → `/resolve-errors` first; analyzer logic wrong or missing → `/update-create-analyze-cli`
 3. A trigger that needs code changes → `/update-review-cli`, then rerun only the failing slice with `--domain`/`--severity` — max 3 rounds
 4. Still failing after 3 rounds → stop, report the metric table and the reason, and hand the gap to `/update-review-cli`
 
-### 4. Route Findings To Review Skills
+### 4. Route Findings To Review Dimensions
 
 > Goal: Every finding reaches its owner without remapping by hand
 
-1. Group Critical/High findings per the CLI `reviewWorkflow` map (the `review-*` skill each category belongs to)
-2. A category with no mapping → mark it an analyzer gap for `/update-review-cli`; never invent a `review-*` name
-3. Hand the evidence-backed set to `/deep-review <scope>` when the fix needs review-grade analysis, or straight to the `review-*` skill when the finding is already actionable
+1. Group Critical/High findings per the CLI `reviewWorkflow` map (the dimension each category belongs to)
+2. A category with no mapping → mark it an analyzer gap for `/update-review-cli`; never invent a dimension name
+3. Hand the evidence-backed set to `/deep-review <scope>` when the fix needs review-grade analysis, or straight to its `/improve`/`/optimize` fix owner when the finding is already actionable
 4. Fixing is never implicit — a fix round runs through `/deep-review <scope> then-fix` after the user confirms
 
 ### 5. Verify The Project State
@@ -77,7 +77,7 @@ Use when a project needs a measured quality gate — the review CLI exists (or i
 > Goal: One chat report, then the next action
 
 1. Report via `/report-review`: domain scores, severity distribution, coverage (`categories N/60`), analyzer errors, false-positive rate, and the delta against the baseline
-2. Include the routed `review-*` skill per finding, and the measured before/after when this run followed an `/update-review-cli` round
+2. Include the routed dimension or fix owner per finding, and the measured before/after when this run followed an `/update-review-cli` round
 3. Close with `/suggest-next-action` — `/deep-review <scope> then-fix` for the confirmed set, or `/update-review-cli` when a metric trigger is still open
 
 ## Rules
@@ -112,6 +112,6 @@ Use when a project needs a measured quality gate — the review CLI exists (or i
 
 - One full scan run and read: score, grade, domain breakdown, category coverage, analyzer errors, false-positive rate, and baseline delta
 - Metric triggers either cleared within 3 rounds or reported with the exact gap handed to `/update-review-cli`
-- Every Critical/High finding routed to a real `review-*` skill through the CLI `reviewWorkflow` map
+- Every Critical/High finding routed to a real dimension through the CLI `reviewWorkflow` map
 - Project state verified with `/run-verify`, remaining work tracked with `/follow-tasks`
 - One chat report via `/report-review` followed by `/suggest-next-action`

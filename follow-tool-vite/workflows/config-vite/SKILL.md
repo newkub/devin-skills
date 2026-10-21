@@ -26,7 +26,7 @@ Write and tune `vite.config.ts` correctly, covering plugins, resolve, build, and
 
 1. Open and read the root `vite.config.ts`/`vite.config.js` — if absent → go to step 2 to create it
 2. Check the framework used from `package.json` to pick the official plugin (`@vitejs/plugin-react`, `@vitejs/plugin-vue`, etc.)
-3. If the existing config is large → do `/deep-review` domain `review-config` to spot unneeded options
+3. If the existing config is large → do `/deep-review` dimension `config` to spot unneeded options
 
 ### 2. Config Structure
 

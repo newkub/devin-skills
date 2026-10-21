@@ -24,7 +24,7 @@ Set/edit Supabase configuration — env vars, `supabase/config.toml`, RLS polici
 
 1. Read the existing `supabase/config.toml` and `.env*`
 2. Do `/check-secrets env-vars` to identify missing or duplicated vars
-3. Do `/deep-review` domain `review-config` if the local config is suspected to differ from remote
+3. Do `/deep-review` dimension `config` if the local config is suspected to differ from remote
 4. If there is no `supabase/config.toml` at all → do `workflows/setup-supabase/SKILL.md` instead
 
 ### 2. Configure Env Vars

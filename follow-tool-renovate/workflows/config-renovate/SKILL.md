@@ -23,7 +23,7 @@ Use when editing an existing Renovate config — install/token/workflow are in `
 > Goal: read the existing config before editing
 
 1. Find the config: `renovate.json`, `.github/renovate.json`, `renovate.json5`, or the `"renovate"` field in `package.json`
-2. Record the current keys — run `/deep-review` domain `review-config` if the config looks suspicious
+2. Record the current keys — run `/deep-review` dimension `config` if the config looks suspicious
 3. If no config exists → run `workflows/setup-renovate/SKILL.md` first
 
 ### 2. Base Config And Presets
@@ -80,7 +80,7 @@ Use when editing an existing Renovate config — install/token/workflow are in `
 - `config:recommended` may add unwanted checks — know what a preset does before extending it
 - Wrong matchers = the rule silently doesn't fire — verify against real PRs after editing
 
-- Use /deep-review review-config if needed
+- Use `/deep-review` dimension `config` if needed
 
 ## Expected Outcome
 

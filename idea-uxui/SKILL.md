@@ -26,7 +26,7 @@ Generate UX/UI ideas — improvements to existing work and new features in visua
 - Cover dimensions: visual polish, layout/responsive, interaction/feedback, accessibility, design system consistency, empty/error/loading states
 - Reply in chat with markdown tables and bullets
 - Don't create report/plan files, don't implement
-- If you want a visual review of real routes before thinking of ideas → use `/deep-review` (domain `review-uxui`)
+- If you want a visual review of real routes before thinking of ideas → use `/deep-review` (dimension `uxui`)
 - If you want implementation → hand off to `/implement-to-production`
 - An idea the user will actually take action on but that has no demand/feasibility evidence yet → screen it first with `/validate-idea`
 

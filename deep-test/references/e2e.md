@@ -6,7 +6,7 @@ Run E2E tests for browser testing with Playwright across every route and user fl
 - `agent-browser` (headless) is used for exploratory route/action testing when no Playwright suite exists yet or for ad-hoc verification
 - If Playwright tests need updating/writing → `/update-tests` (run-only, does not fix tests)
 
-> Pre-Run: always run `/deep-review` (domain `review-test`) first — never skip; if findings are blockers, fix or report before running
+> Pre-Run: always run `/deep-review` (dimension `tests`) first — never skip; if findings are blockers, fix or report before running
 
 ## Run Quick Path
 

@@ -2,7 +2,7 @@
 
 Run API tests by calling real or mocked endpoints and inspecting responses to verify contracts and behavior — covering REST, GraphQL, tRPC, WebSocket
 
-> Pre-Run: always run `/deep-review` (domain `review-api`) first — never skip; if a finding is a blocker, fix it or report before running
+> Pre-Run: always run `/deep-review` (dimension `api`) first — never skip; if a finding is a blocker, fix it or report before running
 
 ## Run Quick Path
 
@@ -72,7 +72,7 @@ Use when you need coverage of every route (not just spot assertions) — safe by
 3. Classify severity per route: `ok` (2xx), `redirect` (3xx — an API should not redirect), `protected` (401/403), `slow` (>3000ms), `critical` (4xx/5xx unexpected, timeout, DNS/TLS), `skipped` (non-safe method), `missing` (in the spec but 404)
 4. Report table: `No.`, `Method`, `Route`, `Status`, `Expected`, `Time (ms)`, `Severity`, `Recommendation`; persist → `.devin/temp/report/<workspace>/api-routes-<time>.md`
 5. If there are many routes and they can be grouped → spawn the `route-checker` profile (`deep-test/SKILL.md ## Subagents`) one group at a time via `/use-subagents`, then merge the results
-6. spec and implementation mismatch → `/deep-review` (domain `review-api`); missing routes → framework generator
+6. spec and implementation mismatch → `/deep-review` (dimension `api`); missing routes → framework generator
 
 Additional rules: always mask credentials in reports; every route must have a tested or skipped result with a reason; never fire at production without confirmation
 

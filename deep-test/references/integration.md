@@ -4,7 +4,7 @@ Run integration tests to verify how modules, data flow, and integration points w
 
 - If integration tests need updating/writing → `/update-tests` (run-only, does not fix tests)
 
-> Pre-Run: always run `/deep-review` (domain `review-test`) first — never skip; if findings are blockers, fix or report before running
+> Pre-Run: always run `/deep-review` (dimension `tests`) first — never skip; if findings are blockers, fix or report before running
 
 ## Run Quick Path
 

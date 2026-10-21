@@ -25,7 +25,7 @@ Configure advanced `playwright.config.ts` options — multi-browser projects, de
 
 > Goal: understand the existing config before editing
 
-1. Read the current `playwright.config.ts` — run `/deep-review` domain `review-config` if the config looks suspicious
+1. Read the current `playwright.config.ts` — run `/deep-review` dimension `config` if the config looks suspicious
 2. Identify the keys already present — merge with them, never overwrite the whole file
 3. If no config is found → run `workflows/setup-playwright` instead
 

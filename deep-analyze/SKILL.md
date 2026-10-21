@@ -116,9 +116,9 @@ Covers analysis across many dimensions:
 
 ### 8. Domain Dispatch
 
-> Goal: cover every dimension — dispatch to `review-*` per detected stack
+> Goal: cover every dimension — dispatch `/deep-review` per detected stack
 
-- Full dispatch catalog of 61 domains with priority order + pipeline phases → read `deep-review/SKILL.md` (single source of truth — never duplicate the table here)
+- Candidate dimensions, eligibility, and priority order → read `deep-review/references/dimension-matrix.md` (single source of truth — never duplicate the table here)
 - Dispatch only the domains the stack actually has — never run all of them every time
 - Parallelize via `/use-subagents` when many domains
 - Merge all findings into one report with domain tags
@@ -140,7 +140,7 @@ Covers analysis across many dimensions:
 > Goal: produce a complete report
 
 1. Follow `workflows/report-analysis/SKILL.md` — organize findings, root cause chains, evidence
-2. Aggregate per-domain scores from the dispatched `review-*` → overall score + grade — table `No. | Domain | Score | Grade | Top Finding`
+2. Aggregate per-domain scores from the dispatched `/deep-review` dimensions → overall score + grade — table `No. | Domain | Score | Grade | Top Finding`
 3. Run `/report-deep` or `/create-report-in-dot-devin` for a persistent artifact
 4. Provide recommendations by priority and impact with action items + roadmap
 

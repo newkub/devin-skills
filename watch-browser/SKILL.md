@@ -23,7 +23,7 @@ Use when you want to monitor a web page through the MCP protocol — e.g. watchi
 
 - `watch-browser-test` and `watch-browser-fix`/`watch-browser-console` are already merged in — this skill is the canonical watch family (`report`/`fix` live here, roleplay testing → `/deep-test website`)
 - To fix errors/console issues as soon as they are found → run the `fix` domain below
-- To analyze + improve UX/UI → `/deep-review` (domain `review-uxui`)
+- To analyze + improve UX/UI → `/deep-review` (dimension `uxui`)
 - To roleplay a user testing actions/flows on every route → `/deep-test website` (Roleplay Mode)
 - If most FAILs are dead UI / unimplemented features → hand off to `/implement-to-production`
 - If there is no MCP server → fall back to `/use-agent-browser` (CLI)
@@ -118,7 +118,7 @@ Latest: `chrome-devtools-mcp@1.10.1`, `agent-browser@0.38.1` (verified 2026-10-0
 | Domain | Skill |
 |--------|-------|
 | `fix` | `### 6. Fix Domain` — watch + fix the errors found, then confirm with a re-capture |
-| `uxui` | `/deep-review` (domain `review-uxui`) — review UX/UI from screenshots/routes |
+| `uxui` | `/deep-review` (dimension `uxui`) — review UX/UI from screenshots/routes |
 | `test` | `/deep-test website` (Roleplay Mode) — subagents roleplay user test flows |
 
 1. Read the domain from the argument — if not specified → run the normal watch flow above

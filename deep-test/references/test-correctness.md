@@ -6,7 +6,7 @@ Verify that test cases `assert what is truly correct`, not merely pass — expec
 - Covers: spec-first assertions, mock drift, vacuous/false-positive tests, name-vs-body, stale snapshots, floating async promises
 - Complementary to `references/mutation.md`: this domain reads the assertions, mutation proves them empirically
 
-> Pre-Run: run `/deep-review` (domain `review-test`) first for strategy/structure findings — never skip; blockers get fixed or reported before the audit
+> Pre-Run: run `/deep-review` (dimension `tests`) first for strategy/structure findings — never skip; blockers get fixed or reported before the audit
 
 ## Run Quick Path
 

@@ -41,7 +41,7 @@ Convert TODO, MOCK, FAKE, STUB, placeholder, and dead UI into real production co
 
 > Goal: Understand the scope and problems before implementing
 
-1. Run the `/review` pre-action gate — pick and run the `review-*` that matches the context, then run `/deep-review` across every dimension to find TODO/MOCK/placeholder and issues
+1. Run the `/review` pre-action gate — run `/deep-review` with the dimensions that match the context, then across every dimension to find TODO/MOCK/placeholder and issues
 2. Always run `/report-not-implement` for the whole scope as the first step (read-only) → get a work queue table (`missing`/`fake`/`partial`/`unwired`/`promised`) covering markers, stubs, dead UI, and missing routes/docs; never start implementing without a report — for a large codebase → have that skill spawn its own `gap-scanner` profile in parallel per directory; run `/deep-analyze` to understand the stack/context and `/deep-research` if you need to find external patterns
 3. If the input is a plan file / `TODO.md` / loose plan → complete the matching `## Input Flows` first
 4. Record the baseline and make it resumable: unfinished items from the report, files, dependencies, infrastructure gaps — keep the queue as a table with one `status` per item (`pending`/`in-progress`/`completed`/`blocked`) and update that row the moment the item closes (persist it to the plan file once `### 2.1` creates it; until then keep it in chat and copy it over), so a resumed or compacted session continues from the table instead of re-scanning; if you must rely on an external package that is not installed yet → run `/use-my-packages-on-registry` to list the packages we own as the first option before looking for external deps

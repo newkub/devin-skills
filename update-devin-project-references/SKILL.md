@@ -109,7 +109,7 @@ bun <skill-dir>/scripts/refs-cli/index.ts website --url https://staging.example.
 
 - The website domain uses `crw map` only — interactive browsing → `/use-agent-browser`
 - content/docs writing from refs → `/update-docs`, never write back over `.devin/references`
-- review of refs-vs-code consistency → `/deep-review` domain `review-docs`
+- review of refs-vs-code consistency → `/deep-review` dimension `docs`
 
 ### 5. Output Format
 

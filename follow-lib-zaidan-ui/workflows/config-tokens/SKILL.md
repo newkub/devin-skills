@@ -27,7 +27,7 @@ Use when editing theme tokens after setup — covers CSS variables, `@theme` map
 1. Open `src/styles/globals.css` — inspect the CSS variables in `:root` and the dark block, including the `@theme` mapping
 2. Open `components.json` — check the `tailwind.css` path and aliases
 3. If no theme exists yet → run the `setup-theme` workflow first; always merge with the original, never overwrite
-4. Run `/deep-review` domain `review-config` if unsure the tokens match what the components reference
+4. Run `/deep-review` dimension `config` if unsure the tokens match what the components reference
 
 ### 2. Adjust Color And Radius Tokens
 

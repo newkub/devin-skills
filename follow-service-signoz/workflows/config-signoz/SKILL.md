@@ -24,7 +24,7 @@ Set/edit OpenTelemetry configuration for SigNoz — service name, resource attri
 
 1. Read `.env*`, start scripts, and existing instrumentation entries
 2. Do `/check-secrets env-vars` to identify missing or duplicated `OTEL_*` vars
-3. Do `/deep-review` domain `review-config` across environments if needed
+3. Do `/deep-review` dimension `config` across environments if needed
 4. If there are no OTel packages yet → do `workflows/setup-signoz/SKILL.md` instead
 
 ### 2. Configure Service Identity

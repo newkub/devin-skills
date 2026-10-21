@@ -23,7 +23,7 @@ related:
 
 Canonical engine: linter CLI (Rust, `D:\newkub\wpackages\rust-packages\packages\tools\linter`) — deterministic checks produce `review-report.json` with the original schema; this skill extends it by adding YAML rule packs (`rules/<lang|frameworks|deps>/`) or analyzer modules instead of editing the old TS CLI
 
-Create or update the deterministic analyzer behind every review — the `tools/review-codebase` CLI covering 60+ categories across 5 domains, plus the analyzers and rule packs it runs — so `/run-review` and every `review-*` skill get evidence-backed findings instead of guesses
+Create or update the deterministic analyzer behind every review — the `tools/review-codebase` CLI covering 60+ categories across 5 domains, plus the analyzers and rule packs it runs — so `/run-review` and every `/deep-review` dimension get evidence-backed findings instead of guesses
 
 ## Scope
 
@@ -33,7 +33,7 @@ Use when a review dimension has no analyzer, a rule fires wrong, or `/run-review
 - `/deep-review` slices the same `review-report.json` per dimension and consumes `references/known-issues.md` — never duplicate analyzer logic in a review skill
 - `/update-project` calls this skill so every project updated through it gets a current review CLI
 - all review criteria are inlined here — the only external file is the living-data `references/known-issues.md` (single source of truth for analyzer/CLI issues, shared with `/deep-review`)
-- every `review-*` label resolvable through the `Aliases` column of `deep-review/references/dimension-matrix.md` must have a mapping in `reviewWorkflow`; a missing analyzer is recorded here, not invented in the review skill
+- every scope-map dimension label resolvable through the `Aliases` column of `deep-review/references/dimension-matrix.md` must have a mapping in `reviewWorkflow`; a missing analyzer is recorded here, not invented in the review pass
 
 ## Execute
 
@@ -94,7 +94,7 @@ Use when a review dimension has no analyzer, a rule fires wrong, or `/run-review
 
 1. Create `src/adapters/file-utils.ts` (`walk`, `readText`, `getRel`), `src/adapters/git-grep.ts` (`gitGrep`, `gitGrepCount`), `src/domain/models.ts` (`CategoryFinding`, `CategoryResult`, `ReviewReport`), `src/application/review.ts` (import `runAllAnalyzers` from `tools-analyze`), `src/presentation/cli.ts` (entry point), `src/index.ts` (export `runReview`/`createReviewPorts`)
 2. Convert each analyzer's `CategoryResult` into a `ReviewReport` with score, grade, domain breakdown
-3. Define the `reviewWorkflow` map to review skills — must cover every `review-*` label resolvable through the `Aliases` column of `deep-review/references/dimension-matrix.md` (except `review-github-pr`, which is PR-scoped)
+3. Define the `reviewWorkflow` map to review dimensions — must cover every scope-map dimension label resolvable through the `Aliases` column of `deep-review/references/dimension-matrix.md` (except `review-github-pr`, which is PR-scoped)
 4. Any metric or review domain still without an analyzer → record it as an analyzer gap (name + review skill + missing metric) in `references/known-issues.md` and report it
 5. If an analyzer isn't fully implemented, add a `// TODO` comment with details
 6. If an AST-based analyzer is needed (structural patterns regex/git-grep can't do, e.g. function metrics, SRP counts, custom lint rules) → run `/use-astgrep-programmatic` to integrate `@ast-grep/napi` or `ast-grep scan --json` into `tools/analyze`/`tools/review-codebase` — findings must have file:line + rule id per `## Rules → 4. Evidence-Based`
@@ -125,7 +125,7 @@ Use when a review dimension has no analyzer, a rule fires wrong, or `/run-review
 
 `review-codebase` table output must show every detail per category — never a lone score or one line per category
 
-- Findings table (per category): `No.` (always first, 1..n) | `Domain` | `Category` | `Score` | `Grade` | `C`/`H`/`M`/`L` finding counts by severity | `Status` = `new`/`existing`/`regression`/`fixed` vs the previous `reports/review-report.json` | `Top Finding` | `Evidence` = `file:line` of the top finding — every row must have it, never a row without | `Fix Skill` = from the `reviewWorkflow` map (`/deep-review` domain `review-<domain>`; `/deep-review then-fix` when a fix must be applied) | `Delta` = score diff vs the previous report when a baseline exists — sort Critical first, then lowest score first
+- Findings table (per category): `No.` (always first, 1..n) | `Domain` | `Category` | `Score` | `Grade` | `C`/`H`/`M`/`L` finding counts by severity | `Status` = `new`/`existing`/`regression`/`fixed` vs the previous `reports/review-report.json` | `Top Finding` | `Evidence` = `file:line` of the top finding — every row must have it, never a row without | `Fix Skill` = from the `reviewWorkflow` map (`/deep-review` dimension `<label>`; `/deep-review then-fix` when a fix must be applied) | `Delta` = score diff vs the previous report when a baseline exists — sort Critical first, then lowest score first
 - Domain summary table (at the end): `No.`, `Domain`, `Score`, `Grade`, `Categories`, `Findings`, `Errors`, `FP%`, `Trend` (up/down/flat vs the previous run); footer row: overall score + grade, `categories N/60`, total analyzer errors, duration
 - non-TTY/CI → auto plain table, or use `--json`; narrow screen → drop `Top Finding` first, never `Evidence`/`Fix Skill`
 - Exit code: `exit 1` when any Metric Trigger fires (`categories < 60`, `score < 70`/`grade D/F`, `domain < 50`, `analyzerErrors > 0`, `falsePositiveRate > 20%`) — CI gate + pass/fail auto-detect in `/run-review`
@@ -175,9 +175,9 @@ Use when a review dimension has no analyzer, a rule fires wrong, or `/run-review
 
 ### 4b. Review Coverage
 
-- The `reviewWorkflow` map must cover every `review-*` label resolvable through the `Aliases` column of `deep-review/references/dimension-matrix.md` (except `review-github-pr`)
+- The `reviewWorkflow` map must cover every scope-map dimension label resolvable through the `Aliases` column of `deep-review/references/dimension-matrix.md` (except `review-github-pr`)
 - Every metric that `deep-review`/`/run-review` marks as `in update-review-cli = N` → add an analyzer or record the gap with a reason in `references/known-issues.md`
-- `/deep-review` dispatches `review-*` one dimension at a time (per-artifact, tiered — labels resolved through the matrix `Aliases` column) — the CLI must output findings that map back to those review skills
+- `/deep-review` dispatches one dimension at a time (per-artifact, tiered — labels resolved through the matrix `Aliases` column to `references/dimensions/<label>.md`) — the CLI must output findings that map back to those dimensions
 
 ### 5. Report Location
 
@@ -209,7 +209,7 @@ Use when a review dimension has no analyzer, a rule fires wrong, or `/run-review
 
 - The `tools/review-codebase` CLI (or linter rule pack) exists, validates, and runs at the project root
 - Findings cover 60+ categories with evidence and severity
-- `reviewWorkflow` covers every `review-*` label resolvable through the `Aliases` column of `deep-review/references/dimension-matrix.md` — analyzer gaps are recorded in `references/known-issues.md`
+- `reviewWorkflow` covers every scope-map dimension label resolvable through the `Aliases` column of `deep-review/references/dimension-matrix.md` — analyzer gaps are recorded in `references/known-issues.md`
 - Analyzer and rule changes are handed to `/run-review` for the before/after measurement
 - No analyzer errors; every change cites the rule id or analyzer file it lands in
 

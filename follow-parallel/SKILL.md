@@ -54,7 +54,7 @@ Use for managing parallel execution at 3 levels: tool calls, script execution, a
 
 1. Identify the independent sub-workflows — no data dependency between them
 2. Run independent sub-workflows at once, e.g. `/deep-review`, `/follow-tool-knip`
-3. Run dependent sub-workflows sequentially, e.g. `/deep-validate` after `/review-*`
+3. Run dependent sub-workflows sequentially, e.g. `/deep-validate` after `/deep-review`
 4. Collect results from every sub-workflow before aggregating the report
 5. If one sub-workflow finds a critical issue → stop and validate before continuing
 

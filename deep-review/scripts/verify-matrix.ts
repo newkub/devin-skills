@@ -88,18 +88,26 @@ for (const r of rows) {
 // 3. Fix owner reachable from a scope-map or a domain-map route
 const scopePaths = scopeMapPaths().filter((p) => existsSync(p));
 if (scopePaths.length === 0) notes.push("scope-maps not found — pass --scope-maps to check Fix owner reachability");
+// names answered by their own top-level skill or a scope-map row, not by a dimension bundle
+const STANDALONE = new Set(["review-test", "review-devin-global-harness", "review-issues", "review-gaps", "usage"]);
 const scopes = new Set<string>();
 const labels: string[] = [];
 for (const path of scopePaths) {
   const md = readFileSync(path, "utf8");
-  const idx = path.includes("optimize") ? 1 : 0;
+  const optimize = path.includes("optimize");
+  const scopeIdx = optimize ? 1 : 0;
+  const labelIdx = optimize ? 2 : 1;
   for (const line of md.split(/\r?\n/)) {
     if (!line.startsWith("|")) continue;
     const cells = line.split("|").slice(1, -1).map(strip);
     if (/^-+$/.test(cells[0]) || cells[0].startsWith("Scope") || cells[0].startsWith("Signal")) continue;
-    if (cells[idx]) scopes.add(cells[idx]);
+    if (cells[scopeIdx]) scopes.add(cells[scopeIdx]);
+    for (const piece of (cells[labelIdx] ?? "").split(/[,+]/)) {
+      const token = piece.trim().split(/\s+/)[0] ?? "";
+      if (!/^[a-z0-9][a-z0-9-]*$/.test(token) || STANDALONE.has(token)) continue;
+      labels.push(token.replace(/^review-/, ""));
+    }
   }
-  for (const m of md.matchAll(/(?<!deep-)\breview-([a-z0-9-]+)/g)) if (!["issues", "gaps"].includes(m[1])) labels.push(m[1]);
 }
 const domainMap = readFileSync(DOMAIN_MAP, "utf8");
 const domainRoutes = new Set([...domainMap.matchAll(/(?<![\w/])\/([a-z][a-z0-9]*(?:-[a-z0-9]+)+)/g)].map((m) => m[1]));
@@ -114,12 +122,12 @@ for (const r of rows) {
   }
 }
 
-// 4. label resolution + the split review-* skill must exist (only when the scope-maps are readable)
+// 4. label resolution + the dimension reference bundle must exist (only when the scope-maps are readable)
 if (scopePaths.length > 0) {
   const resolvable = new Set([...names, ...aliases.map((a) => a.alias)]);
   for (const label of [...new Set(labels)]) {
     if (!resolvable.has(label)) problems.push(`review-${label} resolves to no matrix row (matrix gap)`);
-    if (!existsSync(join(SKILL, "..", `review-${label}`, "SKILL.md"))) problems.push(`review-${label} has no skill directory (split review-* missing)`);
+    if (!existsSync(join(SKILL, "references", "dimensions", `${label}.md`))) problems.push(`review-${label} has no bundle (references/dimensions/${label}.md missing)`);
   }
 }
 

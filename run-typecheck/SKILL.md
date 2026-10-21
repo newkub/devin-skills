@@ -18,7 +18,7 @@ Run typecheck for every workspace in the monorepo as defined in the package mani
 
 ## Execute
 
-> Pre-Run: Always run `/deep-review` domain `review-config` first — `run-*` must be reviewed/assessed before the main work, never skip; if findings are blockers, fix or report before running (typecheck)
+> Pre-Run: Always run `/deep-review` dimension `config` first — `run-*` must be reviewed/assessed before the main work, never skip; if findings are blockers, fix or report before running (typecheck)
 
 ### 1. Check Config
 
