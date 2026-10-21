@@ -3,16 +3,19 @@ name: review-github-pr
 description: Review the whole pull request before merge — diff, commits, PR metadata, CI, code changes
 argument-hint: "[pr-number]"
 related:
-  - merge
+  - merge-github-pr
   - resolve-errors
-  - report
+  - report-review
   - suggest-next-action
   - run-review
   - deep-thinking
   - deep-analyze
   - deep-validate
   - use-subagents
-
+  - update-github-pr
+  - open-github
+  - list-github-pr
+  - resolve-github-actions-fails
 ---
 
 ## Goal
@@ -53,7 +56,7 @@ Every round starts with the deep pre-pass — run `/deep-thinking` → `/deep-an
 > Goal: check the PR's code changes
 
 1. Run `/run-verify` — lint, typecheck, scan — fail → report first, then continue
-2. Run `/deep-review` on changed files — with security-sensitive changes, test coverage and quality, docs/changelog/versioning/git hygiene
+2. Run `/run-review` for the analyzer slice on the changed files, then `/deep-review` on them — security-sensitive changes, test coverage and quality, docs/changelog/versioning/git hygiene
 3. Per the PR's domain → run `/deep-review` in the domains the diff touches (frontend, backend, api, auth)
 - Severity: Critical = build fail, security risk, breaking change without migration; High = missing tests, lint fail, auth change unreviewed; Medium = missing docs/changelog, slight coverage drop; Low = formatting, cosmetic
 
@@ -87,6 +90,7 @@ Every round starts with the deep pre-pass — run `/deep-thinking` → `/deep-an
 2. Run `/deep-validate` on the merge result (frontmatter, types, contract) — fail → do not recommend merge
 3. Run `/deep-review` per the PR's scope (domains the diff touches) — blocker findings → fix first, do not merge
 4. Only when all 3 items pass → verdict `ready-to-merge`; otherwise `blocked` naming the gate still open
+5. `ready-to-merge` and the user asks to merge → `/merge-github-pr`; `blocked` → report the findings and tell the author what to fix — never merge on your own
 
 ### 7. Score And Report
 
@@ -163,18 +167,9 @@ Every round starts with the deep pre-pass — run `/deep-thinking` → `/deep-an
 - If the PR is large → recommend split before detailed review
 - Title and commits must follow conventional commits
 - Every finding must have a file path, line number or commit reference
-- Never use bold markers — use backticks for emphasis (github pr)
-- Never merge on your own if the user didn't ask (deep PR review)
-
-- Use /open-github if needed
-- Use /list-github-pr if needed
-- Use /merge-github-pr if needed
-- Use /resolve-github-actions-fails if needed
-- Use /run-review if needed
-- Use /resolve-errors if needed
-- Use /deep-review if needed
-
-- If pass → run `/merge-github-pr`; if fail → tell the author to fix per the findings
+- Never use `**` bold markers — use backticks for emphasis
+- Never merge on your own if the user didn't ask
+- Open the PR with `/open-github` to show it to the user, list sibling PRs with `/list-github-pr`, and clear red CI with `/resolve-github-actions-fails`
 
 ### Full-Dimension Checklist (check every dimension before concluding)
 
@@ -186,7 +181,12 @@ Every round starts with the deep pre-pass — run `/deep-thinking` → `/deep-an
 
 ## Fix
 
-> Follow `deep-review/SKILL.md` when the user confirms fixing findings
+> Runs only when the user confirms the findings — the review above stays report-only until then
+
+1. Code findings → `/deep-review <scope> then-fix fix all` on the diff; PR-metadata findings → `/update-github-pr`
+2. Fix on the PR branch → `/run-check` + `/run-test`; messy history → `/refactor-commit` before `/git-push` (never force)
+3. Re-run `### 6. Check Gate`; still blocked → report and stop — never merge to get past a gate
+4. A red check the fix did not cause → `/resolve-errors`
 
 ## Expected Outcome
 

@@ -12,6 +12,7 @@ related:
   - refactor
   - improve
   - ask-me
+  - use-subagents
   - suggest-next-action
   - deep-thinking
   - deep-analyze
@@ -59,8 +60,9 @@ Review anything the user points at (code, docs, a feature area, a plan, a config
 > Goal: a prioritized report before any fix
 
 1. Merge the findings from `/review-issues`, `/review-gaps`, and the `### 2` inconsistency pass into one deduplicated list, ordered by severity — Critical/High first
-2. Produce a `/report-review` table (chat, no files) with its canonical columns, plus this dimension's extras: `Area`, `Type` (issue|gap|inconsistency) — the owner column is `Owner skill`
-3. If the user did not append `and fix` → ask which items to fix and wait for confirmation
+2. Score the merged set: Critical 0, High 25, Medium 50, Low 75, Info 100 → weighted average; grade A ≥90, B ≥80, C ≥70, D ≥60, F <60 — the summary line carries it
+3. Produce a `/report-review` table (chat, no files) with its canonical columns, plus this dimension's extras: `Area`, `Type` (issue|gap|inconsistency) — the owner column is `Owner skill`
+4. If the user did not append `and fix` → ask which items to fix and wait for confirmation
 
 ### 4. Fix Confirmed Items
 
@@ -83,6 +85,7 @@ Review anything the user points at (code, docs, a feature area, a plan, a config
 - `/review` owns scoping, the inconsistency dimension, aggregation, and the fix handoff
 - `/review-issues` and `/review-gaps` own their own catalogs — never restate those catalogs here
 - `/deep-review` is a heavy tool it may invoke for wide scans — not the skill's identity
+- `/use-subagents` when the areas are independent — one subagent per area, no overlapping files
 - Don't nest `/review` with other routers; if `/review` is already running, don't invoke it again; the dimension skills must not call back into `/review`
 
 ### 3. Confirmation
@@ -90,18 +93,12 @@ Review anything the user points at (code, docs, a feature area, a plan, a config
 - Every confirmed addition → `/create-plan-in-dot-devin` before implementing
 
 ### 4. Formatting
-- Never use `*` bold markers — use backticks for emphasis
+- Never use `**` bold markers — use backticks for emphasis
 - Use heading levels for structure
 - Final findings as a table via `/report-review` (chat, no files), `No.` as the first column
-
-- Use /review-issues if needed
-- Use /review-gaps if needed
-- Use /follow-parallel if needed
-- Use /deep-review if needed
-- Use /deep-review <scope> then-fix if needed
 
 ## Expected Outcome
 
 - The scope is reviewed across `issues` (via `/review-issues`), `gaps` (via `/review-gaps`), and inconsistencies (here) with complete type, severity, and evidence
-- A prioritized `/report-review` table is presented and the fix set is confirmed by the user
+- A scored, severity-ordered `/report-review` table is presented and the fix set is confirmed by the user
 - Confirmed findings are fixed + verified via build/lint, with SRP respected on touched files

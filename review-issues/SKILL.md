@@ -25,6 +25,7 @@ Review one dimension only: `issues` — behavior that is provably wrong in the s
 
 - Use when the user asks specifically what is wrong/broken in an area, or from `/review` `### 2` as the issues dimension
 - Not missing-capability hunting (→ `/review-gaps`), not a full multi-dimension codebase scan (→ `/deep-review`), not debugging one known failure (→ `/deep-debug`)
+- Not a matrix-derived label entry — this skill owns its catalog; `deep-review/references/dimension-matrix.md` `## Notes` exempts `review-issues` and `review-gaps` from alias resolution
 - If the user appends `and fix` → treat as confirmed; fix every finding without asking again (still report before fixing)
 
 ## Execute
@@ -66,7 +67,8 @@ Check the surface against this issue catalog:
 
 1. Attach `file:line` + the provable reason to every finding — no evidence, no finding; state uncertainty instead of guessing
 2. Classify severity: `Critical` (data loss, security, outage) → `High` (wrong user-visible behavior) → `Medium` (edge case, degradation) → `Low` (noise, maintainability)
-3. Produce a `/report-review` table (chat, no files) with its canonical columns, plus this dimension's extra `Area` and `Issue Class` — the owner column is `Owner skill` — ordered Critical first
+3. Score: Critical 0, High 25, Medium 50, Low 75, Info 100 → weighted average; grade A ≥90, B ≥80, C ≥70, D ≥60, F <60
+4. Produce a `/report-review` table (chat, no files) with its canonical columns, plus this dimension's extra `Area` and `Issue Class` — the owner column is `Owner skill` — ordered Critical first
 
 ### 4. Confirm And Fix
 
@@ -91,13 +93,13 @@ Check the surface against this issue catalog:
 
 ### 3. Confirmation And Formatting
 - Don't fix without confirmation unless the user puts `and fix` in the command
-- Never use `*` bold markers — use backticks for emphasis; every report table starts with a `No.` column
+- Never use `**` bold markers — use backticks for emphasis; every report table starts with a `No.` column
 
 ### 4. Parallelism
 - Use `/use-subagents` if needed — review independent areas in parallel, one subagent per area with non-overlapping file sets
 
 ## Expected Outcome
 
-- Every issue in scope is found with class, severity, and `file:line` evidence
+- Every issue in scope is found with class, severity, and `file:line` evidence, under one score and grade
 - A prioritized `/report-review` table is presented and the fix set is confirmed
 - Confirmed issues are fixed at the cause, re-verified by build/lint/test, and touched files keep one responsibility

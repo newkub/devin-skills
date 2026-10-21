@@ -28,6 +28,7 @@ Review one dimension only: `gaps` — capability the scope promises but does not
 
 - Use when the user asks what is missing / unfinished / not really wired in an area, or from `/review` `### 2` as the gaps dimension
 - Not wrong-behavior hunting (→ `/review-issues`), not a full multi-dimension scan (→ `/deep-review`), not ideating new features (→ `/idea-features`)
+- Not a matrix-derived label entry — this skill owns its catalog; `deep-review/references/dimension-matrix.md` `## Notes` exempts `review-gaps` and `review-issues` from alias resolution
 - If the user appends `and fix` → treat as confirmed; fill every gap without asking again (still report before filling)
 - A gap whose surface was never designed (command tree, TUI screens, web UX) → design it first: `/design-cli-prototype` / `/design-tui-prototype` in chat, or `/design-web-prototype` / `/design-html-prototype` when it must be seen — then fill it; never fill a gap with a new stub
 
@@ -65,8 +66,9 @@ Review one dimension only: `gaps` — capability the scope promises but does not
 
 1. Every finding needs two pieces of evidence: the promise (`file:line` of the claim) and the absence proof (the search that found no implementation, or the stub location)
 2. Severity: `Critical` (paid/advertised capability absent, security or data path missing) → `High` (user-visible flow incomplete) → `Medium` (edge or state coverage missing) → `Low` (unused declaration, doc drift)
-3. Exclude intentional scope cuts: an explicitly deferred feature in `TODO.md` or a documented limitation is not a gap — list it separately as "known deferral"
-4. Produce a `/report-review` table (chat, no files) with its canonical columns, plus this dimension's extras: `Area`, `Gap Class`, and the pair `Promise Evidence` + `Absence Evidence` in place of the single `Evidence` column — the owner column is `Owner skill`
+3. Score: Critical 0, High 25, Medium 50, Low 75, Info 100 → weighted average; grade A ≥90, B ≥80, C ≥70, D ≥60, F <60
+4. Exclude intentional scope cuts: an explicitly deferred feature in `TODO.md` or a documented limitation is not a gap — list it separately as "known deferral"
+5. Produce a `/report-review` table (chat, no files) with its canonical columns, plus this dimension's extras: `Area`, `Gap Class`, and the pair `Promise Evidence` + `Absence Evidence` in place of the single `Evidence` column — the owner column is `Owner skill`
 
 ### 4. Confirm And Fill
 
@@ -93,13 +95,13 @@ Review one dimension only: `gaps` — capability the scope promises but does not
 - Don't fix without confirmation unless the user puts `and fix` in the command
 
 ### 4. Formatting
-- Never use `*` bold markers — use backticks for emphasis; every report table starts with a `No.` column
+- Never use `**` bold markers — use backticks for emphasis; every report table starts with a `No.` column
 
 ### 5. Parallelism
 - Use `/use-subagents` if needed — review independent areas in parallel, one subagent per area with non-overlapping file sets
 
 ## Expected Outcome
 
-- Every promise in the scope is matched against real implementation, with promise + absence evidence per gap
+- Every promise in the scope is matched against real implementation, with promise + absence evidence per gap, under one score and grade
 - A prioritized `/report-review` table is presented and the fill set is confirmed by the user
 - Confirmed gaps are closed with production code (no new stubs), verified by build/lint/test, and docs stay truthful

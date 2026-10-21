@@ -45,7 +45,7 @@ Do not create new skills (use `/update-devin-global-skills`); do not fix code (u
 ### 1. Prepare Context
 > Goal: inventory every layer of the harness
 
-1. Run the deep pre-pass per the `review-*` convention (`update-devin-global-skills` `## Conventions → Templates`): `/deep-thinking` → `/deep-analyze` → `/deep-validate` always first, then `/scan-codebase` in the skills dir → list all skills grouped by prefix → read `update-devin-global-skills` + `AGENTS.md` + `global_rules.md` to know the current standard
+1. Run the deep pre-pass per the `review-*` convention (`update-devin-global-skills` `## Conventions → Templates`): `/deep-thinking` → `/deep-analyze` → `/deep-validate` always first, then `/scan-codebase` in the skills dir → list all skills grouped by prefix → read `update-devin-global-skills` + `AGENTS.md` + `global_rules.md` to know the current standard — pick the deep-* pass per finding with `/follow-deep`
 2. Collect the inventory: skills dirs, `%APPDATA%\devin\agents\*` (AGENT.md), hooks config, MCP config, `global_rules.md`
 
 ### 2. Run Review Script
@@ -216,7 +216,7 @@ Categories: split (>250/multiple responsibilities), merge (overlapping/duplicate
 
 ### 3. Non-Redundancy
 
-- Use the checklists in this file instead of duplicating content
+- Use the checklists in this file instead of duplicating content — one canonical definition per check (`/follow-single-of-source`), every other section points at it
 - No overlap between Execute and Rules
 - Report the same finding that appears in 2 layers once, at the root cause
 
@@ -229,15 +229,16 @@ Categories: split (>250/multiple responsibilities), merge (overlapping/duplicate
 ### 5. Scoring And Formatting
 
 - Compute the review score per `### Scoring`, separately per layer
-- Never use markdown bold markers — use backticks
+- Never use `**` bold markers — use backticks
 - Report as tables via `/report-review` (chat, no files)
-
-- Use /idea-new-devin-global-skills, /follow-deep, /deep-review, /run-review, /follow-single-of-source when needed
-- Use /update-devin-harness when findings are layer misalignment; use /check-reference, /update-devin-global-skills to drill into a single layer
 
 ## Fix
 
-> Follow `deep-review/SKILL.md` when the user confirms fixing findings — use /use-subagents if needed
+> Runs only after the user confirms the findings — review stays report-only until then
+
+1. Misalignment between layers → `/update-devin-harness`; one skill package → `/update-devin-global-skills`; broken refs → `/update-references`
+2. Structural fixes (split/merge/rename) follow `### Refactor Guide` — one skill at a time, commit checkpoint first, `/use-subagents` when the targets are independent
+3. Re-run `bun run review` + `/deep-validate` after each batch; a finding that recurs → the checklist that missed it is the fix
 
 ## Expected Outcome
 

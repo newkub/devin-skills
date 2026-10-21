@@ -7,7 +7,7 @@ related:
   - scan-codebase
   - review
   - ask-me
-  - report
+  - report-review
   - suggest-next-action
   - deep-thinking
   - deep-analyze
@@ -41,29 +41,6 @@ Every run starts with the deep pre-pass — run `/deep-thinking` → `/deep-anal
 
 > Goal: Find the right `references/<category>.md` and role section
 
-1. Use the Category Mapping table below — each category maps to `references/<category>.md`; role details are in the `## <category>/<role>` section inside that file
-2. For roles in the security/compliance domain → hand off to `/deep-review` instead
-3. If a role falls under multiple categories → have the user confirm
-4. Open `references/<category>.md` → read the role table at the top + the `## <category>/<role>` section of the chosen role
-
-### 3. Roleplay And Collect
-
-> Goal: Review through the role's lens from the reference details
-
-1. Run `/scan-codebase` first to gather context
-2. Play the role per the persona details (Goal/Scope/Execute/focus areas in the section)
-3. Collect findings, severity, and recommendations
-
-### 4. Report
-
-> Goal: Summarize the result from the persona's point of view
-
-1. Run `/report-review` with findings and recommendations (chat table, no files)
-2. Highlight the top 3-5 most important issues
-3. Run `/suggest-next-action`
-
-## Category Mapping
-
 | No. | Category Reference | Roles (`## <category>/<role>`) |
 |----:|--------------------|--------------------------------|
 | 1 | `references/product.md` | product-manager, product-designer, business-analyst, product-analyst |
@@ -85,6 +62,28 @@ Every run starts with the deep pre-pass — run `/deep-thinking` → `/deep-anal
 | 17 | `references/management.md` | project-manager, engineering-manager, technical-lead, scrum-master |
 | 18 | `references/technical.md` | researcher, code-optimizer, refactoring-specialist, documentation-writer |
 
+1. Use the Category Mapping table above — each category maps to `references/<category>.md`; role details are in the `## <category>/<role>` section inside that file
+2. For roles in the security/compliance domain → hand off to `/deep-review` instead
+3. If a role falls under multiple categories → have the user confirm
+4. Open `references/<category>.md` → read the role table at the top + the `## <category>/<role>` section of the chosen role
+
+### 3. Roleplay And Collect
+
+> Goal: Review through the role's lens from the reference details
+
+1. Run `/scan-codebase` first to gather context
+2. Play the role per the persona details (Goal/Scope/Execute/focus areas in the section)
+3. Collect findings, severity, and recommendations
+4. Score: Critical 0, High 25, Medium 50, Low 75, Info 100 → weighted average; grade A ≥90, B ≥80, C ≥70, D ≥60, F <60
+
+### 4. Report
+
+> Goal: Summarize the result from the persona's point of view
+
+1. Run `/report-review` with findings and recommendations (chat table, no files)
+2. Highlight the top 3-5 most important issues
+3. Run `/suggest-next-action`
+
 ## Rules
 
 - Do not edit code during a roleplay review
@@ -96,7 +95,7 @@ Every run starts with the deep pre-pass — run `/deep-thinking` → `/deep-anal
 
 ## Expected Outcome
 
-- A findings report from the chosen persona's point of view
+- A findings report from the chosen persona's point of view, with one score and grade
 - Top issues with recommendations
 - A clear severity report
 - Next actions via `/suggest-next-action`

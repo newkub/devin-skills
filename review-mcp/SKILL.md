@@ -8,22 +8,29 @@ related:
   - run-review
   - report-review
   - use-subagents
+  - review-issues
+  - review-gaps
   - improve
   - suggest-next-action
 ---
 
 ## Goal
 
-Review the `mcp` dimension of a scope and return evidence-backed findings with severity — a thin entry that delegates the checks to the `/deep-review` row(s) `mcp-surface` instead of keeping its own catalog
+Review the `mcp` dimension of a scope — tool descriptions, input schemas, permissions, PII handling — and return evidence-backed findings with severity — a thin entry that resolves its matrix row and delegates every check to `/deep-review`; it keeps no catalog of its own
 
 ## Scope
 
-Use when a scope needs the `mcp` dimension reviewed on its own — before a release gate, after a change in that area, or when `/deep-review` produced a finding whose owner is `review-mcp`
+Use when a scope exposes an MCP server that needs review — before publishing it, after a tool change, or when `/deep-review` produced a finding whose owner is `review-mcp`
 
-- resolves to the matrix row(s) `mcp-surface` in `deep-review/references/dimension-matrix.md` — that row's `Tier`, `Applies to`, `Evidence` (`cli + manual`), `Default severity`, and `N/A condition` decide eligibility; this skill never re-decides them
-- the analyzer slice that backs `cli` evidence is built by `/update-review-cli` and run by `/run-review` (CLI domain `config`); a dimension with no slice goes the `capture`/`manual` route with the matrix `Tool/skill` and the gap is recorded through `/update-review-cli`
-- fixes are out of scope — the owner route is `/improve mcp`; apply them only after the user confirms via `/deep-review <scope> then-fix`
-- whole-scope, multi-dimension review → `/deep-review`; provably wrong behavior only → `/review-issues`; promised-but-absent → `/review-gaps`
+| Matrix row | Tier | Evidence | CLI domain | Fix owner |
+|---|---|---|---|---|
+| `mcp-surface` | `artifact-match` | `cli` + `manual` | `config` | `/improve mcp` |
+
+- the row's `Applies to`, `Default severity`, and `N/A condition` in `deep-review/references/dimension-matrix.md` are the only eligibility rules applied here — this skill never re-decides them
+- the seed is this row plus the six `always` rows (`correctness`, `security`, `architecture`, `code-quality`, `dependencies`, `docs`), which `/deep-review` adds itself
+- the row takes the `cli` plus `manual` route — use the `config` slice built by `/update-review-cli` and run by `/run-review`, then audit every tool description by hand; a missing slice or rule pack → `/update-review-cli`
+- fixes are out of scope — the owner route is `/improve mcp`; apply only after confirmation via `/deep-review <scope> then-fix`
+- boundaries: whole-scope multi-dimension → `/deep-review`; provably wrong behavior → `/review-issues`; promised-but-absent → `/review-gaps`
 
 ## Execute
 
@@ -31,43 +38,43 @@ Use when a scope needs the `mcp` dimension reviewed on its own — before a rele
 
 ### 1. Deep Pre-Pass
 
-> Goal: Understand the scope before judging it
+> Goal: understand the scope before judging it
 
-1. `/deep-thinking` on the scope — which `mcp` risks this artifact can actually carry, and whether the matrix `N/A condition` applies
-2. `/deep-analyze` for the structure, stack, and the files this dimension touches
-3. `/deep-validate` on the evidence sources — the analyzer output, the `reports/review-report.json` slice, or the named files — before trusting them
+1. `/deep-thinking` — which `mcp-surface` risks this artifact can carry (destructive tool misnamed, schema drift, over-broad permission, PII in prompts), and whether the row's `N/A condition` applies
+2. `/deep-analyze` — every tool, resource, and prompt the server exposes, and its auth model
+3. `/deep-validate` — the schema dump and the analyzer slice before trusting them
 
 ### 2. Review The Dimension
 
-> Goal: Evidence-backed findings, no guessing
+> Goal: evidence-backed findings, no guessing
 
-1. Take the CLI slice through `/run-review` (`--domain config`, plus `--severity` to narrow); no slice → run the matrix `Tool/skill` first and review that output as the evidence source
-2. Use `/use-subagents` when the areas are independent — one reviewer per area, each reading only its slice or the files named in evidence
-3. Cross-check every finding in the real file; a finding without `file:line` is dropped, never downgraded
-4. Take the severity from the matrix `Default severity` plus its upgrade/downgrade trigger — the only legal way to move off the default
-5. Score the dimension: Critical 0, High 25, Medium 50, Low 75, Info 100 → weighted average; grade A ≥90, B ≥80, C ≥70, D ≥60, F <60
+1. Invoke `/deep-review <scope> mcp-surface` — the canonical run for this row; it adds the `always` tier and owns every check
+2. `cli` row → take the `/run-review` slice (`--domain config`); `manual` side → dump the MCP schema and audit each description for a wrong or destructive steer, with `ui-inspector` where available
+3. `/use-subagents` when the areas are independent — one reviewer per area, each reading only its slice or the files named in evidence
+4. Cross-check every finding in the real file — no `file:line`, no finding; severity comes from the row's `Default severity` plus its stated upgrade/downgrade trigger
+5. Score: Critical 0, High 25, Medium 50, Low 75, Info 100 → weighted average; grade A ≥90, B ≥80, C ≥70, D ≥60, F <60
 
 ### 3. Report
 
-> Goal: One chat table, then the next action
+> Goal: one chat table, then the next action
 
-1. Report via `/report-review` — summary (score/grade, findings by severity, scope) then the findings table
+1. `/report-review` — summary (score/grade, findings by severity, scope) then the canonical table
 2. Order by severity, Critical first; every row carries `file:line` and its `Owner skill`
-3. Close with `/suggest-next-action` — `/deep-review <scope> then-fix` for the confirmed set, `/improve mcp` as the owner route, `/update-review-cli` when the analyzer lacks this dimension
+3. Close with `/suggest-next-action` — `/deep-review <scope> then-fix` for the confirmed set, `/improve mcp` for a program of work, `/update-review-cli` when the analyzer lacks a row
 
 ## Rules
 
-- Evidence first — every finding cites `file:line`; a claim without evidence is dropped
-- No duplicated catalog — the checks live in `deep-review/references/dimension-checks.md`; this skill is a thin entry and must not restate them
-- Skip only for the matrix `N/A condition`, and quote it as the reason
-- Use `/use-subagents` if needed — independent areas are reviewed in parallel, one subagent per area
-- Review only — never edit code here; fixes run through `/deep-review <scope> then-fix` after the user confirms
+- Evidence first — every finding cites `file:line` or a schema entry; a claim without evidence is dropped
+- No duplicated catalog — the checks live in `deep-review/references/dimension-checks.md`; this skill resolves rows and reports only
+- Skip only for a row's `N/A condition`, quoted as the reason
+- `/use-subagents` when the areas are independent — one subagent per area, no overlapping files
+- Review only — never edit code here; fixes run through `/deep-review <scope> then-fix` after confirmation
 - Analyzer or rule-pack gap → `/update-review-cli`; never patch analyzer logic in a review skill
 - Never use `**` bold markers; report through `/report-review` only
 
 ## Expected Outcome
 
-- `review-mcp` completed with a score, grade, and severity-ordered findings, each with `file:line`
-- Coverage stated against the matrix row(s) `mcp-surface` — reviewed, or skipped with the `N/A condition` quoted
+- `review-mcp` completed with a score, grade, and severity-ordered findings, each with `file:line` or a schema entry
+- Coverage stated against row `mcp-surface` — reviewed, or skipped with the `N/A condition` quoted
 - Analyzer gaps routed to `/update-review-cli`
-- Fix set handed to `/improve mcp` and closed with `/suggest-next-action`
+- Fix set handed to `/improve mcp`, then closed with `/suggest-next-action`

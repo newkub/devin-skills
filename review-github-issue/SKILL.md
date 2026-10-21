@@ -9,15 +9,13 @@ related:
   - update-github-issue
   - cleanup-github-issue
   - resolve-github-issue-by-me
-  - create-github-issue
   - implement-to-production
   - use-subagents
-  - report
+  - report-review
   - suggest-next-action
   - deep-thinking
   - deep-analyze
   - deep-validate
-
 ---
 
 ## Goal
@@ -28,7 +26,7 @@ Review a GitHub issue before implement — check metadata (title, labels, assign
 
 Use for reviewing one or many GitHub issues — the issue lives on a GitHub repo (use the `gh` CLI or github-mcp tools) — for a generic issue (files, chat, other tracker) → use `/deep-review`
 
-- quality dimensions (completeness, quality, rating) reuse the checklists of `/deep-review` → `deep-review` — never duplicate checklists in this skill
+- quality dimensions (`completeness`, `quality`, `rating`) reuse the checklists of `/deep-review` — never duplicate them in this skill
 
 ## Execute
 
@@ -57,7 +55,7 @@ Every round starts with the deep pre-pass — run `/deep-thinking` → `/deep-an
 
 > Goal: the issue is clear enough to implement — follow the checklists of `/deep-review`
 
-1. dispatch `deep-review` via `/use-subagents` passing `scope`, `dimensions` (`completeness`, `quality`, `rating`), `findings-file` = issue content from Step 1
+1. dispatch a `/deep-review` reviewer via `/use-subagents`, passing `scope`, `dimensions` (`completeness`, `quality`, `rating`), `findings-file` = the issue content from Step 1
 2. Check additionally GitHub-specific: reproduction steps/expected vs actual (bug), acceptance criteria checklist, linked context (discussions/PRs), referenced screenshots/logs still accessible
 3. findings ≤ 2 → the parent analyzes itself, no spawn needed
 
@@ -83,9 +81,7 @@ Every round starts with the deep pre-pass — run `/deep-thinking` → `/deep-an
 - Focus only on the specified issue — no sweeping the whole tracker
 - Every finding must have evidence: a quote from the body/comments or the missing field
 - An already-closed issue → review closure quality only (close reason, resolution reference)
-- Use /list-github-issue if needed
-- Use /create-github-issue (issue forms) if needed
-- Use /deep-review if needed (generic issue outside GitHub)
+- Hunt sibling issues per repo with `/list-github-issue`; scaffold a missing form with `/create-github-issue`; a non-GitHub target → `/deep-review`
 
 ## Fix
 
@@ -99,6 +95,6 @@ Every round starts with the deep pre-pass — run `/deep-thinking` → `/deep-an
 ## Expected Outcome
 
 - Issue metadata review: title, labels, assignee, milestone, linked PRs
-- Content quality findings per completeness/quality/rating dimensions with evidence
+- Content quality findings per completeness/quality/rating dimensions with evidence, under one score and grade
 - Readiness verdict (`ready`/`needs-clarification`/`blocked`/`not-ready`) with missing info
 - Clear recommended next actions
