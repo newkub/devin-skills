@@ -127,7 +127,7 @@ if (scopePaths.length > 0) {
   const resolvable = new Set([...names, ...aliases.map((a) => a.alias)]);
   for (const label of [...new Set(labels)]) {
     if (!resolvable.has(label)) problems.push(`review-${label} resolves to no matrix row (matrix gap)`);
-    if (!existsSync(join(SKILL, "references", "dimensions", `${label}.md`))) problems.push(`review-${label} has no bundle (references/dimensions/${label}.md missing)`);
+    if (!existsSync(join(SKILL, "references", `${label}.md`))) problems.push(`review-${label} has no bundle (references/${label}.md missing)`);
   }
 }
 

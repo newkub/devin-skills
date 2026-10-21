@@ -177,7 +177,7 @@ Use when a review dimension has no analyzer, a rule fires wrong, or `/run-review
 
 - The `reviewWorkflow` map must cover every scope-map dimension label resolvable through the `Aliases` column of `deep-review/references/dimension-matrix.md` (except `review-github-pr`)
 - Every metric that `deep-review`/`/run-review` marks as `in update-review-cli = N` → add an analyzer or record the gap with a reason in `references/known-issues.md`
-- `/deep-review` dispatches one dimension at a time (per-artifact, tiered — labels resolved through the matrix `Aliases` column to `references/dimensions/<label>.md`) — the CLI must output findings that map back to those dimensions
+- `/deep-review` dispatches one dimension at a time (per-artifact, tiered — labels resolved through the matrix `Aliases` column to `references/<label>.md`) — the CLI must output findings that map back to those dimensions
 
 ### 5. Report Location
 

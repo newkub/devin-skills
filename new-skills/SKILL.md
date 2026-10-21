@@ -100,7 +100,7 @@ Pick a prefix by a single semantic only — never create a new skill that violat
 
 - Never create new `improve-*` or `optimize-*` — fixers live in `deep-review` (`### 7. Fix` + `references/domain-map.md` fix owner, runs only when the user confirms) — the only exception the user approved: `improve-writing` (writing-quality criteria SSOT, the same precedent as `improve-usage-md` which stays top-level); creating a new exception requires editing this contract + `AGENTS.md` with a user override reason only
 - One direction: `check` → `review` → `## Fix` — never reverse
-- A new review dimension → `deep-review/references/dimensions/<label>.md` (matrix row + scope-map alias), never a new `review-*` skill dir; write any fix as a route in `deep-review/references/domain-map.md`, never `workflows/fix-*/` or `references/fix-*.md`
+- A new review dimension → `deep-review/references/<label>.md` (matrix row + scope-map alias), never a new `review-*` skill dir; write any fix as a route in `deep-review/references/domain-map.md`, never `workflows/fix-*/` or `references/fix-*.md`
 - If a new skill overlaps an existing scope → merge into the existing one instead of creating a new one (`/merge`, `/idea-merge`)
 
 ### 5. References
