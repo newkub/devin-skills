@@ -72,7 +72,7 @@ Review the changed scope the way it will actually ship: split it into parts (wor
 > Goal: findings are fixed by the canonical reviewer+fixer, part by part
 
 1. Confirm the fix list via `/ask-me` — per finding by default; called from `/ship` or in `dont-ask-me` mode → follow the report as-is (`/follow-your-suggestion`), never a severity subset
-2. Run `/deep-review <part> then-fix` per part with the confirmed findings — its step 7 fixes per `deep-review/references/domain-map.md`; parts with disjoint file sets → parallel `fix-worker` subagents via `/use-subagents`
+2. Run `/deep-review <part> then-fix` per part with the confirmed findings — its step 7 fixes per `deep-review/references/checks.md` (`### Domain Map`); parts with disjoint file sets → parallel `fix-worker` subagents via `/use-subagents`
 3. Mechanically enforceable or convention findings → persist per `/deep-review` step 5 (`/update-devin-project-rules`, `/update-astgrep-rules`) so they cannot silently recur
 
 ### 6. Re-Verify

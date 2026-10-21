@@ -1,4 +1,8 @@
-# Dimension Matrix
+# Review Reference
+
+The dimension matrix (the single row contract) and the fix metrics for `deep-review`. The per-dimension proof statements and the fix routing map live in `references/checks.md`; `scripts/verify-matrix.ts` proves the invariants across both files — there is no third catalog and no per-label file.
+
+## Dimension Matrix
 
 Passive candidate table for `deep-review` `### 1. Think` — it seeds which dimensions may apply, and it is the single row contract every later step reads; `/deep-thinking` + CLI output stay the deciding authority (never a blind sweep). One row per dimension, and the row's own columns are what the pipeline consumes:
 
@@ -7,13 +11,13 @@ Passive candidate table for `deep-review` `### 1. Think` — it seeds which dime
 | `Tier` | `### 1` step 2/4 | `always` = every applicable workspace; `artifact-match` = only when the scope contains that artifact; `on-demand` = only when the user argument/scope signals ask for it. Tier controls the dispatch budget, never applicability (that is `/deep-thinking`) |
 | `Applies to` | `### 1` step 2 | artifact shape that makes the row eligible |
 | `Evidence` | `### 2` step 5, `### 3` step 4 | `cli` = a `review-report.json` slice exists → dispatch reviewer; `capture` = run the `Tool/skill` first, then dispatch with its output as slice; `manual` = no deterministic source → dispatch with the row + named files |
-| `Default severity` | `### 3` step 1, `### 4` step 1 | the severity when the trigger in parentheses is absent — the only legal way to move off it is the cited upgrade/downgrade trigger (`dimension-checks.md` `## Notes`) |
+| `Default severity` | `### 3` step 1, `### 4` step 1 | the severity when the trigger in parentheses is absent — the only legal way to move off it is the cited upgrade/downgrade trigger (`references/checks.md` `## Dimension Checks` → `### Check Notes`) |
 | `N/A condition` | `### 1` step 5, `## Rules` | the only conditions that justify `skipped` — record it as the ledger reason; anything else must be dispatched |
 | `CLI domain` | `### 2` step 3/5, `### 3` step 6 | the `wrikka-linter` domain (`quality`/`security`/`structure`/`config`/`deps`, inferred from the rule-id prefix) that owns the row's rules, used for the `--domain` filter and the analyzer-gap check; `—` = no pack covers it (analyzer gap). A rule can only be added where a pack exists, so `Enforcement: cli-check` implies a domain here |
 | `Enforcement` | `### 5. Persist` | where the finding becomes durable: `cli-check` (analyzer rule/metric — requires a `CLI domain`), `ast-grep` (project rule pack), `devin-rule` (prose convention in `.devin/rules/`), `test` (asserted by a test), `none` (measurement/capture only — it may still name the pack that owns related rules) |
 | `Gate` | `### 1` step 4, CI wiring | earliest cadence the row must run: `pr` (merge-blocking — needs a cheap deterministic check; a `capture` tool that is itself seconds-fast, e.g. `hadolint`/`sherif`, qualifies), `release` (proof needs the built artifact, a running app, a browser, or human judgment), `nightly` (heavy scan/drill), `on-demand` (tier `on-demand` rows). `Tier` governs one review run, `Gate` governs CI — the two are independent (a tier `on-demand` row may still gate `pr`) |
-| `Aliases` | `### 1` step 2, label resolution | `review-<label>` words from the `improve`/`optimize` scope-maps that resolve to this row — each one has a bundle at `references/<label>.md` that selects this row and delegates here; a label may appear on several rows; a label on no row is a matrix gap |
-| `Tool/skill`, `Fix owner`, `Authority` | `### 3` step 4, `### 5`, `### 6` | the tool that produces the evidence, the fix route (binds to the `improve`/`optimize` scope-map vocabulary + `references/domain-map.md`, never remapped ad hoc), and the standard the finding cites |
+| `Aliases` | `### 1` step 2, label resolution | `review-<label>` words from the `improve`/`optimize` scope-maps that resolve to this row — a label matches when it equals the row name or appears in this cell; a label may appear on several rows; a label on no row is a matrix gap (`references/checks.md` `### Label resolution`) |
+| `Tool/skill`, `Fix owner`, `Authority` | `### 3` step 4, `### 5`, `### 6` | the tool that produces the evidence, the fix route (binds to the `improve`/`optimize` scope-map vocabulary + `references/checks.md` `### Domain Map`, never remapped ad hoc), and the standard the finding cites |
 
 | Dimension | Tier | Applies to | Evidence | Default severity (upgrade/downgrade) | N/A condition (ledger reason) | Authority | CLI domain | Enforcement | Gate | Aliases | Tool/skill | Fix owner |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
@@ -143,12 +147,39 @@ Passive candidate table for `deep-review` `### 1. Think` — it seeds which dime
 | `slo-error-budget` | on-demand | services with alerting | manual | High when an SLO is claimed with no measurement; Medium for an unstated policy | no SLO claimed | SLO defined + error-budget policy | — | devin-rule | release | platform | metric-config slice, `/follow-service-signoz` | `/improve platform` |
 | `multi-region-failover` | on-demand | scaling services | capture | High when failover is claimed but never drilled; Medium for an unstated RPO | single-region by design | failover drill evidence | — | test | nightly | scalability | drill log, `toxiproxy` | `/improve stability` |
 
-Notes:
+### Matrix Notes
 
-- Row contract: `dimension-matrix.md` (this table) and `dimension-checks.md` hold **one row per dimension with the same names** — a name present in one file and not the other is a reporting bug, not a gap (`### 3` step 6). Facts that are one value per dimension live **only here**; `dimension-checks.md` holds the "what must be proven" narrative.
-- Checkable invariants — verify after any edit here by running `bun scripts/verify-matrix.ts` (from this skill's folder; exits non-zero with one line per violation, and always fails the change rather than the run): rows are 1:1 with `dimension-checks.md` (same names, same order); `Evidence` containing `cli` ⇒ `CLI domain` ≠ `—` (a slice must exist for a `cli` route); `Enforcement: cli-check` ⇒ `CLI domain` ≠ `—`; no alias equals its own row name or another row's name; every `Fix owner` exists in the `improve`/`optimize` scope-maps or `references/domain-map.md`; every scope-map label has a bundle at `references/<label>.md`; `/check-skills-structure --skill deep-review` reports no new finding
-- Adding a row requires all three sides in the same change: this table (row), `dimension-checks.md` (proof statement), and a `Fix owner` that already exists in `improve/references/scope-map.md` / `optimize/references/scope-map.md` or a fix route in `references/domain-map.md`. A row with no `Tool/skill` that exists on any machine lands in the ledger as `failed`/`manual` every run — prefer extending an existing row's check when trigger, authority, and owner are not all distinct.
-- Alias resolution (used by the `improve`/`optimize` scope-maps): a `review-<label>` name is answered by `references/<label>.md` — the bundle lists every row whose `Aliases` cell holds the label **or whose row name equals it**, plus the `always` tier, and returns that set as the `/deep-review` dimension argument — a label on no row is a matrix gap → report it, never invent a dimension. `review-issues` and `review-gaps` are exempt (they hold their own work).
+- Row contract: this table (`## Dimension Matrix`) and `references/checks.md` (`## Dimension Checks`) hold **one row per dimension with the same names** — a name present in one file and not the other is a reporting bug, not a gap (`### 3` step 6). Facts that are one value per dimension live **only here**; the checks file holds the "what must be proven" narrative.
+- Checkable invariants — verify after any edit here by running `bun scripts/verify-matrix.ts` (from this skill's folder; exits non-zero with one line per violation, and always fails the change rather than the run): rows are 1:1 with `references/checks.md` (same names, same order); `Evidence` containing `cli` ⇒ `CLI domain` ≠ `—` (a slice must exist for a `cli` route); `Enforcement: cli-check` ⇒ `CLI domain` ≠ `—`; no alias equals its own row name or another row's name; every `Fix owner` exists in the `improve`/`optimize` scope-maps or a `### Domain Map` route in `references/checks.md`; every scope-map label resolves to a row (name or `Aliases`); `/check-skills-structure --skill deep-review` reports no new finding
+- Adding a row requires all three sides in the same change: this table (row), `references/checks.md` (proof statement), and a `Fix owner` that already exists in `improve/references/scope-map.md` / `optimize/references/scope-map.md` or a fix route in `references/checks.md` `### Domain Map`. A row with no `Tool/skill` that exists on any machine lands in the ledger as `failed`/`manual` every run — prefer extending an existing row's check when trigger, authority, and owner are not all distinct.
+- Alias resolution (used by the `improve`/`optimize` scope-maps): a `review-<label>` name is answered by **every** row whose `Aliases` cell holds the label **or whose row name equals it**, plus the `always` tier — that set is the `/deep-review` dimension argument, read from the table and never re-resolved by hand; a label on no row is a matrix gap → report it, never invent a dimension. `review-issues` and `review-gaps` are exempt (they hold their own work).
 - Raw CLIs not yet owned by a `follow-tool-*` (`zizmor`, `osv-scanner`, `squawk`, `oasdiff`, `lychee`, `git-sizer`, `hyperfine`, `infracost`, `actionlint`, `@formatjs/cli`, `@axe-core/playwright`, `promptfoo`, `garak`, `hadolint`, `dive`, `web-ext`, `syncpack`, `trojan-source`, `stylelint`, `syft`, `grype`, `trycmd`, `vhs`, `shellcheck`, `kube-score`, `kube-linter`, `kubeconform`, `cargo-machete`, `depcheck`, `specdoc`, `kepler`, `testssl.sh`, `zap-baseline.py`, `k6`, `oha`, `vegeta`, `pgbackrest`, `wal-g`, `doctest`/`mdtest`, `graphql-inspector`, `modelaudit`, `modelscan`, `c2patool`, `svix`, `toxiproxy`, `trufflehog`, `js-fuzz`, `tsgolint`, `cargo-scan`, `cargo-llvm-cov`, `tokio-console`, `tui-test`, `sherif`, `publint`, `bundlewatch`, `licenseeye`, `hetty`, `pyroscope`, `parca`, `ui-inspector`, `memorybench`, `ragas`, `clamdscan`) → discover/install via `/download-program`, then hand the gap to `/update-devin-global-skills` to create a `follow-tool-*` owner (highest-value candidates first: `promptfoo` — serves `llm-security`, `llm-eval`, `mcp-surface`, `agent-memory-integrity`, `rag-retrieval-quality`; `trufflehog` — shared by `security` and `repo-hygiene`).
 - Rows sharing a fix owner are dispatched as separate ledger dimensions — the owner only matters at routing time (`### 6. Route`).
 - `CLI domain` maps a row to the `wrikka-linter` domain that owns its rules (`quality`/`security`/`structure`/`config`/`deps`, from `Domain::from_rule_id`); `—` means no pack covers the row, so it has no slice and takes the `capture`/`manual` route (`### 2` step 3) — a *durable* analyzer gap is only a `cli-check` row whose rule never fires (`### 3` step 6). Authority pins are current as of 2026-10 — re-verify via `/deep-research` when a pin looks stale.
+
+## Fix Metrics
+
+Scored after `deep-review` `### 7. Fix` runs (no fix step → no metric).
+
+**Fix score** = fixes verified / fixes attempted × 100 — grade A (90+), B (80+), C (70+), D (60+), F (<60)
+
+| No. | Metric | Description | How To Calculate |
+|-----|--------|-------------|------------------|
+| 1 | Review Coverage Ratio | % reviewed items in scope that were fixed and verified | fixed / total × 100 |
+| 2 | Reverted-Fix Rate | % fixes reverted or not accepted (not the analyzer's finding-level `falsePositiveRate`) | reverted fixes / total fixes × 100 |
+| 3 | Evidence Strength Score | % findings with evidence (file/line) | findings with evidence / total findings × 100 |
+| 4 | Actionability Score | % findings with clear recommendation | actionable findings / total findings × 100 |
+| 5 | Severity Distribution | count of findings per severity | count of Critical/High/Medium/Low/Info |
+| 6 | MTTR Estimate | estimated time to fix and verify | Critical=1d, High=3d, Medium=7d, Low=14d average |
+| 7 | Before/After Trend | score improvement over time | (after - before) / before × 100 |
+| 8 | Risk Exposure Index | high-severity unfixed issues in critical areas | count of Critical/High findings in critical scope |
+| 9 | Scope Boundary Adherence | % fixed issues inside declared scope | in-scope findings / total findings × 100 |
+| 10 | Documentation/Report Quality | % fixes with file/line and reason | documented findings / total × 100 |
+
+Domain-specific:
+
+| No. | Metric | Description | How To Calculate |
+|-----|--------|-------------|------------------|
+| 1 | Fix Success Rate | % fixes that pass verification | fixes verified / total fixes × 100 |
+| 2 | Regression Rate After Fix | % fixed issues that reintroduce problems | regressions / total fixed × 100 |
+| 3 | Verification Coverage | % findings covered by a verification step | verified findings / total findings × 100 |

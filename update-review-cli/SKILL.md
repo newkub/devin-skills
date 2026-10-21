@@ -33,7 +33,7 @@ Use when a review dimension has no analyzer, a rule fires wrong, or `/run-review
 - `/deep-review` slices the same `review-report.json` per dimension and consumes `references/known-issues.md` — never duplicate analyzer logic in a review skill
 - `/update-project` calls this skill so every project updated through it gets a current review CLI
 - all review criteria are inlined here — the only external file is the living-data `references/known-issues.md` (single source of truth for analyzer/CLI issues, shared with `/deep-review`)
-- every scope-map dimension label resolvable through the `Aliases` column of `deep-review/references/dimension-matrix.md` must have a mapping in `reviewWorkflow`; a missing analyzer is recorded here, not invented in the review pass
+- every scope-map dimension label resolvable through the `Aliases` column of `deep-review/references/review.md` (`## Dimension Matrix`) must have a mapping in `reviewWorkflow`; a missing analyzer is recorded here, not invented in the review pass
 
 ## Execute
 
@@ -94,7 +94,7 @@ Use when a review dimension has no analyzer, a rule fires wrong, or `/run-review
 
 1. Create `src/adapters/file-utils.ts` (`walk`, `readText`, `getRel`), `src/adapters/git-grep.ts` (`gitGrep`, `gitGrepCount`), `src/domain/models.ts` (`CategoryFinding`, `CategoryResult`, `ReviewReport`), `src/application/review.ts` (import `runAllAnalyzers` from `tools-analyze`), `src/presentation/cli.ts` (entry point), `src/index.ts` (export `runReview`/`createReviewPorts`)
 2. Convert each analyzer's `CategoryResult` into a `ReviewReport` with score, grade, domain breakdown
-3. Define the `reviewWorkflow` map to review dimensions — must cover every scope-map dimension label resolvable through the `Aliases` column of `deep-review/references/dimension-matrix.md` (except `review-github-pr`, which is PR-scoped)
+3. Define the `reviewWorkflow` map to review dimensions — must cover every scope-map dimension label resolvable through the `Aliases` column of `deep-review/references/review.md` (`## Dimension Matrix`) (except `review-github-pr`, which is PR-scoped)
 4. Any metric or review domain still without an analyzer → record it as an analyzer gap (name + review skill + missing metric) in `references/known-issues.md` and report it
 5. If an analyzer isn't fully implemented, add a `// TODO` comment with details
 6. If an AST-based analyzer is needed (structural patterns regex/git-grep can't do, e.g. function metrics, SRP counts, custom lint rules) → run `/use-astgrep-programmatic` to integrate `@ast-grep/napi` or `ast-grep scan --json` into `tools/analyze`/`tools/review-codebase` — findings must have file:line + rule id per `## Rules → 4. Evidence-Based`
@@ -175,9 +175,9 @@ Use when a review dimension has no analyzer, a rule fires wrong, or `/run-review
 
 ### 4b. Review Coverage
 
-- The `reviewWorkflow` map must cover every scope-map dimension label resolvable through the `Aliases` column of `deep-review/references/dimension-matrix.md` (except `review-github-pr`)
+- The `reviewWorkflow` map must cover every scope-map dimension label resolvable through the `Aliases` column of `deep-review/references/review.md` (`## Dimension Matrix`) (except `review-github-pr`)
 - Every metric that `deep-review`/`/run-review` marks as `in update-review-cli = N` → add an analyzer or record the gap with a reason in `references/known-issues.md`
-- `/deep-review` dispatches one dimension at a time (per-artifact, tiered — labels resolved through the matrix `Aliases` column to `references/<label>.md`) — the CLI must output findings that map back to those dimensions
+- `/deep-review` dispatches one dimension at a time (per-artifact, tiered — labels resolved through the matrix `Aliases` column to their rows) — the CLI must output findings that map back to those dimensions
 
 ### 5. Report Location
 
@@ -209,7 +209,7 @@ Use when a review dimension has no analyzer, a rule fires wrong, or `/run-review
 
 - The `tools/review-codebase` CLI (or linter rule pack) exists, validates, and runs at the project root
 - Findings cover 60+ categories with evidence and severity
-- `reviewWorkflow` covers every scope-map dimension label resolvable through the `Aliases` column of `deep-review/references/dimension-matrix.md` — analyzer gaps are recorded in `references/known-issues.md`
+- `reviewWorkflow` covers every scope-map dimension label resolvable through the `Aliases` column of `deep-review/references/review.md` (`## Dimension Matrix`) — analyzer gaps are recorded in `references/known-issues.md`
 - Analyzer and rule changes are handed to `/run-review` for the before/after measurement
 - No analyzer errors; every change cites the rule id or analyzer file it lands in
 

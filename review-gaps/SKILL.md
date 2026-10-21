@@ -28,7 +28,7 @@ Review one dimension only: `gaps` — capability the scope promises but does not
 
 - Use when the user asks what is missing / unfinished / not really wired in an area, or from `/review` `### 2` as the gaps dimension
 - Not wrong-behavior hunting (→ `/review-issues`), not a full multi-dimension scan (→ `/deep-review`), not ideating new features (→ `/idea-features`)
-- Not a matrix-derived label entry — this skill owns its catalog; `deep-review/references/dimension-matrix.md` `## Notes` exempts `review-gaps` and `review-issues` from alias resolution
+- Not a matrix-derived label entry — this skill owns its catalog; `deep-review/references/review.md` `### Matrix Notes` exempts `review-gaps` and `review-issues` from alias resolution
 - If the user appends `and fix` → treat as confirmed; fill every gap without asking again (still report before filling)
 - A gap whose surface was never designed (command tree, TUI screens, web UX) → design it first: `/design-cli-prototype` / `/design-tui-prototype` in chat, or `/design-web-prototype` / `/design-html-prototype` when it must be seen — then fill it; never fill a gap with a new stub
 

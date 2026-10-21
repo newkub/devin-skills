@@ -3,7 +3,7 @@
 The single mapping table of scope → review domain + ownership boundary — other skills must not copy this table; point to this file instead (`/follow-single-of-source`)
 Every scope is handled by the `/improve` thin entry (or `/optimize` for metric-driven scope): review → `/deep-review <dimension>` | fix → `/deep-review <scope> then-fix`
 
-**Label resolution (mandatory)** — every name in the `Review domain(s)` column is either a plain dimension label answered by `deep-review/references/<label>.md`, or a standalone skill name kept verbatim (`review-test`, `review-gaps`, `review-devin-global-harness`, `usage`). A dimension label takes the row(s) in `deep-review/references/dimension-matrix.md` whose `Aliases` column lists it (or whose row name equals it), plus the `always` tier — read the bundle file, never re-resolve by hand. A label with no row and no bundle is a matrix gap: dispatch the `always` tier + the closest artifact-match rows and report the gap, never invent a dimension.
+**Label resolution (mandatory)** — every name in the `Review domain(s)` column is either a plain dimension label, or a standalone skill name kept verbatim (`review-test`, `review-gaps`, `review-devin-global-harness`, `usage`). A dimension label takes the row(s) in `deep-review/references/review.md` `## Dimension Matrix` whose `Aliases` column lists it (or whose row name equals it), plus the `always` tier — read that set from the table, never re-resolve by hand (resolution rules: `deep-review/references/checks.md` `### Label resolution`). A label with no row is a matrix gap: dispatch the `always` tier + the closest artifact-match rows and report the gap, never invent a dimension.
 
 | Scope (`/improve <scope>`) | Review domain(s) | Ownership / boundary |
 |---|---|---|

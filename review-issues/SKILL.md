@@ -25,7 +25,7 @@ Review one dimension only: `issues` — behavior that is provably wrong in the s
 
 - Use when the user asks specifically what is wrong/broken in an area, or from `/review` `### 2` as the issues dimension
 - Not missing-capability hunting (→ `/review-gaps`), not a full multi-dimension codebase scan (→ `/deep-review`), not debugging one known failure (→ `/deep-debug`)
-- Not a matrix-derived label entry — this skill owns its catalog; `deep-review/references/dimension-matrix.md` `## Notes` exempts `review-issues` and `review-gaps` from alias resolution
+- Not a matrix-derived label entry — this skill owns its catalog; `deep-review/references/review.md` `### Matrix Notes` exempts `review-issues` and `review-gaps` from alias resolution
 - If the user appends `and fix` → treat as confirmed; fix every finding without asking again (still report before fixing)
 
 ## Execute

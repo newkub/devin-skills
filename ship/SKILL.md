@@ -49,7 +49,7 @@ The single ship command — run every verification gate first, then commit/push,
 
 > Goal: changes and `AGENTS.md` pass review and their findings are fixed before ship
 
-1. Run `/deep-review [scope] --diff then-fix` — the canonical reviewer + fixer: one full scan sliced per dimension, one reviewer per dimension via `/use-subagents`, findings fixed per its `references/domain-map.md`, re-reviewed with `--diff` until clean; the `/ship` flow skips the step 7 per-finding confirm and follows the report as-is; it never pushes or merges
+1. Run `/deep-review [scope] --diff then-fix` — the canonical reviewer + fixer: one full scan sliced per dimension, one reviewer per dimension via `/use-subagents`, findings fixed per its `references/checks.md` (`### Domain Map`), re-reviewed with `--diff` until clean; the `/ship` flow skips the step 7 per-finding confirm and follows the report as-is; it never pushes or merges
 2. Change spans several workspaces/modules/layers → run `/deep-review-ship` instead — it splits the scope into disjoint parts, runs the same review+fix skill per part in parallel, and returns the ship-readiness verdict here
 3. Add `/review-devin-global-harness` when changing the devin skills repo
 4. If findings survive ≤ 3 fix/re-verify rounds → stop and report `blocked`, never push

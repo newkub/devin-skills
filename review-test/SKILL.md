@@ -27,7 +27,7 @@ Use when a scope needs the `test` dimension reviewed on its own — before its g
 | `tests` | `artifact-match` | `cli` | `quality` | `/improve tests` |
 | `test-data-hygiene` | `artifact-match` | `cli` | `quality` | `/improve tests` |
 
-- the row's `Applies to`, `Default severity`, and `N/A condition` in `deep-review/references/dimension-matrix.md` are the only eligibility rules applied here — this skill never re-decides them
+- the row's `Applies to`, `Default severity`, and `N/A condition` in `deep-review/references/review.md` (`## Dimension Matrix`) are the only eligibility rules applied here — this skill never re-decides them
 - the seed is these rows plus the six `always` rows (`correctness`, `security`, `architecture`, `code-quality`, `dependencies`, `docs`), which `/deep-review` adds itself
 - every row here takes the `cli` route — use the `quality` slice built by `/update-review-cli` and run by `/run-review`; a missing slice or rule pack → `/update-review-cli`
 - fixes are out of scope — the owner route is `/improve tests`; apply only after confirmation via `/deep-review <scope> then-fix`
@@ -66,7 +66,7 @@ Use when a scope needs the `test` dimension reviewed on its own — before its g
 ## Rules
 
 - Evidence first — every finding cites `file:line` or a coverage/flake result; a claim without evidence is dropped
-- No duplicated catalog — the checks live in `deep-review/references/dimension-checks.md`; this skill resolves rows and reports only
+- No duplicated catalog — the checks live in `deep-review/references/checks.md` (`## Dimension Checks`); this skill resolves rows and reports only
 - Skip only for a row's `N/A condition`, quoted as the reason
 - `/use-subagents` when the areas are independent — one subagent per area, no overlapping files
 - Review only — never edit code here; fixes run through `/deep-review <scope> then-fix` after confirmation

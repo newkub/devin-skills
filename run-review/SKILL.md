@@ -50,7 +50,7 @@ Use when a project needs a measured quality gate — the review CLI exists (or i
 
 > Goal: Decide whether the CLI is good enough to trust this run
 
-1. Check every trigger: `categories < 60`, overall `score < 70` or grade `D`/`F`, any domain `score < 50`, `analyzerErrors > 0`, `falsePositiveRate > 20%`, `reviewWorkflow` not covering the scope-map dimension labels resolvable through the `Aliases` column of `deep-review/references/dimension-matrix.md`
+1. Check every trigger: `categories < 60`, overall `score < 70` or grade `D`/`F`, any domain `score < 50`, `analyzerErrors > 0`, `falsePositiveRate > 20%`, `reviewWorkflow` not covering the scope-map dimension labels resolvable through the `Aliases` column of `deep-review/references/review.md` (`## Dimension Matrix`)
 2. `analyzerErrors > 0` → `/resolve-errors` first; analyzer logic wrong or missing → `/update-create-analyze-cli`
 3. A trigger that needs code changes → `/update-review-cli`, then rerun only the failing slice with `--domain`/`--severity` — max 3 rounds
 4. Still failing after 3 rounds → stop, report the metric table and the reason, and hand the gap to `/update-review-cli`

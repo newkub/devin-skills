@@ -47,7 +47,7 @@ Use when the user asks what "usage docs should improve" in this scope
 
 > Goal: fix every finding found
 
-1. Send each finding to `/deep-review <scope> then-fix fix all` (domain `usage` in `deep-review/references/domain-map.md`)
+1. Send each finding to `/deep-review <scope> then-fix fix all` (domain `usage` in `deep-review/references/checks.md` `### Domain Map`)
 2. For a parity fix (docs promise does not match reality) → verify with `/deep-test usage` after fixing; if a whole section is missing/outdated → `/update-usage-md`
 3. Run `/suggest-next-action` after everything is fixed
 
