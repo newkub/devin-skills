@@ -4,7 +4,7 @@ description: Simplify files — shorter and clearer with identical behavior — 
 argument-hint: "[@files... | dir]"
 related:
   - refactor
-  - refactor-skills
+  - update-devin-global-skills
   - check-long-files
   - report
   - suggest-next-action
@@ -17,7 +17,7 @@ Reduce file size and complexity while preserving exact behavior and semantics �
 
 ## Scope
 
-Code files, docs, and SKILL.md files. Boundary: restructuring/splitting files or changing boundaries → `/refactor`; skill-package conventions → `/refactor-skills`.
+Code files, docs, and SKILL.md files. Boundary: restructuring/splitting files or changing boundaries → `/refactor`; skill-package conventions → `/update-devin-global-skills refactor`.
 
 ## Execute
 

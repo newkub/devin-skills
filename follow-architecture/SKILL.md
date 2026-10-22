@@ -4,7 +4,7 @@ description: Pick and apply the architecture pattern — Clean, Layered, monorep
 argument-hint: "[clean | layered | monorepo | architecture | target]"
 related:
   - refactor
-  - refactor-skills
+  - update-devin-global-skills
   - deep-review
   - scan-codebase
   - relocation
@@ -37,7 +37,7 @@ Pick the one architecture pattern that fits the target from evidence, then apply
 
 An explicit argument answers `### 2` only — `### 1` (evidence + baseline), `### 3` (apply) and `### 4` (verify) always run.
 
-Handed off elsewhere: microservices/distributed topology (see `## Goal`) · the target is a skill package → `/refactor-skills` · folder move only → `/relocation` · naming only → `/rename` · boundary checking without a restructure → `/deep-review` dimension `architecture`
+Handed off elsewhere: microservices/distributed topology (see `## Goal`) · the target is a skill package → `/update-devin-global-skills refactor` · folder move only → `/relocation` · naming only → `/rename` · boundary checking without a restructure → `/deep-review` dimension `architecture`
 
 ## Execute
 

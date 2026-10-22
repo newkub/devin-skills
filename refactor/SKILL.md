@@ -14,7 +14,7 @@ related:
   - use-lib-effective
   - follow-best-practice
   - follow-architecture
-  - refactor-skills
+  - update-devin-global-skills
   - update-references
   - use-subagents
   - dont-over-engineer
@@ -37,9 +37,9 @@ Restructure without changing observable behavior — every target carries `file:
 | `shared` | duplication across packages | `### 3` shared |
 | `orm` | raw SQL, scattered queries, N+1 | `### 3` orm |
 | `architecture`, `clean`, `layered`, `monorepo` (layout) | wrong layers, boundaries, dependency direction, repo-level layout | `### 3` architecture → `/follow-architecture` |
-| `skills` | the target is a skill package | `/refactor-skills` |
+| `skills` | the target is a skill package | `/update-devin-global-skills refactor` |
 
-Out of scope here — handed off, or used conditionally by one step; every `/skill` mention below is either the `related` pipeline or this table:
+Out of scope here — handed off; every `/skill` mention below is either the `related` pipeline or this table:
 
 | Out of scope | Owner |
 |--------------|-------|
@@ -47,40 +47,28 @@ Out of scope here — handed off, or used conditionally by one step; every `/ski
 | hardcoded secret, URL, or magic string | `/no-hard-code` |
 | ignore comment to remove | `/no-use-ignore` |
 | shorter/clearer file, boundaries untouched | `/simplify` |
-| event semantics (ordering, idempotency) | `/improve events` |
-| queue operations | `/improve queues` |
-| transport or realtime | `/improve realtime` |
+| event semantics, queue operations, transport | `/improve events`, `/improve queues`, `/improve realtime` |
 | test suite work | `/update-tests` |
-| pure file move | `/relocation` |
-| pure naming | `/rename` |
-| batch pattern rewrite | `/use-astgrep rewrite` |
+| pure file move, pure naming, batch pattern rewrite | `/relocation`, `/rename`, `/use-astgrep rewrite` |
 | performance tuning | `/deep-optimize` |
 | circular dependency graph | `/follow-tool-madge` |
-| ORM setup and config | `/follow-lib-drizzle` |
-| payload/schema validation boundary | `/follow-tool-data-validation` |
-| `AGENTS.md` sync | `/update-agents-md` |
-| ast-grep rule persistence | `/update-astgrep-rules` |
-| `.devin/rules` persistence | `/update-devin-project-rules` |
-| error recovery | `/resolve-errors` |
-| user decision | `/ask-me` |
-| single-source convention | `/follow-single-of-source` |
+| ORM setup, payload/schema validation boundary | `/follow-lib-drizzle`, `/follow-tool-data-validation` |
+| `AGENTS.md`, ast-grep rules, `.devin/rules` persistence | `/update-agents-md`, `/update-astgrep-rules`, `/update-devin-project-rules` |
+| error recovery, user decision, single-source convention | `/resolve-errors`, `/ask-me`, `/follow-single-of-source` |
 
 ## Execute
 
 ### 1. Baseline And Evidence
-
 > Goal: start from green and name the targets with `file:line` — never refactor on a broken or unmeasured baseline, never on a hunch
 
-1. Read the project `AGENTS.md` conventions (line cap, import alias, folder layout) before judging any structure
-2. Confirm a clean working tree (`git status`) — pre-existing changes → record them first, so every diff below shows only this refactor
-3. Run `/run-verify` (lint, typecheck, test, build) FIRST — red → resolve to green before touching anything
-4. Collect candidates into one table `file:line | smell | technique | scope`: `/check-long-files` (size), `/deep-review` dimension `code-quality` (SRP, duplication, dead exports, complexity — it owns the detectors) and dimension `architecture` for a repo/package scope (its `N/A condition` is a single-file scope)
-5. Read the table before planning: empty table and no new code → nothing to refactor, report and stop; new code only → jump to `### 3` file/SRP with no baseline
-6. Safety net: target's public behavior has no tests → run `/update-tests` to lock current behavior with characterization tests
-7. Record the baseline for the after-comparison: `git rev-parse HEAD` (the sha `### 5` diffs against), `/check-long-files` line counts, `/deep-review` finding count, suite and lint status
+1. Read the project `AGENTS.md` conventions (line cap, import alias, folder layout) before judging any structure; confirm a clean tree (`git status`) — pre-existing changes → record them first, so every diff below shows only this refactor
+2. Run `/run-verify` (lint, typecheck, test, build) FIRST — red → resolve to green before touching anything
+3. Collect candidates into one table `file:line | smell | technique | scope`: `/check-long-files` (size), `/deep-review` dimension `code-quality` (SRP, duplication, dead exports, complexity — it owns the detectors) and dimension `architecture` for a repo/package scope (its `N/A condition` is a single-file scope)
+4. Read the table before planning: empty table and no new code → nothing to refactor, report and stop; new code only → jump to `### 3` file/SRP with no baseline
+5. Safety net: target's public behavior has no tests → run `/update-tests` to lock current behavior with characterization tests
+6. Record the baseline for the after-comparison: `git rev-parse HEAD` (the sha `### 5` diffs against), `/check-long-files` line counts, `/deep-review` finding count, suite and lint status
 
 ### 2. Plan
-
 > Goal: know what moves and in what order before moving it
 
 1. Bulk scope (workspace/monorepo/codebase or several asks at once) → run `/create-plan-in-dot-devin` with the `### 1` table; a preparatory refactor before a feature goes in its own commit
@@ -88,10 +76,9 @@ Out of scope here — handed off, or used conditionally by one step; every `/ski
 3. Not bulk but irreversible or wide-reaching (moves, splits, renames across call sites) → run `/report-before-after` for the plan and expected before→after, which confirms before any edit
 4. While planning run `/use-lib-effective` to reuse existing deps and patterns before writing anything new — the `### 1` table is the evidence, plan from it instead of re-scanning
 5. Before designing the target shape run `/follow-best-practice` for the stack the target lives in — the manifest's owner skills' `best-practices/` define the layout, API style, and error handling a refactored module must land on; cite the practice each structural decision follows
-6. Architecture decision needed → plan it through `/follow-architecture` (the architecture SSOT — it owns pattern selection, Clean/Layered guides, monorepo layout, workspace file structures); still unclear → run `/ask-me`
+6. Architecture decision needed → plan it through `/follow-architecture` (the architecture SSOT — pattern selection, Clean/Layered guides, monorepo layout, workspace file structures); still unclear → run `/ask-me`
 
 ### 3. Refactor
-
 > Goal: one unit = 1 reason to change; one technique per step → `/run-check` green → checkpoint commit; red → revert that step only
 
 Technique matrix → `## Guide`; take the technique from the `### 1` table before touching code:
@@ -105,14 +92,12 @@ Technique matrix → `## Guide`; take the technique from the `### 1` table befor
 7. `architecture` — do not restructure layers here; run `/follow-architecture` and return for the file-level passes it exposes
 
 ### 4. Update References
-
 > Goal: no broken path or name remains after the restructure
 
 1. Run `/update-references` for paths/imports and global references, then prove the result: `rg "<old-path>|<old-name>"` returns no hit
 2. Layout changed → run `/update-agents-md`; a broken reference → run `/resolve-errors`
 
 ### 5. Verify After
-
 > Goal: prove behavior is unchanged vs the `### 1` baseline
 
 1. Run `/run-verify` + `/deep-validate` against the `### 1` baseline; red → back to `### 3`, max 3 rounds → stop and report the remaining gap
@@ -155,6 +140,5 @@ Technique matrix → `## Guide`; take the technique from the `### 1` table befor
 
 - Every target traced to `file:line` evidence and closed: files/members sized right, one responsibility each, naming/patterns/structure consistent, imports/exports clean; code that global rules route here already starts that shape
 - Public surface identical — no barrel or index in the change set gains, loses, or re-signatures an export
-- Architecture (when requested) applied through `/follow-architecture` — pattern real in code, no circular deps
-- The resulting shape matches the stack's `best-practices/` (via `/follow-best-practice`) instead of an ad-hoc style; every structural decision cites the practice it follows
+- Architecture (when requested) applied through `/follow-architecture` — pattern real in code, no circular deps; resulting shape matches the stack's `best-practices/` (via `/follow-best-practice`), every structural decision citing the practice it follows
 - No broken references; `/run-verify` + `/deep-validate` green vs baseline; recurring smells persisted as rules; before/after report delivered

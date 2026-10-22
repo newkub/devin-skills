@@ -6,7 +6,6 @@ related:
   - use-related-skills
   - follow-single-of-source
   - update-devin-global-skills
-  - refactor-skills
   - deep-review
   - scan-codebase
   - review-devin-global-harness
@@ -21,7 +20,7 @@ Create one new devin global skill from a given idea or topic, without duplicatin
 
 ## Scope
 
-Use only when work requires creating a new skill — updating an existing skill's content → `/update-devin-global-skills`, refactoring an existing skill's structure → `/refactor-skills`
+Use only when work requires creating a new skill — updating an existing skill's content → `/update-devin-global-skills`, refactoring an existing skill's structure → `/update-devin-global-skills refactor`
 
 To create skills from dependencies in a package manifest (`package.json`, `Cargo.toml`) that do not yet exist globally → see the flow in [references/create-skills-from-manifest.md](references/create-skills-from-manifest.md) (adjust the path to `%APPDATA%\devin\skills`)
 

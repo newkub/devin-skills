@@ -1,11 +1,10 @@
 ---
 name: update-devin-global-skills
 description: "Maintain global Devin skills: create, update, refactor, and validate against repo standards"
-argument-hint: "[@files-or-topic...]"
+argument-hint: "[@files-or-topic... | refactor]"
 related:
   - follow-default-config
   - new-skills
-  - refactor-skills
   - follow-single-of-source
   - deep-review
   - check-reference
@@ -26,7 +25,13 @@ Create, update, or refactor global Devin skills in `%APPDATA%\devin\skills` so t
 
 ## Scope
 
-For new or existing skills: update one skill, many skills, or the whole repo; create a new skill from an idea/topic (a single focused skill → `/new-skills`); refactor for clear SRP (restructure → `/refactor-skills`); organize `workflows/` and subagent profiles (`SKILL.md ## Subagents`) per `## Conventions → Workflows And Subagents`
+For new or existing skills: update one skill, many skills, or the whole repo; create a new skill from an idea/topic (a single focused skill → `/new-skills`); refactor for clear SRP (`refactor` argument → `workflows/refactor/SKILL.md`); organize `workflows/` and subagent profiles (`SKILL.md ## Subagents`) per `## Conventions → Workflows And Subagents`
+
+| Argument | Routes to |
+|----------|-----------|
+| none, `@files`, or a topic | this `SKILL.md` `## Execute` |
+| `refactor` | `workflows/refactor/SKILL.md` — restructure skill packages (split, merge, workflows, metadata, sync refs) |
+| `usage` / `skill-usage` | `references/maintenance.md` `#skill-usage-audit` — read-only dead/dying skill audit |
 
 ## Execute
 
@@ -49,7 +54,7 @@ For new or existing skills: update one skill, many skills, or the whole repo; cr
 > Goal: no duplication, and know when to split into sub-files
 
 1. `/scan-codebase` for duplicate/similar skills — heavy overlap → recommend update/extend/rename instead of creating new
-2. `SKILL.md` >250 lines or multiple responsibilities → split per `## Conventions → When To Split`; restructure → `/refactor-skills`
+2. `SKILL.md` >250 lines or multiple responsibilities → split per `## Conventions → When To Split`; restructure → `workflows/refactor/SKILL.md` (`refactor` argument)
 
 ### 4. Select Template And Structure
 > Goal: the skill starts with the correct structure
