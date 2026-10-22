@@ -46,6 +46,9 @@ Use when the task involves this library/tool — setup, usage, debugging, or bes
 |----------|----------|
 | Return a PNG QR from an API route | `usecases/qr-in-api-response.md` |
 | Inline SVG, data URL, and terminal output | `usecases/qr-svg-and-terminal.md` |
+| Branded QR with a centered logo | `usecases/branded-qr-with-logo.md` |
+| Print labels at an exact physical size | `usecases/print-labels-at-exact-size.md` |
+| Render in the browser on a canvas | `usecases/client-side-canvas.md` |
 
 ## Rules
 

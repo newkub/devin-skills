@@ -3,8 +3,10 @@ name: use-lib-effective
 description: Fully leverage existing dependencies and the preferred stack instead of reinventing
 argument-hint: "[need-or-feature]"
 related:
+  - follow-agents-md
   - follow-my-techstack
   - deep-review
+  - review-use-lib-effective
   - deep-research
   - follow-best-practice
   - learn-from-web
@@ -25,8 +27,9 @@ Reduce redundancy and reinvention — before writing new code or adding a depend
 
 Use when a task is about to: write a new utility/helper, implement a feature a lib likely already provides, add a dependency, or refactor code that an existing lib could replace — main callers: `/refactor`, `/implement-to-production`, general implementation work
 
+- Follow the project's declared stack and dependency rules in `AGENTS.md` → `/follow-agents-md`
 - Pick libs per the preferred stack → `/follow-my-techstack`
-- Audit deps (outdated, unused, vulnerabilities) → `/deep-review`
+- Audit deps (outdated, unused, vulnerabilities) → `/deep-review`; audit how effectively the scope uses its libraries → `/review-use-lib-effective`
 - Reuse existing internal code before writing new code (DRY) → `### 5` (merged from `/follow-reusable`)
 
 ## Execute
@@ -35,9 +38,10 @@ Use when a task is about to: write a new utility/helper, implement a feature a l
 
 > Goal: Know what the project can already use before considering writing it yourself
 
-1. Read the package manifest (`package.json` + catalog/workspaces, `Cargo.toml`, `go.mod`) — review both installed dependencies and catalog entries
-2. Search the codebase for whether that dep is already used and how far its capability is exercised (e.g., `effect` is imported but `Schedule` and `Layer` are unused)
-3. Check the monorepo's internal packages/utilities that solve the same problem (`@booking/shared`, `src/utils`, `packages/*`)
+1. Read the project's conventions first — `AGENTS.md`/`README.md` dependency policy, internal packages, allowed/forbidden libs → `/follow-agents-md` when `AGENTS.md` exists
+2. Read the package manifest (`package.json` + catalog/workspaces, `Cargo.toml`, `go.mod`) — review both installed dependencies and catalog entries
+3. Search the codebase for whether that dep is already used and how far its capability is exercised (e.g., `effect` is imported but `Schedule` and `Layer` are unused)
+4. Check the monorepo's internal packages/utilities that solve the same problem (`@booking/shared`, `src/utils`, `packages/*`)
 
 ### 2. Match Need To Existing Capability
 
@@ -72,7 +76,7 @@ Use when a task is about to: write a new utility/helper, implement a feature a l
 
 > Goal: before writing a new function/component/hook/util, find and reuse the implementation already in the codebase (DRY)
 
-1. Search before write — keyword/symbol via `rg` or `/search-files-patterns`; structural search via `/search-with-astgrep` when names differ but logic is the same; survey shared locations (`utils/`, `shared/`, `common/`, `lib/`, `hooks/`, and internal packages `packages/*`, `@org/*` in a monorepo)
+1. Search before write — keyword/symbol via `rg` or `/code-search`; structural search via `/search-with-astgrep` when names differ but logic is the same; survey shared locations (`utils/`, `shared/`, `common/`, `lib/`, `hooks/`, and internal packages `packages/*`, `@org/*` in a monorepo)
 2. Detect duplication — run `jscpd` (`/follow-tool-jscpd`) in scope; classify candidates: identical / near-duplicate / same pattern different domain
 3. Choose reuse strategy — strict order `reuse > extend > extract > create`:
    - Direct reuse: import/compose the existing implementation when the signature matches the use case
@@ -103,6 +107,7 @@ Use when a task is about to: write a new utility/helper, implement a feature a l
 ### 4. No New Dep Without Check
 
 - Before `add`ing any dep → complete steps 1-3 first
+- Respect the dependency policy the project declares in `AGENTS.md` → `/follow-agents-md`
 - A new version must have been published for ≥7 days, and check peer constraints
 - Use /deep-research dependencies if needed
 - Use /follow-best-practice if needed

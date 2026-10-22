@@ -22,7 +22,7 @@ Enforce single source of truth — every piece of data/definition/config/catalog
 
 Use when creating/editing skills, docs, config, or data that could become duplicated:
 
-- skill content — the canonical catalog/dispatch table lives in one place (e.g. `deep-review/SKILL.md`)
+- skill content — the canonical catalog/dispatch table lives in one place (e.g. `deep-review-codebase-everything/SKILL.md`)
 - config values — defined once then injected/imported (env, tokens, versions)
 - docs — frequently changing facts (counts, versions, commands) have a single source
 - data/schema — one model definition derives types/forms/validation

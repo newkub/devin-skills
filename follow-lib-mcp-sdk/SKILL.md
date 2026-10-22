@@ -29,7 +29,11 @@ Use when the task involves `@modelcontextprotocol/sdk` — creating/modifying an
 
 ### Workflows
 
-| Topic | Workflow |-------|----------| Setup | `workflows/setup-server/SKILL.md` — `McpServer`, tools/resources/prompts registration | Deploy | `workflows/deploy-mcp/SKILL.md` — transport options, remote hosting, client config 
+| Topic | Workflow |
+|-------|----------|
+| Setup | `workflows/setup-server/SKILL.md` — `McpServer`, tools/resources/prompts registration |
+| Deploy | `workflows/deploy-mcp/SKILL.md` — transport options, remote hosting, client config |
+
 ### 1. Setup And Usage
 
 > Goal: use correctly per the official docs

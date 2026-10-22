@@ -104,6 +104,9 @@ export const addTodo = createServerFn({ method: 'POST' })
 |----------|----------|
 | Authenticated, validated server function | `usecases/server-functions-with-middleware.md` |
 | Loader + pending/error UI + `router.invalidate()` | `usecases/ssr-loader-and-pending-ui.md` |
+| Webhook API route with signature + idempotency | `usecases/verified-webhook-api-route.md` |
+| Stream a fast shell with deferred data | `usecases/streaming-with-deferred-data.md` |
+| Cookie sessions without leaking server code | `usecases/cookie-session-and-server-only-boundary.md` |
 
 - See usecases/ for end-to-end scenario recipes
 

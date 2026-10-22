@@ -6,7 +6,6 @@ related:
   - deep-test
   - follow-tool-hurl
   - follow-tool-github-actions
-  - follow-test
 
 ---
 
@@ -103,7 +102,7 @@ For projects that want an offline API client, collections as text files in the r
 
 - [API + CLI tables](references/apis.md), [CLI options](references/cli.md)
 
-- Use /follow-test if needed
+- Use /deep-test if needed
 
 
 - See best-practices/ for recommended patterns and pitfalls

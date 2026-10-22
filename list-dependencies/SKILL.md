@@ -6,6 +6,7 @@ related:
   - alternative
   - run-audit
   - follow-tool-taze
+  - review-use-lib-effective
   - report
   - run-install
 ---
@@ -63,6 +64,7 @@ Recommend improvements for the dependencies
 2. Recommend dependencies that should be updated
 3. Recommend dependencies that should be removed
 4. Recommend dependencies that should be swapped for better alternatives
+5. For a full effective-use review of the installed libraries → `/review-use-lib-effective`
 
 ## Rules
 

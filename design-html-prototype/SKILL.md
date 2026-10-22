@@ -44,8 +44,8 @@ Use when you need a UI/flow prototype before real implementation — screen mock
 
 > Goal: Know what to prototype
 
-1. If the argument is a feature/route → gather requirements: screens, components, interactions, states
-2. Unclear → run `/ask-me` (scope: one screen or several, device targets, fidelity)
+1. Run `/ask-me` first — mandatory before any draft: scope (one screen or several), device targets, fidelity (lo-fi vs hi-fi), and the interactions that must really be clickable
+2. If the argument is a feature/route → fold those answers into requirements: screens, components, interactions, states; `dont-ask-me` → state the assumptions it would have asked and proceed
 3. Specify the needed mock data — realistic sample data, not lorem ipsum
 
 ### 3. Build Prototype
@@ -77,7 +77,7 @@ Use when you need a UI/flow prototype before real implementation — screen mock
 
 - Always follow `/report-html` conventions for the HTML
 - Always use `/open-web`, `/create-files-in-os-temp`
-- Use `/ask-me` when needed
+- Always start with `/ask-me` — never build before the brief is confirmed; `dont-ask-me` → record the assumed answers before building
 
 ## Expected Outcome
 

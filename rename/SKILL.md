@@ -4,7 +4,7 @@ description: Rename identifiers, files, directories, or skills in batch with ref
 argument-hint: "[old-name] [new-name] or <pattern> <replacement> [path]"
 related:
   - update-references
-  - search-files-patterns
+  - code-search
   - review-devin-global-harness
   - resolve-errors
   - report
@@ -119,7 +119,7 @@ Rename code identifiers with ast-grep, or rename files/skills/directories with c
 1. Take a pattern + replacement — literal/regex (`-replace`), case transforms, numbering; specify scope: recursive, include/exclude patterns
 2. Always preview the `old → new` mapping for every file first (dry-run default); flag issues: collisions (multiple files map to the same name), no-ops, case-only (Windows case-insensitive fs needs two-phase via temp name), locked files (check locked files with handle/Resource Monitor)
 3. Confirm before renaming — `git mv` in the repo to preserve history; collisions → two-phase (temp name first); error >0 in critical scope → stop the whole batch
-4. Always run `/update-references` — imports, requires, config, docs; search the old filename with `/search-files-patterns`; reference updates that are AST patterns → `/use-astgrep rewrite`
+4. Always run `/update-references` — imports, requires, config, docs; search the old filename with `/code-search`; reference updates that are AST patterns → `/use-astgrep rewrite`
 5. Verify: build/tests/lint pass; `/report` summarizes renamed / skipped / failed + undo path (`git revert`)
 
 ## Rules

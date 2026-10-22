@@ -19,14 +19,18 @@ Use Semgrep to install and run pattern-based scanning — security rules, custom
 - Scan-only in this skill — fixes via `/deep-review` or `/fix`
 
 - Latest: `semgrep@1.177.0` (pipx/brew/mise) (verified 2026-09-13)
-- References: [apis](references/apis.md) | [cli](references/cli.md) 
+- References: [apis](references/apis.md) | [cli](references/cli.md) | best-practices/
+
 ## Execute
 
 ### Workflows
 
 > Goal: Dispatch to the workflow matching the topic
 
-| Topic | Workflow |-------|----------| config | `workflows/config-rules/SKILL.md` — custom rules, registry rulesets, CI gating 
+| Topic | Workflow |
+|-------|----------|
+| config | `workflows/config-rules/SKILL.md` — custom rules, registry rulesets, CI gating |
+
 1. If the argument matches a topic → read and follow `workflows/<name>/SKILL.md` instead of the steps below
 2. If not → follow the steps below normally
 
@@ -71,6 +75,13 @@ Use Semgrep to install and run pattern-based scanning — security rules, custom
 2. Commit custom rules in `.semgrep/` with tests (`semgrep --test`)
 3. Baseline strategy for legacy code
 
+### Use Cases
+
+| Scenario | Use case |
+|----------|----------|
+| Gate PRs on new findings only | `usecases/ci-diff-aware-gate.md` |
+| Ship a project rule with its own test | `usecases/custom-rule-with-tests.md` |
+
 ## Rules
 
 ### 1. Right Tool For Job
@@ -88,8 +99,6 @@ Use Semgrep to install and run pattern-based scanning — security rules, custom
 - Custom rules must live in the repo with tests
 - Pin ruleset versions in CI — ruleset change = findings change
 - Use /run-scan if needed
-
-- See best-practices/ for recommended patterns and pitfalls
 
 ## Expected Outcome
 

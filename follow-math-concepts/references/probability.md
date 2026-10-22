@@ -78,7 +78,7 @@ Understand and apply probability: events, random variables, distributions, expec
 - Use BigInt or arbitrary precision when needed
 
 - Use /follow-math-concepts if needed
-- Use /follow-test if needed
+- Use /deep-test if needed
 - Use /deep-debug (Triage Incident) if needed
 - Use /follow-goal if needed
 

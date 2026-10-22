@@ -33,7 +33,10 @@ Boundaries:
 
 ### Workflows
 
-| Topic | Workflow |-------|----------| Setup | `workflows/setup-arktype/SKILL.md` — install, `type()` basics, scope config 
+| Topic | Workflow |
+|-------|----------|
+| Setup | `workflows/setup-arktype/SKILL.md` — install, `type()` basics, scope config |
+
 ### 1. Install ArkType
 
 > Goal: install ArkType and prepare the environment

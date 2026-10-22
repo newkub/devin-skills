@@ -3,6 +3,7 @@ name: list-devin-session
 description: List all Devin sessions with title, mode, model, and last activity time
 argument-hint: "[limit] [keyword]"
 related:
+  - follow-tool-ctx-rs
   - list-request-devin-session
   - search-request-in-devin-session
   - report
@@ -22,6 +23,7 @@ List all Devin sessions from `%APPDATA%\devin\cli\sessions.db` with `id`, `title
 - Use to search, filter, or review the history of sessions ever created; supports a max count and a keyword to filter `title` or `working_directory`
 - Use to summarize a past session or context into an action plan — do `### Session To Action Plan`
 - To list or search only user requests → use `/list-request-devin-session` or `/search-request-in-devin-session`
+- To search message content across sessions (full-text, indexed) → use `/follow-tool-ctx-rs` (`ctx search`) — this skill lists metadata only
 
 ## Execute
 

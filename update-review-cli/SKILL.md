@@ -21,19 +21,19 @@ related:
 
 ## Goal
 
-Canonical engine: linter CLI (Rust, `D:\newkub\wpackages\rust-packages\packages\tools\linter`) — deterministic checks produce `review-report.json` with the original schema; this skill extends it by adding YAML rule packs (`rules/<lang|frameworks|deps>/`) or analyzer modules instead of editing the old TS CLI
+Canonical engine: the root `review/` CLI — Bun + TypeScript, Clean Architecture, deterministic checks that produce `<workspace>/reports/review-report.json` in the original schema. Projects that already ship the Rust `linter` (`D:\newkub\wpackages\rust-packages\packages\tools\linter`) keep it as a drop-in alternative; YAML rule packs (`rules/<lang|frameworks|deps>/`) extend either engine
 
-Create or update the deterministic analyzer behind every review — the `tools/review-codebase` CLI covering 60+ categories across 5 domains, plus the analyzers and rule packs it runs — so `/run-review` and every `/deep-review` dimension get evidence-backed findings instead of guesses
+Create or update that CLI at the project root — `review/` covering 60+ categories across 5 domains, plus the analyzers and rule packs it runs — so `/run-review` and every `/deep-review` dimension get evidence-backed findings instead of guesses. It is a CLI, not a library: `review/package.json` declares a `bin` entry, so the project runs `bun run review` / `bun run review:json` or the linked `review` binary
 
 ## Scope
 
-Use when a review dimension has no analyzer, a rule fires wrong, or `/run-review` reports a metric trigger — this skill owns the update path only (`### 1`-`### 7`) and never runs the review pipeline itself
+Use when a review dimension has no analyzer, a rule fires wrong, or `/run-review` reports a metric trigger — this skill owns the update path only (`### 1`-`### 8`) and never runs the review pipeline itself
 
 - `/run-review` runs this CLI end to end, analyzes the metrics, and reports; a metric trigger from that run comes back here as the next update round
 - `/deep-review` slices the same `review-report.json` per dimension and consumes `references/known-issues.md` — never duplicate analyzer logic in a review skill
 - `/update-project` calls this skill so every project updated through it gets a current review CLI
 - all review criteria are inlined here — the only external file is the living-data `references/known-issues.md` (single source of truth for analyzer/CLI issues, shared with `/deep-review`)
-- every scope-map dimension label resolvable through the `Aliases` column of `deep-review/references/review.md` (`## Dimension Matrix`) must have a mapping in `reviewWorkflow`; a missing analyzer is recorded here, not invented in the review pass
+- every scope-map dimension label resolvable through the `Aliases` column of `deep-review-codebase-everything/references/review.md` (`## Dimension Matrix`) must have a mapping in `reviewWorkflow`; a missing analyzer is recorded here, not invented in the review pass
 
 ## Execute
 
@@ -43,14 +43,14 @@ Use when a review dimension has no analyzer, a rule fires wrong, or `/run-review
 
 > Goal: Update rules, skills, and CLI to be current before the update work
 
-1. Run `/scan-codebase` in `tools/review-codebase/` if it exists
+1. Run `/scan-codebase` in `review/` if it exists
 2. Run `/new-skills` to create skills missing from dependencies and features
 3. Run `/update-create-analyze-cli` to update `tools/analyze` to cover current features
-4. Run `/check-should-update` specifying target paths: `tools/review-codebase/`, `AGENTS.md`, `apps/*/AGENTS.md`, `apps/website/src/`
+4. Run `/check-should-update` specifying target paths: `review/`, `AGENTS.md`, `apps/*/AGENTS.md`, `apps/website/src/`
 5. If the result is `skip` → go to Step 7
 6. If the result is `update` or `create` → proceed with the next steps
-7. Read `AGENTS.md`, `rules/`, `tools/review-codebase/README.md` if present
-8. If `tools/review-codebase` exists → do a pre-review per `## Pre-Review Criteria`, checking Clean Architecture, analyzers, CLI interface, package scripts, analyze integration, line count, and evidence
+7. Read `AGENTS.md`, `rules/`, `review/README.md` if present
+8. If `review/package.json` exists → do a pre-review per `## Pre-Review Criteria`, checking Clean Architecture, analyzers, CLI interface, package scripts, analyze integration, line count, and evidence
 9. If pre-review score < 70 → do Steps 2-6 before Step 7
 
 ### 2. Scan Codebase Features
@@ -78,14 +78,14 @@ Use when a review dimension has no analyzer, a rule fires wrong, or `/run-review
 2. Check that categories cover all features
 3. If categories are fewer than 60 or a new feature has no analyzer → add an analyzer
 
-### 5. Create Or Update Workspace Package
+### 5. Create Or Update The Root CLI Package
 
-> Goal: Have a ready-to-use `tools-review-codebase` workspace
+> Goal: Have a ready-to-use root `review/` CLI
 
-1. Create `tools/review-codebase/` if it doesn't exist yet
-2. Write `package.json` defining name and scripts `review-codebase`, `review-codebase:json`, `lint`, `typecheck`
-3. Write `tsconfig.json`, `biome.jsonc`, `README.md`
-4. Add `tools-review-codebase` to the root `package.json` workspaces if missing
+1. Create `review/` at the project root if it doesn't exist yet — never under `tools/`
+2. Write `review/package.json`: name `review-cli`, `"bin": { "review": "src/presentation/cli.ts" }`, scripts `review` (table), `review:json`, `lint`, `typecheck`
+3. Write `tsconfig.json`, `biome.jsonc`, `README.md`; the CLI entry starts with `#!/usr/bin/env bun`
+4. Add `review` to the root `package.json` workspaces if missing (package name `review-cli`) and root scripts `review` / `review:json` as `bun --filter review-cli review[:json]` — the CLI stays runnable as a bin after `bun link`
 5. Use `bun install` to update `bun.lock`
 
 ### 6. Setup Architecture And Integrate Analyzers
@@ -94,21 +94,21 @@ Use when a review dimension has no analyzer, a rule fires wrong, or `/run-review
 
 1. Create `src/adapters/file-utils.ts` (`walk`, `readText`, `getRel`), `src/adapters/git-grep.ts` (`gitGrep`, `gitGrepCount`), `src/domain/models.ts` (`CategoryFinding`, `CategoryResult`, `ReviewReport`), `src/application/review.ts` (import `runAllAnalyzers` from `tools-analyze`), `src/presentation/cli.ts` (entry point), `src/index.ts` (export `runReview`/`createReviewPorts`)
 2. Convert each analyzer's `CategoryResult` into a `ReviewReport` with score, grade, domain breakdown
-3. Define the `reviewWorkflow` map to review dimensions — must cover every scope-map dimension label resolvable through the `Aliases` column of `deep-review/references/review.md` (`## Dimension Matrix`) (except `review-github-pr`, which is PR-scoped)
+3. Define the `reviewWorkflow` map to review dimensions — must cover every scope-map dimension label resolvable through the `Aliases` column of `deep-review-codebase-everything/references/review.md` (`## Dimension Matrix`) (except `review-github-pr`, which is PR-scoped)
 4. Any metric or review domain still without an analyzer → record it as an analyzer gap (name + review skill + missing metric) in `references/known-issues.md` and report it
 5. If an analyzer isn't fully implemented, add a `// TODO` comment with details
-6. If an AST-based analyzer is needed (structural patterns regex/git-grep can't do, e.g. function metrics, SRP counts, custom lint rules) → run `/use-astgrep-programmatic` to integrate `@ast-grep/napi` or `ast-grep scan --json` into `tools/analyze`/`tools/review-codebase` — findings must have file:line + rule id per `## Rules → 4. Evidence-Based`
+6. If an AST-based analyzer is needed (structural patterns regex/git-grep can't do, e.g. function metrics, SRP counts, custom lint rules) → run `/use-astgrep-programmatic` to integrate `@ast-grep/napi` or `ast-grep scan --json` into `tools/analyze`/`review` — findings must have file:line + rule id per `## Rules → 4. Evidence-Based`
 
 ### 7. Validate The Updated CLI
 
 > Goal: Verify that the CLI runs before handing it to the run path
 
-1. Check that `tools/review-codebase/package.json` and `src/presentation/cli.ts` exist — missing → return to Steps 5-6
-2. Run `bun --filter tools-review-codebase lint`
-3. Run `bun --filter tools-review-codebase typecheck`
-4. Run `bun --filter tools-review-codebase review-codebase --help`
-5. Run `bun --filter tools-review-codebase review-codebase`
-6. Run `bun --filter tools-review-codebase review-codebase:json` then inspect `<workspace>/reports/review-report.json`
+1. Check that `review/package.json` and `review/src/presentation/cli.ts` exist — missing → return to Steps 5-6
+2. Run `bun --filter review-cli lint`
+3. Run `bun --filter review-cli typecheck`
+4. Run `bun run review --help`
+5. Run `bun run review`
+6. Run `bun run review:json` then inspect `<workspace>/reports/review-report.json`
 7. If it fails → run `/resolve-errors` then retry (max 3)
 
 ### 8. Verify And Hand Off
@@ -123,7 +123,7 @@ Use when a review dimension has no analyzer, a rule fires wrong, or `/run-review
 
 ## CLI Output
 
-`review-codebase` table output must show every detail per category — never a lone score or one line per category
+`review` table output must show every detail per category — never a lone score or one line per category
 
 - Findings table (per category): `No.` (always first, 1..n) | `Domain` | `Category` | `Score` | `Grade` | `C`/`H`/`M`/`L` finding counts by severity | `Status` = `new`/`existing`/`regression`/`fixed` vs the previous `reports/review-report.json` | `Top Finding` | `Evidence` = `file:line` of the top finding — every row must have it, never a row without | `Fix Skill` = from the `reviewWorkflow` map (`/deep-review` dimension `<label>`; `/deep-review then-fix` when a fix must be applied) | `Delta` = score diff vs the previous report when a baseline exists — sort Critical first, then lowest score first
 - Domain summary table (at the end): `No.`, `Domain`, `Score`, `Grade`, `Categories`, `Findings`, `Errors`, `FP%`, `Trend` (up/down/flat vs the previous run); footer row: overall score + grade, `categories N/60`, total analyzer errors, duration
@@ -133,24 +133,24 @@ Use when a review dimension has no analyzer, a rule fires wrong, or `/run-review
 
 ## Pre-Review Criteria
 
-> Step 1.8 pre-review of `tools/review-codebase` before the update — review-only (no CLI edits during the pre-review; fixes go through this skill after); every finding needs evidence: file path + line number + code snippet
+> Step 1.8 pre-review of `review/` before the update — review-only (no CLI edits during the pre-review; fixes go through this skill after); every finding needs evidence: file path + line number + code snippet
 
 | Dimension | Checks | Severity flags |
 |-----------|--------|----------------|
 | Clean Architecture | 4 layers: `src/domain/` (logic, analyzers, types), `src/application/` (use cases, orchestration), `src/adapters/` (shared utilities, external integrations), `src/presentation/` (CLI entry, user-facing output); entry points `src/presentation/cli.ts` + `src/index.ts` (barrel export for workspace imports); `kebab-case` file names (`user-facing.ts` not `UserFacing.ts`/`user_facing.ts`); Bun native APIs (`Bun.file`, `Bun.spawn`, `Bun.write`) instead of Node `fs.readFile`/`child_process`/`fs.writeFile`; dependency direction `presentation → application → domain`, `adapters → domain` — `domain` imports no other layer | missing entry point = Critical; missing layer / wrong dependency direction = High; Node APIs instead of Bun = Medium; not kebab-case = Low |
 | Analyzers | 5 files in `src/domain/analyzers/`: `user-facing.ts` (UX, a11y, UI), `security.ts` (vulnerabilities, auth, input validation), `backend-data.ts` (data layer, API, database), `infrastructure.ts` (deployment, CI/CD, config), `code-arch.ts` (code quality, architecture, patterns); each returns `CategoryResult` (`status` pass/fail/warn, `score` 0-100, `findings[]`); every analyzer has a `reviewWorkflow` map (category → `/deep-review`/references + action on finding); shared utilities from `src/adapters/` — no duplicated helper code between analyzers; coverage: 60+ categories (full list via `/run-review`) across the 5 domains | missing analyzer file / domain / `CategoryResult` contract = High; missing `reviewWorkflow`, duplicated utilities, incomplete category coverage = Medium |
-| CLI Interface | `--help`/`-h` shows usage, all flags with descriptions, exit codes, examples; exit codes: `0` success/review completed, `1` invalid arguments or error; `--format table|JSON` (table default, JSON for programmatic consumption); `--output <path>` optional; invalid-argument errors name the bad flag, suggest correct usage, exit 1 | missing `--help` / wrong exit codes = High; missing format option, unclear errors = Medium |
-| Analyze Integration | `tools-analyze` in `tools/review-codebase/package.json` `dependencies` with the `workspace:*` protocol; analyzers imported from `tools-analyze` (barrel export or direct path), never copied code; no duplicated analyzer logic in `src/domain/analyzers/`, `src/adapters/`, `src/health/`; imports resolve cleanly via `bun run`/typecheck — no broken modules | no workspace import / broken imports = High; duplicated logic = Medium |
-| Package Scripts | `tools/review-codebase/package.json` has `review-codebase` (table, e.g. `bun run src/index.ts`) + `review-codebase:json` (e.g. `bun run src/index.ts --format JSON`); root `package.json` has the same names as `bun --filter tools-review-codebase review-codebase[:json]`; names consistent across both, filter uses the correct workspace name, no script points to a wrong path; both scripts actually execute — verify exit code and output format | script doesn't run = High; missing script = Medium; naming inconsistency = Low |
+| CLI Interface | binary `review` (bin entry, `#!/usr/bin/env bun`); `--help`/`-h` shows usage, all flags with descriptions, exit codes, examples; exit codes: `0` success/review completed, `1` invalid arguments or error; `--json` (alias `--format table|JSON`) for programmatic consumption; `--output <path>` optional; invalid-argument errors name the bad flag, suggest correct usage, exit 1 | missing `--help` / wrong exit codes = High; missing format option, unclear errors = Medium |
+| Analyze Integration | `tools-analyze` in `review/package.json` `dependencies` with the `workspace:*` protocol; analyzers imported from `tools-analyze` (barrel export or direct path), never copied code; no duplicated analyzer logic in `src/domain/analyzers/`, `src/adapters/`, `src/health/`; imports resolve cleanly via `bun run`/typecheck — no broken modules | no workspace import / broken imports = High; duplicated logic = Medium |
+| Package Scripts | `review/package.json` has `review` (table, e.g. `bun run src/presentation/cli.ts`) + `review:json` (e.g. `bun run src/presentation/cli.ts --json`); root `package.json` has the same names as `bun --filter review-cli review[:json]`; names consistent across both, filter uses the correct workspace name, no script points to a wrong path; both scripts actually execute — verify exit code and output format | script doesn't run = High; missing script = Medium; naming inconsistency = Low |
 | Line Count | every file ≤250 lines; findings carry evidence (file path, line, snippet) | line count exceeded = Low |
-| Scoring | review score = weighted average of all findings (severity weights Critical 0, High 25, Medium 50, Low 75, Info 100; 0 = every finding Critical, 100 = no findings); grade A ≥90, B ≥80, C ≥70, D ≥60, F <60; report overall + per-domain score and a health indicator (score + grade + severity distribution) via `/report-review` (Category, Severity, Finding, Evidence, Action); before/after: record the before score → update per findings → re-run `bun run review-codebase` → compare the delta; score < 70 → recommend `/deep-review` + `/suggest-next-action` before proceeding | pre-review score < 70 → Steps 2-6 before Step 7 |
+| Scoring | review score = weighted average of all findings (severity weights Critical 0, High 25, Medium 50, Low 75, Info 100; 0 = every finding Critical, 100 = no findings); grade A ≥90, B ≥80, C ≥70, D ≥60, F <60; report overall + per-domain score and a health indicator (score + grade + severity distribution) via `/report-review` (Category, Severity, Finding, Evidence, Action); before/after: record the before score → update per findings → re-run `bun run review` → compare the delta; score < 70 → recommend `/deep-review` + `/suggest-next-action` before proceeding | pre-review score < 70 → Steps 2-6 before Step 7 |
 | Round Metrics | record after each update round to compare before/after and decide CLI improvements: Review Coverage Ratio (scanned/total files), False Positive Rate, Evidence Strength Score, Actionability Score, Category Coverage (executed/total), Sub-Review Completion, Analyzer Pass Rate, Critical Path Coverage, Deduplication Rate, Before/After Trend | — |
 
 ## Rules
 
 ### 1. CLI-Driven
 
-- Use the `tools/review-codebase` CLI as the primary source of findings
+- Use the root `review/` CLI as the primary source of findings
 - Don't manually read references one dimension at a time
 - If metrics indicate a CLI update → do Steps 4-7 before continuing
 
@@ -164,8 +164,8 @@ Use when a review dimension has no analyzer, a rule fires wrong, or `/run-review
 
 ### 3. No Duplicate Logic
 
-- Don't duplicate analyzer logic between `tools/analyze` and `tools/review-codebase`
-- Use `runAllAnalyzers` from `tools/analyze` in `tools/review-codebase`
+- Don't duplicate analyzer logic between `tools/analyze` and `review/`
+- Use `runAllAnalyzers` from `tools/analyze` in `review/`
 
 ### 4. Evidence-Based
 
@@ -175,7 +175,7 @@ Use when a review dimension has no analyzer, a rule fires wrong, or `/run-review
 
 ### 4b. Review Coverage
 
-- The `reviewWorkflow` map must cover every scope-map dimension label resolvable through the `Aliases` column of `deep-review/references/review.md` (`## Dimension Matrix`) (except `review-github-pr`)
+- The `reviewWorkflow` map must cover every scope-map dimension label resolvable through the `Aliases` column of `deep-review-codebase-everything/references/review.md` (`## Dimension Matrix`) (except `review-github-pr`)
 - Every metric that `deep-review`/`/run-review` marks as `in update-review-cli = N` → add an analyzer or record the gap with a reason in `references/known-issues.md`
 - `/deep-review` dispatches one dimension at a time (per-artifact, tiered — labels resolved through the matrix `Aliases` column to their rows) — the CLI must output findings that map back to those dimensions
 
@@ -207,9 +207,9 @@ Use when a review dimension has no analyzer, a rule fires wrong, or `/run-review
 
 ## Expected Outcome
 
-- The `tools/review-codebase` CLI (or linter rule pack) exists, validates, and runs at the project root
+- The root `review/` CLI (or linter rule pack) exists, validates, and runs at the project root
 - Findings cover 60+ categories with evidence and severity
-- `reviewWorkflow` covers every scope-map dimension label resolvable through the `Aliases` column of `deep-review/references/review.md` (`## Dimension Matrix`) — analyzer gaps are recorded in `references/known-issues.md`
+- `reviewWorkflow` covers every scope-map dimension label resolvable through the `Aliases` column of `deep-review-codebase-everything/references/review.md` (`## Dimension Matrix`) — analyzer gaps are recorded in `references/known-issues.md`
 - Analyzer and rule changes are handed to `/run-review` for the before/after measurement
 - No analyzer errors; every change cites the rule id or analyzer file it lands in
 

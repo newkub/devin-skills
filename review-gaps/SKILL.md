@@ -6,7 +6,7 @@ related:
   - review
   - review-issues
   - design-web-prototype
-  - report-not-implement
+  - review-implement-to-production
   - implement-to-production
   - deep-review
   - create-plan-in-dot-devin
@@ -28,7 +28,7 @@ Review one dimension only: `gaps` — capability the scope promises but does not
 
 - Use when the user asks what is missing / unfinished / not really wired in an area, or from `/review` `### 2` as the gaps dimension
 - Not wrong-behavior hunting (→ `/review-issues`), not a full multi-dimension scan (→ `/deep-review`), not ideating new features (→ `/idea-features`)
-- Not a matrix-derived label entry — this skill owns its catalog; `deep-review/references/review.md` `### Matrix Notes` exempts `review-gaps` and `review-issues` from alias resolution
+- Not a matrix-derived label entry — this skill owns its catalog; `deep-review-codebase-everything/references/review.md` `### Matrix Notes` exempts `review-gaps` and `review-issues` from alias resolution
 - If the user appends `and fix` → treat as confirmed; fill every gap without asking again (still report before filling)
 - A gap whose surface was never designed (command tree, TUI screens, web UX) → design it first: `/design-cli-prototype` / `/design-tui-prototype` in chat, or `/design-web-prototype` / `/design-html-prototype` when it must be seen — then fill it; never fill a gap with a new stub
 
@@ -41,7 +41,7 @@ Review one dimension only: `gaps` — capability the scope promises but does not
 1. Start with the deep pre-pass: `/deep-thinking` → `/deep-analyze` → `/deep-validate` (convention: `update-devin-global-skills` `## Conventions → Templates` row `review-*`)
 2. Take `scope` from the argument — if missing or unclear → `/ask-me`
 3. Collect every promise the surface makes: `README.md`/`USAGE.md`/`FEATURES.md` claims, UI labels and menu items, route and command lists, type fields, config keys, feature flags, permissions, `TODO`/`FIXME`/`MOCK` markers, test names
-4. Pull the machine-made gap inventory as a baseline: `/report-not-implement` on the scope (`missing`/`fake`/`partial`/`unwired`/`promised` with `file:line`) — then verify each entry yourself, never copy it blindly
+4. Pull the machine-made gap inventory as a baseline: `/review-implement-to-production` (report-only) on the scope (`missing`/`fake`/`partial`/`unwired`/`promised` with `file:line`) — then verify each entry yourself, never copy it blindly
 
 ### 2. Classify Each Gap
 

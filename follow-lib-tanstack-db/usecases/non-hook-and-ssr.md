@@ -93,3 +93,10 @@ During the first browser render, descriptor-backed queries read either hydrated 
 - Calling `hydrate()` after a hook already read → first paint is empty then pops; hydrate in the entry/providers before rendering consumers.
 - Assuming `createLiveQueryCollection` without `startSync` is live → it isn't until subscribed.
 - Expecting a dehydrated live query to also ship its full source collections → it stores the result snapshot only; preload the source collection explicitly if other browser queries need it.
+
+## Related
+
+- `references/apis.md`
+- `best-practices/tanstack-db.md`
+- `usecases/local-first-storage.md`
+- `usecases/query-rest-crud.md`

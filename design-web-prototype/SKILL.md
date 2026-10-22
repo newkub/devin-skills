@@ -48,8 +48,9 @@ CLI explorer variant (typed `Command` schema, Human/Agent modes): [references/cl
 
 > Goal: Know what the prototype must do
 
-1. Take the domain/spec from the argument or context; unclear → `/ask-me` (number of views, data model, interactions)
-2. If a real data source exists (CLI surface, API, config) → pull the real schema in as the source of truth before designing; a real CLI → extract its command surface per `/learn-from-cli`
+1. Run `/ask-me` first — mandatory before scaffolding: number of views, data model, interactions, audiences (human/agent), and which states must be real
+2. Take the domain/spec from the argument or context and fold those answers in; `dont-ask-me` → state the assumptions it would have asked and proceed
+3. If a real data source exists (CLI surface, API, config) → pull the real schema in as the source of truth before designing; a real CLI → extract its command surface per `/learn-from-cli`
 
 ### 3. Scaffold
 
@@ -111,7 +112,7 @@ CLI explorer variant (typed `Command` schema, Human/Agent modes): [references/cl
 - Every hover interaction must have a click/tap equivalent — never rely on hover alone
 - Animations fast + subtle — never sacrifice performance for effects
 - Follow the canonical skills for every config (`/follow-lib-unocss`, `/follow-solid-framework`, `/follow-lib-solidjs`) — never copy sample configs from external specs that may be stale
-- Always use `/create-files-in-os-temp`, `/open-web`, `/check-open-ports`; use `/ask-me` when needed
+- Always use `/create-files-in-os-temp`, `/open-web`, `/check-open-ports`; always start with `/ask-me` — never scaffold before the brief is confirmed; `dont-ask-me` → record the assumed answers first
 
 ## Expected Outcome
 

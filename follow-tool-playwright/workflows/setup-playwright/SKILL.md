@@ -44,7 +44,7 @@ Install and configure Playwright for the first time, ready to run E2E tests — 
 > Goal: create a minimal `playwright.config.ts`
 
 1. Create `playwright.config.ts` at the root with `defineConfig` from `@playwright/test`
-2. Set `testDir` (e.g. `./e2e` or `./tests`) — separate from unit tests
+2. Set `testDir: 'tests/e2e'` — one e2e root per repo, separate from the unit/integration layers per `/deep-test strategy` `## 3`
 3. Set `use.baseURL` to the dev server (e.g. `http://localhost:5173`)
 4. Set `retries: process.env.CI ? 2 : 0`, `workers: process.env.CI ? 4 : undefined`, `forbidOnly: !!process.env.CI`
 5. Set `trace: 'on-first-retry'` and `screenshot: 'only-on-failure'` for debugging artifacts
@@ -70,7 +70,7 @@ Install and configure Playwright for the first time, ready to run E2E tests — 
 
 - Use official docs as the primary source — check the docs before using an uncertain option
 - Install only the browsers actually used in CI — saves time and disk
-- `testDir` must be separate from unit tests — never let Vitest pick up e2e specs
+- `testDir` is `tests/e2e` — separate from every other layer, never let the unit runner pick up e2e specs
 - secrets/env for E2E → `/follow-secret-manager`, never commit
 - Never put `page.waitForTimeout()` in a smoke test — use web-first assertions
 

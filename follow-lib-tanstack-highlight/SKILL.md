@@ -68,6 +68,9 @@ bun add @tanstack/highlight
 |----------|----------|
 | Highlight a code block with CSS-variable theming | `usecases/highlight-code-block.md` |
 | Precompute highlighting at build time, zero client cost | `usecases/precompute-at-build-time.md` |
+| Highlight markdown fences through one adapter | `usecases/markdown-fences-pipeline.md` |
+| Side-by-side diff with line numbers | `usecases/side-by-side-diff-view.md` |
+| Live playground with lazy language grammars | `usecases/live-playground-lazy-languages.md` |
 
 ## Rules
 

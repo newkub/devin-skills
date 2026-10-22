@@ -45,7 +45,7 @@ Use for measuring function performance, comparing different implementations, det
 > Goal: Analyze Results
 
 1. Review each benchmark's result and identify the slow and fast benchmarks
-2. Run `/deep-review` per `deep-review/SKILL.md` to analyze whether empirical growth matches theoretical complexity
+2. Run `/deep-review` per `deep-review-codebase-everything/SKILL.md` to analyze whether empirical growth matches theoretical complexity
 3. Find benchmarks with high variance or outliers
 4. Identify potential optimizations for slow benchmarks
 5. If variance is high, re-run to confirm the results

@@ -21,7 +21,7 @@ Run API tests by calling real or mocked endpoints and inspecting responses to ve
 2. Identify API endpoints from the codebase, OpenAPI, or existing tests
 3. Check environment variables: `PORT`, `BASE_URL`, `API_KEY`
 4. If there is an OpenAPI / tRPC router → read the schema to learn the request/response shape
-5. If there is no test framework → run `/follow-test` to set one up
+5. If there is no test framework → run `/deep-test strategy` to set one up (runner, scripts, `tests/<layer>/`)
 
 ## 2. Select Test Runner
 

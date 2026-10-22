@@ -43,8 +43,8 @@ See also: /follow-agents-md, /update-agents-md
 
 > Goal: choose the right permission structure for the role
 
-1. Read-only auditor: `reviewer`, `verifyer`, `security-auditor` — deny `write`, `edit`
-2. Builder/Implementer: `fixer`, `improver`, `refactorer`, `code-simplifier` — allow `edit`, `write`, `exec` for test/lint/build
+1. Read-only auditor: `reviewer`, `verifier`, `security-auditor`, `skill-reviewer` — deny `write`, `edit`
+2. Builder/Implementer: `fixer`, `improve`, `refactor`, `code-simplifier` — allow `edit`, `write`, `exec` for test/lint/build
 3. Planner/Designer: `architect`, `api-designer`, `uxui-designer` — may write spec/design docs but not modify main source
 4. Executor/Operator: `test-runner`, `release`, `deployment-specialist` — allow running the relevant commands
 
@@ -125,7 +125,7 @@ See also: /follow-agents-md, /update-agents-md
 
 - Least privilege: `allowed-tools` must be sufficient for the role, not excessive; never `*`/`all`; never `exec` unless the agent runs commands
 - Read-only agents must have `deny: [write, edit]`; builders may have `edit`, `write`, and `exec` for check/test
-- `permissions` must `deny` risky system paths: `%APPDATA%` (outside scope), `C:\Windows`, `C:\Program Files`, `C:\Program Files (x86)`, `/etc`, `/usr`, `/bin`, `~/.ssh`, `~/.aws`
+- `permissions` must `deny` risky system paths as `Edit(<glob>)` rules (one rule covers both `edit` and `write`): `Edit(C:/Windows/**)`, `Edit(C:/Program Files/**)`, `Edit(C:/Program Files (x86)/**)`, `Edit(~/AppData/**)`, `Edit(~/.ssh/**)`, `Edit(~/.aws/**)`, `Edit(/etc/**)`, `Edit(/usr/**)`, `Edit(/bin/**)` — all nine in every `AGENT.md`
 - No hardcoded secrets in `AGENT.md`: API keys, passwords, tokens, private keys, connection strings, or values that look like base64/long hex
 - Release/deploy agents must ask before remote side effects
 - If overwriting an existing `AGENT.md` → dry run and get user confirmation first; don't modify other agents unnecessarily

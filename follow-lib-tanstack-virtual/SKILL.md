@@ -98,6 +98,9 @@ return (
 |----------|----------|
 | Virtualize a 10k-row list with dynamic heights | `usecases/virtualize-long-list.md` |
 | Infinite scroll feed on window scroll via Query | `usecases/infinite-scroll-feed.md` |
+| Keyboard navigation and scroll-to-index | `usecases/scroll-to-index-and-keyboard-nav.md` |
+| Virtualize table rows with a sticky header | `usecases/table-rows-with-sticky-header.md` |
+| Two-dimensional grid with a frozen header row | `usecases/two-dimensional-grid.md` |
 
 ## Rules
 

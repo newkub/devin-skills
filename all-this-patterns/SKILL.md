@@ -35,7 +35,7 @@ Use when the user wants to fix every match of several patterns, such as renaming
 
 > Goal: Find every matching location
 
-1. Use `/search-files-patterns` to find every match
+1. Use `/code-search` to find every match
 2. Use `grep` or `ast-grep` when you need precision
 3. Record the list with file path, line number, and context
 

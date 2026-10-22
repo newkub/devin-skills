@@ -83,7 +83,7 @@ Understand algorithm complexity: Big O, Omega, Theta, recurrence relations, Mast
 - Recursion with many branches can be exponential
 
 - Use /deep-review if needed
-- Use /follow-test if needed
+- Use /deep-test if needed
 - Use /follow-math-concepts if needed
 
 ## Expected Outcome

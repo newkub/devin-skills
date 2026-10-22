@@ -18,7 +18,7 @@ Set up and run jscpd to detect code duplication and prioritize refactoring
 Used for detecting and analyzing code duplication — it does not cover the refactor itself (see `/refactor`)
 
 - Latest: `jscpd@5.3.2` (verified 2026-09-24)
-- References: [cli](references/cli.md) | [apis](references/apis.md) 
+- References: [cli](references/cli.md) | [apis](references/apis.md) | best-practices/ 
 ## Execute
 
 ### 1. Setup Configuration
@@ -57,6 +57,13 @@ Used for detecting and analyzing code duplication — it does not cover the refa
 2. Priority 2: shared utilities used across workspaces
 3. Priority 3: boilerplate that can be extracted into a template or helper
 4. Hand off each item to `/refactor`
+
+### Use Cases
+
+| Scenario | Use case |
+|----------|----------|
+| Fail CI only on newly added clones | `usecases/ci-duplication-gate.md` |
+| Scan a monorepo without workspace noise | `usecases/monorepo-duplication-scan.md` |
 
 ## Rules
 
@@ -111,8 +118,6 @@ Used for detecting and analyzing code duplication — it does not cover the refa
 - Use /report to summarize results as a table
 - Use /use-scripts to parse `report/jscpd-report.json`
 - Use /run-scan for additional auditing
-
-- See best-practices/ for recommended patterns and pitfalls
 
 ## Expected Outcome
 

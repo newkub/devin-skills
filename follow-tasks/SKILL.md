@@ -15,8 +15,9 @@ related:
   - use-scripts
   - follow-monorepo
   - follow-tool-moonrepo
+  - follow-my-techstack
+  - follow-tool-portless
   - deep-review
-  - update-version-to-latest
 
 ---
 ## Goal
@@ -65,7 +66,7 @@ Latest: `taze@21.1.0`, `lefthook@2.1.14` (verified 2026-09-16)
 
 > Goal: configure scripts in every workspace per the chosen tech stack and template level
 
-1. Pick commands from [references/scripts-tables.md](references/scripts-tables.md) per tech stack — JS/Bun edits `package.json` directly; Rust/Python/Go use a task runner per the Script Mechanism (`justfile`, `cargo-make`, `xtask`, `Makefile`, `poe`, `Taskfile.yml`)
+1. If the stack isn't fixed yet → run `/follow-my-techstack` first to pick the canonical tools; then pick commands from [references/scripts-tables.md](references/scripts-tables.md) per tech stack — JS/Bun edits `package.json` directly; Rust/Python/Go use a task runner per the Script Mechanism (`justfile`, `cargo-make`, `xtask`, `Makefile`, `poe`, `Taskfile.yml`)
 2. Run `/use-scripts` to apply — single workspace: edit the manifest/task file directly; multiple workspaces: run `/follow-monorepo` first
 3. If the operation touches > 10 files → use `/use-scripts` for the batch update
 4. If applying fails → retry (max 3 → stop/report)
@@ -88,7 +89,8 @@ Latest: `taze@21.1.0`, `lefthook@2.1.14` (verified 2026-09-16)
 2. Confirm `check` script = `format && lint && typecheck && scan` (format before lint) and `verify` = `check && test && build` for small projects; large projects' `verify` at least `check && test` — `ci` must be read-only via `format:check`, not `format`
 3. Run `/run-test all` to execute unit, integration, e2e, coverage
 4. Test-run `bun run verify` — if it fails → fix and retry (max 3 → stop/report)
-5. If the project has a `tools/review-codebase` workspace → run `bun run review-codebase` for a first codebase review — if it fails → use `/deep-review` to create/update the CLI, then retry
+5. If the project has a root `review/` CLI (`review/package.json`) → run `bun run review` for a first codebase review — if it fails → use `/deep-review` to create/update the CLI, then retry
+6. Start `dev` through `/follow-tool-portless` (`portless`) and confirm `https://<name>.localhost` responds — never validate a hardcoded port
 
 ## Rules
 
@@ -118,7 +120,7 @@ Key rules tied to the tables:
 - `ci` = `format:check && lint && typecheck && scan && test && build` (read-only — no file mutation in the pipeline)
 - `verify` = `check && test && build` (small projects); large projects at least `check && test`
 - `release` does not belong in the package manifest — release via CI/CD workflows on a tag or `/run-release`
-- If a `tools/review-codebase` workspace exists → add the `review-codebase` scripts (table in the reference) and run `bun run review-codebase` once — if it fails, use `/deep-review`
+- If a root `review/` CLI exists → add the `review` scripts (table in the reference) and run `bun run review` once — if it fails, use `/deep-review`
 
 ### 3. Moonrepo Mode
 
@@ -131,6 +133,14 @@ If the project uses moonrepo (has `.moon/workspace.yml` or `moon.yml`):
 - Validate with `moon run :check`
 - For full details follow `/follow-tool-moonrepo`
 
+### 4. Dev Runs Through Portless
+
+The `dev` script must not hardcode a port — run it through `portless` so it gets a stable named URL:
+
+- Run `/follow-tool-portless`; `portless` executes the `dev` script and assigns `https://<project>.localhost`
+- Keep the script named `dev` so portless finds it; for other scripts use `portless --script <name>` or `portless run --name <app> <cmd>`
+- Report the URL from `portless list` / `portless get <name>` instead of `localhost:<port>`
+
 - Use /open-web-for-config-secret if needed (tasks)
 - Use /run-check if needed
 - Use /run-verify if needed
@@ -140,5 +150,6 @@ If the project uses moonrepo (has `.moon/workspace.yml` or `moon.yml`):
 - `package.json` or the task runner file carries the scripts of the chosen template (state change)
 - Scripts match the tech stack (tables in [references/scripts-tables.md](references/scripts-tables.md))
 - The `verify` and `ci` pipelines work correctly — `bun run verify` passes, `ci` is read-only
-- If `tools/review-codebase` exists, `bun run review-codebase` passes or the failure cause is known
+- `dev` runs through `portless` at `https://<name>.localhost` with no hardcoded port
+- If `review/` exists, `bun run review` passes or the failure cause is known
 - With Infisical: root `package.json` has the `secrets:*` scripts and `INFISICAL_TOKEN` is set in CI/CD

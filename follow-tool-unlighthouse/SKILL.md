@@ -6,7 +6,7 @@ related:
   - follow-tool-lighthouse
   - follow-tool-vite
   - follow-tool-playwright
-  - follow-test
+  - deep-test
   - follow-deploy
   - run-profiler
 ---
@@ -106,7 +106,7 @@ Use for projects that want to monitor every web page with Lighthouse, in both de
 
 - Use /follow-tool-vite if needed
 - Use /follow-tool-playwright if needed
-- Use /follow-test if needed
+- Use /deep-test if needed
 - Use /follow-deploy if needed
 - Use /run-profiler if needed
 

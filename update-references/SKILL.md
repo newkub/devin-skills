@@ -134,7 +134,7 @@ Verify correctness:
 
 - Use /use-related-skills if needed
 - Use /update-references if needed
-- Use /search-files-patterns if needed
+- Use /code-search if needed
 - Use /report if needed
 - Use /deep-validate if needed
 

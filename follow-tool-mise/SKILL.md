@@ -20,12 +20,17 @@ For projects that want to pin tool versions, load environment variables, and def
 - Use this skill when managing dev tool versions/env/tasks — if the job is monorepo task orchestration, use `/follow-tool-moonrepo` or `/follow-tool-turborepo` instead
 - For the Rust tool option `mr_boxington` (shared Cargo build cache via mise ≥2026.9.2), see `/follow-tool-mr-boxington`
 - Latest: `mise@2026.9.14` (CalVer, verified 2026-09-26)
+- References: [apis](references/apis.md) | [cli](references/cli.md) | best-practices/
 
 ## Execute
 
 ### Workflows
 
-| Topic | Workflow |-------|----------| Install mise, activate shell, `mise doctor` | `workflows/setup-mise/SKILL.md` | `mise.toml` — tools, tasks, env | `workflows/config-tools/SKILL.md` 
+| Topic | Workflow |
+|-------|----------|
+| Install mise, activate shell, `mise doctor` | `workflows/setup-mise/SKILL.md` |
+| `mise.toml` — tools, tasks, env | `workflows/config-tools/SKILL.md` |
+
 ### 1. Check And Install Mise
 
 > Goal: check and install mise
@@ -88,6 +93,13 @@ For projects that want to pin tool versions, load environment variables, and def
 3. Combine with `/use-scripts` when custom scripts are needed
 4. Use `mise run <task> -- <args>` to pass arguments to a task
 
+### Use Cases
+
+| Scenario | Use case |
+|----------|----------|
+| Pin the CI toolchain from `mise.toml` | `usecases/ci-toolchain-pin.md` |
+| Replace chained scripts with cached tasks | `usecases/tasks-with-caching.md` |
+
 ## Rules
 
 ### 1. Configuration File
@@ -133,13 +145,6 @@ For projects that want to pin tool versions, load environment variables, and def
 
 - Use /open-web-for-config-secret if needed (tool mise)
 - Use /follow-secret-manager if needed
-
-## References
-
-- [CLI reference](references/cli.md)
-
-
-- See best-practices/ for recommended patterns and pitfalls
 
 ## Expected Outcome
 

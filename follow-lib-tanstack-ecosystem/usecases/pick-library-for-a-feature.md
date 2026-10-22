@@ -16,6 +16,14 @@
 | local-first reactive data with sync | `DB` |
 | provider-agnostic AI chat/tools | `AI` |
 | debounce, throttle, rate limit | `Pacer` |
+| charts with axes and series | `Charts` |
+| syntax-highlighted code | `Highlight` |
+| markdown rendering, including AI streams | `Markdown` |
+| keyboard shortcuts, sequences, scopes | `Hotkeys` |
+| ship agent skills with a package | `Intent` |
+| scaffold a new TanStack app | `CLI` |
+| inspect cache/route/form state while developing | `Devtools` |
+| publish and maintain a package | `Config` |
 
 Write the classification down before installing anything. A feature that lists three libraries usually has one real need and two habits.
 
@@ -51,3 +59,4 @@ Record: the need, the chosen library, the rejected alternative, and the maturity
 - `references/apis.md`
 - `best-practices/tanstack-ecosystem.md`
 - `usecases/integrate-a-new-library.md`
+- `usecases/audit-tanstack-stack.md`

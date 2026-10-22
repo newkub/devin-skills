@@ -33,7 +33,11 @@ Use for Node.js projects that want automated version bump, git tag, changelog, n
 
 ### Workflows
 
-| Topic | Workflow |-------|----------| Install, release script, hooks/plugins basics | `workflows/setup-release-it/SKILL.md` | `.release-it.json` — git, github, npm, changelog options | `workflows/config-release-it/SKILL.md` 
+| Topic | Workflow |
+|-------|----------|
+| Install, release script, hooks/plugins basics | `workflows/setup-release-it/SKILL.md` |
+| `.release-it.json` — git, github, npm, changelog options | `workflows/config-release-it/SKILL.md` |
+
 ### 1. Install
 
 > Goal: install release-it in the project

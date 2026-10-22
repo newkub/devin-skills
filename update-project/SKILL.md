@@ -88,7 +88,7 @@ Boundary: a quick root sync — for a comprehensive pre-release update with a de
    - `/update-todo-md` (if there is a `TODO.md`)
    - `/update-references` to sync references
    - `/update-gitignore` to sync `.gitignore`
-   - `/update-review-cli` (if the project has or should have a `tools/review-codebase/` — it owns the analyzer behind every review) then `/run-review` to measure the result
+   - `/update-review-cli` (if the project has or should have a `review/` CLI — `review/package.json` — it owns the analyzer behind every review) then `/run-review` to measure the result
    - `/update-dot-vscode`
    - `/update-contributing`
 6. Verify the scripts in `package.json` are consistent
@@ -115,7 +115,7 @@ Boundary: a quick root sync — for a comprehensive pre-release update with a de
 > Goal: GitHub repo metadata and branch protection reflect the real project
 
 1. Run `/update-github-metadata` to sync description, homepage, and topics with `README.md` and `package.json`
-2. Run `/update-github-metadata` `### 6. Protect Branches` to set branch protection on `main` and the integration branch per project conventions (optional); `.github` templates come from `/follow-dot-github` (optional)
+2. Run `/update-github-metadata` `### 6. Protect Branches (Optional)` to set branch protection on `main` and the integration branch per project conventions (optional); `.github` templates come from `/follow-dot-github` (optional)
 3. Confirm metadata and branch protection match project conventions
 
 ### 7. Validate And Report
@@ -227,7 +227,7 @@ Boundary: a quick root sync — for a comprehensive pre-release update with a de
 
 - `Inputs`: `repo` (optional — owner/repo, default detected from the git remote), `check-protection` (optional, default true)
 - `Tools`: `exec` (`gh repo view`, `gh api`, `gh repo edit`, `git remote -v`), `read`
-- `Execute`: run `/update-github-metadata` to sync description/homepage/topics with `README.md` + `package.json` → if `check-protection` → run `/update-github-metadata` `### 6. Protect Branches` to check branch protection on `main`/integration branches → confirm metadata matches project conventions
+- `Execute`: run `/update-github-metadata` to sync description/homepage/topics with `README.md` + `package.json` → if `check-protection` → run `/update-github-metadata` `### 6. Protect Branches (Optional)` to check branch protection on `main`/integration branches → confirm metadata matches project conventions
 - `Output`: structured summary — metadata fields changed (before → after), branch protection status, permission errors or blockers (gh auth, repo not found)
 - `Constraints`: remote mutations only (`gh api`/`gh repo edit`), never modify local files; no push, no commit (the parent handles it); no remote or gh auth failure → report `blocked`, don't fail
 - `Full detail`: `references/subagent-github-metadata-updater.md`

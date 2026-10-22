@@ -4,25 +4,25 @@ description: Refactor files, workspaces, or a codebase — verify before, plan, 
 argument-hint: "[@files... | srp | concerns | structure | workspace | monorepo | codebase | shared | orm | architecture | clean | layered | skills]"
 related:
   - run-verify
-  - create-plan-in-dot-devin
-  - use-lib-effective
+  - run-check
+  - deep-validate
+  - report-before-after
+  - check-long-files
   - deep-review
   - update-tests
-  - update-references
-  - run-check
-  - use-subagents
-  - follow-tool-knip
-  - dont-over-engineer
+  - create-plan-in-dot-devin
+  - use-lib-effective
+  - follow-best-practice
   - follow-architecture
-  - deep-validate
   - refactor-skills
-  - simplify
-  - use-astgrep
+  - update-references
+  - use-subagents
+  - dont-over-engineer
 ---
 
 ## Goal
 
-Restructure without changing observable behavior — green before, green after, proven by `/report-before-after` vs the baseline
+Restructure without changing observable behavior — every target carries `file:line` evidence, green before and green after, with the `### 1` baseline re-measured at `### 5`
 
 ## Scope
 
@@ -30,7 +30,7 @@ Restructure without changing observable behavior — green before, green after, 
 
 | Argument | Seen When | Run |
 |----------|-----------|-----|
-| (none), `@files...`, `srp` | file >250 lines or one unit holds several reasons to change | `### 3` file/SRP |
+| (none), `@files...`, `srp` | file >250 lines, one unit holds several reasons to change, or new code that must start SRP-shaped | `### 3` file/SRP |
 | `concerns` | one file mixes UI + logic + IO + config | `### 3` concerns |
 | `structure` | naming, wrong folder, deep relative imports, barrel gaps | `### 3` structure |
 | `workspace`, `monorepo` (batch work), `codebase` | many files, member boundaries, whole-repo pass | `### 2` plan → `### 3` batches |
@@ -39,56 +39,90 @@ Restructure without changing observable behavior — green before, green after, 
 | `architecture`, `clean`, `layered`, `monorepo` (layout) | wrong layers, boundaries, dependency direction, repo-level layout | `### 3` architecture → `/follow-architecture` |
 | `skills` | the target is a skill package | `/refactor-skills` |
 
-Handed off elsewhere: config drift → `/update-config` · hardcoded values → `/no-hard-code` · ignore comments → `/no-use-ignore` · shorter/clearer file without touching boundaries → `/simplify` · event-driven semantics → `/improve events` (messaging/ordering/idempotency; queue ops → `/improve queues`, transport → `/improve realtime`) · test suite → `/update-tests` · file move only → `/relocation` · batch rename/pattern → `/use-astgrep rewrite` · performance → `/deep-optimize` (never in a refactor pass)
+Out of scope here — handed off, or used conditionally by one step; every `/skill` mention below is either the `related` pipeline or this table:
+
+| Out of scope | Owner |
+|--------------|-------|
+| config drift | `/update-config` |
+| hardcoded secret, URL, or magic string | `/no-hard-code` |
+| ignore comment to remove | `/no-use-ignore` |
+| shorter/clearer file, boundaries untouched | `/simplify` |
+| event semantics (ordering, idempotency) | `/improve events` |
+| queue operations | `/improve queues` |
+| transport or realtime | `/improve realtime` |
+| test suite work | `/update-tests` |
+| pure file move | `/relocation` |
+| pure naming | `/rename` |
+| batch pattern rewrite | `/use-astgrep rewrite` |
+| performance tuning | `/deep-optimize` |
+| circular dependency graph | `/follow-tool-madge` |
+| ORM setup and config | `/follow-lib-drizzle` |
+| payload/schema validation boundary | `/follow-tool-data-validation` |
+| `AGENTS.md` sync | `/update-agents-md` |
+| ast-grep rule persistence | `/update-astgrep-rules` |
+| `.devin/rules` persistence | `/update-devin-project-rules` |
+| error recovery | `/resolve-errors` |
+| user decision | `/ask-me` |
+| single-source convention | `/follow-single-of-source` |
 
 ## Execute
 
-### 1. Verify Before Refactor
+### 1. Baseline And Evidence
 
-> Goal: start from green — never refactor on top of a broken or unmeasured baseline
+> Goal: start from green and name the targets with `file:line` — never refactor on a broken or unmeasured baseline, never on a hunch
 
-1. Run `/run-verify` (lint, typecheck, test, build) FIRST — red → fix with `/resolve-errors` until green before touching anything
-2. Safety net: target's public behavior has no tests → `/update-tests` writes characterization tests locking current behavior
-3. `/follow-agents-md` for project conventions; record the baseline (`/check-long-files` + `/deep-review` metrics) for the after-comparison
+1. Read the project `AGENTS.md` conventions (line cap, import alias, folder layout) before judging any structure
+2. Confirm a clean working tree (`git status`) — pre-existing changes → record them first, so every diff below shows only this refactor
+3. Run `/run-verify` (lint, typecheck, test, build) FIRST — red → resolve to green before touching anything
+4. Collect candidates into one table `file:line | smell | technique | scope`: `/check-long-files` (size), `/deep-review` dimension `code-quality` (SRP, duplication, dead exports, complexity — it owns the detectors) and dimension `architecture` for a repo/package scope (its `N/A condition` is a single-file scope)
+5. Read the table before planning: empty table and no new code → nothing to refactor, report and stop; new code only → jump to `### 3` file/SRP with no baseline
+6. Safety net: target's public behavior has no tests → run `/update-tests` to lock current behavior with characterization tests
+7. Record the baseline for the after-comparison: `git rev-parse HEAD` (the sha `### 5` diffs against), `/check-long-files` line counts, `/deep-review` finding count, suite and lint status
 
 ### 2. Plan
 
 > Goal: know what moves and in what order before moving it
 
-1. `/create-plan-in-dot-devin` for any bulk scope (workspace/monorepo/codebase or several asks at once); a preparatory refactor before adding a feature goes in its own commit
-2. While planning run `/use-lib-effective` — reuse existing deps and patterns before writing anything new; duplication candidates via `/follow-tool-knip` + `/follow-tool-jscpd`
-3. Architecture decision needed → plan it through `/follow-architecture` (the architecture SSOT — it owns pattern selection, Clean/Layered guides, monorepo layout, workspace file structures); still unclear → `/ask-me`
+1. Bulk scope (workspace/monorepo/codebase or several asks at once) → run `/create-plan-in-dot-devin` with the `### 1` table; a preparatory refactor before a feature goes in its own commit
+2. Order the work before moving it: foundation → dependents within a chain, smallest reversible unit first, each item ending green on its own
+3. Not bulk but irreversible or wide-reaching (moves, splits, renames across call sites) → run `/report-before-after` for the plan and expected before→after, which confirms before any edit
+4. While planning run `/use-lib-effective` to reuse existing deps and patterns before writing anything new — the `### 1` table is the evidence, plan from it instead of re-scanning
+5. Before designing the target shape run `/follow-best-practice` for the stack the target lives in — the manifest's owner skills' `best-practices/` define the layout, API style, and error handling a refactored module must land on; cite the practice each structural decision follows
+6. Architecture decision needed → plan it through `/follow-architecture` (the architecture SSOT — it owns pattern selection, Clean/Layered guides, monorepo layout, workspace file structures); still unclear → run `/ask-me`
 
 ### 3. Refactor
 
-> Goal: one unit = 1 reason to change; one technique at a time → `/run-check` green → `/git-commit` checkpoint; red → revert that step only
+> Goal: one unit = 1 reason to change; one technique per step → `/run-check` green → checkpoint commit; red → revert that step only
 
-- `file/SRP` — group responsibilities by reason to change → Extract Method → Extract Class/Module → Move Method/Field; one content kind per file (`types.ts`/`constants.ts`/`schema.ts` or the domain name); keep the public API through a barrel so consumers don't change; no real violation → stop (`/dont-over-engineer`)
-- `concerns` — classify each block with `file:line` evidence (presentation/domain/data/io/config/orchestration) → extract leaf-first, one concern at a time, callers keep only orchestration
-- `structure` — naming via `/rename`; >250-line or multi-responsibility files → file/SRP; folder >10–15 flat files → group by domain; relocate via `/relocation` (dry-run + confirm); public API through the barrel, alias imports instead of `../../../`
-- `workspace/monorepo/codebase` — order foundation → dependents → applications; work one workspace/batch at a time with verify + checkpoint after each; independent files → parallel via `/use-subagents` (read in parallel, edit sequentially, no overlapping scope); nothing skipped silently — report anything not done with the reason
-- `shared` — extract only with ≥2 real consumers → `packages/shared`, layer-correct leaf-first; rewire consumers one at a time via `/update-references`; verify the package is a leaf (`/follow-tool-madge`); coincidental similarity stays duplicated
-- `orm` — move data access onto the project's one type-safe ORM behind a repository boundary (interfaces use business types, never import the ORM); drizzle → `/follow-lib-drizzle`; boundary validation → `/follow-tool-data-validation`
-- `architecture` — do not restructure layers here; run `/follow-architecture` and return for the file-level passes it exposes
+Technique matrix → `## Guide`; take the technique from the `### 1` table before touching code:
+
+1. `file/SRP` — group responsibilities by reason to change → Extract Method → Extract Class/Module → Move Method/Field; one content kind per file (`types.ts`/`constants.ts`/`schema.ts` or the domain name); keep the public API through a barrel so consumers don't change; new or just-written code (global rules `## 1` sends every create/update here) → judge the shape directly (1 reason to change, ≤250 lines, one content kind) with no baseline table; no real violation → stop (`/dont-over-engineer`)
+2. `concerns` — classify each block with `file:line` evidence (presentation/domain/data/io/config/orchestration) → extract leaf-first, one concern at a time, callers keep only orchestration
+3. `structure` — naming via `/rename`; >250-line or multi-responsibility files → item 1; folder >10–15 flat files → group by domain; relocate via `/relocation` (dry-run + confirm); public API through the barrel, alias imports instead of `../../../`
+4. `workspace/monorepo/codebase` — order foundation → dependents → applications; work one workspace/batch at a time with verify + checkpoint after each; independent files → parallel via `/use-subagents` (read in parallel, edit sequentially, no overlapping scope); nothing skipped silently — report anything not done with the reason
+5. `shared` — extract only with ≥2 real consumers → the project's shared package or folder (`packages/shared`, `src/shared`), layer-correct leaf-first; rewire consumers one at a time via `/update-references`; verify the package is a leaf (`/follow-tool-madge`); coincidental similarity stays duplicated
+6. `orm` — move data access onto the project's one type-safe ORM behind a repository boundary (interfaces use business types, never import the ORM); drizzle → `/follow-lib-drizzle`; boundary validation → `/follow-tool-data-validation`
+7. `architecture` — do not restructure layers here; run `/follow-architecture` and return for the file-level passes it exposes
 
 ### 4. Update References
 
 > Goal: no broken path or name remains after the restructure
 
-1. Run `/update-references` for paths/imports and global references; grep again to prove no old path/name remains
-2. Layout changed → `/update-agents-md`; broken references → `/resolve-errors`
+1. Run `/update-references` for paths/imports and global references, then prove the result: `rg "<old-path>|<old-name>"` returns no hit
+2. Layout changed → run `/update-agents-md`; a broken reference → run `/resolve-errors`
 
 ### 5. Verify After
 
 > Goal: prove behavior is unchanged vs the `### 1` baseline
 
-1. `/run-verify` + `/deep-validate` vs baseline; fail → back to `### 3`, max 3 rounds → stop + report
-2. Persist what was learned: a structural rule to keep → `/update-astgrep-rules`; a project convention → `/update-devin-project-rules` (skip with reason when nothing is reusable)
-3. Report scope, changes, and status via `/report` → `/report-before-after` vs the `### 1` baseline → `/suggest-next-action`
+1. Run `/run-verify` + `/deep-validate` against the `### 1` baseline; red → back to `### 3`, max 3 rounds → stop and report the remaining gap
+2. Prove the public surface did not move: `git diff <baseline-sha>` on every barrel/`index` in the change set, plus any new one from `git status --short` — an added, removed, or re-signatured export is a behavior change, not a refactor
+3. Persist what was learned: a structural rule to keep → run `/update-astgrep-rules`; a project convention → run `/update-devin-project-rules`; nothing reusable → say so and skip
+4. Run `/report` on scope, changes and status with the before→after table against the `### 1` baseline — its `### 4. Finalize` already routes the next action, so the next-action call is never duplicated
 
-## Smells → Techniques
+## Guide
 
-> Detect with `file:line` evidence only; fix the cause, never mask the symptom; architecture-level smells → `/deep-review` + `/follow-architecture` instead of a file refactor
+> Smell → technique matrix. Detect with `file:line` evidence only; fix the cause, never mask the symptom; architecture-level smells → `/deep-review` + `/follow-architecture` instead of a file refactor
 
 | Smell | Technique |
 |-------|-----------|
@@ -101,19 +135,26 @@ Handed off elsewhere: config drift → `/update-config` · hardcoded values → 
 | Primitive Obsession / Data Class / Anemic Model | Replace with domain type, move behavior onto it |
 | Switch Sprawl | Replace Conditional with Polymorphism / dispatch table |
 | Speculative Generality / Lazy Class / Middle Man | Inline / collapse, call the real collaborator |
-| Dead Code | Remove after `/follow-tool-knip` confirms no consumer |
+| Refused Bequest | Replace Inheritance with Composition |
+| Temporal Coupling / Hidden Sequence | Combine into one unit, or make the order explicit at a single entry point |
+| Comment Explains Bad Code | Extract Method / Rename so the comment becomes unnecessary |
+| Dead Code | Remove after the `code-quality` dimension confirms no consumer |
 
 ## Rules
 
-- Preserve Behavior — structure only, never observable behavior; public API stays identical (Two Hats: a bug found mid-refactor gets its own fix commit first)
+- Evidence Before Structure — every target enters the work from the `### 1` table with `file:line`; a hunch is not a target, and an empty table ends the task
+- Preserve Behavior — structure only, never observable behavior; public API stays identical (proven at `### 5`; Two Hats: a bug found mid-refactor gets its own fix commit first)
 - Safety Net First — never refactor uncovered code (enforced at `### 1`); Small Steps — one technique per step, checkpoint every green batch
-- Minimal Change — `/dont-over-engineer`; reuse > extend > extract > create (`/use-lib-effective` `### 5` internal reuse + dep leverage); no abstraction without a real consumer; never tune performance in a refactor pass
+- Minimal Change — `/dont-over-engineer`; reuse > extend > extract > create (`/use-lib-effective` `### 5` internal reuse + dep leverage); no abstraction without a real consumer; no new dependency; never tune performance in a refactor pass
 - SRP And Consistency — 1 unit = 1 reason to change, 1 file = 1 concern ≤250 lines, 1 folder = 1 domain; naming/patterns/structure consistent across the scope; member public API is its barrel
+- Best-Practice Shaped — the target shape comes from `/follow-best-practice` for the libs/framework in the change set (manifest owner skills' `best-practices/`), never from a personal preference; an invented pattern mid-refactor is a finding, not a refactor
 - Simple Design Order — works → communicates intent → no duplication → minimal elements, in that order
 - Context Aware — never guess the scope: unclear → `/ask-me`; destructive actions → dry run + confirm; every refactor ends green at `### 5`
 
 ## Expected Outcome
 
-- The chosen scope is finished and provable: files/members sized right, one responsibility each, naming/patterns/structure consistent, imports/exports clean
+- Every target traced to `file:line` evidence and closed: files/members sized right, one responsibility each, naming/patterns/structure consistent, imports/exports clean; code that global rules route here already starts that shape
+- Public surface identical — no barrel or index in the change set gains, loses, or re-signatures an export
 - Architecture (when requested) applied through `/follow-architecture` — pattern real in code, no circular deps
+- The resulting shape matches the stack's `best-practices/` (via `/follow-best-practice`) instead of an ad-hoc style; every structural decision cites the practice it follows
 - No broken references; `/run-verify` + `/deep-validate` green vs baseline; recurring smells persisted as rules; before/after report delivered

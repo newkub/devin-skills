@@ -30,7 +30,11 @@ Use for GitHub repositories that want dependency updates, schedule, automerge, a
 
 ### Workflows
 
-| Topic | Workflow |-------|----------| GitHub App / self-hosted install, `RENOVATE_TOKEN`, workflow | `workflows/setup-renovate/SKILL.md` | `renovate.json` presets, `packageRules`, automerge | `workflows/config-renovate/SKILL.md` 
+| Topic | Workflow |
+|-------|----------|
+| GitHub App / self-hosted install, `RENOVATE_TOKEN`, workflow | `workflows/setup-renovate/SKILL.md` |
+| `renovate.json` presets, `packageRules`, automerge | `workflows/config-renovate/SKILL.md` |
+
 ### 1. Configure Renovate
 
 > Goal: create the renovate config in the project

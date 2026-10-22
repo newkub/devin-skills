@@ -35,7 +35,7 @@ Migrate the E2E test suite from Cypress to Playwright safely — the suite must 
 > Goal: install Playwright while Cypress stays in place
 
 1. Follow `workflows/setup-playwright` — install, browsers, config
-2. Set `testDir` separate from `cypress/` (e.g. `e2e/`) — both frameworks can run side by side during migration
+2. Set `testDir` separate from `cypress/` — `tests/e2e/` per `/deep-test strategy` `## 3`; both frameworks can run side by side during migration
 3. Map config: `baseUrl` → `use.baseURL`, `viewportWidth/Height` → `use.viewport`, `defaultCommandTimeout` → `timeout`/`expect.timeout`, `video`/`screenshotOnRunFailure` → `video`/`screenshot` options
 
 ### 3. Map APIs

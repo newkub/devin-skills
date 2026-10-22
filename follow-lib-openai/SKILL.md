@@ -29,7 +29,11 @@ Use when the task involves the `openai` SDK — the OpenAI API client server-sid
 
 ### Workflows
 
-| Topic | Workflow |-------|----------| Config | `workflows/config-providers/SKILL.md` — `baseURL`, compatible endpoints, org/project keys | Optimize | `workflows/optimize-tokens/SKILL.md` — prompt sizing, caching, model routing 
+| Topic | Workflow |
+|-------|----------|
+| Config | `workflows/config-providers/SKILL.md` — `baseURL`, compatible endpoints, org/project keys |
+| Optimize | `workflows/optimize-tokens/SKILL.md` — prompt sizing, caching, model routing |
+
 ### 1. Setup And Usage
 
 > Goal: use correctly per the official docs

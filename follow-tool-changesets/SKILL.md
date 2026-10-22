@@ -30,7 +30,11 @@ Set up Changesets for monorepos and workspaces
 
 ### Workflows
 
-| Topic | Workflow |-------|----------| Init, `.changeset/` flow, version/publish commands | `workflows/setup-changesets/SKILL.md` | `config.json`, `fixed`/`linked` packages, access | `workflows/config-changesets/SKILL.md` 
+| Topic | Workflow |
+|-------|----------|
+| Init, `.changeset/` flow, version/publish commands | `workflows/setup-changesets/SKILL.md` |
+| `config.json`, `fixed`/`linked` packages, access | `workflows/config-changesets/SKILL.md` |
+
 ### 1. Install Changesets
 
 > Goal: install the Changesets CLI and init config

@@ -22,7 +22,7 @@ Collect starter templates for creating projects, CI/CD, docs, and TUI apps
 - Web templates (landing, saas, paas) for `/follow-create-web`
 - TUI templates (`/follow-create-tui-ratatui`) in Ratatui style
 - CI/CD templates (GitHub Actions) for `/setup-cicd`
-- Package setup templates for `/update-project` `### setup-package`
+- Package setup templates for `/update-project` `references/setup-package.md`
 - Documentation templates (`/write-how-to`, `/update-agents-md`, README.md)
 - Cloudflare templates for `/create-cloudflare-worker`
 

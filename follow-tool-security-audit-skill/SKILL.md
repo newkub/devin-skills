@@ -69,6 +69,10 @@ Use for on-demand full-codebase or focused security review executed by the codin
 - Persist confirmed outcomes via `/update-devin-project-rules` / `/update-astgrep-rules` so the next audit builds on them
 - See references/ for the skill file, validator, and report artifact tables
 
+## References
+
+- See `best-practices/audit-practice.md` for recommended audit patterns and pitfalls
+
 ## Expected Outcome
 
 - `findings.json` + reports with independently verified, schema-valid records

@@ -50,7 +50,7 @@ To run cloud verify or ship on cloud, use `/run-verify` or `/ship` instead.
 > Goal: Make sure the package manifest has the scripts CI will call, according to project size
 
 1. Read `package.json`, `Cargo.toml`, or the appropriate manifest file
-2. If the package manifest lacks the basic publish fields (`name`, `version`, `description`, `license`, `repository`) → run `/update-project` `### setup-package` first
+2. If the package manifest lacks the basic publish fields (`name`, `version`, `description`, `license`, `repository`) → run `/update-project` `references/setup-package.md` first
 3. Check the project size:
    - Small project (not a monorepo, build/test not heavy) → `verify` must include `scan`, `lint`, `typecheck`, `test`, `build` directly in the package manifest
    - Large project (monorepo or heavy build/test) → the CI/CD pipeline runs the full suite instead; the package manifest needs at least `test:all`, `build`, and a `verify` of `check && test`

@@ -70,7 +70,7 @@ Use combinatorics to count ways, build test cases, analyze brute-force bounds, a
 - Use a library when `n` is large
 
 - Use /follow-math-concepts if needed
-- Use /follow-test if needed
+- Use /deep-test if needed
 
 ## Expected Outcome
 

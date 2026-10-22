@@ -67,7 +67,7 @@ Applies to `tools/analyze` in a monorepo: detect features, add/fix analyzer cate
 1. Run `bun --filter tools-analyze lint`
 2. Run `bun --filter tools-analyze typecheck`
 3. Run `bun --filter tools-analyze test`
-4. Run `bun --filter tools-review-codebase review-codebase`
+4. Run `bun --filter review-cli review`
 5. If it fails → `/resolve-errors` then fix (max 3)
 
 ### 6. Report

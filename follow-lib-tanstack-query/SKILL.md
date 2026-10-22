@@ -102,6 +102,8 @@ const queryClient = new QueryClient({
 | Cached queries + targeted invalidation | `usecases/query-with-cache-invalidation.md` |
 | Optimistic mutations with rollback | `usecases/mutations-with-optimistic-ui.md` |
 | Infinite scroll, pagination, prefetch | `usecases/infinite-scroll-and-prefetch.md` |
+| Dependent queries + `select` for derived slices | `usecases/dependent-queries-and-derived-select.md` |
+| SSR prefetch, dehydrate, and hydrate without refetch | `usecases/ssr-hydration-boundary.md` |
 
 ## Rules
 

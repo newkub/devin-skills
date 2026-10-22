@@ -101,6 +101,9 @@ batch(() => {                          // collapse into one notification
 |----------|----------|
 | `Derived` state + slice selectors | `usecases/derived-selectors-and-subscriptions.md` |
 | Batched writes, persistence, async rollback | `usecases/batched-actions-and-side-effects.md` |
+| Async actions with shared status and rollback | `usecases/async-actions-and-status.md` |
+| Selector granularity proven with render counts | `usecases/selector-granularity-in-react.md` |
+| Persist a store with versioned migrations | `usecases/persist-with-versioned-migrations.md` |
 
 - See usecases/ for end-to-end scenario recipes
 

@@ -29,7 +29,12 @@ Install and set up Vitest 5 for unit testing in single projects and monorepos
 
 > Goal: dispatch to the workflow matching the topic
 
-| Topic | Workflow |-------|----------| setup | `workflows/setup-vitest/SKILL.md` — install, vitest.config, environment, coverage provider | migrate | `workflows/migrate-from-jest/SKILL.md` — jest→vitest globals, mock APIs, snapshots, verify | optimize | `workflows/optimize-tests/SKILL.md` — isolation, pool options, shard, watch excludes 
+| Topic | Workflow |
+|-------|----------|
+| setup | `workflows/setup-vitest/SKILL.md` — install, vitest.config, environment, coverage provider |
+| migrate | `workflows/migrate-from-jest/SKILL.md` — jest→vitest globals, mock APIs, snapshots, verify |
+| optimize | `workflows/optimize-tests/SKILL.md` — isolation, pool options, shard, watch excludes |
+
 1. If the argument matches a topic → read and follow `workflows/<name>/SKILL.md` instead of the steps below
 2. If not → follow the steps below as normal
 

@@ -49,7 +49,7 @@ Use when the user wants to create a project/plugin/library/extension/CLI/skills/
 
 > Goal: Find all existing `follow-create-*` skills
 
-1. Use `search-files-patterns` or `exec` to find `follow-create-*/SKILL.md` in `%APPDATA%\devin\skills`
+1. Use `/code-search` or `exec` to find `follow-create-*/SKILL.md` in `%APPDATA%\devin\skills`
 2. Read each skill's frontmatter (`name`, `description`)
 3. Build a list: skill name, description, approximate category
    - `skills` → `update-devin-global-skills`

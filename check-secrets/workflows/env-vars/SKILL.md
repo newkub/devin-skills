@@ -94,7 +94,7 @@ Audit the project's environment variables for consistency across `.env`, `.env.e
 
 - Use /follow-secret-manager if needed
 - Use /check-secrets secrets-leak if needed
-- Use /search-files-patterns if needed
+- Use /code-search if needed
 
 ## Expected Outcome
 

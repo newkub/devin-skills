@@ -83,6 +83,11 @@ export default defineConfig({
 - Freeze time, seed data, disable animations, log in to a fixed account or inject fixtures — a flaky pixel diff destroys review trust
 - Mock external content (dates, ads, avatars) via `/follow-lib-mswjs` or Playwright routes
 
+## References
+
+- See `best-practices/` for recommended patterns and pitfalls
+- See `references/apis.md` for the package and version reference
+
 ## Expected Outcome
 
 - Visual regressions caught as PR checks with zero committed snapshots

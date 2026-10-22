@@ -64,7 +64,7 @@ Explore repositories trending on GitHub by language, category, and time range
    - `total stars` if shown
    - `forks` if shown
 3. Keep the order shown on the page
-4. If the HTML changes, fall back to `search-files-patterns` or regex
+4. If the HTML changes, fall back to `/code-search` or regex
 
 ### 5. Format Output
 

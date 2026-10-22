@@ -8,8 +8,6 @@ related:
 - run-scan
 ---
 
-# Follow Tool Madge
-
 ## Goal
 
 Use `madge` to analyze a module's dependency graph — find circular imports, orphan files, and leaf/dependency queries — then hand the list of things to fix back to the requester
@@ -19,6 +17,7 @@ Use `madge` to analyze a module's dependency graph — find circular imports, or
 For JS/TS projects with `madge` installed. Covers circular detection, per-file dependency queries, graph rendering, and CI gating — `madge` checks dependency structure only; unused exports/files detection uses `knip`, and duplicate code uses jscpd (different purposes)
 
 - Latest: `madge@8.0.0` (npm, verified 2026-09-13)
+- References: [cli](references/cli.md) | [apis](references/apis.md) | best-practices/
 
 ## Execute
 
@@ -87,6 +86,13 @@ madge --circular --exit-code 1 --extensions ts,tsx src/
 - Run `/run-verify` (build/typecheck/tests) to confirm nothing broke after fixing a cycle; if code changed, run `/run-test` for the touched modules
 - Run `/run-scan` when a broader audit is needed (unused deps, secrets, lint)
 
+### Use Cases
+
+| Scenario | Use case |
+|----------|----------|
+| Fail the build on a new circular import | `usecases/circular-dependency-gate.md` |
+| Measure the blast radius before moving a module | `usecases/refactor-blast-radius.md` |
+
 ## Rules
 
 - A `src/` path (or the path the requester provides) is required — if missing, ask first
@@ -96,8 +102,6 @@ madge --circular --exit-code 1 --extensions ts,tsx src/
 - Use /run-verify to confirm build/typecheck/tests after a cycle fix
 - Use /run-test to confirm touched modules after refactoring
 - Use /run-scan for audits beyond the dependency graph
-
-- See best-practices/ for recommended patterns and pitfalls
 
 ## Expected Outcome
 

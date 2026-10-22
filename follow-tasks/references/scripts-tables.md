@@ -144,12 +144,12 @@ Add to the root `package.json` to run across every workspace:
 
 ## Review CLI Scripts
 
-If the project uses a `tools/review-codebase` workspace:
+If the project uses a root `review/` CLI:
 
 | Task | Bun |
 |------|-----|
-| review-codebase | `bun --filter tools-review-codebase review-codebase` |
-| review-codebase:json | `bun --filter tools-review-codebase review-codebase:json` |
+| review | `bun run review` |
+| review:json | `bun run review:json` |
 
 ## Other Ecosystems
 

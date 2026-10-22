@@ -4,12 +4,12 @@ Modern CSS patterns and Baseline features — usable with every project
 
 ## Recommended Patterns
 
-- **Cascade layers** — `@layer reset, base, components, utilities` controls the specificity war from the start
-- **Logical properties** — `margin-inline`, `padding-block`, `inset-inline-start` instead of physical ones (supports RTL/vertical writing for free)
-- **Custom properties** — design tokens as `--color-*`, `--space-*` on `:root` — easy theme switching
-- **`:has()`** — parent-aware styling without JS (form states, card-with-image layouts)
-- **Container queries** — `@container` for component-driven responsive instead of viewport media queries
-- **Native nesting** — nest selectors in one stylesheet (already Baseline) — reduces duplicated specificity
+- Cascade layers — `@layer reset, base, components, utilities` controls the specificity war from the start
+- Logical properties — `margin-inline`, `padding-block`, `inset-inline-start` instead of physical ones (supports RTL/vertical writing for free)
+- Custom properties — design tokens as `--color-*`, `--space-*` on `:root` — easy theme switching
+- `:has()` — parent-aware styling without JS (form states, card-with-image layouts)
+- Container queries — `@container` for component-driven responsive instead of viewport media queries
+- Native nesting — nest selectors in one stylesheet (already Baseline) — reduces duplicated specificity
 
 ## Common Pitfalls
 

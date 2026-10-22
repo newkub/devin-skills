@@ -25,8 +25,8 @@ Guidance for using `portless` so named `.localhost` URLs stay stable, never coll
 
 ## Common Pitfalls
 
-- **Compound commands break injection**: `portless myapp sh -c "a && b"` or an env prefix (`PORT=x cmd`) means portless can't inject `--port` — if the command is complex, wrap it as a script in `package.json` and run that script
-- **Frameworks that don't read `PORT`**: for Vite/Astro/Angular, portless injects `--port` automatically, but putting `--port` in your own script collides — don't duplicate it
-- **`.local` vs `.localhost`**: the custom TLD `.local` conflicts with mDNS (Bonjour) — use `.test` or the default `.localhost` only; `.dev` hits HSTS preload
-- **Windows**: LAN mode is not supported; `hosts sync` needs Admin (but `.localhost` already resolves in Chrome/curl — no sync needed); `portless trust` shows a dialog you must click "Yes" on in the Windows cert prompt
-- **Route points at an old port**: an alias doesn't follow the process — if the app changes port, `alias --remove` and re-create it
+- Compound commands break injection: `portless myapp sh -c "a && b"` or an env prefix (`PORT=x cmd`) means portless can't inject `--port` — if the command is complex, wrap it as a script in `package.json` and run that script
+- Frameworks that don't read `PORT`: for Vite/Astro/Angular, portless injects `--port` automatically, but putting `--port` in your own script collides — don't duplicate it
+- `.local` vs `.localhost`: the custom TLD `.local` conflicts with mDNS (Bonjour) — use `.test` or the default `.localhost` only; `.dev` hits HSTS preload
+- Windows: LAN mode is not supported; `hosts sync` needs Admin (but `.localhost` already resolves in Chrome/curl — no sync needed); `portless trust` shows a dialog you must click "Yes" on in the Windows cert prompt
+- Route points at an old port: an alias doesn't follow the process — if the app changes port, `alias --remove` and re-create it

@@ -68,6 +68,9 @@ bun add @tanstack/markdown
 |----------|----------|
 | Render AI output while it streams, partial blocks included | `usecases/stream-ai-markdown.md` |
 | Map nodes to design-system components, links, and sanitizing | `usecases/custom-node-renderers.md` |
+| Send the document model as JSON and render it client-side | `usecases/doc-model-over-the-wire.md` |
+| Heading anchors and a generated table of contents | `usecases/heading-anchors-and-toc.md` |
+| Allowlisted raw HTML and click-to-load embeds | `usecases/allowlisted-html-and-embeds.md` |
 
 ## Rules
 

@@ -3,6 +3,9 @@ name: scan-codebase
 description: Quickly scan a codebase to understand its structure, patterns, and quality
 argument-hint: "[scope]"
 related:
+  - code-search
+  - git-search
+  - web-search
   - deep-analyze
   - check-code-structure
   - use-astgrep
@@ -25,16 +28,16 @@ Use for a quick overview before `/deep-analyze`, or as a fast standalone snapsho
 
 > Goal: Understand the project structure, project type, and workspace layout
 
-1. Use `find_by_name` to locate manifest files
-2. Use `find_by_name` to locate the directory structure (`src/`, `app/`, `lib/`, `components/`)
+1. Use `/code-search` (`rg --files -g 'package.json' -g 'Cargo.toml' -g 'go.mod'`) to locate manifest files
+2. Use `/code-search` (`rg --files`) to locate the directory structure (`src/`, `app/`, `lib/`, `components/`)
 3. Identify the project type and monorepo structure
 
 ### 2. Pattern Search (1 minute)
 
 > Goal: Discover code patterns and the domain’s key terms
 
-1. Use `Grep` in parallel for `import`, `export`, `function`, `class`, `const`, `interface`
-2. Use `Grep` for key terms related to the domain
+1. Use `/code-search` in parallel for `import`, `export`, `function`, `class`, `const`, `interface`
+2. Use `/code-search` for key terms related to the domain
 
 ### 3. Structural Analysis (1 minute)
 
@@ -48,7 +51,7 @@ Use for a quick overview before `/deep-analyze`, or as a fast standalone snapsho
 > Goal: Find quality issues and anti-patterns with priority
 
 1. Run `/deep-review` to find duplicate code
-2. Use `Grep` to find anti-patterns (`any`, `console.log`, nested ternary)
+2. Use `/code-search` to find anti-patterns (`any`, `console.log`, nested ternary)
 
 ### 5. Structured Data And Report (30 seconds)
 
@@ -60,8 +63,9 @@ Use for a quick overview before `/deep-analyze`, or as a fast standalone snapsho
 ## Rules
 
 - Process in parallel for speed
-- Use `Grep` for text search
-- Use `ast-grep` for semantic search
+- Use `/code-search` for file names, text, and AST patterns — never raw `find`/`grep` ad hoc
+- Use `ast-grep` through `/use-astgrep` for structural patterns beyond plain text
+- Route history-related questions to `/git-search` and external sources to `/web-search`
 - Use `/deep-analyze` when deeper analysis is needed
 - Limit scope with path, type, glob to reduce noise
 - Use /run-scan if needed

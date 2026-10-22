@@ -21,7 +21,7 @@ Use hk for pre-commit, pre-push, pre-merge-commit and the `check`/`fix` commands
 
 - General git hooks patterns: see `references/apis.md`
 - Latest: `hk@2.2.0` (verified 2026-09-24) — v2 breaking: config is Pkl-only (removed `hk.toml`/`hk.yaml`/`.hkrc.pkl`), builtin variants (`gitleaks_staged`, `knip_strict`, `pinact_v3`) replaced by typed options such as `(Builtins.gitleaks) { scan = "staged" }`, `hk generate` → `hk init`, pre-commit fix+stage automatic — migration guide: `https://hk.jdx.dev/migration-v2`
-- References: [cli](references/cli.md) | [apis](references/apis.md) 
+- References: [cli](references/cli.md) | [apis](references/apis.md) | best-practices/ 
 ## Execute
 
 ### 1. Install hk
@@ -170,9 +170,7 @@ local linters = new Mapping<String, Step> {
     fix = "bunx biome check --write --no-errors-on-unmatched {{files}}"
     batch = true
   }
-  ["gitleaks"] {
-    check = "gitleaks protect --no-banner --redact --config .gitleaks.toml --staged"
-  }
+  ["gitleaks"] = (Builtins.gitleaks) { scan = "staged" }
 }
 
 local checks = new Mapping<String, Step> {
@@ -224,11 +222,7 @@ hooks {
 
 ### 7. Common Commands
 
-- `hk run pre-commit` - test pre-commit
-- `hk run pre-push` - test pre-push
-- `hk check --all` - check the whole repo
 - `hk check --unstaged` - check only unstaged/untracked files (v1.52+, suits agent stop hooks)
-- `hk fix` - fix files
 - `hk agent` - print agent integration snippets (Codex, Claude Code, VS Code) — read-only (v1.55+)
 - `hk mcp` - run the MCP server with an interactive dashboard (v1.55+)
 - `hk migrate pre-commit` - convert `.pre-commit-config.yaml` to `hk.pkl`
@@ -238,7 +232,11 @@ hooks {
 - Use /follow-tool-mise to install and manage tools
 - Use /run-verify to check lint/typecheck/scan after setup
 - Use /fix when hooks find issues that need fixing
-- See best-practices/ for recommended patterns and pitfalls
+
+### Use Cases
+
+- `usecases/hook-layout-by-hook.md` — give pre-commit, pre-push and pre-merge-commit one job each
+- `usecases/monorepo-and-agent-hooks.md` — subprojects plus an agent stop hook scoped to unstaged files
 
 ## Expected Outcome
 

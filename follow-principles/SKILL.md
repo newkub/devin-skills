@@ -45,7 +45,7 @@ Use when checking or following the principles of a specific project, framework, 
 
 > Goal: find where the principles live
 
-1. Use `/scan-codebase` and `/search-files-patterns` to find standard files:
+1. Use `/scan-codebase` and `/code-search` to find standard files:
    - `PRINCIPLES.md`, `ARCHITECTURE.md`, `DESIGN.md`
    - `CONTRIBUTING.md`, `CODE_OF_CONDUCT.md`
    - `global_rules.md`, `AGENTS.md`

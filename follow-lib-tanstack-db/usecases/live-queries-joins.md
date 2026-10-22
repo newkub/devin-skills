@@ -76,3 +76,10 @@ const byDate = active.orderBy(({ todo }) => todo.created_at, 'desc')
 - `.select` referencing an alias you never `.from`/`.join` → type error / empty column.
 - Forgetting the join predicate returns an operator expression (not a JS `===`) → always `eq(...)`.
 - Applying `.limit` before `.orderBy` intent → limit picks arbitrary rows; order first.
+
+## Related
+
+- `references/apis.md`
+- `best-practices/tanstack-db.md`
+- `usecases/query-rest-crud.md`
+- `usecases/aggregations.md`

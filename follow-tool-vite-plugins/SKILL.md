@@ -21,6 +21,7 @@ Pick the Vite plugin that fits the job and set it up in `vite.config.ts` — the
 - Create a new plugin → `/follow-create-plugins` or `/follow-create-vite-plugin`
 - Vite core config (resolve/build/server) → `/follow-tool-vite`
 - Catalog sources: `search-raindrop` bookmarks + `search-github-star` (vite-plugin by stars) + awesome-vite
+- References: [apis](references/apis.md) | best-practices/ — no `cli.md`: the catalog wraps no CLI of its own
 
 ## Execute
 
@@ -59,6 +60,13 @@ Pick the Vite plugin that fits the job and set it up in `vite.config.ts` — the
 2. `bunx vite build` — the production build passes
 3. Do `/report` table: `Plugin`, `Purpose`, `Version`, `Status`
 
+### Use Cases
+
+| Scenario | Use case |
+|----------|----------|
+| Order plugins and drop duplicates | `usecases/plugin-order-and-duplicates.md` |
+| Check a plugin against Rolldown before committing | `usecases/rolldown-compat-check.md` |
+
 ## Rules
 
 - Official/framework plugins first (`@vitejs/plugin-*`) — community plugins only when no official one exists
@@ -69,9 +77,6 @@ Pick the Vite plugin that fits the job and set it up in `vite.config.ts` — the
 - Use `/follow-tool-vite` for the main config
 - Use `/search-github-star`, `/search-raindrop` to find plugins not in the catalog
 - Use `/follow-create-plugins` if you must write a plugin yourself
-
-- See best-practices/ for recommended patterns and pitfalls
-- See references/ for the plugin package and install tables
 
 ## Expected Outcome
 

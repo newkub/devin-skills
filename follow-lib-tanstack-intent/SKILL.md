@@ -52,6 +52,9 @@ bun add -D @tanstack/intent
 |----------|----------|
 | Publish a package with its agent skills in the tarball | `usecases/ship-skills-with-package.md` |
 | Consume a dependency's skills into the right store | `usecases/consume-skills-from-a-dependency.md` |
+| Regenerate and version skills on every release | `usecases/version-skills-with-releases.md` |
+| Validate skills and the tarball in CI | `usecases/validate-skills-in-ci.md` |
+| Retrofit skills onto an already-published package | `usecases/retrofit-intent-on-existing-package.md` |
 
 ## Rules
 

@@ -1,72 +1,105 @@
 # Use Case — Keep Devtools Out of the Production Bundle
 
-> Prove that the devtools panels exist in dev and are absent from the built output. Source: https://tanstack.com/devtools (accessed 2026-10-20)
+> Rely on the Vite plugin's stripping, then prove it by searching the built output. Source: https://tanstack.com/devtools/latest/docs/production (accessed 2026-10-20)
 
-## 1. Gate the import, not just the render
+## 1. Know what stripping removes
 
-```tsx
-// src/Devtools.tsx
-import { lazy, Suspense } from "react";
+With `removeDevtoolsOnBuild: true` (the default), the Vite plugin replaces imports of these packages with empty modules:
 
-const ReactQueryDevtools = import.meta.env.DEV
-  ? lazy(() =>
-      import("@tanstack/react-query-devtools").then((m) => ({
-        default: m.ReactQueryDevtools,
-      })),
-    )
-  : () => null;
+- `@tanstack/react-devtools`
+- `@tanstack/solid-devtools`
+- `@tanstack/vue-devtools`
+- `@tanstack/preact-devtools`
+- `@tanstack/devtools`
 
-export function Devtools() {
-  return (
-    <Suspense fallback={null}>
-      <ReactQueryDevtools />
-    </Suspense>
-  );
+The matching JSX or component usage disappears with the import. You do not need a second environment guard when the plugin is active.
+
+## 2. Keep the default
+
+```ts
+import { devtools } from '@tanstack/devtools-vite'
+
+export default {
+  plugins: [devtools()],
 }
 ```
 
-The ternary sits around the dynamic `import()` itself. Guarding only the JSX still leaves the module reachable, and a bundler that cannot statically fold `import.meta.env.DEV` keeps the chunk.
-
-## 2. Match the guard to the bundler
-
-| Bundler | Static-replaced guard |
-|---------|-----------------------|
-| Vite | `import.meta.env.DEV` |
-| Webpack / Rspack | `process.env.NODE_ENV !== "production"` |
-| Bun build | `process.env.NODE_ENV !== "production"` |
-
-A guard the bundler does not replace is a runtime check, and a runtime check still ships the code.
+Passing `removeDevtoolsOnBuild: false` is a deliberate production decision, not a debugging shortcut — it ships the shell and every registered plugin.
 
 ## 3. Build and search the output
 
 ```bash
-# through the project's own build
-bun run build
-grep -r "react-query-devtools" dist/
-grep -r "ReactQueryDevtools" dist/
+npm run build
+grep -r "@tanstack/react-devtools" dist/
+grep -r "ReactQueryDevtoolsPanel" dist/
 ```
 
-Both searches must come back empty. Grepping the minified bundle for the package id is faster and more reliable than eyeballing a bundle report.
+Both searches must come back empty. Searching for the package id is more reliable than reading a bundle report, because the plugin chunk is separate from the entry chunk.
 
-## 4. Check the route-level panels too
+## 4. Handle a non-Vite build manually
 
-`TanStackRouterDevtools` gets the same treatment. If it is imported at the module scope of the root route, the panel ships even when the query panel does not.
+```tsx
+// devtools-setup.tsx
+import { TanStackDevtools } from '@tanstack/react-devtools'
 
-## 5. Keep the dev path honest
+export default function Devtools() {
+  return <TanStackDevtools plugins={[]} />
+}
+```
 
-1. `/run-dev` — the panel must still appear
-2. `/run-build` then serve the built output — the panel must be gone and the app must render normally
-3. `/deep-review` when a bundle needs formal confirmation
+```tsx
+// App.tsx
+const Devtools =
+  process.env.NODE_ENV === 'development'
+    ? await import('./devtools-setup')
+    : () => null
+```
+
+The guard sits around the dynamic `import()` itself, and the bundler must statically replace `process.env.NODE_ENV`. A guard the bundler cannot fold still ships the module.
+
+## 5. Know the event client's own behavior
+
+The root import of `@tanstack/devtools-event-client` no-ops outside development: when `NODE_ENV` is anything but `development`, the real client is replaced and tree-shaken. This happens independently of the Vite plugin.
+
+```ts
+// stripped outside development
+import { EventClient } from '@tanstack/devtools-event-client'
+
+// never stripped — for libraries that deliberately emit in production
+import { EventClient } from '@tanstack/devtools-event-client/production'
+```
+
+Use the `/production` subpath only when a published library must emit events in a consumer's production app. An unset `NODE_ENV` counts as non-development, so the root import no-ops there too.
+
+## 6. Decide before shipping devtools on purpose
+
+If production really needs the workbench:
+
+1. Install the adapter as a regular dependency, not a dev dependency
+2. Set `removeDevtoolsOnBuild: false`
+3. Accept that every plugin's code ships to users
+
+For anything else, keep devtools development-only.
+
+## 7. Verify
+
+1. `/run-dev` — the workbench still opens and shows its panels
+2. `/run-build` then serve the output — the trigger is gone and the app renders normally
+3. Grep the build for adapter and panel names — no matches
+4. `/deep-review` when a bundle needs formal confirmation
 
 ## Pitfalls
 
-- Guarding with `import.meta.env.MODE === "development"` in a build that sets a custom mode, so the devtools vanish in dev too.
-- A lazy import inside a `try/catch` that the bundler cannot analyze, producing a chunk that is always emitted.
-- Checking only the entry chunk; the devtools chunk is separate and needs a search across `dist/`.
+- Setting `removeDevtoolsOnBuild: false` to debug a production-only issue and forgetting to revert it.
+- Guarding with `import.meta.env.MODE === 'development'` in a build that sets a custom mode, so devtools vanish in dev too.
+- Checking only the entry chunk; the devtools code lives in its own chunk.
+- Expecting the event client to be active in production from the root import.
+- Importing `@tanstack/devtools-event-client/production` for an app that should not emit anything.
 - Leaving a `console.log` of devtools internals, which keeps a reference alive after tree-shaking.
 
 ## Related
 
 - `references/apis.md`
 - `best-practices/tanstack-devtools.md`
-- `usecases/query-and-router-devtools.md`
+- `usecases/vite-plugin-features.md`
+- `usecases/custom-plugin-with-event-client.md`

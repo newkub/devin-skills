@@ -68,6 +68,11 @@ Use when a diagram must be explored, shared, or presented — not when inline ma
 
 - Chat/doc-embedded diagram → Mermaid; quick sketch → excalidraw/tldraw; presentation/exploration/sharing → Archify
 
+## References
+
+- See `best-practices/` for recommended patterns and pitfalls
+- See `references/apis.md` for the package and version reference, `references/cli.md` for the CLI surface
+
 ## Expected Outcome
 
 - One self-contained interactive HTML per subject, validation-gated and shareable

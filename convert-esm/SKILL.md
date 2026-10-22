@@ -28,7 +28,7 @@ Migrate a JavaScript/TypeScript project from CommonJS (`require`/`module.exports
 
 > Goal: Size the work and find blockers
 
-1. Count `require`/`module.exports` sites with `use-astgrep` or `search-files-patterns`
+1. Count `require`/`module.exports` sites with `use-astgrep` or `/code-search`
 2. Check the `package.json` `"type"` field and runtime/tooling support (Node version, bundler, test runner)
 3. Find blockers: `require()` calls that can't be made static, conditional requires, CJS-only deps
 4. Check the dependencies that import this project — run `/deep-review`

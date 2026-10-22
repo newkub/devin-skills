@@ -21,12 +21,18 @@ Set up VitePress for a documentation site with UnoCSS, Shiki Twoslash, Group Ico
 Use for every project that wants a VitePress documentation site — boundary: for a whole docs site (content + site) use `/update-vitepress-docs`; for plain `docs/` markdown use `/update-docs`; for slides use `/follow-create-slide-slidev`; for an app/web site use `/follow-tool-vite`
 
 - Latest stable: `vitepress@1.6.4` (verified 2026-09-13); `vitepress@next` = `2.0.0-alpha.20` (preview for Vite 8/rolldown)
+- References: [cli](references/cli.md) | best-practices/
 
 ## Execute
 
 ### Workflows
 
-| Topic | Workflow |-------|----------| Init, `config.ts` nav/sidebar, docs structure | `workflows/setup-vitepress/SKILL.md` | Theme config, `.vitepress/theme/`, i18n | `workflows/config-theme/SKILL.md` | Docusaurus → VitePress content/frontmatter migration | `workflows/migrate-from-docusaurus/SKILL.md` 
+| Topic | Workflow |
+|-------|----------|
+| Init, `config.ts` nav/sidebar, docs structure | `workflows/setup-vitepress/SKILL.md` |
+| Theme config, `.vitepress/theme/`, i18n | `workflows/config-theme/SKILL.md` |
+| Docusaurus → VitePress content/frontmatter migration | `workflows/migrate-from-docusaurus/SKILL.md` |
+
 ### 1. Project Initialization
 
 > Goal: create the docs structure with workspace config
@@ -228,12 +234,6 @@ For a single project, put the scripts in the root `package.json` as `dev:docs`, 
 - Use /follow-tool-vite if needed
 - Use /follow-create-plugins (vite) if needed (tool vitepress)
 - Use /run-docs if needed
-
-## References
-
-- [CLI reference](references/cli.md)
-
-- See best-practices/ for recommended patterns and pitfalls
 
 ## Expected Outcome
 

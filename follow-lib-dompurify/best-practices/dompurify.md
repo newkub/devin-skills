@@ -4,7 +4,7 @@ Safely sanitize untrusted HTML — the correct XSS prevention
 
 ## Recommended Patterns
 
-- Sanitize **every** untrusted HTML before injecting: `DOMPurify.sanitize(dirty)` — user input, markdown render output, CMS content
+- Sanitize every untrusted HTML before injecting: `DOMPurify.sanitize(dirty)` — user input, markdown render output, CMS content
 - The default config is safe enough for most cases — tighten when the threat model is higher: `FORBID_TAGS`, `FORBID_ATTR`, `ALLOWED_TAGS` allowlist
 - Use `RETURN_TRUSTED_TYPE: true` when the app uses a Trusted Types CSP — sanitize then get TrustedHTML directly
 - Hooks (`addHook`) for enforcing extra rules — e.g. `afterSanitizeAttributes` adds `rel="noopener"` to `target="_blank"`

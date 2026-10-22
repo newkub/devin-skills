@@ -5,7 +5,7 @@ argument-hint: "[scope|setup-project]"
 related:
   - deep-review
   - follow-tool-cargo
-  - follow-test
+  - deep-test
   - follow-tool-mutants-rs
   - follow-tool-nextest
   - follow-architecture
@@ -78,7 +78,7 @@ For creating or improving Rust projects, single crate and workspace. Package: `S
 
 > Goal: define the testing strategy per project type
 
-1. Run `/follow-test` for general strategy; `/follow-tool-nextest` for the runner
+1. Run `/deep-test strategy` for general strategy; `/follow-tool-nextest` for the runner
 2. `#[cfg(test)]` unit tests inline; `tests/` for integration; `assert!`/`assert_eq!`/`#[should_panic]`
 3. Business logic → `proptest` property-based tests; complex logic → `/follow-tool-mutants-rs` mutation testing
 4. Every public API gets a doc example that uses `?`, never `unwrap()`

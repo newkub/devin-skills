@@ -6,7 +6,7 @@ related:
   - follow-lang-lua
   - follow-tool-formatter
   - follow-create-plugins
-  - follow-test
+  - deep-test
 ---
 
 ## Goal
@@ -124,7 +124,7 @@ For creating or refactoring a Neovim config at `~/.config/nvim` or a project-spe
 - Use /follow-lang-lua if needed
 - Use /follow-tool-formatter if needed
 - Use /follow-create-plugins (nvim) if needed
-- Use /follow-test if needed
+- Use /deep-test if needed
 
 ## References
 

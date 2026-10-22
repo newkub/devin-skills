@@ -3,7 +3,7 @@
 The single mapping table of scope → review domain + ownership boundary — other skills must not copy this table; point to this file instead (`/follow-single-of-source`)
 Every scope is handled by the `/improve` thin entry (or `/optimize` for metric-driven scope): review → `/deep-review <dimension>` | fix → `/deep-review <scope> then-fix`
 
-**Label resolution (mandatory)** — every name in the `Review domain(s)` column is either a plain dimension label, or a standalone skill name kept verbatim (`review-test`, `review-gaps`, `review-devin-global-harness`, `usage`). A dimension label takes the row(s) in `deep-review/references/review.md` `## Dimension Matrix` whose `Aliases` column lists it (or whose row name equals it), plus the `always` tier — read that set from the table, never re-resolve by hand (resolution rules: `deep-review/references/checks.md` `### Label resolution`). A label with no row is a matrix gap: dispatch the `always` tier + the closest artifact-match rows and report the gap, never invent a dimension.
+**Label resolution (mandatory)** — every name in the `Review domain(s)` column is either a plain dimension label, or a standalone skill name kept verbatim (`review-test`, `review-gaps`, `review-devin-global-harness`, `usage`). A dimension label takes the row(s) in `deep-review-codebase-everything/references/review.md` `## Dimension Matrix` whose `Aliases` column lists it (or whose row name equals it), plus the `always` tier — read that set from the table, never re-resolve by hand (resolution rules: `deep-review-codebase-everything/references/review.md` `### Label resolution`). A label with no row is a matrix gap: dispatch the `always` tier + the closest artifact-match rows and report the gap, never invent a dimension.
 
 | Scope (`/improve <scope>`) | Review domain(s) | Ownership / boundary |
 |---|---|---|
@@ -72,6 +72,7 @@ Every scope is handled by the `/improve` thin entry (or `/optimize` for metric-d
 | `typesafe` | code-quality, data-validation, sdk, frontend | type safety surfaces |
 | `uploads` | frontend, backend, security | size/type limits, direct-to-storage, resumable; storage → `/optimize storage`; images → `/optimize images` |
 | `usage-md` | usage | top-level skill `improve-usage-md` — USAGE.md/examples actually work |
+| `use-lib-effective` | lib-usage | library usage effectiveness — right lib, current major, documented API, required setup, one lib per job, no hand-rolled duplicate; selection → `/follow-my-techstack`, unused/version → `/improve deps` |
 | `uxui` | uxui, accessibility, mobile, frontend, writing | design system/theme + interaction/navigation (RBAC UI, UX routing), motion (reduced-motion fallback + lib via `/follow-lib-animejs`), UX copy clarity/tone/consistency; native semantics/widgets → `/follow-web-standard`; error UI/copy → `/improve error-handling`, docs prose → `/improve writing`, onboarding copy → `/improve onboarding` |
 | `web` | seo, frontend | routing/SEO/metadata; error UI → `/improve error-handling`; SEO findings → `/improve seo` |
 | `workflows` | workflow | CI/CD workflow files |

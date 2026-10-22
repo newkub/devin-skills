@@ -26,7 +26,10 @@ Use for projects or workspaces that need to keep dependencies up-to-date via the
 
 ### Workflows
 
-| Topic | Workflow |-------|----------| Install, `major`/`minor`/`latest` checks, monorepo `-r` usage | `workflows/setup-taze/SKILL.md` 
+| Topic | Workflow |
+|-------|----------|
+| Install, `major`/`minor`/`latest` checks, monorepo `-r` usage | `workflows/setup-taze/SKILL.md` |
+
 ### 1. Run Taze
 
 > Goal: Start checking for updates

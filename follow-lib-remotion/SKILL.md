@@ -23,7 +23,8 @@ Used for:
 
 - Latest: `remotion@4.0.527` (verified 2026-09-24)
 - It is React-based — use `/follow-lib-react` for component patterns and `/follow-lib-zod` for prop schemas
-- References: [apis](references/apis.md) | [cli](references/cli.md) 
+- References: [apis](references/apis.md) | [cli](references/cli.md)
+
 ## Execute
 
 ### 1. Create Project
@@ -37,9 +38,7 @@ bunx create-video@latest --yes --blank --no-tailwind my-video   # skip Tailwind
 cd my-video && bun install
 ```
 
-- `--yes` is non-interactive mode (requires a template flag and directory)
-- `--blank` uses the blank template
-- `--no-tailwind` skips the Tailwind install
+- `--yes` is non-interactive (requires a template flag and directory); `--blank` uses the blank template, `--no-tailwind` skips Tailwind
 - `--tmp` creates in a temp directory
 
 ### 2. Start Studio
@@ -47,9 +46,7 @@ cd my-video && bun install
 > Goal: open Remotion Studio for preview
 
 ```bash
-bunx remotion studio --no-open
-# or
-bun run dev
+bunx remotion studio --no-open   # or: bun run dev
 ```
 
 - `bunx remotion preview` is deprecated; use `remotion studio`
@@ -186,8 +183,7 @@ bunx remotion render MyComp --sequence
 
 - test in Remotion Studio before rendering
 - use `--props props.json` for input props (on Windows use a file instead of inline JSON)
-- use `--repro` to record state for debugging
-- use `--log=verbose` when you need more logs
+- use `--repro` to record state and `--log=verbose` for more logs
 
 ### 8. Cloud Rendering
 
@@ -195,13 +191,18 @@ bunx remotion render MyComp --sequence
 
 - Use `@remotion/lambda` (AWS), `@remotion/cloudrun` (GCP), or `@remotion/vercel` per platform — see details at docs.remotion.dev
 
+### Use Cases
+
+- `usecases/scene-sequence.md` — multi-scene composition with `Sequence` + `spring`
+- `usecases/render-in-ci.md` — headless render from a props file, artifact check
+- `usecases/data-driven-duration.md` — `calculateMetadata` for variable-length videos
+- `usecases/fonts-assets-and-determinism.md` — bundled fonts, async assets, seeded randomness
+- `usecases/embed-player-in-react-app.md` — `<Player>` in a product UI with custom controls
+
 ### Workflows
 
 - Setup project — `create-video`, Composition, Studio smoke test → `workflows/setup-remotion/SKILL.md`
 - Render performance, codecs/flags, Lambda notes → `workflows/optimize-render/SKILL.md`
-
-- `usecases/scene-sequence.md` — multi-scene composition with `Sequence` + `spring`
-- `usecases/render-in-ci.md` — headless render from a props file, artifact check
 
 ## Rules
 

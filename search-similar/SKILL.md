@@ -45,7 +45,7 @@ See also: /use-astgrep
 
 > Goal: find similars by content
 
-1. Run `/search-files-patterns` with keywords from the target
+1. Run `/code-search` with keywords from the target
 2. Run `/use-astgrep` for code patterns (if it is code)
 3. Search relevant categories in `AGENTS.md`
 4. Search `related` frontmatter that references the target

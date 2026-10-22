@@ -71,6 +71,10 @@ Use when a project needs real SEO data + agent workflows without a paid suite â€
 
 - See references/ for the self-hosting, MCP, and workflow surface table
 
+## References
+
+- See `best-practices/self-hosting.md` for recommended self-hosting patterns and pitfalls
+
 ## Expected Outcome
 
 - A self-owned SEO stack (MIT code, BYO usage-priced data, no lock-in subscription)

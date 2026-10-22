@@ -2,6 +2,8 @@
 
 Real issues encountered before — check these before judging a finding as a source bug
 
+Entries dated before 2026-10-22 point at the retired `tools/review-codebase` path; the review CLI now lives at the project root `review/` and `tools/analyze` is unchanged — treat old paths as historical evidence, not live instructions
+
 | No. | Issue | Evidence | Status |
 |-----|-------|----------|--------|
 | 1 | `checkCommand` reports typecheck/lint fail when the process dies with OOM/`VirtualAlloc` under analyzer load | Windows heap error in the combined output even though typecheck actually passes | fixed — retry once when output matches OOM/timeout patterns (`tools/analyze/src/analyzers/codeQuality.ts`) |

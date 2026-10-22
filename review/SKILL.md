@@ -6,6 +6,8 @@ related:
   - review-issues
   - review-gaps
   - deep-review
+  - update-astgrep-rules
+  - update-devin-project-rules
   - follow-parallel
   - report-review
   - create-plan-in-dot-devin
@@ -13,7 +15,6 @@ related:
   - improve
   - ask-me
   - use-subagents
-  - suggest-next-action
   - deep-thinking
   - deep-analyze
   - deep-validate
@@ -73,7 +74,8 @@ Review anything the user points at (code, docs, a feature area, a plan, a config
 3. A finding that turns into a scoped improvement program rather than a single fix → hand it to `/improve <scope>`
 4. Large additions → always `/create-plan-in-dot-devin` before implementing; never skip
 5. After all fixes → run `/refactor` (step 2, SRP split) on the touched files (≤250 lines, 1 responsibility)
-6. Run the project build/lint/test to verify → `/suggest-next-action`
+6. Persist durable findings so the next review catches them instead of re-reporting them: patterns, imports, and API misuse → `/update-astgrep-rules`; conventions and agent guidance → `/update-devin-project-rules`; routing follows `deep-review-codebase-everything` `### 5. Persist`. Confirm every new rule fires on the original `file:line`
+7. Run the project build/lint/test to verify → `/suggest-next-action`
 
 ## Rules
 
@@ -102,3 +104,4 @@ Review anything the user points at (code, docs, a feature area, a plan, a config
 - The scope is reviewed across `issues` (via `/review-issues`), `gaps` (via `/review-gaps`), and inconsistencies (here) with complete type, severity, and evidence
 - A scored, severity-ordered `/report-review` table is presented and the fix set is confirmed by the user
 - Confirmed findings are fixed + verified via build/lint, with SRP respected on touched files
+- Durable findings are persisted as ast-grep rules or `.devin/rules` conventions, each proven on its original `file:line`

@@ -6,7 +6,7 @@ related:
   - run-api-docs
   - follow-tool-bruno
   - follow-tool-hurl
-  - follow-test
+  - deep-test
   - follow-release
   - follow-deploy
   - follow-tool-github-actions
@@ -63,7 +63,7 @@ For projects that need API documentation, an API playground, a mock server, and 
 3. Use `bunx @scalar/cli document validate openapi.yaml` to check schema validity and `document lint` for spectral rules
 4. Use `bunx @scalar/cli document serve openapi.yaml` to preview the API reference locally — or run `/run-api-docs` to start the docs server with a browser preview
 5. To test a real API from the spec → export/import into Bruno (`bru import openapi`) or write `.hurl` files — see `/deep-test api`
-6. Run `/follow-test` to expand test coverage
+6. Run `/deep-test` to expand test coverage
 
 ### 5. Documentation and Deploy
 

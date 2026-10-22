@@ -105,6 +105,9 @@ const form = useForm({
 |----------|----------|
 | Standard Schema validation + submit guard | `usecases/schema-validated-form.md` |
 | Field arrays + debounced async validation | `usecases/array-fields-and-async-validation.md` |
+| One composable field component reused across forms | `usecases/composable-fields-with-createformhook.md` |
+| Linked fields + persisted draft | `usecases/linked-fields-and-draft-autosave.md` |
+| Multi-step wizard with per-step gates | `usecases/multi-step-wizard.md` |
 
 - See usecases/ for end-to-end scenario recipes
 

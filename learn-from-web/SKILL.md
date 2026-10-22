@@ -3,6 +3,7 @@ name: learn-from-web
 description: Learn from web sources — official docs, DeepWiki, Context7 — then extract or plan
 argument-hint: "[url-or-topic]"
 related:
+  - web-search
   - learn
   - learn-from-cli
   - check-types-definition
@@ -30,9 +31,9 @@ Learn and extract knowledge from web sources — official docs, DeepWiki, Contex
 
 > Goal: Gather trustworthy sources
 
-1. If the user provides a URL → `webfetch` to read it directly first
-2. If it is a topic → `web_search` to find the official docs first (docs > blog > forum)
-3. Use the `crw` tools (`crw_scrape`, `crw_map`, `crw_crawl`) for deep site crawl when you need multiple pages
+1. If the user provides a URL → run `/web-search` with that URL to fetch and read it first
+2. If it is a topic → run `/web-search` to find the official docs first (docs > blog > forum)
+3. Need multiple pages from one site → run `/web-search` with a deep-crawl request; the mechanics live in `/follow-tool-crw`
 4. Identify 1-3 primary sources + at most 5 supporting sources
 
 ### 2. Research Systematically
@@ -112,6 +113,10 @@ Follow [references/web-research.md](references/web-research.md) — the order `O
 
 - Use backticks for `tools`, `commands`, `paths`, `skill-name`
 - No more than 250 lines per file — no TODO/MOCK/placeholder
+
+### 5. Routing
+
+- Route every external fetch and search through `/web-search` — never call `webfetch`, `web_search`, or `crw_*` directly
 
 ## Expected Outcome
 

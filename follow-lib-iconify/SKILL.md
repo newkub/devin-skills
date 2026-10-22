@@ -28,7 +28,11 @@ Use when the task involves Iconify — icon components, `@iconify-json/*` offlin
 
 ### Workflows
 
-| Topic | Workflow |-------|----------| Setup | `workflows/setup-iconify/SKILL.md` — install + usage patterns per framework | Optimize | `workflows/optimize-icons/SKILL.md` — offline bundles, on-demand loading, subsetting 
+| Topic | Workflow |
+|-------|----------|
+| Setup | `workflows/setup-iconify/SKILL.md` — install + usage patterns per framework |
+| Optimize | `workflows/optimize-icons/SKILL.md` — offline bundles, on-demand loading, subsetting |
+
 ### 1. Setup And Usage
 
 > Goal: use correctly per the official docs

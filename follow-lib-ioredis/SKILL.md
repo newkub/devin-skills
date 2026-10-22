@@ -27,7 +27,11 @@ Use when the task involves ioredis — the Redis client on Node.js/Bun connectin
 
 ### Workflows
 
-| Topic | Workflow |-------|----------| Setup | `workflows/setup-ioredis/SKILL.md` — install, cluster/sentinel options | Optimize | `workflows/optimize-pool/SKILL.md` — pipelining, connection reuse 
+| Topic | Workflow |
+|-------|----------|
+| Setup | `workflows/setup-ioredis/SKILL.md` — install, cluster/sentinel options |
+| Optimize | `workflows/optimize-pool/SKILL.md` — pipelining, connection reuse |
+
 ### 1. Setup And Usage
 
 > Goal: use correctly per the official docs

@@ -4,6 +4,8 @@ description: Run the review CLI, analyze its metrics, route findings to their de
 argument-hint: "[scope]"
 related:
   - update-review-cli
+  - update-astgrep-rules
+  - update-devin-project-rules
   - deep-review
   - report-review
   - update-create-analyze-cli
@@ -33,7 +35,7 @@ Use when a project needs a measured quality gate — the review CLI exists (or i
 
 > Goal: Prove the analyzer is present and runnable before spending a scan
 
-1. Detect the engine: `tools/review-codebase` in the current workspace, root scripts `review-codebase`/`review-codebase:json`, or the Rust `linter` CLI at `D:\newkub\wpackages\rust-packages\packages\tools\linter`
+1. Detect the engine: the root `review/` CLI in the current workspace (root scripts `review`/`review:json`), or the Rust `linter` CLI at `D:\newkub\wpackages\rust-packages\packages\tools\linter`
 2. Run `--help` and one table run — missing, broken, or erroring → `/update-review-cli` first, then return here
 3. Read `update-review-cli/references/known-issues.md` for open analyzer gaps so a known miss is not re-reported as a new finding
 
@@ -41,7 +43,7 @@ Use when a project needs a measured quality gate — the review CLI exists (or i
 
 > Goal: One deterministic scan, written into the reviewed workspace
 
-1. Run the table output for humans and `review-codebase:json` for `reports/review-report.json` inside the reviewed workspace (never a root-level `reports/`)
+1. Run `bun run review` (table) for humans and `bun run review:json` for `reports/review-report.json` inside the reviewed workspace (never a root-level `reports/`)
 2. One workspace at a time; a monorepo keeps one report per workspace
 3. Record `score`, `grade`, domain breakdown, `categories N/60`, findings count, `analyzerErrors`, `falsePositiveRate`, and the delta against the previous report when a baseline exists
 4. Validate the report shape before reading it further — `evidence` (`file:line`) and `severity` on every finding; a malformed report → `/update-review-cli`
@@ -50,7 +52,7 @@ Use when a project needs a measured quality gate — the review CLI exists (or i
 
 > Goal: Decide whether the CLI is good enough to trust this run
 
-1. Check every trigger: `categories < 60`, overall `score < 70` or grade `D`/`F`, any domain `score < 50`, `analyzerErrors > 0`, `falsePositiveRate > 20%`, `reviewWorkflow` not covering the scope-map dimension labels resolvable through the `Aliases` column of `deep-review/references/review.md` (`## Dimension Matrix`)
+1. Check every trigger: `categories < 60`, overall `score < 70` or grade `D`/`F`, any domain `score < 50`, `analyzerErrors > 0`, `falsePositiveRate > 20%`, `reviewWorkflow` not covering the scope-map dimension labels resolvable through the `Aliases` column of `deep-review-codebase-everything/references/review.md` (`## Dimension Matrix`)
 2. `analyzerErrors > 0` → `/resolve-errors` first; analyzer logic wrong or missing → `/update-create-analyze-cli`
 3. A trigger that needs code changes → `/update-review-cli`, then rerun only the failing slice with `--domain`/`--severity` — max 3 rounds
 4. Still failing after 3 rounds → stop, report the metric table and the reason, and hand the gap to `/update-review-cli`
@@ -63,6 +65,7 @@ Use when a project needs a measured quality gate — the review CLI exists (or i
 2. A category with no mapping → mark it an analyzer gap for `/update-review-cli`; never invent a dimension name
 3. Hand the evidence-backed set to `/deep-review <scope>` when the fix needs review-grade analysis, or straight to its `/improve`/`/optimize` fix owner when the finding is already actionable
 4. Fixing is never implicit — a fix round runs through `/deep-review <scope> then-fix` after the user confirms
+5. Persist durable findings before closing the run (`### 5`) — a Critical/High finding that is mechanically enforceable becomes an ast-grep rule or a `.devin/rules/*.md` convention, so the next run catches it instead of re-reporting it
 
 ### 5. Verify The Project State
 
@@ -102,7 +105,13 @@ Use when a project needs a measured quality gate — the review CLI exists (or i
 - The report lives in the reviewed workspace at `reports/review-report.json`
 - Never create or write a root-level `reports/` directory
 
-### 5. Formatting
+### 5. Persist Durable Findings
+
+- Every confirmed Critical/High finding that is mechanically enforceable is persisted before the run closes: patterns, imports, and API misuse → `/update-astgrep-rules` (AST rule + `sgconfig.yml`); conventions and agent guidance → `/update-devin-project-rules` (`.devin/rules/*.md`); a durable analyzer gap → `/update-review-cli`
+- Route by the `Enforcement` column of `deep-review-codebase-everything/references/review.md` (`## Dimension Matrix`) — never a second catalog
+- Confirm the new rule fires on the original `file:line`; a rule that does not fire on the violation is not durable
+
+### 6. Formatting
 
 - Never use `**` (bold markers)
 - Report as chat tables via `/report-review` — no report files unless the user asks
@@ -113,5 +122,6 @@ Use when a project needs a measured quality gate — the review CLI exists (or i
 - One full scan run and read: score, grade, domain breakdown, category coverage, analyzer errors, false-positive rate, and baseline delta
 - Metric triggers either cleared within 3 rounds or reported with the exact gap handed to `/update-review-cli`
 - Every Critical/High finding routed to a real dimension through the CLI `reviewWorkflow` map
+- Durable Critical/High findings persisted as ast-grep rules or `.devin/rules` conventions, each proven on its original `file:line`
 - Project state verified with `/run-verify`, remaining work tracked with `/follow-tasks`
 - One chat report via `/report-review` followed by `/suggest-next-action`

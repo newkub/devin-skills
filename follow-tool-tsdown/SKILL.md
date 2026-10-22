@@ -10,7 +10,7 @@ related:
   - follow-tool-turborepo
   - follow-lang-typescript
   - follow-tool-vitest
-  - follow-test
+  - deep-test
 ---
 
 ## Goal
@@ -79,13 +79,17 @@ Use for TypeScript library projects that need bundling to ESM/CJS/IIFE with `.d.
 1. Check `dist/*.mjs`, `dist/*.cjs`, `dist/*.d.ts`
 2. Run `bunx tsdown --watch` to test watch mode
 3. Test importing the output in another project
-4. Do `/follow-test` to run tests after build
+4. Do `/deep-test` to run tests after build
 
 ### Workflows
 
 > Goal: Dispatch specialized work to the right workflow
 
-| Topic | Workflow |-------|----------| first-time setup (install, config, entry/dts/sourcemap) | `workflows/setup-tsdown/SKILL.md` | migrate from tsup | `workflows/migrate-from-tsup/SKILL.md` 
+| Topic | Workflow |
+|-------|----------|
+| first-time setup (install, config, entry/dts/sourcemap) | `workflows/setup-tsdown/SKILL.md` |
+| migrate from tsup | `workflows/migrate-from-tsup/SKILL.md` |
+
 ## Rules
 
 ### 1. Installation

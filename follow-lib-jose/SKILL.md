@@ -28,7 +28,10 @@ Use when the task involves jose — JWT/JWS/JWE/JWK operations on runtimes that 
 
 ### Workflows
 
-| Topic | Workflow |-------|----------| Setup | `workflows/setup-jose/SKILL.md` — install, sign/verify JWT, JWKS 
+| Topic | Workflow |
+|-------|----------|
+| Setup | `workflows/setup-jose/SKILL.md` — install, sign/verify JWT, JWKS |
+
 ### 1. Setup And Usage
 
 > Goal: use correctly per the official docs

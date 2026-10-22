@@ -8,7 +8,7 @@ related:
   - git-file-history
   - restore-files-from-git-log
   - follow-tool-git
-  - search-in-git
+  - git-search
   - analyze-root-cause-analysis
   - resolve-errors
   - deep-thinking
@@ -109,7 +109,7 @@ Use for every debugging session — runtime errors, test failures, build errors,
 | Who/when changed a line | `git blame` + `git log -p --follow -S "<snippet>" -- <file>` (or `/check-git-logs`, `/git-file-history`) |
 | Commit vanished from the branch | `git reflog` → `git cherry-pick <hash>` (or `git reset --hard <hash>` only after `/ask-me`) |
 | File missing | `/restore-files-from-git-log`; else `git log --all --diff-filter=D -- <file>` → `git restore --source=<hash>^ <file>` |
-| Unknown cause | `git status`, `git log --oneline -20`, `git diff HEAD~1`, `git stash list` (or `/search-in-git`) |
+| Unknown cause | `git status`, `git log --oneline -20`, `git diff HEAD~1`, `git stash list` (or `/git-search`) |
 
 2. Bisect flow: stash uncommitted changes and back up the branch → confirm the good/bad range with `git log --oneline <good>..<bad>` (via `/ask-me` if unclear) → `git bisect start`, `git bisect bad <bad>`, `git bisect good <good>` → `git bisect run <test-command>` when an automated test exists, otherwise answer `good`/`bad` per checkout → `git show <first-bad>` → `git bisect reset`
 3. Safety: never `git reset --hard` without user confirm; use `git restore` instead; verify `git status` is clean after debugging

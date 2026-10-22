@@ -3,6 +3,7 @@ name: search-request-in-devin-session
 description: Search keyword/pattern in user requests across Devin sessions — find which request, session, when
 argument-hint: "[keyword-or-pattern] [--scope all|session|repo]"
 related:
+  - follow-tool-ctx-rs
   - list-devin-session
   - list-request-devin-session
   - report
@@ -20,6 +21,7 @@ Search requests the user has previously sent by matching a `keyword` or regex pa
 - `--scope session`: only the current session
 - `--scope repo`: only sessions working in the current repo
 - Search only user messages (`=== MESSAGE N - User ===`) — do not search assistant/system messages
+- Prefer `/follow-tool-ctx-rs` (`ctx search`) when the session history is indexed; fall back to ripgrep on `history_*.md`
 - Read-only; never modify history files
 - Want the full request list without filtering → use `/list-request-devin-session` instead
 
@@ -49,10 +51,11 @@ Search requests the user has previously sent by matching a `keyword` or regex pa
 
 > Goal: match only user message sections
 
-1. Apply the `grep` (ripgrep) pattern to `history_*.md` — limit hits to the context of `=== MESSAGE N - User ===` sections
-2. For large files → use `grep` to find line numbers of the `=== MESSAGE` markers first, then `read` only the user-message ranges that match
-3. Record: session file (id from the file name), message number, matched line, surrounding context (±1 line), file `LastWriteTime`
-4. Keep only matches inside `=== MESSAGE N - User ===` sections — discard hits from assistant/system sections
+1. Try `/follow-tool-ctx-rs` first — `ctx search <pattern>` returns session id, message index, and timestamp with evidence classes
+2. If the session is not indexed (or `ctx status` shows no coverage) → apply the `grep` (ripgrep) pattern to `history_*.md` — limit hits to the context of `=== MESSAGE N - User ===` sections
+3. For large files → use `grep` to find line numbers of the `=== MESSAGE` markers first, then `read` only the user-message ranges that match
+4. Record: session file (id from the file name), message number, matched line, surrounding context (±1 line), file `LastWriteTime`
+5. Keep only matches inside `=== MESSAGE N - User ===` sections — discard hits from assistant/system sections
 
 ### 4. Format And Report
 
@@ -79,7 +82,7 @@ Search requests the user has previously sent by matching a `keyword` or regex pa
 - Do not modify history files
 - Always use `/report`
 - Use `/list-devin-session` if you need the session metadata of a match
-- Use `/use-bun-shell` or ripgrep for the search
+- Use `/follow-tool-ctx-rs` (`ctx search`) as the primary search when history is indexed; use `/use-bun-shell` with ripgrep only as the fallback
 
 ## Expected Outcome
 

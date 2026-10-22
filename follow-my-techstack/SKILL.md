@@ -5,6 +5,7 @@ argument-hint: "[category-or-need]"
 related:
   - deep-review
   - use-lib-effective
+  - review-use-lib-effective
   - deep-research
   - list-raindrop-favorite
   - search-raindrop
@@ -22,7 +23,7 @@ Select and use dependencies/tools per the user's canonical tech stack so every p
 Use when a task must pick a library/tool/service for one need (e.g. validator, HTTP client, ORM, testing, styling) — whether installing fresh or using what exists
 
 - Canonical catalog: `../follow-my-techstack/references/techstack-catalog.md` — the single source of truth, never copy its content here
-- Review a whole project's stack against the catalog → `/deep-review`
+- Review a whole project's stack against the catalog → `/deep-review`; audit how an existing project actually uses its libraries → `/review-use-lib-effective`
 - Find packages not yet in the catalog → `/deep-research dependencies`
 - Install a package → `/run-install`
 
@@ -76,7 +77,7 @@ Use when a task must pick a library/tool/service for one need (e.g. validator, H
 
 - A choice conflicting with the default must have a recordable reason (comment, ADR, or a `(→ ...)` condition in the catalog)
 - High-risk or unclear decision → `/ask-me`
-- Use /use-lib-effective if needed
+- A library already in the manifest is kept until `/review-use-lib-effective` or `/use-lib-effective` shows it is the wrong choice — never migrate on preference alone
 
 ## Expected Outcome
 

@@ -85,6 +85,10 @@ appId: com.android.contacts
 
 - See references/ for the flow API and CLI tables
 
+## References
+
+- See `best-practices/flow-authoring.md` for recommended flow-authoring patterns and pitfalls
+
 ## Expected Outcome
 
 - Reproducible YAML flows in the repo running on emulator/simulator/browser in minutes

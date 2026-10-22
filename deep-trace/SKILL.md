@@ -42,7 +42,7 @@ Not for pure performance analysis — use `/run-profiler`
 1. If logs exist → use structured logs to find a correlation id or request id
 2. If metrics exist → look at dashboards for spikes or patterns
 3. If distributed traces exist → use the trace id to follow the path
-4. If there is no telemetry → use code reading: `/search-files-patterns`, `/use-astgrep`
+4. If there is no telemetry → use code reading: `/code-search`, `/use-astgrep`
 5. If runtime behavior is needed → add temporary instrumentation
 
 ### 3. Instrument If Needed
@@ -73,7 +73,7 @@ Not for pure performance analysis — use `/run-profiler`
 2. Record every step: function, service, database, queue, external API
 3. Check the state/variables that change at each step
 4. Identify async points, awaits, callbacks, event loop cycles
-5. Use `/use-astgrep` or `/search-files-patterns` to find the call graph
+5. Use `/use-astgrep` or `/code-search` to find the call graph
 
 ### 6. Identify Boundary Crossings
 
@@ -123,7 +123,7 @@ Not for pure performance analysis — use `/run-profiler`
 ### 3. Tool First
 
 - Use existing observability before adding logs
-- Use `/search-files-patterns` and `/use-astgrep` to trace in code
+- Use `/code-search` and `/use-astgrep` to trace in code
 - Use `/run-profiler` if a latency breakdown is needed
 
 ### 4. Boundary Aware

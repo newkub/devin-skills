@@ -26,7 +26,7 @@ Create a database schema report for the project from schema definitions or migra
 
 > Goal: find the schema sources
 
-1. Use `/search-files-patterns` to find `schema.ts`, `schema.prisma`, `migrations/`, `drizzle/`, `*.sql`
+1. Use `/code-search` to find `schema.ts`, `schema.prisma`, `migrations/`, `drizzle/`, `*.sql`
 2. Check `drizzle.config.ts`, `DATABASE_URL` references, and the ORM used
 3. Multiple sources → merge all and note precedence
 

@@ -106,3 +106,10 @@ Pick `syncMode` by data size — it lives in the collection options:
 - Passing both a `schema` and an explicit `createCollection<T>()` type param → invalid; the schema drives the type.
 - Forgetting `return { refetch: false }` after `collection.utils.refetch()` in `onInsert` → double refetch.
 - Plain one-shot fetching that needs no live query/join/optimistic → stays with `follow-lib-tanstack-query`, not DB.
+
+## Related
+
+- `references/apis.md`
+- `best-practices/tanstack-db.md`
+- `usecases/optimistic-mutations.md`
+- `usecases/live-queries-joins.md`

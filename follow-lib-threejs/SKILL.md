@@ -76,6 +76,9 @@ Use when the task involves 3D rendering — scene, camera, lights, materials, mo
 |----------|----------|
 | Mount a scene once and dispose every GPU resource | `usecases/mount-scene-with-full-disposal.md` |
 | Load a Draco/Meshopt glTF and free it with the scene | `usecases/load-compressed-gltf.md` |
+| Thousands of objects with InstancedMesh | `usecases/instanced-mesh-for-many-objects.md` |
+| Post-processing without burning the frame budget | `usecases/postprocessing-and-frame-budget.md` |
+| WebGPU renderer with a WebGL fallback | `usecases/webgpu-renderer-with-fallback.md` |
 
 ## Rules
 

@@ -134,6 +134,9 @@ Prepare for Solid 2.0 (`2.0.0-rc.8` — release candidate, GA near):
 |----------|----------|
 | Nested form state with `createStore` | `usecases/nested-form-state-with-store.md` |
 | Async data with `createResource` + `Suspense` | `usecases/async-data-with-resource.md` |
+| Compose props with `splitProps`/`mergeProps`, `children`, `Dynamic` | `usecases/props-composition-and-splitprops.md` |
+| Lists, selection, and conditional blocks (`For`/`Index`/`Show`/`Switch`/`Portal`) | `usecases/control-flow-and-lists.md` |
+| Effects, lifecycle, and imperative libraries (chart/editor instances) | `usecases/effects-lifecycle-and-third-party.md` |
 
 ## Expected Outcome
 

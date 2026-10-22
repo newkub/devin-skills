@@ -7,7 +7,7 @@ related:
   - follow-tool-nextest
   - follow-tool-cargo
   - update-tests
-  - follow-test
+  - deep-test
   - run-test
 
 ---
@@ -21,7 +21,7 @@ Set up and use cargo-mutants for mutation testing to improve the quality of Rust
 For Rust projects using the Cargo build system that want to verify test quality with mutation testing
 
 - For JS/TS mutation testing → use `/follow-tool-stryker-mutator` instead
-- Needs a stable test suite first — if tests are still flaky, do `/follow-test` or `/update-tests` first
+- Needs a stable test suite first — if tests are still flaky, do `/deep-test strategy` or `/update-tests` first
 
 - Latest: `cargo-mutants@27.1.0` / `mutants@0.0.4` (crates.io) (verified 2026-09-13)
 
@@ -31,7 +31,11 @@ For Rust projects using the Cargo build system that want to verify test quality 
 
 > Goal: dispatch to the workflow matching the topic
 
-| Topic | Workflow |-------|----------| setup | `workflows/setup-mutants/SKILL.md` — cargo-mutants install, `.cargo/mutants.toml`, baseline run | optimize | `workflows/optimize-mutation/SKILL.md` — skip lists, shard/parallel jobs, CI integration 
+| Topic | Workflow |
+|-------|----------|
+| setup | `workflows/setup-mutants/SKILL.md` — cargo-mutants install, `.cargo/mutants.toml`, baseline run |
+| optimize | `workflows/optimize-mutation/SKILL.md` — skip lists, shard/parallel jobs, CI integration |
+
 1. If the argument matches a topic → read and follow `workflows/<name>/SKILL.md` instead of the steps below
 2. If not → follow the steps below as usual
 
@@ -119,7 +123,7 @@ For Rust projects using the Cargo build system that want to verify test quality 
 - Use /follow-tool-nextest if needed
 - Use /follow-tool-cargo if needed
 - Use /update-tests if needed
-- Use /follow-test if needed
+- Use /deep-test if needed
 - Use /deep-test mutation if needed
 
 ## References

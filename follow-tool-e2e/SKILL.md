@@ -104,6 +104,10 @@ test('member upgrades to Pro', async ({ app, agent, screen }) => {
 - Use /deep-test mobile for device specifics
 - Use /deep-review domain `review-test` for suite review
 
+## References
+
+- See `best-practices/` for recommended patterns and pitfalls
+
 ## Expected Outcome
 
 - Tests mixing deterministic + agentic steps at the right points, runnable on web + mobile targets

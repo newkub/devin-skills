@@ -9,7 +9,7 @@ related:
   - follow-tool-release-it
   - follow-tool-changelogen
   - follow-tool-git
-  - follow-test
+  - deep-test
   - fix
   - run-release
 ---
@@ -33,7 +33,11 @@ For projects using conventional commits that want to automate release, changelog
 
 ### Workflows
 
-| Topic | Workflow |-------|----------| Install, CI auth tokens, workflow integration | `workflows/setup-semantic-release/SKILL.md` | `branches`, `plugins`, `tagFormat` config | `workflows/config-semantic-release/SKILL.md` 
+| Topic | Workflow |
+|-------|----------|
+| Install, CI auth tokens, workflow integration | `workflows/setup-semantic-release/SKILL.md` |
+| `branches`, `plugins`, `tagFormat` config | `workflows/config-semantic-release/SKILL.md` |
+
 ### 1. Installation
 
 > Goal: Install semantic-release in the project
@@ -110,7 +114,7 @@ For projects using conventional commits that want to automate release, changelog
 - Use /follow-tool-github-actions if needed (tool semantic release)
 - Use /follow-tool-changesets if needed
 - Use /follow-tool-git if needed
-- Use /follow-test if needed
+- Use /deep-test if needed
 - Use /fix if needed (e.g. the release failed from config or commits)
 
 ## References

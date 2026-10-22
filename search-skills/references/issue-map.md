@@ -20,7 +20,7 @@ Table mapping common symptoms to the skill or workflow that should be used
 | long files (>250 lines) | `/check-long-files`, `/refactor` |
 | code duplication | `/check-code-structure`, `/follow-tool-jscpd` |
 | broken references / missing skill refs | `/review-devin-global-harness`, `/update-references` |
-| package manifest not publish-ready | `/update-project` (`### setup-package`) |
+| package manifest not publish-ready | `/update-project` (`references/setup-package.md`) |
 | release workflow/config missing | `/setup-cicd`, `/follow-release`, `/follow-tool-release-it` |
 | TODO/MOCK/placeholder left over | `/scan-codebase`, `/update-todo-md`, `/implement-to-production` |
 | dependencies outdated | `/update-version-to-latest`, `/follow-tool-taze` |

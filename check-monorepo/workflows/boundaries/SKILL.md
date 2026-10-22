@@ -34,7 +34,7 @@ Check dependency direction between packages in the monorepo — find imports tha
 
 > Goal: Find every import that crosses a package boundary
 
-1. Use `use-astgrep` or `search-files-patterns` to find import statements pointing at other packages
+1. Use `use-astgrep` or `/code-search` to find import statements pointing at other packages
 2. Cover both package-name imports (`@org/pkg`) and relative imports that cross a boundary (`../../other-pkg/`)
 3. Check deep imports: `pkg/src/...` or subpaths not exported via `package.json` exports
 

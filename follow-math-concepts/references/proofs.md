@@ -79,7 +79,7 @@ Understand proof techniques: direct proof, proof by contradiction, contrapositiv
 - Use formal methods when needed
 
 - Use /follow-math-concepts if needed
-- Use /follow-test if needed
+- Use /deep-test if needed
 - Use the TDD loop in `implement-to-production/SKILL.md` `## TDD Loop` if needed
 - Use /follow-deterministic if needed
 

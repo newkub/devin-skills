@@ -73,3 +73,10 @@ const { data: totals } = useLiveQuery({
 - Selecting a raw column alongside aggregates → invalid query (violates the one-value-per-group rule).
 - Expecting a stale summary → aggregates ARE live; a `collection.insert` re-derives them on the next tick, no refetch.
 - Grouping on a value the schema transformed (e.g. string→Date) → group the transformed type consistently across rows.
+
+## Related
+
+- `references/apis.md`
+- `best-practices/tanstack-db.md`
+- `usecases/live-queries-joins.md`
+- `usecases/derived-collections.md`

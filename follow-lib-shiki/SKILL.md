@@ -101,6 +101,9 @@ For JS/TS projects that need to highlight code blocks in UI, docs, markdown, or 
 |----------|----------|
 | Build-time highlight with a singleton highlighter | `usecases/build-time-highlight.md` |
 | Dual light/dark themes + diff/focus notation | `usecases/dual-theme-and-transformers.md` |
+| Highlight on an edge runtime (Workers, no WASM) | `usecases/edge-runtime-highlight.md` |
+| Highlight fenced code in a markdown pipeline | `usecases/markdown-pipeline.md` |
+| Write a custom transformer (line numbers, fence meta) | `usecases/custom-transformer.md` |
 
 ## References
 

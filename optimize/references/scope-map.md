@@ -2,7 +2,7 @@
 
 Table-only SSOT (`/follow-single-of-source`) — the canonical mapping that `/optimize` and callers use to route the scope. Do not copy this table elsewhere — reference back to this file.
 Every scope runs through `/optimize <scope>` (thin entry) — review → `/deep-review` dimension in the table | fix → `/deep-review <scope> then-fix`
-**Label resolution (mandatory)** — every name in the `/deep-review` domain column is either a plain dimension label, or a standalone skill name kept verbatim (`review-test`). A dimension label takes the row(s) in `deep-review/references/review.md` `## Dimension Matrix` whose `Aliases` column lists it (or whose row name equals it), plus the `always` tier — read that set from the table, never re-resolve by hand (resolution rules: `deep-review/references/checks.md` `### Label resolution`). A label with no row is a matrix gap → dispatch the `always` tier + closest artifact-match rows and report the gap.
+**Label resolution (mandatory)** — every name in the `/deep-review` domain column is either a plain dimension label, or a standalone skill name kept verbatim (`review-test`). A dimension label takes the row(s) in `deep-review-codebase-everything/references/review.md` `## Dimension Matrix` whose `Aliases` column lists it (or whose row name equals it), plus the `always` tier — read that set from the table, never re-resolve by hand (resolution rules: `deep-review-codebase-everything/references/review.md` `### Label resolution`). A label with no row is a matrix gap → dispatch the `always` tier + closest artifact-match rows and report the gap.
 
 | Signal (measurable) | Scope (`/optimize <scope>`) | `/deep-review` domain(s) |
 |-----------------|-----------------------------|--------------------------|

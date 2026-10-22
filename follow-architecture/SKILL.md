@@ -4,11 +4,12 @@ description: Pick and apply the architecture pattern — Clean, Layered, monorep
 argument-hint: "[clean | layered | monorepo | architecture | target]"
 related:
   - refactor
+  - refactor-skills
   - deep-review
   - scan-codebase
+  - relocation
+  - rename
   - follow-monorepo
-  - follow-my-techstack
-  - create-plan-in-dot-devin
   - update-references
   - run-check
   - follow-tool-madge
@@ -17,23 +18,24 @@ related:
   - improve
   - update-agents-md
   - update-astgrep-rules
-  - use-lib-effective
 ---
 
 ## Goal
 
-Pick the one architecture pattern that fits the target from evidence, then apply it — never restructure from a guess; microservices and distributed topology are out of scope
+Pick the one architecture pattern that fits the target from evidence, then apply it — or record that the existing layout already holds; never restructure from a guess; microservices and distributed topology are out of scope
 
 ## Scope
 
-> Invoked as `/follow-architecture` — the architecture SSOT dispatched by `/refactor` for architecture scopes (`/refactor ### 2` plan + `/refactor ### 3` architecture bullet); pattern selection + Clean/Layered guides + monorepo layout + file structure per workspace type, all inline in this single file (promoted back from the `refactor/workflows/architecture/` workflow; `event-driven.md` deleted — messaging work routes to `/improve {events,queues,realtime}`)
+> Invoked as `/follow-architecture` — the architecture SSOT dispatched by `/refactor` for architecture scopes (`### 2` item 6 plans it, `### 3` item 7 hands it here); pattern selection + Clean/Layered guides + monorepo layout + file structure per workspace type, all inline in this single file
 
 | Argument | Seen When | Run |
 |----------|-----------|-----|
 | (none), `target`, `architecture` | target needs an architecture — the argument `/refactor` passes on | `### 1` → `### 4` full path |
-| `clean` | `packages/*`, `crates/*`, or several apps sharing a domain | pick Clean → `## Clean Pattern` |
-| `layered` | a single app | pick Layered → `## Layered Pattern` |
+| `clean` | `packages/*`, `crates/*`, or several apps sharing a domain | `### 2` answered as Clean → `## Clean Pattern` |
+| `layered` | a single app | `### 2` answered as Layered → `## Layered Pattern` |
 | `monorepo` | repo root holds several workspaces | `## Monorepo Architecture` first, then per-workspace pattern |
+
+An explicit argument answers `### 2` only — `### 1` (evidence + baseline), `### 3` (apply) and `### 4` (verify) always run.
 
 Handed off elsewhere: microservices/distributed topology (see `## Goal`) · the target is a skill package → `/refactor-skills` · folder move only → `/relocation` · naming only → `/rename` · boundary checking without a restructure → `/deep-review` dimension `architecture`
 
@@ -41,26 +43,28 @@ Handed off elsewhere: microservices/distributed topology (see `## Goal`) · the 
 
 ### 1. Detect Target
 
-> Goal: know what the target is and how many apps it has
+> Goal: know what the target is and how many apps it has — never restructure on an unmeasured baseline
 
-1. Run `/scan-codebase` at the root — identify `apps/*`, `packages/*`, `crates/*`, and the target the user specifies
-2. Read what the project already decided: its `AGENTS.md` `Follow Architecture` section + `.devin/rules/` — a recorded pattern is repaired, not re-picked; write back at `### 4`
-3. Count app entry points; check for shared domain/modules several apps must use together (unified support)
-4. `/deep-review` dimension `architecture` on the target — coupling/boundary/dependency-direction evidence; explicit `clean`/`layered` argument → that pattern directly, skipping `### 2`
+1. Baseline first, inherited from `/refactor` `### 1`: clean working tree, `/run-verify` green, characterization tests wherever the target's public behaviour is uncovered, and `git rev-parse HEAD` recorded for the `### 4` comparison
+2. Run `/scan-codebase` at the root — identify `apps/*`, `packages/*`, `crates/*`, and the target the user specifies
+3. Read what the project already decided: its `AGENTS.md` `Follow Architecture` section + `.devin/rules/` — a recorded pattern is repaired, not re-picked; write back at `### 4`
+4. Count app entry points — a CLI that is one entry among `api`+`worker`+`cron` is not a single app; check for shared domain/modules several apps must use together (unified support)
+5. `/deep-review` dimension `architecture` on the target — the reversed edges and leaked imports are the whole case for moving anything; no violated edge → `### 2` row 0 answers KEEP and the work stops; explicit `clean`/`layered` argument → that pattern, skipping `### 2`
 
 ### 2. Select Pattern
 
-> Goal: pick the single pattern that fits the target
+> Goal: pick the single pattern that fits the target — or prove that no move is owed
 
-| No. | Condition | Pattern |
+| No. | Condition | Verdict |
 |-----|-----------|---------|
+| 0 | `### 1` evidence shows the direction holds (0 reversed edges, 0 leaked imports) and the layout is already lived in | KEEP this variant — record it in `AGENTS.md`, stop before `### 3` |
 | 1 | Several `apps/*` need unified support — share `modules/`/`core/`/`contracts/` across entry points | Clean |
 | 2 | `packages/*`, `crates/*` (shared libs, domain packages) | Clean |
-| 3 | A single app standing alone — a CLI that is one entry among `api`+`worker`+`cron` is not single → row 1 | Layered |
-| 4 | Other targets — high testability/domain-heavy → Clean; UI-driven/CRUD → Layered | by code character |
+| 3 | A single deployable that is UI-driven or CRUD-shaped — the UI is the product and the rules are thin | Layered |
+| 4 | A single deployable whose rules are the product — ≥3 bounded contexts, ports/adapters already in play, little UI | Clean |
 
-1. Read the table top-down — first row that fits wins (rows 1–2 are mechanical, row 4 is judgement); still unclear → run `/ask-me` before choosing, never mix patterns in one target — handle one target at a time
-2. Target matches a row of `## File Structure By Workspace Type` → the owner skill's template is canonical for that stack (pattern rules here still apply)
+1. Read the table top-down — first row that fits wins (row 0 is the evidence gate, rows 1–2 are mechanical, rows 3–4 are judgement split by entry points, bounded contexts and external ports); still unclear → run `/ask-me` before choosing, never mix patterns in one target — handle one target at a time
+2. Target matches a row of `## File Structure By Workspace Type` → the owner skill's template is canonical for that stack; apply this skill's Layer Table + Rules to its folders instead of the trees below
 3. Bulk scope → `/create-plan-in-dot-devin` first; while planning run `/use-lib-effective` — reuse before writing anything new
 
 ### 3. Apply The Pattern
@@ -68,17 +72,17 @@ Handed off elsewhere: microservices/distributed topology (see `## Goal`) · the 
 > Goal: restructure through the matching section, one batch at a time
 
 1. Read `## Clean Pattern` or `## Layered Pattern` and follow its `### Restructure` steps
-2. Mixed concerns found during a move → fix them with `/refactor` `### 3` (concerns split) first
+2. Mixed concerns found during a move → fix them with `/refactor` `### 3` item 2 (`concerns`) first — not the whole step, whose item 7 dispatches back here
 3. After each move batch → `/update-references` + `/run-check` green before the next; red → rollback that batch
 
 ### 4. Verify Pattern Real
 
 > Goal: the pattern stays real in code, not just folder names — and it is provable
 
-1. Boundaries hold: `core/` + `modules/*/domain/` (Clean) or `types/` + `utils/` + `services/` (Layered) stay pure — no IO/framework imports, `services/` holds business rules only with IO reached through `infra/`; dependency direction never reversed; public API through barrels only, no deep imports from outside
+1. Boundaries hold: `core/` + `modules/*/domain/` (Clean) or `types/` + `utils/` (Layered) stay pure — no IO, no framework imports; `services/` performs no IO either but reaches data through `infra/` interfaces, while `types/` + `utils/` stay leaves; dependency direction never reversed; public API through barrels only, no deep imports from outside
 2. `/follow-tool-madge` (no circular) + `/deep-review` dimension `architecture` vs baseline; tests pass as before, original public API still works
 3. Persist the boundary so it stays enforced: import-direction rules → `/update-astgrep-rules` (`rules/architecture/` + `rules/dependencies/`), chosen pattern → the target's `AGENTS.md` `Follow Architecture` section via `/update-agents-md`
-4. `/report-before-after` with the old → new layer map
+4. `/report-before-after` with the old → new layer map, diffed against the `### 1` baseline SHA — the reversed-edge count before and after is the number that proves the move
 
 ## Monorepo Architecture
 
@@ -96,44 +100,35 @@ repo/
 ```
 
 1. Workspace types: `app` (leaf — may import shared), `package`/`crate` (shared, Clean internals), `tool` (dev-only); dependencies flow apps → shared → nothing — shared packages are leaves (`/follow-tool-madge` proves no cycles)
-2. Every workspace gets its own pattern from `### 2`: single-app workspace → Layered; workspace exposing a domain to several apps → Clean; a shared package with ports/adapters/IO → Clean subset (`core/` + `modules/` only)
+2. Every workspace gets its own pattern from `### 2`: a single-app workspace answers rows 3–4 (Layered or Clean by character); workspace exposing a domain to several apps → Clean; a shared package with ports/adapters/IO → Clean subset (`core/` + `modules/` only)
 3. Extract to `packages/`/`crates/` only with ≥2 real consumers — coincidental similarity stays duplicated (`/refactor` shared bullet)
 4. Task graph, version/type catalogs, CI, workspace conventions → `/follow-monorepo`; new dep choice for a layer → `/follow-my-techstack`
 
 ## Clean Pattern
 
 > When: several `apps/*` needing unified support, or `packages/*`/`crates/*` shared libraries. Dependency direction `core` ← `modules` ← `adapters` ← `infra` ← `app` — never reverse it; `contracts/` + `config/` are leaves any layer may import; inside a module the order is `domain` ← `features` ← `usecases` (see `### Layer Table`)
+>
+> The tree below is a greenfield default. Where `## File Structure By Workspace Type` names an owner skill, that template's folders win — carry over the Layer Table's direction and the Rules, not the folder names.
 
 ### Restructure
 
 1. Prepare: `/scan-codebase` the target — domain logic, side effects, external deps; identify the current public API (barrel `index`) and consumers — they must be preserved
 2. Create the structure below; move pure logic → `modules/*/domain/` + `core/`; application use cases called by `app/` → `modules/*/usecases/`; feature orchestration → `modules/*/features/`; interfaces → `ports/`; IO/framework → `infra/` + `adapters/`
 3. Define the ports `features/` needs — `adapters`/`infra` implement them; wire everything at the `app/runtime.ts` composition root
-4. Verify: no imports from `core/`/`domain`/`features` into `infra/`/`adapters/`; run `/run-check` + the tests
+4. Verify: no imports from `core/`/`domain`/`features` into `infra/`/`adapters/`; run `/run-check` + the tests, then the full gate at `### 4` (boundary persisted, `AGENTS.md` updated, before/after reported)
 
 ### File Structure
 
 ```text
 src/
-├─ app/                                  # Entry points + composition roots
-│  ├─ api/                               # routes/, middleware/, server.ts
-│  ├─ web/                               # routes/, components/, hooks/ (optional UI), middleware/, server.ts
-│  ├─ cli/  worker/  cron/  plugin/      # commands/ or jobs/ + runner.ts; plugin adds loader/registry
-│  ├─ runtime.ts                         # composition root — wire ports → adapters
-│  └─ layers.ts                          # canonical layer names — single source for import-boundary checks
-├─ modules/<name>/                       # Business capabilities (bounded contexts) — one per domain: auth, users, orders, payments
-│  ├─ domain/                            # model.ts, errors.ts, schema.ts — pure types + rules, no IO/framework
-│  ├─ usecases/                          # login.ts, checkout.ts — entries called by app/ (optional — when orchestration spans features or several entries)
-│  ├─ features/                          # create.ts, session.ts — feature logic orchestrating domain + ports
-│  ├─ ports/                             # interfaces the module needs — session-store, user-store, payment-gateway
-│  ├─ adapters/                          # dto.ts, mappers/ — module-level boundary translation
-│  └─ index.ts                           # module barrel — public API only
-├─ core/                                 # Pure shared kernel: errors/, result.ts, option.ts, ids.ts, time.ts, events.ts (mechanism only — event payloads live in contracts/events/), pagination.ts + ports/ (clock, random, id-generator)
-├─ adapters/                             # Cross-module boundary translation, no IO: http/ request-response shapes, persistence/ dto, messaging/ envelopes, payments/, auth/
-├─ infra/                                # IO implementations of ports: database/, postgres/, queue/, cache/, storage/, email/, http/ transport client, clock/, observability/
-├─ contracts/                            # Cross-boundary pure types: api/, events/, plugins/ — leaf, imports nothing
-└─ config/                               # env.ts, app.ts, database.ts, services.ts — leaf
-tests/                                   # unit/ (core, modules) · integration/ (infra, adapters) · e2e/ (app entry points)
+├─ app/            # entry points + composition roots: api/ web/ cli/ worker/ cron/ plugin/ + runtime.ts (ports → adapters wiring)
+├─ modules/<name>/ # one bounded context: domain/ usecases/ features/ ports/ adapters/ + index.ts barrel
+├─ core/           # shared kernel: result, option, errors, ids, time, events (mechanism), pagination + ports/
+├─ adapters/       # cross-module translation, no IO: http/ persistence/ messaging/ payments/ auth/
+├─ infra/          # IO implementations of ports: database/ queue/ cache/ storage/ email/ http/ clock/ observability/
+├─ contracts/      # cross-boundary pure types: api/ events/ plugins/ — leaf
+└─ config/         # env.ts app.ts database.ts services.ts — leaf
+tests/               # unit/ integration/ e2e/ — where the project already puts them
 scripts/  docs/  package.json  tsconfig.json  README.md  .env.example
 ```
 
@@ -164,13 +159,15 @@ scripts/  docs/  package.json  tsconfig.json  README.md  .env.example
 
 ## Layered Pattern
 
-> When: a single app — one `apps/*` or a single-app project; flat folders grouped by type, layers point one way down: `presentation` → `domain` → `data`, no bypass; if the app grows into several apps sharing a domain → upgrade to Clean
+> When: a single app — one `apps/*` or a single-app project; folders grouped by type, layers point one way down: `presentation` → `domain` → `data`, no bypass; if the app grows into several apps sharing a domain → upgrade to Clean
+>
+> The tree below is a greenfield default, on the same rule as Clean: an owner skill's template wins for its stack, and this section's direction plus Rules are what carry over.
 
 ### Restructure
 
 1. Prepare: `/scan-codebase` the target — routes/pages, business logic, data access; identify the public API and route entry points to preserve
 2. Map folders: presentation → `app/`+`components/`+`hooks/`; domain → `usecases/`+`services/`+`features/`; data → `infra/`+`lib/`; shared leaves → `types/`+`constants/`+`utils/`+`config/`
-3. Create the flat type-grouped folders below — never nest by capability; prefix file names with the domain (`user-service.ts`); move files one batch at a time
+3. Create the type-grouped folders below, each file prefixed with its domain (`user-service.ts`); one type-folder past 10–15 files groups into `<type>/<domain>/` (the threshold `/refactor` `### 3` item 3 uses) rather than being left flat; move one batch at a time
 4. Enforce dependencies: presentation → domain → data only; `app/` calls `usecases/`/`features/` only; public API through the `index` barrel; align tests per layer
 5. Verify: no layer bypass (e.g. `components/` calling `infra/` directly), no cross-layer deep imports; run `/run-check` + the tests
 
@@ -178,17 +175,17 @@ scripts/  docs/  package.json  tsconfig.json  README.md  .env.example
 
 ```text
 src/
-├─ app/                                  # Entry & routes — wire layers (presentation): routes/ or pages/, middleware/, server.ts, index.ts
-├─ components/                           # UI components — PascalCase, presentational (presentation, optional if UI)
-├─ hooks/                                # hooks / composables — UI state + view logic (presentation, optional)
-├─ usecases/                             # application use cases — login.ts, create-order.ts (domain, required)
-├─ services/                             # domain services — user-service.ts, order-service.ts — pure business rules (domain, required)
-├─ features/                             # feature-level logic composing services — checkout.ts (domain, optional)
-├─ infra/                                # repositories, database/ (client, schema, migrations), external APIs (data, required)
-├─ lib/                                  # third-party wrappers / singleton clients — db.ts, stripe-client.ts (data, optional)
-├─ types/  constants/  utils/  config/   # shared leaves — pure, no IO; every layer imports them, they never import back
-└─ index.ts                              # barrel — public API
-tests/                                   # unit/ (usecases, services, features, utils) · integration/ (infra, lib) · e2e/ (app routes + components)
+├─ app/          # routes/pages, middleware, server.ts — presentation, required
+├─ components/   # UI components, PascalCase — presentation, if UI
+├─ hooks/        # hooks / composables — presentation, if UI
+├─ usecases/     # orchestration entries — login.ts, create-order.ts — domain, required
+├─ services/     # *-service.ts — business rules, no IO performed — domain, required
+├─ features/     # feature logic composing services — domain, optional
+├─ infra/        # repositories, database/, external APIs — data, required
+├─ lib/          # third-party wrappers / singleton clients — data, optional
+├─ types/ constants/ utils/ config/   # shared leaves — pure, no IO, never import back
+└─ index.ts      # barrel — public API
+tests/               # unit/ integration/ e2e/ — where the project already puts them
 scripts/  docs/  package.json  tsconfig.json  README.md  .env.example
 ```
 
@@ -200,7 +197,7 @@ scripts/  docs/  package.json  tsconfig.json  README.md  .env.example
 | 2 | presentation | `components/` | UI components — PascalCase, presentational | if UI | → `hooks/`, `usecases/` + shared leaves — never `infra/`/`lib/` |
 | 3 | presentation | `hooks/` | hooks / composables — UI state + view logic | if UI framework | → `usecases/` + shared leaves |
 | 4 | domain | `usecases/` | orchestration entries (`login.ts`, `create-order.ts`) | required | → `services/`, `features/`, `infra/` + shared leaves |
-| 5 | domain | `services/` | `*-service.ts` — pure business rules | required | → `infra/`, `lib/` + shared leaves — never presentation |
+| 5 | domain | `services/` | `*-service.ts` — business rules, no IO performed | required | → `infra/`, `lib/` through their interfaces + shared leaves — never presentation |
 | 6 | domain | `features/` | feature-level logic composing services | optional | → `services/` + shared leaves — never `usecases/` |
 | 7 | data | `infra/` | repositories, `database/`, external APIs | required | shared leaves only — bottom layer |
 | 8 | data | `lib/` | third-party wrappers / singleton clients | optional | shared leaves only |
@@ -212,7 +209,7 @@ scripts/  docs/  package.json  tsconfig.json  README.md  .env.example
 
 ### Rules
 
-- Flat folders only — never nest by capability/domain; group by type and prefix file names with the domain (`user-service.ts`, `order-service.ts`)
+- Group by type, not by capability — the file name carries the domain (`user-service.ts`, `order-service.ts`); a type-folder past 10–15 files groups into `<type>/<domain>/` (the same threshold `/refactor` `### 3` item 3 uses), never a top-level feature tree
 - Dependencies point one way down: presentation → domain → data — no bypassing and never pointing up; `app/` calls `usecases/`/`features/` only, never `services/`/`infra/` directly when a usecase wraps them
 - `types/`, `constants/`, `utils/`, `config/` are leaves — every layer may import them, they never import back into layer folders; `utils/` + `types/` stay pure (no IO, framework imports, side effects)
 - Public API through the `index.ts` barrel — no deep imports across layers; use the project's path aliases instead of cross-folder relative imports
@@ -230,18 +227,18 @@ scripts/  docs/  package.json  tsconfig.json  README.md  .env.example
 | Plugin / Extension | `/follow-create-plugins` (dispatcher) | vite, rolldown, bun, nitro, elysia, biome, eslint, oxlint, vitest, storybook, tauri, vscode, browser (WXT), obsidian, nvim, zed, raycast, claude, codex, devin |
 | Bot / Service / Product | `/follow-create-bot` / `/follow-create-sdk` / `/follow-create-product` | discord, github bot + GitHub App, line, slack, telegram, MCP server, Docker image, GitHub Action, SDK, Slidev deck, Devin project skills |
 
-> This table lists owner skills only, never actions — the upgrade trigger (a Layered app growing into several `apps/*` sharing a domain) lives in `## Layered Pattern`, and multi-entry targets are already `### 2` row 1
+> This table lists owner skills only, never actions — the upgrade trigger (a Layered app growing into several `apps/*` sharing a domain) lives in `## Layered Pattern`, and multi-entry targets are already `### 2` row 1. These dispatchers are reached through this table, not through `related`, whose 15-edge cap is spent on the flow skills (plan → apply → verify).
 
 ## Rules
 
 - Single Entry — every architecture restructure goes through this skill (`### 1`–`### 4`), dispatched from `/refactor` for architecture scopes; never duplicate pattern detail elsewhere
 - One pattern per target, one move batch per `/update-references` + `/run-check` cycle; preserve behavior and the original public API (same Two Hats / Safety Net rules as `/refactor` `## Rules`)
-- No churn without cause — a layout that already holds the direction and purity checks keeps its pattern: repair the violations in place, never big-bang a working pattern into the other one; re-pick only when `### 1` evidence genuinely changed
+- No churn without cause — `### 2` row 0 answers KEEP for a layout that already holds the direction and purity checks: repair the violations in place, never big-bang one working pattern into the other; re-pick only when `### 1` evidence genuinely changed
 - Event-driven/messaging redesign is not a pattern restructure here: semantics → `/improve events`, queue ops → `/improve queues`, transport → `/improve realtime`
 - Improvement loop over this skill's findings → `/improve architecture` (scope-map resolves to `/follow-architecture`)
 
 ## Expected Outcome
 
-- The target is restructured with the fitting pattern — multi-app unified / `packages/` / `crates/` = Clean, single app = Layered (flat type-grouped); a monorepo is laid out by workspace type
+- The target carries the fitting pattern — multi-app unified / `packages/` / `crates/` = Clean, single app = Layered (type-grouped, domain-prefixed); a monorepo is laid out by workspace type — or `### 2` row 0 recorded that the layout already held and nothing moved
 - No circular dependencies; the original public API still works; passes `/run-check` and the tests; the boundary is persisted (`/update-astgrep-rules`) and the chosen pattern recorded in the target's `AGENTS.md`
-- `/report-before-after` shows the old → new layer map
+- `/report-before-after` shows the old → new layer map against the `### 1` baseline

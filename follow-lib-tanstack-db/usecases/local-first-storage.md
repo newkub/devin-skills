@@ -89,3 +89,10 @@ const { data } = useLiveQuery((q) =>
 - Relying on collection `onInsert` to deny/reject in localOnly → handlers are optional and run before confirm; to gate writes validate in the schema/action instead.
 - Assuming cross-tab sync fires on the same tab → same-tab sync is immediate via the storage object, different tabs use storage events.
 - Creating local collections inside components → duplicate stores; define them once at module scope.
+
+## Related
+
+- `references/apis.md`
+- `best-practices/tanstack-db.md`
+- `usecases/non-hook-and-ssr.md`
+- `usecases/query-rest-crud.md`

@@ -5,7 +5,6 @@ argument-hint: "[scope]"
 related:
   - deep-test
   - run-test
-  - follow-test
   - follow-tool-bruno
   - follow-tool-github-actions
 
@@ -98,7 +97,6 @@ Use for projects that want API test files diffable in Git, run on a pure CLI wit
 - [API + CLI tables](references/apis.md), [CLI options](references/cli.md)
 
 - Use /run-test if needed
-- Use /follow-test if needed
 
 
 - See best-practices/ for recommended patterns and pitfalls

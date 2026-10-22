@@ -15,16 +15,16 @@ Use for hosted products — dashboards, cloud platforms, managed services (auth,
 
 ## Index Links
 
-`Project`, `Getting Started`, `Features` (per product surface), `Development`, `Operations`, `References` (api, auth, billing, changelog, security, roadmap)
+Base order from `references/navigation.md`; this type adds `Operations` after Development and always splits Features into `features/index.md` + one page per surface.
 
 ## Page Groups
 
 - `project/` — overview, features, decisions/, `workspaces.md` (monorepo)
 - `getting-started/` — quickstart, installation/deploy, usage
-- `features/` — one page per product area (billing, notifications, analytics, ...)
-- `development/` — setup, architecture, workflows, testing, deployment
-- `operations/` — observability, runbooks, incident, scaling (SaaS-specific)
-- `references/` — `api.md`, `auth.md`, `billing.md`, `security.md`, `changelog.md`, `roadmap/`
+- `features/` — `index.md` door + one page per product area (billing, notifications, analytics, ...)
+- `development/` — setup, architecture, data-model, workflows, testing, deployment
+- `operations/` — scheduler, observability, runbooks, incident, scaling (SaaS-specific)
+- `references/` — `api.md`, `errors.md`, `webhooks.md`, `auth.md`, `billing.md`, `security.md`, `changelog.md`
 
 ## Content Focus
 

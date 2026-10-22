@@ -47,6 +47,9 @@ Use when the task involves this library/tool — setup, usage, debugging, or bes
 |----------|----------|
 | Generate a PDF and stream it from a route | `usecases/stream-pdf-from-route.md` |
 | Multi-page report with header, footer, fonts, images | `usecases/multi-page-report.md` |
+| Vector drawings and charts with paths, bars, and transforms | `usecases/vector-drawings-and-charts.md` |
+| Custom fonts, mixed scripts, and text wrapping | `usecases/fonts-and-text-encoding.md` |
+| Links, annotations, outline, and document metadata | `usecases/annotations-and-metadata.md` |
 
 ## Rules
 

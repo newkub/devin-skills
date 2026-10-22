@@ -3,7 +3,7 @@ name: follow-tool-stryker-mutator
 description: Set up and use Stryker Mutator for mutation testing in JavaScript/TypeScript projects
 argument-hint: "[scope]"
 related:
-  - follow-test
+  - deep-test
   - update-tests
   - run-test
   - follow-tool-vitest
@@ -20,7 +20,7 @@ Set up and use Stryker Mutator for mutation testing to improve the quality of Ja
 
 For JavaScript, TypeScript, React, Angular, Vue, Svelte, and Node.js projects with a supported test runner
 
-- Stryker measures test quality through mutants — it is not a test runner or coverage tool; run tests via `/follow-test` and check coverage via `improve coverage`
+- Stryker measures test quality through mutants — it is not a test runner or coverage tool; run tests via `/deep-test` and check coverage via `improve coverage`
 - Use it once tests pass and are stable — if tests still fail or are flaky, fix them first with `/update-tests`
 
 - Latest: `@stryker-mutator/core@10.0.0` (verified 2026-09-13) — v10 requires Node.js 22+ (dropped Node 20)
@@ -31,7 +31,11 @@ For JavaScript, TypeScript, React, Angular, Vue, Svelte, and Node.js projects wi
 
 > Goal: Dispatch to the workflow matching the topic
 
-| Topic | Workflow |-------|----------| setup | `workflows/setup-stryker/SKILL.md` — install, stryker config, test runner integration | optimize | `workflows/optimize-mutation/SKILL.md` — incremental mode, mutator filtering, concurrency, thresholds 
+| Topic | Workflow |
+|-------|----------|
+| setup | `workflows/setup-stryker/SKILL.md` — install, stryker config, test runner integration |
+| optimize | `workflows/optimize-mutation/SKILL.md` — incremental mode, mutator filtering, concurrency, thresholds |
+
 1. If the argument matches a topic → read and follow `workflows/<name>/SKILL.md` instead of the steps below
 2. If not → follow the steps below normally
 
@@ -109,7 +113,7 @@ For JavaScript, TypeScript, React, Angular, Vue, Svelte, and Node.js projects wi
 - Use the dashboard for trends
 - Check the `timeout` mutants
 
-- Use /follow-test if needed
+- Use /deep-test if needed
 - Use /run-test if needed
 - Use /follow-tool-vitest if needed
 - Use /follow-lang-typescript if needed

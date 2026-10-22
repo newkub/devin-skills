@@ -41,7 +41,7 @@ Covers using ast-grep through napi bindings and the CLI inside Bun scripts, buil
 > Goal: Read context and prepare the environment before writing scripts
 
 1. Do `/use-astgrep`, `/use-bun-native-api`, `/follow-create-bun-cli` — read ast-grep patterns, Bun native APIs, and CLI best practices
-2. Read the `tools/review-codebase/` directory to understand the existing analyzer structure
+2. Read the `review/` directory to understand the existing analyzer structure
 3. Read the `rules/` directory to see the existing ast-grep rules
 4. Do `/scan-codebase` to understand the codebase structure you will analyze
 

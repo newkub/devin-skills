@@ -1,40 +1,47 @@
 # TanStack Charts — Best Practices
 
-Grammar-of-graphics charts — axes, series, responsive sizing, theming
+Grammar-of-graphics charts — marks, channels, scales, guides, responsive sizing, accessibility
 
 ## Recommended Patterns
 
-- Keep the `data` reference stable with `useMemo`; a new array each render re-runs the whole chart
-- Model the chart as grammar: `data` plus `primaryAxis` (category/time) and one `secondaryAxes` entry per series
-- Normalize multi-series data into a shared key shape (`{ label, s1, s2 }`) and give each key its own axis
-- Return a `Date` from the primary axis `getValue` for time series and let the scale handle it
-- Give the container an explicit height — the chart follows its parent, a zero-height parent renders nothing
-- Map series colors to design tokens, including a dark-mode variant
-- Handle loading and empty data explicitly; the chart does not invent placeholder states
-- Provide a text or table fallback for the same data so the chart is not the only access path
+- Keep each mark on its natural rows — there is no universal series wrapper to reshape into
+- Map fields to channels (`x`, `y`, `z`, `color`) and use accessors only for derived values
+- Let scale factories infer domains from the marks; pass a configured instance only for a fixed domain
+- Put guides next to the scale (`axis`, `grid`, `label`) instead of a separate chart-level config
+- Memoize the complete definition against the values it captures — definition identity is the update contract
+- Use `layout: group()` for side-by-side bars and `layout: stack()` only when the default stack order or offset must change
+- Upgrade only the scale that needs fuller semantics (time, log) to `d3-scale`
+- Give the container a height; omit `width` and `margin` so the host follows the container and measures guides
+- Set `ariaLabel` — keyboard focus is on by default once the chart is named
+- Provide a table or textual summary for the same data when exact values matter
 
 ## Common Pitfalls
 
-- Inline `data`/axis option objects recreate the chart on every render
-- A container without height collapses the chart to zero pixels
-- Assuming a Recharts-style props API — this is a 0.x grammar API that changes
-- Hardcoded hex colors drift from the design system and break dark mode
-- Too many points per series makes rendering and reading worse; downsample or aggregate first
-- Reusing one axis config for series with different units produces a misleading graph
-- Treating the beta API as stable across upgrades
+- Rebuilding the definition inline on every render, which repaints and drops focus state
+- Reshaping rows into a library-owned series structure that no channel references
+- Replacing a categorical axis with a line mark — `lineY` connects ordered values only
+- Letting bars start at a non-zero baseline, which exaggerates differences
+- Casting a rejected channel field instead of fixing the row type
+- Treating a responsive `chart: ({ width }) => ...` builder as a place to fetch or mutate state
+- Using one shared y axis for series with different units
+- Forgetting `d3-scale` when importing a time or log scale
+- Assuming `latest` docs match the installed version — they track `main`
 
 ## Perf Notes
 
-- Downsample or bucket large time ranges before they reach the chart
-- Memoize derived series and formatters, not just the raw data
-- Animate only on meaningful data changes; disable transitions for live-updating charts
+- Downsample or aggregate dense series before they reach the chart
+- Opt paint-heavy marks into Canvas; keep axes, labels, and highlights in SVG
+- Reuse the exported `canvasChartRenderer` singleton instead of creating renderers per render
+- Disable motion for live-updating charts; animate only meaningful data changes
+- Keep derived rows and formatters memoized with the definition
 
 ## Do / Don't
 
 | Do | Don't |
 |----|-------|
-| memoized `data` | inline arrays per render |
-| one axis per unit/series | mixed units on a shared axis |
-| explicit container height | auto-height parent with no size |
-| design-token colors | hardcoded hex values |
-| loading/empty states | rendering an empty chart silently |
+| mark-local rows | a universal series container |
+| memoized complete definition | inline `defineChart` per render |
+| `layout: group()` for side-by-side bars | assuming bars group automatically |
+| zero baseline for bars | a truncated bar axis |
+| `scaleUtc` for real time | formatted date strings as categories |
+| Canvas for dense paint layers | Canvas for axes and labels |

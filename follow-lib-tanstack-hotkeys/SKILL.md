@@ -77,6 +77,9 @@ useHotkey('Shift+?', () => setHelpOpen(true), { preventDefault: true })
 |----------|----------|
 | Command palette on `Mod+K` plus navigation shortcuts | `usecases/command-palette-mod-k.md` |
 | Scope shortcuts per surface and let users rebind | `usecases/scoped-shortcuts-and-remapping.md` |
+| Layer modal, editor, and global scopes without leaks | `usecases/scope-layering-for-modals-and-editors.md` |
+| Hold-to-talk / hold-to-preview with key state | `usecases/hold-to-talk-and-key-state.md` |
+| Cheat sheet and conflict audit from one registry | `usecases/shortcut-cheatsheet-and-conflict-audit.md` |
 
 ## Rules
 

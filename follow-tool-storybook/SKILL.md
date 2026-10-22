@@ -6,7 +6,7 @@ related:
   - follow-tool-vite
   - follow-create-plugins
   - follow-tool-vitest
-  - follow-test
+  - deep-test
   - follow-tool-playwright
   - follow-tool-biome
   - run-test
@@ -27,7 +27,11 @@ For frontend projects that want a component library, visual documentation, and i
 
 ### Workflows
 
-| Topic | Workflow |-------|----------| Init, framework detection, `.storybook/` config files | `workflows/setup-storybook/SKILL.md` | `main.ts` addons — docs, a11y, vitest | `workflows/config-addons/SKILL.md` 
+| Topic | Workflow |
+|-------|----------|
+| Init, framework detection, `.storybook/` config files | `workflows/setup-storybook/SKILL.md` |
+| `main.ts` addons — docs, a11y, vitest | `workflows/config-addons/SKILL.md` |
+
 ### 1. Installation
 
 > Goal: Install Storybook with the CLI
@@ -75,7 +79,7 @@ For frontend projects that want a component library, visual documentation, and i
 2. Use `@storybook/addon-vitest` for component + interaction tests (`play` functions are in core)
 3. Set up visual regression with Chromatic or similar tools
 4. Run `bun run test-storybook` (`storybook test`) in CI
-5. Run `/follow-test` to expand test coverage
+5. Run `/deep-test` to expand test coverage
 
 ### 6. Build and Deploy
 

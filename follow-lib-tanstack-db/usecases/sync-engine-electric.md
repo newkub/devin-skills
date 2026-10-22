@@ -81,3 +81,9 @@ const { data } = useLiveQuery((q) =>
 - Pointing `url` straight at Electric without a proxy → auth/tenant scoping leaks; route through your API.
 - Expecting client-side filtering to reduce network → the shape is the network boundary; filter in `params` for large tables.
 - Holding server state only in DB without an established sync shape → optimistic rows never reconcile; verify the row actually streams back.
+
+## Related
+
+- `references/apis.md`
+- `best-practices/tanstack-db.md`
+- `usecases/optimistic-mutations.md`

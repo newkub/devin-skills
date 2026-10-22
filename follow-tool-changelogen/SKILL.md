@@ -27,7 +27,10 @@ Use for projects that need automated changelog generation and release management
 
 ### Workflows
 
-| Topic | Workflow |-------|----------| Install, changelog generation, release command | `workflows/setup-changelogen/SKILL.md` 
+| Topic | Workflow |
+|-------|----------|
+| Install, changelog generation, release command | `workflows/setup-changelogen/SKILL.md` |
+
 ### 1. Configure Changelogen
 
 > Goal: create `changelog.config.ts` for the project

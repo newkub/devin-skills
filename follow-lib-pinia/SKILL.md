@@ -100,6 +100,8 @@ Use with Vue 3 that needs state management via Pinia v4 — covers setup stores,
 | Setup store for a CRUD feature used from components | `usecases/setup-store-crud.md` |
 | Persist a slice of state with the persistedstate plugin | `usecases/persist-store.md` |
 | Unit test state, getters and async actions | `usecases/test-store.md` |
+| Add a shared client, `$reset`, and logging to every store via a plugin | `usecases/store-plugins-and-injection.md` |
+| Run stores in Nuxt SSR without cross-request leaks | `usecases/nuxt-ssr-and-hydration.md` |
 
 ## Rules
 

@@ -6,9 +6,11 @@ import { checkLineCount } from "./checks/line-count";
 import { checkParallel } from "./checks/parallel";
 import { checkReferences } from "./checks/references";
 import { checkSections } from "./checks/sections";
+import { checkPackageFiles } from "./checks/package-files";
 import { checkCrossSkill } from "./checks/cross-skill";
 import { checkLanguage, checkStyle } from "./checks/style";
 import { applyFixes } from "./fix";
+import { formatReport } from "./format-report";
 import {
   countExecuteSteps,
   extractSectionsWithLevels,
@@ -27,7 +29,6 @@ const cliRoot = args.find((a) => !a.startsWith("--")) || Bun.env.DEVIN_SKILLS_RO
 const SKILLS_ROOT = cliRoot
   ? cliRoot.replace(/%APPDATA%/g, Bun.env.APPDATA || "")
   : join(Bun.env.APPDATA || "/tmp", "devin", "skills");
-const SELF_DIR = join(SKILLS_ROOT, "review-devin-global-harness");
 
 const findings: Finding[] = [];
 const observations: Finding[] = [];
@@ -92,6 +93,7 @@ for (const skill of skillDirs) {
   checkStyle(meta, ctx);
   checkLanguage(meta, ctx);
   checkReferences(meta, ctx);
+  checkPackageFiles(meta, ctx);
   checkParallel(meta, ctx);
 }
 
@@ -142,16 +144,7 @@ const report = {
   observations,
 };
 
-const outPath = join(SELF_DIR, "review-skills-report.json");
-await Bun.write(outPath, JSON.stringify(report, null, 2));
-
-console.log(`Skills reviewed: ${skills.length}`);
-console.log(`Findings: ${findings.length}`);
-console.log(`Observations: ${observations.length}`);
-console.log(`Score: ${score} (Grade ${grade})`);
-console.log(`By severity:`, bySeverity);
-console.log(`By category:`, byCategory);
-console.log(`Report saved to: ${outPath}`);
+console.log(formatReport(report));
 
 if (CI && (bySeverity.Critical || 0) + (bySeverity.High || 0) > 0) {
   process.exitCode = 1;

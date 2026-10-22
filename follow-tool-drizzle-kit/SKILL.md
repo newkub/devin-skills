@@ -21,14 +21,19 @@ Use when the task involves this library/tool — setup, usage, debugging, or bes
 - Boundary: this skill covers the `drizzle-kit` CLI only (generate/migrate/push/pull/check/studio) — for `drizzle-orm` schema/query APIs use `/follow-lib-drizzle`
 - Latest: `drizzle-kit@0.31.11` (pairs with `drizzle-orm@0.45.3`) (verified 2026-09-26)
 - Note: v1.0.0 is in the beta/rc channel (`beta` dist-tag, latest 1.0.0-rc.x) — has breaking changes (casing API, removes RQB v1 `db._query`); production still uses stable 0.31.x
-- References: [apis](references/apis.md) | [cli](references/cli.md) 
+- References: [apis](references/apis.md) | [cli](references/cli.md) | best-practices/
+
 ## Execute
 
 ### 1. Pick Workflow
 
 > Goal: dispatch specialized work to the appropriate workflow
 
-| Topic | Workflow |-------|----------| `drizzle.config.ts` — dialect, schema, `out`, dbCredentials | `workflows/config-drizzle-kit/SKILL.md` | generate/push/migrate commands, workflow, rollback | `workflows/migrate-schema/SKILL.md` 
+| Topic | Workflow |
+|-------|----------|
+| `drizzle.config.ts` — dialect, schema, `out`, dbCredentials | `workflows/config-drizzle-kit/SKILL.md` |
+| generate/push/migrate commands, workflow, rollback | `workflows/migrate-schema/SKILL.md` |
+
 ### 2. Setup And Usage
 
 > Goal: use it correctly per official docs
@@ -48,6 +53,13 @@ Use when the task involves this library/tool — setup, usage, debugging, or bes
 2. Run `/run-test` if related tests exist
 3. Check the latest official docs before using an uncertain API (drizzle kit tool)
 
+### Use Cases
+
+| Scenario | Use case |
+|----------|----------|
+| Rename a column without losing rows | `usecases/safe-column-rename.md` |
+| Catch two branches that generate colliding migrations | `usecases/ci-migration-collision-gate.md` |
+
 ## Rules
 
 - production always uses `migrate` — `push` is dev-only
@@ -59,8 +71,6 @@ Use when the task involves this library/tool — setup, usage, debugging, or bes
 - Use `/run-drizzle-studio` for the data browsing UI
 - Use `/run-verify` to verify lint + typecheck
 - Use `/run-test` for related tests
-
-- See best-practices/ for recommended patterns and pitfalls
 
 ## Expected Outcome
 

@@ -94,6 +94,9 @@ visitor.visit(result.program);
 |----------|----------|
 | Extract imports/exports and build a module graph | `usecases/extract-imports-and-exports.md` |
 | Write a custom analyzer rule with `file:line` findings | `usecases/custom-analyzer-rule.md` |
+| Handle parse errors and pick the right dialect | `usecases/parse-errors-and-dialects.md` |
+| Parse a large repo with a worker pool and cache | `usecases/worker-pool-and-incremental-cache.md` |
+| Surgical codemod with node offsets | `usecases/surgical-codemod-with-ranges.md` |
 
 ## Rules
 

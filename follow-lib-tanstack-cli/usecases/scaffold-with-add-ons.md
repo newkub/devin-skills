@@ -1,60 +1,88 @@
 # Use Case — Scaffold a Project With Add-Ons
 
-> Create a Start/Router app with only the add-ons the feature list needs, then prove it runs. Source: https://tanstack.com/cli/latest (accessed 2026-10-20)
+> Create a Start app with only the add-ons the spec needs, then prove it runs. Source: https://tanstack.com/cli/latest/docs/cli-reference (accessed 2026-10-20)
 
-## 1. Read the current add-on list
-
-```bash
-bunx @tanstack/cli create --help
-```
-
-The add-on set changes between releases, so take the names from `--help` instead of from an old guide.
-
-## 2. Pick add-ons from the feature list
-
-| Feature in the spec | Add-on |
-|---------------------|--------|
-| server data with caching | `tanstack-query` |
-| persisted relational data | `drizzle` |
-| sign-in and session | `clerk` |
-| utility-first styling | `tailwind` |
-| copy-paste component primitives | `shadcn` |
-
-Every accepted add-on is code you now maintain. Adding one later is cheaper than ripping one out.
-
-## 3. Create the project
+## 1. Read the catalog from the installed CLI
 
 ```bash
-bunx @tanstack/cli create my-app --add-ons clerk,drizzle,tanstack-query
+bunx @tanstack/cli create --list-add-ons --framework React --json
+bunx @tanstack/cli create --addon-details drizzle --framework React --json
 ```
 
-The prompts choose the package manager, the framework (React or Solid), and the toolchain. Answer them to match the repo you are joining — a Bun project scaffolded with npm instructions costs a cleanup pass later.
+Add-on IDs, options, dependencies, and conflicts change between releases, so take them from the CLI output instead of an old guide. `--json` is the path for scripts and agents; drop it for the final human review.
 
-## 4. Wire the environment for the chosen add-ons
+## 2. Map features to add-ons
+
+| Feature in the spec | Add-on | What it generates |
+|---------------------|--------|-------------------|
+| cached server data | `tanstack-query` | query client, provider, devtools wiring |
+| persisted relational data | `drizzle` | schema folder, client, database env key |
+| hosted sign-in | `clerk` | provider, middleware, key placeholders |
+| utility-first styling | `tailwind` | Vite plugin and CSS entry |
+| copy-paste primitives | `shadcn` | `components.json` and base styles |
+
+Every accepted add-on is files, dependencies, hooks, and env keys you now maintain. Adding one later with `tanstack add` is cheaper than removing one.
+
+## 3. Create with explicit flags
 
 ```bash
-cd my-app && bun install
-cp .env.example .env
+bunx @tanstack/cli create my-app \
+  --package-manager bun \
+  --framework React \
+  --deployment cloudflare \
+  --add-ons tanstack-query,drizzle,clerk \
+  -y
 ```
 
-Fill only the keys the selected add-ons read — a database URL and auth keys in this example. A leftover key that stays empty is a hidden runtime failure.
+- explicit flags make the command reproducible; prompts ask for anything omitted
+- `-y` accepts the defaults for every remaining option
+- default output is a TanStack Start app with SSR; `--router-only` gives a file-based SPA without Start
+- `.cta.json` records framework, mode, package manager, add-ons, and deployment — keep it committed
 
-## 5. Prove it runs
+## 4. Install and fill the environment
 
-1. `/run-dev` — the server must start with no missing-env warnings
-2. Open the first route and confirm the add-on wiring works (a query fires, the session renders)
-3. `/run-typecheck`
+```bash
+cd my-app
+bun install
+```
+
+Open `.env.example` and fill only the keys the selected add-ons read — a database URL plus the auth keys for this set. A leftover key that stays empty fails at runtime with an error that points at the wrong file.
+
+## 5. Pin TanStack versions
+
+```bash
+bunx @tanstack/cli pin-versions
+```
+
+This removes `^` from TanStack packages and adds missing peer dependencies, so the generated app cannot drift into a mix of minor versions on the first install.
+
+## 6. Prove it runs
+
+1. `/run-dev` — the server starts with no missing-env warnings
+2. Open the first route and confirm each add-on's wiring fires (a query runs, the session renders)
+3. `/run-typecheck` — the untouched scaffold must be green
 4. On failure → `/resolve-errors` max 3 rounds
+5. Commit the untouched scaffold as the green baseline before feature work
+
+## Verify
+
+- `.cta.json` lists exactly the add-ons and deployment present in `package.json`
+- No declined add-on left a provider, Vite plugin, or env key behind
+- `pin-versions` ran, so TanStack dependencies have no `^` range
+- The baseline commit exists and contains no application changes
 
 ## Pitfalls
 
 - Scaffolding at a monorepo root instead of the target workspace, dropping a second lockfile and `node_modules` at the root.
 - Accepting every add-on "for later"; the generated config then fights your own tooling.
-- Assuming the scaffold matches the latest published versions — diff `package.json` against the docs before building on it.
+- Assuming scaffold output matches the latest published versions — check `package.json` and run `pin-versions`.
 - Starting the app before `.env` is filled, so the first failure looks like a code bug instead of a missing key.
+- Passing `--add-ons`, `--deployment`, or `--template` together with `--router-only`, which disables all three.
+- Hardcoding add-on IDs in automation; read them from `--list-add-ons --json` each run.
 
 ## Related
 
 - `references/cli.md`
 - `best-practices/tanstack-cli.md`
 - `usecases/audit-generated-project.md`
+- `usecases/add-add-ons-to-existing-project.md`

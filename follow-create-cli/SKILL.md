@@ -18,7 +18,7 @@ Build CLI applications with Rust or Bun according to context and requirements, w
 
 ## Scope
 
-Use when creating a new CLI or CLI tools (e.g. `tools/review-codebase`, `tools/analyze`) — this skill is a dispatcher only: pick the stack, then always delegate implementation to `/follow-create-rust-cli` or `/follow-create-bun-cli`; never implement the CLI inside this skill
+Use when creating a new CLI or CLI tools (e.g. root `review/`, `tools/analyze`) — this skill is a dispatcher only: pick the stack, then always delegate implementation to `/follow-create-rust-cli` or `/follow-create-bun-cli`; never implement the CLI inside this skill
 
 - Frameworks: Bun → `cac`/`clipanion`/`commander` + `picocolors`; Rust → `clap` — always confirm the latest versions via `/deep-research` + `/follow-best-practice` (no version pins in this file — per `/update-devin-global-skills`)
 

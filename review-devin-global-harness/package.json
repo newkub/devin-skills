@@ -9,7 +9,7 @@
     "review:repo": "bun run src/index.ts '%APPDATA%\\devin\\skills'",
     "review:fix": "bun run src/index.ts --fix",
     "review:ci": "bun run src/index.ts --ci",
-    "review:report": "bun run src/report.ts"
+    "review:refs": "bun run src/broken-skills-references.ts"
   },
   "devDependencies": {
     "bun-types": "latest"

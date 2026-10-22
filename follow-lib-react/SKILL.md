@@ -132,6 +132,9 @@ Configure performance optimization
 | Server Component fetch + `use()` + Suspense | `usecases/data-fetching-with-suspense.md` |
 | Forms with `useActionState` and `useFormStatus` | `usecases/forms-with-server-actions.md` |
 | Transitions, deferred values, React Compiler | `usecases/concurrent-ui-transitions.md` |
+| Optimistic updates with automatic rollback | `usecases/optimistic-updates-and-rollback.md` |
+| Error boundaries, Suspense, and retry paths | `usecases/error-boundaries-and-recovery.md` |
+| `useEffectEvent` and `<Activity>` for effects and hidden state | `usecases/effect-events-and-activity.md` |
 
 ## Rules
 

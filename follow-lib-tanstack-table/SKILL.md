@@ -114,6 +114,9 @@ const table = useReactTable({
 |----------|----------|
 | Client-side sort/filter/pagination | `usecases/sorting-filtering-and-pagination.md` |
 | Server-side paging + stable row selection | `usecases/server-side-pagination-and-selection.md` |
+| Column visibility, pinning, and resizing that persist | `usecases/column-layout-visibility-pinning-resizing.md` |
+| Grouped rows with aggregated columns | `usecases/grouping-expanding-and-aggregation.md` |
+| Table state in the URL (shareable, back-button safe) | `usecases/url-synced-table-state.md` |
 
 - See usecases/ for end-to-end scenario recipes
 

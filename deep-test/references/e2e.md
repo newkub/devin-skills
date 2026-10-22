@@ -12,7 +12,7 @@ Run E2E tests for browser testing with Playwright across every route and user fl
 
 > Goal: run the existing E2E suite only (merged from `/test-e2e`) — use steps 1-6 below for the deep pass
 
-1. Detect — `playwright.config.*`, `e2e/`/`tests/e2e/` → `bunx playwright test`; prerequisites — dev server/start command, `baseURL`, seed data
+1. Detect — `playwright.config.*` + its `testDir`, specs in `tests/e2e/` → `bunx playwright test`; prerequisites — dev server/start command, `baseURL`, seed data
 2. Run — start the app as the suite requires (webServer config or manual), then run with `--reporter=line --retries=0` for honest results; record per-spec status, screenshots/traces, duration
 3. Classify — element missing / flow broken → source → `/resolve-errors`; outdated selector/timing → test → `/update-tests`; flaky → report + `/deep-review`, never add retries; server won't start / port conflict → environment; repeats ≥3 → stop+report
 4. Report — persist → `.devin/temp/report/<workspace>/e2e-test-<time>.md` with trace paths; all pass → `/run-verify`
@@ -21,9 +21,10 @@ Run E2E tests for browser testing with Playwright across every route and user fl
 
 > Goal: Know whether the project already has a Playwright suite
 
-1. Check `playwright.config.ts`/`playwright.config.js`, test files in `tests/`, `e2e/`, `*.spec.ts`
+1. Check `playwright.config.ts`/`playwright.config.js` and the `testDir` it points at — specs live in `tests/e2e/` (`testDir: 'tests/e2e'`), the same `tests/<layer>/` layout as every other layer
 2. Check `package.json` — `@playwright/test`, scripts `test:e2e`, `e2e`
-3. If a suite exists → go to Step 3; if not → Step 2 (exploratory) or `/follow-tool-playwright` to set one up
+3. A root `e2e/` is a legacy layout — move it to `tests/e2e/` (dry run first), update `testDir` + scripts, then `/update-references`; never leave two e2e roots
+4. If a suite exists → go to Step 3; if not → Step 2 (exploratory) or `/follow-tool-playwright` to set one up; no runner at all → `/deep-test strategy`
 
 ## 2. Exploratory All-Routes (agent-browser, headless)
 
@@ -80,6 +81,7 @@ Run E2E tests for browser testing with Playwright across every route and user fl
 ### 1. Test Framework
 
 - Use Playwright only — if the project already has Cypress, recommend migrating to Playwright
+- Location: `tests/e2e/` — one e2e root per repo, never a second next to `tests/`
 - Configure browsers (`projects`), viewport, and device emulation per target
 - `forbidOnly: !!process.env.CI` prevents `.only` from leaking into CI
 

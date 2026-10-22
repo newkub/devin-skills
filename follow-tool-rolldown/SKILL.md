@@ -87,7 +87,12 @@ Use for JavaScript/TypeScript projects that want a fast bundler, code splitting/
 
 > Goal: dispatch specialized work to the right workflow
 
-| Topic | Workflow |-------|----------| first-time setup (install, config, entry/output) | `workflows/setup-rolldown/SKILL.md` | optimize bundle (splitting, treeshaking, advancedChunks) | `workflows/optimize-bundle/SKILL.md` | migrate from Rollup | `workflows/migrate-from-rollup/SKILL.md` 
+| Topic | Workflow |
+|-------|----------|
+| first-time setup (install, config, entry/output) | `workflows/setup-rolldown/SKILL.md` |
+| optimize bundle (splitting, treeshaking, advancedChunks) | `workflows/optimize-bundle/SKILL.md` |
+| migrate from Rollup | `workflows/migrate-from-rollup/SKILL.md` |
+
 ## Rules
 
 ### 1. Installation

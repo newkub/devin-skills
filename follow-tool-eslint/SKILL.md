@@ -144,7 +144,11 @@ export default defineConfig([
 
 > Goal: dispatch specialized work to the appropriate workflow
 
-| Topic | Workflow |-------|----------| write/edit the flat config (`eslint.config.js`) | `workflows/config-flat/SKILL.md` | migrate to oxlint | `workflows/migrate-to-oxlint/SKILL.md` 
+| Topic | Workflow |
+|-------|----------|
+| write/edit the flat config (`eslint.config.js`) | `workflows/config-flat/SKILL.md` |
+| migrate to oxlint | `workflows/migrate-to-oxlint/SKILL.md` |
+
 ## Rules
 
 ### 1. Vue/Nuxt Configuration

@@ -97,7 +97,7 @@ If you only need to create the integration branch → follow the Create Integrat
 
 > Goal: configure branch protection and GitHub metadata
 
-1. Run `/update-github-metadata` `### 6. Protect Branches` (see `update-github-metadata/references/branch-protection.md`)
+1. Run `/update-github-metadata` `### 6. Protect Branches (Optional)` (see `update-github-metadata/references/branch-protection.md`)
 2. If `/update-github-metadata` fails → report and stop
 3. Confirm that `main` and `<integration-branch>` are protected
 

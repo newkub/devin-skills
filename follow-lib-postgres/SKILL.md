@@ -26,7 +26,11 @@ Use when the task involves this library/tool — setup, usage, debugging, or bes
 
 ### Workflows
 
-| Topic | Workflow |-------|----------| Setup | `workflows/setup-postgres/SKILL.md` — install, connection string, client | Optimize | `workflows/optimize-pool/SKILL.md` — pool sizing, prepared statements 
+| Topic | Workflow |
+|-------|----------|
+| Setup | `workflows/setup-postgres/SKILL.md` — install, connection string, client |
+| Optimize | `workflows/optimize-pool/SKILL.md` — pool sizing, prepared statements |
+
 ### 1. Setup And Usage
 
 > Goal: use correctly per the official docs
@@ -64,6 +68,9 @@ Use when the task involves this library/tool — setup, usage, debugging, or bes
 |----------|----------|
 | Multi-statement transactions + savepoints | `usecases/transactions-with-rollback.md` |
 | Bulk insert + `LISTEN`/`NOTIFY` | `usecases/bulk-insert-and-listen-notify.md` |
+| Optional filters, whitelisted sorting, and pagination | `usecases/dynamic-filters-and-pagination.md` |
+| Row types for `bigint`/`numeric`, `jsonb`, and camelCase | `usecases/result-types-and-transforms.md` |
+| Map SQLSTATE errors and retry only what is safe | `usecases/errors-and-retries.md` |
 
 - See usecases/ for end-to-end scenario recipes
 

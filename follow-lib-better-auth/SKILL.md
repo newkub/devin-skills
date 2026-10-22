@@ -28,7 +28,11 @@ Boundaries:
 
 ### Workflows
 
-| Topic | Workflow |-------|----------| Setup | `workflows/setup-auth/SKILL.md` — install, `auth.ts`, database adapter | Providers | `workflows/config-providers/SKILL.md` — social/email plugins config 
+| Topic | Workflow |
+|-------|----------|
+| Setup | `workflows/setup-auth/SKILL.md` — install, `auth.ts`, database adapter |
+| Providers | `workflows/config-providers/SKILL.md` — social/email plugins config |
+
 ### 1. Install
 
 > Goal: install Better Auth and a database adapter

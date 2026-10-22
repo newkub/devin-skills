@@ -104,6 +104,11 @@ bunx deepsec report       # quick overview
 - Use /check-secrets before/after scans for general hygiene
 - Use /report to summarize findings
 
+## References
+
+- See `best-practices/` for recommended patterns and pitfalls
+- See `references/apis.md` for the package and version reference, `references/cli.md` for the CLI surface
+
 ## Expected Outcome
 
 - `.deepsec/` workspace ready: scan → AI review → exportable findings

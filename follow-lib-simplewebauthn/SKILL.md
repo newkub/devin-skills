@@ -26,7 +26,10 @@ Use when the task involves manual passkeys/WebAuthn — setup, ceremonies, crede
 
 ### Workflows
 
-| Topic | Workflow |-------|----------| Setup | `workflows/setup-simplewebauthn/SKILL.md` — server+browser install, ceremony flow 
+| Topic | Workflow |
+|-------|----------|
+| Setup | `workflows/setup-simplewebauthn/SKILL.md` — server+browser install, ceremony flow |
+
 ### 1. Setup And Usage
 
 > Goal: use correctly per the official docs
@@ -68,6 +71,10 @@ Use when the task involves manual passkeys/WebAuthn — setup, ceremonies, crede
 |----------|----------|
 | Register a passkey and store the credential | `usecases/register-passkey.md` |
 | Log in with a passkey, counter update + autofill | `usecases/login-with-passkey.md` |
+| List, rename, delete passkeys and notify credential managers | `usecases/manage-passkeys-in-settings.md` |
+| Detect passkey support, map ceremony errors, cancel on navigation | `usecases/detect-support-and-handle-errors.md` |
+| Step up with a passkey before a sensitive action | `usecases/step-up-authentication.md` |
+| Upgrade password users with a silent registration | `usecases/upgrade-password-users.md` |
 
 ## Rules
 

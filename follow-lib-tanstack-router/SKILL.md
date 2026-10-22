@@ -94,6 +94,9 @@ bun add -D @tanstack/router-plugin   # file-based routes + code splitting
 |----------|----------|
 | Validated search params driving a loader | `usecases/validated-search-and-loaders.md` |
 | Auth guards with `beforeLoad` + redirect back | `usecases/auth-guards-with-beforeload.md` |
+| Nested layouts with pathless routes | `usecases/nested-layouts-and-pathless-routes.md` |
+| Error, pending, and not-found boundaries per route | `usecases/route-error-and-not-found-boundaries.md` |
+| Preload on intent + route code splitting | `usecases/preload-on-intent-and-code-splitting.md` |
 
 ## Expected Outcome
 

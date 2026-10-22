@@ -22,9 +22,9 @@
 
 | Action | Tool | Install | Skill |
 |--------|------|---------|-------|
-| content search | `rg` | installed (mise rg 15) | `/search-files-patterns` |
+| content search | `rg` | installed (mise rg 15) | `/code-search` |
 | structural code search/refactor | `sg` (ast-grep) | installed (mise ast-grep) | `/use-astgrep` |
-| find files | `fd` | installed | `/search-files-patterns` |
+| find files | `fd` | installed | `/code-search` |
 | fuzzy pick | `fzf` / `tv` (television) | installed | interactive |
 | search & replace | `sad` | installed (scoop) | bulk edits |
 | count LOC | `scc` / `loc` / `rloc` | installed | `/follow-tool-loc` |

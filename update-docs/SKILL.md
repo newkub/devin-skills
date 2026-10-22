@@ -24,7 +24,7 @@ Create the `docs/` directory in plain markdown — readable on GitHub or any mar
 
 - Set up `docs/` for a single project and for a monorepo
 - Create/update markdown with real content from the source code
-- `docs/index.md` is the table of contents linking to every section — no nav/sidebar config
+- `docs/index.md` is the only nav — one grouped section per real docs directory, every page exactly once; a section group is the sidebar, and `references/navigation.md` is the contract
 - Supports `update-features-md` (workflow `features-md`) with a separate `project/features` page
 - Reuse raw findings that skills persist under `.devin/temp/report/<workspace>/` via `/create-report-in-dot-devin` — e.g. `/deep-test website`, `/watch-browser fix` — as input for updating docs
 
@@ -60,6 +60,7 @@ Create the `docs/` directory in plain markdown — readable on GitHub or any mar
    - `docs/index.md`
    - `docs/project/overview.md`
    - `docs/project/features.md`
+   - `docs/features/index.md`
    - `docs/getting-started/quickstart.md`
    - `docs/getting-started/installation.md`
    - `docs/getting-started/usage.md`
@@ -75,13 +76,16 @@ Create the `docs/` directory in plain markdown — readable on GitHub or any mar
 4. For a monorepo, add `docs/project/workspaces.md` and `docs/workspaces/<name>.md`
 5. Add type-specific pages from `references/<type>.md`, e.g. `docs/commands/` for `cli`, `docs/references/contributing.md` for `open-source`, `docs/references/auth.md` + `admin.md` + `pricing.md` for `product` (no dedicated template; fall back to `templates/content-page.md`), `references/api.md` + `comparison.md` + `glossary.md` for `library`, `references/endpoints.md` + `errors.md` for `sdk`, `operations/` for `saas-product`, `guides/` for `opensource-product`
 
-### 3. Write Index TOC
+### 3. Write Docs Nav
 
-> Goal: `docs/index.md` navigates to every section with plain markdown links
+> Goal: `docs/index.md` is the only nav — every page reachable, each one exactly once
 
-1. Use `templates/docs-index.md` — title, short description, link list grouped by section
-2. Order sections by the page groups in `references/<type>.md`
-3. Use relative links (e.g. `project/overview.md`) — supports direct reading on GitHub
+1. Read `references/navigation.md` — group order, what belongs in each group, and the placement rules
+2. Use `templates/docs-index.md` — title, one-paragraph description, groups of `- [Page](path.md) — what it answers`
+3. Groups follow the base order Project → Workspaces → Getting Started → Features → Development → Operations → References → Roadmap; a group with no pages is skipped, never created empty
+4. One door per concept — a group index (`features/index.md`) is its only nav line; the exhaustive `project/features.md` is linked from that index, never listed twice
+5. A family stays in the group that names it — `project/workspaces.md` + `workspaces/<name>.md` both live under Workspaces
+6. Relative `.md` links only — never a directory (`references/`) and never a site route (`/references/api`)
 
 ### 4. Write Content Pages
 
@@ -113,6 +117,7 @@ Create the `docs/` directory in plain markdown — readable on GitHub or any mar
 3. Each row has name, description, module, status
 4. Group by domain with headings or sub-sections
 5. No dropdowns; use plain headings and bullets
+6. `docs/features/index.md` is the Features nav door — one row per area linking `features/<area>.md`, plus a line to the exhaustive `project/features.md`
 
 ### 6. Content Quality
 
@@ -162,10 +167,12 @@ Create the `docs/` directory in plain markdown — readable on GitHub or any mar
 - Tables may use markdown tables
 - No Vue components or generator-specific syntax — pages must render correctly on GitHub
 
-### 2. Docs Index
+### 2. Docs Nav
 
-- `docs/index.md` must link to every real section, ordered per `references/<type>.md`
-- Use relative links to `.md` files (e.g. `project/overview.md`) — no site-generator-style paths (`/project/overview`)
+- `docs/index.md` must link to every real section, ordered per `references/navigation.md`
+- Every page appears exactly once; two pages for one concept get one door and an internal link, never two nav lines
+- Each entry carries an em-dash line saying what the page answers
+- Use relative links to `.md` files (e.g. `project/overview.md`) — no site-generator-style paths and never a directory link
 - Other pages link back to `index.md` or related pages with relative links when needed
 
 ### 3. Frontmatter

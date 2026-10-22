@@ -32,7 +32,12 @@ Install and configure Playwright for end-to-end testing in single projects and m
 
 > Goal: dispatch to the workflow matching the topic
 
-| Topic | Workflow |-------|----------| setup | `workflows/setup-playwright/SKILL.md` — install, browsers install, basic config | config | `workflows/config-projects/SKILL.md` — projects, devices, baseURL, retries, reporters | migrate | `workflows/migrate-from-cypress/SKILL.md` — cypress→playwright API mapping, page objects, verify 
+| Topic | Workflow |
+|-------|----------|
+| setup | `workflows/setup-playwright/SKILL.md` — install, browsers install, basic config |
+| config | `workflows/config-projects/SKILL.md` — projects, devices, baseURL, retries, reporters |
+| migrate | `workflows/migrate-from-cypress/SKILL.md` — cypress→playwright API mapping, page objects, verify |
+
 1. If the argument matches a topic → read and follow `workflows/<name>/SKILL.md` instead of the steps below
 2. Otherwise → follow the steps below as normal
 

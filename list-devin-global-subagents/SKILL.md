@@ -1,6 +1,6 @@
 ---
 name: list-devin-global-subagents
-description: List all global subagents in the devin agents repo with details
+description: List all global subagents in %APPDATA%\devin\agents with details
 argument-hint: "[scope]"
 ---
 
@@ -19,7 +19,7 @@ Use when you want to see the existing global subagents, or to check whether a su
 > Goal: find all global subagents
 
 1. Scan `%APPDATA%\devin\agents` for subdirectories containing `AGENT.md`
-2. Skip the `.backup/` directory
+2. Skip dot-directories and any directory without `AGENT.md`
 3. If the directory is not found → report that there are no global subagents
 
 ### 2. Extract Metadata
@@ -44,7 +44,7 @@ Use when you want to see the existing global subagents, or to check whether a su
 ### 1. Directory Scope
 
 - Scan only `%APPDATA%\devin\agents`
-- Skip the `.backup/` directory
+- Skip dot-directories and any directory without `AGENT.md`
 - Show only subdirectories containing `AGENT.md`
 
 ### 2. Output Format

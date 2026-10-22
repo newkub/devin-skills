@@ -22,7 +22,7 @@ related:
 
 ## Goal
 
-Create, update, or refactor global Devin skills in `%APPDATA%\devin\skills` so they are modern, correct, and consistent with repo standards — this skill is a single-file package keeping all conventions in `## Conventions`
+Create, update, or refactor global Devin skills in `%APPDATA%\devin\skills` so they are modern, correct, and consistent with repo standards — `SKILL.md` is the workflow entry; each `## Conventions → <section>` heading stays stable and points at its spec in `references/`
 
 ## Scope
 
@@ -63,173 +63,91 @@ For new or existing skills: update one skill, many skills, or the whole repo; cr
 2. `/deep-review` to find stale versions/commands/links; `/deep-review` to verify latest + breaking changes; `/deep-review` to verify `references/apis.md`/`cli.md` against the real API/commands
 3. Record latest version, breaking changes, new commands, deprecations, env vars, URLs — find real examples, never guess
 
-### 5b. Prefer Existing CLI Tools Over Custom How-To
+### 6. Prefer Existing CLI Tools Over Custom How-To
 > Goal: how-tos use real installed tools; don't hand-write scripts when a CLI can do it
 
 1. Before writing a how-to (search/replace, JSON/YAML, diff, benchmark, git, API, screenshots) → always first check `check-my-global-cli/references/global-cli-commands.md` + `check-my-global-cli/references/tool-map.md`; a tool matches the problem → reference the real command (`sd`/`sad` instead of hand-rolled replace, `yq`/`jq` instead of parsing, `hyperfine` instead of timing, `xh` instead of curl, `ast-grep` instead of regex refactor, `agent-browser`/`playwright` instead of browser automation)
 2. Unsure which tool exists → `/check-my-global-cli` or `/deep-research`; write your own only when no tool exists at all; find a tool missing from the inventory/map → update both at once; install via `mise use -g <tool>` (or scoop/winget)
 
-### 6. Write Or Update SKILL.md
+### 7. Write Or Update SKILL.md
 > Goal: `SKILL.md` conforms to the spec
 
 1. Update frontmatter per `## Conventions → Frontmatter Spec`; sections follow `Goal` → `Scope` → `Execute` → `Rules` → `Expected Outcome`; `## Execute` ≤10 steps using `### N. Step Name` + `> Goal:` + numbered list
 2. Invoking other skills → `## Conventions → Invoke Skills`; update commands/options/examples/env vars/URLs and remove deprecated ones; >250 lines → move content down into `references/` per `When To Split`
 
-### 7. Add References, Use Cases, Workflows, Examples, And Src
+### 8. Add References, Use Cases, Workflows, Examples, And Src
 > Goal: a complete, non-redundant skill package
 
 1. Has dependencies → write real `references/` per `## Conventions → Write References` (mandatory — except prefixes that `Directory Structure` defines as a single `SKILL.md`, e.g. `follow-create-*`/`review-*`, which merge this content into `SKILL.md` instead); `follow-lang-*` → `references/toolchain.md` (mandatory) plus any live-checked dependency knowledge; `follow-lib-*`/`follow-tool-*` → `best-practices/` + `usecases/` per `## Conventions → Write References`; separately invocable sub-workflows → `workflows/` (`follow-lang-*` always has `workflows/setup-project/`), subagent profiles → `SKILL.md ## Subagents` per `Workflows And Subagents`
 2. CLI/web/MCP → `src/` per `## Conventions → Src`; templates/examples → `templates/`, `examples/`; verify all markdown links point to real files
 
-### 8. Validate, Sync And Update References
+### 9. Validate, Sync And Update References
 > Goal: the skill passes every gate and living documents stay fresh
 
 1. `/review-devin-global-harness` — conventions/naming/structure; `/check-reference` — commands/APIs/claims; `/reframe` for a new skill or major rewrite
 2. `/deep-validate` — frontmatter, sections, length, `related` missing/unused, TODO/MOCK/placeholder; fixing `related` → `/follow-tool-madge`; has `rules/` or `sgconfig.yml` → `/deep-review`
 3. `/update-references` to sync refs across the repo + `/use-related-skills` to find integrations; rename/move → update `AGENTS.md`; involves global rules → `global_rules.md` + `/update-devin-harness`
 4. After any skill or tool add/remove/merge/rename → always sync living documents per `## Conventions → Living Documents` — not optional; failing → fix and recheck (max 3 → stop/report)
+5. Markdown shape — 27 skills shipped a collapsed table that `check-skills-structure` does not flag (it counts sections, not rows), so read every table as rendered before signing off
+6. Cross-skill citations — a body that cites a heading owned by another skill is not checked per package, so verify every cited heading exists in the target's `SKILL.md` (measured 2026-10-21: 22 stale citations across 14 files)
 
-### 9. Ship
+### 10. Ship
 > Goal: deliver the work
 
-Run `/ship` — fails → report the status and stop — then `/report` summarizing topic, old/new info, files changed, next actions
+1. Run `/ship` — fails → report the status and stop
+2. Run `/report` summarizing topic, old/new info, files changed, next actions
 
 ## Conventions
 
+> The repo standard. Every `###` heading below is a stable anchor cited by other skills; the full spec lives in `references/`.
+
 ### Frontmatter Spec
 
-- Required: `name` (matches the dir, lowercase separated by `-`), `description` ≤100 characters; recommended: `argument-hint`, `allowed-tools` (only what's needed), `related` ≤15 (real dirs + actually mentioned in the body)
-- Optional: `model` (`sonnet`/`swe`/`opus`/`codex`), `subagent: true`, `agent: <profile>` (takes precedence over subagent), `permissions` (`allow`/`deny`/`ask`), `triggers` (default `['user','model']`)
-- Body: `## Goal` → `## Scope` → `## Execute` → `## Rules` → `## Expected Outcome` (plus `## Key Concepts`/`## Principles`/`## Guide`/`## Examples` when needed); backticks for tools/commands/paths/skills; no `**` bold
-- `check-*` skills → `allowed-tools` must include `exec`, `grep`, `glob`, `find_file_by_name` and use commands/scripts/linters instead of eyeballing — reproducible results citable by file/line
+See [references/frontmatter.md](references/frontmatter.md) — required/recommended/optional fields, body shape, and the `check-*` allowed-tools rule.
 
 ### Skill Prefixes
 
-`follow-lang-*` runtime · `follow-framework-*` meta/app framework · `follow-service-*` external service/cloud · `follow-lib-*` importable lib · `follow-tool-*` CLI/build tool · `follow-create-*` create plugins/extensions/CLI/lib · `follow-*` concept/practice (`follow-goal`, `follow-deploy`) — matches no prefix → keep `follow-`; spans several categories → choose by primary responsibility
-
-`check-*` detector pass/fail + locations (read-only) · `review-*` single-dimension assessor (findings + severity + evidence) — the per-label dimensions live inside the reviewer at `deep-review/references/review.md` (`## Dimension Matrix`; label resolution in `references/checks.md` `### Label resolution`): each `improve`/`optimize` scope-map label resolves through the `Aliases` column to its rows and delegates the checks to `/deep-review` (7 principles, the last (`### 7. Fix`) optional via the `then-fix` argument) — never a second catalog, never a per-label file, never a separate repo-root skill dir; `verify-matrix.ts` proves every label resolves to a row; only eight `review-*` skills stay at the repo root: `review`, `review-issues`/`review-gaps` (their own dimension work), `review-test` (test-dimension entry), `review-devin-global-harness` (tooling-package exception), `review-github-pr`/`review-github-issue` (PR/issue-scoped), and `review-by-all-stakeholder` (persona dispatcher with role catalogs in `references/`); a `review-*` change that needs the analyzer side (CLI, analyzers, rule packs) updated goes through `/update-review-cli`, and `/run-review` owns running that CLI · `deep-*` multi-step/multi-dimension orchestrator — one direction `check` → `review` → `## Fix`; `improve-*`/`optimize-*` top-level = thin entry — find findings via `/deep-review` domains then fix after user confirm + must have `### Tools And Libraries` at the end of `## Scope` (before `## Execute`) — a `| Skill | When To Use |` table mapping `follow-tool-*`/`follow-lib-*`/`follow-service-*` by domain (seo → unlighthouse+takumi; uxui → unlighthouse+unocss/shiki/comark; perf → unlighthouse; bundle → sonda+node-modules-inspector), every entry in `related` + with a real dir (missing → create first via `/new-skills`), as a hint during review/fix, not all mandatory; creating a new `follow-*` → reverse-wire it into the related `improve`/`optimize` scope-map row (`improve/references/scope-map.md`, `optimize/references/scope-map.md`) or its callers; a new top-level `review-*` must delegate → `/deep-review` domain, never duplicate content; the fixer boilerplate + Domain Map live inside `deep-review` (`### 7. Fix` + `references/checks.md` `### Domain Map`); deviating from the template → state the reason in `## Scope`
-
-`deep-review` and every `review-*` must have `/use-subagents` in `related` + a "use /use-subagents if needed" rule in the body (before `## Expected Outcome`) — spawn subagents when review items/areas are independent of each other; `deep-review/references/review.md` (matrix + fix metrics) and `deep-review/references/checks.md` (dimension checks + domain map) are the review reference and every `review-*` must delegate back to `/deep-review`, never restate a check
+See [references/prefixes.md](references/prefixes.md) — the follow/check/review/deep family taxonomy and the review preset + subagent requirement.
 
 ### Templates
 
-Execute pattern core per prefix (choose longest match first, e.g. `follow-lib-*` over `follow-*`):
-
-| Prefix | Execute Pattern Core |
-|--------|----------------------|
-| `run-*` | prereq check (missing → stop) → run with timeout (non-block long-running, block short tasks) → fail: `/resolve-errors`, dep → `/run-install` retry×1, config → `/deep-review`; repeats ×3 → stop; report success/duration/metrics; never destructive without confirm |
-| `follow-lib-*` | check manifest+registry+ecosystem → `/learn` official to confirm install cmd/version/peer deps → config+entry point → `/deep-validate`; `references/` has only `apis.md`+`cli.md` (tables only — per `## Conventions → Write References`; no CLI → no `cli.md`); must have `best-practices/` (flat `.md` — patterns/pitfalls/do/don't written from actual research) + `usecases/` (one scenario recipe per file — per `## Conventions → Write References`); many use cases → `workflows/<lib>/` |
-| `follow-tool-*` | confirm the real CLI (`--version`/`--help`) → official docs install+config → wire into the manifest/task runner → run the tool on the repo and read its own output → `/deep-validate`; `references/` has `apis.md`+`cli.md`; must have `best-practices/` + `usecases/` (one file per project workflow the tool owns — CI gate, monorepo scope, baseline/ratchet, editor integration) |
-| `follow-create-*` | identify target → `../follow-my-techstack/references/techstack-catalog.md` + `/deep-review` → dispatch `follow-create-cli`/`-web`/`-mcp` → scaffold `src/` → dev/build/test pass → MCP → `mcp_config.json` → `/deep-validate` + `/ship` |
-| `follow-lang-*` | check version in manifest (tool not found → stop) → run `/deep-research` + `/follow-best-practice` to live-check the latest language/toolchain versions and practices → `/learn` official + version compat → config with minimal diff → typecheck/lint/tests → `/ship`; package = `SKILL.md` entry (language rules + workflow dispatch) + `references/toolchain.md` (ecosystem-tool table — no version pins) + `workflows/` (`setup-project` mandatory — first-time scaffold; extra lifecycle workflows only when real); SKILL.md dispatches lifecycle work to `workflows/` and points at `references/`; never rewrite the whole file, don't force upgrades |
-| `follow-*` | check version in manifest (tool not found → stop) → `/learn` official + version compat → config with minimal diff → typecheck/lint/tests → `/ship`; never rewrite the whole file, don't force upgrades |
-| `setup-*` | prereq + idempotent check (already set up → verify only) → official docs, secrets → `/follow-secret-manager`, never commit → smoke check (`--version`/`doctor`/`status`); fail → `/resolve-errors`×3 |
-| `config-*` | read current config first (`/deep-review` dimension `config`) → merge only necessary keys, never clobber, no secrets in config → keep only values that override the tool's defaults per `/follow-default-config` (verify the default via `/check-types-definition`, never guess) → verify with the tool's validate command → `/report-before-after` |
-| `deploy-*` | readiness (build/tests/secrets; a `deploy-to-<platform>` exists → use it) → official CLI staging→prod recording URL+revision, destructive → confirm → smoke test+logs, fail → rollback/`/resolve-errors`×3 |
-| `migrate-*` | `/plan` from→to + official migration guide + rollback path + data backup → incremental config→deps→code→data use `/use-astgrep` instead of manual, separate commits → lint/test/smoke + check leftover deprecated → `/report-before-after`+`/ship` |
-| `optimize-*` | always baseline first (`/run-bench`, `/deep-optimize`) → fix one point at a time high impact→low, preserve behavior (optimize ≠ change output) → re-measure `/report-before-after`; no improvement → revert; + `### Tools And Libraries` per `Skill Prefixes` |
-| `improve-*` | run `/deep-review`/`/check-*` to find real targets first, never guess → apply one at a time, preserve behavior, never mix refactor+behavior in one commit → verify lint/tests → `/report` what improved; + `### Tools And Libraries` per `Skill Prefixes` |
-| `fix-*` | confirm root cause first, never fix by symptom (unclear → `/analyze-root-cause-analysis`/`/deep-debug`) → minimal fix → verify `/run-check` no regression; fail → `/resolve-errors`×3 |
-| `update-*` | read the original and understand intent first → minimal + idempotent + `/update-references` if move/rename → diff before/after verify refs aren't stale → `/report-before-after` |
-| `check-*` | target+criteria → `/scan-codebase` + grep/ast-grep/jscpd/knip → `scripts/<name>.ts` runnable repeatedly → Critical/Warning/Info + file:line + recommendation for every finding; cover all workspaces incl. gitignored; `allowed-tools` include `exec`/`grep`/`find_file_by_name` |
-| `analyze-*` | the agent analyzes first → insufficient data → `/deep-analyze`; repeatable → `/use-scripts` helper, not an agent replacement → `/report table` ordered by impact, every finding has evidence (assumption → state it) |
-| `deep-*` | must have `/deep-thinking` as the first step always → identify dimensions → `/deep-research`+`/deep-analyze` per dimension, stepwise, gathering evidence before acting (every non-alias; alias stubs that forward → canonical are exempt — the canonical holds these two steps) → cross-reference for shared root causes → `/report table` ordered by impact/effort + immediate/long-term; cover all dimensions or report "no issues" |
-| `review-*` | deep pre-pass always first: `/deep-thinking` → `/deep-analyze` → `/deep-validate` → `/scan-codebase`+`/deep-review`+ast-grep → cross-check evidence, filter false positives → severity Critical/High/Medium/Low/Info + score (weighted 0/25/50/75/100) → fixes grouped immediate/short/long-term → final report `/report-review` (chat table No./Action/Evidence/Severity/Risk/Priority/Owner skill/Status, no files); no per-label file — a label resolves in `deep-review/references/checks.md` (`### Label resolution`) to its `deep-review/references/review.md` `## Dimension Matrix` rows, eligibility comes from the same-named `## Dimension Checks` row, and the run is `/deep-review <scope> <rows>` → `/report-review` (chat table, no files) |
-| `report-*` | `/scan-codebase` to group+metrics+patterns → summary on top, details delivered via `/report-review` — one chat table (No./Action/Evidence/...), no report files; the skill's own artifact type (HTML/slides/diagram/schema file) still produced per owner skill → next actions + `/suggest-next-action`; state source+date, don't dump everything |
-| `idea-*` | `/deep-analyze`+`/bench-competitors` to find gaps/opportunities → ideas + continuous numbering + scope/impact/effort `/report table` ordered by impact/effort; actionable only, never reset numbering |
+See [references/templates.md](references/templates.md) — the execute-pattern core for every prefix (longest match first).
 
 ### Directory Structure
 
-```text
-<skill>/ SKILL.md (entry — workflow + dispatch) · references/ (passive knowledge, flat) ·
-best-practices/ (recommended patterns + pitfalls — required for follow-lib-*/follow-tool-*) ·
-usecases/<scenario>.md (scenario recipes — required for follow-lib-*/follow-tool-*) ·
-workflows/<name>/SKILL.md (invocable child) ·
-templates/ examples/ scripts/ src/ guide/
-```
-
-Start with a single `SKILL.md` — add subdirs only when truly needed; every file ≤250 lines with clear SRP; `references/` flat — nested → `/flatten-directory --mode refs`; `## Execute` mentioning CLI/web/MCP → `src/` (`### Src` below)
-
-`review-*` package = a single `SKILL.md` for each of the eight surviving skills (`review`, `review-issues`, `review-gaps`, `review-test`, `review-devin-global-harness`, `review-github-pr`, `review-github-issue`, `review-by-all-stakeholder`) — the per-label dimensions are rows in `deep-review/references/review.md`, not skills; exceptions with real assets: `review-github-pr` has `workflows/`, `review-by-all-stakeholder` has role catalogs in `references/`, `review-devin-global-harness`/`update-review-cli` carry `src/`/`scripts/` — every domain review delegates to `/deep-review`, dispatched per the artifact-seeded rows in `deep-review/references/review.md` `## Dimension Matrix` (no inline domain catalog in its `SKILL.md`); `review-devin-global-harness` = the tooling-package exception (has real `src/`/`scripts/`/`workflows/`); knowledge other skills read cross-cuttingly (living docs, catalogs, boilerplate) → the `references/` of the canonical owner skill, or inline in the owner's SKILL.md (e.g. `deep-review/SKILL.md`, `follow-my-techstack/references/`) — there is no `shared/` at the repo root; `follow-create-*` packages = a single `SKILL.md` only — no `references/`; `follow-lib-*`/`follow-tool-*` packages = `SKILL.md` entry + `references/apis.md` (+ `cli.md` for a real CLI) + `best-practices/` + `usecases/` — the SKILL.md points at all three; `follow-lang-*` packages = `SKILL.md` entry + `references/` (at least `toolchain.md` — ecosystem-tool table: tool | role | command/install, no version pins) + `workflows/` (at least `setup-project/SKILL.md` — first-time project scaffold; the SKILL.md dispatches to them by argument); version pins/doc links are never pinned in the file (goes stale fast — principle: `/follow-up-to-date`) — Execute must have a "run /deep-research + /follow-best-practice" step to live-check the latest versions/practices before every implement; necessary file structures/command patterns may be inlined in SKILL.md or `references/`
-
-`refactor` package = a single `SKILL.md` (file-level refactor scopes: verify before → plan → refactor → update references → verify after) — no `workflows/`, no `references/`; architecture knowledge lives in the top-level `follow-architecture` package = a single `SKILL.md` that is the architecture SSOT (pattern selection + the Clean/Layered guides inline as `## Clean Pattern` / `## Layered Pattern`, plus `## Monorepo Architecture` and `## File Structure By Workspace Type`), dispatched from `/refactor` for architecture scopes — its old `references/follow-clean-arch.md` and `references/follow-layered-arch.md` stay merged inline (250-line cap); the event-driven detail file was deleted by owner decision — messaging work routes to `/improve {events,queues,realtime}`; `implement-to-production` = a single `SKILL.md` likewise — its `references/tdd.md`, `references/input-flows.md`, and `workflows/setup-coverage/` are merged inline as `## TDD Loop`, `## Input Flows`, and `## Setup Coverage` (the `setup-coverage` argument routes to the inline section via `## Scope`)
+See [references/structure.md](references/structure.md#directory-structure) — package shapes for `review-*`, `follow-create-*`, `follow-lib-*`, `follow-lang-*`, `deep-review`, `design-*`, `refactor`, and `implement-to-production`.
 
 ### When To Split
 
-1. `SKILL.md` >250 → move detailed content to `references/<topic>.md`, leaving the high-level workflow + pointer; multiple responsibilities → split into `references/`; multiple execute patterns → `templates/`; content duplicating another skill → merge; very different goals → `workflows/` or `SKILL.md ## Subagents` per the matrix
-2. How: identify the excess/duplicated part → create the sub-file → replace with a short pointer → update internal links → `/review-devin-global-harness` + `/deep-validate`
+See [references/structure.md](references/structure.md#when-to-split) — violation → fix and the split procedure.
 
 ### Workflows And Subagents
 
-| Content | Goes to |
-|---------|-------|
-| Read by the parent as context/lookup (docs, checklists, snapshots) | `references/` |
-| Separately invocable workflow with its own Goal/Execute | `workflows/` |
-| Independent work needing separate context, parallelism, or custom tools/model | `workflows/` with `subagent: true`/`agent:` or `SKILL.md ## Subagents` |
-| Mechanical/deterministic work | `scripts/` |
-
-Workflows: `workflows/<name>/SKILL.md` follows the same spec as a normal skill, `name` = `<parent>-<name>`; the runtime does not register them as `/command` — the parent dispatches via `argument-hint` + dispatch table; self-contained work → `subagent: true`/`agent:`
-
-Lifecycle prefixes (use when there really are multiple lifecycles — a single workflow/knowledge item → `references/`): `setup-` first-time install/config · `config-` edit config without clobbering · `follow-` best practices for a sub-domain · `optimize-` measure baseline before/after · `improve-` raise quality, preserve behavior · `update-` minimal diff, idempotent · `deploy-` deploy until live + verified · `migrate-` move with rollback · `integrate-` bridge/pipeline · `verify-` post-action check for a domain · `check-` read-only domain check (parent `check-*` → bare name) · `report-` special report format · ~~`fix-`~~ retired → `## Fix` (`deep-review/SKILL.md`)
-
-Consolidation: several top-level skills doing the same work in one domain → move them to `parent/workflows/<domain>/`, the parent becomes the dispatcher, bulk-update callers `/old` → `/parent` + verify no dangling refs before deleting the old dir; conversely, a workflow intended as standalone → promote to `<parent>-<domain>`, and a workflow that is really a general convention owned by no single parent → promote to a top-level skill dispatched from the parent (`refactor/workflows/architecture/` → `follow-architecture`, dispatched from `/refactor` `### 3`); never use `workflows/` for pure knowledge → `references/`; never duplicate content across both `references/`+`workflows/`; merged skills' workflows go to `workflows/`, not `references/`; always `/update-references` after a move
-
-Subagents: no `subagents/` folder — profiles stay inline under `## Subagents` in the parent's `SKILL.md` (one `### <role>` per profile: `Inputs`/`Tools`/`Execute`/`Output`/`Constraints`) and enforce `SKILL.md` ≤250 lines; a profile too detailed → keep the full version at `references/subagent-<name>.md` and link from that block; the runtime doesn't register these profiles directly — they must be materialized as agents via `/update-devin-global-subagents` into `.devin/agents/`, `.agents/agents/`, `~/.config/devin/agents/` or `%APPDATA%\devin\agents\`; a role already exists (`reviewer`, `qa`, `security-auditor`) → reference `agent:` directly, never create a new one; permission/model/tool semantics go in `Constraints`/`Tools` instead of frontmatter
-
-Profile `skill-updater` (bulk update): inputs `skill`, `instructions`, `conventions`, `references?`; tools read/write/edit/exec/grep; read the package → apply instructions with minimal diff → check callers (referenced sites need follow-up, don't fix them yourself) → validate frontmatter+≤250+no-placeholder → return a per-file result table + summary; constraints: change only your own skill, never touch `AGENTS.md`/`global_rules.md`, no commit, don't guess content
+See [references/workflows.md](references/workflows.md) — content decision matrix, lifecycle prefixes, consolidation, subagent rules, and the `skill-updater` profile.
 
 ### Invoke Skills
 
-- Delegate when another skill already owns it — `run /skill-name to <reason>` instead of copying steps; never copy another skill's `## Execute` (SSOT); inline only small steps no skill covers
-- Syntax: unconditional `run /x to <reason>`; conditional `if <measurable condition> → run /x`; optional `use /x if needed`; pointer `see also: /x, /y` — always state the context passed along (paths, args, evidence)
-- Ordering: Foundation → Dependencies → High impact → Critical path → High risk; respect `check` → `review` → `## Fix`; independent items → parallel per `/follow-parallel`
-- `related` contract: every entry has a real dir + is mentioned in the body; invocations should be in `related` (≤15); never list yourself/duplicates; A calls B → consider a reverse link; on change → `/update-references` both directions
-- Limits: nested dispatch ≤2 levels (deeper → a `deep-*` orchestrator or `/use-subagents`); ≤~5 skill calls per step; never call yourself/deprecated; heavily overlapping scope → merge instead of long chains
-- Validate: read the target SKILL.md to verify the contract → `/review-devin-global-harness` (cycles + broken refs) → `/deep-validate`
+See [references/invoke-skills.md](references/invoke-skills.md) — invocation syntax, ordering, `related` contract, and limits.
 
 ### Write References
 
-Every skill with dependencies must have `references/` (mandatory, never skip — except `follow-create-*`/`review-*`, which `Directory Structure` defines as a single `SKILL.md` → merge this same content into `SKILL.md` condensed instead) — every dependency gets its own file written from real `/learn-from-web`/`/learn-from-cli`/`/check-types-definition` output (no placeholder/TODO — learning without writing = failed task); after writing → `/check-reference`:
-
-- Each file must contain: the real install command, stable version (published ≥7 days — avoid `latest`/`*`/unbounded `>=`), peer deps, config + examples from official docs, source URL, migration steps if breaking changes exist; optional deps → ask before installing
-- `follow-lib-*`/`follow-service-*`/`follow-tool-*` → `references/` has only `apis.md` + `cli.md` (only for tools with a real CLI) — no other files; both files are tables only, no prose sections — `apis.md`: metadata table `| key | value |` (package, install cmd, stable version ≥7 days, license, docs/repo URL) + API table `| api | description | signature/example |`; `cli.md`: `| command | description | options |` (+ `| flag | default |` if needed)
-- `follow-lib-*`/`follow-tool-*` must have `best-practices/` (flat `.md` per topic — recommended patterns, pitfalls, do/don't, perf notes written from real `/learn-from-web`+`/deep-research`, not placeholders; no version pins — live-check via `/deep-research` at use time) — separate from `references/` because it's guidance, not API/CLI tables; `SKILL.md` must have a pointer to `best-practices/` in `## Scope` or `## Rules`
-- `follow-lang-*` → `references/` has `toolchain.md` (plus one file per live-checked dependency when the language skill genuinely owns it): metadata table `| key | value |` (language, official docs URL, package manager) + tool table `| tool | role | command/install |` — runtime/compiler, package manager, linter, formatter, test runner, build tool; never pin versions (live-check via `/deep-research` at use time)
-- `follow-lib-*`/`follow-tool-*` must also have `usecases/` — a sibling of `references/`, never inside it (mandatory for new/updated packages; untouched ones backfill in batches — audit with `/check-skills-structure` column `UseCases`, which reports `0` for them):
-- one flat `.md` per application scenario the dependency is genuinely good at (`rest-api-crud.md`, `ci-duplicate-gate.md`, `monorepo-scope.md`) — kebab-case scenario names, never `usecase-1.md`/`example.md`/`misc.md`
-- file shape `# Use Case — <Scenario>` → quote line with the goal + official source URL + access date → numbered sections (`## 1.`, `## 2.`) holding the real code/commands → `## Pitfalls` → `## Related` (`references/apis.md`/`cli.md` + the `best-practices/` files + the sibling use cases the recipe actually mentions); written from real `/learn-from-web`/`/learn-from-cli` output — a working install-to-result flow, not restated API docs; no TODO/MOCK/placeholder, no version pins, no `**` bold; after writing run `/check-reference` + `/follow-single-of-source`
-- 2-6 files per package as the target (single-task tool → 2, framework-sized lib → 6), each ≤250 lines — a host-sized framework may exceed 6 only when every extra file is a genuinely separate capability area (server engine, desktop component kit), never split one scenario into parts to hit a count; `SKILL.md` seeds them with a `### Use Cases` table (`| Scenario | Use case |`) at the end of `## Execute` or in `## Scope` + a `## Rules` pointer; SKILL.md already >235 lines → pointer bullets only
-- Other skills with dependencies (not `follow-lib-*`/`follow-service-*`/`follow-tool-*`/`follow-create-*`/`review-*`) → `references/<dep>.md` per dependency as before — main content as tables per above
+See [references/write-references.md](references/write-references.md) — mandatory `references/`, `best-practices/`, and `usecases/` specs per prefix; single-source rules per `/follow-single-of-source`.
 
 ### Src
 
-CLI/terminal/web/browser/MCP → create `src/`: CLI → `/follow-create-cli` (Rust or Bun/TS); web → `/deep-review` first + `/visualize-in-web` HTML entry; MCP → `/follow-create-mcp` (try Rust) + update `mcp_config.json`; test dev/build/run per stack; helper scripts → `/use-scripts`; has `src/` → `/convert-git-submodules` + `/ship` after validation
+See [references/structure.md](references/structure.md#src) — when to create `src/` and which create skill owns it.
 
 ### Create From URL
 
-User sends a URL/domain → create parent + workflows:
-
-1. Single URL → `/webfetch`; domain → `/web_search` for key pages; several URLs → `run_subagent` in parallel ≤10/batch (deep crawl → `/learn-from-web` ≤20 URLs/batch); summarize each page: topics, commands, config, examples — official docs only
-2. Group by workload → `workflows/<domain>/<workflow>/SKILL.md` named `<domain>-<workflow>`; parent `<domain>-workflows/SKILL.md` dispatches by argument — `related` lists every workflow; start with parent + 3-5 workflows, don't over-create before user confirmation; validate → `/deep-validate` + `/check-reference` + `/git-commit` + `/report`
+See [references/create-from-url.md](references/create-from-url.md) — URL → parent + workflows flow.
 
 ### Skill Usage Audit
 
-Audit dead/dying skills (argument `usage`/`skill-usage` — read-only): parse `related:` from every `SKILL.md` → count inbound + `/review-devin-global-harness`; classify Orphaned (0 inbound + not referenced in `AGENTS.md`/`global_rules.md`), Leaf (0 inbound but an entry-point — not dead), Hub, Self-referencing; flag overly broad/duplicate ones; report via `/report` with columns No./Skill/Inbound/Tier/Recommendation (`keep`/`integrate`/`merge`/`delete`) — "0 references ≠ worthless"; deletion must go through `/delete` + `/update-references`
+See [references/maintenance.md](references/maintenance.md#skill-usage-audit) — read-only dead/dying skill audit (`usage`/`skill-usage` argument).
 
 ### Living Documents
 
-Documents storing data (not workflows) — sync immediately when what they reference changes:
-
-| Document | Path | Sync When |
-|----------|------|-----------|
-| CLI inventory | `check-my-global-cli/references/global-cli-commands.md` | tool newly installed / list older than 30 days |
-| Tool map | `check-my-global-cli/references/tool-map.md` | skill/tool added/removed/merged |
-| Tech catalog | `../follow-my-techstack/references/techstack-catalog.md` | new dep chosen / lib EOL / major release |
-| Skills index | `skills/AGENTS.md` | skill added/removed/merged/renamed |
-| Subagent registry | `use-subagents/SKILL.md` | profile added/removed in any skill's `SKILL.md ## Subagents` |
-| `related:` frontmatter | every `SKILL.md` | a referenced skill merged/renamed/deleted |
-
-Triggers: `mise use -g`/`scoop install` → 1+2; create skill → 2,4,6; delete/merge → 2,4,5,6; rename → 4,6 + every referencing file; new dep → 3. Verify: `rg "<old-name>" skills/` — only intentional mentions remain (e.g. "merged from …")
+See [references/maintenance.md](references/maintenance.md#living-documents) — documents to sync when skills, tools, or dependencies change.
 
 ## Rules
 

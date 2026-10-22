@@ -51,7 +51,7 @@ Covers analysis across many dimensions:
 4. Run `eza --tree --level 2` to see the physical layout and file-level issues within 1 minute
 5. Use `/use-astgrep` to find initial patterns, and `/use-scripts` to collect metrics if needed
 6. If analysis with the review CLI, ast-grep NAPI, or Bun scripts is needed:
-   - Check `tools/review-codebase` and `tools/analyze`
+   - Check `review/` and `tools/analyze`
    - Use `@ast-grep/napi` or `oxc-parser` for programmatic AST analysis
    - Collect metrics from knip, biome, vitest, madge, `ast-grep scan`
 7. Build structured data for the analysis
@@ -194,7 +194,7 @@ Covers analysis across many dimensions:
 
 ### 7. Deep Analysis Scripts
 
-- Check `tools/review-codebase` and `tools/analyze` before use
+- Check `review/` and `tools/analyze` before use
 - Use `@ast-grep/napi` for programmatic AST analysis
 - Collect metrics from knip, biome, vitest, madge
 - Run `bunx ast-grep outline` to view structure and `eza --tree --level 2` to view the physical layout

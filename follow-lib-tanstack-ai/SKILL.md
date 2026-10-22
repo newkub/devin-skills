@@ -94,6 +94,9 @@ const { messages, sendMessage, isLoading, stop } = useChat({
 |----------|----------|
 | Streaming chat from server adapter to client UI | `usecases/streaming-chat.md` |
 | Server tools, client approval, bounded agent loop | `usecases/tool-calling-and-approval.md` |
+| Stream a typed table from `outputSchema` | `usecases/structured-output-table.md` |
+| Typed `decide()` answers for routing and gating | `usecases/typed-decisions.md` |
+| Persist threads and resume a stream mid-answer | `usecases/persistence-and-resume.md` |
 
 ## Rules
 

@@ -78,7 +78,7 @@ Help find and install programs on the machine, choosing the suitable package man
 
 > Goal: Open the download page for the user to install manually when package managers are exhausted
 
-1. Use `/search-files-patterns` or `/search-github-star` to find the program's main download page
+1. Use `/code-search` or `/search-github-star` to find the program's main download page
 2. If a GitHub repo is found → open `https://github.com/<owner>/<repo>/releases`
 3. If the official website is found → use `/open-web` to open the download page
 4. If nothing is found → search the web with `google` or `duckduckgo` and open the first result

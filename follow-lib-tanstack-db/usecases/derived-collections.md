@@ -70,3 +70,10 @@ A live query can embed another query as a column (project → issues), and that 
 - Forgetting `startSync: true` on a module-level derived collection → reads as empty until something subscribes.
 - Re-deriving the same query in several components instead of sharing one derived collection → duplicated graphs and wasted work.
 - Expecting the returned object to be plain data → it's a Collection (`toArray`, subscribe), not an array.
+
+## Related
+
+- `references/apis.md`
+- `best-practices/tanstack-db.md`
+- `usecases/live-queries-joins.md`
+- `usecases/aggregations.md`

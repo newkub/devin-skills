@@ -6,7 +6,7 @@ Every page template lives here — one file per docs page. `content-page.md` is 
 
 | No. | File | Docs Page |
 |-----|------|-----------|
-| 1 | [docs-index.md](docs-index.md) | `docs/index.md` — markdown TOC landing page |
+| 1 | [docs-index.md](docs-index.md) | `docs/index.md` — the only nav: grouped page list |
 | 2 | [content-page.md](content-page.md) | generic fallback |
 | 3 | [overview.md](overview.md) | `docs/project/overview.md` |
 | 4 | [features.md](features.md) | `docs/project/features.md` — feature table |

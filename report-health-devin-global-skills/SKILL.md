@@ -33,7 +33,7 @@ Use with `%APPDATA%\devin\skills` or a specified path
 > Goal: Collect the health signals of the skills repo
 
 1. Run `/review-devin-global-harness`, record `score`, `findings`, `grade`
-2. Run `/review-devin-global-harness`, record the broken refs count
+2. Run `/review-devin-global-harness` `broken-refs`, record the broken refs count
 3. Run `/check-uncommit`, record modified/untracked files
 4. Run `/check-unpush`, record unpushed commits
 5. Run `/check-git-logs`, record last commit, frequency, staleness

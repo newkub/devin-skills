@@ -85,3 +85,10 @@ Track whether a mutation has synced — use `tx.when('settled')` (the pre-1.0 `t
 - Expecting collection `onInsert` to run for mutations queued in a manual `tx.mutate()` → it won't; the transaction `mutationFn` must persist them.
 - Leaving optimistic rows keyed by a local uuid and never reconciling the server id → duplicate on next fetch.
 - Persisting server state that then needs a query refetch but never calling `collection.utils.refetch()` → UI shows guessed state only.
+
+## Related
+
+- `references/apis.md`
+- `best-practices/tanstack-db.md`
+- `usecases/query-rest-crud.md`
+- `usecases/sync-engine-electric.md`

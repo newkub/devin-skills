@@ -27,7 +27,7 @@ Find hardcoded values in source code that should move to config/env — URLs, IP
 
 > Goal: Find hardcoded values by category
 
-1. Use `/search-files-patterns` or `/use-astgrep` to scan patterns:
+1. Use `/code-search` or `/use-astgrep` to scan patterns:
    - URLs: `https?://` other than example/localhost mentions in comments
    - IPs: `\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}`
    - Localhost/ports: `localhost:\d+`, `127.0.0.1`, `0.0.0.0`

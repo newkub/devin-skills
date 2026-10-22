@@ -5,7 +5,7 @@ argument-hint: "[scope]"
 related:
   - follow-lang-rust
   - follow-tool-cargo
-  - follow-test
+  - deep-test
   - update-tests
   - follow-tool-mutants-rs
   - run-test
@@ -107,7 +107,7 @@ For Rust projects using the Cargo build system
 
 - Use /follow-lang-rust if needed
 - Use /follow-tool-cargo if needed
-- Use /follow-test if needed
+- Use /deep-test if needed
 - Use /update-tests if needed
 - Use /follow-tool-mutants-rs if needed
 - Use /run-test if needed

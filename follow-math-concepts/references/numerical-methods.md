@@ -77,7 +77,7 @@ Understand numerical methods: floating point representation, rounding errors, ap
 - Use libraries for decimal when needed
 
 - Use /deep-debug if needed
-- Use /follow-test if needed
+- Use /deep-test if needed
 - Use /follow-math-concepts if needed
 
 ## Expected Outcome

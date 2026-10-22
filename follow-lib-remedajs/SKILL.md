@@ -120,6 +120,9 @@ Use when the task involves `remeda` — installation, array/object/string/number
 |----------|----------|
 | Typed data pipeline with `pipe`, lazy functions, and `prop` | `usecases/data-pipeline-pipe.md` |
 | Migrate Lodash/v1 calls to Remeda v2 names | `usecases/migrate-from-lodash.md` |
+| Group, aggregate, and rank a report | `usecases/group-aggregate-report.md` |
+| Narrow types with guards instead of casts | `usecases/narrow-types-with-guards.md` |
+| Typed object transforms and immutable updates | `usecases/object-transforms-and-immutable-updates.md` |
 
 ## Rules
 

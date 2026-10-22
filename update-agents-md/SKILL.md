@@ -39,7 +39,7 @@ Use for writing and improving `AGENTS.md` in a project's root and workspaces fro
 5. Read the global rules from `C:\Users\Veerapong\.codeium\windsurf\memories\global_rules.md`
 6. Run `/ask-project-requirement` if the context or requirements are unclear
 7. Identify the platform and target user from the context and dependencies
-8. If the project has `tools/review-codebase`, run `/update-review-cli`
+8. If the project has a root `review/` CLI (`review/package.json`), run `/update-review-cli`
 
 ### 2. Analyze Techstack
 

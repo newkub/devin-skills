@@ -20,11 +20,11 @@ For projects wanting the current TanStack ecosystem (see the latest list at `htt
 
 - Framework: `Start` (full-stack SSR/streaming on Router + Vite, v1 stable), `Router` (type-safe routing for React/Solid, v1)
 - Data & State: `Query` (server state, v5), `DB` (reactive client store, 0.x), `Store` (client state, 0.x), `AI` (framework-agnostic AI SDK, 0.x)
-- UI & UX: `Table` (headless datagrid, v9), `Form` (form state, v1; v2 alpha), `Charts`, `Hotkeys`, `Markdown`, `Highlight`
+- UI & UX: `Table` (headless datagrid, v9), `Form` (form state, v1; v2 alpha), `Charts` (1.x), `Hotkeys`, `Markdown`, `Highlight`
 - Performance: `Virtual` (virtualized lists, v3), `Pacer` (debounce/throttle/batch, 0.x)
-- Tooling: `Devtools` (unified devtools panel), `Config`, `CLI`, `Intent`
+- Tooling: `Devtools` (unified workbench, alpha), `CLI` (project scaffolding), `Intent` (agent skills in packages), `Config` (shared lint/build/publish packages; the `@tanstack/config` umbrella is deprecated)
 
-- Latest: query `5.104.1` / router `1.170.41` / start `1.168.60` / table `9.2.4` / form `1.33.5` / virtual `3.14.13` / store `0.11.2` / db `0.11.1` / ai `0.63.0` / pacer `0.23.0` (react-pacer `0.24.0`) / charts `0.18.0` / hotkeys `0.12.1` / markdown `1.0.0` / highlight `1.0.0` / intent `0.5.0` / config `0.22.2` / cli `0.71.1` (verified 2026-10-02)
+Versions move: read the installed version from `package.json` and the current one from the registry at use time — never copy a version list from this file.
 
 ## Execute
 
@@ -112,6 +112,9 @@ For projects wanting the current TanStack ecosystem (see the latest list at `htt
 |----------|----------|
 | Map a feature description to one library, maturity checked | `usecases/pick-library-for-a-feature.md` |
 | Add one library to an existing app without breaking it | `usecases/integrate-a-new-library.md` |
+| Move off one library onto the one that actually fits | `usecases/migrate-between-tanstack-libs.md` |
+| Decide how much maturity risk a `0.x` library carries | `usecases/evaluate-maturity-and-lock-versions.md` |
+| Inventory the TanStack packages already installed | `usecases/audit-tanstack-stack.md` |
 
 ## Rules
 
@@ -121,7 +124,7 @@ For projects wanting the current TanStack ecosystem (see the latest list at `htt
 - `Query` and `Store` don't replace each other — use `Query` for server state, `Store` for client state
 - `Router`/`Start` support React and Solid only — if using Vue/Svelte, use that framework's router
 - Always cite the official docs `https://tanstack.com` as the primary source
-- Per-library detail lives in the specialized `/follow-lib-tanstack-*` skills (all 18 libs — see the Workflows table; each skill's `references/apis.md` has package versions + API tables)
+- Per-library detail lives in the specialized `/follow-lib-tanstack-*` skills (all 18 libs — see the Workflows table; each skill's `references/apis.md` has package names, entry points, and API tables)
 - See references/ for the catalog table (library → package → role → skill)
 
 ### 2. Type Safety

@@ -59,7 +59,7 @@ Verify the configuration is complete before releasing, according to the detected
 - `crates`: check that `Cargo.toml` has name, version, description, license, repository, categories, keywords, edition, rust-version
 - `webstore`: check that `manifest.json` has name, version, manifest_version, permissions, icons, action
 - `docker`: check that `Dockerfile` has FROM, WORKDIR, COPY, RUN and that `.dockerignore` excludes files
-- If the package manifest or release config is incomplete → run `/update-project` `### setup-package`, or set up the release tool/workflow via `/setup-cicd` + `/follow-tool-*` first, then come back and rerun `/run-release`
+- If the package manifest or release config is incomplete → run `/update-project` `references/setup-package.md`, or set up the release tool/workflow via `/setup-cicd` + `/follow-tool-*` first, then come back and rerun `/run-release`
 
 ### 3. Setup Authentication
 

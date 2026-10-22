@@ -101,6 +101,10 @@ PORTLESS=0 pnpm dev                          # bypass the proxy
 - Use /check-my-global-cli if needed
 
 
+## References
+
+- See `best-practices/portless.md` for recommended patterns and pitfalls
+
 ## Expected Outcome
 
 - Dev servers reachable at `https://<name>.localhost` instead of port numbers

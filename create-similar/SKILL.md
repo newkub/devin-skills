@@ -24,7 +24,7 @@ Use when creating a new skill, file, component, or project structure based on an
 > Goal: Identify the example to copy
 
 1. If the user gives a path or skill name → read it immediately
-2. If not specified → find the file or directory closest to the target with `/search-files-patterns`
+2. If not specified → find the file or directory closest to the target with `/code-search`
 3. Confirm the example is the correct canonical source
 
 ### 2. Analyze Structure

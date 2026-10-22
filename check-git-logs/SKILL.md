@@ -4,6 +4,7 @@ name: check-git-logs
 description: Browse a file's git log per commit until a condition matches — supports local and remote repos
 argument-hint: "[scope]"
 related:
+  - git-search
   - deep-debug
   - git-file-history
   - restore-files
@@ -22,7 +23,7 @@ Find the change history of a specified file by walking `git log` from newest bac
 - Supports local git repos and remote GitHub repos
 - Show the commits matching the condition along with the file content in that commit
 - Used as a helper tool in `/deep-debug` and `/restore-files`
-- Boundary: finds condition-matching commits only — interactive viewer → `/git-file-history`; evolution analysis → `/diff-file-history`
+- Boundary: finds condition-matching commits only — interactive viewer → `/git-file-history`; evolution analysis → `/diff-file-history`; searching by message, pickaxe, content at a revision, or line attribution → `/git-search`
 
 - See also: /git-file-history, /restore-files-from-my-dotfiles
 
@@ -82,6 +83,7 @@ Find the change history of a specified file by walking `git log` from newest bac
 - Local uses `git log` + `git show`
 - Remote uses `gh api`
 - If no repo is specified → use the current local repo
+- For `git log --grep`, pickaxe (`-S`/`-G`), `git grep <rev>`, or `ctx blame` → use `/git-search` instead of rebuilding the query here
 
 ### 2. Condition Parsing
 

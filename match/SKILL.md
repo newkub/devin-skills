@@ -17,7 +17,7 @@ triggers:
   - model
 related:
   - scan-codebase
-  - search-in-git
+  - git-search
   - ask-me
   - follow-your-suggestion
   - use-scripts
@@ -33,7 +33,7 @@ Find match items in the workspace or skill set, then present them with evidence,
 
 Use when the user speaks in the form "find X, then do Y if A, do Z if B" or wants to run a rule-based batch operation on a set of discovered items. Works with files, code symbols, skills, dependencies, or any searchable target
 
-See also: /search-in-git, /report-file-structure, /ask-me, /follow-your-suggestion, /use-scripts, /plan
+See also: /git-search, /report-file-structure, /ask-me, /follow-your-suggestion, /use-scripts, /plan
 
 ## Execute
 

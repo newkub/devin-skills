@@ -78,7 +78,7 @@ Understand statistics for software: descriptive stats, percentiles, distribution
 - Use time-series when there is temporal data
 
 - Use /follow-math-concepts if needed
-- Use /follow-test if needed
+- Use /deep-test if needed
 - Use /deep-debug (Triage Incident) if needed
 - Use /follow-goal if needed
 

@@ -59,7 +59,7 @@ const result = parseSync("stdin.ts", source, {
 });
 ```
 
-- `sourceType` — default `unambiguous`; set `module` or `script` explicitly when the file's shape is known
+- `sourceType` — `script` | `module` | `unambiguous`; set it explicitly when the file's shape is known
 - `lang` — required when the synthetic filename lies about the content
 - `showSemanticErrors` — costs more; enable for tooling that must catch duplicate bindings or invalid `await`, not for a syntax-only pass
 
@@ -67,13 +67,15 @@ const result = parseSync("stdin.ts", source, {
 
 ```ts
 const mod = parseSync(file, source).module;
-const specifiers = [
-  ...mod.staticImports.map((i) => i.moduleRequest.value),
-  ...mod.staticExports.flatMap((e) => e.entries.map((entry) => entry.moduleRequest?.value ?? "")),
-];
+
+mod.hasModuleSyntax;      // import/export/import.meta present
+mod.staticImports.length; // ImportDeclaration
+mod.staticExports.length; // Export*Declaration
+mod.dynamicImports;       // import("…") expression positions
+mod.importMetas;          // import.meta positions
 ```
 
-`module` is built by the parser itself, so it stays correct even when the `program` walk would have to special-case re-exports and `import.meta`. If the AST outcome disagrees with `module`, the AST walk is the one that is wrong.
+`module` is built by the parser itself, so it stays correct even when a hand-rolled `program` walk would have to special-case re-exports and `import.meta`. For the exact entry fields, read the `EcmaScriptModule` type from `@oxc-project/types`; the README also points at `magic-string` over these spans as the intended rewrite path.
 
 ## 6. Surface comments when the rule depends on them
 

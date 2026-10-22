@@ -140,7 +140,7 @@ These skills have subagent profiles for parallel independent work — the profil
 | 1 | `review-github-pr` | `SKILL.md ## Subagents` → `pr-reviewer`, `pr-checklist-reviewer` (+ full detail in `references/`) | review PR slice per-domain/file-group |
 | 2 | `use-agents-capture` | `SKILL.md ## Subagents` → `route-capturer` | capture one route on all devices |
 | 3 | `deep-test` | `SKILL.md ## Subagents` → `route-checker` | test one API route group |
-| 4 | `deep-review` | `SKILL.md` (inline dispatch contract, no profile file) | review workspace area / docs routes per section |
+| 4 | `deep-review` | `SKILL.md ## Subagents` → `domain-review` | review one matrix dimension of the scope, read-only |
 | 5 | `update-tests` | `SKILL.md ## Subagents` → `suite-updater` | update one test suite (unit/e2e/snapshot) |
 | 6 | `update-project-all-drive-d` | `SKILL.md ## Subagents` → `project-updater` | update one project dir in drive D |
 | 7 | `update-all-program-in-computer` | `SKILL.md ## Subagents` → `program-updater` | update one program via package manager |
@@ -154,9 +154,9 @@ These skills have subagent profiles for parallel independent work — the profil
 | 15 | `follow-tool-moonrepo` | `SKILL.md ## Subagents` → `project-configurator` | configure/verify `moon.yml` for one project |
 | 16 | `implement-to-production` | `SKILL.md ## Subagents` → `feature-implementer`, `review-sweeper` | implement per item, review per domain (gap inventory → row 19) |
 | 17 | `review` | `SKILL.md ## Subagents` → `codebase-reviewer` (+ checklist/scoring/report in `references/`) | codebase-wide review per dimension |
-| 18 | `update-devin-global-skills` | `SKILL.md` (`## Conventions → Workflows And Subagents`, profile `skill-updater`) | update one skill per the instructions in a bulk update |
-| 19 | `report-not-implement` | `SKILL.md ## Subagents` → `gap-scanner` | inventory not-yet-implemented items in one directory/workspace (read-only) |
-| 20 | `deep-review-ship` | `SKILL.md ## Subagents` → `part-reviewer` | review one part (workspace/module/layer) of the changed pre-ship scope (read-only) |
+| 18 | `update-devin-global-skills` | `references/workflows.md` (`## Profile skill-updater`, reached via `SKILL.md` `## Conventions → Workflows And Subagents`) | update one skill per the instructions in a bulk update |
+| 19 | `review-implement-to-production` | `SKILL.md ## Subagents` → `gap-scanner` | inventory not-yet-implemented items in one directory/workspace (read-only) |
+| 20 | `ship` | `SKILL.md ## Subagents` → `part-reviewer` | review one part (workspace/module/layer) of the changed pre-ship scope (read-only) |
 
 ## Expected Outcome
 

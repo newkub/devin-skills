@@ -1,38 +1,47 @@
 # TanStack Config — Best Practices
 
-Package build/publish toolchain — exports map, types, pack verification
+Package maintenance contract — shared lint, dual-build, Changesets publishing, package layout
 
 ## Recommended Patterns
 
-- Applies to packages you publish; application projects should use their own bundler instead
-- Define entry points and emit ESM, CJS and `.d.ts` together so both `import` and `require` consumers work
-- Keep the `exports` map explicit with `import`, `require` and `types` conditions pointing at built files
-- Add the built output (not `src`) to `files` in `package.json`
-- Gate publishing on `npm pack --dry-run` plus a publint-style check in CI
-- Keep the config minimal — extend the provided preset instead of re-specifying every option
-- Confirm the current config file/field name from the docs before wiring scripts, the format is young
+- Install the scoped package you need (`@tanstack/eslint-config`, `@tanstack/vite-config`, `@tanstack/publish-config`); `@tanstack/config` is deprecated
+- Keep pnpm as the only package manager — the toolchain assumes pnpm workspaces and `pnpm dlx`
+- Put shipping code in `src/` and every test in `tests/`, so the Nx cache is not invalidated by test edits
+- Define the five cached scripts per package: `test:eslint`, `test:types`, `test:lib`, `build`, `test:build`
+- Keep `"type": "module"`, an explicit `exports` map, and the legacy `main`/`module`/`types` fields
+- Spread `tanstackConfig` first, then append package-specific rule blocks
+- Build new packages with tsdown; treat `@tanstack/vite-config` as the legacy path
+- Gate the build on `publint --strict` and verify the packed tarball, not `dist/`
+- Record release intent with a changeset in the PR that changes the package
+- Publish with npm trusted publishing so no long-lived token lives in the repo
 
 ## Common Pitfalls
 
-- Shipping `src` in the tarball while `exports` points at `dist` — consumers get broken imports
-- Omitting the `types` condition makes TypeScript fall back to `any` under `moduleResolution: bundler`
-- Dual ESM/CJS builds that each keep module-level mutable state create the classic dual-package hazard
-- A missing `files` allowlist silently publishes test fixtures and source maps
-- Local checks pass while CI publishes from a stale `dist` — always build before pack
-- Replacing an existing tsdown/tsup build with this toolchain without a reason adds churn
+- Installing the deprecated `@tanstack/config` umbrella, which only re-exports the scoped packages
+- Substituting bun or npm for pnpm — the documented commands and workspace layout assume pnpm
+- Putting tests in `src/`, which ships them and can invalidate the Nx cache on test-only edits
+- Expecting framework plugins from `tanstackConfig`; it is framework-agnostic by design
+- Dual ESM/CJS output with module-level mutable state, causing the dual-package hazard
+- A missing `files` allowlist, publishing test fixtures and source maps
+- Publishing from a stale `dist` because the release job skipped the build
+- Adding a top-level `types` field while `exports` exists and expecting it to be used
+- Long-lived npm tokens in repository secrets when trusted publishing is available
 
 ## Perf Notes
 
-- Emit source maps but exclude them from the tarball if size matters to consumers
-- Prefer a single ESM output plus a CJS shim when the dependency graph is large
-- Keep type declarations generated from the same build to avoid drift between runtime and types
+- Let Nx run `affected` in PRs and `run-many` only in release, so unchanged packages skip work
+- Cache lint, types, lib tests, build, and build tests separately — a failure names the stage
+- Prefer ESM-only output when the dependency graph allows it; skip CJS instead of shipping a broken `require`
+- Exclude source maps from the tarball when consumers do not need them
 
 ## Do / Don't
 
 | Do | Don't |
 |----|-------|
-| explicit `import`/`require`/`types` conditions | one entry without a types path |
-| publish built output only | ship `src` in the tarball |
-| `npm pack --dry-run` gate | publish on a local build only |
-| extend the provided preset | re-declare every option |
-| build before pack in CI | pack from a stale `dist` |
+| install the scoped config package | install the deprecated umbrella |
+| pnpm workspaces | mixed package managers |
+| tests in `tests/` | tests inside `src/` |
+| `publint --strict` in `test:build` | publish on a local build only |
+| tsdown for new packages | new package on the legacy Vite build |
+| changeset in the PR | ad-hoc version bumps |
+| OIDC trusted publishing | long-lived npm token |

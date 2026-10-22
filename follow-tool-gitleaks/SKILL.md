@@ -19,6 +19,7 @@ Use `gitleaks` to prevent secrets (API keys, tokens, private keys) from entering
 
 - Latest: `gitleaks@v8` line (Gitleaks by Zachary Rice, OSS) — upstream is feature-complete, security patches only
 - Docs: https://github.com/gitleaks/gitleaks
+- References: [cli](references/cli.md) | [apis](references/apis.md) | best-practices/
 
 ## Execute
 
@@ -55,13 +56,19 @@ Use `gitleaks` to prevent secrets (API keys, tokens, private keys) from entering
 2. CI: add a `gitleaks git . --redact` step or `gitleaks/gitleaks-action@v2`
 3. If there are findings → rotate the secret first, then add it to the baseline
 
+### Use Cases
+
+| Scenario | Use case |
+|----------|----------|
+| Block a secret at the commit | `usecases/pre-commit-secret-guard.md` |
+| Scan history once and keep an honest baseline | `usecases/history-scan-and-baseline.md` |
+
 ## Rules
 
 - Never commit secrets just "to make the scan pass" — always rotate first
 - Always use `--redact` in CI/hooks output so secrets don't surface in logs
 - Use a baseline only for pre-existing findings that have been rotated — never use it to suppress new problems
 - Keep the allowlist as narrow as possible (specific path + regex)
-- See best-practices/ for the pattern and pitfall checklist
 
 ## Expected Outcome
 

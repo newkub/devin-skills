@@ -20,7 +20,7 @@ If the project also has auth → use `product` instead; `cli` takes precedence o
 
 ## Index Links
 
-`Project`, `Getting Started`, `Commands`, `Roadmap`, `Development`, `References`
+`Project`, `Getting Started`, `Commands`, `Development`, `References`, `Roadmap`
 
 ## Page Groups
 

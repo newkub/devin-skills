@@ -9,6 +9,7 @@ related:
   - ask-me
   - run-release
   - follow-up-to-date
+  - review-use-lib-effective
 ---
 
 ## Goal
@@ -86,6 +87,7 @@ Run `/update-version-to-latest [scope]` once; the system carries out this sequen
 3. For Go: `go build ./...`, `go test ./...`
 4. If there's Moon: `moon run :build :typecheck :lint :test`
 5. If it fails → `/resolve-errors` then recheck
+6. After a major upgrade, run `/review-use-lib-effective` on the upgraded area — code left on the old major's API is the failure this catches
 
 ### 7. Test Usage
 

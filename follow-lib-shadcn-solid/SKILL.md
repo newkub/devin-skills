@@ -106,6 +106,9 @@ Used for building UI components with shadcn-solid on SolidJS for SolidStart, Ast
 |----------|----------|
 | Add components with the CLI and extend them with `cva` | `usecases/add-and-customize-component.md` |
 | Theme tokens and `data-kb-theme` dark mode | `usecases/theme-and-dark-mode.md` |
+| Dialog confirmation with a pending async action | `usecases/dialog-confirm-flow.md` |
+| Accessible form fields with `TextField` validation | `usecases/forms-with-textfield.md` |
+| Keep copied components reactive with `splitProps` | `usecases/keep-components-reactive-with-splitprops.md` |
 
 ## Rules
 

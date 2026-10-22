@@ -80,6 +80,9 @@ Core (non-hook): `new Debouncer(fn, { wait })`, `debounce(fn, opts)` from `@tans
 |----------|----------|
 | Debounce a search input without painting stale results | `usecases/debounce-search-input.md` |
 | Cap an API quota and run a bounded upload queue | `usecases/rate-limit-and-queue.md` |
+| Throttle scroll and resize work | `usecases/throttle-scroll-and-resize.md` |
+| Batch analytics events and bulk writes | `usecases/batch-writes-and-analytics.md` |
+| Cancel, pause, or flush pending work on unmount | `usecases/flush-and-cancel-on-unmount.md` |
 
 ## Rules
 

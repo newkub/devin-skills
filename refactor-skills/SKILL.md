@@ -91,7 +91,7 @@ Scope >3 independent skills → spawn a `skill-updater` subagent per skill via `
 
 - The standard lives in `/update-devin-global-skills` references — point to it, do not rewrite it
 - prefix contract (`check-*`/`review-*`/`deep-*`, lifecycle prefixes) per `new-skills` — do not refactor in a way that breaks it
-- Do not create `workflows/fix-*/` or `references/fix-*.md` — fixes live in `## Fix`
+- Do not create `workflows/fix-*/` or `references/fix-*.md` — fixes live in `### 7. Fix` (`deep-review-codebase-everything/SKILL.md`)
 
 ### 2. No Content Loss
 
