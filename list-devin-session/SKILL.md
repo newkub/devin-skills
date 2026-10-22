@@ -104,7 +104,7 @@ List all Devin sessions from `%APPDATA%\devin\cli\sessions.db` with `id`, `title
 2. State the current status: done/pending/blocked work, and the files/skills involved
 3. If the context is long or near full → do `/follow-context-engineering`
 4. Do `/suggest-next-action` + `/use-related-skills` to find next actions — split into items, one thing per item; if a question is unclear → do `/ask-me`
-5. Do `/report-todo` with columns `No.`, `Action`, `Before`, `After`, `Why`, `File Change`, `Risk` — below the table do `/report numbered`
+5. Do `/report-todo` as numbered bullets, one action per bullet, with no table
 6. Only answer when the user asks or clearly says not to act now — do not perform the actions yourself; do not guess which files will change
 
 ## Rules

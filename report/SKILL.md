@@ -64,7 +64,7 @@ Used for reporting results in chat; `/report` dispatches to `report-table` or `r
 > Goal: Summarize and point to the next action
 
 1. Run `/suggest-next-action` if there are next steps
-2. If the output came from `/report-todo`, it must include a table + numbered summary
+2. If the output came from `/report-todo`, it must be numbered bullets, one action per bullet, with no table
 
 ## Rules
 

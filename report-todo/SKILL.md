@@ -1,6 +1,6 @@
 ---
 name: report-todo
-description: Action plan in chat as a No./Action/Before/After/Why/File Change/Risk table plus numbered summary
+description: Action plan in chat as numbered bullets, one action per bullet, no table
 argument-hint: "[actions-or-context]"
 related:
   - report
@@ -9,69 +9,66 @@ related:
 
 ## Goal
 
-Answer an action plan in chat as a table with columns `No.`, `Action`, `Before`, `After`, `Why`, `File Change`, `Risk`, plus a `/report numbered` summary below
+ตอบแผนงานในแชทเป็น bullet ที่มีหมายเลข 1, 2, 3, ... หนึ่ง action ต่อหนึ่งข้อ อ่านง่าย ไม่ใช้ตาราง
 
 ## Scope
 
-Use when answering a question or recommending actions without acting yet, or when summarizing the current state before proceeding
+ใช้เมื่อต้องตอบคำถามหรือแนะนำสิ่งที่ต้องทำโดยยังไม่ลงมือ หรือสรุปสถานะปัจจุบันก่อนเริ่มงาน
 
 ## Execute
 
 ### 1. Collect Actions
 
-> Goal: Gather the actions to report
+> Goal: รวบรวม action ที่ต้องรายงาน
 
-1. Take the context or actions from the user/skill
-2. Run `/suggest-next-action` if there are no actions yet
-3. Split each action to have single responsibility
-4. Assign priority by impact/risk
+1. ดึง context หรือ action จาก user/skill
+2. ถ้ายังไม่มี action → ทำ `/suggest-next-action`
+3. แยกแต่ละ action ให้มี single responsibility
+4. เรียงตาม impact/risk จากมากไปน้อย
 
-### 2. Build Table
+### 2. Write Bullets
 
-> Goal: Build the action plan table
+> Goal: เขียนเป็นข้อๆ ที่อ่านง่าย
 
-1. Columns:
-   - `No.` ordered 1, 2, 3, ...
-   - `Action` short and clear
-   - `Before` the state before doing it
-   - `After` the state after doing it
-   - `Why` the reason it should be done
-   - `File Change` the files expected to change
-   - `Risk` the risk or cautions
-   - `Status` using emoji `✅` `⏳` `❌` `⚠️`
-2. Order by priority and sort by `Status` with `✅` on top
-3. Use backticks for paths, skill names, commands
-4. Do not use bold markers
+1. เขียนเป็น list มีหมายเลข `1.` `2.` `3.` ... หนึ่ง action ต่อหนึ่งบรรทัด
+2. แต่ละข้อสั้นๆ: ทำอะไร → ไฟล์หรือคำสั่งที่เกี่ยว (เฉพาะที่จำเป็น)
+3. ต่อท้ายด้วยเหตุผลหรือความเสี่ยงด้วย `—` เฉพาะเมื่อมีผลต่อการตัดสินใจ
+4. ใช้ backtick กับ paths, skill names, commands
+5. ห้ามใช้ตาราง, bold markers, และ emoji status
 
-### 3. Add Numbered Summary
+ตัวอย่าง:
 
-> Goal: Summarize below the table
+```
+1. สำรองไฟล์ rules ปัจจุบัน → `%APPDATA%\devin\AGENTS.md` — กันข้อมูลหาย
+2. ย้าย harness ไป `.agents/` — ยังไม่ลบต้นฉบับจนกว่าจะตรวจครบ
+3. อัปเดต reference ที่ชี้ path เดิม — ไม่งั้น `/follow-agents-md` อ่านผิด
+```
 
-1. Use `/report numbered` to summarize all actions in order
-2. Emphasize the first next action
-3. State dependencies between actions if any
+### 3. Close
+
+> Goal: บอกจุดเริ่ม
+
+1. ปิดท้ายด้วยบรรทัดเดียว `เริ่มที่ข้อ N: ...`
+2. ระบุ dependency ระหว่างข้อเฉพาะเมื่อไม่ชัดเจน
 
 ### 4. Validate
 
-> Goal: Check completeness
+> Goal: ตรวจความครบถ้วน
 
-1. Verify every column has data
-2. Verify `No.` is ordered correctly
-3. Verify the numbered summary is below the table
+1. ทุกข้อเป็น bullet และมีหมายเลขเรียงต่อกัน
+2. ไม่มีตารางในผลลัพธ์
+3. ทุกข้อมี action เดียว และไม่มี field ที่ไม่ให้ข้อมูล
 
 ## Rules
 
-- Use when the user asks or needs a plan without acting yet
-- Every action must have single responsibility
-- Listed files must be reasonably guessable; if unsure write `TBD`
-- A `/report numbered` is always required below
-- If there are multiple statuses, use `/report table` for the same list
-- Answer in chat only
-
-- Final report via `/report-review` — one chat table (No./Action/Evidence/Severity/Risk/Priority/Owner skill/Status), no report files
+- ใช้เมื่อ user ถามหรือต้องการแผน โดยยังไม่ลงมือทำ
+- หนึ่ง action ต่อหนึ่งข้อ
+- ไฟล์ที่ระบุต้องเดาได้อย่างสมเหตุสมผล; ถ้าไม่แน่ใจให้เขียน `TBD`
+- ตัด field ที่ไม่มีข้อมูลจริง ไม่ต้องเติมให้ครบ
+- ตอบในแชทเท่านั้น
 
 ## Expected Outcome
 
-- A table with all 8 columns: No., Action, Before, After, Why, File Change, Risk, Status
-- A numbered list summary below
-- Next action and dependencies identified
+- bullet ที่มีหมายเลข สั้น อ่านง่าย
+- บรรทัดบอกจุดเริ่มข้อแรก
+- dependency ระบุเฉพาะที่จำเป็น
