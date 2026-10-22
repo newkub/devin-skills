@@ -44,7 +44,7 @@ For Swift tasks and workflows (iOS/macOS/visionOS apps and Swift packages). Pack
 4. `Domain/` — entities (immutable `struct`, `Identifiable, Hashable`), repository protocols, use cases
 5. `Presentation/` — reusable components, screens, view models
 6. `Resources/` — assets, color sets
-7. Run `/follow-architecture` for the pattern decision; detail: structures + layer tables in `follow-architecture/SKILL.md` (`## Clean Pattern` / `## Layered Pattern`)
+7. Run `/follow-architecture` for the pattern decision; detail: structures + layer tables in `follow-architecture/references/clean-arch.md` / `layered-arch.md`
 
 ### 3. Layer Dependencies (Import Rules)
 

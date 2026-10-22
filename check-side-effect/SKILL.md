@@ -31,7 +31,7 @@ Use when a codebase claims a pure domain/core, when effects must be isolated beh
 | Question | Owner |
 |---|---|
 | Is this layer allowed to perform this effect | this skill (boundary + severity) |
-| Where should the port/adapter live | `/follow-architecture` `## Clean Pattern` |
+| Where should the port/adapter live | `/follow-architecture` → `references/clean-arch.md` |
 | How to write the effect pipeline, Layer, error channel | `/follow-lib-effect-ts` |
 | Split the file that mixed computation and IO | `/check-code-structure`, `/refactor` |
 | Full review of the touched area | `/deep-review` |

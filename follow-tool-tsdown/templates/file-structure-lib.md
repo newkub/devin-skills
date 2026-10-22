@@ -51,5 +51,5 @@ project/
 - Modules cross each other only through the `<module>/index.ts` barrel — no deep imports of internals
 - `index.ts` exports only what the public API contract needs — internals must never leak (use the `exports` map + api-extractor/attw check)
 - Every module is pure by default — side effects must be explicit (init function, opt-in)
-- When the lib grows past the threshold (modules need ports/adapters, many external IO sources) → consider Clean (`follow-architecture/SKILL.md` `## Clean Pattern`)
+- When the lib grows past the threshold (modules need ports/adapters, many external IO sources) → consider Clean (`follow-architecture/references/clean-arch.md` `## Shared Package Variant`)
 - `sideEffects: false` + tree-shakable exports — no top-level side effects in `src/`

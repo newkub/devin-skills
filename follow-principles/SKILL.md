@@ -19,6 +19,7 @@ related:
   - check-reference
   - deep-review
   - refactor
+  - update-devin-global-skills
 
 ---
 
@@ -51,7 +52,7 @@ Use when checking or following the principles of a specific project, framework, 
    - `global_rules.md`, `AGENTS.md`
    - the principles/conventions sections of `README.md`
    - `docs/principles/`, `.github/`, `.devin/`
-2. Search the `SKILL.md` of related skills, especially the `Rules` and `Expected Outcome` sections
+2. Search the `SKILL.md` of related skills, especially the `Rules` and `Expected Outcome` sections; when the context is a skill package, `/update-devin-global-skills` owns the authoring conventions being judged
 3. Run `/deep-analyze` or `/check-reference` to verify the sources are complete
 4. Check `package.json`, `Cargo.toml`, `go.mod`, `pyproject.toml` to see the ecosystem
 5. Record every source found, with paths

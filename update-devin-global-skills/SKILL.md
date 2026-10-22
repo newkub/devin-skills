@@ -10,7 +10,7 @@ related:
   - deep-review
   - check-reference
   - deep-research
-  - research-setup-integrations
+  - follow-principles
   - deep-validate
   - learn-from-web
   - learn-from-cli
@@ -36,6 +36,7 @@ For new or existing skills: update one skill, many skills, or the whole repo; cr
 1. Detect the skills dir from the path: Devin CLI → `%APPDATA%\devin\skills\` or `~/.config/devin/skills/`; Windsurf → `%APPDATA%\Codeium\Windsurf\skills\`; Codex → `~/.codex/skills/`; Claude → `~/.claude/skills/`; OpenCode → `~/.opencode/skills/` — undetectable → `/ask-me`
 2. Read that repo's `global_rules.md` + `AGENTS.md`; run `/review-devin-global-harness` + `/check-reference` on related skills, and `/use-related-skills` to consider composing/extending them
 3. Skill already exists → read the original file to identify what needs changing; long-horizon/near-full context → `/follow-context-engineering`; context unavailable or a required reference missing → stop and report
+4. Target family has existing skills → `/follow-principles` scope `skill` (`### 2`–`### 4` only) to collect their `Rules` + `Expected Outcome` as hard constraints; its report step is skipped
 
 ### 2. Identify Targets
 > Goal: know which skill(s) to create, update, or refactor
@@ -59,8 +60,8 @@ For new or existing skills: update one skill, many skills, or the whole repo; cr
 ### 5. Deep Research
 > Goal: have the latest data before editing
 
-1. `/deep-research` to pin down the topic/skill (skip when no research is needed); pick sources: docs/site → `/learn-from-web`, CLI → `/learn-from-cli`, library API → `/check-types-definition`, integrations/plugins/extensions → `/research-setup-integrations` — official docs are the primary source
-2. `/deep-review` to find stale versions/commands/links; `/deep-review` to verify latest + breaking changes; `/deep-review` to verify `references/apis.md`/`cli.md` against the real API/commands
+1. `/deep-research` to pin down the topic/skill (skip when no research is needed); pick sources: docs/site → `/learn-from-web`, CLI → `/learn-from-cli`, library API → `/check-types-definition`, integrations/plugins/extensions → `/deep-research` (integrations domain) — official docs are the primary source
+2. `/check-reference` to find stale versions/commands/links; `/deep-research` to verify latest + breaking changes; `/check-types-definition` + `/learn-from-cli` to verify `references/apis.md`/`cli.md` against the real API/commands
 3. Record latest version, breaking changes, new commands, deprecations, env vars, URLs — find real examples, never guess
 
 ### 6. Prefer Existing CLI Tools Over Custom How-To
@@ -74,6 +75,7 @@ For new or existing skills: update one skill, many skills, or the whole repo; cr
 
 1. Update frontmatter per `## Conventions → Frontmatter Spec`; sections follow `Goal` → `Scope` → `Execute` → `Rules` → `Expected Outcome`; `## Execute` ≤10 steps using `### N. Step Name` + `> Goal:` + numbered list
 2. Invoking other skills → `## Conventions → Invoke Skills`; update commands/options/examples/env vars/URLs and remove deprecated ones; >250 lines → move content down into `references/` per `When To Split`
+3. A repo rule changes a decision (split, merge, rename, length) → cite the principle and its source at the decision point (`/follow-principles` `### 5. Apply Principles`); no source → report the gap instead of inventing one
 
 ### 8. Add References, Use Cases, Workflows, Examples, And Src
 > Goal: a complete, non-redundant skill package
@@ -84,12 +86,13 @@ For new or existing skills: update one skill, many skills, or the whole repo; cr
 ### 9. Validate, Sync And Update References
 > Goal: the skill passes every gate and living documents stay fresh
 
-1. `/review-devin-global-harness` — conventions/naming/structure; `/check-reference` — commands/APIs/claims; `/reframe` for a new skill or major rewrite
-2. `/deep-validate` — frontmatter, sections, length, `related` missing/unused, TODO/MOCK/placeholder; fixing `related` → `/follow-tool-madge`; has `rules/` or `sgconfig.yml` → `/deep-review`
-3. `/update-references` to sync refs across the repo + `/use-related-skills` to find integrations; rename/move → update `AGENTS.md`; involves global rules → `global_rules.md` + `/update-devin-harness`
-4. After any skill or tool add/remove/merge/rename → always sync living documents per `## Conventions → Living Documents` — not optional; failing → fix and recheck (max 3 → stop/report)
-5. Markdown shape — 27 skills shipped a collapsed table that `check-skills-structure` does not flag (it counts sections, not rows), so read every table as rendered before signing off
-6. Cross-skill citations — a body that cites a heading owned by another skill is not checked per package, so verify every cited heading exists in the target's `SKILL.md` (measured 2026-10-21: 22 stale citations across 14 files)
+1. Gate by size: one skill → items 2–3; a family or several skills → add 4–6; repo-wide or a convention change → every item, then full `/ship` in step 10 — never run the expensive gates on a single-file edit
+2. `/review-devin-global-harness` — conventions/naming/structure; `/check-reference` — commands/APIs/claims; `/reframe` for a new skill or major rewrite
+3. `/deep-validate` — frontmatter, sections, length, `related` missing/unused, TODO/MOCK/placeholder; fixing `related` → `/follow-tool-madge`; has `rules/` or `sgconfig.yml` → `/deep-review`
+4. `/update-references` to sync refs across the repo + `/use-related-skills` to find integrations; rename/move → update `AGENTS.md`; involves global rules → `global_rules.md` + `/update-devin-harness`
+5. After any skill or tool add/remove/merge/rename → always sync living documents per `## Conventions → Living Documents` — not optional; failing → fix and recheck (max 3 → stop/report)
+6. Manual gates the CLI cannot prove — read every table as rendered (it counts sections, not rows) and confirm every cited heading exists in the target's `SKILL.md` (a cross-skill citation is not checked per package)
+7. Cross-skill conflict — two skills state contradictory rules (content language, `related` cap, a mandatory step) → `/follow-principles` `### 3`–`### 4` ranks them, then fix at the owning skill, never keep both; unresolved authority conflict → `/ask-me`
 
 ### 10. Ship
 > Goal: deliver the work
@@ -155,6 +158,7 @@ See [references/maintenance.md](references/maintenance.md#living-documents) — 
 2. Official Sources And Evidence — official docs, changelog, repository are the primary sources (never third-party when an official one exists), state source URLs; every change carries evidence + the researched version — never guess APIs, commands, or versions
 3. Safety — dry run before destructive/high-risk actions; overwriting an existing file → user confirmation; never break references or existing skills; `permissions` must list `deny` for risky system paths; no secrets/credentials in prompts
 4. Content Standard — how-tos reference actually installed CLI tools (inventory `check-my-global-cli/references/global-cli-commands.md`, map `check-my-global-cli/references/tool-map.md`), never hand-write scripts when a CLI can do it (none exists → `/deep-research` or `mise use -g`); `name` matches directory name, `description` ≤100 characters; no TODO/MOCK/placeholder — flag uncertainty explicitly; global skills written in English; no `**` bold; config guidance follows `/follow-default-config` (only overrides of tool defaults, verified via `/check-types-definition`/official docs); install per ecosystem `bun add`/`cargo add`/`go get`/`pip install`/`mise use -g npm:<package>` — avoid floating ranges
+5. Precedence — `global_rules.md` + root `AGENTS.md` set the authority order; within a skill, `## Rules` beats `## Execute`; this skill's `## Conventions` beats a one-skill local convention; two skills contradicting → `/follow-principles` `### 3`–`### 4` ranks them, then fix at the owning skill — never keep both; an unresolved authority conflict (e.g. content language) → `/ask-me`, never pick silently
 
 ## Expected Outcome
 

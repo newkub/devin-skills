@@ -59,4 +59,4 @@ project/
 - Exit codes centralized in `errors.ts` — commands return result, `bin.ts` decides the exit code
 - stdout only through `ui/` — never `console.log` in domain/data layers (use a stderr logger in `lib/`)
 - `utils/`/`services/` pure — testable without mocking the process
-- If the CLI is one entry point among several (api+worker+cron) → use Clean (`follow-architecture/SKILL.md` `## Clean Pattern`) — `app/cli/` as a thin shell over `modules/`
+- If the CLI is one entry point among several (api+worker+cron) → use Clean (`follow-architecture/references/clean-arch.md`) — `app/cli/` as a thin shell over `modules/`
