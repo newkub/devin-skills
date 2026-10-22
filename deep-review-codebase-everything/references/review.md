@@ -195,7 +195,7 @@ Seeds `### 1. Think` and is the row contract every later step reads — `/deep-t
 - Alias resolution: a `review-<label>` is answered by every row whose `Aliases` cell lists it or whose name equals it, plus the `always` tier — read that set from the table, never re-resolve by hand; `review-issues`/`review-gaps` are exempt (they hold their own work). A label on no row is a matrix gap — report it, never invent a dimension.
 - Rows sharing a fix owner are still dispatched as separate ledger dimensions — the owner matters only at `### 6. Route`.
 - `CLI domain` = the `wrikka-linter` pack owning the row's rules (`quality`/`security`/`structure`/`config`/`deps`, from the rule-id prefix); `—` = no pack, so the row has no slice and takes the `capture`/`manual` route. A durable analyzer gap is only a `cli-check` row whose rule never fires (`### 3` step 6).
-- Raw CLIs named above without a `follow-tool-*` owner → `/download-program`, then `/update-devin-global-skills` (highest value: `promptfoo` — `llm-security`/`llm-eval`/`mcp-surface`/`rag-*`; `trufflehog` — `security`/`repo-hygiene`). Authority pins are current as of 2026-10 — re-verify via `/deep-research` when one looks stale.
+- Raw CLIs named in a row's `Tool/skill` (`promptfoo`, `trufflehog`, `garak`, `ragas`, `git-sizer`, …) are run directly — install with `/download-program`, use the invocation the row names (`promptfoo eval`, `trufflehog --only-verified`), and when a row gives no flags read the tool's `--help` via `/learn-from-cli` instead of guessing. Do not create a `follow-tool-*` wrapper for them; a wrapper is written only when the user asks for one. Authority pins are current as of 2026-10 — re-verify via `/deep-research` when one looks stale.
 
 ## Domain Map
 
