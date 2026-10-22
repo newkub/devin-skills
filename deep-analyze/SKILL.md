@@ -118,7 +118,7 @@ Covers analysis across many dimensions:
 
 > Goal: cover every dimension — dispatch `/deep-review` per detected stack
 
-- Candidate dimensions, eligibility, and priority order → read `deep-review/references/review.md` (`## Dimension Matrix`) (single source of truth — never duplicate the table here)
+- Candidate dimensions, eligibility, and priority order → read `deep-review-codebase-everything/references/review.md` (`## Dimension Matrix`) (single source of truth — never duplicate the table here)
 - Dispatch only the domains the stack actually has — never run all of them every time
 - Parallelize via `/use-subagents` when many domains
 - Merge all findings into one report with domain tags

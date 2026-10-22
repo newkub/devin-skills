@@ -30,8 +30,9 @@ Use when a scope needs reviewing and it is not yet clear which review preset fit
 - The twelve doors: `deep-review-codebase-everything` (every dimension, the default), `review-refactor` (structure), `review-implement-to-production` (what is claimed but not real), `review-update` (docs/config/references/rules drift), `review-design` (UX and design system), `review-tests` (test suite health), `review-security` (attack surface, auth, secrets), `review-performance` (measured bottlenecks and budgets), `review-data` (schema, migrations, integrity), `review-ops` (deps, CI, cloud, observability, delivery), `review-api` (contracts and integrations), `review-a11y` (accessibility)
 - Eleven doors are named `review-*` but are deep inside — each runs the `deep-review-codebase-everything` pipeline and owns only its labels and fix route; the engine keeps the `deep-review-*` name because it is the shared pipeline and the default door
 - The family is listed once in `deep-review-codebase-everything/references/presets.md` (`## Preset Map`) — tier, seeded labels, and the fix route each door owns. `review-api` and `review-a11y` are `on-demand`: they run only when the caller asks for that domain
-- Every preset reuses the `deep-review-codebase-everything` scan pipeline — the dimension matrix, the single sliced scan, the ledger, and the report. A preset narrows the dimension set and owns its fix route; it never reimplements the pipeline
-- The presets replace the older single-dimension entries: the gap inventory is no longer a separate skill (it lives in `review-implement-to-production`), and a review label that used to reach `/deep-review <label>` still resolves through the `deep-review-codebase-everything` matrix
+- This package holds no catalog of its own — the dimension matrix lives in the engine package at `deep-review-codebase-everything/references/review.md` (`## Dimension Matrix`) and is proven by `deep-review-codebase-everything/scripts/verify-matrix.ts`; never copy a dimension table or a proof-statement list here
+- Every preset reuses the `deep-review-codebase-everything` scan pipeline — the dimension matrix (`deep-review-codebase-everything/references/review.md`), the single sliced scan, the ledger, and the report. A preset narrows the dimension set and owns its fix route; it never reimplements the pipeline
+- The presets replace the older single-dimension entries: the gap inventory is no longer a separate skill (it lives in `review-implement-to-production`), and a review label that used to reach `/deep-review <label>` still resolves through the matrix in `deep-review-codebase-everything/references/review.md`
 - Not a reviewer itself — running the dimensions here would duplicate the preset and produce two reports. If the caller needs an actual review, forward it
 - A named `review-*` assessor among the nine survivors (`/review-use-lib-effective`, `/review-issues`, `/review-gaps`, `/review-test`, …) is a dimension entry, not a preset — it runs its own pass, and this door never wraps it in a preset. The eleven `review-*` preset doors are the ones in the map
 - A fix request on one finding → the owning single skill (`/refactor`, `/implement-to-production`, `/update-*`, `/update-tests`); this door is for a review pass that may find several
@@ -69,7 +70,7 @@ Use when a scope needs reviewing and it is not yet clear which review preset fit
 1. Aliases accepted as the `[preset]` token: `everything`, `codebase` → `deep-review-codebase-everything`; `refactor`, `structure` → `review-refactor`; `implement`, `gaps`, `not-implemented` → `review-implement-to-production`; `update`, `docs` → `review-update`; `design`, `uxui` → `review-design`; `tests`, `test` → `review-tests`; `security` → `review-security`; `perf`, `performance` → `review-performance`; `data`, `database` → `review-data`; `ops`, `platform`, `deps` → `review-ops`; `api` → `review-api`; `a11y`, `accessibility` → `review-a11y`
 2. An explicit door name or alias always wins over the signal table
 3. Two signals from different presets that both fit → `/ask-me` with the top two; `dont-ask-me` mode → run `deep-review-codebase-everything` and name the presets the run did not take
-4. A bare label argument (`/deep-review <scope> <label>`) is not a preset — hand it to `deep-review-codebase-everything`, whose matrix resolves the label; an explicitly named assessor such as `/review-use-lib-effective` runs directly, and an explicitly named door runs that door
+4. A bare label argument (`/deep-review <scope> <label>`) is not a preset — hand it to `deep-review-codebase-everything`, whose matrix (`deep-review-codebase-everything/references/review.md`) resolves the label; an explicitly named assessor such as `/review-use-lib-effective` runs directly, and an explicitly named door runs that door
 5. Never invent a preset outside `deep-review-codebase-everything/references/presets.md` — a preset needs at least two matrix rows and a fix route it owns, and the map row and its `SKILL.md` land together; a single-row rename stays a label call
 
 ### 3. Run The Preset
@@ -99,7 +100,7 @@ Use when a scope needs reviewing and it is not yet clear which review preset fit
 - One preset per run — no silent chaining, no double review of the same scope
 - Ambiguity is one `/ask-me` between the top two presets, never a guess between three or more; `dont-ask-me` takes the default and records the skipped preset names
 - Report-only unless the caller passed `then-fix` — the preset's fix gate applies unchanged
-- Never add a preset that has no fix route or no row in `references/presets.md`; a review without a fix owner is a matrix row, not a door
+- Never add a preset that has no fix route or no row in `deep-review-codebase-everything/references/presets.md`; a review without a fix owner is a matrix row, not a door
 
 ## Expected Outcome
 

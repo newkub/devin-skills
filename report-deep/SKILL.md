@@ -40,7 +40,7 @@ Use to create a deep report after reviewing a codebase or analyzing a system —
    3. Analyze Cause: root cause of the problem
    4. Set Solutions: actionable and specific fixes
    5. Set Severity: Critical > High > Medium > Low
-   6. Set Review Workflow: the `/deep-review` dimension(s) from `deep-review/references/review.md` (`## Dimension Matrix`)
+   6. Set Review Workflow: the `/deep-review` dimension(s) from `deep-review-codebase-everything/references/review.md` (`## Dimension Matrix`)
    7. Identify Evidence: the code snippet or pattern that triggered the finding
 2. False positive → note in the Cause column: `False positive: <reason>`
 3. Sort by severity: Critical first, then High
