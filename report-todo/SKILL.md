@@ -1,6 +1,6 @@
 ---
 name: report-todo
-description: Plan table: architecture, file tree, tech stack, tasks with why, before and after
+description: Plan table: tasks with how, why, before, after, skills; architecture, file tree, tech stack first
 argument-hint: "[actions-or-context]"
 related:
   - report
@@ -11,7 +11,7 @@ related:
 
 ## Goal
 
-Answer with the target architecture picture, the file structure, and the tech stack, then a numbered task-plan table — one task per row, each row stating why it exists, what it looks like now, and what it becomes — before any work starts
+Answer with the target architecture picture, the file structure, and the tech stack, then a numbered task-plan table — one task per row, each row stating why it exists, how it will be done, what it looks like now, what it becomes, and which skills run it — before any work starts
 
 ## Scope
 
@@ -56,8 +56,8 @@ Answer with the target architecture picture, the file structure, and the tech st
 > Goal: name the stack the plan runs on and what each layer is for
 
 1. Draw this section after the file tree whenever the plan adds, changes, or locks a technology choice
-2. Use a table from `/report`: first column `No.`, then Layer, Tech, Status, Role — `Status` is `existing`, `new`, or `decision` (an open question the plan must close)
-3. State the boundary on the same row when a library is allowed in one layer only (e.g. a runtime lib confined to the server layer)
+2. Use a table from `/report`: first column `No.`, then Layer, Tech — one row per layer the plan runs on
+3. Name the boundary inside the `Tech` cell when a library is allowed in one layer only (e.g. a runtime lib confined to the server layer); write `TBD` in that cell while the choice is still open
 4. Before proposing a new dependency run `/follow-my-techstack` and `/use-lib-effective`; reuse what exists first
 5. Skip this section when the stack is unchanged and no choice is open
 
@@ -66,42 +66,44 @@ Answer with the target architecture picture, the file structure, and the tech st
 > Goal: show each task with its reason and the state change
 
 1. Follow `/report` so the table starts with `No.` numbered 1, 2, 3, ...
-2. Required columns (5): No., Task, Why, Before, After
+2. Required columns (7): No., Task, How, Why, Before, After, Skills
    - `Task` — one short imperative phrase
+   - `How` — the way the task will be done: the concrete method, command, or change, in one clause
    - `Why` — the reason the task exists, in one clause; never a restatement of `Task`
    - `Before` — the current state as evidence: the path, symbol, count, or observed behavior
    - `After` — the resulting state that closes the row, observable and checkable
+   - `Skills` — the skill names that execute the row, in the order to run them (e.g. `/refactor` → `/deep-test`)
 3. When the plan touches code, read `/refactor` first and make row `No. 1` the baseline task: run `/run-verify` to green and record the baseline sha (or the clean-tree state when the target has no repo yet) — every later row depends on it
-4. Optional columns — Root Cause, Dependencies, Verification, Skill, Risk, Examples — add only the ones that carry information for this plan
-5. Keep the main table at most 7 columns (5 required + 2 optional); when more are needed, move the overflow into a second detail table keyed by `No.`
+4. Optional columns — Dependencies, Verification — add only the ones that carry information for this plan
+5. Keep the main table at most 9 columns (7 required + 2 optional); when more are needed, move the overflow into a second detail table keyed by `No.`
 6. Use backticks for paths, commands, and skill names
 
-Example A — 5 required plus two optional:
+Example A — 7 required plus two optional:
 
-| No. | Task | Why | Before | After | Verification | Risk |
-|---|---|---|---|---|---|---|
-| 1 | Record the refactor baseline | Later rows have no green state to return to | `git status` dirty, checks not run | Checks green, baseline sha recorded | `/run-verify` passes vs baseline | Low — read-only |
-| 2 | Centralize harness paths | Skills still point at the old per-tool config dir | `skills/*/SKILL.md` uses `%APPDATA%\devin\skills` | Every path uses `~/.agents` | `grep -r %APPDATA%` returns none | Medium — stale links break routing |
-| 3 | Verify the tree | A merge is not done until the checks pass | checks not run | Both checks run clean | `/check-skills-structure` + `/check-reference` pass | Low — read-only |
+| No. | Task | How | Why | Before | After | Skills | Dependencies | Verification |
+|---|---|---|---|---|---|---|---|---|
+| 1 | Record the refactor baseline | Run checks, then record the sha of the green state | Later rows have no green state to return to | `git status` dirty, checks not run | Checks green, baseline sha recorded | `/run-verify` → `/git-commit` | — | `/run-verify` passes vs baseline |
+| 2 | Centralize harness paths | Rewrite the config root to one path and re-check leftovers | Skills still point at the old per-tool config dir | `skills/*/SKILL.md` uses `%APPDATA%\devin\skills` | Every path uses `~/.agents` | `/update-references` → `/check-reference` | No. 1 | `grep -r %APPDATA%` returns none |
+| 3 | Verify the tree | Run the structure and reference checks together | A merge is not done until the checks pass | checks not run | Both checks run clean | `/check-skills-structure` → `/check-reference` | No. 2 | Both checks exit 0 |
 
 Example B — overflow into a detail table keyed by `No.`:
 
-| No. | Task | Why | Before | After | Dependencies |
-|---|---|---|---|---|---|
-| 1 | Split worker into modules | One file mixes OAuth, proxy, and save logic | `src/worker/index.ts` handles every route | Each file exports one handler group | — |
-| 2 | Recover unique sources first | The old copy is the only place holding the split | `src/worker/` missing the 5 split files | All 5 files present in target | No. 1 |
+| No. | Task | How | Why | Before | After | Skills | Dependencies |
+|---|---|---|---|---|---|---|---|
+| 1 | Split worker into modules | Move each route group into its own handler file | One file mixes OAuth, proxy, and save logic | `src/worker/index.ts` handles every route | Each file exports one handler group | `/refactor` → `/deep-test` | — |
+| 2 | Recover unique sources first | Diff the backup against the target and copy only missing files | The old copy is the only place holding the split | `src/worker/` missing the 5 split files | All 5 files present in target | `/restore-files-from-git-log` → `/check-reference` | No. 1 |
 
-| No. | Root Cause | Verification |
-|---|---|---|
-| 1 | One file mixed OAuth, proxy, and save logic | Import graph shows no cross-handler cycles |
-| 2 | Old copy was the only place holding the split | `diff -rq` between backup zip and target is clean |
+| No. | Verification |
+|---|---|
+| 1 | Import graph shows no cross-handler cycles |
+| 2 | `diff -rq` between backup zip and target is clean |
 
 ### 6. Add The Numbered Summary
 
 > Goal: give a short read-aloud version below the table
 
 1. Add a `Summary` line, then a numbered list from `/report` with one line per row
-2. Keep each line to task, reason, and the resulting state
+2. Keep each line to task, how, reason, and the resulting state
 3. Close with `Start at No. N: ...`
 
 ### 7. Validate
@@ -113,11 +115,12 @@ Example B — overflow into a detail table keyed by `No.`:
 3. The file-structure tree (when the layout changes) and the tech-stack table (when a choice is added or open) sit between the diagram and the plan table
 4. When the plan touches code, row `No. 1` is the `/refactor` baseline task and no build row precedes it
 5. `No.` is the first column and counts from 1 with no gaps
-6. Every row carries all 5 required columns
-7. The main table has at most 7 columns (5 required + 2 optional); any overflow lives in a detail table keyed by `No.`
+6. Every row carries all 7 required columns
+7. The main table has at most 9 columns (7 required + 2 optional); any overflow lives in a detail table keyed by `No.`
 8. Every `Before` cell states real evidence; never invent a file path — use `TBD` when it cannot be known yet
 9. Every `After` cell is checkable — it says how to tell the row is done
-10. No `**` bold, no emoji status
+10. Every `Skills` cell names skills that exist; a skill that does not exist is replaced by the nearest one in the same family
+11. No `**` bold, no emoji in any cell
 
 ## Rules
 
@@ -126,17 +129,18 @@ Example B — overflow into a detail table keyed by `No.`:
 - Architecture first, file tree second, tech stack third, table fourth; diagrams use ANSI with uniform outer boxes, before/after when a direction or a layout flips
 - A code-touching plan reads `/refactor` first and opens with the baseline row; no implementation row precedes it
 - Tech-stack rows name the boundary of every confined library on the same row
+- `How` names the concrete method or change, never a restatement of `Task`, and `Skills` names the skills that run the row in the order to run them
 - `Before` shows the current state with evidence and `After` shows the state that closes the row; the two cells never say the same thing
 - `Why` gives the reason, not a restatement of `Task`
-- Prefer the 5 required columns; add optional columns only when they answer a question the reader has
+- Prefer the 7 required columns; add optional columns only when they answer a question the reader has
 - The plan stays read-only; start work only after the user confirms
 
 ## Expected Outcome
 
 - An architecture picture of what it should be, drawn before the plan table when structure changes
 - An ANSI file-structure tree of the target layout when the layout changes, before/after when files move
-- A tech-stack table naming layer, choice, status, and boundary whenever the plan adds or locks a choice
-- A table with `No.` first, the 5 required columns filled with evidence, optional columns chosen for fit, capped at 7 columns with overflow in a keyed detail table
+- A tech-stack table naming layer and tech with its boundary whenever the plan adds or locks a choice
+- A table with `No.` first, the 7 required columns filled with evidence, optional columns chosen for fit, capped at 9 columns with overflow in a keyed detail table
 - A baseline row from `/refactor` as `No. 1` whenever the plan touches code
 - A numbered summary and a start line below the table
-- A plan the user can approve row by row, seeing why each row exists and what changes from before to after
+- A plan the user can approve row by row, seeing how each row is done, why it exists, what changes from before to after, and which skills run it
