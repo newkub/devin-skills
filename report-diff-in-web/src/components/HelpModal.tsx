@@ -45,9 +45,10 @@ export default function HelpModal(props: { open: boolean; onClose: () => void })
           href="https://diffs.com"
           target="_blank"
           rel="noreferrer"
-          class="mr-auto flex items-center gap-1 text-[10px] text-muted-foreground transition-colors hover:text-foreground"
+          class="mr-auto flex items-center gap-1 rounded-sm text-[10px] text-muted-foreground outline-none transition-colors hover:text-foreground focus-visible:ring-2 focus-visible:ring-focus"
         >
-          Diff rendering by @pierre/diffs <span class="i-mdi-open-in-new text-[9px]" />
+          Diff rendering by @pierre/diffs
+          <span class="i-mdi-open-in-new text-[9px]" aria-hidden="true" />
         </a>
       }
     >

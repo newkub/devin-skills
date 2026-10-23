@@ -9,15 +9,12 @@ export default function CommentDialog(props: {
   onSubmit: (body: string) => void;
 }) {
   const [body, setBody] = createSignal('');
-  let textarea: HTMLTextAreaElement | undefined;
 
   createEffect(
     on(
       () => props.open,
       (open) => {
-        if (!open) return;
-        setBody('');
-        setTimeout(() => textarea?.focus(), 60);
+        if (open) setBody('');
       },
     ),
   );
@@ -44,7 +41,7 @@ export default function CommentDialog(props: {
             Cancel
           </Button>
           <Button variant="primary" disabled={!body().trim() || props.busy} onClick={submit}>
-            <Show when={props.busy} fallback={<span class="i-mdi-send text-sm" />}>
+            <Show when={props.busy} fallback={<span class="i-mdi-send text-sm" aria-hidden="true" />}>
               <Spinner class="text-sm" />
             </Show>
             Comment
@@ -53,7 +50,8 @@ export default function CommentDialog(props: {
       }
     >
       <textarea
-        ref={textarea}
+        data-autofocus
+        aria-label="Comment body"
         value={body()}
         onInput={(event) => setBody(event.currentTarget.value)}
         onKeyDown={(event) => {

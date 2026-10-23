@@ -23,7 +23,7 @@ export default function EmptyState(props: { onOpen: () => void; onOpenHelp: () =
       <div class="relative flex w-full max-w-3xl flex-col items-center gap-7 py-10 text-center">
         <div class="flex flex-col items-center gap-3">
           <div class="grid size-14 place-items-center rounded-2xl border border-border bg-surface text-accent shadow-md">
-            <span class="i-mdi-file-compare text-3xl" />
+            <span class="i-mdi-file-compare text-3xl" aria-hidden="true" />
           </div>
           <div class="space-y-1.5">
             <h1 class="text-xl font-semibold tracking-tight">Diff Studio</h1>
@@ -39,7 +39,7 @@ export default function EmptyState(props: { onOpen: () => void; onOpenHelp: () =
           onClick={props.onOpen}
           class="inline-flex items-center gap-2 rounded-lg border border-transparent bg-primary px-4 py-2.5 text-sm font-medium text-primary-foreground shadow-md transition-colors outline-none hover:bg-primary-hover focus-visible:ring-2 focus-visible:ring-focus"
         >
-          <span class="i-mdi-folder-open-outline text-base" /> Open a diff
+          <span class="i-mdi-folder-open-outline text-base" aria-hidden="true" /> Open a diff
         </button>
 
         <div class="grid w-full gap-2 sm:grid-cols-2">
@@ -48,14 +48,14 @@ export default function EmptyState(props: { onOpen: () => void; onOpenHelp: () =
               <button
                 type="button"
                 onClick={props.onOpen}
-                class="flex items-center gap-3 rounded-lg border border-border bg-surface/80 px-3.5 py-3 text-left transition-colors hover:border-border-hover hover:bg-surface"
+                class="flex items-center gap-3 rounded-lg border border-border bg-surface/80 px-3.5 py-3 text-left transition-colors outline-none hover:border-border-hover hover:bg-surface focus-visible:ring-2 focus-visible:ring-focus"
               >
-                <span class={`${source.icon} shrink-0 text-lg text-accent`} />
+                <span class={`${source.icon} shrink-0 text-lg text-accent`} aria-hidden="true" />
                 <span class="min-w-0">
                   <span class="block text-xs font-medium">{source.label}</span>
                   <span class="block truncate font-mono text-[10px] text-muted-foreground">{source.hint}</span>
                 </span>
-                <span class="i-mdi-chevron-right ml-auto shrink-0 text-sm text-muted-foreground" />
+                <span class="i-mdi-chevron-right ml-auto shrink-0 text-sm text-muted-foreground" aria-hidden="true" />
               </button>
             )}
           </For>
@@ -65,7 +65,7 @@ export default function EmptyState(props: { onOpen: () => void; onOpenHelp: () =
           <For each={FEATURES}>
             {(feature) => (
               <div class="flex items-center gap-2 text-[11px] text-secondary-foreground">
-                <span class={`${feature.icon} shrink-0 text-sm text-success`} />
+                <span class={`${feature.icon} shrink-0 text-sm text-success`} aria-hidden="true" />
                 {feature.label}
               </div>
             )}
@@ -82,7 +82,8 @@ export default function EmptyState(props: { onOpen: () => void; onOpenHelp: () =
           <button
             type="button"
             onClick={props.onOpenHelp}
-            class="text-accent transition-colors hover:text-accent-hover"
+            aria-label="View all keyboard shortcuts"
+            class="rounded-sm text-accent outline-none transition-colors hover:text-accent-hover focus-visible:ring-2 focus-visible:ring-focus"
           >
             view all
           </button>

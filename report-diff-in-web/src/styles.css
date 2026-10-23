@@ -17,6 +17,30 @@ body {
   background-color: hsl(var(--color-accent) / 0.28);
 }
 
+button:not(:disabled),
+[role='button']:not([aria-disabled='true']) {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+}
+
+.skip-link {
+  position: fixed;
+  top: 0.5rem;
+  left: 0.5rem;
+  z-index: 100;
+  transform: translateY(-200%);
+  transition: transform 150ms ease;
+}
+
+.skip-link:focus-visible {
+  transform: translateY(0);
+  outline: 2px solid hsl(var(--color-focus));
+  outline-offset: 2px;
+}
+
 * {
   scrollbar-width: thin;
   scrollbar-color: hsl(var(--color-border-hover)) transparent;
@@ -110,6 +134,13 @@ body {
   color: hsl(var(--color-foreground));
 }
 
+.menu-item:focus-visible {
+  background-color: hsl(var(--color-secondary));
+  color: hsl(var(--color-foreground));
+  outline: 2px solid hsl(var(--color-focus));
+  outline-offset: -2px;
+}
+
 .menu-item:disabled {
   opacity: 0.5;
   pointer-events: none;
@@ -158,5 +189,11 @@ body {
   .popover-enter,
   .slide-in {
     animation: none;
+  }
+
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
   }
 }

@@ -75,10 +75,32 @@ export default function App() {
     return false;
   };
 
+  const overlayOpen = () =>
+    sourceOpen() || optionsOpen() || helpOpen() || pr.commentOpen() || !!pr.pending();
+
+  const openSource = () => {
+    setOptionsOpen(false);
+    setHelpOpen(false);
+    setSourceOpen(true);
+  };
+
+  const openOptions = () => {
+    setSourceOpen(false);
+    setHelpOpen(false);
+    setOptionsOpen(true);
+  };
+
+  const openHelp = () => {
+    setSourceOpen(false);
+    setOptionsOpen(false);
+    setHelpOpen(true);
+  };
+
   useShortcuts(() => ({
-    openHelp: () => setHelpOpen(true),
-    openOptions: () => setOptionsOpen(true),
+    openHelp,
+    openOptions,
     closeOverlays,
+    overlayOpen,
     focusSearch,
     cycleTheme,
     toggleSidebar: () => update({ sidebar: !options().sidebar }),
@@ -112,92 +134,103 @@ export default function App() {
 
   return (
     <div class="flex h-full flex-col overflow-hidden bg-background text-foreground">
-      <Header
-        source={viewer.source()}
-        data={diff.data()}
-        checks={checks.checks()}
-        busy={actions.busy()}
-        themeMode={options().themeMode}
-        themeIcon={THEME_MODE_ICON[options().themeMode]}
-        onOpenSource={() => setSourceOpen(true)}
-        onOpenOptions={() => setOptionsOpen(true)}
-        onOpenHelp={() => setHelpOpen(true)}
-        onCycleTheme={cycleTheme}
-        onRefresh={viewer.reload}
-        onCopy={() => void copyLink()}
-        onAction={pr.requestAction}
-        onComment={() => pr.setCommentOpen(true)}
-      />
+      <div class="flex min-h-0 flex-1 flex-col" inert={overlayOpen()}>
+        <a href="#diff-region" class="skip-link">
+          Skip to diff content
+        </a>
 
-      <Banners
-        error={diff.error()}
-        unparsed={diff.fileList().length - diff.metas().filter(Boolean).length}
-        onRetry={viewer.reload}
-      />
+        <Header
+          source={viewer.source()}
+          data={diff.data()}
+          checks={checks.checks()}
+          busy={actions.busy()}
+          themeMode={options().themeMode}
+          themeIcon={THEME_MODE_ICON[options().themeMode]}
+          onOpenSource={openSource}
+          onOpenOptions={openOptions}
+          onOpenHelp={openHelp}
+          onCycleTheme={cycleTheme}
+          onRefresh={viewer.reload}
+          onCopy={() => void copyLink()}
+          onAction={pr.requestAction}
+          onComment={() => pr.setCommentOpen(true)}
+        />
 
-      <main class="flex min-h-0 flex-1">
-        <Show when={options().sidebar && viewer.source()}>
-          <Sidebar
-            files={diff.fileList()}
-            indices={viewer.indices()}
-            metas={diff.metas()}
-            activeIdx={viewer.activeIdx()}
-            viewed={viewer.viewed()}
-            query={viewer.query()}
-            status={viewer.status()}
-            sort={viewer.sort()}
-            treeView={viewer.treeView()}
-            hideViewed={viewer.hideViewed()}
-            total={diff.fileList().length}
-            onQuery={viewer.setQuery}
-            onStatus={viewer.setStatus}
-            onSort={viewer.setSort}
-            onTreeView={viewer.setTreeView}
-            onHideViewed={viewer.setHideViewed}
-            onSelect={viewer.selectFile}
-            onToggleViewed={(idx) => viewer.toggleViewed(idx)}
-            onMarkAll={viewer.markAllViewed}
-          />
-        </Show>
+        <Banners
+          error={diff.error()}
+          unparsed={diff.fileList().length - diff.metas().filter(Boolean).length}
+          onRetry={viewer.reload}
+        />
 
-        <section class="flex min-w-0 flex-1 flex-col">
-          <Show
-            when={viewer.source()}
-            fallback={<EmptyState onOpen={() => setSourceOpen(true)} onOpenHelp={() => setHelpOpen(true)} />}
-          >
-            <Toolbar
-              options={options()}
-              activeFile={viewer.activeFile()}
+        <main class="flex min-h-0 flex-1">
+          <Show when={options().sidebar && viewer.source()}>
+            <Sidebar
+              files={diff.fileList()}
+              indices={viewer.indices()}
+              metas={diff.metas()}
               activeIdx={viewer.activeIdx()}
-              visible={viewer.indices().length}
+              viewed={viewer.viewed()}
+              query={viewer.query()}
+              status={viewer.status()}
+              sort={viewer.sort()}
+              treeView={viewer.treeView()}
+              hideViewed={viewer.hideViewed()}
               total={diff.fileList().length}
-              onUpdate={update}
-              onPrev={() => viewer.stepFile(-1)}
-              onNext={() => viewer.stepFile(1)}
-              onOpenOptions={() => setOptionsOpen(true)}
-            />
-
-            <DiffPanel
-              items={viewer.viewerItems()}
-              options={options()}
-              isDark={isDark()}
-              source={viewer.source()}
-              sourceKey={viewer.sourceKey()}
-              cacheKey={viewer.cacheKey()}
-              loading={diff.loading()}
-              scrollTarget={viewer.scrollTarget()}
-              activeFile={viewer.activeFile()}
-              activeVisible={viewer.activeVisible()}
-              focus={options().layout === 'focus'}
-              onApi={(api) => {
-                viewerApi = api;
-              }}
+              onQuery={viewer.setQuery}
+              onStatus={viewer.setStatus}
+              onSort={viewer.setSort}
+              onTreeView={viewer.setTreeView}
+              onHideViewed={viewer.setHideViewed}
+              onSelect={viewer.selectFile}
+              onToggleViewed={(idx) => viewer.toggleViewed(idx)}
+              onMarkAll={viewer.markAllViewed}
             />
           </Show>
-        </section>
-      </main>
 
-      <StatusBar options={options()} status={statusInfo()} onOpenHelp={() => setHelpOpen(true)} />
+          <section
+            id="diff-region"
+            tabindex="-1"
+            aria-label="Diff viewer"
+            class="flex min-w-0 flex-1 flex-col outline-none"
+          >
+            <Show
+              when={viewer.source()}
+              fallback={<EmptyState onOpen={openSource} onOpenHelp={openHelp} />}
+            >
+              <Toolbar
+                options={options()}
+                activeFile={viewer.activeFile()}
+                activeIdx={viewer.activeIdx()}
+                visible={viewer.indices().length}
+                total={diff.fileList().length}
+                onUpdate={update}
+                onPrev={() => viewer.stepFile(-1)}
+                onNext={() => viewer.stepFile(1)}
+                onOpenOptions={openOptions}
+              />
+
+              <DiffPanel
+                items={viewer.viewerItems()}
+                options={options()}
+                isDark={isDark()}
+                source={viewer.source()}
+                sourceKey={viewer.sourceKey()}
+                cacheKey={viewer.cacheKey()}
+                loading={diff.loading()}
+                scrollTarget={viewer.scrollTarget()}
+                activeFile={viewer.activeFile()}
+                activeVisible={viewer.activeVisible()}
+                focus={options().layout === 'focus'}
+                onApi={(api) => {
+                  viewerApi = api;
+                }}
+              />
+            </Show>
+          </section>
+        </main>
+
+        <StatusBar options={options()} status={statusInfo()} onOpenHelp={openHelp} />
+      </div>
 
       <OptionsPanel
         open={optionsOpen()}

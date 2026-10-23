@@ -32,7 +32,7 @@ export default function Sidebar(props: SidebarProps) {
   const seen = () => props.viewed.size;
 
   return (
-    <aside class="flex w-72 shrink-0 flex-col border-r border-border bg-surface">
+    <aside aria-label="Changed files" class="flex w-72 shrink-0 flex-col border-r border-border bg-surface">
       <div class="flex items-center justify-between px-3 pt-3 pb-2">
         <div class="text-[10px] font-semibold tracking-[0.16em] text-muted-foreground uppercase">
           Changed files
@@ -43,12 +43,16 @@ export default function Sidebar(props: SidebarProps) {
       </div>
 
       <div class="relative px-3">
-        <span class="i-mdi-magnify absolute top-1/2 left-5 -translate-y-1/2 text-sm text-muted-foreground" />
+        <span
+          class="i-mdi-magnify absolute top-1/2 left-5 -translate-y-1/2 text-sm text-muted-foreground"
+          aria-hidden="true"
+        />
         <input
           id="file-search"
           value={props.query}
           onInput={(event) => props.onQuery(event.currentTarget.value)}
           placeholder="Filter files…"
+          aria-label="Filter files"
           spellcheck={false}
           class="h-8 w-full rounded-md border border-border bg-background pr-8 pl-8 text-xs outline-none transition-colors placeholder:text-muted-foreground hover:border-border-hover focus-visible:border-focus focus-visible:ring-2 focus-visible:ring-focus"
         />
@@ -64,9 +68,9 @@ export default function Sidebar(props: SidebarProps) {
             type="button"
             aria-label="Clear filter"
             onClick={() => props.onQuery('')}
-            class="absolute top-1/2 right-3 grid size-5 place-items-center text-muted-foreground hover:text-foreground"
+            class="absolute top-1/2 right-3 grid size-5 place-items-center rounded-sm text-muted-foreground outline-none hover:text-foreground focus-visible:ring-2 focus-visible:ring-focus"
           >
-            <span class="i-mdi-close-circle text-sm" />
+            <span class="i-mdi-close-circle text-sm" aria-hidden="true" />
           </button>
         </Show>
       </div>
@@ -122,7 +126,11 @@ export default function Sidebar(props: SidebarProps) {
           label="Mark all unviewed"
           onClick={() => props.onMarkAll(false)}
         />
-        <span class="ml-auto pr-1 font-mono text-[10px] tabular-nums text-muted-foreground">
+        <span
+          class="ml-auto pr-1 font-mono text-[10px] tabular-nums text-muted-foreground"
+          role="status"
+          aria-live="polite"
+        >
           {seen()} viewed
         </span>
       </div>
@@ -141,7 +149,7 @@ export default function Sidebar(props: SidebarProps) {
 
       <div class="flex items-center justify-between border-t border-border px-3 py-2 text-[10px] text-muted-foreground">
         <span class="flex items-center gap-1.5">
-          <span class="i-mdi-mouse-outline text-xs" /> click a file to jump
+          <span class="i-mdi-mouse-outline text-xs" aria-hidden="true" /> click a file to jump
         </span>
         <span class="flex items-center gap-1">
           <Kbd>n</Kbd>

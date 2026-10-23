@@ -113,12 +113,20 @@ export default function DiffPanel(props: {
   return (
     <div class="relative min-h-0 flex-1 overflow-hidden bg-background">
       <Show when={props.loading}>
-        <div class="absolute inset-x-0 top-0 z-20 h-0.5 overflow-hidden bg-muted">
+        <div
+          role="progressbar"
+          aria-label="Loading diff"
+          class="absolute inset-x-0 top-0 z-20 h-0.5 overflow-hidden bg-muted"
+        >
           <div class="h-full w-1/3 animate-pulse bg-accent" />
         </div>
       </Show>
 
-      <div ref={host} class="diff-host absolute inset-0 overflow-x-hidden overflow-y-auto" />
+      <div
+        ref={host}
+        aria-busy={props.loading}
+        class="diff-host absolute inset-0 overflow-x-hidden overflow-y-auto"
+      />
 
       <Show when={props.items.length === 0 && !props.loading}>
         <div class="absolute inset-0 z-10 bg-background">

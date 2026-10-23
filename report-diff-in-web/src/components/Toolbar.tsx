@@ -22,11 +22,15 @@ export default function Toolbar(props: {
   };
 
   return (
-    <div class="flex h-11 shrink-0 items-center gap-2 border-b border-border bg-background px-3">
+    <div
+      role="toolbar"
+      aria-label="Diff viewer controls"
+      class="flex h-11 shrink-0 items-center gap-2 border-b border-border bg-background px-3"
+    >
       <Show
         when={props.options.layout === 'focus'}
         fallback={
-          <div class="flex min-w-0 items-center gap-2 text-xs text-muted-foreground">
+          <div class="flex min-w-0 items-center gap-2 text-xs text-muted-foreground" role="status" aria-live="polite" aria-atomic="true">
             <span class="font-medium text-foreground">{props.visible}</span>
             <span>{props.visible === 1 ? 'file' : 'files'} in view</span>
             <Show when={props.visible !== props.total}>
@@ -41,7 +45,7 @@ export default function Toolbar(props: {
           <Show when={props.activeFile}>
             {(file) => (
               <div class="ml-1 flex min-w-0 items-center gap-1.5">
-                <span class={`${fileIcon(file().name).icon} text-sm ${fileIcon(file().name).tone}`} />
+                <span class={`${fileIcon(file().name).icon} text-sm ${fileIcon(file().name).tone}`} aria-hidden="true" />
                 <span class="truncate font-mono text-xs">{file().name}</span>
                 <span class="shrink-0 font-mono text-[10px] text-muted-foreground">
                   {props.activeIdx !== null ? `${props.activeIdx + 1}/${props.total}` : ''}
@@ -54,6 +58,7 @@ export default function Toolbar(props: {
 
       <div class="ml-auto flex items-center gap-0.5">
         <Segmented
+          label="Diff style"
           value={props.options.diffStyle}
           onChange={(value) => props.onUpdate({ diffStyle: value })}
           options={[
@@ -85,25 +90,25 @@ export default function Toolbar(props: {
 
         <div class="mx-1.5 h-5 w-px bg-border" />
 
-        <div class="flex items-center rounded-md border border-border bg-surface">
+        <div role="group" aria-label="Code font size" class="flex items-center rounded-md border border-border bg-surface">
           <button
             type="button"
             aria-label="Decrease font size"
             onClick={() => changeScale(-0.05)}
-            class="grid size-7 place-items-center rounded-l-md text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
+            class="grid size-7 place-items-center rounded-l-md text-muted-foreground transition-colors outline-none hover:bg-secondary hover:text-foreground focus-visible:ring-2 focus-visible:ring-focus"
           >
-            <span class="i-mdi-minus text-sm" />
+            <span class="i-mdi-minus text-sm" aria-hidden="true" />
           </button>
-          <span class="w-10 text-center font-mono text-[10px] tabular-nums text-muted-foreground">
+          <span class="w-10 text-center font-mono text-[10px] tabular-nums text-muted-foreground" aria-live="polite">
             {percent()}
           </span>
           <button
             type="button"
             aria-label="Increase font size"
             onClick={() => changeScale(0.05)}
-            class="grid size-7 place-items-center rounded-r-md text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
+            class="grid size-7 place-items-center rounded-r-md text-muted-foreground transition-colors outline-none hover:bg-secondary hover:text-foreground focus-visible:ring-2 focus-visible:ring-focus"
           >
-            <span class="i-mdi-plus text-sm" />
+            <span class="i-mdi-plus text-sm" aria-hidden="true" />
           </button>
         </div>
 

@@ -29,6 +29,7 @@ export function SourceTabs(props: {
     <div class="space-y-4">
       <Segmented
         value={props.fields.source as SourceKind}
+        label="Diff source"
         onChange={(value) => props.set({ source: value })}
         options={[
           { value: 'pr' as SourceKind, label: 'Pull request', icon: 'i-mdi-source-pull' },
@@ -48,8 +49,13 @@ export function SourceTabs(props: {
               spellcheck={false}
               onInput={(event) => props.set({ repo: event.currentTarget.value })}
             />
-            <Button size="sm" onClick={props.onRefresh} title="Refresh from this repository">
-              <Show when={props.loading} fallback={<span class="i-mdi-refresh text-sm" />}>
+            <Button
+              size="sm"
+              onClick={props.onRefresh}
+              title="Refresh from this repository"
+              ariaLabel="Refresh repository suggestions"
+            >
+              <Show when={props.loading} fallback={<span class="i-mdi-refresh text-sm" aria-hidden="true" />}>
                 <Spinner class="text-sm" />
               </Show>
             </Button>
@@ -96,14 +102,15 @@ export function SourceTabs(props: {
                     {(pr) => (
                       <button
                         type="button"
+                        aria-pressed={props.fields.pr === String(pr.number)}
                         onClick={() => props.set({ pr: String(pr.number) })}
-                        class={`flex w-full items-center gap-2 border-b border-border px-2.5 py-2 text-left text-xs transition-colors last:border-b-0 ${
+                        class={`flex w-full items-center gap-2 border-b border-border px-2.5 py-2 text-left text-xs transition-colors outline-none last:border-b-0 focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-focus ${
                           props.fields.pr === String(pr.number)
                             ? 'bg-muted text-foreground'
                             : 'text-secondary-foreground hover:bg-secondary'
                         }`}
                       >
-                        <span class="i-mdi-source-pull shrink-0 text-sm text-success" />
+                        <span class="i-mdi-source-pull shrink-0 text-sm text-success" aria-hidden="true" />
                         <span class="shrink-0 font-mono text-[10px] text-muted-foreground">#{pr.number}</span>
                         <span class="min-w-0 flex-1 truncate">{pr.title}</span>
                         <Show when={pr.author}>
@@ -183,12 +190,22 @@ export function SourceTabs(props: {
               <For each={props.refs?.branches ?? []}>
                 {(branch) => (
                   <div class="flex items-center gap-2 border-b border-border px-2.5 py-1.5 text-xs last:border-b-0">
-                    <span class="i-mdi-source-branch shrink-0 text-sm text-muted-foreground" />
+                    <span class="i-mdi-source-branch shrink-0 text-sm text-muted-foreground" aria-hidden="true" />
                     <span class="min-w-0 flex-1 truncate font-mono">{branch}</span>
-                    <Button size="sm" variant="ghost" onClick={() => props.set({ base: branch })}>
+                    <Button
+                      size="sm"
+                      variant="ghost"
+                      ariaLabel={`Use ${branch} as base`}
+                      onClick={() => props.set({ base: branch })}
+                    >
                       Base
                     </Button>
-                    <Button size="sm" variant="ghost" onClick={() => props.set({ head: branch })}>
+                    <Button
+                      size="sm"
+                      variant="ghost"
+                      ariaLabel={`Use ${branch} as head`}
+                      onClick={() => props.set({ head: branch })}
+                    >
                       Head
                     </Button>
                   </div>

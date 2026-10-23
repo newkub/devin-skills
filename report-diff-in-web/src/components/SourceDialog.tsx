@@ -92,7 +92,7 @@ export default function SourceDialog(props: {
           </Button>
           <Button variant="primary" disabled={!nextSource()} onClick={apply}>
             <Show when={!loading()} fallback={<Spinner class="text-sm" />}>
-              <span class="i-mdi-play text-sm" />
+              <span class="i-mdi-play text-sm" aria-hidden="true" />
             </Show>
             Load diff
           </Button>
@@ -111,8 +111,8 @@ export default function SourceDialog(props: {
         />
 
         <Show when={notice()}>
-          <p class="flex items-center gap-1.5 text-[11px] text-warning">
-            <span class="i-mdi-alert-outline" /> {notice()}
+          <p role="status" aria-live="polite" class="flex items-center gap-1.5 text-[11px] text-warning">
+            <span class="i-mdi-alert-outline" aria-hidden="true" /> {notice()}
           </p>
         </Show>
       </div>

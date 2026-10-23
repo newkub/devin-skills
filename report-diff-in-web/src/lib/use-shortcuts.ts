@@ -4,6 +4,7 @@ export interface ShortcutHandlers {
   openHelp: () => void;
   openOptions: () => void;
   closeOverlays: () => boolean;
+  overlayOpen: () => boolean;
   focusSearch: () => void;
   cycleTheme: () => void;
   toggleSidebar: () => void;
@@ -37,6 +38,7 @@ export function useShortcuts(getHandlers: () => ShortcutHandlers) {
         if (handlers.closeOverlays()) event.preventDefault();
         return;
       }
+      if (handlers.overlayOpen()) return;
       if (key === '?') {
         event.preventDefault();
         handlers.openHelp();

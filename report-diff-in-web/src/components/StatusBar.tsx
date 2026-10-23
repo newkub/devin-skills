@@ -16,15 +16,20 @@ export default function StatusBar(props: {
 
   return (
     <footer class="flex h-7 shrink-0 items-center gap-3 border-t border-border bg-surface px-3 text-[10px] text-muted-foreground">
-      <span class="flex shrink-0 items-center gap-1.5">
-        <span class={`size-1.5 rounded-full ${dot()}`} />
+      <span
+        role="status"
+        aria-live="polite"
+        aria-atomic="true"
+        class="flex shrink-0 items-center gap-1.5"
+      >
+        <span class={`size-1.5 rounded-full ${dot()}`} aria-hidden="true" />
         {props.status.label}
       </span>
       <span class="hidden h-3 w-px bg-border md:block" />
       <button
         type="button"
         onClick={props.onOpenHelp}
-        class="hidden items-center gap-1.5 transition-colors hover:text-foreground md:flex"
+        class="hidden items-center gap-1.5 rounded-sm outline-none transition-colors hover:text-foreground focus-visible:ring-2 focus-visible:ring-focus md:flex"
       >
         <Kbd>?</Kbd> shortcuts
       </button>
@@ -48,9 +53,9 @@ export default function StatusBar(props: {
           href="https://diffs.com"
           target="_blank"
           rel="noreferrer"
-          class="hidden items-center gap-0.5 transition-colors hover:text-foreground sm:flex"
+          class="hidden items-center gap-0.5 rounded-sm outline-none transition-colors hover:text-foreground focus-visible:ring-2 focus-visible:ring-focus sm:flex"
         >
-          @pierre/diffs <span class="i-mdi-open-in-new text-[9px]" />
+          @pierre/diffs <span class="i-mdi-open-in-new text-[9px]" aria-hidden="true" />
         </a>
       </div>
     </footer>

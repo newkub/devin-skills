@@ -1,4 +1,4 @@
-import { Show, createSignal } from 'solid-js';
+import { Show, createSignal, createUniqueId } from 'solid-js';
 import type { DiffResult, DiffSource } from '../types';
 import type { ChecksResult } from '../lib/use-checks';
 import { sourceContext, sourceLabel } from '../lib/source';
@@ -51,6 +51,12 @@ export default function Header(props: {
   onComment: () => void;
 }) {
   const [menuOpen, setMenuOpen] = createSignal(false);
+  const menuId = createUniqueId();
+  let actionsButton: HTMLButtonElement | undefined;
+  const closeMenu = () => {
+    setMenuOpen(false);
+    actionsButton?.focus();
+  };
   const meta = () => props.data?.prMeta ?? null;
   const stats = () =>
     (props.data?.files ?? []).reduce(
@@ -68,7 +74,7 @@ export default function Header(props: {
     return null;
   };
   const run = (action: string, extra?: { method?: string }) => {
-    setMenuOpen(false);
+    closeMenu();
     props.onAction(action, extra);
   };
 
@@ -77,7 +83,7 @@ export default function Header(props: {
       <div class="flex h-14 items-center gap-2 px-3 sm:gap-3 sm:px-4">
         <div class="flex min-w-0 items-center gap-2.5">
           <div class="grid size-8 shrink-0 place-items-center rounded-lg bg-primary text-primary-foreground shadow-sm">
-            <span class="i-mdi-file-compare text-lg" />
+            <span class="i-mdi-file-compare text-lg" aria-hidden="true" />
           </div>
           <div class="hidden leading-tight sm:block">
             <div class="text-sm font-semibold tracking-tight">Diff Studio</div>
@@ -96,6 +102,7 @@ export default function Header(props: {
           class="flex min-w-0 items-center gap-2 rounded-md border border-border bg-background px-2.5 py-1.5 text-xs transition-colors outline-none hover:border-border-hover hover:bg-secondary focus-visible:ring-2 focus-visible:ring-focus"
         >
           <span
+            aria-hidden="true"
             class={`${props.source ? KIND_ICON[props.source.kind] : 'i-mdi-source-commit'} shrink-0 text-sm text-accent`}
           />
           <span class="truncate font-medium">
@@ -104,7 +111,7 @@ export default function Header(props: {
           <span class="hidden max-w-56 truncate text-muted-foreground md:inline">
             {props.source ? sourceContext(props.source) : 'PR · ref · branch · files'}
           </span>
-          <span class="i-mdi-chevron-down shrink-0 text-sm text-muted-foreground" />
+          <span class="i-mdi-chevron-down shrink-0 text-sm text-muted-foreground" aria-hidden="true" />
         </button>
 
         <Show when={props.data && props.data.files.length > 0}>
@@ -119,70 +126,100 @@ export default function Header(props: {
 
         <div class="ml-auto flex items-center gap-0.5">
           <Show when={props.source?.kind === 'pr'}>
-            <div class="relative">
+            <div
+              class="relative"
+              onKeyDown={(event) => {
+                if (event.key === 'Escape' && menuOpen()) {
+                  event.preventDefault();
+                  closeMenu();
+                }
+              }}
+            >
               <Button
+                ref={(element) => (actionsButton = element)}
                 size="sm"
                 onClick={() => setMenuOpen((open) => !open)}
                 title="Pull request actions"
+                ariaLabel="Pull request actions"
+                ariaHasPopup="menu"
+                ariaExpanded={menuOpen()}
+                ariaControls={menuId}
               >
-                <span class="i-mdi-git-pull-request text-sm text-primary" />
+                <span class="i-mdi-git-pull-request text-sm text-primary" aria-hidden="true" />
                 <span class="hidden sm:inline">Actions</span>
-                <span class="i-mdi-chevron-down text-sm text-muted-foreground" />
+                <span class="i-mdi-chevron-down text-sm text-muted-foreground" aria-hidden="true" />
               </Button>
               <Show when={menuOpen()}>
-                <div class="fixed inset-0 z-40" onClick={() => setMenuOpen(false)} />
-                <div class="popover-enter absolute right-0 z-50 mt-1 w-52 rounded-lg border border-border bg-surface p-1 shadow-lg">
+                <div class="fixed inset-0 z-40" aria-hidden="true" onClick={closeMenu} />
+                <div
+                  id={menuId}
+                  role="menu"
+                  aria-label="Pull request actions"
+                  class="popover-enter absolute right-0 z-50 mt-1 w-52 rounded-lg border border-border bg-surface p-1 shadow-lg"
+                >
                   <button
                     type="button"
+                    role="menuitem"
                     disabled={!!props.busy}
                     onClick={() => run('approve')}
                     class="menu-item"
                   >
-                    <span class="i-mdi-check-decagram-outline text-sm text-success" /> Approve
+                    <span class="i-mdi-check-decagram-outline text-sm text-success" aria-hidden="true" /> Approve
                   </button>
                   <button
                     type="button"
+                    role="menuitem"
                     disabled={!!props.busy}
                     onClick={() => run('merge', { method: 'squash' })}
                     class="menu-item"
                   >
-                    <span class="i-mdi-merge text-sm text-primary" /> Squash and merge
+                    <span class="i-mdi-merge text-sm text-primary" aria-hidden="true" /> Squash and merge
                   </button>
                   <button
                     type="button"
+                    role="menuitem"
                     disabled={!!props.busy}
                     onClick={() => run('merge', { method: 'rebase' })}
                     class="menu-item"
                   >
-                    <span class="i-mdi-source-commit text-sm text-accent" /> Rebase and merge
+                    <span class="i-mdi-source-commit text-sm text-accent" aria-hidden="true" /> Rebase and merge
                   </button>
                   <button
                     type="button"
+                    role="menuitem"
                     disabled={!!props.busy}
                     onClick={() => run('merge')}
                     class="menu-item"
                   >
-                    <span class="i-mdi-source-merge text-sm text-muted-foreground" /> Merge commit
+                    <span class="i-mdi-source-merge text-sm text-muted-foreground" aria-hidden="true" /> Merge commit
                   </button>
-                  <div class="my-1 h-px bg-border" />
-                  <button type="button" disabled={!!props.busy} onClick={props.onComment} class="menu-item">
-                    <span class="i-mdi-comment-outline text-sm text-muted-foreground" /> Comment
+                  <div class="my-1 h-px bg-border" role="separator" />
+                  <button
+                    type="button"
+                    role="menuitem"
+                    disabled={!!props.busy}
+                    onClick={props.onComment}
+                    class="menu-item"
+                  >
+                    <span class="i-mdi-comment-outline text-sm text-muted-foreground" aria-hidden="true" /> Comment
                   </button>
                   <button
                     type="button"
+                    role="menuitem"
                     disabled={!!props.busy}
                     onClick={() => run('checkout')}
                     class="menu-item"
                   >
-                    <span class="i-mdi-source-branch text-sm text-muted-foreground" /> Checkout PR
+                    <span class="i-mdi-source-branch text-sm text-muted-foreground" aria-hidden="true" /> Checkout PR
                   </button>
                   <button
                     type="button"
+                    role="menuitem"
                     disabled={!!props.busy}
                     onClick={() => run('close')}
                     class="menu-item text-destructive hover:bg-muted"
                   >
-                    <span class="i-mdi-close-circle-outline text-sm" /> Close pull request
+                    <span class="i-mdi-close-circle-outline text-sm" aria-hidden="true" /> Close pull request
                   </button>
                 </div>
               </Show>
@@ -191,13 +228,17 @@ export default function Header(props: {
 
           <Show when={props.source && props.source.kind !== 'pr'}>
             <Button size="sm" onClick={() => props.onAction('checkout')} title="Checkout this ref">
-              <span class="i-mdi-source-branch text-sm" />
+              <span class="i-mdi-source-branch text-sm" aria-hidden="true" />
               <span class="hidden sm:inline">Checkout</span>
             </Button>
           </Show>
 
           <Show when={props.busy}>
-            <span class="flex items-center gap-1.5 px-2 text-[11px] text-muted-foreground">
+            <span
+              role="status"
+              aria-live="polite"
+              class="flex items-center gap-1.5 px-2 text-[11px] text-muted-foreground"
+            >
               <Spinner class="text-sm" /> {props.busy}
             </span>
           </Show>
@@ -226,7 +267,7 @@ export default function Header(props: {
           <Show when={checksView(props.checks)}>
             {(view) => (
               <span class={`hidden shrink-0 items-center gap-1 md:flex ${view().tone}`}>
-                <span class={`${view().icon} text-sm`} />
+                <span class={`${view().icon} text-sm`} aria-hidden="true" />
                 {view().text}
               </span>
             )}
@@ -237,9 +278,9 @@ export default function Header(props: {
                 href={url()}
                 target="_blank"
                 rel="noreferrer"
-                class="ml-auto flex shrink-0 items-center gap-1 rounded-sm text-[11px] font-medium text-accent transition-colors hover:text-accent-hover"
+                class="ml-auto flex shrink-0 items-center gap-1 rounded-sm text-[11px] font-medium text-accent transition-colors outline-none hover:text-accent-hover focus-visible:ring-2 focus-visible:ring-focus"
               >
-                Open on GitHub <span class="i-mdi-open-in-new text-xs" />
+                Open on GitHub <span class="i-mdi-open-in-new text-xs" aria-hidden="true" />
               </a>
             )}
           </Show>

@@ -52,7 +52,7 @@ function RefGroup(props: { label: string; icon: string; children: JSX.Element })
   return (
     <div class="border-b border-border last:border-b-0">
       <div class="flex items-center gap-1.5 bg-muted px-2.5 py-1 text-[10px] font-medium tracking-wide text-muted-foreground uppercase">
-        <span class={`${props.icon} text-xs`} /> {props.label}
+        <span class={`${props.icon} text-xs`} aria-hidden="true" /> {props.label}
       </div>
       <div class="flex flex-wrap gap-1 p-2">{props.children}</div>
     </div>
@@ -64,7 +64,8 @@ function RefChip(props: { value: string; label?: string; onPick: (value: string)
     <button
       type="button"
       onClick={() => props.onPick(props.value)}
-      class="max-w-full truncate rounded-sm border border-border bg-surface px-1.5 py-0.5 font-mono text-[10px] text-secondary-foreground transition-colors hover:border-border-hover hover:bg-secondary"
+      aria-label={`Use ${props.label ?? props.value} as the diff ref`}
+      class="max-w-full truncate rounded-sm border border-border bg-surface px-1.5 py-0.5 font-mono text-[10px] text-secondary-foreground transition-colors outline-none hover:border-border-hover hover:bg-secondary focus-visible:ring-2 focus-visible:ring-focus"
       title={props.value}
     >
       {props.label ?? props.value}

@@ -24,7 +24,7 @@ export default function ConfirmDialog(props: {
             Cancel
           </Button>
           <Button variant={props.danger ? 'danger' : 'primary'} disabled={props.busy} onClick={props.onConfirm}>
-            <Show when={props.busy} fallback={<span class="i-mdi-check text-sm" />}>
+            <Show when={props.busy} fallback={<span class="i-mdi-check text-sm" aria-hidden="true" />}>
               <Spinner class="text-sm" />
             </Show>
             {props.confirmLabel}
@@ -34,6 +34,7 @@ export default function ConfirmDialog(props: {
     >
       <div class="flex items-start gap-3">
         <span
+          aria-hidden="true"
           class={`mt-0.5 shrink-0 text-lg ${
             props.danger ? 'i-mdi-alert-outline text-destructive' : 'i-mdi-help-circle-outline text-warning'
           }`}

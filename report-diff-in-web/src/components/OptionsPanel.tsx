@@ -1,4 +1,4 @@
-import { For, Show, type JSX } from 'solid-js';
+import { For, Show, createUniqueId, type JSX } from 'solid-js';
 import { THEME_PAIRS, type ViewerOptions } from '../lib/options';
 import type {
   DiffIndicators,
@@ -10,6 +10,7 @@ import type {
   ThemePair,
 } from '../types';
 import { Button, IconButton, Segmented, Select, SwitchRow } from './ui';
+import { useDialogFocus } from './ui-layout';
 
 const SWATCHES: Record<ThemePair, { dark: string; light: string }> = {
   pierre: { dark: '#171717', light: '#f6f4f0' },
@@ -20,10 +21,11 @@ const SWATCHES: Record<ThemePair, { dark: string; light: string }> = {
 };
 
 function Section(props: { title: string; hint?: string; children: JSX.Element }) {
+  const id = createUniqueId();
   return (
-    <section class="space-y-2.5 border-b border-border px-4 py-4 last:border-b-0">
+    <section aria-labelledby={id} class="space-y-2.5 border-b border-border px-4 py-4 last:border-b-0">
       <div class="flex items-baseline justify-between gap-2">
-        <h3 class="text-[10px] font-semibold tracking-[0.16em] text-muted-foreground uppercase">
+        <h3 id={id} class="text-[10px] font-semibold tracking-[0.16em] text-muted-foreground uppercase">
           {props.title}
         </h3>
         <Show when={props.hint}>
@@ -42,17 +44,35 @@ export default function OptionsPanel(props: {
   reset: () => void;
   close: () => void;
 }) {
+  let panel: HTMLElement | undefined;
+  const titleId = createUniqueId();
+  const descriptionId = createUniqueId();
+  const onKeyDown = useDialogFocus({
+    open: () => props.open,
+    container: () => panel,
+    onClose: props.close,
+  });
+
   return (
     <Show when={props.open}>
       <div class="fixed inset-0 z-40">
-        <div class="sheet-overlay absolute inset-0 fade-in" onClick={props.close} />
-        <aside class="slide-in absolute top-0 right-0 flex h-full w-80 max-w-[92vw] flex-col border-l border-border bg-surface shadow-lg">
+        <div class="sheet-overlay absolute inset-0 fade-in" onClick={props.close} aria-hidden="true" />
+        <aside
+          ref={panel}
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby={titleId}
+          aria-describedby={descriptionId}
+          tabindex="-1"
+          onKeyDown={onKeyDown}
+          class="slide-in absolute top-0 right-0 flex h-full w-80 max-w-[92vw] flex-col border-l border-border bg-surface shadow-lg outline-none"
+        >
           <header class="flex shrink-0 items-center justify-between border-b border-border px-4 py-3">
             <div class="flex items-center gap-2">
-              <span class="i-mdi-tune-variant text-base text-accent" />
+              <span class="i-mdi-tune-variant text-base text-accent" aria-hidden="true" />
               <div>
-                <h2 class="text-sm font-semibold tracking-tight">Viewer options</h2>
-                <p class="text-[10px] text-muted-foreground">Saved automatically to this browser</p>
+                <h2 id={titleId} class="text-sm font-semibold tracking-tight">Viewer options</h2>
+                <p id={descriptionId} class="text-[10px] text-muted-foreground">Saved automatically to this browser</p>
               </div>
             </div>
             <IconButton icon="i-mdi-close" label="Close options" onClick={props.close} />
@@ -62,6 +82,7 @@ export default function OptionsPanel(props: {
             <Section title="Appearance">
               <Segmented
                 value={props.options.themeMode}
+                label="Theme mode"
                 onChange={(value) => props.update({ themeMode: value })}
                 options={[
                   { value: 'system' as ThemeMode, label: 'System', icon: 'i-mdi-monitor' },
@@ -74,14 +95,18 @@ export default function OptionsPanel(props: {
                   {([key, pair]) => (
                     <button
                       type="button"
+                      aria-pressed={props.options.themePair === key}
                       onClick={() => props.update({ themePair: key as ThemePair })}
-                      class={`flex items-center gap-2 rounded-md border px-2 py-1.5 text-left text-[11px] transition-colors ${
+                      class={`flex items-center gap-2 rounded-md border px-2 py-1.5 text-left text-[11px] transition-colors outline-none focus-visible:ring-2 focus-visible:ring-focus ${
                         props.options.themePair === key
                           ? 'border-accent bg-muted text-foreground'
                           : 'border-border text-muted-foreground hover:border-border-hover hover:text-foreground'
                       }`}
                     >
-                      <span class="flex shrink-0 overflow-hidden rounded-sm border border-border">
+                      <span
+                        class="flex shrink-0 overflow-hidden rounded-sm border border-border"
+                        aria-hidden="true"
+                      >
                         <span
                           class="size-3"
                           style={{ background: SWATCHES[key as ThemePair].light }}
@@ -93,7 +118,7 @@ export default function OptionsPanel(props: {
                       </span>
                       <span class="truncate font-medium">{pair.label}</span>
                       <Show when={props.options.themePair === key}>
-                        <span class="i-mdi-check ml-auto text-sm text-accent" />
+                        <span class="i-mdi-check ml-auto text-sm text-accent" aria-hidden="true" />
                       </Show>
                     </button>
                   )}
@@ -104,6 +129,7 @@ export default function OptionsPanel(props: {
             <Section title="Layout">
               <Segmented
                 value={props.options.layout}
+                label="Layout"
                 onChange={(value) => props.update({ layout: value })}
                 options={[
                   { value: 'all' as Layout, label: 'All files', icon: 'i-mdi-view-agenda-outline' },
@@ -153,6 +179,7 @@ export default function OptionsPanel(props: {
             <Section title="Diff">
               <Segmented
                 value={props.options.diffStyle}
+                label="Diff layout"
                 onChange={(value) => props.update({ diffStyle: value })}
                 options={[
                   { value: 'split' as DiffStyle, label: 'Split', icon: 'i-mdi-view-column-outline' },
@@ -216,7 +243,7 @@ export default function OptionsPanel(props: {
           <footer class="flex shrink-0 items-center justify-between gap-2 border-t border-border bg-surface-elevated px-4 py-3">
             <span class="text-[10px] text-muted-foreground">@pierre/diffs · diffs.com</span>
             <Button size="sm" onClick={props.reset}>
-              <span class="i-mdi-restore text-sm" /> Reset
+              <span class="i-mdi-restore text-sm" aria-hidden="true" /> Reset
             </Button>
           </footer>
         </aside>
