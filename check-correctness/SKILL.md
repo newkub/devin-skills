@@ -44,7 +44,7 @@ Use for any correctness question when the artifact type is not yet decided, or w
 | Structure/metrics | SRP, size, cohesion against the repo rules | `/check-code-structure`, `/run-check` |
 | Secrets/env | present, non-leaked, sourced correctly | `/check-secrets` |
 
-- Not a correctness question → route elsewhere directly: strategy/quality → `/deep-review`, validation gate before applying → `/deep-validate`, "not implemented yet" inventory → `/report-not-implement`
+- Not a correctness question → route elsewhere directly: strategy/quality → `/deep-review`, validation gate before applying → `/deep-validate`, "not implemented yet" inventory → `/review-implement-to-production`
 - Check only — this skill never edits; every fix goes to the owner skill (`## Rules ### 3`)
 - No owner covers the artifact → run the generic method inline (`### 2` last bullet)
 
