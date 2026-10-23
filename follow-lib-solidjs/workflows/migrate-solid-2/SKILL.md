@@ -21,6 +21,8 @@ major version upgrade — do it when the project is on `solid-js` 1.x and needs 
 
 ### 1. Check Current State
 
+> Goal: Check Current State.
+
 ```bash
 bun pm ls solid-js            # or npm ls solid-js
 ```
@@ -42,12 +44,16 @@ rg "createEffect|createMemo|createResource|createStore|produce|reconcile|createC
 
 ### 3. Upgrade Incrementally
 
+> Goal: Upgrade Incrementally.
+
 1. `bun add solid-js@<target>` — RC: pin the exact version, no caret
 2. Upgrade the ecosystem packages together (router/meta/testing-library — peer deps must match)
 3. Apply breaking changes per the guide — do one primitive family at a time, fix errors group by group
 4. `bun check` after each batch — type errors reveal missed API changes
 
 ### 4. Verify
+
+> Goal: Verify.
 
 1. `bun check` clean
 2. `/run-test` — component + store tests all pass

@@ -25,6 +25,7 @@ Install and use Stripe for a product, covering pricing, checkout, subscriptions,
 - Create `/pricing`, `/user/billing`, `/dashboard` pages
 - Handle customer portal and webhook events
 - Use Stripe test mode before switching to live
+- References: [Package manifest](references/package-manifest.md)
 
 ## Execute
 

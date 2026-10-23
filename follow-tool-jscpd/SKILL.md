@@ -19,6 +19,7 @@ Used for detecting and analyzing code duplication — it does not cover the refa
 
 - Latest: `jscpd@5.3.2` (verified 2026-09-24)
 - References: [cli](references/cli.md) | [apis](references/apis.md) | best-practices/ 
+- References: [jscpd — Best Practices](best-practices/jscpd.md)
 ## Execute
 
 ### 1. Setup Configuration

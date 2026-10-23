@@ -19,6 +19,7 @@ Select and execute the report format that fits the context
 Used for reporting results in chat; `/report` dispatches to `report-table` or `report-numbered` based on the data type
 
 - Merged capability from the original skills that were moved into workflows
+- References: [Format ansi](references/format-ansi.md), [Format codeblock](references/format-codeblock.md), [Format numbered bullet](references/format-numbered-bullet.md)
 
 ## Execute
 

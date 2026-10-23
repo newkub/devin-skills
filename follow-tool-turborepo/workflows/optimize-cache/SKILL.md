@@ -1,5 +1,5 @@
 ---
-name: follow-tool-turborepo-optimize cache
+name: follow-tool-turborepo-optimize-cache
 description: Tune Turborepo cache, remote cache, filtering and affected runs to be faster
 argument-hint: "[scope]"
 related:

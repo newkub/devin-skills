@@ -4,8 +4,8 @@ description: Generate ideas and a draft to convert installed CLI tools into Devi
 argument-hint: "[cli-name]"
 related:
   - check-my-global-cli
-  - update-devin-global-skills
-  - create-plan-in-dot-devin
+  - update-agents-skills-global
+  - create-plan-in-dot-agents
   - learn
   - delete
   - report
@@ -23,7 +23,7 @@ Use after `/check-my-global-cli` or when you want to convert any CLI into skills
 
 - Survey the commands of installed CLI tools
 - Assess which commands should become skills
-- Write a draft skill per `/update-devin-global-skills`
+- Write a draft skill per `/update-agents-skills-global`
 - Support a single CLI, multiple tools, and a global CLI set
 
 ## Execute
@@ -34,7 +34,7 @@ Use after `/check-my-global-cli` or when you want to convert any CLI into skills
 
 1. Look at the list from `/check-my-global-cli` or ask the user
 2. If there's no report, run `/check-my-global-cli` to list what's installed
-3. Select 1-3 tools per round — if more, run `/create-plan-in-dot-devin`
+3. Select 1-3 tools per round — if more, run `/create-plan-in-dot-agents`
 4. Check version, installation path, and global availability
 
 ### 2. Explore Commands
@@ -75,7 +75,7 @@ Use after `/check-my-global-cli` or when you want to convert any CLI into skills
 
 > Goal: Write a draft skill for the selected candidates
 
-1. Use `/update-devin-global-skills` for each skill
+1. Use `/update-agents-skills-global` for each skill
 2. In the draft, specify:
    - a meaningful `name`
    - `description` ≤100 characters
@@ -90,7 +90,7 @@ Use after `/check-my-global-cli` or when you want to convert any CLI into skills
 
 1. Run `/deep-validate` to check frontmatter, references, and various conditions
 2. Check that there are no duplicate skill names with `grep`
-3. If the draft passes → run `/update-devin-global-skills` to commit or save the skills
+3. If the draft passes → run `/update-agents-skills-global` to commit or save the skills
 4. If it needs adjusting → run `/check-my-global-cli` again or `/learn` (cli)
 5. If there is a follow-up action from the previous idea → use `/follow-your-suggestion`
 6. If there are no candidates → run `/suggest-next-action`

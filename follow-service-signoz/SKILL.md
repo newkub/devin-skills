@@ -22,6 +22,7 @@ Add observability to Bun/Node/TypeScript apps with SigNoz via OpenTelemetry — 
 - Use OpenTelemetry auto-instrumentation for Node.js and Bun
 - Send traces, logs, and metrics with alerts and dashboards configured
 - Does not cover infrastructure monitoring outside this scope such as Kubernetes operators
+- References: [Apis](references/apis.md), [Package manifest](references/package-manifest.md), [Routes](references/routes.md), [Signoz opentelemetry](references/signoz-opentelemetry.md), [Website](references/website.md)
 
 ## Execute
 
@@ -43,7 +44,7 @@ Determine what kind of backend the project is and which runtime it uses.
 2. Decide whether to use `SigNoz Cloud` or `self-hosted`
 3. For `self-hosted`, use `webfetch` to read `https://signoz.io/docs/install/docker/`
 4. Install SigNoz self-hosted via Foundry:
-   - Run `curl -fsSL https://signoz.io/foundry.sh | bash`
+   - Run `curl -fsSL https://signoz.io/foundry.sh -o /tmp/signoz-foundry.sh && bash /tmp/signoz-foundry.sh`
    - Create `casting.yaml` with `flavor: compose` and `mode: docker`
    - Run `foundryctl cast -f casting.yaml`
 5. Identify the correct endpoint, e.g. `http://localhost:4318` for self-hosted or `https://ingest.<region>.signoz.cloud:443` for cloud

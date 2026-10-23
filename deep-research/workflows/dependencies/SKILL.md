@@ -13,7 +13,7 @@ related:
 
 ## Goal
 
-Research dependencies or libraries suitable for the project — analyze the manifest, compare alternatives, find fast/modern deps (merged `/research-dependencies`)
+Research dependencies or libraries suitable for the project — analyze the manifest, compare alternatives, find fast/modern deps
 
 ## Scope
 

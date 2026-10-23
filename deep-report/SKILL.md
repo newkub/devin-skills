@@ -7,9 +7,9 @@ related:
   - deep-review
   - deep-analyze
   - deep-research
-  - report-html
+  - report-in-html
   - report
-  - create-report-in-dot-devin
+  - create-report-to-dot-agents
   - suggest-next-action
   - update-agents-md
   - open-web
@@ -18,7 +18,7 @@ related:
 
 ## Goal
 
-Produce one interactive HTML deep report from `/deep-review` and `/deep-analyze` findings — a 7-column evidence-backed findings table plus the 4-part summary — rendered through `/report-html`, never a chat table
+Produce one interactive HTML deep report from `/deep-review` and `/deep-analyze` findings — a 7-column evidence-backed findings table plus the 4-part summary — rendered through `/report-in-html`, never a chat table
 
 ## Scope
 
@@ -27,7 +27,7 @@ Use when the user asks for a deep report of a reviewed or analyzed scope; the de
 | Need | Owner |
 |------|-------|
 | Chat table only | `/report` |
-| JSON or markdown artifact | `/create-report-in-dot-devin` |
+| JSON or markdown artifact | `/create-report-to-dot-agents` |
 | Deep report in the browser | `/deep-report` |
 
 ## Execute
@@ -86,7 +86,7 @@ Use when the user asks for a deep report of a reviewed or analyzed scope; the de
 
 ### 6. Prepare Report Data
 
-> Goal: one data array `/report-html` can render without reshaping
+> Goal: one data array `/report-in-html` can render without reshaping
 
 1. Turn every row of Step 4 into an object with a unique `id`, the 7 columns, `group` = Review Workflow, and `searchText` covering every visible field
 2. Attach the per-row dropdown detail in full: `Cause`, `Solutions`, `Evidence`, plus a sketch or plan block when the finding has one
@@ -96,12 +96,12 @@ Use when the user asks for a deep report of a reviewed or analyzed scope; the de
 
 ### 7. Render With Report HTML
 
-> Goal: a single interactive HTML file, built by `/report-html`
+> Goal: a single interactive HTML file, built by `/report-in-html`
 
-1. Dispatch `/report-html` with the Step 6 data and require these sections: Key Findings, findings table with sort/filter/group/search, the 4-part summary, Next Action
-2. Follow `/report-html` for the shell — Tailwind + Vue CDN, theme toggle, sticky tabs, sticky table header, per-row dropdown, print CSS, empty state, `prefers-reduced-motion`
+1. Dispatch `/report-in-html` with the Step 6 data and require these sections: Key Findings, findings table with sort/filter/group/search, the 4-part summary, Next Action
+2. Follow `/report-in-html` for the shell — Tailwind + Vue CDN, theme toggle, sticky tabs, sticky table header, per-row dropdown, print CSS, empty state, `prefers-reduced-motion`
 3. Save as `.devin/reports/deep-report-<scope>-<yyyy-mm-dd>.html`; use `reports/<name>.html` only when the project has no `.devin/` convention
-4. Never ship a chat table or a JSON artifact as the deliverable — those belong to `/report` and `/create-report-in-dot-devin`
+4. Never ship a chat table or a JSON artifact as the deliverable — those belong to `/report` and `/create-report-to-dot-agents`
 
 ### 8. Verify And Open
 
@@ -126,8 +126,8 @@ Use when the user asks for a deep report of a reviewed or analyzed scope; the de
 
 ### 1. Output Contract
 
-- The only deliverable is one self-contained HTML file built through `/report-html`
-- Chat table → `/report`; JSON or markdown artifact → `/create-report-in-dot-devin`; never produce two deliverable formats for one request
+- The only deliverable is one self-contained HTML file built through `/report-in-html`
+- Chat table → `/report`; JSON or markdown artifact → `/create-report-to-dot-agents`; never produce two deliverable formats for one request
 - Key Findings sit on top of the HTML, the table follows, the 4-part summary and Next Action close it
 
 ### 2. Table Columns
@@ -188,7 +188,7 @@ The deep-report table has 7 columns in order:
 
 ## Expected Outcome
 
-- One `.devin/reports/deep-report-*.html` (or `reports/`) rendered through `/report-html`
+- One `.devin/reports/deep-report-*.html` (or `reports/`) rendered through `/report-in-html`
 - A 7-column findings table with verifiable evidence, grouped by review workflow and sorted by severity
 - 4-part summary: Domain Breakdown, Severity Distribution, False Positive Analysis, Recommended Actions
 - Every finding has root cause analysis and actionable solutions

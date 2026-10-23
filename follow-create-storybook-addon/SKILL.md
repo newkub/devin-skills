@@ -17,7 +17,7 @@ Build Storybook addons following the official architecture — manager API (pane
 
 For projects that need a new Storybook addon, or to turn an existing feature into an addon
 
-- Package: `storybook` + addon APIs (`storybook/manager-api`, `preview-api`, `theming`) — always confirm the latest version and migration guide with `/deep-research` + `/follow-best-practice` (not pinned in this file — per `/update-devin-global-skills`)
+- Package: `storybook` + addon APIs (`storybook/manager-api`, `preview-api`, `theming`) — always confirm the latest version and migration guide with `/deep-research` + `/follow-best-practice` (not pinned in this file — per `/update-agents-skills-global`)
 - Storybook 9 uses imports from `storybook/manager-api`, `storybook/theming`, `storybook/internal/components` — do `not use` `@storybook/addons`, `@storybook/api` (deprecated)
 - `@storybook/addon-kit` has been archived — scaffold manually following the structure below
 
@@ -102,7 +102,7 @@ src/
 }
 ```
 
-2. Build with `tsup` (entries per the bundler field) — `tsup src/index.ts src/manager.ts src/preview.ts src/preset.ts --format esm,cjs --dts`
+2. Build with `tsdown` (entries per the bundler field) — `tsdown src/index.ts src/manager.ts src/preview.ts src/preset.ts --format esm,cjs --dts`
 3. `storybook` must be a `devDependency`/`peerDependency` — never bundle storybook packages into dist
 
 ### 7. Test Locally

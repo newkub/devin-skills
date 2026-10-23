@@ -64,7 +64,7 @@ Use before a redesign ships, after a component-system change, or when a complian
 
 1. Order: keyboard traps and unreachable actions → missing names, labels, and error associations → contrast and focus visibility in both themes → motion and reduced-motion → responsive and touch-target issues → best-practice polish
 2. Cross-reference: one component fixed at the source closes every view that renders it — prefer the shared fix over per-page patches
-3. Large or cross-workspace set → `/create-plan-in-dot-devin`; without `then-fix` stop here with the ordered table
+3. Large or cross-workspace set → `/create-plan-in-dot-agents`; without `then-fix` stop here with the ordered table
 
 ### 5. Fix Through The Owners
 

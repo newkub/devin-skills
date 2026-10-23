@@ -19,7 +19,7 @@ Create an Elysia plugin package with TypeScript/Bun that can be `.use()`-ed in a
 
 Use for creating a reusable Elysia plugin for the Bun/Node runtime, supporting typed context, lifecycle hooks, prefix, scope, and package build
 
-- Always confirm the latest `elysia` version with `/deep-research` + `/follow-best-practice` (don't pin it in files — per `/update-devin-global-skills`) — peerDeps must include `typescript >=5` and `@sinclair/typebox`
+- Always confirm the latest `elysia` version with `/deep-research` + `/follow-best-practice` (don't pin it in files — per `/update-agents-skills-global`) — peerDeps must include `typescript >=5` and `@sinclair/typebox`
 
 ## Execute
 
@@ -62,7 +62,7 @@ Use for creating a reusable Elysia plugin for the Bun/Node runtime, supporting t
 
 > Goal: build for npm
 
-1. Install `tsup` or `bun build`
+1. Install `tsdown` or `bun build`
 2. Set the output to `cjs` and `esm`
 3. Mark `elysia` as external in `package.json`
 4. Declare `types`, `main`, `exports` in `package.json`

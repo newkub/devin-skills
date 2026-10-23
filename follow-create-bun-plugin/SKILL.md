@@ -18,7 +18,7 @@ Build Bun plugins with the `Bun.plugin` API, supporting both runtime and bundler
 
 For building plugins for the Bun runtime and the `bun build` bundler in TypeScript, covering `Bun.plugin`, namespaces, filters, loaders, build, and tests
 
-- Packages: `bun`, `bun-types` — always confirm the latest versions with `/deep-research` + `/follow-best-practice` (never pinned in this file — per `/update-devin-global-skills`)
+- Packages: `bun`, `bun-types` — always confirm the latest versions with `/deep-research` + `/follow-best-practice` (never pinned in this file — per `/update-agents-skills-global`)
 
 ## Execute
 

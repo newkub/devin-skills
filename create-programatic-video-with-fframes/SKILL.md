@@ -35,7 +35,7 @@ Create, edit, review, and render videos from code with [fframes](https://github.
 
 > Goal: a new project that renders immediately
 
-1. Run `cargo install --locked cargo-fframes`, then `cargo fframes new my-video --format landscape --fps 30 --yes` (or `curl -fsSL https://raw.githubusercontent.com/dmtrKovalenko/fframes/main/scripts/new-video.sh | bash -s -- my-video --yes`)
+1. Run `cargo install --locked cargo-fframes`, then `cargo fframes new my-video --format landscape --fps 30 --yes` (or `curl -fsSL https://raw.githubusercontent.com/dmtrKovalenko/fframes/main/scripts/new-video.sh -o /tmp/fframes-new-video.sh && bash /tmp/fframes-new-video.sh my-video --yes`)
 2. Options: `--template single-scene|multi-scene` (multi-scene accepts only `landscape|uhd`), `--format landscape|portrait|square|uhd`, `--fps`, `--title`, `--backend`, `--dir`, `--git` (uses the repo main) — always pass `--yes`
 3. Use the Skia GPU backend (default — Metal on macOS, Vulkan on Linux/Windows); it is ~10x faster than CPU and has a `preview` window; use `--backend cpu` only when there is no GPU (no preview)
 4. Start `cargo build --release` in the background immediately (the first build is slow — macOS/Linux download prebuilt Skia+ffmpeg in ~1 minute; other targets, or `metal`+`vulkan` together, compile Skia from source in ~20 minutes)

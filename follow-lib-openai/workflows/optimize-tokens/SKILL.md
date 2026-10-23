@@ -1,5 +1,5 @@
 ---
-name: follow-lib-openai-optimize tokens
+name: follow-lib-openai-optimize-tokens
 description: Reduce token usage and cost — prompt sizing, caching, model selection
 argument-hint: "[scope]"
 related:

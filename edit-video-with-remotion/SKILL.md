@@ -27,6 +27,7 @@ Use for:
 - Rendering via Remotion CLI or cloud services
 
 See also: /follow-lib-remotion, /deep-review, /gen-subtitle-video
+- References: [Remotion Packages](references/packages.md)
 
 ## Execute
 

@@ -21,7 +21,8 @@
 | `bun check` | typecheck (Bun strips types at runtime, never checks them) — same errors as `tsc`, parallel across all CPU cores; `-p <path>` per project, `-b` follows references like `tsc -b` (a `composite` project checks without building first), `--threads N`, `--all`, compiler flags pass through; no `--watch` and no incremental cache (whole project re-checked each run, no `.tsbuildinfo` even with `incremental`) — watch with `bun run --watch typecheck` | built in (Bun ≥ 1.4) |
 | `bun test --check` | typecheck the test files and everything they import before any test runs; needs `bun add -d @types/bun` or else `bun:test` fails to resolve | built in |
 | `tsc --noEmit` | fallback typecheck when `bun check` is unavailable (older Bun, or CI pinned to `typescript`) | `bun add -d typescript bun-types` |
-| `biome` | lint + format default (ESLint per project when required) | `bun add -d @biomejs/biome` |
-| `bunfig.toml` | single toolchain config (`[install]`, `[test]`, `[build]`) — overrides only | project file |
+| `bun fmt` | format default — built-in Prettier-compatible formatter (JS/TS/JSX, CSS/SCSS/Less, HTML/Vue/Svelte/Angular, JSON/YAML/TOML, Markdown/MDX, GraphQL, Handlebars); reads `.prettierignore`/`.editorconfig`/`bunfig.toml [fmt]` (never `.prettierrc`); `--check`, `--staged`, `--changed`, `--no-script` | built in |
+| `biome` | lint default + assist (ESLint per project when required); always lint separately — `bun fmt` never lints | `bun add -d @biomejs/biome` |
+| `bunfig.toml` | single toolchain config (`[install]`, `[test]`, `[fmt]`, `[build]`) — overrides only | project file |
 | `happy-dom` / `jsdom` | DOM environment for `bun test` via `[test] preload` | `bun add -d happy-dom` |
 | `bunup` | library bundling for publishing (not raw `bun build`) | see `/follow-tool-bunup` |

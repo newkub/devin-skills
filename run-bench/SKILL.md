@@ -5,8 +5,6 @@ argument-hint: "[scope]"
 related:
   - deep-review
   - run-install
-
-  - deep-review
   - report
 ---
 
@@ -17,6 +15,7 @@ Run benchmark tests to measure code performance and compare performance between 
 ## Scope
 
 Use for measuring function performance, comparing different implementations, detecting performance regressions, and optimizing code based on benchmark results
+- References: [Time Complexity](references/time-complexity.md)
 
 ## Execute
 

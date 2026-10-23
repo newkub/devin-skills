@@ -18,6 +18,7 @@ Use with any project that needs unused-code analysis — supports both single pr
 
 - Latest: `knip@6.38.0` (verified 2026-09-24) — v6 uses `oxc-parser`/`oxc-resolver` (2-4x faster) and requires Node `^20.19.0 | >=22.12.0` or Bun
 - References: [cli](references/cli.md) | [apis](references/apis.md) 
+- References: [Knip — Best Practices](best-practices/knip.md)
 ## Execute
 
 ### 1. Install And Create Config

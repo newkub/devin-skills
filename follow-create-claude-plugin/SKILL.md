@@ -4,7 +4,7 @@ description: Build a Claude Code plugin with manifest, skills, agents, hooks, an
 argument-hint: "[scope]"
 related:
   - follow-create-sdk
-  - update-devin-global-skills
+  - update-agents-skills-global
   - ask-me
   - follow-harness-engineering
   - deep-review
@@ -19,7 +19,7 @@ Build a Claude Code plugin that can be installed and used with Claude Code, with
 
 For building a Claude Code plugin from scratch to extend Claude with custom skills, agents, hooks, MCP servers, or slash commands
 
-- Supported components: skills, agents, hooks, commands, MCP (`.mcp.json`), LSP (`.lsp.json`), monitors (`monitors/monitors.json`), `bin/`, `settings.json` — always confirm the latest schema/docs with `/deep-research` + `/follow-best-practice` (never pinned in this file — per `/update-devin-global-skills`)
+- Supported components: skills, agents, hooks, commands, MCP (`.mcp.json`), LSP (`.lsp.json`), monitors (`monitors/monitors.json`), `bin/`, `settings.json` — always confirm the latest schema/docs with `/deep-research` + `/follow-best-practice` (never pinned in this file — per `/update-agents-skills-global`)
 
 ## Execute
 
@@ -62,7 +62,7 @@ For building a Claude Code plugin from scratch to extend Claude with custom skil
 
 > Goal: Build each component per convention
 
-1. For `skills/`: create `skills/<name>/SKILL.md` as a sub-unit per `/update-devin-global-skills` (use `$ARGUMENTS` to receive input)
+1. For `skills/`: create `skills/<name>/SKILL.md` as a sub-unit per `/update-agents-skills-global` (use `$ARGUMENTS` to receive input)
 2. For `agents/`: create `.md` agent definitions per the `/update-devin-global-subagents` standard
 3. For `hooks/`: create `hooks.json` and handler scripts per hook types (pre/post tool use, stop, etc.)
 4. For `commands/`: create `.md` files with frontmatter and instructions
@@ -97,7 +97,7 @@ For building a Claude Code plugin from scratch to extend Claude with custom skil
 - Never hardcode secrets or credentials in plugin files
 - Use environment variables for API keys and sensitive paths
 - Create only the directories actually used
-- Follow the `SKILL.md` format in `/update-devin-global-skills`
+- Follow the `SKILL.md` format in `/update-agents-skills-global`
 
 - Use /follow-create-sdk if needed
 - Use /search-skills if needed
@@ -113,6 +113,6 @@ For building a Claude Code plugin from scratch to extend Claude with custom skil
 ## Guide
 
 - `/deep-research` + `/follow-best-practice` — latest official docs/schema (never pinned in this file)
-- `/update-devin-global-skills` — SKILL.md format
+- `/update-agents-skills-global` — SKILL.md format
 - `/update-devin-global-subagents` — AGENT.md format
 - `/follow-harness-engineering` — hooks, agents, lifecycle

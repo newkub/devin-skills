@@ -1,5 +1,5 @@
 ---
-name: follow-lib-iconify-optimize icons
+name: follow-lib-iconify-optimize-icons
 description: Optimize Iconify — offline bundles, on-demand loading, subsetting
 argument-hint: "[scope]"
 related:

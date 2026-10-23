@@ -17,6 +17,7 @@ Use the TanStack CLI to scaffold, extend, and inspect TanStack Start/Router proj
 For creating a TanStack app or composing add-ons into one — not for wiring a single library into an existing non-TanStack project (use the per-library `setup-*` workflows instead)
 
 - part of TanStack ecosystem — selection/dispatch lives in `/follow-lib-tanstack-ecosystem`
+- References: [TanStack CLI — Best Practices](best-practices/tanstack-cli.md), [apis](references/apis.md), [cli](references/cli.md)
 
 ## Execute
 

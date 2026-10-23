@@ -3,7 +3,7 @@ name: follow-tool-opencode
 description: "Operate OpenCode: TUI, run mode, providers, agents, skills, MCP, plugins, config, server"
 argument-hint: "[scope]"
 related:
-  - follow-tool-devin-cli
+  - use-devin-cli
   - follow-tool-qoder-cli
   - update-devin
   - use-mcp
@@ -33,11 +33,12 @@ Use for:
 - Connecting MCP servers, installing plugins, loading skills
 - Headless server use: `opencode serve`, `opencode web`, `opencode pair`, `opencode attach`, GitHub agent
 
-Boundary: using OpenCode only — maintaining this machine's Devin skills/config stays with `/update-devin` and `/follow-devin-global-skills`; comparable terminal agents → `/follow-tool-devin-cli`, `/follow-tool-qoder-cli`.
+Boundary: using OpenCode only — maintaining this machine's Devin skills/config stays with `/update-devin` and `/follow-devin-global-skills`; comparable terminal agents → `/use-devin-cli`, `/follow-tool-qoder-cli`.
 
 - Docs: https://opencode.ai/v2/docs/ (v1: https://opencode.ai/docs/) — live-check via `/deep-research` before use (`/follow-up-to-date`)
 - References: [apis](references/apis.md) | [cli](references/cli.md)
 - See best-practices/ for recommended patterns and pitfalls
+- References: [OpenCode Best Practices](best-practices/opencode.md)
 
 ## Execute
 
@@ -46,7 +47,7 @@ Boundary: using OpenCode only — maintaining this machine's Devin skills/config
 > Goal: the right OpenCode version is installed for this machine
 
 1. Run `opencode --version` — `1.x` is the v1 stable line; v2 docs describe the `@opencode/cli` v2 channel; confirm the command surface with `opencode --help`
-2. If missing → v2: `curl -fsSL https://opencode.ai/v2/install | bash`, `npm install -g @opencode/cli` (postinstall picks the native binary — with bun use `bun install -g --trust @opencode/cli`, with pnpm `pnpm add -g --allow-build=@opencode/cli @opencode/cli`), `brew install anomalyco/tap/opencode-v2`, or `mise use -g opencode` (mise ≥ 2026.10.9 — older mise installs v1); Windows package managers unsupported — use the curl script, npm, or the platform zip binaries
+2. If missing → v2: `curl -fsSL https://opencode.ai/v2/install -o /tmp/opencode-install.sh && bash /tmp/opencode-install.sh`, `npm install -g @opencode/cli` (postinstall picks the native binary — with bun use `bun install -g --trust @opencode/cli`, with pnpm `pnpm add -g --allow-build=@opencode/cli @opencode/cli`), `brew install anomalyco/tap/opencode-v2`, or `mise use -g opencode` (mise ≥ 2026.10.9 — older mise installs v1); Windows package managers unsupported — use the curl script, npm, or the platform zip binaries
 3. Upgrade with `opencode upgrade [target]` (`--method curl|npm|pnpm|bun|brew` matching the original install)
 4. Diagnose with `opencode debug` and `--print-logs --log-level DEBUG` when a run misbehaves
 
@@ -130,7 +131,7 @@ Boundary: using OpenCode only — maintaining this machine's Devin skills/config
 
 ### 4. Related Skills
 
-- run /follow-tool-devin-cli or /follow-tool-qoder-cli to compare or operate those terminal agents instead
+- run /use-devin-cli or /follow-tool-qoder-cli to compare or operate those terminal agents instead
 - run /use-mcp when wiring MCP servers; run /follow-create-mcp when the server itself must be built
 - run /check-types-definition against the config schema before adding keys; run /follow-default-config to strip default-valued boilerplate
 - run /learn-from-cli to re-derive the command surface after an upgrade; run /deep-research and use /follow-best-practice if needed

@@ -23,10 +23,14 @@ For a fresh Bun project (single package or monorepo member); live-check the curr
 
 ### 1. Scaffold
 
+> Goal: Scaffold.
+
 1. `bun init` (interactive: blank | react | library) or `bun init -y` for defaults; `bun create <tpl>` (`bun c`) for community templates (vite, elysia, next)
 2. `bun init` creates `package.json`, `tsconfig.json`, `index.ts`, `.gitignore`, `bunfig.toml` (per the template)
 
 ### 2. Directory Structure
+
+> Goal: Directory Structure.
 
 ```text
 my-app/
@@ -47,11 +51,15 @@ my-app/
 
 ### 3. package.json Essentials
 
+> Goal: package.json Essentials.
+
 1. `"type": "module"`; `module`/`main` may point at `.ts` — Bun and bundlers understand it
 2. Scripts: `dev: bun --watch src/index.ts`, `start: bun src/index.ts`, `test: bun test`, `typecheck: bun check`, `build: bun build src/index.ts --outdir dist`
 3. Dev deps: `bun add -d typescript bun-types`; no `packageManager` field needed (`bun.lock` suffices); no `engines.bun` unless required
 
 ### 4. bunfig.toml Skeleton
+
+> Goal: bunfig.toml Skeleton.
 
 1. Keep only overrides of Bun defaults per `/follow-default-config`; typical sections:
 
@@ -68,14 +76,20 @@ coverage = true
 
 ### 5. tsconfig
 
+> Goal: tsconfig.
+
 1. Use the bundler-style tsconfig from the Configure step of [../../SKILL.md](../../SKILL.md) (`moduleResolution: "bundler"`, `bun-types`, `noEmit`)
 
 ### 6. Verify
+
+> Goal: Verify.
 
 1. `bun run src/index.ts` runs TS directly; `bun test` passes (zero tests is a pass); `bun check` typechecks
 2. On failure → run `/resolve-errors`
 
 ### 7. Git Hygiene
+
+> Goal: Git Hygiene.
 
 1. Minimum `.gitignore`: `node_modules`, `dist`, `.env`, `*.log`, `coverage`
 2. Commit: `bun.lock`, `bunfig.toml`, `tsconfig.json`, `.env.example`

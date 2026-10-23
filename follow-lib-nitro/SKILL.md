@@ -22,6 +22,7 @@ When a project needs:
 - API and config tables are in `references/apis.md`; commands and flags are in `references/cli.md`
 - recommended patterns and pitfalls are in `best-practices/`
 - end-to-end usage recipes per application scenario (code verified against https://nitro.build docs) are in `usecases/`: REST API/CRUD, auth & middleware, webhook receiver, realtime WebSocket, SSE streaming, background tasks/cron, static/prerender & route rules, deploy to Cloudflare Workers
+- References: [Nitro — Presets, Deploy and Runtime Portability](best-practices/deploy.md)
 
 ## Execute
 

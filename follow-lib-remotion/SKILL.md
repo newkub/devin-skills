@@ -24,6 +24,7 @@ Used for:
 - Latest: `remotion@4.0.527` (verified 2026-09-24)
 - It is React-based — use `/follow-lib-react` for component patterns and `/follow-lib-zod` for prop schemas
 - References: [apis](references/apis.md) | [cli](references/cli.md)
+- References: [Remotion — Best Practices](best-practices/remotion.md)
 
 ## Execute
 

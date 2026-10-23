@@ -126,6 +126,7 @@ For JavaScript, TypeScript, React, Angular, Vue, Svelte, and Node.js projects wi
 - Use /deep-test mutation if needed
 
 - See best-practices/ for recommended patterns and pitfalls
+- References: [Stryker Mutator — Best Practices](best-practices/stryker.md), [apis](references/apis.md)
 
 ## Expected Outcome
 

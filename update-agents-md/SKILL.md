@@ -36,7 +36,7 @@ Use for writing and improving `AGENTS.md` in a project's root and workspaces fro
 2. Run `/check-monorepo` to check monorepo status
 3. Run `/deep-analyze` to analyze the tech stack and structure
 4. Run `/all-workspace` if it is a monorepo
-5. Read the global rules from `C:\Users\Veerapong\.codeium\windsurf\memories\global_rules.md`
+5. Read the global rules from `%USERPROFILE%\.codeium\windsurf\memories\global_rules.md`
 6. Run `/ask-project-requirement` if the context or requirements are unclear
 7. Identify the platform and target user from the context and dependencies
 8. If the project has a root `review/` CLI (`review/package.json`), run `/update-review-cli`
@@ -54,7 +54,7 @@ Use for writing and improving `AGENTS.md` in a project's root and workspaces fro
 
 > Goal: Write the AGENTS md from canonical templates
 
-1. Follow the format in `update-devin-global-skills` (`## Conventions → Frontmatter Spec`)
+1. Follow the format in `update-agents-skills-global` (`## Conventions → Frontmatter Spec`)
 2. Root `AGENTS.md` → start from `templates/agents-md-monorepo.md`
 3. Workspace `AGENTS.md` → start from `templates/agents-md-workspace.md` for each workspace
 4. Write the sections: `## Goal`, `## Scope`, `## Execute`, `## Rules`, `## Expected Outcome`

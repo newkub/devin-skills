@@ -30,7 +30,7 @@ Use for reviewing one or many GitHub issues — the issue lives on a GitHub repo
 
 ## Execute
 
-Every round starts with the deep pre-pass — run `/deep-thinking` → `/deep-analyze` → `/deep-validate` before any fetch/review (convention: `update-devin-global-skills` `## Conventions → Templates` row `review-*`)
+Every round starts with the deep pre-pass — run `/deep-thinking` → `/deep-analyze` → `/deep-validate` before any fetch/review (convention: `update-agents-skills-global` `## Conventions → Templates` row `review-*`)
 
 ### 1. Fetch Issue Context
 

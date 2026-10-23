@@ -6,7 +6,7 @@ related:
   - deep-review
   - ask-me
   - follow-best-practice
-  - dont-over-engineer
+  - simplify
   - use-scripts
   - update-references
 
@@ -48,7 +48,7 @@ Not for creating entirely new configuration (use `/deep-review` instead)
 
 1. Identify the exact points to change and the desired new values
 2. Check dependencies and constraints (e.g. version compatibility, plugin requirements, CI/CD pipeline impact)
-3. Run `/dont-over-engineer` to plan the minimal necessary changes
+3. Run `/simplify guard` to plan the minimal necessary changes
 4. Record an impact analysis: which files are affected, which CI/CD pipelines change, which workspaces need sync
 5. If it is a monorepo with many workspaces to change (> 5 files) → use `/use-scripts` to create a validation script
 
@@ -103,7 +103,7 @@ Not for creating entirely new configuration (use `/deep-review` instead)
 ### 3. Minimal And Precise
 
 - Change only what is necessary; leave unrelated settings untouched
-- Always run `/dont-over-engineer`
+- Always run `/simplify guard`
 - Never auto-format or restructure an entire config file to fix one point
 - Preserve the config file's original indentation and style
 

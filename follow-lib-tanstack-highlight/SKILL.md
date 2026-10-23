@@ -18,6 +18,7 @@ Use TanStack Highlight fully — a syntax highlighter that produces compact them
 Use when you need syntax highlighting — code blocks, docs, diff viewers, markdown fences (`follow-markdown`) — v1 is new: check `https://tanstack.com/highlight/latest` before implementing
 
 - part of TanStack ecosystem — selection/dispatch lives in `/follow-lib-tanstack-ecosystem`
+- References: [TanStack Highlight — Best Practices](best-practices/tanstack-highlight.md), [apis](references/apis.md)
 
 ## Execute
 

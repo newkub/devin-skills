@@ -7,7 +7,7 @@ related:
   - design-web-prototype
   - design-cli-prototype
   - design-tui-prototype
-  - report-html
+  - report-in-html
   - report-prompt-uxui-web-design
   - visualize-in-web
   - open-web
@@ -18,14 +18,14 @@ related:
 
 ## Goal
 
-Create an interactive design prototype as single-file HTML — rendered per `/report-html` conventions (Tailwind CDN + Vue 3, theme toggle, interactive components) — opened with `/open-web` from a temp dir
+Create an interactive design prototype as single-file HTML — rendered per `/report-in-html` conventions (Tailwind CDN + Vue 3, theme toggle, interactive components) — opened with `/open-web` from a temp dir
 
 ## Scope
 
 Use when you need a UI/flow prototype before real implementation — screen mockups, user flows, component states, responsive layouts
 
 - Need a prompt for AI image/design generation → `/report-prompt-uxui-web-design`
-- Need a visual report from existing data → `/visualize-in-web` or `/report-html` directly
+- Need a visual report from existing data → `/visualize-in-web` or `/report-in-html` directly
 - Multi-route/production-quality interactive app prototype (SolidJS + Vite) → `/design-web-prototype`
 - CLI or TUI prototype to be discussed in chat only → `/design-cli-prototype` / `/design-tui-prototype`
 - Production UI → implement in the real project, not this skill
@@ -36,8 +36,8 @@ Use when you need a UI/flow prototype before real implementation — screen mock
 
 > Goal: build on the conventions that already exist, not from memory
 
-1. Run `/follow-devin-global-skills` — list global (`%APPDATA%\devin\skills`) and project (`.devin/skills/`) skills matching the brief's domain
-2. Read the ones this prototype must obey: `/report-html` (single-file conventions), `/follow-web-standard` (native elements), `/follow-lib-css`, `/follow-design-system`
+1. Run `/follow-devin-global-skills` — list global (`%APPDATA%\devin\skills`) and project (`.agents/skills/`) skills matching the brief's domain
+2. Read the ones this prototype must obey: `/report-in-html` (single-file conventions), `/follow-web-standard` (native elements), `/follow-lib-css`, `/follow-design-system`
 3. Project `AGENTS.md` → read its `### Skills` section; reuse the project's existing visual language instead of a generic one
 
 ### 2. Gather Brief
@@ -53,7 +53,7 @@ Use when you need a UI/flow prototype before real implementation — screen mock
 > Goal: A single-file HTML that actually works
 
 1. Run `/create-files-in-os-temp` — create `<temp>/prototype/index.html`
-2. Follow `/report-html` conventions: `<!DOCTYPE html>` + Tailwind CDN + Vue 3 (`vue.global.js`) + dark mode toggle
+2. Follow `/report-in-html` conventions: `<!DOCTYPE html>` + Tailwind CDN + Vue 3 (`vue.global.js`) + dark mode toggle
 3. Use interactive elements as the prototype requires: tabs, modals, drawers, hover states, form inputs, transitions — Vue `v-if`/`v-for`/`v-model`/`@click`; prefer native elements (`<dialog>`, `popover` attribute, native form validation) per `/follow-web-standard`
 4. Multiple screens → a sticky nav/tab bar switching screens within the single file (no separate files)
 5. Mobile view → responsive + device frame (rounded border + width, e.g. `max-w-[390px]`) when the brief specifies it
@@ -75,7 +75,7 @@ Use when you need a UI/flow prototype before real implementation — screen mock
 - Single file — all assets via CDN, mock data inline
 - Fidelity per brief — lo-fi wireframe (gray boxes, fast) or hi-fi (per the design system) — default hi-fi-lite: real components, restrained styling
 
-- Always follow `/report-html` conventions for the HTML
+- Always follow `/report-in-html` conventions for the HTML
 - Always use `/open-web`, `/create-files-in-os-temp`
 - Always start with `/ask-me` — never build before the brief is confirmed; `dont-ask-me` → record the assumed answers before building
 

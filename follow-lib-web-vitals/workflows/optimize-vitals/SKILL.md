@@ -1,5 +1,5 @@
 ---
-name: follow-lib-web-vitals-optimize vitals
+name: follow-lib-web-vitals-optimize-vitals
 description: Improve Core Web Vitals — LCP, INP, CLS optimization patterns
 argument-hint: "[metric]"
 related:

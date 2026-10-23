@@ -56,10 +56,10 @@ Take any work from verified to merged: run every verification gate, commit and p
    2. Budget ≤ 10 parts. Over budget → keep the highest-risk parts and record every dropped part as `skipped (budget)` with its reason in the report
    3. Spawn one `part-reviewer` per part in parallel via `/use-subagents` (see `## Subagents`), one wave at a time, with independent batches ≤ 10 via `/follow-parallel`. A part with ≤ 2 changed files → review it in the parent and mark it `covered-manually`. A failed subagent → `/resolve-errors`, retry once, then mark the part `failed`
    4. Aggregate the part findings: dedup by `file + normalized rule + dimension`, keep the highest severity with combined evidence, and present them with `/report-review`
-   5. Fix per part: run `/deep-review <part> then-fix` for each part, with parallel `fix-worker` subagents while file sets stay disjoint. Persist mechanical/convention findings via `/update-devin-project-rules` / `/update-astgrep-rules`
+   5. Fix per part: run `/deep-review <part> then-fix` for each part, with parallel `fix-worker` subagents while file sets stay disjoint. Persist mechanical/convention findings via `/update-dot-agents-project` / `/update-astgrep-rules`
    6. Re-verify the fixed parts only, with `/deep-review <part> --diff` — never a full rescan. The report marks every part `done` / `covered-manually` / `failed` / `skipped (budget)` with its reason
    7. No findings in any part → skip the fix pass and continue to step 3
-4. When changing the devin skills repo → run `/review-devin-global-harness`
+4. When changing the devin skills repo → run `/review-dot-agents-global-and-fix`
 5. If findings still survive after 3 fix/re-verify rounds → stop and report `blocked`; never push
 
 ### 3. Validate

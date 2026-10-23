@@ -22,7 +22,7 @@ Build a GitHub Action that runs inside workflows, supporting TypeScript, composi
 
 Use when creating actions for GitHub Marketplace or private repos, covering inputs, outputs, runs, branding, and `dist/` for TS actions
 
-- Packages: `@actions/core`, `@actions/github` + bundler (`esbuild`/`@vercel/ncc`) — always confirm the latest versions and `runs.using` runtime with `/deep-research` + `/follow-best-practice` (no pinning in this file — per `/update-devin-global-skills`); pin `actions/*` with the latest major version tag from the marketplace (verify before use)
+- Packages: `@actions/core`, `@actions/github` + bundler (`esbuild`/`@vercel/ncc`) — always confirm the latest versions and `runs.using` runtime with `/deep-research` + `/follow-best-practice` (no pinning in this file — per `/update-agents-skills-global`); pin `actions/*` with the latest major version tag from the marketplace (verify before use)
 
 ## Execute
 

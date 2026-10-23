@@ -3,8 +3,8 @@ name: cleanup-artifact
 description: Delete build artifacts and dependency caches with a Rust CLI — always dry-run first
 argument-hint: "[path] [--yes] [--deep] [--min MB]"
 related:
-  - cleanup-files-in-project
-  - cleanup-files-in-computer
+  - cleanup-project
+  - cleanup-disk-computer
   - ask-me
   - report
 ---
@@ -17,7 +17,7 @@ Reclaim disk space and restore a clean state by deleting build artifacts and dep
 
 - Covers artifacts across every ecosystem: JS/Bun (`node_modules`, `dist`, `.next`, `.nuxt`, `.output`, `.turbo`, `coverage`), Rust (`target`), Python (`__pycache__`, `.venv`, `.pytest_cache`, `*.egg-info`), .NET (`bin`, `obj` — only when the parent has a `.csproj`/`.sln`), Java/Kotlin (`.gradle`, `build`), Swift (`.build`), Zig (`zig-out`, `.zig-cache`), CMake (`cmake-build-*`), iOS (`Pods`, `DerivedData`)
 - `--deep` adds global caches: `~/.bun/install/cache`, `~/.npm`, `~/.cargo/registry`, `~/go/pkg/mod`, pip cache, pnpm store, `~/.m2`, `~/.gradle/caches`
-- The inverse of `/cleanup-files-in-project`, which deletes source files and never touches artifacts
+- The inverse of `/cleanup-project`, which deletes source files and never touches artifacts
 
 ## Execute
 
@@ -69,8 +69,8 @@ Reclaim disk space and restore a clean state by deleting build artifacts and dep
 
 - The CLI does not follow symlinks/junctions while scanning, and `remove_dir_all` deletes the reparse point without following it to the target — safe on Windows junctions
 
-- Use /cleanup-files-in-project if needed (the source-files side)
-- Use /cleanup-files-in-computer if needed (system-wide)
+- Use `/cleanup-project` if needed (the source-files side)
+- Use `/cleanup-disk-computer` if needed (system-wide)
 - Use /ask-me if needed
 
 ## Expected Outcome

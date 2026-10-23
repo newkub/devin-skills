@@ -3,7 +3,7 @@ name: bench-competitors
 description: Research competitors and implement-to-production until the project beats them on every dimension
 argument-hint: "[scope|report]"
 related:
-  - create-report-in-dot-devin
+  - create-report-to-dot-agents
   - design-html-prototype
   - design-web-prototype
   - compare-competitors
@@ -11,7 +11,7 @@ related:
   - deep-review
   - deep-thinking
   - plan
-  - create-plan-in-dot-devin
+  - create-plan-in-dot-agents
   - implement-to-production
   - report
   - ask-me
@@ -22,7 +22,7 @@ related:
 
 ## Goal
 
-Research competitors with `/deep-research`, plan with `/create-plan-in-dot-devin`, then `/implement-to-production` until the project beats competitors in every dimension.
+Research competitors with `/deep-research`, plan with `/create-plan-in-dot-agents`, then `/implement-to-production` until the project beats competitors in every dimension.
 
 ## Scope
 
@@ -33,7 +33,7 @@ Covers every dimension of the product: features, performance, UX/UI, architectur
 - Unlike `/compare-competitors`, which only returns the comparison (matrix + gap list + ideas) without implementing, this skill compares and then implements
 - UX/UI dimension — to match or beat a competitor visually: mock it fast with `/design-html-prototype`, build the real interactive prototype with `/design-web-prototype`, and design a CLI/TUI parity surface with `/design-cli-prototype` / `/design-tui-prototype` in chat — all before `/implement-to-production`
 
-See also: /deep-review, /create-plan-in-dot-devin, /implement-to-production, /compare-competitors
+See also: /deep-review, /create-plan-in-dot-agents, /implement-to-production, /compare-competitors
 
 ## Execute
 
@@ -79,10 +79,10 @@ See also: /deep-review, /create-plan-in-dot-devin, /implement-to-production, /co
 
 ### 4. Deep Plan Improvements
 
-> Goal: Plan in depth with create-plan-in-dot-devin to improve beyond competitors
+> Goal: Plan in depth with create-plan-in-dot-agents to improve beyond competitors
 
 1. Run `/deep-thinking` to review priorities and impact
-2. Run `/create-plan-in-dot-devin` in `chat-only` mode to build a detailed roadmap covering every dimension in chat — specify per-dimension actions, dependencies, sequencing, and success metrics comparable to competitors (chat-only — no plan file created)
+2. Run `/create-plan-in-dot-agents` in `chat-only` mode to build a detailed roadmap covering every dimension in chat — specify per-dimension actions, dependencies, sequencing, and success metrics comparable to competitors (chat-only — no plan file created)
 3. Set priorities: Critical, High, Medium, Nice-to-have
 4. If the scope is unclear → use `/ask-me` before planning
 
@@ -102,7 +102,7 @@ See also: /deep-review, /create-plan-in-dot-devin, /implement-to-production, /co
 1. Run `/deep-review` for performance improvements
 2. Run `/deep-review` for UX/UI improvements
 3. Re-benchmark against competitors across all dimensions — update the status in the comparison table
-4. If any dimension still isn't better than competitors → loop back to Step 4 for `/create-plan-in-dot-devin` + `/implement-to-production` on the remaining gaps only, until every dimension is better
+4. If any dimension still isn't better than competitors → loop back to Step 4 for `/create-plan-in-dot-agents` + `/implement-to-production` on the remaining gaps only, until every dimension is better
 5. Stop the loop when the project beats all competitors, or when the remaining gaps need data/decisions from the user → use `/ask-me`
 
 ### 7. Report Results
@@ -133,7 +133,7 @@ See also: /deep-review, /create-plan-in-dot-devin, /implement-to-production, /co
 
 - Main file `comparison.md` in `docs/project/`
 - Child files `comparison-*.md` from sub-workflows are allowed, e.g. `comparison-features.md`
-- Benchmark results must be saved as a report via `/create-report-in-dot-devin` in `.devin/temp/report/<workspace>/`
+- Benchmark results must be saved as a report via `/create-report-to-dot-agents` in `.devin/temp/report/<workspace>/`
 - 2-3 main sections are enough
 - No detailed timeline needed
 
@@ -151,11 +151,11 @@ See also: /deep-review, /create-plan-in-dot-devin, /implement-to-production, /co
 - Don't conclude the project is inferior without evidence
 - Separate `fact` (the competitor really has it) from `assumption` (presumed to exist)
 - Every gap must map to an implementable feature — don't report a broad gap without breaking it into smaller features
-- Results must be ready to hand off to `/create-plan-in-dot-devin` (chat-only) or `/idea-features`
+- Results must be ready to hand off to `/create-plan-in-dot-agents` (chat-only) or `/idea-features`
 
 ### 5. Implementation Discipline
 
-- Always make the deep plan in chat via `/create-plan-in-dot-devin` `chat-only` mode before implementing — never create a plan file in `.devin/`
+- Always make the deep plan in chat via `/create-plan-in-dot-agents` `chat-only` mode before implementing — never create a plan file in `.devin/`
 - Implement only with `/implement-to-production` — every gap must become real production code, no TODO/MOCK left
 - Follow the plan until the project beats competitors — don't stop at research or plan
 - Track progress consistently
@@ -179,7 +179,7 @@ Build the report for `/bench-competitors` — comparison matrix + gap list + pos
 ##### Scope
 
 - Use when `/bench-competitors` dispatches to `report` or when a report for one phase is needed
-- Output: always a `/create-report-in-dot-devin` artifact (this report is the workflow's deliverable)
+- Output: always a `/create-report-to-dot-agents` artifact (this report is the workflow's deliverable)
 
 ##### Execute
 
@@ -205,7 +205,7 @@ Build the report for `/bench-competitors` — comparison matrix + gap list + pos
 
 > Goal: a permanent report that can be traced back
 
-1. Run `/create-report-in-dot-devin` — name it following the `bench-competitors-<date>` convention
+1. Run `/create-report-to-dot-agents` — name it following the `bench-competitors-<date>` convention
 2. Clearly separate facts from assumptions in the report
 3. End with a verdict: better/worse per dimension
 
@@ -224,7 +224,7 @@ Build the report for `/bench-competitors` — comparison matrix + gap list + pos
 - Feature comparison matrix against 3-5 competitors with a prioritized gap list (impact + effort) and the unique features to preserve
 - Deep plan roadmap covering every dimension shown in chat before implementing (chat-only — no plan file)
 - Every gap turned into real production code via `/implement-to-production`, no TODO/MOCK left
-- Report file in `.devin/temp/report/<workspace>/` from `/create-report-in-dot-devin`
+- Report file in `.devin/temp/report/<workspace>/` from `/create-report-to-dot-agents`
 - A `docs/project.md` file containing comparison tables for every dimension
 - The project better than competitors in every dimension — verified by re-benchmark
 - Benchmarking takes no more than 30 minutes

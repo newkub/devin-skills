@@ -18,7 +18,7 @@ Set up and develop a Svelte 5 project with Runes, Vite, and TypeScript (client-s
 For Svelte 5 projects that use Vite as the build tool (client-side only)
 Note: if you need a fullstack meta-framework, use SvelteKit mode (Step 8) — SSR/CSR/prerendering + file-based routing in `src/routes/`
 
-- Packages: `svelte` 5.x (runes, Node >= 18), `@sveltejs/kit` 2.x, `@sveltejs/vite-plugin-svelte`, `sv` CLI (`bunx sv create`, `sv check`, `sv migrate svelte-5`) — always verify the latest versions with `/deep-research` + `/follow-best-practice` (no pinning in this file — per `/update-devin-global-skills`)
+- Packages: `svelte` 5.x (runes, Node >= 18), `@sveltejs/kit` 2.x, `@sveltejs/vite-plugin-svelte`, `sv` CLI (`bunx sv create`, `sv check`, `sv migrate svelte-5`) — always verify the latest versions with `/deep-research` + `/follow-best-practice` (no pinning in this file — per `/update-agents-skills-global`)
 
 ## Execute
 

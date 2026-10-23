@@ -8,6 +8,11 @@ related:
   - report
   - ask-me
 
+allowed-tools:
+  - exec
+  - grep
+  - glob
+  - find_file_by_name
 ---
 
 ## Goal

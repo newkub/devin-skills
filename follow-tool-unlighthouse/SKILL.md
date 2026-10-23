@@ -115,6 +115,7 @@ Use for projects that want to monitor every web page with Lighthouse, in both de
 - [CLI reference](references/cli.md)
 
 - See best-practices/ for recommended patterns and pitfalls
+- References: [Unlighthouse — Best Practices](best-practices/unlighthouse.md), [apis](references/apis.md)
 
 ## Expected Outcome
 

@@ -73,7 +73,7 @@ Use when you want to optimize across many dimensions at once — report-only by 
 > Goal: a plan ready to execute once confirmed
 
 1. Run `/report` — `## Optimization Plan`: table of `No.`, `Lane`, `Finding`, `Impact`, `Effort`, `Priority`, `Evidence`, `Owner`
-2. persist → `.devin/temp/report/<workspace>/deep-optimize-<time>.md` per `/create-report-in-dot-devin` (if present)
+2. persist → `.devin/temp/report/<workspace>/deep-optimize-<time>.md` per `/create-report-to-dot-agents` (if present)
 3. `--apply` + user confirm → apply fixes in plan order via `/implement-to-production` one item at a time, verifying every round
 4. Run `/suggest-next-action`
 

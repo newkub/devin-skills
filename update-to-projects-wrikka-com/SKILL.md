@@ -5,8 +5,8 @@ argument-hint: "[sync|ui|deploy|deps|all]"
 related:
   - follow-create-web
   - deploy-to-cloudflare
-  - follow-create-devin-project-skills
-  - add-context-to-devin-global-skills
+  - update-dot-agents-project
+  - idea-agent-skills
 ---
 
 ## Goal
@@ -79,9 +79,9 @@ Make updating the `projects-wrikka-com` project safe, verifiable, and complete w
 
 - Use /follow-create-web (solid-tanstack-router) if needed
 - Use /deploy-to-cloudflare if needed
-- Use /follow-create-devin-project-skills if needed
+- Use /update-dot-agents-project if needed
 - Use /create-cloudflare-token if needed
-- Use /add-context-to-devin-global-skills if needed
+- Use /idea-agent-skills if needed
 
 ## Expected Outcome
 

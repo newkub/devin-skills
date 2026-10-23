@@ -37,7 +37,7 @@ Run E2E tests for browser testing with Playwright across every route and user fl
 5. `agent-browser console` + `agent-browser errors` capture page errors; `agent-browser screenshot` when an action fails
 6. Finish with `agent-browser close`
 7. Report a table: route → actions tested → pass/fail → console errors
-8. Persist raw results → `.devin/temp/report/<workspace>/e2e-exploratory-<time>.md` per the `/create-report-in-dot-devin` format — clearly marked as exploratory (not a Playwright suite result)
+8. Persist raw results → `.devin/temp/report/<workspace>/e2e-exploratory-<time>.md` per the `/create-report-to-dot-agents` format — clearly marked as exploratory (not a Playwright suite result)
 
 ## 3. Install Browser Dependencies
 
@@ -74,7 +74,7 @@ Run E2E tests for browser testing with Playwright across every route and user fl
 2. Inspect failed tests with screenshots, videos, and traces
 3. Classify failures: source bug / outdated test / flaky / environment
 4. Fix the root cause — if the test is wrong → `/update-tests`; if the source is wrong → `/resolve-errors`
-5. Persist authoritative results → run Playwright with the JSON reporter (`bunx playwright test --reporter=json > .devin/temp/report/<workspace>/playwright-<time>.json` or `PLAYWRIGHT_JSON_OUTPUT_NAME`) then write a summary to `.devin/temp/report/<workspace>/e2e-<time>.md` per the `/create-report-in-dot-devin` format — stats (expected/unexpected/flaky/skipped/duration) + link to `playwright-report/` — this artifact is the real e2e result for `/update-docs`
+5. Persist authoritative results → run Playwright with the JSON reporter (`bunx playwright test --reporter=json > .devin/temp/report/<workspace>/playwright-<time>.json` or `PLAYWRIGHT_JSON_OUTPUT_NAME`) then write a summary to `.devin/temp/report/<workspace>/e2e-<time>.md` per the `/create-report-to-dot-agents` format — stats (expected/unexpected/flaky/skipped/duration) + link to `playwright-report/` — this artifact is the real e2e result for `/update-docs`
 
 ## Rules
 

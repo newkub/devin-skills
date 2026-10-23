@@ -20,6 +20,8 @@ Background jobs and scheduling — pick correctly: Queue = fire-and-forget/async
 
 ### 1. Queues
 
+> Goal: Queues.
+
 ```bash
 wrangler queues create my-queue
 ```
@@ -40,12 +42,16 @@ export default {
 
 ### 2. Cron Triggers
 
+> Goal: Cron Triggers.
+
 1. `wrangler.jsonc`: `triggers: { crons: ["*/5 * * * *"] }`
 2. Handler: `export default { async scheduled(event, env, ctx) { ctx.waitUntil(job()) } }`
 3. Test local: `wrangler dev --test-scheduled` + `curl "http://localhost:8787/__scheduled?cron=*+*+*+*+*"`
 4. `wrangler triggers deploy` when only triggers need deploying
 
 ### 3. Workflows (multi-step durable)
+
+> Goal: Workflows (multi-step durable).
 
 ```ts
 export class MyWorkflow extends WorkflowEntrypoint {
@@ -62,10 +68,14 @@ export class MyWorkflow extends WorkflowEntrypoint {
 
 ### 4. Durable Objects (when coordination is needed)
 
+> Goal: Durable Objects (when coordination is needed).
+
 - `class` extends `DurableObject` + binding + `[[migrations]]` tag — per-object strong consistency, websockets, alarms
 - Use only when KV/Queue is not enough (per-entity locks, realtime rooms)
 
 ### 5. Verify
+
+> Goal: Verify.
 
 1. `wrangler dev` — really test the queue consumer, scheduled handler, and workflow steps
 2. `/run-test`; fail → `/resolve-errors`

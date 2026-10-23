@@ -5,7 +5,7 @@ argument-hint: "[scope]"
 related:
   - update-review-cli
   - update-astgrep-rules
-  - update-devin-project-rules
+  - update-dot-agents-project
   - deep-review
   - report-review
   - update-create-analyze-cli
@@ -107,7 +107,7 @@ Use when a project needs a measured quality gate — the review CLI exists (or i
 
 ### 5. Persist Durable Findings
 
-- Every confirmed Critical/High finding that is mechanically enforceable is persisted before the run closes: patterns, imports, and API misuse → `/update-astgrep-rules` (AST rule + `sgconfig.yml`); conventions and agent guidance → `/update-devin-project-rules` (`.devin/rules/*.md`); a durable analyzer gap → `/update-review-cli`
+- Every confirmed Critical/High finding that is mechanically enforceable is persisted before the run closes: patterns, imports, and API misuse → `/update-astgrep-rules` (AST rule + `sgconfig.yml`); conventions and agent guidance → `/update-dot-agents-project` (`.devin/rules/*.md`); a durable analyzer gap → `/update-review-cli`
 - Route by the `Enforcement` column of `deep-review-codebase-everything/references/review.md` (`## Dimension Matrix`) — never a second catalog
 - Confirm the new rule fires on the original `file:line`; a rule that does not fire on the violation is not durable
 

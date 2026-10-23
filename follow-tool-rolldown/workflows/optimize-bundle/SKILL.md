@@ -1,5 +1,5 @@
 ---
-name: follow-tool-rolldown-optimize bundle
+name: follow-tool-rolldown-optimize-bundle
 description: Tune the Rolldown bundle — code splitting, treeshaking, advancedChunks
 argument-hint: "[target-area]"
 related:

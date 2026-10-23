@@ -7,7 +7,7 @@ related:
   - review-gaps
   - deep-review
   - report-review
-  - create-plan-in-dot-devin
+  - create-plan-in-dot-agents
   - refactor
   - ask-me
   - suggest-next-action
@@ -34,7 +34,7 @@ Review one dimension only: `issues` — behavior that is provably wrong in the s
 
 > Goal: know the surface before judging its behavior
 
-1. Start with the deep pre-pass: `/deep-thinking` → `/deep-analyze` → `/deep-validate` (convention: `update-devin-global-skills` `## Conventions → Templates` row `review-*`)
+1. Start with the deep pre-pass: `/deep-thinking` → `/deep-analyze` → `/deep-validate` (convention: `update-agents-skills-global` `## Conventions → Templates` row `review-*`)
 2. Take `scope` from the argument — if missing or unclear → `/ask-me`
 3. Enumerate the scope's real surface — entry points, routes/handlers, guards, services, stores, components, config, tests — so nothing is judged from a partial view
 
@@ -67,7 +67,7 @@ Check the surface against this issue catalog:
 
 1. Attach `file:line` + the provable reason to every finding — no evidence, no finding; state uncertainty instead of guessing
 2. Classify severity: `Critical` (data loss, security, outage) → `High` (wrong user-visible behavior) → `Medium` (edge case, degradation) → `Low` (noise, maintainability)
-3. Score: Critical 0, High 25, Medium 50, Low 75, Info 100 → weighted average; grade A ≥90, B ≥80, C ≥70, D ≥60, F <60
+3. Score and grade per `/report-review` step 3 (the weights/grades SSOT) — never restate the formula here
 4. Produce a `/report-review` table (chat, no files) with its canonical columns, plus this dimension's extra `Area` and `Issue Class` — the owner column is `Owner skill` — ordered Critical first
 
 ### 4. Confirm And Fix
@@ -77,7 +77,7 @@ Check the surface against this issue catalog:
 1. If the user did not append `and fix` → ask which items to fix and wait
 2. Route each confirmed finding to `/deep-review <scope> then-fix fix all` by matching domain (`fix all` because `and fix` already confirmed them); unmappable findings are fixed directly from the evidence
 3. Behavior-preserving rule: fix the cause, never suppress the symptom (no ignore comments, no widened types, no try/catch that hides)
-4. Structural additions → `/create-plan-in-dot-devin` before implementing
+4. Structural additions → `/create-plan-in-dot-agents` before implementing
 5. After fixes → `/refactor` (SRP split) on touched files (≤250 lines, 1 responsibility), then build/lint/test → `/suggest-next-action`
 
 ## Rules

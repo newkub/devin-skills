@@ -52,7 +52,7 @@ Write/adjust `eslint.config.js` (flat config) correctly — config array structu
 
 1. Rules in an object with `files` cover only those files — an object without `files` applies to every file
 2. Core ignores: `dist/`, `node_modules/` (default), `coverage/`, generated files, `*.config.*` when they need no linting
-3. Put rule-disabling configs (e.g. `eslint-config-prettier`) last in the array
+3. Put rule-disabling configs last in the array — `eslint-config-prettier` is the style-rule compat layer for whichever formatter owns style (`vp fmt`/Oxfmt or `bun fmt`)
 4. Check the effective config per file with `bunx eslint --print-config <file>`
 
 ### 5. Verify

@@ -20,6 +20,8 @@ Effect's error model — `Data.TaggedError`, `Effect.catchTag*`, `Cause`/`Exit`,
 
 ### 1. Model Expected Errors
 
+> Goal: Model Expected Errors.
+
 ```ts
 import { Data } from "effect"
 
@@ -31,6 +33,8 @@ class DbError extends Data.TaggedError("DbError")<{ cause: unknown }> {}
 - `yield*` works for errors in `Effect.gen` (TaggedError is yieldable)
 
 ### 2. Catch And Recover
+
+> Goal: Catch And Recover.
 
 ```ts
 program.pipe(
@@ -47,11 +51,15 @@ program.pipe(
 
 ### 3. Defects, Cause, Exit
 
+> Goal: Defects, Cause, Exit.
+
 - Defects = bugs (throws, type errors) — shouldn't be caught; inspect with `Cause`/`Effect.sandbox`
 - `Effect.exit` → `Exit<A, E>` inspects success/failure without throwing (used in tests)
 - `Effect.tapError`/`tapErrorTag` for logging without changing the outcome
 
 ### 4. Retry, Timeout, Schedule
+
+> Goal: Retry, Timeout, Schedule.
 
 ```ts
 Effect.retry(program, Schedule.exponential("100 millis").pipe(Schedule.compose(Schedule.recurs(5))))

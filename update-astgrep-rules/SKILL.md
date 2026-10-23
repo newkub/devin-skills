@@ -9,7 +9,7 @@ related:
   - scan-codebase
   - run-scan
   - use-subagents
-  - update-devin-project-rules
+  - update-dot-agents-project
   - report
   - suggest-next-action
 ---
@@ -23,7 +23,7 @@ Create/update the project's ast-grep rules following the canonical 3-folder layo
 - Use when you want AST-based lint rules that enforce project-specific conventions
 - Canonical layout: `rules/dependencies/<dep>.yml`, `rules/architecture/<arch>.yml`, `rules/glob/<pattern>.yml`
 - `--reset` = delete all existing rules, then re-analyze and rewrite them (canonical refresh)
-- Excludes `.devin/rules/*.md` — natural-language agent-guidance rules owned by `/update-devin-project-rules`; the two coexist and this skill never touches `.devin/rules/`
+- Excludes `.devin/rules/*.md` — natural-language agent-guidance rules owned by `/update-dot-agents-project`; the two coexist and this skill never touches `.devin/rules/`
 - Excludes generating skills from a manifest — use `/new-skills` instead
 
 ## Execute
@@ -32,7 +32,7 @@ Create/update the project's ast-grep rules following the canonical 3-folder layo
 
 > Goal: Start from a clean state and understand the real project
 
-1. `--reset` → delete the whole existing `rules/` folder at the project root first (never `.devin/rules/` — that holds markdown guidance rules owned by `/update-devin-project-rules`)
+1. `--reset` → delete the whole existing `rules/` folder at the project root first (never `.devin/rules/` — that holds markdown guidance rules owned by `/update-dot-agents-project`)
 2. Run `/scan-codebase` — collect the manifest (`package.json`/`Cargo.toml`/etc.), `AGENTS.md` (the chosen architecture), the directory layout, and the file extensions in use
 3. Create the canonical structure:
    ```text
@@ -92,7 +92,7 @@ Create/update the project's ast-grep rules following the canonical 3-folder layo
 > Goal: Summarize the results
 
 1. `/report` table: `No.`, `Dir`, `Rule`, `Pattern`, `Severity`, `Status`
-2. List the rules added/changed/deleted (`.devin/rules/` is untouched by this skill — for those see `/update-devin-project-rules`)
+2. List the rules added/changed/deleted (`.devin/rules/` is untouched by this skill — for those see `/update-dot-agents-project`)
 3. Run `/suggest-next-action`
 
 ## Rules

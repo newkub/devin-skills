@@ -24,6 +24,7 @@ Use when the task involves Iconify — icon components, `@iconify-json/*` offlin
 
 - Latest: `@iconify/react@6.0.2` / `@iconify/vue@5.0.3` / `iconify-icon@3.0.3` (web component) / `@iconify/tailwind@1.2.0` / `@iconify/tailwind4@1.2.3` (verified 2026-09-24)
 - References: [apis](references/apis.md) 
+- References: [Iconify — Icon Usage And Bundle Optimization](best-practices/icons.md)
 ## Execute
 
 ### Workflows

@@ -4,7 +4,7 @@ description: Build a research report from findings — sources, confidence, comp
 argument-hint: "[topic]"
 related:
   - report
-  - create-report-in-dot-devin
+  - create-report-to-dot-agents
   - learn-from-web
 ---
 
@@ -16,7 +16,7 @@ Turn `/deep-research` findings into a research report that traces back to its so
 
 - Use when `/deep-research` dispatches to `report`, or standalone over findings you already have
 - Covers: summary, evidence per claim, confidence levels, source list, open questions
-- Output: a table in chat, or a persistent artifact via `/create-report-in-dot-devin` if the user asks
+- Output: a table in chat, or a persistent artifact via `/create-report-to-dot-agents` if the user asks
 
 ## Execute
 
@@ -43,7 +43,7 @@ Turn `/deep-research` findings into a research report that traces back to its so
 
 1. Collect all sources — primary before secondary
 2. Note the access date and type (official docs, repo, benchmark, article)
-3. If it must be archived → create `/create-report-in-dot-devin`
+3. If it must be archived → create `/create-report-to-dot-agents`
 
 ## Rules
 

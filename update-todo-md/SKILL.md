@@ -45,7 +45,7 @@ Manage `TODO.md` in the project root — add new tasks, read the content, and bu
 5. Use the current date `YYYYMMDD`
 6. Check `TODO.md` in the project root:
    - If missing → create it with `# TODO` and a table header:
-     ```
+     ```markdown
      | Title | Description | Status | Priority | Created |
      |---|---|---|---|---|
      ```

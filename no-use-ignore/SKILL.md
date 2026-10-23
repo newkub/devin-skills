@@ -9,7 +9,7 @@ related:
   - run-verify
   - use-astgrep
   - report-before-after
-  - dont-over-engineer
+  - simplify
 ---
 
 ## Goal
@@ -38,7 +38,7 @@ Remove suppression comments (lint ignore, type ignore, coverage ignore) from the
 | TypeScript | `@ts-ignore`, `@ts-expect-error`, `@ts-nocheck`, `@ts-check` (on a file where it is not intended) |
 | ESLint | `eslint-disable`, `eslint-disable-next-line`, `eslint-disable-line`, `eslint-enable`, `/* eslint ... */` overrides |
 | Biome | `biome-ignore lint/...`, `biome-ignore format`, `biome-ignore assist` |
-| Prettier / formatters | `prettier-ignore`, `# fmt: off`/`on` (black/ruff), `// swiftformat:disable`, `// clang-format off` |
+| Formatters | `# fmt: off`/`on` (black/ruff), `// swiftformat:disable`, `// clang-format off` |
 | Python | `# noqa`, `# type: ignore`, `# pylint: disable`, `# pragma: no cover`, `# nosec` |
 | Go | `//nolint`, `//lint:ignore`, `// #nosec`, `//go:noinline` misuse |
 | Rust | `#[allow(...)]`, `#![allow(...)]` crate-level, `#[allow(clippy::...)]` |
@@ -49,7 +49,7 @@ Remove suppression comments (lint ignore, type ignore, coverage ignore) from the
 | Ruby | `# rubocop:disable`, `# rubocop:todo` |
 | Shell | `# shellcheck disable=SC...` |
 | PHP | `@phpcs:ignore`, `phpcs:disable`, `@phpstan-ignore`, `@psalm-suppress` |
-| CSS / HTML | `/* stylelint-disable */`, `<!-- markdownlint-disable -->`, `<!-- prettier-ignore -->` |
+| CSS / HTML | `/* stylelint-disable */`, `<!-- markdownlint-disable -->` |
 | Coverage | `/* istanbul ignore */`, `# pragma: no cover`, `// coverage:ignore`, `.coveragerc` exclusions |
 | Infra scanners | `# hadolint ignore=DL`, `#checkov:skip=`, `#tfsec:ignore:`, `# kics-scan ignore` |
 
@@ -70,7 +70,7 @@ Remove suppression comments (lint ignore, type ignore, coverage ignore) from the
 |-----------------|----------|
 | type error (`@ts-ignore`, `# type: ignore`) | fix the types — proper types, narrowing, guards; cast when truly necessary (`as` + comment); generated/external code → `.d.ts` or `skipLibCheck` scope |
 | lint rule violation | fix the code per the rule — restructure logic, rename, split the function; if the rule is wrong across the whole codebase → adjust the config at the root (`update-config`) rather than suppressing file by file |
-| format suppression (`prettier-ignore`, `fmt: off`) | remove the suppression then format — if the code intentionally lays itself out (ASCII art, aligned tables) → justified with a reason |
+| format suppression (`fmt: off`, formatter ignore comments) | remove the suppression then format — if the code intentionally lays itself out (ASCII art, aligned tables) → justified with a reason |
 | security suppression (`# nosec`, `checkov:skip`) | always fix the root cause — there is no justified case without a written exception + expiry; escalate `/check-secrets` if suppressing to hide a secret |
 | coverage suppression (`no cover`, `istanbul ignore`) | write a test instead (`/update-tests`); keep only defensive branches that are truly unreachable (`assert_never`, platform guards) with a comment |
 | allow/expect in Rust/C | fix the lint that triggers — most clippy suggestions can be fixed directly; `#[allow]` at block-level is better than item-level, item-level is better than crate-level |
@@ -116,7 +116,7 @@ Remove suppression comments (lint ignore, type ignore, coverage ignore) from the
 
 ### 5. Don't Over-Police
 
-- A suppression that is already well justified (named rule + reason + narrow scope) → keep it, no need to "fix" (`/dont-over-engineer`)
+- A suppression that is already well justified (named rule + reason + narrow scope) → keep it, no need to "fix" (`/simplify guard`)
 - test files have more leniency — `@ts-expect-error` in negative tests is a feature, not a suppression
 
 - Use /deep-review if necessary

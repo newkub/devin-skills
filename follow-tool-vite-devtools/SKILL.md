@@ -30,6 +30,7 @@ Use for work involving the Vite ecosystem devtools framework
 - Write Vite plugins that mount UI into the dock via `devtools.setup`
 - Port a Devframe app into the hub with `createPluginFromDevframe`
 - Option details/API matrix → `references/apis.md`
+- References: [Vite DevTools — Best Practices](best-practices/vite-devtools.md)
 
 ## Execute
 

@@ -19,6 +19,7 @@ Use when wiring devtools into a TanStack app — framework adapter, library plug
 
 - part of TanStack ecosystem — selection/dispatch lives in `/follow-lib-tanstack-ecosystem`
 - Query and Router behavior themselves live in `/follow-lib-tanstack-query` and `/follow-lib-tanstack-router`
+- References: [TanStack Devtools — Best Practices](best-practices/tanstack-devtools.md), [apis](references/apis.md)
 
 ## Execute
 

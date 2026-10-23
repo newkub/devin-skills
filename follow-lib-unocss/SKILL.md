@@ -17,6 +17,7 @@ Create a ready-to-use UnoCSS configuration with `presetWind4`, transformers, and
 ## Scope
 
 Use to install and configure UnoCSS v66+ on Vite, Nuxt, Next.js, Astro, CLI, and CDN Runtime
+- References: [UnoCSS — Best Practices](best-practices/unocss.md), [apis](references/apis.md), [cli](references/cli.md)
 
 ## Execute
 

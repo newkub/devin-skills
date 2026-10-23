@@ -5,8 +5,8 @@ argument-hint: "[target]"
 related:
   - scan-codebase
   - follow-single-of-source
-  - review-devin-global-harness
-  - dont-over-engineer
+  - review-dot-agents-global-and-fix
+  - simplify
   - report
   - suggest-next-action
   - merge
@@ -34,7 +34,7 @@ Don't execute the merge yourself — hand off to `/merge` only once you have ide
 
 1. Identify the target from the argument or current context
 2. If the target is a repo/folder → run `/scan-codebase`
-3. If the target is skills → run `/review-devin-global-harness`
+3. If the target is skills → run `/review-dot-agents-global-and-fix`
 4. Read the files/artifacts of each candidate to compare Goal, Scope, Execute
 5. Check line counts, references, and section overlap
 
@@ -56,7 +56,7 @@ Don't execute the merge yourself — hand off to `/merge` only once you have ide
    - `merge` — if redundant or changes together
    - `rename` — if the name is wrong or unclear
    - `keep` — if cohesion is high and there's no clear benefit
-2. Run `/dont-over-engineer` to filter out overly complex ideas
+2. Run `/simplify guard` to filter out overly complex ideas
 3. Consider the target (the receiver) and the source(s) (what will be deleted/absorbed)
 4. Check that the merged output won't exceed 250 lines/the specified limit
 
@@ -116,7 +116,7 @@ Don't execute the merge yourself — hand off to `/merge` only once you have ide
 
 - Don't propose a merge without a clear benefit
 - Don't merge just to reduce the count
-- Run `/dont-over-engineer`
+- Run `/simplify guard`
 
 ### 5. Line Count Safety
 

@@ -13,15 +13,15 @@ related:
 ---
 ## Goal
 
-Commit every changed file in the global devin skills directory following the conventional commits standard
+Commit every changed file in the `~/.agents/skills` repo following the conventional commits standard
 
 ## Scope
 
-- variants: no-verify/selected-files/at-devin-global-skills/commit-quality live in workflows; `and-push` was moved out to the top-level `/git-commit-and-push`; `at-devin-global-skills` has a top-level alias `/git-commit-at-devin-global-skills`
+- variants: no-verify/selected-files/at-dot-agents/commit-quality live in workflows; `and-push` was moved out to the top-level `/git-commit-and-push`; `at-dot-agents` has a top-level alias `/git-commit-at-dot-agents-global`
 
-Use only for committing changes in `C:\Users\Veerapong\AppData\Roaming\devin\skills`
+Use only for committing changes in `~/.agents/skills`
 
-- if you want pre-commit validation before committing in devin global skills, use `/git-commit at-devin-global-skills`
+- if you want pre-commit validation before committing in the skills repo, use `/git-commit at-dot-agents`
 
 ## Execute
 
@@ -32,16 +32,16 @@ Use only for committing changes in `C:\Users\Veerapong\AppData\Roaming\devin\ski
 | `no-verify`              | `workflows/no-verify/SKILL.md` — commit skipping pre-commit hooks with `--no-verify` |
 | `selected-files`         | `workflows/selected-files/SKILL.md` — commit only selected files, never `git add .` |
 | `and-push`               | `/git-commit-and-push` — the real top-level skill (commit + push + resolve CI/CD) |
-| `at-devin-global-skills` | `workflows/at-devin-global-skills/SKILL.md` — pre-commit validation for devin global skills (alias: `/git-commit-at-devin-global-skills`) |
+| `at-dot-agents`          | `workflows/at-dot-agents/SKILL.md` — pre-commit validation for `~/.agents` (alias: `/git-commit-at-dot-agents-global`) |
 | `commit-quality`          | `workflows/commit-quality/SKILL.md` — lint commit messages against conventional commits |
 
-### 1. Navigate To Global Devin Skills
+### 1. Navigate To The Skills Repo
 
-> Goal: Navigate To Global Devin Skills
+> Goal: Navigate To The Skills Repo
 
-Change directory to the global devin skills
+Change directory to the skills repo
 
-1. Change directory to `C:\Users\Veerapong\AppData\Roaming\devin\skills`
+1. Change directory to `~/.agents/skills`
 2. Verify you are in the correct directory with `pwd`
 
 ### 2. Check Git Status
@@ -154,5 +154,5 @@ Explain the reason and extra context
 
 - commit messages that follow conventional commits and are entirely in English
 - git history that is easy to read and follow
-- every changed file in the global devin skills is committed
+- every changed file in `~/.agents` is committed
 - the working directory is clean

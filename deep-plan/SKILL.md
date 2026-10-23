@@ -10,7 +10,7 @@ related:
   - prioritize
   - deep-review
   - deep-validate
-  - create-plan-in-dot-devin
+  - create-plan-in-dot-agents
   - refactor
   - implement-to-production
   - ask-me
@@ -21,14 +21,14 @@ related:
 
 ## Goal
 
-Own the deep analyze→plan workflow: think, gather evidence across every dimension, then produce a decision-complete, scored, correctly-ordered plan — the plan content is delivered in chat by default; persisting it to a file is owned by `/create-plan-in-dot-devin`, which calls this skill
+Own the deep analyze→plan workflow: think, gather evidence across every dimension, then produce a decision-complete, scored, correctly-ordered plan — the plan content is delivered in chat by default; persisting it to a file is owned by `/create-plan-in-dot-agents`, which calls this skill
 
 ## Scope
 
-- Called directly for planning thinking, or by `/create-plan-in-dot-devin` as the plan generator before file persistence
+- Called directly for planning thinking, or by `/create-plan-in-dot-agents` as the plan generator before file persistence
 - Covers all plan types: new features, refactors, migrations, multi-item work
 - Produces: feature list + scores, file-change table, task graph, risks, test strategy, assumptions, acceptance criteria — as content, not as a file
-- Deviates from the plain `follow-*`/tool template because it is a `deep-*` orchestrator: `/deep-thinking` first, evidence per dimension, report at the end (spec: `update-devin-global-skills` `## Conventions → Templates` row `deep-*`)
+- Deviates from the plain `follow-*`/tool template because it is a `deep-*` orchestrator: `/deep-thinking` first, evidence per dimension, report at the end (spec: `update-agents-skills-global` `## Conventions → Templates` row `deep-*`)
 
 ## Execute
 
@@ -83,8 +83,8 @@ Run `/deep-research` when choosing new deps or new patterns:
 
 1. Report via `/report` — ordered task tables with evidence, scores, and the critical path; every finding states its source file:line
 2. Cover every identified dimension or explicitly report what was left open as an unknown
-3. If the plan must persist → hand the content to `/create-plan-in-dot-devin` (it owns the `.devin/temp/plan/` file, template, and open-in-editor step)
-4. Run `/suggest-next-action` — typical follow-through: `/implement-to-production`, `/refactor`, or `/create-plan-in-dot-devin`
+3. If the plan must persist → hand the content to `/create-plan-in-dot-agents` (it owns the `.devin/temp/plan/` file, template, and open-in-editor step)
+4. Run `/suggest-next-action` — typical follow-through: `/implement-to-production`, `/refactor`, or `/create-plan-in-dot-agents`
 
 ## Rules
 
@@ -103,8 +103,8 @@ Run `/deep-research` when choosing new deps or new patterns:
 
 ### 3. Boundaries
 
-- This skill produces plan content only — never writes plan files; `/create-plan-in-dot-devin` is the sole owner of `.devin/temp/plan/` persistence (`/follow-single-of-source`)
-- This skill is not an alias — it owns the whole generate-and-score workflow; `/create-plan-in-dot-devin` calls it and adds only file/template/persistence steps
+- This skill produces plan content only — never writes plan files; `/create-plan-in-dot-agents` is the sole owner of `.devin/temp/plan/` persistence (`/follow-single-of-source`)
+- This skill is not an alias — it owns the whole generate-and-score workflow; `/create-plan-in-dot-agents` calls it and adds only file/template/persistence steps
 - Execution of an accepted plan belongs to `/implement-to-production` and `/refactor`, never to this skill
 
 ## Expected Outcome
@@ -112,4 +112,4 @@ Run `/deep-research` when choosing new deps or new patterns:
 - A decision-complete, scored, critical-path-ordered plan delivered in chat — every claim backed by file:line evidence
 - All dimensions covered or open unknowns stated explicitly
 - No placeholders; tasks executable as-is by `/implement-to-production`/`/refactor`
-- Plan persisted only when the caller needs a file, via `/create-plan-in-dot-devin`
+- Plan persisted only when the caller needs a file, via `/create-plan-in-dot-agents`

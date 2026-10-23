@@ -6,7 +6,7 @@ related:
   - reset-context
   - deep-validate
   - scan-codebase
-  - review-devin-global-harness
+  - review-dot-agents-global-and-fix
   - follow-best-practice
   - use-scripts
   - update-references
@@ -51,7 +51,7 @@ Read the target files and all references anew
 1. Read each target file in full
 2. Read imports, exports, and dependencies
 3. Read reverse dependencies
-4. Run `review-devin-global-harness` for related workflows
+4. Run `review-dot-agents-global-and-fix` for related workflows
 
 ### 4. Analyze Requirements
 

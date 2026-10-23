@@ -20,13 +20,17 @@ lifecycle — `onRequest`, `parse`, `transform`, `beforeHandle`, `afterHandle`, 
 
 ### 1. Lifecycle Order
 
-```
+> Goal: Lifecycle Order.
+
+```text
 onStart → (server up)
 per-request: onRequest → parse → transform → beforeHandle → [handler] → afterHandle → mapResponse → onResponse
 errors: onError (validation/handler errors) ; onStop (shutdown)
 ```
 
 ### 2. Hook APIs
+
+> Goal: Hook APIs.
 
 ```ts
 app
@@ -44,7 +48,9 @@ app
 - Return value from `beforeHandle`/`onError` = short-circuit response
 - `code` in onError: `VALIDATION`, `NOT_FOUND`, `PARSE`, `INTERNAL_SERVER_ERROR`, `UNKNOWN`, custom named errors
 
-### 3. derive, decorate, resolve
+### 3. Derive, Decorate, Resolve
+
+> Goal: Derive, Decorate, Resolve.
 
 ```ts
 app
@@ -57,6 +63,8 @@ app
 - `resolve` — like derive but after validation, can short-circuit (return value → response, e.g. 401)
 
 ### 4. Scoped Hooks And Guards
+
+> Goal: Scoped Hooks And Guards.
 
 - Hooks default = `local` (the instance that defines them) — `.as('global')` / `.as('scoped')` propagate to `.use()` consumers
 - `guard({ beforeHandle: fn, schema keys })` — apply inside the block only

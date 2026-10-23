@@ -18,8 +18,8 @@ export default defineConfig([
   ...ts.configs.recommended,
   // 2. plugin configs
   // 3. project-specific rules
-  // 4. formatter compat always last (disables style rules that clash with prettier)
-  prettier,
+  // 4. formatter compat always last (disables style rules that clash with the formatter)
+  formatCompat,
   // 5. ignores at the end or as a separate object
   { ignores: ['dist/', 'node_modules/', 'coverage/'] }
 ])
@@ -45,8 +45,8 @@ Benefit: faster linting, no false positives from rules on unrelated files
 ### 3. Lint ≠ Format
 
 - ESLint handles code quality (unused vars, bugs, patterns)
-- the formatter (prettier/biome/dprint) handles style (spacing, quotes)
-- put `eslint-config-prettier` last to disable clashing style rules — never let ESLint report formatting issues
+- the formatter (`vp fmt`/Oxfmt, `bun fmt`, biome, dprint) handles style (spacing, quotes)
+- put `eslint-config-prettier` last as the style-rule compat layer — it disables clashing ESLint style rules; never let ESLint report formatting issues
 
 ### 4. Severity strategy
 
@@ -72,7 +72,7 @@ Benefit: faster linting, no false positives from rules on unrelated files
 - `files` glob with the wrong scope: `'*.ts'` matches only the root — use `'**/*.ts'` for every directory
 - ignores inside a rules object: `{ files, ignores, rules }` scopes the ignores to that config — global ignores must be an object with only `ignores` or use `globalIgnores()`
 - Duplicate plugin registration: registering the same plugin in several config objects with the same key → error — register once in a single object or the base config
-- Prettier not last: your own rules override the prettier config → style rules clash again
+- Style-rule compat config not last: your own rules override it → style rules clash again
 
 ## Performance Notes
 

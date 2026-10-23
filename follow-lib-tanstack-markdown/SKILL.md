@@ -18,6 +18,7 @@ Use TanStack Markdown fully — parse markdown → serializable document model �
 Use when rendering markdown, especially `streaming AI output` (append-safe incremental parse) or docs transported as JSON — for plain static markdown, `marked`/`remark` suffice
 
 - part of TanStack ecosystem — selection/dispatch lives in `/follow-lib-tanstack-ecosystem`
+- References: [TanStack Markdown — Best Practices](best-practices/tanstack-markdown.md), [apis](references/apis.md)
 
 ## Execute
 

@@ -20,7 +20,7 @@ Build a native mobile app for iOS and Android from a single Kotlin codebase usin
 - Covers setup, project structure (KMP modules), Compose Multiplatform UI, expect/actual, build, test, and deploy to both stores
 - Use Android Studio as the primary IDE (Xcode is required for the iOS target — macOS only)
 
-- Packages: Kotlin, KMP plugin, Compose Multiplatform, AGP, Gradle — always confirm the latest versions with `/deep-research` + `/follow-best-practice` (no pinning in this file, per `/update-devin-global-skills`)
+- Packages: Kotlin, KMP plugin, Compose Multiplatform, AGP, Gradle — always confirm the latest versions with `/deep-research` + `/follow-best-practice` (no pinning in this file, per `/update-agents-skills-global`)
 
 ## Execute
 

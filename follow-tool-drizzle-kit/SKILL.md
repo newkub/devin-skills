@@ -22,6 +22,7 @@ Use when the task involves this library/tool — setup, usage, debugging, or bes
 - Latest: `drizzle-kit@0.31.11` (pairs with `drizzle-orm@0.45.3`) (verified 2026-09-26)
 - Note: v1.0.0 is in the beta/rc channel (`beta` dist-tag, latest 1.0.0-rc.x) — has breaking changes (casing API, removes RQB v1 `db._query`); production still uses stable 0.31.x
 - References: [apis](references/apis.md) | [cli](references/cli.md) | best-practices/
+- References: [drizzle-kit Best Practices](best-practices/migrations.md)
 
 ## Execute
 

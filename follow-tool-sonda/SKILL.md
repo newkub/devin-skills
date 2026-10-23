@@ -95,6 +95,7 @@ For JS/TS projects bundled with Vite, Rollup, Rolldown, esbuild, webpack, Rspack
 - [API and config options](references/apis.md)
 
 - See best-practices/ for recommended patterns and pitfalls
+- References: [Sonda — Best Practices](best-practices/sonda.md)
 
 ## Expected Outcome
 

@@ -98,4 +98,4 @@ Use when starting a new project, or when the context is unclear, before making a
 
 - Every requirement is explicit: answered, assumed (stated), or deferred with reason
 - The user confirmed the gathered requirement list before any work starts
-- A follow-up `/create-plan-in-dot-devin` or implement pass can run without re-asking
+- A follow-up `/create-plan-in-dot-agents` or implement pass can run without re-asking

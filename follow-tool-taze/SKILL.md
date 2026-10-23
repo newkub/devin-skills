@@ -123,6 +123,7 @@ Use for projects or workspaces that need to keep dependencies up-to-date via the
 | Scheduled drift report in CI | `usecases/ci-drift-report.md` |
 
 - See usecases/ for end-to-end scenario recipes
+- References: [Taze — Best Practices](best-practices/taze.md), [apis](references/apis.md)
 
 ## Expected Outcome
 

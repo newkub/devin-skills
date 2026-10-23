@@ -150,6 +150,7 @@ Use `follow-tool-react-scan` for React projects or workflows
 - [CLI reference](references/cli.md)
 
 - See best-practices/ for recommended patterns and pitfalls
+- References: [react-scan — Best Practices](best-practices/react-scan.md), [apis](references/apis.md)
 
 ## Expected Outcome
 

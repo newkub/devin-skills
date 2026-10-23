@@ -7,6 +7,7 @@ related:
   - open-web-for-config-secret
   - use-scripts
   - follow-tool-mr-boxington
+  - follow-tool-viteplus
 ---
 
 ## Goal
@@ -18,9 +19,11 @@ Set up and use mise for managing dev tools, env vars, and tasks per best practic
 For projects that want to pin tool versions, load environment variables, and define tasks in one file (`mise.toml`)
 
 - Use this skill when managing dev tool versions/env/tasks — if the job is monorepo task orchestration, use `/follow-tool-moonrepo` or `/follow-tool-turborepo` instead
+- Vite+ manages the JS toolchain itself (`vp toolchain`, `vp install`) — in a Vite+ project use that for Node/package managers and keep mise for other tools → `/follow-tool-viteplus`
 - For the Rust tool option `mr_boxington` (shared Cargo build cache via mise ≥2026.9.2), see `/follow-tool-mr-boxington`
 - Latest: `mise@2026.9.14` (CalVer, verified 2026-09-26)
 - References: [apis](references/apis.md) | [cli](references/cli.md) | best-practices/
+- References: [mise — Best Practices](best-practices/mise.md)
 
 ## Execute
 
@@ -37,7 +40,7 @@ For projects that want to pin tool versions, load environment variables, and def
 
 1. Run `mise --version` to check the installation
 2. If missing, install:
-   - Unix: `curl https://mise.run | sh`
+   - Unix: `curl https://mise.run -o /tmp/mise-install.sh && sh /tmp/mise-install.sh`
    - Windows: `winget install jdx.mise` or `scoop install mise`
    - Cargo: `cargo install mise`
 3. Add mise to shell activation per the OS/shell

@@ -105,6 +105,7 @@ For Node.js / TypeScript projects using `npm`, `pnpm`, or `bun`
 
 
 - See best-practices/ for recommended patterns and pitfalls
+- References: [Node Modules Inspector — Best Practices](best-practices/node-modules-inspector.md), [apis](references/apis.md)
 
 ## Expected Outcome
 

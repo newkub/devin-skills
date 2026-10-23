@@ -20,6 +20,8 @@ cross-cutting server concerns — `@orpc/server` `middleware()`, `.use()` compos
 
 ### 1. Middleware Basics
 
+> Goal: Middleware Basics.
+
 ```ts
 import { os, middleware } from '@orpc/server'
 
@@ -38,6 +40,8 @@ const authed = base.use(logMiddleware)
 
 ### 2. Auth Pattern
 
+> Goal: Auth Pattern.
+
 ```ts
 const requireAuth = middleware(({ context, next, errors }) => {
   const user = context.session?.user
@@ -54,6 +58,8 @@ const authedBase = implement(contract).$context<Context>().use(requireAuth)
 
 ### 3. Interceptors
 
+> Goal: Interceptors.
+
 ```ts
 middleware(({ next, onError, onSuccess, onFinish }) => {
   onError(e => report(e))
@@ -66,6 +72,8 @@ middleware(({ next, onError, onSuccess, onFinish }) => {
 - `onError`/`onSuccess`/`onFinish` — observe the lifecycle without breaking the flow
 
 ### 4. Shared Bases
+
+> Goal: Shared Bases.
 
 - `base = implement(contract).use(mw1).use(mw2)` — proc builders with middleware baked in
 - Per-domain bases: `adminBase = base.use(requireAdmin)` — route prefix + guard paired

@@ -18,6 +18,8 @@ Run lint, typecheck and scan to verify quality
 
 Use `run-check` for tasks and workflows within its coverage (check)
 
+- Vite+ project: `vp check` runs fmt + lint + type-aware check in one pass, but it is not a full `tsc` replacement — still run `/run-typecheck` and `/run-scan` (see `/follow-tool-viteplus`)
+
 ## Execute
 
 > Pre-Run: Always run `/deep-review` first — `run-*` requires review/assessment before the main action, never skip; if findings are blockers, fix or report them before running (check)
@@ -26,7 +28,7 @@ Use `run-check` for tasks and workflows within its coverage (check)
 
 > Goal: Run Lint
 
-1. Run `/run-lint` to check code style
+1. Run `/run-lint` to check code style (a Vite+ project runs `vp lint`, or `vp check --no-fmt` for lint + type-aware)
 2. Fix lint errors if any
 3. Confirm lint passes
 

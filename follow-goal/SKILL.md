@@ -5,7 +5,7 @@ argument-hint: "[scope]"
 related:
   - follow-math-concepts
   - deep-thinking
-  - review-devin-global-harness
+  - review-dot-agents-global-and-fix
 
 ---
 
@@ -37,7 +37,7 @@ Set a clear, measurable goal
 
 Analyze the situation and constraints
 
-1. Read `/review-devin-global-harness` to see the relevant workflows
+1. Read `/review-dot-agents-global-and-fix` to see the relevant workflows
 2. Check dependencies and constraints
 3. Assess the available resources
 4. Identify risks and assumptions

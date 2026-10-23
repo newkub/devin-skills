@@ -26,6 +26,7 @@ For TypeScript library projects that want bundling with Bun's native bundler —
 - Boundary: Bunup suits library bundling (ESM/CJS + dts) on Bun — if the project is not tied to Bun or wants a Rolldown-based bundler see `/follow-tool-tsdown`; for a low-level bundler see `/follow-tool-rolldown`; for app dev server/build see `/follow-tool-vite`
 - Latest: `bunup@0.16.32` (verified 2026-09-13)
 - References: [apis](references/apis.md) | [cli](references/cli.md) 
+- References: [Bunup Best Practices](best-practices/bundling.md)
 ## Execute
 
 ### 1. Analyze Project

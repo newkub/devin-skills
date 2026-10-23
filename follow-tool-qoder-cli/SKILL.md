@@ -3,7 +3,7 @@ name: follow-tool-qoder-cli
 description: "Use Qoder CLI: sessions, modes, permissions, models, MCP, skills, plugins, hooks, headless runs"
 argument-hint: "[scope]"
 related:
-  - follow-tool-devin-cli
+  - use-devin-cli
   - follow-tool-opencode
   - use-mcp
   - follow-create-mcp
@@ -32,11 +32,12 @@ Use for:
 - Connecting MCP servers, installing skills/plugins, managing hooks and subagents
 - Headless automation: `qoder -p --output-format json`, `qoder commit`, `qoder security scan`, remote-control daemon
 
-Boundary: operating the Qoder terminal agent only — maintaining this machine's Devin skills/config stays with `/update-devin` and `/follow-devin-global-skills`; comparable terminal agents → `/follow-tool-devin-cli`, `/follow-tool-opencode`.
+Boundary: operating the Qoder terminal agent only — maintaining this machine's Devin skills/config stays with `/update-devin` and `/follow-devin-global-skills`; comparable terminal agents → `/use-devin-cli`, `/follow-tool-opencode`.
 
 - Docs: https://docs.qoder.com/cli/overview — live-check via `/deep-research` before use (`/follow-up-to-date`)
 - References: [apis](references/apis.md) | [cli](references/cli.md)
 - See best-practices/ for recommended patterns and pitfalls
+- References: [Qoder CLI Best Practices](best-practices/qoder-cli.md)
 
 ## Execute
 
@@ -45,7 +46,7 @@ Boundary: operating the Qoder terminal agent only — maintaining this machine's
 > Goal: a working, authenticated `qoder` on the intended build
 
 1. Run `qoder --version` and `qoder --help` to confirm the command surface; local verification 2026-10-15 saw `1.1.71` (native standalone build)
-2. If missing → install script (recommended, native binary): macOS/Linux `curl -fsSL https://qoder.com/install | bash`; Windows PowerShell `irm https://qoder.com/install.ps1 | iex`; Windows CMD `curl -fsSL https://qoder.com/install.cmd -o install.cmd && install.cmd`. Prefer the script over `npm install -g @qoder-ai/qodercli` (legacy JS bundle, slower, needs Node ≥ 20) — see `## Rules → 1`
+2. If missing → install script (recommended, native binary): macOS/Linux `curl -fsSL https://qoder.com/install -o /tmp/qoder-install.sh && bash /tmp/qoder-install.sh`; Windows PowerShell `irm https://qoder.com/install.ps1 -OutFile $env:TEMP\qoder-install.ps1; & $env:TEMP\qoder-install.ps1`; Windows CMD `curl -fsSL https://qoder.com/install.cmd -o install.cmd && install.cmd`. Prefer the script over `npm install -g @qoder-ai/qodercli` (legacy JS bundle, slower, needs Node ≥ 20) — see `## Rules → 1`
 3. Sign in: run `qoder` then `/login` (browser or paste token). For CI/headless set `QODER_PERSONAL_ACCESS_TOKEN` (create at https://qoder.com/account/integrations); when both are present the env PAT wins — clear it to use `/login` credentials (`/follow-secret-manager`)
 4. Upgrade with `qoder update` (auto-upgrade is on by default; disable via `general.enableAutoUpdate: false` in `~/.qoder/settings.json`); revert with `qoder rollback`. Config dir default `~/.qoder`, override with `QODER_CONFIG_DIR`
 
@@ -118,7 +119,7 @@ Boundary: operating the Qoder terminal agent only — maintaining this machine's
 
 ### 2. Safety
 
-- Never make `--yolo`/`bypass_permissions` a habit; scope autonomy with `accept_edits` and explicit `deny` rules; even YOLO keeps path-shape guards (rm of cwd/home/root/top-level still asks)
+- Never make `--yolo`/`bypass_permissions` a habit; scope autonomy with `accept_edits` and explicit `deny` rules; even YOLO keeps path-shape guards (rm of cwd, home, root, or top-level paths still asks)
 - A broad `allow` never means everything runs silently — deny rules, safety checks, and ask rules take precedence over allow
 - No PATs/keys in committed config or prompts; use `QODER_PERSONAL_ACCESS_TOKEN` (env) or `/login`; `settings.local.json` is machine-local — keep it out of git
 - `/export` (and raw `.jsonl` session logs) contain file contents — sanitize before sharing; `dont_ask` mode silently denies anything needing confirmation, so verify a headless run isn't being blocked
@@ -131,7 +132,7 @@ Boundary: operating the Qoder terminal agent only — maintaining this machine's
 
 ### 4. Related Skills
 
-- run /follow-tool-devin-cli or /follow-tool-opencode to compare or operate those terminal agents instead
+- run /use-devin-cli or /follow-tool-opencode to compare or operate those terminal agents instead
 - run /use-mcp when wiring MCP servers; run /follow-create-mcp when the server itself must be built
 - run /check-types-definition against the settings schema before adding keys; run /follow-default-config to strip default-valued boilerplate
 - run /learn-from-cli to re-derive the command surface after an upgrade; run /deep-research and use /follow-best-practice when unsure; use /follow-secret-manager for PAT handling

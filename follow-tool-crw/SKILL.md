@@ -24,8 +24,9 @@ Use `follow-tool-crw` for the tasks and workflows it covers (tool crw)
 - For web search/scrape with crw see `references/apis.md`
 
 - Latest: `crw-mcp@0.36.0` / `crw` CLI v0.36.0 (verified 2026-09-24)
-- Install: `curl -fsSL https://fastcrw.com/install | sh` · `brew install us/crw/crw` · `cargo install crw-cli` · `bunx crw-mcp` (MCP only) · `docker run ghcr.io/us/crw`
+- Install: `curl -fsSL https://fastcrw.com/install -o /tmp/crw-install.sh && sh /tmp/crw-install.sh` · `brew install us/crw/crw` · `cargo install crw-cli` · `bunx crw-mcp` (MCP only) · `docker run ghcr.io/us/crw`
 - References: [apis](references/apis.md) | [cli](references/cli.md) 
+- References: [fastCRW — Best Practices](best-practices/crw.md)
 ## Execute
 
 ### 1. Web Search

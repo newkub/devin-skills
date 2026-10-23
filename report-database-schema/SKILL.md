@@ -78,7 +78,7 @@ Create a database schema report for the project from schema definitions or migra
 - Use /deep-review if needed
 - Use /create-mermaid-diagram if needed
 - Use /run-drizzle-studio if needed
-- alias stub: `/report-schema` — forwards to this skill
+- alias stub: none — `/report-database-schema` is the only entry
 
 - Final report via `/report-review` — one chat table (No./Action/Evidence/Severity/Risk/Priority/Owner skill/Status), no report files; the schema/ER output remains this skill's artifact
 

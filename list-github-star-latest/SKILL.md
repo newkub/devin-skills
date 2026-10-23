@@ -4,7 +4,7 @@ description: List starred repositories on GitHub with latest support, language f
 argument-hint: "[username] [--lang <language>] [--limit <n>]"
 related:
   - all-github-repo
-  - search
+  - search-github-star
   - report
 
 ---

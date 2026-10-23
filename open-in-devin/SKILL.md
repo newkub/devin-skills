@@ -3,7 +3,7 @@ name: open-in-devin
 description: Open a directory or file in a new Devin session
 argument-hint: "[path]"
 related:
-  - create-report-in-dot-devin
+  - create-report-to-dot-agents
 ---
 
 ## Goal
@@ -62,8 +62,8 @@ Use when opening a directory or file in the Devin CLI from the terminal or curre
 - Report the result as a path list with the `devin` commands used (in devin)
 - On failure, state the cause and next steps
 
-- Use /create-report-in-dot-devin if needed
-- Use /list-request-devin-session if needed
+- Use /create-report-to-dot-agents if needed
+- Use /check-agents-session if needed
 - Use /open-in-explorer if needed
 
 ## Expected Outcome

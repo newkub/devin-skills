@@ -127,6 +127,7 @@ Use for Node.js projects that want automated version bump, git tag, changelog, n
 - Use /run-release if needed
 
 - See best-practices/ for recommended patterns and pitfalls
+- References: [release-it — Best Practices](best-practices/release-it.md), [apis](references/apis.md)
 
 ## Expected Outcome
 

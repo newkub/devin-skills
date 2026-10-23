@@ -22,6 +22,7 @@ Consider and invoke the relevant `deep-*` workflows based on the task context, s
 Use as a sub-workflow to decide which `deep-*` workflows the current task should call — it is not a standalone main workflow
 
 See also: /deep-review
+- References: [deep-follow (merged content)](references/deep-follow-recursive.md)
 
 ## Execute
 

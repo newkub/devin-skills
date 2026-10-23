@@ -3,12 +3,12 @@ name: implement-from-planso
 description: Execute open Plane.so work items, easiest quick wins first
 argument-hint: "[project-or-workitem] [max-tasks]"
 related:
-  - save-to-planso
+  - create-task-in-planso
   - list-planso
-  - create-plan-to-planso
+  - create-plan-in-planso
   - update-planso
   - implement-to-production
-  - create-plan-in-dot-devin
+  - create-plan-in-dot-agents
   - deep-plan
   - run-check
   - run-verify
@@ -29,7 +29,7 @@ Execute open work items in a Plane.so project one at a time through the Plane MC
 - Use when: the plan lives in Plane.so as work items and the user wants it implemented
 - Reads and writes Plane only through `mcp__plane__workitem`, `mcp__plane__project`, `mcp__plane__state`, `mcp__plane__workitem_relation`, and `mcp__plane__workitem_comment`
 - Lightweight executor: target discovery, ordering, implementation, verification, status updates - it never re-plans
-- Browse and filter first with `/list-planso`; planning belongs to `/create-plan-to-planso`, new items to `/save-to-planso`, metadata edits to `/update-planso`, and local plans to `/create-plan-in-dot-devin` + `/deep-plan`
+- Browse and filter first with `/list-planso`; planning belongs to `/create-plan-in-planso`, new items to `/create-task-in-planso`, metadata edits to `/update-planso`, and local plans to `/create-plan-in-dot-agents` + `/deep-plan`
 - Stops at production hardening (auth, infra, migrations, deploy) - hand the remaining items to `/implement-to-production`
 - `max-tasks` limits how many items close in one run - default: all until blocked
 
@@ -109,7 +109,7 @@ Execute open work items in a Plane.so project one at a time through the Plane MC
 
 ### 2. Plane Is The Single Source
 
-- Never invent work items or edit scope silently; new items belong to `/save-to-planso`
+- Never invent work items or edit scope silently; new items belong to `/create-task-in-planso`
 - Update state and comments immediately per item; a resumed session must be able to continue from Plane alone
 - Resolve names to UUIDs first: `state`, `parent`, `labels`, and PQL filters require UUIDs
 - Contradiction between a work item and the code -> stop and ask, never silently pick one

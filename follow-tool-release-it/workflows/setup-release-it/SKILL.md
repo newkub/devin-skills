@@ -46,7 +46,7 @@ Use for Node.js projects starting with release-it — install, scripts, basic ho
    - `@release-it/conventional-changelog` — auto changelog from conventional commits
    - `@release-it/bumper` — bump versions in other manifest files
    - `@release-it/keep-a-changelog` — maintain `CHANGELOG.md`
-4. Plugin details: see [references/release-it.md](../../references/release-it.md) or the official docs
+4. Plugin details: see the official docs (URL in [references/apis.md](../../references/apis.md))
 
 ### 4. CI Workflow (Optional)
 

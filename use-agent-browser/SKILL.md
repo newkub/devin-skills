@@ -192,6 +192,7 @@ agent-browser set viewport 1280 720 | set device "iPhone 14" | set media dark | 
 - Official: https://agent-browser.dev · https://github.com/vercel-labs/agent-browser · https://www.npmjs.com/package/agent-browser
 - Use /run-dev when needed
 - Use /run-test when needed
+- References: [Package Manifest](references/package-manifest.md)
 
 ## Expected Outcome
 

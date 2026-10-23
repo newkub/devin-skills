@@ -8,6 +8,7 @@ related:
   - follow-lang-kotlin
   - follow-lang-lua
   - follow-my-techstack
+  - follow-tool-viteplus
   - follow-best-practice
   - setup-cicd
   - use-scripts
@@ -95,6 +96,7 @@ For writing JavaScript in both vanilla code and frameworks — always against th
 
 - Use meaningful names, DRY, SOLID, pure functions, early returns
 - Use ES Modules (`import`/`export`) instead of CommonJS
+- Format and lint with `bun fmt` + Biome, or the Vite+ pipeline (`vp fmt`/`vp lint`/`vp check`, `/follow-tool-viteplus`); never add Prettier — `bun fmt` and `vp fmt` are Prettier-compatible
 
 ### 4. Performance
 

@@ -26,6 +26,7 @@ Set up Changesets for monorepos and workspaces
 - Boundary: Changesets uses changeset files (`.changeset/*.md`) for multi-package versioning + a release PR flow — best for monorepos; for single-package changelogs from conventional commits use `/follow-tool-changelogen`; for PR-label releases see `/follow-tool-auto-it`; alternatives: `/follow-tool-release-it`, `/follow-tool-semantic-release`
 - Latest: `@changesets/cli@3.0.3` (verified 2026-09-26) — `changesets/action@v2` (v2.1.2), `actions/checkout@v7`, `oven-sh/setup-bun@v2`
 - References: [apis](references/apis.md) | [cli](references/cli.md) 
+- References: [Changesets — Best Practices](best-practices/changesets.md)
 ## Execute
 
 ### Workflows

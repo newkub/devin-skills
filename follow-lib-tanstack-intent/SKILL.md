@@ -16,6 +16,7 @@ Use TanStack Intent — the standard way to pack `agent skills` into an npm pack
 Use when maintaining an npm package and you want to ship skills (e.g. Devin/Claude/Cursor-compatible skills) with the package — for package authors, not app developers — `0.x`: check `https://tanstack.com/intent/latest` before implementing
 
 - part of TanStack ecosystem — selection/dispatch lives in `/follow-lib-tanstack-ecosystem`
+- References: [TanStack Intent — Best Practices](best-practices/tanstack-intent.md), [apis](references/apis.md)
 
 ## Execute
 

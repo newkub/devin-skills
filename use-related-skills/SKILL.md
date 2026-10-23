@@ -34,7 +34,7 @@ Use after writing or editing a `SKILL.md`, to analyze and recommend other skills
 
 > Goal: Know all available skills
 
-1. Run `/list-devin-global-skills` or `/scan-codebase`
+1. Run `/list-dot-agents-global` or `/scan-codebase`
 2. Review each skill's `name` and `description`
 3. Group them by category
 4. Ensure no skill already listed in `related` gets recommended
@@ -99,7 +99,7 @@ Use after writing or editing a `SKILL.md`, to analyze and recommend other skills
 - Verify that no reference is added to an unrelated file
 
 - Use /deep-review if needed
-- When writing invocations of other skills in `SKILL.md` → see `update-devin-global-skills` (`## Conventions → Invoke Skills`)
+- When writing invocations of other skills in `SKILL.md` → see `update-agents-skills-global` (`## Conventions → Invoke Skills`)
 
 ## Expected Outcome
 

@@ -13,7 +13,7 @@ related:
   - follow-tool-rolldown
   - follow-lib-esm-sh
   - scan-codebase
-  - dont-over-engineer
+  - simplify
   - resolve-errors
   - run-verify
   - update-references
@@ -25,7 +25,8 @@ Create scripts to automate work and process files with Bun native APIs, nushell,
 
 ## Scope
 
-Use for creating scripts in the workspace with Bun native APIs, nushell, pwsh, or ast-grep — including multi-file edits via scripts (merged `/edit-with-use-scripts`, see `### 5. Edit Files Via Scripts`)
+Use for creating scripts in the workspace with Bun native APIs, nushell, pwsh, or ast-grep — including multi-file edits via scripts (see `### 5. Edit Files Via Scripts`)
+- References: [Package Manifest](references/package-manifest.md)
 
 ## Execute
 
@@ -92,11 +93,11 @@ Use for creating scripts in the workspace with Bun native APIs, nushell, pwsh, o
 
 ### 5. Edit Files Via Scripts
 
-> Goal: Edit multiple files through a reproducible, auditable script (merged `/edit-with-use-scripts`)
+> Goal: Edit multiple files through a reproducible, auditable script
 
 Use when the task is a complex file edit, several files must be changed at once, or you need reproducibility and an audit trail — not for simple single-file edits (`/edit-only`), config files (`/edit-manual`), or AST-pattern edits (`/use-astgrep rewrite`)
 
-1. Identify: take the file list + changes from the user — run `/scan-codebase` to find related files and patterns, plan minimal changes with `/dont-over-engineer`
+1. Identify: take the file list + changes from the user — run `/scan-codebase` to find related files and patterns, plan minimal changes with `/simplify guard`
 2. Script requirements (all mandatory):
    - dry run mode by default — execute for real only after preview + user confirm
    - backup mode: copy the original files before editing

@@ -46,11 +46,15 @@ the Nitro app's deploy path — run after `setup-nitro`; Cloudflare-specific dep
 
 ### 3. Secrets And Bindings
 
+> Goal: Secrets And Bindings.
+
 1. Secrets → env/`wrangler secret put`/provider dashboard — never in the config repo
 2. Bindings (KV/D1/R2) → `wrangler.jsonc` + `wrangler types` → `worker-configuration.d.ts`
 3. `runtimeConfig` overrides → `NITRO_*` env vars on the provider
 
 ### 4. Build, Deploy, Verify
+
+> Goal: Build, Deploy, Verify.
 
 1. `NITRO_PRESET=<target> bun run build` → inspect `.output/`
 2. Deploy per the provider path → smoke test health/critical routes

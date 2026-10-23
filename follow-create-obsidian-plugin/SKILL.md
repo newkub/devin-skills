@@ -21,7 +21,7 @@ Build an Obsidian plugin project in TypeScript with a correct manifest, commands
 
 Use for creating Obsidian desktop/mobile plugins from the sample plugin or a manual setup, with esbuild, manifest, styles, and GitHub release.
 
-- Package: `obsidian` (npm typings — track the app API) — always confirm the latest version via `/deep-research` + `/follow-best-practice` (not pinned in this file — per `/update-devin-global-skills`); `manifest.json` `minAppVersion` must match a real release.
+- Package: `obsidian` (npm typings — track the app API) — always confirm the latest version via `/deep-research` + `/follow-best-practice` (not pinned in this file — per `/update-agents-skills-global`); `manifest.json` `minAppVersion` must match a real release.
 
 ## Execute
 

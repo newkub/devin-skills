@@ -11,7 +11,7 @@ Consolidate tool config and dependency versions duplicated across workspaces int
 
 ## Scope
 
-- Use when the same config (`tsconfig`, `eslint`, `prettier`, `vitest`, build config) is duplicated in 2+ workspaces
+- Use when the same config (`tsconfig`, `eslint`, formatter (`vite.config.ts` `fmt` block or `bunfig.toml` `[fmt]`), `vitest`, build config) is duplicated in 2+ workspaces
 - Use when the same dependency version is spread across several package manifests
 - For duplicated shared code (utils, types, components) across packages → use `/refactor shared` scope instead
 - For env vars → use `workflows/config-env/SKILL.md` instead
@@ -23,7 +23,7 @@ Consolidate tool config and dependency versions duplicated across workspaces int
 > Goal: See which config is genuinely duplicated and worth consolidating
 
 1. Run `/deep-review` dimension `config` — find configs duplicated or drifting across workspaces
-2. Compare config per domain: `tsconfig*.json`, `eslint.config.*`, `prettier.config.*`, `vitest.config.*`, build configs
+2. Compare config per domain: `tsconfig*.json`, `eslint.config.*`, formatter config (root `vite.config.ts` `fmt` block, `bunfig.toml` `[fmt]`, `.prettierignore`), `vitest.config.*`, build configs
 3. Compare dependency versions across package manifests — find version drift and duplicates
 4. Keep only candidates genuinely duplicated in 2+ workspaces — never consolidate speculatively
 
@@ -34,7 +34,7 @@ Consolidate tool config and dependency versions duplicated across workspaces int
 1. Create/update the root shared config per ecosystem:
    - `tsconfig.base.json` → workspaces `extends`
    - A root flat `eslint.config.js` → workspaces import/extend
-   - A root `prettier.config.*` → referenced through `package.json#prettier`
+   - A root formatter block → `fmt` in `vite.config.ts` (Vite+, `/follow-tool-viteplus`) or `bunfig.toml` `[fmt]` (Bun); Prettier-compatible but never `prettier.config.*`/`.prettierrc`, which neither `vp fmt` nor `bun fmt` reads
    - test/build config → `defineConfig` from the shared one
 2. Move duplicated dependency versions into a catalog per package manager (`pnpm-workspace.yaml` catalogs, `bun.catalogs`, or root `overrides`)
 3. Replace versions in package manifests with a `catalog:` reference
@@ -45,7 +45,7 @@ Consolidate tool config and dependency versions duplicated across workspaces int
 > Goal: Every workspace really uses the shared config and nothing breaks
 
 1. Run `/update-references` — delete the duplicated child configs, keeping only workspace-specific overrides
-2. Run the ecosystem validators: `tsc -b`, `eslint .`, `prettier --check .`, then reinstall to resolve the catalog
+2. Run the ecosystem validators: `tsc -b`, `eslint .`, then `vp fmt --check` (Vite+) or `bun fmt --check` (Bun projects), then reinstall to resolve the catalog
 3. Run `/deep-review` dimension `config` again — confirm only one canonical config remains per domain
 4. If it fails → revert that batch and fix; up to 3 rounds → stop/report
 

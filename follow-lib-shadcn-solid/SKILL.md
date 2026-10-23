@@ -24,6 +24,7 @@ Used for building UI components with shadcn-solid on SolidJS for SolidStart, Ast
 - If the project uses the Zaidan registry (`@zaidan/*` via the `shadcn` CLI, Kobalte/Corvu + Tailwind v4), use `/follow-lib-zaidan-ui` instead
 
 - Latest: `shadcn-solid@0.7.7` (CLI) (verified 2026-09-13)
+- References: [shadcn-solid — Best Practices](best-practices/shadcn-solid.md), [apis](references/apis.md), [cli](references/cli.md)
 
 ## Execute
 

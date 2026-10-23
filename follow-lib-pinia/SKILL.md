@@ -21,6 +21,7 @@ Use with Vue 3 that needs state management via Pinia v4 — covers setup stores,
 - No own CLI — used via the Vue app/Nuxt module (thus none)
 - Latest: `pinia@4.0.3` / `@pinia/nuxt@1.0.2` / `pinia-plugin-persistedstate@4.7.1` (verified 2026-09-13)
 - References: [apis](references/apis.md) 
+- References: [Best Practices: Pinia (Vue 3 State Management)](best-practices/stores.md)
 ## Execute
 
 ### 1. Install Pinia

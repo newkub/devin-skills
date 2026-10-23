@@ -25,7 +25,7 @@ Create production-ready Docker artifacts for a project: `Dockerfile`, `.dockerig
 - Covers `Dockerfile`, `.dockerignore`, `compose.yaml`/`docker-compose.yml`, and health checks
 - Does not cover Kubernetes manifests or production-cluster-level orchestration
 
-- Check the local `docker --version`; always confirm the latest engine/compose versions and release notes with `/deep-research` + `/follow-best-practice` (don't pin them in files — per `/update-devin-global-skills`) — the Compose spec no longer uses a top-level `version:`
+- Check the local `docker --version`; always confirm the latest engine/compose versions and release notes with `/deep-research` + `/follow-best-practice` (don't pin them in files — per `/update-agents-skills-global`) — the Compose spec no longer uses a top-level `version:`
 
 ## Execute
 

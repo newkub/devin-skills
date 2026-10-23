@@ -18,7 +18,7 @@ Test CLI commands by running them through a real shell — checking exit codes, 
 > Goal: know where the CLI is
 
 1. Check `package.json` `bin` fields, `scripts`, `bin` in `Cargo.toml`, `pyproject.toml`, `go.mod`
-2. Check `tsup.config.*`, `bunup.config.*`, `Cargo.toml` for build output
+2. Check `tsdown.config.*`, `bunup.config.*`, `Cargo.toml` for build output
 3. Find the executable path or use `bun run src/presentation/cli.ts`
 4. If not found → `/ask-me`
 

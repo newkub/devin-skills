@@ -19,7 +19,7 @@ Build a Nitro plugin package for Nuxt/Nitro with `definePlugin` (v3) / `defineNi
 
 Use when creating plugins that extend the Nitro runtime in Nuxt 3/4 or a standalone Nitro project, supporting both project plugins (`server/plugins/`) and npm packages
 
-- Packages: `nitro` (v3 — formerly `nitropack`), `h3` — always confirm the latest versions with `/deep-research` + `/follow-best-practice` (no pinning in this file — per `/update-devin-global-skills`); v3 breaking: `defineNitroPlugin` → `definePlugin`, no auto-imports (explicit `nitro/*`), H3 v2 (`defineHandler`, `HTTPError`, `event.req`), Node ≥20
+- Packages: `nitro` (v3 — formerly `nitropack`), `h3` — always confirm the latest versions with `/deep-research` + `/follow-best-practice` (no pinning in this file — per `/update-agents-skills-global`); v3 breaking: `defineNitroPlugin` → `definePlugin`, no auto-imports (explicit `nitro/*`), H3 v2 (`defineHandler`, `HTTPError`, `event.req`), Node ≥20
 - Nitro v3 breaking changes: package `nitropack` → `nitro`, `defineNitroPlugin` → `definePlugin`, auto-imports removed (explicit imports from `nitro/*` required), H3 v2 (`defineHandler`, `HTTPError`, `event.req` web APIs), Node.js >= 20
 
 ## Execute
@@ -47,7 +47,7 @@ Use when creating plugins that extend the Nitro runtime in Nuxt 3/4 or a standal
 1. Create `package.json` with `name: nitro-{name}`
 2. Put `nitro` (v3) or `nitropack` (v2) in `peerDependencies` per the supported major version
 3. Create `tsconfig.json`, `src/index.ts`, `test/plugin.test.ts`
-4. Install `unbuild` or `tsup` for the build
+4. Install `tsdown` or `unbuild` for the build
 
 ### 4. Implement Plugin
 
@@ -81,7 +81,7 @@ Use when creating plugins that extend the Nitro runtime in Nuxt 3/4 or a standal
 
 > Goal: build the plugin for npm
 
-1. Create `build.config.ts` or `tsup.config.ts` for ESM/CJS
+1. Create `build.config.ts` or `tsdown.config.ts` for ESM/CJS
 2. Mark `nitro`/`nitropack` as external
 3. Run `bun run build`
 4. Verify `dist/index.mjs` and `dist/index.d.ts`

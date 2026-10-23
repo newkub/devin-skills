@@ -1,5 +1,5 @@
 ---
-name: follow-lib-drizzle-optimize queries
+name: follow-lib-drizzle-optimize-queries
 description: optimize Drizzle queries — indexes, relations, select/where performance
 argument-hint: "[table-or-query]"
 related:
@@ -55,7 +55,7 @@ Improve the performance of Drizzle queries — indexes, relations, select/where 
 1. Use `db.query.<table>.findMany({ with: {...} })` instead of looping per-row queries
 2. Beware deeply nested `with` — each level is a separate query; if large, split into a single join query
 3. Use `columns: {...}` in the relational query to limit fields of parent and child
-4. Batch reads with `inArray` when fetching many ids — see [../../references/api/queries.md](../../references/api/queries.md)
+4. Batch reads with `inArray` when fetching many ids
 
 ### 5. Measure Again
 

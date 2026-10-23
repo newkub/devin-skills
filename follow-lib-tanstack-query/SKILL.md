@@ -18,6 +18,7 @@ Use TanStack Query (v5) from setup to production patterns — provider, queries,
 Works with React, Solid, Vue, Svelte, Angular — covers install, `QueryClient` config, `useQuery`/`useMutation`/`useInfiniteQuery`, cache management, devtools, and testing patterns
 
 - part of TanStack ecosystem — selection/dispatch lives in `/follow-lib-tanstack-ecosystem`
+- References: [TanStack Query — Server State Patterns](best-practices/query.md), [apis](references/apis.md)
 
 ## Execute
 

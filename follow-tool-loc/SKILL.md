@@ -19,6 +19,7 @@ For projects that already have `loc` installed — covers counting lines, filter
 
 - Latest: `loc@0.5.0` (crates.io, verified 2026-09-26; npm `loc@0.6.1` is a different project) — latest release 2018 (the tool is dormant; the author himself suggests `scc` in the README); for a maintained alternative consider `tokei` or `scc`
 - References: [cli](references/cli.md) | [apis](references/apis.md) 
+- References: [loc — Best Practices](best-practices/loc.md)
 ## Execute
 
 ### 1. Check Prerequisites

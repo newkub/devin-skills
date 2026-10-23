@@ -4,7 +4,6 @@ description: Create PowerShell modules/scripts to standard with manifest, functi
 argument-hint: "[module-name]"
 related:
   - use-pwsh-shell
-  - devin-scripts-toolkit
   - deep-review
   - follow-best-practice
   - run-test
@@ -22,7 +21,7 @@ Create a PowerShell module or script project that follows best practices: module
 - Covers module layout, naming (Verb-Noun), parameter validation, pipeline support, and error handling
 - Does not cover publishing to PSGallery beyond the basic checklist
 
-- Target `pwsh` 7.x (PowerShell Core, cross-platform — not Windows PowerShell 5.1) — always confirm the latest LTS/preview versions via `/deep-research` + `/follow-best-practice` (not pinned in this file — per `/update-devin-global-skills`)
+- Target `pwsh` 7.x (PowerShell Core, cross-platform — not Windows PowerShell 5.1) — always confirm the latest LTS/preview versions via `/deep-research` + `/follow-best-practice` (not pinned in this file — per `/update-agents-skills-global`)
 
 ## Execute
 
@@ -95,7 +94,6 @@ Create a PowerShell module or script project that follows best practices: module
 - Pass `PSScriptAnalyzer` before shipping
 
 - Use /use-pwsh-shell when needed
-- Use /devin-scripts-toolkit when needed
 - Use /follow-best-practice when needed
 
 ## Expected Outcome

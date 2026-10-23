@@ -17,7 +17,7 @@ triggers:
 related:
   - scan-codebase
   - use-astgrep
-  - review-devin-global-harness
+  - review-dot-agents-global-and-fix
   - deep-thinking
   - follow-best-practice
   - deep-review
@@ -42,7 +42,7 @@ Use when the user says `reset-context`, wants to discard the previous analysis, 
 - If a target file or directory is specified → reset the view of that file/directory by following the `Assume Reset Context For Target` steps below
 - Does not delete any files, but simulates resetting the conversation's or file's understanding
 
-See also: `/scan-codebase`, `/use-astgrep`, `/review-devin-global-harness`, `/deep-thinking`, `/plan`, `/refactor`, `/use-scripts`, `/implement-to-production`, `/deep-validate`, `/run-verify`
+See also: `/scan-codebase`, `/use-astgrep`, `/review-dot-agents-global-and-fix`, `/deep-thinking`, `/plan`, `/refactor`, `/use-scripts`, `/implement-to-production`, `/deep-validate`, `/run-verify`
 
 ## Execute
 
@@ -86,7 +86,7 @@ See also: `/scan-codebase`, `/use-astgrep`, `/review-devin-global-harness`, `/de
 
 1. Read the entire target file, skipping no lines
 2. Read `imports`, `exports`, dependencies, and reverse dependencies
-3. Run `/scan-codebase` along with `/use-astgrep` and `/review-devin-global-harness`
+3. Run `/scan-codebase` along with `/use-astgrep` and `/review-dot-agents-global-and-fix`
 4. Run `/deep-thinking` to analyze the structure, issues, and improvements
 5. Run `/follow-best-practice` and `/deep-review` to compare against standards
 6. Run `/plan` to plan the fixes according to the new findings

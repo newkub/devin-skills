@@ -84,14 +84,15 @@ Verified via `mise list` + `scoop list` — updated 2026-09-13 — Windows machi
 | `druk` (1.22) | `druk` | docker TUI |
 | `oxker` (0.13) | `oxker` | docker TUI |
 | `usage` (6.7) | `usage generate` | CLI spec/completions |
-| `viteplus` / `tauri` / `wasm-pack` | — | build tools |
+| `viteplus` (`vp`) | `vp check` / `vp fmt` / `vp test` | unified Vite toolchain (`/follow-tool-viteplus`) |
+| `tauri` / `wasm-pack` | — | build tools |
 | `vercel` / `wrangler` / `supabase` | — | deploy targets |
 | `@scalar/cli` | `scalar document convert` | OpenAPI ops |
 | `@mermaid-js/mermaid-cli` | `mmdc -i in.mmd -o out.svg` | diagrams |
 | `@shikijs/cli` | `shiki` | code highlighting |
 | `foam-cli` | `foam` | knowledge base |
 | `typescript` 7 (native tsc; `tsgo` folded back since 7.0 RC) | `tsc --noEmit` | fast typecheck |
-| `bun` (runtime, ≥ 1.4) | `bun check` | built-in parallel typecheck — same errors as `tsc`; no global install needed |
+| `bun` (runtime, ≥ 1.4) | `bun check`, `bun fmt` | built-in parallel typecheck (same errors as `tsc`) and built-in formatter (`--check`, `--staged`, `--changed`); no global install needed |
 | `vue-tsc`, `oxlint`, `oxfmt`, `biome`, `selene` | — | lint/format |
 | `vsce`, `@native-sdk/cli`, `@tanstack/intent`, `dprint` | — | packaging/format |
 

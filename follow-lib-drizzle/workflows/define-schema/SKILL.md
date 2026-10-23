@@ -20,6 +20,8 @@ schema authoring — `pgTable`/`mysqlTable`/`sqliteTable`, column builders, `rel
 
 ### 1. Dialect Table Builders
 
+> Goal: Dialect Table Builders.
+
 ```ts
 import { pgTable, serial, text, integer, timestamp, boolean, uuid, jsonb, index, uniqueIndex } from 'drizzle-orm/pg-core'
 // mysql-core: mysqlTable, int, varchar, datetime, json, ...
@@ -35,12 +37,16 @@ export const users = pgTable('users', {
 
 ### 2. Columns And Constraints
 
+> Goal: Columns And Constraints.
+
 - `.primaryKey()`, `.notNull()`, `.unique()`, `.default()`, `.defaultNow()`, `.defaultRandom()`
 - `.references(() => users.id, { onDelete: 'cascade' })` — FK
 - `.array()` (pg), `jsonb`/`json`, `customType` for unsupported types
 - Composite: `primaryKey({ columns: [a, b] })`, `unique().on(a, b)`, `check()` constraints in the callback arg
 
 ### 3. Indexes And Config Callback
+
+> Goal: Indexes And Config Callback.
 
 ```ts
 export const posts = pgTable('posts', { ... }, (t) => [
@@ -54,6 +60,8 @@ export const posts = pgTable('posts', { ... }, (t) => [
 
 ### 4. Relations
 
+> Goal: Relations.
+
 ```ts
 export const usersRelations = relations(users, ({ many }) => ({ posts: many(posts) }))
 export const postsRelations = relations(posts, ({ one }) => ({
@@ -65,6 +73,8 @@ export const postsRelations = relations(posts, ({ one }) => ({
 - `one`/`many` + `relationName` when ambiguous (self/multiple FKs to the same table)
 
 ### 5. Schema Organization
+
+> Goal: Schema Organization.
 
 - `src/db/schema/*.ts` per domain → `src/db/schema/index.ts` barrel — drizzle-kit `schema` points at the barrel
 - Infer types: `typeof users.$inferSelect`, `$inferInsert` — don't write duplicate interfaces

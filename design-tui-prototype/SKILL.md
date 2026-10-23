@@ -40,7 +40,7 @@ Core principle: a TUI has one screen and no scroll of context — density, focus
 
 > Goal: design on the conventions that already exist, not from memory
 
-1. Run `/follow-devin-global-skills` — list global (`%APPDATA%\devin\skills`) and project (`.devin/skills/`) skills matching the terminal-app domain
+1. Run `/follow-devin-global-skills` — list global (`%APPDATA%\devin\skills`) and project (`.agents/skills/`) skills matching the terminal-app domain
 2. Read the ones this design must obey: `/draw-ansi` (box rules), `/report-uxui` (sketch conventions), `/follow-design-system`, and the builder skill for the target stack — `/follow-create-tui-ratatui` (Rust) or `/follow-lib-native-sdk` (native)
 3. Project `AGENTS.md` → read its `### Skills` section; reuse the key bindings/terminology the project already uses before inventing new ones
 

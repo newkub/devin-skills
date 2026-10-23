@@ -20,6 +20,8 @@ Use `Stream` for lazy/pull-based data processing — from collection/IO sources,
 
 ### 1. Create Streams
 
+> Goal: Create Streams.
+
 ```ts
 import { Stream } from "effect"
 
@@ -32,12 +34,16 @@ Stream.fromReadableStream(() => rs, onError)  // Web streams interop
 
 ### 2. Transform
 
+> Goal: Transform.
+
 - `Stream.map`, `filter`, `mapEffect` (effectful element-wise), `filterMap`
 - `Stream.mapConcat` (flatMap), `Stream.zip`, `merge`, `concat`
 - `Stream.grouped`/`rechunk` — batch elements; `Stream.throttle`, `debounce`
 - `Stream.take`/`takeWhile`/`drop`/`runHead` — bounded consumption
 
 ### 3. Consume With Sinks
+
+> Goal: Consume With Sinks.
 
 ```ts
 Stream.runCollect(stream)             // Chunk<A>
@@ -50,6 +56,8 @@ stream.pipe(Stream.toReadableStream)  // back to Web streams
 - `Channel` = a lower-level pull/push primitive for custom stream transforms
 
 ### 4. Resource Safety
+
+> Goal: Resource Safety.
 
 - `Stream.unwrapScoped` / `Stream.acquireRelease` — resource per element/stream
 - `Stream.run` inside `Effect.scoped` — release guaranteed

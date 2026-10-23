@@ -23,7 +23,7 @@ Build a TUI application with Rust using the Ratatui library
 - No web stack
 - Layout/keys/states not agreed yet → design them first in chat via `/design-tui-prototype`, then implement here
 
-- Packages: `ratatui` (latest stable, MSRV per crates.io — 0.30 requires Rust 1.88+), `crossterm` — always confirm the latest versions with `/deep-research` + `/follow-best-practice` (not pinned in this file — per `/update-devin-global-skills`)
+- Packages: `ratatui` (latest stable, MSRV per crates.io — 0.30 requires Rust 1.88+), `crossterm` — always confirm the latest versions with `/deep-research` + `/follow-best-practice` (not pinned in this file — per `/update-agents-skills-global`)
 
 ## Execute
 

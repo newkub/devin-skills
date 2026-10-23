@@ -21,6 +21,7 @@ Use when the task involves `fast-check` — setup, writing property tests, model
 - `fast-check` is a test library — install as a devDependency and there is no standalone CLI (run via the test runner)
 - Latest: `fast-check@4.10.2` (verified 2026-09-24) — v4 requires Node ≥12.17 / ES2020 and drops deprecated arbitraries (`unicode*`, `ascii*`, `char`, `uuidV`, `.noBias`, `.noShrink`) while including invalid dates and null-prototype objects by default
 - References: [apis](references/apis.md) 
+- References: [fast-check — Best Practices](best-practices/fast-check.md)
 ## Execute
 
 ### 1. Install And Configure

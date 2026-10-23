@@ -128,6 +128,7 @@ Use for GitHub repositories that want dependency updates, schedule, automerge, a
 - Use /run-install if needed
 
 - See best-practices/ for recommended patterns and pitfalls
+- References: [Renovate — Best Practices](best-practices/renovate.md), [apis](references/apis.md)
 
 ## Expected Outcome
 

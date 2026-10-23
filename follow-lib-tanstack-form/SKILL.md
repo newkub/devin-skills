@@ -17,6 +17,7 @@ Use TanStack Form (v1) fully — headless type-safe forms: fields, Standard Sche
 For forms of any size — headless = state/validation only, the UI is yours; adapters: `react-form`, `solid-form`, `vue-form`, `angular-form`, `svelte-form`; libraries like shadcn already have wrappers (re-export patterns per the docs)
 
 - part of TanStack ecosystem — selection/dispatch lives in `/follow-lib-tanstack-ecosystem`
+- References: [TanStack Form — Best Practices](best-practices/tanstack-form.md), [apis](references/apis.md)
 
 ## Execute
 

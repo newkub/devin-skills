@@ -20,6 +20,7 @@ Open GitHub pages in a browser with native OS commands, per the specified target
 - Never modify any repo
 
 See also: /all-github-repo, /list-github-repo
+- References: [open-github-secrets (merged content)](references/secrets-page.md)
 
 ## Execute
 

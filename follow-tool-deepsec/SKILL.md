@@ -108,6 +108,7 @@ bunx deepsec report       # quick overview
 
 - See `best-practices/` for recommended patterns and pitfalls
 - See `references/apis.md` for the package and version reference, `references/cli.md` for the CLI surface
+- References: [deepsec best practices](best-practices/security-scanning.md)
 
 ## Expected Outcome
 

@@ -27,7 +27,7 @@ If you need feedback from real stakeholders (not roleplay) → use `/deep-review
 
 ## Execute
 
-Every run starts with the deep pre-pass — run `/deep-thinking` → `/deep-analyze` → `/deep-validate` before identifying/roleplaying any role (convention: `update-devin-global-skills` `## Conventions → Templates` row `review-*`).
+Every run starts with the deep pre-pass — run `/deep-thinking` → `/deep-analyze` → `/deep-validate` before identifying/roleplaying any role (convention: `update-agents-skills-global` `## Conventions → Templates` row `review-*`).
 
 ### 1. Identify Role
 
@@ -74,7 +74,7 @@ Every run starts with the deep pre-pass — run `/deep-thinking` → `/deep-anal
 1. Run `/scan-codebase` first to gather context
 2. Play the role per the persona details (Goal/Scope/Execute/focus areas in the section)
 3. Collect findings, severity, and recommendations
-4. Score: Critical 0, High 25, Medium 50, Low 75, Info 100 → weighted average; grade A ≥90, B ≥80, C ≥70, D ≥60, F <60
+4. Score and grade per `/report-review` step 3 (the weights/grades SSOT) — never restate the formula here
 
 ### 4. Report
 

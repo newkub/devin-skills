@@ -3,6 +3,7 @@ name: run-all-tasks
 description: Run every task defined in the project manifest sequentially until all pass
 argument-hint: "[scope|skip-destructive]"
 related:
+  - follow-tool-viteplus
   - follow-tasks
   - run-verify
   - run-check
@@ -43,13 +44,14 @@ Enumerate every task defined in the project's task manifest (`package.json` scri
 
 1. Read the task manifest per ecosystem:
    - `package.json` → `scripts` object (each key = task name)
+   - `vite.config.ts` → `run` block (Vite Task; run via `vp run <task>`)
    - `moon.yml` / `.moon/tasks/*.yml` → task definitions (run via `moon run <task>`)
    - `justfile` → recipe names
    - `mise.toml` → `[tasks]` section
    - `Taskfile.yml` → `tasks:` mapping
    - `Cargo.toml` → `[alias]` under `[cargo]` or `.cargo/config.toml`
    - `Makefile` → target names (exclude `.PHONY`-only helpers)
-2. If multiple manifests coexist (e.g. root `package.json` + workspace `moon.yml`), prefer the orchestration tool (moon > turbo > plain package.json)
+2. If multiple manifests coexist (e.g. root `package.json` + workspace `moon.yml`), prefer the orchestration tool (moon > turbo > plain package.json); a Vite+ project runs tasks through `vp run <task>` (`vpr` for short) — see `/follow-tool-viteplus`
 3. Build the task list: `No. | Task | Command | Category | Destructive?`
 4. Categorize each task: `setup` (clean, install), `build`, `check` (lint, typecheck, format:check, scan), `test`, `deploy` (db:*, migrate, deploy:*), `custom` (everything else)
 5. If no tasks found → stop and recommend `/follow-tasks` to set up the project scripts

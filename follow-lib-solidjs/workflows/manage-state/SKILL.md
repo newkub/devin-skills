@@ -20,6 +20,8 @@ state management — `createSignal`, `createStore`, `produce`/`reconcile`, `crea
 
 ### 1. Signals
 
+> Goal: Signals.
+
 ```ts
 const [count, setCount] = createSignal(0)
 setCount(c => c + 1)
@@ -31,6 +33,8 @@ count()                // read — tracks in a reactive scope
 - Signals = Solid's atoms — tracking happens only when read inside a reactive scope (JSX/memo/effect)
 
 ### 2. Stores (Nested State)
+
+> Goal: Stores (Nested State).
 
 ```ts
 const [state, setState] = createStore({ todos: [], filter: 'all' })
@@ -44,6 +48,8 @@ setState('filter', reconcile(newFilter))              // deep merge replace
 
 ### 3. Derived Values
 
+> Goal: Derived Values.
+
 ```ts
 const doubled = createMemo(() => count() * 2)
 const filtered = createMemo(() => todos().filter(t => !t.done))
@@ -53,6 +59,8 @@ const filtered = createMemo(() => todos().filter(t => !t.done))
 - `createSelector` — selection reactivity (list item compare per item)
 
 ### 4. Effects And Control
+
+> Goal: Effects And Control.
 
 ```ts
 createEffect(() => console.log(count()))                    // tracks deps automatically
@@ -65,6 +73,8 @@ untrack(() => count())                                      // read without trac
 - `createRoot` — manual disposal scope; `createContext`+`useContext` — DI tree
 
 ### 5. Patterns
+
+> Goal: Patterns.
 
 1. `createResource` for async → the `handle-async` workflow
 2. Global state: create the signal/store at module top-level — no Provider requirement

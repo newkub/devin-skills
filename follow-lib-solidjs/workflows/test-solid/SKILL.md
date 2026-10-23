@@ -21,6 +21,8 @@ component + signal testing — vitest + `@solidjs/testing-library` + jsdom/happy
 
 ### 1. Setup
 
+> Goal: Setup.
+
 ```bash
 bun i -D vitest @solidjs/testing-library jsdom @testing-library/jest-dom @testing-library/user-event
 ```
@@ -39,6 +41,8 @@ export default defineConfig({
 
 ### 2. Render And Assert
 
+> Goal: Render And Assert.
+
 ```tsx
 import { render, screen, fireEvent } from '@solidjs/testing-library'
 
@@ -56,6 +60,8 @@ it('increments', () => {
 
 ### 3. Testing Signals And Stores
 
+> Goal: Testing Signals And Stores.
+
 ```ts
 import { createRoot } from 'solid-js'
 
@@ -70,6 +76,8 @@ it('signal', () => createRoot(dispose => {
 - Store tests: assert through proxy reads; async resources: trigger `refetch`/`mutate` then assert state
 
 ### 4. Async And Boundaries
+
+> Goal: Async And Boundaries.
 
 - `await screen.findByText(...)` — resources resolving
 - Suspense tests: assert fallback → content; `ErrorBoundary` — throw inside a component then assert the fallback

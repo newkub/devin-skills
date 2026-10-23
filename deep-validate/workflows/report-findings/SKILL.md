@@ -5,7 +5,7 @@ argument-hint: "[scope]"
 related:
   - report
   - suggest-next-action
-  - create-report-in-dot-devin
+  - create-report-to-dot-agents
 ---
 
 ## Goal
@@ -41,7 +41,7 @@ Aggregate findings from all `check-*` workflow dimensions into a single report �
 
 1. Always summarize what is already good (per dimension)
 2. Actionable recommendations sorted by priority
-3. To persist the report → run `/create-report-in-dot-devin`
+3. To persist the report → run `/create-report-to-dot-agents`
 4. Run `/suggest-next-action` (e.g. `/resolve-errors` for Critical findings)
 
 ## Rules

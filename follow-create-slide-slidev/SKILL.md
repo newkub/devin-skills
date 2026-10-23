@@ -22,7 +22,7 @@ Create and develop presentation slides with Slidev (Vite + Vue + Markdown), both
 - If you need the `D:/newkub/slides`-specific flow → use `/create-slide-in-newkub-slides`
 - Canonical upstream reference: `skills/slidev/SKILL.md` at https://github.com/slidevjs/slidev (generated from docs v52.11.3) — this skill merges the feature tables into a single SKILL.md file with no `references/`
 
-- Packages: `@slidev/cli`, `@slidev/theme-seriph`/`@slidev/theme-default`, `vue`, `playwright-chromium` (for `slidev export`) — always confirm the latest versions with `/deep-research` + `/follow-best-practice` (not pinned in this file — per `/update-devin-global-skills`); `mdc` headmatter renamed to `comark` since v52.14
+- Packages: `@slidev/cli`, `@slidev/theme-seriph`/`@slidev/theme-default`, `vue`, `playwright-chromium` (for `slidev export`) — always confirm the latest versions with `/deep-research` + `/follow-best-practice` (not pinned in this file — per `/update-agents-skills-global`); `mdc` headmatter renamed to `comark` since v52.14
 
 ## Execute
 
@@ -208,7 +208,7 @@ Compact table (synced from upstream `skills/slidev/SKILL.md` — full docs at ht
 | Export: SEO meta | `seoMeta:` block |
 | Tool: side editor | click the edit icon in dev mode |
 | Tool: VS Code extension | `antfu.slidev` |
-| Tool: Prettier | `prettier-plugin-slidev` |
+| Tool: format | `bun fmt` (built-in, Markdown/TS) or `vp fmt` — no Prettier plugin needed |
 | Tool: eject theme | `slidev theme eject` |
 | Tool: MCP server | `slidev mcp` or the `/__mcp` endpoint |
 

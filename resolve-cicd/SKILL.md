@@ -22,6 +22,7 @@ Use when you need to monitor the pipeline after push/merge, or when you know CI/
 - repo-scoped mode (default if inside a git repo or with `--repo`): resolve every pipeline that matches the repo — see `references/repo-resolve.md`
 - single-run mode (`--run-id` or `--url`): follow a single run until it passes — see `references/single-run.md`
 - Does not trigger the first run itself
+- References: [Runs](references/runs.md), [Single-Run CD Watch And Resolve](references/single-run-cd-resolve.md), [Website](references/website.md)
 
 ## Execute
 

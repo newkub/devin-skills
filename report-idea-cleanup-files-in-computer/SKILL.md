@@ -9,7 +9,7 @@ related:
   - report
   - report-file-structure
   - suggest-next-action
-  - cleanup-files-in-project
+  - cleanup-project
   - run-clean
   - run-cleanup
 ---
@@ -85,7 +85,7 @@ Use on any user computer (not limited to a workspace), covering package caches, 
 
 1. Run `/suggest-next-action` from the report
 2. Recommend suitable workflows:
-   - `/cleanup-files-in-project` for deleting unnecessary source files
+   - `/cleanup-project` for deleting unnecessary source files
    - `scoop cleanup *`, `mise prune`, `bun pm cache clean`, `pip cache purge`, `sccache --stop-server` + delete cache
 3. Only run the real cleanup after the user agrees (use dry-run first)
 

@@ -20,6 +20,8 @@ plugin usage + authoring — `.use()` composition, plugin prefix/scoping, common
 
 ### 1. Core Plugins
 
+> Goal: Core Plugins.
+
 ```ts
 import { openapi } from '@elysiajs/openapi'
 import { cors } from '@elysiajs/cors'
@@ -44,6 +46,8 @@ app
 
 ### 2. Auth Pattern (jwt + derive)
 
+> Goal: Auth Pattern (jwt + derive).
+
 ```ts
 app.use(jwt({ name: 'jwt', secret }))
    .derive(async ({ jwt, cookie: { auth } }) => ({ user: await jwt.verify(auth?.value) }))
@@ -53,6 +57,8 @@ app.use(jwt({ name: 'jwt', secret }))
 - Or `macro`/`guard` for per-route auth — see `define-routes` guard
 
 ### 3. Custom Plugin Authoring
+
+> Goal: Custom Plugin Authoring.
 
 ```ts
 const plugin = new Elysia({ name: 'my-plugin', seed: config })
@@ -66,6 +72,8 @@ app.use(plugin)
 - Scope propagation: hooks/decorators local unless `.as('global'|'scoped')`
 
 ### 4. Community Integrations
+
+> Goal: Community Integrations.
 
 - `elysia-rate-limit`, `@elysiajs/graphql-yoga`, `elysia-helmet` (security headers)
 - DB: `.decorate('db', drizzle(client))` — drizzle → `/follow-lib-drizzle`

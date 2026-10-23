@@ -20,6 +20,8 @@ server-side implementation — procedures, context types, middleware, router ass
 
 ### 1. Implement Contract
 
+> Goal: Implement Contract.
+
 ```ts
 import { implement } from '@orpc/server'
 
@@ -40,6 +42,8 @@ export const router = pub.router({
 
 ### 2. Context And Middleware
 
+> Goal: Context And Middleware.
+
 ```ts
 const requireAuth = middleware(({ context, next, errors }) => {
   if (!context.user) throw errors.UNAUTHORIZED()
@@ -55,11 +59,15 @@ const authed = pub.use(requireAuth)
 
 ### 3. Router Composition
 
+> Goal: Router Composition.
+
 - `pub.router({...})` — nested paths auto-prefix
 - `implement(contract).lazy(() => import('./heavy-router'))` — lazy-load sub-routers (cold start)
 - Merge routers: `os.router({ a: routerA, b: routerB })`
 
 ### 4. Handler Utilities
+
+> Goal: Handler Utilities.
 
 - `input`/`output` auto-validated per the contract schemas
 - `event`/`signal` — request signal, headers access via context adapter

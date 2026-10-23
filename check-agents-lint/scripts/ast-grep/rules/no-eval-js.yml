@@ -1,0 +1,9 @@
+id: no-eval-js
+language: JavaScript
+severity: warning
+message: eval or new Function executes arbitrary code
+rule:
+  any:
+    - pattern: eval($ARG)
+    - pattern: new Function($$$ARGS)
+    - pattern: Function($$$ARGS)

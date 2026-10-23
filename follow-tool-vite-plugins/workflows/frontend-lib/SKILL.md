@@ -30,7 +30,7 @@ Use when you need a framework/frontend-specific plugin — universal plugins (`u
 | `vite-plugin-react-swc` | React + SWC — if you want SWC instead of Oxc |
 | `vite-plugin-svelte` | Svelte/SvelteKit — official sveltejs |
 | `@vitejs/plugin-vue` | Vue 3 — official |
-| `solid-start` / `vite-plugin-solid` | Solid — per `/follow-create-web-solid` |
+| `solid-start` / `vite-plugin-solid` | Solid — per `/follow-create-web-solidstart` |
 | `vite-plugin-laravel` (laravel) | Laravel backend integration |
 | `fastify-vite` | Fastify SSR integration |
 

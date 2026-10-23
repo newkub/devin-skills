@@ -28,7 +28,7 @@ Use for reviewing a pull request before merge — works on a PR from GitHub or a
 
 ## Execute
 
-Every round starts with the deep pre-pass — run `/deep-thinking` → `/deep-analyze` → `/deep-validate` before any fetch/review (convention: `update-devin-global-skills` `## Conventions → Templates` row `review-*`)
+Every round starts with the deep pre-pass — run `/deep-thinking` → `/deep-analyze` → `/deep-validate` before any fetch/review (convention: `update-agents-skills-global` `## Conventions → Templates` row `review-*`)
 
 ### 1. Fetch PR Context
 
@@ -96,11 +96,10 @@ Every round starts with the deep pre-pass — run `/deep-thinking` → `/deep-an
 
 > Goal: compute score/grade per the criteria, then run `/report-review` and `/suggest-next-action` (github pr)
 
-1. Severity weights — Critical 0, High 25, Medium 50, Low 75, Info 100; review score = weighted average of all findings
-2. Grade: A ≥90 (excellent), B ≥80 (good), C ≥70 (pass), D ≥60 (needs improvement), F <60 (fail)
-3. Threshold: score <70 → recommend fixing the PR before merge; ≥70 → ready to merge per recommendations
-4. Supporting metrics: Review Coverage Ratio, False Positive Rate, Evidence Strength (findings with path/line/commit), Actionability Score, Severity Distribution, MTTR (Critical=1d High=3d Medium=7d Low=14d), Before/After Trend, Risk Exposure Index (Critical/High in security/auth/API/breaking/CI), Scope Boundary Adherence, Report Quality
-5. PR-specific metrics: size (changed lines + files), Review Coverage (reviewed files / changed files × 100), CI Pass Rate (passed checks / total checks × 100), Conflict Rate
+1. Score and grade per `/report-review` step 3 (the weights/grades SSOT) — never restate the formula here
+2. Threshold: score <70 → recommend fixing the PR before merge; ≥70 → ready to merge per recommendations
+3. Supporting metrics: Review Coverage Ratio, False Positive Rate, Evidence Strength (findings with path/line/commit), Actionability Score, Severity Distribution, MTTR (Critical=1d High=3d Medium=7d Low=14d), Before/After Trend, Risk Exposure Index (Critical/High in security/auth/API/breaking/CI), Scope Boundary Adherence, Report Quality
+4. PR-specific metrics: size (changed lines + files), Review Coverage (reviewed files / changed files × 100), CI Pass Rate (passed checks / total checks × 100), Conflict Rate
 
 ### 8. Report And Recommend
 

@@ -27,6 +27,7 @@ Check and follow monorepo conventions, workspace scripts, dependencies, and buil
 ## Scope
 
 Use with monorepos that use `moon`, `turbo`, `pnpm workspace`, `bun workspace`, or `nx` — detect the tool, verify workspace conventions, run commands, and manage dependencies
+- References: [Monorepo Architecture Reference](references/monorepo.md)
 
 ## Execute
 
@@ -75,7 +76,7 @@ Use with monorepos that use `moon`, `turbo`, `pnpm workspace`, `bun workspace`, 
    - `/follow-tool-gitleaks` for the secrets scanning hook (e.g. pre-push)
    - `/setup-cicd` if there is no pipeline yet or the config drifted
    - `/update-license-md`, `/update-contributing`, `/update-astgrep-rules`, `/update-gitignore` for repo hygiene files
-   - `/update-dot-vscode`, `/update-dot-devin` for the workspace's `.vscode`/`.devin` config
+   - `/update-dot-vscode`, `/update-dot-agents-project` for the workspace's `.vscode`/`.devin` config
    - `/improve config` when the config works but can still be improved
 
 ### 4. Run Workspace Command
@@ -114,7 +115,7 @@ Use with monorepos that use `moon`, `turbo`, `pnpm workspace`, `bun workspace`, 
 > Goal: summarize the status of every workspace including `.vscode`/`.devin`
 
 1. Run `/report table` with columns: `No.`, `Workspace`, `Type`, `Conventions`, `.vscode`, `.devin`, `Deps`, `Status`
-2. A workspace missing `.vscode` → run `/update-dot-vscode`; missing `.devin` → run `/update-dot-devin`
+2. A workspace missing `.vscode` → run `/update-dot-vscode`; missing `.devin` → run `/update-dot-agents-project`
 3. Run `/suggest-next-action`
 
 ## Rules
@@ -158,7 +159,7 @@ Use with monorepos that use `moon`, `turbo`, `pnpm workspace`, `bun workspace`, 
 - Use /suggest-next-action if needed
 - Use /run-test all if needed
 - Use /update-dot-vscode if needed
-- Use /update-dot-devin if needed
+- Use /update-dot-agents-project if needed
 
 ## Expected Outcome
 
@@ -166,4 +167,4 @@ Use with monorepos that use `moon`, `turbo`, `pnpm workspace`, `bun workspace`, 
 - Workspaces listed and conventions verified
 - Dependencies consistent
 - Build/typecheck/lint pass
-- Report table summarizes every workspace including `.vscode`/`.devin` (`/update-dot-vscode`, `/update-dot-devin`)
+- Report table summarizes every workspace including `.vscode`/`.devin` (`/update-dot-vscode`, `/update-dot-agents-project`)

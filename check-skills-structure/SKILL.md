@@ -1,7 +1,7 @@
 ---
 name: check-skills-structure
 description: Check skill package structure (frontmatter, references, workflows, subagents, src, MCP) with one CLI
-argument-hint: "[root] [--skill <name>] [--json] [--findings] [--detail]"
+argument-hint: "[root] [--skill <name>] [--json] [--findings] [--detail] [--anchors] [--tables]"
 allowed-tools:
   - exec
   - grep
@@ -10,8 +10,8 @@ allowed-tools:
   - read
 related:
   - check-my-global-cli
-  - update-devin-global-skills
-  - review-devin-global-harness
+  - update-agents-skills-global
+  - review-dot-agents-global-and-fix
   - deep-validate
   - report
   - use-scripts
@@ -26,7 +26,7 @@ Inspect the structure of skill packages in `%APPDATA%\devin\skills\` — frontma
 
 Use to inventory/audit skill structure across the whole repo or a single skill — read-only check, reproducible via `scripts/check-skills-structure.ts` (Bun, zero deps)
 
-- Boundary: detailed convention linting (related contract, section order, naming) → `/review-devin-global-harness`; per-skill frontmatter validation → `/deep-validate`; this skill = a fast structural inventory table
+- Boundary: detailed convention linting (related contract, section order, naming) → `/review-dot-agents-global-and-fix`; per-skill frontmatter validation → `/deep-validate`; this skill = a fast structural inventory table
 
 ## Execute
 
@@ -40,10 +40,16 @@ bun "check-skills-structure/scripts/check-skills-structure.ts" --skill refactor 
 bun "check-skills-structure/scripts/check-skills-structure.ts" --findings          # warnings only
 bun "check-skills-structure/scripts/check-skills-structure.ts" --json              # machine-readable
 bun "check-skills-structure/scripts/check-skills-structure.ts" --detail            # show every entry name per skill
+bun "check-skills-structure/scripts/check-skills-structure.ts" --anchors --tables  # citation + table gates
+bun "check-skills-structure/scripts/check-skills-structure.ts" --anchors --tables --findings  # gates only
 bun "check-skills-structure/scripts/check-skills-structure.ts" <custom-root>       # another repo
 ```
 
 Besides the bullet counts, use `--skill <name>` or `--detail` to see the `actual names` per skill — `related`, `references`, `workflows`, `subagents`, `best-practices`, `usecases`, `scripts`, `frontmatter-missing`
+
+`--anchors` proves every `` `skill` `## Heading` `` citation exists in the target's `SKILL.md`; `--tables` proves every markdown table row keeps the header's cell count. Both are opt-in and skip fenced code.
+
+- `--anchors` scope: only the scanned skill's own body is read, so a cross-skill citation is proven when the citing skill is scanned; attribution requires a citation cluster (nothing but separators between the skill ref and the heading), and dash/arrow flows (`a — b`, `a → b`) are not treated as citations
 
 ### 2. Interpret Output
 
@@ -65,9 +71,10 @@ Besides the bullet counts, use `--skill <name>` or `--detail` to see the `actual
 
 > Goal: handle the warnings found
 
-1. `[WARN]` per skill: `no SKILL.md`, `name!=dir`, `no description`, `desc >100 chars`, `no frontmatter`, `>250 lines`, `related not in body`, `related >15`, `** bold`
-2. severity: Critical = `no SKILL.md`/`no frontmatter`; High = `name!=dir`; Warning = `no description`/`desc >100 chars`/`>250 lines`/`related not in body`/`related >15`/`** bold`
-3. findings that need fixing → `/update-devin-global-skills`; deep lint → `/review-devin-global-harness`; per-skill validation → `/deep-validate`
+1. `[WARN]` per skill: `no SKILL.md`, `name!=dir`, `no description`, `desc >100 chars`, `no frontmatter`, `>250 lines`, `related not in body`, `related >15`, `** bold`; with `--anchors`/`--tables`: `anchors: N missing` (cited heading absent from the target), `tables: N malformed` (row cell count differs from the header)
+2. severity: Critical = `no SKILL.md`/`no frontmatter`; High = `name!=dir`; Warning = `no description`/`desc >100 chars`/`>250 lines`/`related not in body`/`related >15`/`** bold`/`anchors`/`tables`
+3. `anchors` findings: fix the citation or the target heading — a heading-level mismatch (`##` vs `###`) is the usual cause; `tables` findings: add or remove cells so every row matches the header
+4. findings that need fixing → `/update-agents-skills-global`; deep lint → `/review-dot-agents-global-and-fix`; per-skill validation → `/deep-validate`
 
 ## Rules
 

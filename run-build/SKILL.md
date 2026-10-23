@@ -3,6 +3,7 @@ name: run-build
 description: Run the build process systematically to produce production-ready artifacts
 argument-hint: "[scope]"
 related:
+  - follow-tool-viteplus
   - deep-review
   - run-typecheck
   - resolve-errors
@@ -18,6 +19,7 @@ Run the build process systematically to produce production-ready artifacts
 ## Scope
 
 Use with projects that have a build script in the package manifest, optimizing build configuration before building
+- Vite+ project: `vp install` then `vp build`; build options live in the root `vite.config.ts` `build` block (see `/follow-tool-viteplus`)
 
 ## Execute
 
@@ -40,7 +42,7 @@ Use with projects that have a build script in the package manifest, optimizing b
 
 > Goal: Install the required dependencies
 
-1. Run `bun install`
+1. Run `bun install` (Vite+ project → `vp install`)
 2. Verify that all dependencies are installed
 
 ### 4. Clean Build Artifacts
@@ -53,7 +55,7 @@ Use with projects that have a build script in the package manifest, optimizing b
 
 > Goal: Run the build command per the package manifest
 
-1. Run `bun run build` or the designated build script
+1. Run `bun run build`, `vp build` for a Vite+ project, or the designated build script
 2. Record the elapsed time
 3. Capture stdout and errors separately
 

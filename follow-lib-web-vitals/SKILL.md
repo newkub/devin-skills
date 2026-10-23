@@ -22,6 +22,7 @@ Use when the task involves measuring Core Web Vitals with `web-vitals` — setup
 
 - Latest: `web-vitals@6.2.2` (verified 2026-09-16)
 - References: [apis](references/apis.md) 
+- References: [web-vitals — Best Practices](best-practices/web-vitals.md)
 ## Execute
 
 ### 1. Setup And Usage

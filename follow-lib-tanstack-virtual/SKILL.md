@@ -18,6 +18,7 @@ Use TanStack Virtual (v3) fully — virtualize element lists: scroll container, 
 Use when rendering many items (100+) — lists, table rows, grids, chat feeds; short lists don't need it (overhead > benefit)
 
 - part of TanStack ecosystem — selection/dispatch lives in `/follow-lib-tanstack-ecosystem`
+- References: [TanStack Virtual — Best Practices](best-practices/tanstack-virtual.md), [apis](references/apis.md)
 
 ## Execute
 

@@ -2,6 +2,10 @@
 name: follow-tool-packslip
 description: Publish signed release manifests (packslip) — digests, platforms, bin paths
 argument-hint: "[scope]"
+related:
+  - follow-tool-mise
+  - follow-tool-github-actions
+  - follow-release
 ---
 
 ## Goal
@@ -13,6 +17,8 @@ Publish `packslip.sigstore.json` beside release artifacts — a signed manifest 
 - Use when publishing release artifacts that installers (mise/others) should pick and verify — GitHub Actions has `jdx/packslip@v1`; publishers outside CI use an Ed25519 key
 - Spec stable at `release/v1` — predicateType `https://packslip.dev/release/v1`
 - Docs: https://packslip.dev/ · Spec: https://packslip.dev/release/v1/ · CLI: https://packslip.dev/cli/
+- Related: `/follow-tool-mise` consumes the manifest; publishing flows live in `/follow-tool-github-actions` and `/follow-release`
+- References: [packslip — Best Practices](best-practices/packslip.md), [apis](references/apis.md), [cli](references/cli.md)
 
 ## Execute
 

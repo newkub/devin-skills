@@ -17,6 +17,7 @@ Use `fnox` (jdx, Rust, MIT) to manage secrets in dev/CI — define each value's 
 - `fnox.toml` providers + secrets, `fnox exec`, `fnox set`, profiles, shell integration, daemon cache, temporary credentials (leases), agent proxy
 - Not leak scanning — for leaked secrets use `/follow-tool-gitleaks` + `/check-secrets`
 - Latest: v1.40.x — https://fnox.jdx.dev/
+- References: [fnox — Best Practices](best-practices/fnox.md), [apis](references/apis.md), [cli](references/cli.md)
 
 ## Execute
 

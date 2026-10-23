@@ -3,8 +3,8 @@ name: cleanup
 description: Clean unused resources — branches, worktrees, docker, github issues via top-level skills
 argument-hint: "[domain]"
 related:
-  - cleanup-files-in-project
-  - cleanup-files-in-computer
+  - cleanup-project
+  - cleanup-disk-computer
   - run-cleanup
   - ask-me
 
@@ -40,8 +40,8 @@ Dispatch to the target skill based on the cleanup domain — the parent only rou
 - The parent only dispatches — never duplicate the target skill's workflow
 - Every cleanup must dry run + user confirm before actually deleting (per the target skill's rule)
 
-- Use /cleanup-files-in-project if needed
-- Use /cleanup-files-in-computer if needed
+- Use /cleanup-project if needed
+- Use /cleanup-disk-computer if needed
 - Use /run-cleanup if needed
 
 ## Expected Outcome

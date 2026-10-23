@@ -17,7 +17,7 @@ Define guidelines for developing Next.js 16 applications at peak performance
 
 Structure and develop Next.js 16 applications with App Router, React 19.3, Cache Components, and TypeScript
 
-- Packages: `next` 16.x (Node >= 20.9, TypeScript >= 5.1, Turbopack is the stable default for both dev and build, React Compiler stable), `react`/`react-dom` 19.x — always verify the latest versions with `/deep-research` + `/follow-best-practice` (no pinning in this file — per `/update-devin-global-skills`)
+- Packages: `next` 16.x (Node >= 20.9, TypeScript >= 5.1, Turbopack is the stable default for both dev and build, React Compiler stable), `react`/`react-dom` 19.x — always verify the latest versions with `/deep-research` + `/follow-best-practice` (no pinning in this file — per `/update-agents-skills-global`)
 - Scaffold: `bun create next-app@latest my-app --ts --app --tailwind --src-dir --import-alias "@/*"` (Turbopack default; flags `--react-compiler`, `--biome`; `next dev/build --webpack` fallback allowed)
 
 ## Execute

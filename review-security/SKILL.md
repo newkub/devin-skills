@@ -65,7 +65,7 @@ Use before a release, after an auth or data change, or when a trust boundary mov
 
 1. Order: secret removal and credential rotation → auth/authz bypass → injection and deserialization → tenant isolation and data exposure → transport and headers → defense in depth
 2. Cross-reference: one missing guard often explains several findings — fix the guard once and re-run every rule it covers
-3. Large or cross-workspace set → `/create-plan-in-dot-devin`; without `then-fix` stop here with the ordered table
+3. Large or cross-workspace set → `/create-plan-in-dot-agents`; without `then-fix` stop here with the ordered table
 
 ### 5. Fix Through The Owners
 

@@ -26,6 +26,7 @@ Deploy the application to the target platform with post-deploy validation, commi
 - For related skills: `open-web-for-config-secret`, `deep-review`
 
 Covers verify, build, deploy, commit/push, post-deploy validation, watch until live, and rollback & recovery
+- References: [Cloudflare Vite Plugin](references/cloudflare-vite-plugin.md)
 
 ## Execute
 
@@ -120,7 +121,7 @@ Prepare the rollback procedure and check the backup (see `references/rollback-re
 
 ## Rules
 
-### 1. Verify
+### 1. Verify — Rules
 
 - Verify must succeed before build
 - Use `/run-verify` for verify
@@ -132,7 +133,7 @@ Prepare the rollback procedure and check the backup (see `references/rollback-re
 - Artifacts must be correct
 - Use `/run-build` for build
 
-### 3. Deploy
+### 3. Deploy — Rules
 
 - Use `/follow-secret-manager` to manage secrets and API tokens before deploy
 - Use `/deploy-to-<platform>` per the chosen platform
@@ -140,7 +141,7 @@ Prepare the rollback procedure and check the backup (see `references/rollback-re
 - Check deployment status
 - If deploying to Cloudflare and the deploy fails, run `/resolve-cicd` to watch and fix until it passes
 
-### 4. Commit And Push
+### 4. Commit And Push — Rules
 
 - Deploy before commit/push if needed
 - Commit/push after the deploy succeeds

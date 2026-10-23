@@ -3,6 +3,10 @@ name: sync-drive-d-submodules
 description: Sync and update git submodules in the D drive against their remote repositories
 argument-hint: "[scope]"
 
+related:
+  - git-submodule
+  - list-git-submodules
+  - check-uncommit
 ---
 
 ## Goal
@@ -12,6 +16,7 @@ Safely sync and update all git submodules in the D drive to their latest remote 
 ## Scope
 
 For syncing and updating git submodules across multiple repositories in the D drive only
+- Related: `/git-submodule` manages a single submodule, `/list-git-submodules` inventories them, `/check-uncommit` finds dirty repos before syncing
 
 ## Execute
 

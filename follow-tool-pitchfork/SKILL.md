@@ -177,6 +177,7 @@ daemons = ["redis", "api"]
 - [CLI reference](references/cli.md)
 - [HTTP API & MCP](references/apis.md)
 - See best-practices/ for recommended patterns and pitfalls
+- References: [pitchfork — Best Practices](best-practices/pitchfork.md)
 
 ## Expected Outcome
 

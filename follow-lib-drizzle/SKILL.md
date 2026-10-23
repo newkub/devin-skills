@@ -34,6 +34,7 @@ Boundaries:
 - Other ORMs (Prisma, TypeORM) are out of scope — do `/refactor` orm scope (`refactor/SKILL.md` `### 3` `orm` bullet → one type-safe ORM) instead
 
 - References: [apis](references/apis.md) | [cli](references/cli.md) 
+- References: [Drizzle ORM — Best Practices](best-practices/drizzle.md)
 ## Execute
 
 ### Workflows

@@ -4,8 +4,8 @@ description: Safely delete a project's .devin/temp/ (reports, plans) with dry-ru
 argument-hint: ""
 related:
   - delete
-  - create-plan-in-dot-devin
-  - create-report-in-dot-devin
+  - create-plan-in-dot-agents
+  - create-report-to-dot-agents
   - deep-review
   - ask-me
   - report
@@ -15,7 +15,7 @@ related:
 
 ## Goal
 
-Safely delete the entire `.devin/temp/` directory in the project — covering `report/` and `plan/` artifacts created by `/create-report-in-dot-devin` and `/create-plan-in-dot-devin` — with dry-run and user confirmation before deletion
+Safely delete the entire `.devin/temp/` directory in the project — covering `report/` and `plan/` artifacts created by `/create-report-to-dot-agents` and `/create-plan-in-dot-agents` — with dry-run and user confirmation before deletion
 
 ## Scope
 

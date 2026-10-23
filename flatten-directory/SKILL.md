@@ -15,7 +15,7 @@ related:
   - check-reference
   - clean-empty-dirs
   - ask-me
-  - review-devin-global-harness
+  - review-dot-agents-global-and-fix
 ---
 
 ## Goal
@@ -86,7 +86,7 @@ Select a mode with `--mode` (default: `all`) — each mode uses the same steps b
 
 > Goal: no broken references and the new structure works
 
-1. Run `/check-reference` to catch broken path references — if the skills repo changed, also run `/review-devin-global-harness`
+1. Run `/check-reference` to catch broken path references — if the skills repo changed, also run `/review-dot-agents-global-and-fix`
 2. Run `/deep-validate` — run the project's build / test / lint for mode `code`/`all`
 3. If issues are found → fix and re-validate, up to 3 rounds → if still failing, stop and report
 

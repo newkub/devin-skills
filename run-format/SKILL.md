@@ -5,6 +5,7 @@ argument-hint: "[scope]"
 related:
   - deep-review
   - follow-best-practice
+  - follow-tool-viteplus
   - suggest-next-action
   - run-check
   - run-verify
@@ -31,10 +32,12 @@ Run format for all project types and handle errors/warnings from the formatter
 
 Check the formatter used in the project
 
-1. Check `biome.jsonc` for Biome
-2. Check `dprint.jsonc` for dprint
-3. Check `.prettierrc` for Prettier
-4. Check the scripts in `package.json`
+1. Check for Vite+ first: a `vite-plus` dependency or a `fmt` block in the root `vite.config.ts` → `vp fmt` (Oxfmt)
+2. Check `biome.jsonc` for Biome
+3. Check `dprint.jsonc` for dprint
+4. Check `bunfig.toml` `[fmt]` for the built-in `bun fmt` (Bun runtime — no install needed)
+5. Check the scripts in `package.json`
+6. `.prettierrc` / `.prettierignore` → not a supported choice; plan the migration to `vp fmt` or `bun fmt`
 
 ### 2. Run Format Command
 
@@ -42,11 +45,12 @@ Check the formatter used in the project
 
 Run the formatter command as configured
 
-1. If using Biome: run `biome format --write` (never use the `--unsafe` flag)
-2. If using dprint: run `dprint fmt`
-3. If using Prettier: run `prettier --write`
-4. Use the script from `package.json` if one exists
-5. Wait for formatting to finish before continuing
+1. If using Vite+: run `vp fmt`, or `vp check` when format, lint, and type-aware checks should run together
+2. If using Biome: run `biome format --write` (never use the `--unsafe` flag)
+3. If using dprint: run `dprint fmt`
+4. If using the built-in Bun formatter: run `bun fmt` (invoke as `bun fmt --no-script` when a `fmt` script in `package.json` would shadow it) — it formats JS/TS/JSX, CSS/SCSS/Less, HTML/Vue/Svelte/Angular, JSON/YAML/TOML, Markdown/MDX, GraphQL, Handlebars; Python, Go, PHP, and Rust keep their own formatter
+5. Use the script from `package.json` if one exists
+6. Wait for formatting to finish before continuing
 
 ### 3. Analyze Format Issues
 
@@ -93,7 +97,9 @@ Check the result
 1. Run format again to confirm
 2. Check that no format errors remain
 3. Check that every file has been formatted
-4. Run lint afterward to confirm
+4. Vite+ projects: run `vp fmt --check` (or `vp check`) to verify read-only
+5. Bun projects: run `bun fmt --check` to verify read-only
+6. Run lint afterward to confirm
 
 ## Rules
 
@@ -122,7 +128,8 @@ Define the scope for formatting
 - Format the whole project by default
 - Use glob patterns for specific files
 - Use the `--write` flag for auto-fix
-- Use the `--check` flag for CI
+- Use the `--check` flag for CI, or `vp check` on Vite+ projects
+- Use `vp staged` (Vite+), `bun fmt --staged` / `--changed`, or `dprint fmt --staged` for pre-commit runs so untouched files are never rewritten
 
 ### 4. Verification
 
@@ -135,6 +142,7 @@ Check that the code still works normally
 
 - Use /convert-files-format if needed
 - Use /follow-best-practice if needed
+- Use /follow-tool-viteplus if needed
 - Use /suggest-next-action if needed
 - Use /run-check if needed
 - Use /run-verify if needed

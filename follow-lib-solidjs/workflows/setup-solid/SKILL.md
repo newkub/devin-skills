@@ -22,6 +22,8 @@ first-time SolidJS setup — SolidStart (SSR framework) is the alternative; writ
 
 ### 1. Scaffold Or Add
 
+> Goal: Scaffold Or Add.
+
 ```bash
 bun create solid my-app          # official templates (vite + solid-ts / solid-js)
 cd my-app && bun i
@@ -41,6 +43,8 @@ export default defineConfig({ plugins: [solid()] })
 
 ### 2. TSConfig JSX
 
+> Goal: TSConfig JSX.
+
 ```json
 {
   "compilerOptions": {
@@ -55,6 +59,8 @@ export default defineConfig({ plugins: [solid()] })
 
 ### 3. Entry Point
 
+> Goal: Entry Point.
+
 ```tsx
 // src/index.tsx
 import { render } from 'solid-js/web'
@@ -66,11 +72,15 @@ render(() => <App />, document.getElementById('root')!)
 
 ### 4. Dev And Build
 
+> Goal: Dev And Build.
+
 1. `bun run dev` — vite dev + solid HMR
 2. `bun run build` — production bundle
 3. `/run-dev` verify; fail → `/resolve-errors` max 3 rounds
 
 ### 5. Ecosystem Add-ons (optional)
+
+> Goal: Ecosystem Add-ons (optional).
 
 - `@solidjs/router` — file/app routing; `@solidjs/meta` — head management
 - `@solid-primitives/*` — utility primitives; `@tanstack/solid-query` — data fetching

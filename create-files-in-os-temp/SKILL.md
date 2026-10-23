@@ -3,8 +3,8 @@ name: create-files-in-os-temp
 description: Create temporary files or directories in the OS temp directory
 argument-hint: "[scope]"
 related:
-  - cleanup-files-in-computer
-  - cleanup-files-in-project
+  - cleanup-disk-computer
+  - cleanup-project
   - create-new-project-in-drive-d
 
 ---
@@ -74,8 +74,8 @@ Use when creating test files, scratch files, or temporary output that doesn't ne
 - If there is sensitive data → delete it immediately after use
 - Do not create temp files in a shared temp that is generally readable when the content is sensitive
 
-- Use /cleanup-files-in-computer if needed
-- Use /cleanup-files-in-project if needed
+- Use /cleanup-disk-computer if needed
+- Use /cleanup-project if needed
 - Use /create-new-project-in-drive-d if needed
 
 ## Expected Outcome

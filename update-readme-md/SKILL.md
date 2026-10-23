@@ -7,7 +7,7 @@ related:
   - deep-review
   - deep-analyze
   - learn-from-codebase
-  - create-plan-in-dot-devin
+  - create-plan-in-dot-agents
   - convert-to-lang-en
   - deep-validate
   - report
@@ -156,7 +156,7 @@ Covers generating `README.md` for the root and every workspace in a monorepo, an
 
 ### 10. Plan Always
 
-- Always run `/create-plan-in-dot-devin` before starting any README writing/update — to clearly define scope, sections, and per-workspace work
+- Always run `/create-plan-in-dot-agents` before starting any README writing/update — to clearly define scope, sections, and per-workspace work
 - Use `/deep-review`, `/report`, `/deep-validate`, `/run-docs`, `/update-docs` as needed
 
 ## Template

@@ -32,14 +32,14 @@ jobs:
 
       - name: check broken skill references
         run: |
-          cd review-devin-global-harness
+          cd review-dot-agents-global-and-fix
           bun install
           bun run scripts/broken-skills-references.ts ..
 
       - name: review devin global skills
         if: always()
         run: |
-          cd review-devin-global-harness
+          cd review-dot-agents-global-and-fix
           bun install
           bun run src/index.ts ..
 
@@ -48,4 +48,4 @@ jobs:
         uses: actions/upload-artifact@v7
         with:
           name: review-skills-report
-          path: review-devin-global-harness/review-skills-report.json
+          path: review-dot-agents-global-and-fix/review-skills-report.json

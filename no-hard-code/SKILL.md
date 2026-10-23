@@ -91,7 +91,7 @@ Remove hardcoded values from the code — move them to env vars, config files, o
 
 ### 3. Don't Over-Extract
 
-- Literals that are protocol/format constants or used once and are clear → no need to extract (`/dont-over-engineer`)
+- Literals that are protocol/format constants or used once and are clear → no need to extract (`/simplify guard`)
 - Leave test fixtures/mocks alone unless they are a real secret
 
 ### 4. Single Source

@@ -19,7 +19,7 @@ Set up and use Vitest plugins correctly per the Plugin API (Vitest 5, API since 
 
 For projects that need to build and use Vitest plugins per the standard Plugin API
 
-- Packages: `vitest` (5.x requires Vite >= 6.4.0, Node.js >= 22.12.0), `@vitest/coverage-v8` — always confirm the latest versions with `/deep-research` + `/follow-best-practice` (not pinned in this file — per `/update-devin-global-skills`)
+- Packages: `vitest` (5.x requires Vite >= 6.4.0, Node.js >= 22.12.0), `@vitest/coverage-v8` — always confirm the latest versions with `/deep-research` + `/follow-best-practice` (not pinned in this file — per `/update-agents-skills-global`)
 
 ## Execute
 
@@ -74,7 +74,7 @@ export function myPlugin(options: PluginOptions) {
 
 ### 5. Implement Cache Key Generator
 
-> Goal: Use a cache key generator when needed (Vitest 5.0.0+)
+> Goal: Use a cache key generator when needed (Vitest 5+)
 
 1. Use `defineCacheKeyGenerator` (stable in 5.0, formerly `experimental_defineCacheKeyGenerator` in 4.0.11+) when the plugin registers with different options — returning `false` disables the module's fs cache; only works when the top-level `test.fsModuleCache` is enabled (formerly `experimental.fsModuleCache`); opt out with `api.vitest.ignoreFsModuleCache: true`
 2. Return a unique string derived from the plugin options

@@ -2,6 +2,11 @@
 name: follow-create-bot-github-app
 description: Build a real GitHub App — manifest, JWT auth, installation, webhooks
 argument-hint: "[features]"
+related:
+  - follow-create-bot
+  - follow-create-bot-github
+  - follow-lang-typescript
+  - run-test
 ---
 
 ## Goal
@@ -11,6 +16,7 @@ Build a GitHub App actually registered with GitHub (not a bot wrapper): app mani
 ## Scope
 
 Use for building a GitHub App from scratch with TypeScript/Bun — covers app registration, JWT auth, installation tokens, webhook handlers, and event subscriptions — if you only need a simple bot running through Actions, use `/follow-create-bot-github`
+- Family dispatcher: `/follow-create-bot` — the general GitHub bot variant is `/follow-create-bot-github`
 
 ## Execute
 
@@ -18,7 +24,7 @@ Use for building a GitHub App from scratch with TypeScript/Bun — covers app re
 
 > Goal: Verify the tech stack before building
 
-1. Run `/deep-research` + `/follow-best-practice` to confirm the latest versions and patterns, following the conventions in `/update-devin-global-skills`
+1. Run `/deep-research` + `/follow-best-practice` to confirm the latest versions and patterns, following the conventions in `/update-agents-skills-global`
 2. Run `/deep-review` to summarize the tech stack in use
 3. Record the stack choice with reasons for reference
 

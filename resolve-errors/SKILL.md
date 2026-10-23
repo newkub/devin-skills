@@ -6,7 +6,7 @@ related:
   - rethink
   - resolve-cicd
   - deep-debug
-  - review-devin-global-harness
+  - review-dot-agents-global-and-fix
   - scan-codebase
   - refactor
   - use-scripts
@@ -54,7 +54,7 @@ Step dependencies: each step depends on the previous step (Step N depends on Ste
 
 > Goal: Prepare context before starting to fix errors
 
-1. Run `/review-devin-global-harness` to read the related workflows recursively
+1. Run `/review-dot-agents-global-and-fix` to read the related workflows recursively
 2. Run `/scan-codebase` to understand the structure of the files with errors
 3. If a file is longer than >250 lines → read `/refactor` before fixing
 4. If the workspace cannot be accessed → stop and report without modifying files

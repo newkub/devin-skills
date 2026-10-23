@@ -1,3 +1,4 @@
+#!/usr/bin/env bun
 /**
  * readme-data.ts
  * Project introspection helpers for baseline README generation.

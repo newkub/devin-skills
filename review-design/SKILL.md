@@ -89,7 +89,7 @@ Use when the question is "does this UI hold up" — a route, page, component set
 1. Confirm the fix list with `/ask-me` — per finding, `/follow-your-suggestion`, or `fix all`; `dont-ask-me`/`/ship` follow the report as-is
 2. Run `/improve uxui` with the confirmed scope (every route + the element checklist + a browser pass) — it owns the fix pass and its own confirmation gate
 3. Token and styling fixes follow `/follow-lib-unocss` / `/follow-unocss-theme`; a new component or variant follows `/follow-design-system`; a markup or a11y fix follows `/follow-web-standard`
-4. Repeated violations that a rule can catch → persist via `/update-devin-project-rules` (convention) or `/update-astgrep-rules` (pattern), including the `rules/ux` set when the repo has one
+4. Repeated violations that a rule can catch → persist via `/update-dot-agents-project` (convention) or `/update-astgrep-rules` (pattern), including the `rules/ux` set when the repo has one
 5. Never introduce a one-off arbitrary value to match a screenshot — fix the token or the component variant
 
 ### 7. Verify

@@ -18,7 +18,7 @@ Configure and use Oxlint plugins, both built-in and JavaScript plugins, for lint
 
 For setting up Oxlint plugins, both built-in (native) and JavaScript plugins, for linting
 
-- Packages: `oxlint`, `oxlint-tsgolint` (optional type-aware preview) — always confirm the latest versions via `/deep-research` + `/follow-best-practice` (not pinned in this file — per `/update-devin-global-skills`)
+- Packages: `oxlint`, `oxlint-tsgolint` (optional type-aware preview) — always confirm the latest versions via `/deep-research` + `/follow-best-practice` (not pinned in this file — per `/update-agents-skills-global`)
 
 ## Execute
 

@@ -21,6 +21,8 @@ server exposure — handler adapters, CORS, OpenAPI spec generation (`OpenAPIGen
 
 ### 1. Handlers And Adapters
 
+> Goal: Handlers And Adapters.
+
 ```ts
 import { RPCHandler } from '@orpc/server/fetch'
 import { OpenAPIHandler } from '@orpc/openapi/fetch'
@@ -44,10 +46,14 @@ Bun.serve({
 
 ### 2. CORS And Middleware Bridge
 
+> Goal: CORS And Middleware Bridge.
+
 - `CORSPlugin` — `new RPCHandler(router, { plugins: [new CORSPlugin()] })`
 - Request headers → context factory (`createContext({ headers })`) — auth/session extraction happens here
 
 ### 3. OpenAPI Spec + Docs
+
+> Goal: OpenAPI Spec + Docs.
 
 ```ts
 import { OpenAPIGenerator } from '@orpc/openapi'
@@ -61,6 +67,8 @@ const spec = await generator.generate(contract, { info: { title, version } })
 - Contract `.route()` metadata → real REST paths in spec; `tags`/`summary` via `.meta()`
 
 ### 4. Deploy Notes
+
+> Goal: Deploy Notes.
 
 - Edge/serverless OK (fetch adapter); Bun/Node canonical dev path
 - SSE/event iterators require connection-per-client infra (Workers durable, Node streams)

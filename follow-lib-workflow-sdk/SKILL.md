@@ -27,6 +27,7 @@ Use the Workflow SDK (package `workflow`, Vercel OSS) to build durable workflows
 Use when a feature needs long-running/multi-step logic that withstands failures: AI agents, pipelines, scheduled jobs, human-in-the-loop approvals — framework support: Next.js, Vite, React Router, Astro, Express, Fastify, Hono, Nitro, Nuxt, SvelteKit, TanStack Start, NestJS (beta), Python (beta)
 
 - Catalog default → `/follow-my-techstack`; TanStack Start integration → `/follow-lib-tanstack-start`; Vercel deploy → `/follow-service-vercel`
+- References: [Workflow SDK best practices](best-practices/durable-workflows.md), [apis](references/apis.md), [cli](references/cli.md)
 
 ## Execute
 

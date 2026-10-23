@@ -14,7 +14,7 @@ related:
   - follow-single-of-source
   - refactor
   - implement-to-production
-  - dont-over-engineer
+  - simplify
   - ask-me
 
 ---
@@ -111,14 +111,14 @@ Use when a task is about to: write a new utility/helper, implement a feature a l
 - A new version must have been published for ≥7 days, and check peer constraints
 - Use /deep-research dependencies if needed
 - Use /follow-best-practice if needed
-- Use /dont-over-engineer if needed
+- Use /simplify guard if needed
 - Use /ask-me if needed
 
 ### 5. Internal Reuse Discipline
 
 - `reuse > extend > extract > create` — create new is the last resort with a justification in the report
 - Reuse must stay in the same domain — never couple code across domains just because the shapes look alike (coincidental duplication)
-- Preserve behavior — consolidation is a refactor; no observable behavior change; no over-abstracting without real consumers (`/dont-over-engineer`)
+- Preserve behavior — consolidation is a refactor; no observable behavior change; no over-abstracting without real consumers (`/simplify guard`)
 
 
 ## Expected Outcome

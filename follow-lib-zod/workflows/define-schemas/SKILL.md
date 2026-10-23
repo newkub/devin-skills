@@ -21,6 +21,8 @@ schema authoring — object/array/union/record/tuple schemas, `.refine`/`.superR
 
 ### 1. Core Types
 
+> Goal: Core Types.
+
 ```ts
 import { z } from 'zod'
 
@@ -43,6 +45,8 @@ type User = z.infer<typeof User>         // derive TS type — single source
 
 ### 2. Unions And Discriminated
 
+> Goal: Unions And Discriminated.
+
 ```ts
 const Event = z.discriminatedUnion('type', [
   z.object({ type: z.literal('click'), x: z.number(), y: z.number() }),
@@ -54,6 +58,8 @@ const Event = z.discriminatedUnion('type', [
 - `z.union` — the fallback when there is no discriminator field
 
 ### 3. Refinements And Transforms
+
+> Goal: Refinements And Transforms.
 
 ```ts
 const Password = z.string().min(8).regex(/[A-Z]/, 'needs uppercase')
@@ -69,6 +75,8 @@ const Positive = z.number().check(z.positive())              // v4 check() API
 - `.pipe()` — chain schemas post-parse (validate → transform pipeline)
 
 ### 4. Composition Patterns
+
+> Goal: Composition Patterns.
 
 - `.extend`, `.merge`, `.pick`, `.omit`, `.partial`, `.required`, `.deepPartial`
 - Recursive: `const Node: z.ZodType<Node> = z.lazy(() => z.object({ children: z.array(Node) }))`

@@ -107,6 +107,7 @@ test('member upgrades to Pro', async ({ app, agent, screen }) => {
 ## References
 
 - See `best-practices/` for recommended patterns and pitfalls
+- References: [e2e best practices](best-practices/agentic-testing.md)
 
 ## Expected Outcome
 

@@ -21,7 +21,7 @@ Devin/Cascade AI coding assistant — session, skills, and harness discipline
 ## Workflow Tips
 
 - `/deep-research` for current docs — model knowledge goes stale for fast-moving tools
-- Follow `/update-devin-global-skills` conventions when writing skills — the format has a spec
+- Follow `/update-agents-skills-global` conventions when writing skills — the format has a spec
 - Report-first flow: findings → confirm → fix — avoid auto-fix before review when the scope is large
 
 ## Do / Don't

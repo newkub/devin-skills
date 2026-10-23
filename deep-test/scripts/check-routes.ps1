@@ -1,3 +1,4 @@
+#!/usr/bin/env pwsh
 param(
     [Parameter(Mandatory = $true, Position = 0)]
     [string]$Domain,

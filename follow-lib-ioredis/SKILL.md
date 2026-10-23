@@ -23,6 +23,7 @@ Use when the task involves ioredis — the Redis client on Node.js/Bun connectin
 
 - Latest: `ioredis@6.0.0` (verified 2026-09-13) — v6 major (2026-07-31): requires Node ≥20, uses RESP3 by default (`HELLO 3` with auto-fallback to RESP2 when the server doesn't support it); set `protocol: 2` to keep the v5 wire protocol and `replyStyle: "resp3"` to receive RESP3 reply shapes (default `"legacy"` keeps the old format)
 - References: [apis](references/apis.md) 
+- References: [ioredis — Connection Management](best-practices/connections.md), [ioredis — Data Access And Performance](best-practices/performance.md)
 ## Execute
 
 ### Workflows

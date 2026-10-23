@@ -1,7 +1,7 @@
 | key | value |
 |---|---|
 | package | `maestro` CLI — single binary, no npm package |
-| install | macOS/Linux/WSL: `curl -fsSL "https://get.maestro.mobile.dev" \| bash` · Windows: installer page on the docs site |
+| install | macOS/Linux/WSL: `curl -fsSL "https://get.maestro.mobile.dev" -o /tmp/maestro-install.sh && bash /tmp/maestro-install.sh` · Windows: installer page on the docs site |
 | version | CLI 2.11.0 (released 2026-09-29) |
 | license | Apache-2.0 |
 | docs | https://docs.maestro.dev |

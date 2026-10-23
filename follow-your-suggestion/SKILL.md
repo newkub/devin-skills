@@ -3,11 +3,11 @@ name: follow-your-suggestion
 description: Follow suggestions from problem analysis and fix code as discussed beforehand
 argument-hint: "[suggestion]"
 related:
-  - review-devin-global-harness
+  - review-dot-agents-global-and-fix
   - prioritize
   - resolve-errors
   - implement-to-production
-  - dont-over-engineer
+  - simplify
 ---
 
 ## Goal
@@ -26,7 +26,7 @@ Used for applying suggestions from problem analysis discussed beforehand — cov
 
 Order suggestions by impact and effort
 
-1. Do `/review-devin-global-harness` to read the related workflows
+1. Do `/review-dot-agents-global-and-fix` to read the related workflows
 2. Do `/prioritize` to order by priority: `security` > `type errors` > `performance` > `code quality`
 3. Check the context and relevance of each suggestion before applying
 
@@ -62,7 +62,7 @@ Note: run only when errors are received from the fixes
 
 ### 2. Minimal Changes
 
-- Do `/dont-over-engineer` to avoid over-engineering
+- Do `/simplify guard` to avoid over-engineering
 - Do not change code unrelated to the suggestions
 - Keep consistency with the existing code style
 

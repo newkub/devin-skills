@@ -16,7 +16,7 @@ related:
   - suggest-next-action
   - improve-usage-md
   - no-use-ignore
-  - create-plan-in-dot-devin
+  - create-plan-in-dot-agents
 ---
 
 ## Goal
@@ -28,7 +28,7 @@ Detect and report everything the codebase "claims to have but does not really ha
 - Use before `/implement-to-production` (needs a complete work list), before release (verify reality matches the ads), or when the user asks "what is not done / not implemented yet"
 - Argument is a path/glob/workspace → scan only that scope; unspecified → the whole codebase including monorepo workspaces
 - Scan only contracts that actually exist: half-written code, renderable UI, declared routes/schemas/specs, terms declared in docs — not an ideal feature list (net-new work never designed yet → `/idea-features`)
-- boundaries: code quality/security → `/deep-review`; dead code with no consumer → `/follow-tool-knip`; tests asserting nothing meaningful → `/deep-test test-correctness`; gap review with severity + confirm/fix (this report is its baseline) → `/review-gaps`; fix plan → `/create-plan-in-dot-devin`; doing the fix → `/implement-to-production`
+- boundaries: code quality/security → `/deep-review`; dead code with no consumer → `/follow-tool-knip`; tests asserting nothing meaningful → `/deep-test test-correctness`; gap review with severity + confirm/fix (this report is its baseline) → `/review-gaps`; fix plan → `/create-plan-in-dot-agents`; doing the fix → `/implement-to-production`
 
 ## Execute
 
@@ -90,8 +90,8 @@ Detect and report everything the codebase "claims to have but does not really ha
 2. Send details through `/report-review` as one chat table: `No.` | `Location` | `Domain` | `Item` | `Status` | `Evidence` | `Blocking` | `Effort` | `Verify`
 3. Order by critical path first: `schema` → `data` → `api` → `ui` → `infra` → `docs`; items that others depend on → put their id in `Blocking`
 4. State the source + date/commit scanned (`git rev-parse --short HEAD`) so the next round is comparable
-5. handoff: to start working → `/implement-to-production` (must implement everything the report lists, not cherry-pick); want quality alongside → `/improve`; need a multi-step plan → `/create-plan-in-dot-devin`; finish with `/suggest-next-action`
-6. Only if the user explicitly wants a report file → `/create-report-in-dot-devin`; by default create no files
+5. handoff: to start working → `/implement-to-production` (must implement everything the report lists, not cherry-pick); want quality alongside → `/improve`; need a multi-step plan → `/create-plan-in-dot-agents`; finish with `/suggest-next-action`
+6. Only if the user explicitly wants a report file → `/create-report-to-dot-agents`; by default create no files
 
 ## Rules
 

@@ -50,7 +50,7 @@ Signals: `*.test.*`, `*.spec.*`, `test_*.py`, `*_test.go`, `#[cfg(test)]`, `__te
 
 1. Summary: passed/failed/skipped/total, duration, framework used
 2. List failures with file:line and classification (source/test/environment)
-3. Persist raw results → if the runner is Vitest, keep JSON via `vitest run --reporter=json --outputFile=.devin/temp/report/<workspace>/vitest-<time>.json`, then write the summary to `.devin/temp/report/<workspace>/unit-test-<time>.md` per `/create-report-in-dot-devin` so `/update-docs` can reuse it (other runners write only the summary md)
+3. Persist raw results → if the runner is Vitest, keep JSON via `vitest run --reporter=json --outputFile=.devin/temp/report/<workspace>/vitest-<time>.json`, then write the summary to `.devin/temp/report/<workspace>/unit-test-<time>.md` per `/create-report-to-dot-agents` so `/update-docs` can reuse it (other runners write only the summary md)
 4. If a coverage flag exists → continue with `/deep-test coverage`
 5. If all tests pass and full verification is wanted → `/run-verify`
 

@@ -11,7 +11,7 @@ related:
   - reframe
   - update-references
   - update-vitepress-docs
-  - create-report-in-dot-devin
+  - create-report-to-dot-agents
   - watch-browser
 
 ---
@@ -26,7 +26,8 @@ Create the `docs/` directory in plain markdown — readable on GitHub or any mar
 - Create/update markdown with real content from the source code
 - `docs/index.md` is the only nav — one grouped section per real docs directory, every page exactly once; a section group is the sidebar, and `references/navigation.md` is the contract
 - Supports `update-features-md` (workflow `features-md`) with a separate `project/features` page
-- Reuse raw findings that skills persist under `.devin/temp/report/<workspace>/` via `/create-report-in-dot-devin` — e.g. `/deep-test website`, `/watch-browser fix` — as input for updating docs
+- Reuse raw findings that skills persist under `.devin/temp/report/<workspace>/` via `/create-report-to-dot-agents` — e.g. `/deep-test website`, `/watch-browser fix` — as input for updating docs
+- References: [Development Pages Reference](references/development.md)
 
 ## Execute
 

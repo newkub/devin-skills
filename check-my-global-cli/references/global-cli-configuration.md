@@ -77,6 +77,20 @@ export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
 }
 ```
 
+### Bun formatter (`bunfig.toml`)
+
+```toml
+[fmt]
+printWidth = 100
+tabWidth = 2
+useTabs = false
+semi = true
+singleQuote = false
+trailingComma = "all"
+```
+
+Only overrides belong here — `bun fmt` already reads `.gitignore`, `.prettierignore`, and `.editorconfig`
+
 ### mise (`.mise.toml` or `mise.toml`)
 
 ```toml

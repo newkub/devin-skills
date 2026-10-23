@@ -9,7 +9,7 @@ related:
   - follow-create-mcp
   - follow-create-web-mcp
   - deep-review
-  - update-devin-global-skills
+  - update-agents-skills-global
   - follow-best-practice
   - implement-to-production
   - ask-me
@@ -57,7 +57,7 @@ Create a plugin/extension/addon for the specified target — this parent skill o
 | `webmcp`, `web-mcp` | `/follow-create-web-mcp` — WebMCP tools on a web page (page-provided agent tools) |
 | `zed` | `/follow-create-zed-extensions` — Zed extension |
 
-1. Run `/deep-research` + `/follow-best-practice` for the chosen target, following the conventions in `/update-devin-global-skills` (done inside the dispatched target skill)
+1. Run `/deep-research` + `/follow-best-practice` for the chosen target, following the conventions in `/update-agents-skills-global` (done inside the dispatched target skill)
 2. Determine the target from the argument (e.g. `/follow-create-plugins vite`)
 3. If the target is supported → invoke the skill from the table and follow that skill's flow
 4. If no target is given or it is unrecognized → `/ask-me` to pick a target from the table
@@ -73,7 +73,7 @@ Create a plugin/extension/addon for the specified target — this parent skill o
 - Use /follow-create-cli when needed
 - Use /follow-create-mcp when needed
 - Use /follow-create-web-mcp when needed
-- Use /update-devin-global-skills when needed
+- Use /update-agents-skills-global when needed
 - Use /follow-best-practice when needed
 
 ## File Structure

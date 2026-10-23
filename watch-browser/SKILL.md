@@ -180,7 +180,7 @@ Convert the `/watch-browser` watch session into a status report — timeline of 
 ##### Scope
 
 - Use when `/watch-browser` dispatches to `report`/`status` or when called after a watch finishes
-- Output: a table in chat, or a persistent artifact via `/create-report-in-dot-devin`
+- Output: a table in chat, or a persistent artifact via `/create-report-to-dot-agents`
 
 ##### Execute
 
@@ -206,7 +206,7 @@ Convert the `/watch-browser` watch session into a status report — timeline of 
 
 1. Verdict: `healthy` / `warnings` / `errors-found`
 2. Top issues needing follow-up (the `fix` domain above or `/resolve-errors`)
-3. If it must be archived → run `/create-report-in-dot-devin`
+3. If it must be archived → run `/create-report-to-dot-agents`
 
 ##### Rules
 
@@ -229,7 +229,7 @@ Report the watch/fix session — console messages grouped, errors found vs fixed
 1. group console messages by type (error, warning, info) and source (file/component)
 2. table of `No.`, `Error`, `Type`, `Status` (new/recurring/fixed), `Evidence` (screenshot/stack)
 3. verdict: `clean` (no errors), `fixed` (found and all fixed), `partial` (remaining + reason)
-4. persist → `.devin/temp/report/<workspace>/browser-fix-<time>.md` per `/create-report-in-dot-devin`
+4. persist → `.devin/temp/report/<workspace>/browser-fix-<time>.md` per `/create-report-to-dot-agents`
 
 ## Expected Outcome
 

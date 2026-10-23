@@ -26,6 +26,7 @@ Boundaries:
 - Markup semantics, native widgets, and Web-API-over-library choices beyond CSS → use `/follow-web-standard` instead
 
 - References: [apis](references/apis.md) 
+- References: [CSS — Modern Best Practices](best-practices/css.md)
 ## Execute
 
 ### 1. Analyze CSS Setup
@@ -143,7 +144,7 @@ Boundaries:
 - Check contrast with tools such as Lighthouse
 - Use relative units to respect user font scaling
 
-### 6. Browser Compatibility
+### 6. Browser Compatibility — Rules
 
 - Use `@supports` for feature queries
 - Use `caniuse.com` and `web.dev/baseline` to check support

@@ -15,7 +15,7 @@ Build a secrets inventory report from the findings of the `check-secrets` workfl
 ## Scope
 
 - Use when `/check-secrets` dispatches to `report`/`inventory`, or invoke standalone
-- Output: inventory table in chat — for a persistent artifact use `/create-report-in-dot-devin` (caution: the artifact must contain no secret values)
+- Output: inventory table in chat — for a persistent artifact use `/create-report-to-dot-agents` (caution: the artifact must contain no secret values)
 
 ## Execute
 

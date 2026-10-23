@@ -21,6 +21,8 @@ client-side type safety — `@elysiajs/eden` treaty (fetch-based typed client), 
 
 ### 1. Export App Type
 
+> Goal: Export App Type.
+
 ```ts
 // server — export the type, the client imports it (no need to import server code)
 const app = new Elysia().get('/users/:id', h).listen(3000)
@@ -28,6 +30,8 @@ export type App = typeof app
 ```
 
 ### 2. Treaty Client
+
+> Goal: Treaty Client.
 
 ```ts
 import { treaty } from '@elysiajs/eden'
@@ -44,6 +48,8 @@ const { data: created } = await api.users.post({ name: 'x' })
 
 ### 3. Eden Fetch (low-level)
 
+> Goal: Eden Fetch (low-level).
+
 ```ts
 // treaty(...).fetch — fetch-compatible escape hatch for edge cases
 const res = await api.users({ id: '1' }).get({ fetch: { credentials: 'include' } })
@@ -52,6 +58,8 @@ const res = await api.users({ id: '1' }).get({ fetch: { credentials: 'include' }
 - fetch options (credentials, headers, signal) go through the `{ fetch: {...} }` param
 
 ### 4. WS Subscriptions
+
+> Goal: WS Subscriptions.
 
 ```ts
 const chat = api.chat.subscribe()
@@ -63,6 +71,8 @@ chat.close()
 - WS routes → typed subscriptions via treaty — `subscribe`, `on('message'|'open'|'close')`, `send`
 
 ### 5. Response Type Requirements
+
+> Goal: Response Type Requirements.
 
 - Eden inference needs `response` schemas — add a `response:` key on every route the client consumes
 - File uploads: `t.File` fields → treaty `.post({ file })` auto multipart

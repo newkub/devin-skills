@@ -20,6 +20,8 @@ concurrent execution — `Effect.all`/`Effect.forEach`, `Effect.fork`, `Fiber`, 
 
 ### 1. Parallel Composition
 
+> Goal: Parallel Composition.
+
 ```ts
 Effect.all([a, b, c])                          // tuple → tuple result
 Effect.all({ a, b, c })                        // record → record
@@ -33,6 +35,8 @@ Effect.all(tasks, { concurrency: "unbounded", mode: "either" })
 
 ### 2. Fibers
 
+> Goal: Fibers.
+
 ```ts
 const fiber = yield* Effect.fork(work)
 yield* Fiber.join(fiber)                        // wait + get result
@@ -45,11 +49,15 @@ Effect.forkDaemon(fireAndForget)                // survives parent
 
 ### 3. Racing And Timeouts
 
+> Goal: Racing And Timeouts.
+
 - `Effect.race(a, b)` — loser interrupted
 - `Effect.raceAll`, `Effect.timeout`, `Effect.timeoutFail`
 - `Effect.disconnect` for uninterruptible regions (critical cleanup)
 
 ### 4. Coordination Primitives
+
+> Goal: Coordination Primitives.
 
 - `Deferred.make` — one-shot async value (a cancel-safe promise)
 - `Queue.bounded/unbounded` — producer/consumer

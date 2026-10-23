@@ -27,7 +27,7 @@ For projects needing maximal ecosystem compatibility or a mature runtime. Packag
 
 > Goal: set up the Node.js project with live-checked versions
 
-1. Run `/deep-research` + `/follow-best-practice` to confirm the current LTS, active releases, and current Node practices; pin the project to a supported line via `mise use -g node` (or `.nvmrc`/Volta) — never an EOL version
+1. Run `/deep-research` + `/follow-best-practice` to confirm the current LTS, active releases, and current Node practices; pin the project to a supported line via `mise use -g node` (or `.nvmrc`) — never an EOL version
 2. New project → run the workflow `workflows/setup-project/SKILL.md` (argument `setup-project`): scaffold, ESM default, scripts, TypeScript config, verify, git hygiene
 3. Tool inventory (runtime, PM, test runner, linter) → `references/toolchain.md`
 

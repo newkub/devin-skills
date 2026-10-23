@@ -13,6 +13,11 @@ related:
   - open-cloudflare-workers
   - run-deploy
 
+allowed-tools:
+  - exec
+  - grep
+  - glob
+  - find_file_by_name
 ---
 
 ## Goal

@@ -27,6 +27,7 @@ Choose `oxc-parser` when you need the full AST + types; choose `/use-astgrep-pro
 - No CLI — used via programmatic API only (thus none); the ecosystem CLI is `oxlint`, a separate package
 - Latest: `oxc-parser@0.151.0` (verified 2026-09-24)
 - References: [apis](references/apis.md) 
+- References: [Best Practices: oxc-parser (AST Analysis)](best-practices/ast-analysis.md)
 ## Execute
 
 ### 1. Install

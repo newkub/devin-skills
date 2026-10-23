@@ -5,7 +5,7 @@
 | language | JavaScript / TypeScript on the Node.js runtime |
 | runtime | `node` — pin a supported line via `mise`, never EOL |
 | package manager | `npm` (default) / `pnpm` / `yarn` — one per project |
-| install | `mise use -g node` (or `.nvmrc`/Volta per team convention) |
+| install | `mise use -g node` (or `.nvmrc` per team convention) |
 | official docs | https://nodejs.org/api/ |
 | version policy | never pinned here — live-check LTS/release schedule via `/deep-research` at use time (`/follow-up-to-date`) |
 

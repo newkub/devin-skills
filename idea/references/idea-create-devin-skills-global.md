@@ -28,7 +28,7 @@ Analyze the current context to understand the purpose and input
 
 Gather all existing devin global skills
 
-1. Read all `SKILL.md` files in `C:\Users\Veerapong\AppData\Roaming\devin\skills\`
+1. Read all `SKILL.md` files in `%APPDATA%\devin\skills\`
 2. Look at the `name` and `description` of each skill
 3. Group by category (`analysis`, `implementation`, `quality`, `deployment`, `maintenance`, `idea`)
 4. Check that you don't recommend a skill that's already in `related`
@@ -41,7 +41,7 @@ Match skills that are related to the current context
 
 1. Analyze the relevance from `Goal`, `Scope`, and `Execute`
 2. Rank the relevance: `direct dependency`, `complementary`, `follow-up`, `alternative`
-3. Check that the recommended skills actually exist in `C:\Users\Veerapong\AppData\Roaming\devin\skills\`
+3. Check that the recommended skills actually exist in `%APPDATA%\devin\skills\`
 4. Filter out irrelevant skills
 
 ### 4. Suggest Skills And New Ideas
@@ -98,7 +98,7 @@ Update the `related` in the current skill (if any)
 - Check that you don't add a reference in an irrelevant file
 
 - Use /idea-features if necessary
-- Use /update-devin-global-skills if necessary
+- Use /update-agents-skills-global if necessary
 
 ## Expected Outcome
 

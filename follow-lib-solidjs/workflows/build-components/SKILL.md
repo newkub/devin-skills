@@ -20,6 +20,8 @@ component authoring — JSX in Solid renders once (unlike React re-rendering); s
 
 ### 1. Component Basics
 
+> Goal: Component Basics.
+
 ```tsx
 function Card(props: { title: string; children?: JSX.Element }) {
   return <section><h2>{props.title}</h2>{props.children}</section>
@@ -36,6 +38,8 @@ const merged = mergeProps({ variant: 'default' }, props)
 
 ### 2. Control Flow Components
 
+> Goal: Control Flow Components.
+
 ```tsx
 <Show when={user()} fallback={<Login />}>{u => <Profile user={u()} />}</Show>
 <For each={items()} fallback={<Empty />}>{item => <Row item={item} />}</For>
@@ -48,6 +52,8 @@ const merged = mergeProps({ variant: 'default' }, props)
 
 ### 3. Refs And Directives
 
+> Goal: Refs And Directives.
+
 ```tsx
 let inputRef!: HTMLInputElement
 <input ref={inputRef} />           // or ref={el => el.focus()}
@@ -58,6 +64,8 @@ let inputRef!: HTMLInputElement
 - Event handlers: `onClick`, `on:input` — auto-delegated; `onClick={[handler, data]}` bound args
 
 ### 4. Patterns
+
+> Goal: Patterns.
 
 1. Context: `createContext` + `useContext` — works across every component tree (no memo needed)
 2. Lazy: `lazy(() => import('./Heavy'))` — code split

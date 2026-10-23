@@ -4,7 +4,7 @@ description: Generate an operational runbook from real system knowledge — aler
 argument-hint: "[service-or-incident-type]"
 related:
   - learn
-  - create-report-in-dot-devin
+  - create-report-to-dot-agents
   - deep-review
   - report-architecture-diagram
   - report
@@ -87,7 +87,7 @@ Generate an operational runbook from the real codebase and config — a document
 
 > Goal: Deliver the runbook with its gaps
 
-1. Save with `/create-report-in-dot-devin` or `docs/runbook-<service>.md`
+1. Save with `/create-report-to-dot-agents` or `docs/runbook-<service>.md`
 2. Use `/report` to summarize: sections completed vs sections the user must fill
 3. Suggest `/deep-review` if diagnosis steps lack required signals
 

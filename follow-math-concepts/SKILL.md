@@ -13,7 +13,7 @@ related:
   - deep-review
   - follow-context-engineering
   - follow-best-practice
-  - report-slides
+  - report-in-slides
 ---
 
 ## Goal
@@ -83,7 +83,7 @@ Use for general concepts: logic, sets, boolean algebra, combinatorics, graphs, a
 
 ### 5. Cross Skills
 
-- Use `/report-math-equation`, `/explain`, `/follow-lib-fast-check`, `/report-slides` per the problem's context
+- Use `/report-math-equation`, `/explain`, `/follow-lib-fast-check`, `/report-in-slides` per the problem's context
 
 ## Expected Outcome
 

@@ -9,6 +9,11 @@ related:
   - check-uncommit
   - report
 
+allowed-tools:
+  - exec
+  - grep
+  - glob
+  - find_file_by_name
 ---
 
 ## Goal

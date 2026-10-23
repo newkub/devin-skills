@@ -17,6 +17,7 @@ Use the MCP (Model Context Protocol) servers bound to the environment correctly 
 ## Scope
 
 Use when a task needs data or actions from external services that already have an MCP server installed — e.g. GitHub, library docs, live web, Cloudflare docs, WorkOS, or the Devin platform
+- References: [Package Manifest](references/package-manifest.md)
 
 ## Execute
 

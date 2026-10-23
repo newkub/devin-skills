@@ -4,7 +4,6 @@ description: Transformation dispatcher — apply scripted/AST conversions across
 argument-hint: "[target|pattern]"
 related:
   - use-scripts
-  - edit-with-use-scripts
   - use-astgrep
   - edit-relative
   - convert-files-format
@@ -32,7 +31,7 @@ Pick the correct transformation path for "change X into Y at many places" jobs �
 
 | Job | Route |
 |-----|-------|
-| Edit many files via a script — reproducible, audit trail | `/edit-with-use-scripts` → `/use-scripts` (`### Edit Files Via Scripts`) |
+| Edit many files via a script — reproducible, audit trail | `/use-scripts` (`### Edit Files Via Scripts`) |
 | AST pattern rewrite across many files (`-p`/`-r`, dry-run + confirm) | `/use-astgrep rewrite` |
 | rule-YAML transforms (`transform`/`rewriters`/constraints) | `/use-astgrep transform` |
 | whole-codebase migration in staged batches | `/use-astgrep migration` → `/migration-with-astgrep` |

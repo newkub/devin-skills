@@ -11,7 +11,7 @@ related:
   - update-agents-md
   - update-references
   - update-config
-  - update-devin-project-rules
+  - update-dot-agents-project
   - update-astgrep-rules
   - check-reference
   - deep-validate
@@ -30,7 +30,7 @@ Use after a change shipped, before a release, or whenever the question is "is th
 
 - Entered through `/deep-review` with the `update` or `docs` signal, or called by name; scope and flags are passed through as given
 - Drift means declared ≠ real: a doc naming a removed command, an `AGENTS.md` step that no longer runs, a config key nothing reads, a link to a moved file, a rule that fires on an abandoned pattern, a manifest script that is gone
-- Fixing belongs to the update owners: `/update-project` (root sync), `/update-docs`, `/update-agents-md`, `/update-references`, `/update-config`, `/update-devin-project-rules`, `/update-astgrep-rules`. This preset confirms drift, orders it, and verifies the result — it never rewrites those files itself
+- Fixing belongs to the update owners: `/update-project` (root sync), `/update-docs`, `/update-agents-md`, `/update-references`, `/update-config`, `/update-dot-agents-project`, `/update-astgrep-rules`. This preset confirms drift, orders it, and verifies the result — it never rewrites those files itself
 - New docs with no prior version → not drift; that is `/update-docs` directly. Code that contradicts a doc without the code being wrong → the doc is updated only after the user confirms which side is the source of truth
 - Without `then-fix` the run is report-only: a drift table with both sides cited, plus the suggested update order
 
@@ -82,7 +82,7 @@ Use after a change shipped, before a release, or whenever the question is "is th
 
 1. Order: manifest/config → `AGENTS.md` → `README.md`/`docs` → references/links → rules. A new script or path lands in config first, then the docs that cite it
 2. Cross-reference items with one root cause: a rename closes its docs, links, and rules together
-3. Large or cross-workspace set → `/create-plan-in-dot-devin`; a version/dependency jump → `/update-version-to-latest` before the config and docs that describe it
+3. Large or cross-workspace set → `/create-plan-in-dot-agents`; a version/dependency jump → `/update-version-to-latest` before the config and docs that describe it
 4. Without `then-fix` → stop here, report the ordered table, and close with `/suggest-next-action`
 
 ### 6. Fix Through The Owners
@@ -91,9 +91,9 @@ Use after a change shipped, before a release, or whenever the question is "is th
 
 1. Confirm the fix list with `/ask-me` — per item, `/follow-your-suggestion`, or `fix all`; `dont-ask-me`/`/ship` follow the report as-is
 2. Run `/update-project` for the root/workspace sync; `/update-docs` for `docs/` content; `/update-agents-md` when `AGENTS.md` steps, paths, commands, or skills changed; `/update-config` for config drift; `/update-references` after any move/rename/delete
-3. Persist conventions and patterns so the drift cannot recur: `/update-devin-project-rules` for natural-language rules, `/update-astgrep-rules` for mechanical patterns
+3. Persist conventions and patterns so the drift cannot recur: `/update-dot-agents-project` for natural-language rules, `/update-astgrep-rules` for mechanical patterns
 4. A rule change that makes existing code fail → report it as a code finding for the owner skill, not as a reason to weaken the rule
-5. In the skills repository, global convention changes go through `/update-devin-global-skills`; never hand-edit the canonical convention section
+5. In the skills repository, global convention changes go through `/update-agents-skills-global`; never hand-edit the canonical convention section
 
 ### 7. Verify
 

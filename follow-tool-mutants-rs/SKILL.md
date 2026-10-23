@@ -133,6 +133,7 @@ For Rust projects using the Cargo build system that want to verify test quality 
 
 
 - See best-practices/ for recommended patterns and pitfalls
+- References: [cargo-mutants — Best Practices](best-practices/mutants-rs.md), [apis](references/apis.md)
 
 ## Expected Outcome
 

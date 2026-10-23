@@ -15,6 +15,7 @@ Create a `.tldr` file from a drawing or diagram description
 - Generate JSON per the tldraw schema
 - Supports shapes: geo, text, draw, arrow, line, note
 - Creates files openable in the tldraw app or VS Code extension
+- References: [Draw Tldraw Diagram Official Resources](references/draw-tldraw-diagram--website.md)
 
 ## Execute
 

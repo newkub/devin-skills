@@ -21,6 +21,7 @@ Use when the task involves this library/tool — setup, usage, debugging, or bes
 - Not covered: TOTP/2FA logic — use `/follow-lib-otplib` to create the `otpauth://` URI, then render the QR with this skill
 - Latest: `qrcode@1.5.4` (verified 2026-09-13)
 - References: [apis](references/apis.md) | [cli](references/cli.md) 
+- References: [Best Practices: qrcode (QR Code Generation)](best-practices/qr-generation.md)
 ## Execute
 
 ### 1. Setup And Usage

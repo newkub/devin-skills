@@ -17,7 +17,7 @@ Build cross-platform mobile applications with Capacitor 8 using web technologies
 
 Use for developing and maintaining Capacitor 8 mobile apps in a monorepo, covering setup, configuration, plugins, build, deployment, and security
 
-- Packages: `@capacitor/core`, `@capacitor/cli`, `@capacitor/android`, `@capacitor/ios` (always the same version) — always confirm the latest versions with `/deep-research` + `/follow-best-practice` (no pinning in this file — per `/update-devin-global-skills`)
+- Packages: `@capacitor/core`, `@capacitor/cli`, `@capacitor/android`, `@capacitor/ios` (always the same version) — always confirm the latest versions with `/deep-research` + `/follow-best-practice` (no pinning in this file — per `/update-agents-skills-global`)
 
 ## Execute
 

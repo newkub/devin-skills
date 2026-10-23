@@ -1,7 +1,7 @@
 | key | value |
 |---|---|
 | package | `packslip` — standalone CLI binary; consumer libraries are separate (Rust crate for installers/mirrors, Node.js package for verification) |
-| install | `mise use -g packslip` · `curl -fsSL https://packslip.sh \| sh` · PowerShell `irm https://packslip.sh/install.ps1 \| iex` |
+| install | `mise use -g packslip` · `curl -fsSL https://packslip.sh -o /tmp/packslip-install.sh && sh /tmp/packslip-install.sh` · PowerShell `irm https://packslip.sh/install.ps1 -OutFile $env:TEMP\packslip-install.ps1; & $env:TEMP\packslip-install.ps1` |
 | version | 1.9.x (`install` needs ≥ 1.5.0; ≥ 1.5.1 on group-writable umask) |
 | license | MIT |
 | docs | https://packslip.dev/ |

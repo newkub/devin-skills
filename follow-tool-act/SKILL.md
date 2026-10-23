@@ -22,6 +22,7 @@ Install and use `act` (nektos/act) to run GitHub Actions workflows on the local 
 
 - Latest: `act@0.2.89` (nektos/act) (verified 2026-09-13)
 - References: [apis](references/apis.md) | [cli](references/cli.md) 
+- References: [act Best Practices](best-practices/local-actions.md)
 ## Execute
 
 ### 1. Install act

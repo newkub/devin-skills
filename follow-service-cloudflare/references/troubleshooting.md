@@ -83,7 +83,7 @@ Bindings (`vars`, `kv_namespaces`, etc.) are not inherited between environments 
 ### Node.js Version
 
 - Requires >= 22.0.0 (Wrangler 4.87.0+)
-- Use nvm/mise/Volta to manage versions
+- Use mise (or nvm) to manage versions
 
 ```bash
 nvm install --lts

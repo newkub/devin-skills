@@ -53,7 +53,7 @@ Use when a scope needs the `test` dimension reviewed on its own — before its g
 2. `cli` rows → take the `/run-review` slice (`--domain quality`) and cross-check with `/deep-test`, `/check-flaky-tests`, and a PII-in-fixture grep
 3. `/use-subagents` when the areas are independent — one reviewer per area, each reading only its slice or the files named in evidence
 4. Cross-check every finding in the real file — no `file:line`, no finding; severity comes from the row's `Default severity` plus its stated upgrade/downgrade trigger
-5. Score: Critical 0, High 25, Medium 50, Low 75, Info 100 → weighted average; grade A ≥90, B ≥80, C ≥70, D ≥60, F <60
+5. Score and grade per `/report-review` step 3 (the weights/grades SSOT) — never restate the formula here
 
 ### 3. Report
 

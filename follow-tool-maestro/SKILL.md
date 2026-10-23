@@ -27,7 +27,7 @@ Use when a project needs E2E coverage for Android, iOS (simulator), or web UI fl
 > Goal: get the single-binary CLI running
 
 1. Require Java 17+ — verify with `java -version`
-2. macOS/Linux/WSL: `curl -fsSL "https://get.maestro.mobile.dev" | bash`; Windows (non-WSL): follow the installer page on maestro.dev docs
+2. macOS/Linux/WSL: `curl -fsSL "https://get.maestro.mobile.dev" -o /tmp/maestro-install.sh && bash /tmp/maestro-install.sh`; Windows (non-WSL): follow the installer page on maestro.dev docs
 3. Verify: `maestro --version`
 4. Device targets: Android emulator/device, iOS simulator, browser — physical iOS is not supported
 
@@ -64,7 +64,7 @@ appId: com.android.contacts
 > Goal: let the coding agent drive a live device while it builds
 
 1. Start the built-in server: `maestro mcp` — ships inside the CLI, nothing else to install
-2. Register it as an MCP server via `/create-devin-global-mcp` so the agent can inspect the screen, tap, scroll, assert on a live emulator
+2. Register it as an MCP server via `/update-devin-global-mcp create` so the agent can inspect the screen, tap, scroll, assert on a live emulator
 3. Ask the agent to draft a flow, run it until green — the YAML stays in the repo as the CI test
 
 ## Rules
@@ -88,6 +88,7 @@ appId: com.android.contacts
 ## References
 
 - See `best-practices/flow-authoring.md` for recommended flow-authoring patterns and pitfalls
+- References: [apis](references/apis.md), [cli](references/cli.md)
 
 ## Expected Outcome
 

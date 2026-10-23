@@ -1,3 +1,4 @@
+#!/usr/bin/env bun
 /**
  * readme-sections.ts
  * README section builders — hero, UI sketch, get-started, features table, usage.

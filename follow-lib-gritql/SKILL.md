@@ -24,6 +24,7 @@ For JavaScript/TypeScript, CSS, and JSON in projects using Biome v2+ — this sk
 
 - Latest: `@biomejs/biome@2.5.14` (GritQL engine) (verified 2026-09-26)
 - References: [apis](references/apis.md) 
+- References: [GritQL — Pattern Authoring](best-practices/patterns.md), [GritQL — Biome Plugins And Search](best-practices/plugins.md), [cli](references/cli.md)
 ## Execute
 
 ### 1. Understand GritQL Basics

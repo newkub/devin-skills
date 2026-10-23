@@ -18,6 +18,7 @@ Works with GitHub Projects (Projects v2) of a user, organization, or linked repo
 
 - Latest: `gh@2.101.0` (github.com/cli/cli, verified 2026-09-26)
 - References: [cli](references/cli.md) | [apis](references/apis.md) 
+- References: [GitHub Projects (gh project) — Best Practices](best-practices/github-project.md)
 ## Execute
 
 ### 0. Setup

@@ -17,6 +17,7 @@ Use TanStack Hotkeys fully — type-safe keyboard shortcuts: modifier combos, ke
 For keyboard shortcuts — command palette, navigation, editor actions — `0.x`: always check `https://tanstack.com/hotkeys/latest` before implementing
 
 - part of TanStack ecosystem — selection/dispatch lives in `/follow-lib-tanstack-ecosystem`
+- References: [TanStack Hotkeys — Best Practices](best-practices/tanstack-hotkeys.md), [apis](references/apis.md)
 
 ## Execute
 

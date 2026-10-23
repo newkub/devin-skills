@@ -4,8 +4,8 @@ description: List Plane.so work items, projects, states, labels, and comments vi
 argument-hint: "[workitems|projects|states|labels|comments|relations|pages] [filters]"
 related:
   - implement-from-planso
-  - save-to-planso
-  - create-plan-to-planso
+  - create-task-in-planso
+  - create-plan-in-planso
   - update-planso
   - report
   - ask-me
@@ -19,8 +19,8 @@ Show the current state of the Plane.so workspace - work items, projects, states,
 
 - Use when: the user asks what is in Plane, wants to browse or filter work items, or needs an identifier before another action
 - Reads through the Plane MCP: `mcp__plane__workspace`, `mcp__plane__project`, `mcp__plane__workitem`, `mcp__plane__workitem_relation`, `mcp__plane__workitem_comment`, `mcp__plane__state`, `mcp__plane__label`, `mcp__plane__page`, and `mcp__plane__member`
-- Read-only - this skill never creates, updates, or deletes anything; new work -> `/save-to-planso`, edits -> `/update-planso`
-- Not a planner or executor -> `/create-plan-to-planso`, `/implement-from-planso`
+- Read-only - this skill never creates, updates, or deletes anything; new work -> `/create-task-in-planso`, edits -> `/update-planso`
+- Not a planner or executor -> `/create-plan-in-planso`, `/implement-from-planso`
 
 ## Execute
 

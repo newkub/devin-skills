@@ -26,6 +26,7 @@ Use for projects that use oRPC as the API layer (both standalone and inside TanS
 - Configure middleware, server handler, client
 - Use TanStack Query and OpenAPI if needed
 - No own CLI — used via programmatic API (thus none)
+- References: [Best Practices: oRPC Client, Errors and Query Integration](best-practices/client-and-errors.md), [Best Practices: oRPC Server Design](best-practices/server-design.md), [apis](references/apis.md)
 
 ## Execute
 

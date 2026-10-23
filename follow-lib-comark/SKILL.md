@@ -113,6 +113,7 @@ For JS/TS projects that render Markdown content — docs sites, blogs, CMS conte
 - [API reference](references/apis.md)
 
 - See best-practices/ for recommended patterns and pitfalls
+- References: [Comark — Best Practices](best-practices/comark.md)
 
 ## Expected Outcome
 

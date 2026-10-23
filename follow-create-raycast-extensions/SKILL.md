@@ -16,7 +16,7 @@ Build Raycast Extensions using TypeScript, React, and the Raycast API to boost p
 
 Use for building Raycast Extensions on macOS with TypeScript, React, and the Raycast API
 
-- Packages: `@raycast/api` 2.x (requires Node >= 22 + React 19 — migrate with `bunx ray migrate`), `@raycast/utils` — always confirm the latest versions with `/deep-research` + `/follow-best-practice` (not pinned in this file — per `/update-devin-global-skills`)
+- Packages: `@raycast/api` 2.x (requires Node >= 22 + React 19 — migrate with `bunx ray migrate`), `@raycast/utils` — always confirm the latest versions with `/deep-research` + `/follow-best-practice` (not pinned in this file — per `/update-agents-skills-global`)
 
 ## Execute
 
@@ -129,7 +129,7 @@ export default function Command() {
 
 ### 1. Structure
 
-```
+```text
 desktop-apps/raycast-extensions/{extension}/
 ├── src/
 │   ├── index.tsx

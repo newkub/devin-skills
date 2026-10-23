@@ -94,7 +94,7 @@ Every handler/function must have: happy path, error path, edge cases, unauthoriz
 > Goal: Deliver
 
 1. Run `/report` — tests added/updated/removed per layer, coverage delta, pass rate, pending items
-2. Persist raw results → `.devin/temp/report/<workspace>/update-tests-<time>.md` per the `/create-report-in-dot-devin` format so `/update-docs` can reuse them
+2. Persist raw results → `.devin/temp/report/<workspace>/update-tests-<time>.md` per the `/create-report-to-dot-agents` format so `/update-docs` can reuse them
 3. Run `/suggest-next-action`
 
 ### Subagents

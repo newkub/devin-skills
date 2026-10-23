@@ -21,7 +21,7 @@ Create a VSCode extension project in TypeScript with a `package.json` manifest, 
 
 For building general VSCode extensions, supporting the official `yo generator-code`, `reactive-vscode`, and manual setup
 
-- Packages: `generator-code`, `@vscode/vsce` (`vsce` is deprecated/renamed — requires Node 20+) — always confirm the VS Code/latest versions with `/deep-research` + `/follow-best-practice` (not pinned in this file — per `/update-devin-global-skills`)
+- Packages: `generator-code`, `@vscode/vsce` (`vsce` is deprecated/renamed — requires Node 20+) — always confirm the VS Code/latest versions with `/deep-research` + `/follow-best-practice` (not pinned in this file — per `/update-agents-skills-global`)
 
 ## Execute
 

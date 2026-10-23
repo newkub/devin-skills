@@ -21,7 +21,7 @@ Build a SolidStart application that does SSR through the Vite plugin `nitro/vite
 
 Use for creating SolidStart (SolidJS meta-framework) projects that use Vite as the build tool and Nitro as the server engine via `@solidjs/start` v2 + `nitro` v3 — see https://nitro.build/examples/vite-ssr-solidstart
 
-- Packages: `@solidjs/start`, `@solidjs/router`, `@solidjs/meta`, `solid-js`, `nitro` (v3 has the `nitro/vite` plugin), `vite` — always verify the latest versions with `/deep-research` + `/follow-best-practice` (no pinning in this file — per `/update-devin-global-skills`)
+- Packages: `@solidjs/start`, `@solidjs/router`, `@solidjs/meta`, `solid-js`, `nitro` (v3 has the `nitro/vite` plugin), `vite` — always verify the latest versions with `/deep-research` + `/follow-best-practice` (no pinning in this file — per `/update-agents-skills-global`)
 
 ## Execute
 

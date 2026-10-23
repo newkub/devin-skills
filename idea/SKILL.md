@@ -17,6 +17,7 @@ Generate ideas according to user context, analyze gaps, needs and opportunities,
 ## Scope
 
 Use when the user says "I want ideas" or needs ideas for any work; covers features, UX/UI, refactor, and improvements
+- References: [idea-create-devin-skills-global (merged content)](references/idea-create-devin-skills-global.md), [idea-new-skills (merged content)](references/idea-new-skills.md), [report-idea (merged content)](references/report-idea.md)
 
 ## Execute
 
@@ -27,8 +28,8 @@ Use when the user says "I want ideas" or needs ideas for any work; covers featur
 | Feature ideas (extends + net-new + platform) | `/idea-features` |
 | Ideas to merge/consolidate redundant things | `/idea-merge` |
 | UX/UI improvement and feature ideas | `/idea-uxui` |
-| Ideas for new/improved devin global skills | `/idea-new-devin-global-skills` |
-| Skill candidates from the current session | `/idea-devin-global-skills-from-session` |
+| Ideas for new/improved devin global skills | `/idea-agent-skills` |
+| Skill candidates from the current session | `/idea-agent-skills` |
 | Convert CLI tools into Devin skills | `/idea-convert-my-global-cli-to-skills` |
 | Screen/prove a single idea before starting (GO/NO-GO/PIVOT in chat) | `/validate-idea` |
 

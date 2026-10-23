@@ -20,6 +20,7 @@ Use Semgrep to install and run pattern-based scanning — security rules, custom
 
 - Latest: `semgrep@1.177.0` (pipx/brew/mise) (verified 2026-09-13)
 - References: [apis](references/apis.md) | [cli](references/cli.md) | best-practices/
+- References: [Semgrep Rules Authoring Best Practices](best-practices/rules-authoring.md), [Semgrep Scan & CI Best Practices](best-practices/scan-and-ci.md)
 
 ## Execute
 

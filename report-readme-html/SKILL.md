@@ -3,7 +3,7 @@ name: report-readme-html
 description: Build a README.html report in a temp dir with Element Plus + Tailwind, opened via /open-web
 argument-hint: "[file]"
 related:
-  - report-html
+  - report-in-html
   - report
   - update-docs
   - open-web
@@ -19,7 +19,7 @@ Build a single-file interactive `README.html` report in the OS temp dir — Elem
 Summarize the project README/docs as a temporary HTML report — never written to the project root (temp only)
 
 - 7 tabs: Features, Dependencies, Architecture, API Endpoints, Database Schema, Environment Variables, Getting Started
-- Generic single-file HTML report (non-README data) → `/report-html`
+- Generic single-file HTML report (non-README data) → `/report-in-html`
 - Permanent docs → use `/update-docs` instead
 
 ## Execute
@@ -66,7 +66,7 @@ Summarize the project README/docs as a temporary HTML report — never written t
 - Never put real secrets/env values in the Environment Variables tab
 - Use `/open-web` to open the result — do not call `Start-Process` directly when `/open-web` works
 
-- Use `/report-html` for a generic interactive report
+- Use `/report-in-html` for a generic interactive report
 - Always use `/create-files-in-os-temp`, `/open-web`
 - Use `/update-docs` when permanent docs are wanted instead
 

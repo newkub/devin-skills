@@ -22,6 +22,7 @@ For configuring Cargo lint rules in Rust projects, both single crate and workspa
 - Latest: Rust `1.98.1` (cargo `1.98.1`) (verified 2026-09-13)
 - References: [apis](references/apis.md) | [cli](references/cli.md) 
 - For Clippy lint rules and error handling see `references/cli.md`
+- References: [Cargo Lints Best Practices](best-practices/cargo-lints.md)
 
 ## Execute
 

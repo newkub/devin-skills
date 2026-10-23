@@ -4,7 +4,7 @@ description: Create, update, and orchestrate global subagents via AGENT.md and j
 argument-hint: "[agent-name]"
 related:
   - update-devin
-  - review-devin-global-harness
+  - review-dot-agents-global-and-fix
   - follow-agents-md
   - update-docs
   - use-subagents
@@ -23,7 +23,7 @@ Create or update `AGENT.md` for Devin subagents so they are correct, complete, p
 
 Use when creating a new agent or editing an agent in `~/.config/devin/agents/`, `.devin/agents/`, `.agents/agents/`, or `%APPDATA%\devin\agents\`, including orchestrating subagents for complex work
 
-Review-only → `/review-devin-global-harness` (layer `subagents`)
+Review-only → `/review-dot-agents-global-and-fix` (layer `subagents`)
 
 See also: /follow-agents-md, /update-agents-md
 
@@ -34,7 +34,7 @@ See also: /follow-agents-md, /update-agents-md
 > Goal: know the target `AGENT.md` and its current state before editing
 
 1. Take the agent name and role from the user
-2. Run `/list-devin-global-subagents` to confirm whether the agent exists (not found + creating → proceed; not found + editing → Critical, stop and report)
+2. Run `/list-dot-agents-global` to confirm whether the agent exists (not found + creating → proceed; not found + editing → Critical, stop and report)
 3. Determine the target directory: `<agents-root>/<agent-name>/`
 4. If the agent exists → read the current `AGENT.md` to identify what needs changing; record name + directory
 5. If the name is duplicated or unclear → run `/ask-me`
@@ -79,7 +79,7 @@ See also: /follow-agents-md, /update-agents-md
 1. Frontmatter: both `---` delimiters present; required fields `name`, `description`, `model`, `allowed-tools` complete; `permissions` with `deny` present
 2. Sections: required order intact; file ≤250 lines (count frontmatter + content); `name` matches the directory and is unique
 3. Style/safety: backticks for identifiers, no `**` bold, Title Case headings; no hardcoded secrets; `allowed-tools` not overly broad
-4. Severity weights — Critical 0, High 25, Medium 50, Low 75, Info 100; review score = sum(weights) / count(findings); grade A ≥90, B ≥80, C ≥70, D ≥60, F <60
+4. Score and grade per `/report-review` step 3 (the weights/grades SSOT) — never restate the formula here
 5. Severity mapping: missing required field / `name` ≠ directory / hardcoded secrets = Critical; missing `permissions`/`deny` or uncovered risky paths / missing section / wrong order / >250 lines = High; overly broad `allowed-tools` / `**` bold / placeholder = Medium; `description` >100 chars / heading not Title Case = Low
 6. Score <70 → fix via `/update-devin-global-subagents` before proceeding; ≥70 → passes review
 7. Report via `/report table` (columns: Category, Severity, Finding, Evidence, Action); every finding needs evidence — `AGENT.md` path + line/field + actual value + recommended action
@@ -90,7 +90,7 @@ See also: /follow-agents-md, /update-agents-md
 > Goal: split complex work into subtasks and run subagents by role in parallel, then merge and deliver
 
 1. Decompose the task into independent subtasks by layer (frontend, backend, qa, devops, security, architecture); each subtask has clear input, expected output, success criteria; order dependent subtasks
-2. Run `/list-devin-global-subagents` to pick roles matching each subtask; a needed role that doesn't exist → `/use-related-skills` or create a new `AGENT.md` here
+2. Run `/list-dot-agents-global` to pick roles matching each subtask; a needed role that doesn't exist → `/use-related-skills` or create a new `AGENT.md` here
 3. Use `/use-subagents` to spawn subagents in parallel; pass complete context (task, constraints, files, expected output); one role per subagent, never overlapping/duplicate subtasks
 4. Merge every subagent's output into a single deliverable before finalizing (never ship one subagent's output as final); resolve conflicts with `/resolve-errors`; call out contradictory recommendations that were excluded
 5. Run `/deep-review then-fix` on the merged output; a subtask with a complex workflow → extra `/deep-review`; gaps → spawn more subagents
@@ -144,7 +144,7 @@ See also: /follow-agents-md, /update-agents-md
 - Integration: referenced skills/rules exist, `AGENTS.md`/registry consistent, related links valid
 - Score each item: pass = 1, warning = 0.5, fail = 0 → grade A (90+), B (80+), C (70+), D (60+), F (<60)
 
-- Use /review-devin-global-harness (layer `subagents`) for review-only
+- Use /review-dot-agents-global-and-fix (layer `subagents`) for review-only
 - Use /follow-create-plugins (devin) if needed
 - Use /update-devin if needed
 - Use /update-docs if needed

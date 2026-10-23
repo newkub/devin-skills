@@ -58,7 +58,7 @@ Use for one of three cases:
 
 > Goal: Summarize session usage and cost
 
-1. Use `devin_session_search` or `/list-devin-session` to pull sessions by period/tag
+1. Use `devin_session_search` or `/check-agents-session` to pull sessions by period/tag
 2. Use `devin_billing_tag_manage` to pull billing tags if present
 3. Compute sessions per day/week, and the success/failure/stopped distribution
 4. Identify tag breakdowns, recurring task patterns, long-running sessions

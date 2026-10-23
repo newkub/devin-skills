@@ -98,7 +98,7 @@ For Rust projects using the Cargo build system
 - Avoid naming profiles with a `default-` prefix
 - Use the `inherits` keyword for profile inheritance
 
-### 3. Configuration
+### 3. Configuration — Rules
 
 - Review the configuration in `.config/nextest.toml`
 - Repository config at `.config/nextest.toml` is checked into VCS
@@ -118,6 +118,7 @@ For Rust projects using the Cargo build system
 
 
 - See best-practices/ for recommended patterns and pitfalls
+- References: [cargo-nextest — Best Practices](best-practices/nextest.md), [apis](references/apis.md)
 
 ## Expected Outcome
 

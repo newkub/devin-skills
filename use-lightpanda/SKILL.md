@@ -6,7 +6,7 @@ related:
   - use-agent-browser
   - use-chrome-devtools
   - use-midscenejs
-  - create-devin-global-mcp
+  - update-devin-global-mcp
 
 ---
 
@@ -45,7 +45,7 @@ Use when you need a browser with real JS execution (V8) but no pixel rendering �
    ```sh
    # direct release binary (verified 2026-10-13 — use this route on real machines when AUR needs root ops)
    curl -fL https://github.com/lightpanda-io/browser/releases/download/1.0.1/lightpanda-x86_64-linux -o ~/.local/bin/lightpanda && chmod +x ~/.local/bin/lightpanda
-   curl -fsSL https://pkg.lightpanda.io/install.sh | bash        # installs ~/.local/bin/lightpanda (pin version: bash -s "1.0.1")
+   curl -fsSL https://pkg.lightpanda.io/install.sh -o /tmp/lightpanda-install.sh && bash /tmp/lightpanda-install.sh   # installs ~/.local/bin/lightpanda (pin version: bash /tmp/lightpanda-install.sh "1.0.1")
    brew install lightpanda-io/browser/lightpanda                  # macOS/Linux brew
    mise use -g github:lightpanda-io/browser                       # mise GitHub backend (verified 2026-10-20, arch WSL)
    docker run -d --name lightpanda -p 127.0.0.1:9222:9222 lightpanda/browser:nightly
@@ -110,7 +110,7 @@ lightpanda fetch --dump markdown https://example.com   # agent-readable text
    ```
    - resolve the path with `command -v lightpanda` first; add `"--obey-robots"` to args when wanted
    - Windows + binary on WSL: `command: "wsl.exe"`, `args: ["-d", "<distro>", "--", "<absolute-linux-path>", "mcp"]` — use an absolute path (e.g. `/root/.local/bin/lightpanda`), not a bare `lightpanda`, because the host spawn is not a login shell and the WSL-side PATH may not cover `~/.local/bin` (verified 2026-10-13 — the JSON-RPC `initialize` handshake over stdio succeeded)
-   - devin global: add an entry in `%APPDATA%\devin\mcp_config.json` per `/create-devin-global-mcp` (back up before editing)
+   - global: add an entry in `~/.agents/mcp/mcp_config.json` per `/update-devin-global-mcp create` (back up before editing)
 3. variants: `lightpanda mcp --port 8000` (HTTP, POST /mcp), `--cdp-port <n>` (also opens a CDP server)
 4. Cloud MCP via `mcp-remote`: `bunx mcp-remote https://euwest.cloud.lightpanda.io/mcp?token=<TOKEN>` (WIP — not all tools are available)
 5. main tools: `goto`, `search`, `markdown`, `html`, `extract`, `evaluate`, `click`, `fill`, `scroll`, `hover`, `press`, `selectOption`, `waitForSelector`, `screenshot` (text-layout only), `getUrl`, `getCookies`, `consoleLogs`, `session_new/list/close`; resources `mcp://page/markdown`, `mcp://page/html`

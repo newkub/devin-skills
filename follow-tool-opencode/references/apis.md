@@ -1,7 +1,7 @@
 | key | value |
 |---|---|
 | package | `@opencode/cli` (v2 channel) · v1 stable `opencode` |
-| install | `curl -fsSL https://opencode.ai/v2/install \| bash` · `npm install -g @opencode/cli` · `bun install -g --trust @opencode/cli` · `brew install anomalyco/tap/opencode-v2` · `mise use -g opencode` (mise ≥ 2026.10.9 for v2) |
+| install | `curl -fsSL https://opencode.ai/v2/install -o /tmp/opencode-install.sh && bash /tmp/opencode-install.sh` · `npm install -g @opencode/cli` · `bun install -g --trust @opencode/cli` · `brew install anomalyco/tap/opencode-v2` · `mise use -g opencode` (mise ≥ 2026.10.9 for v2) |
 | stable version | local `opencode --version` → `1.19.0` (verified 2026-10-15); v2 docs: https://opencode.ai/v2/docs/ |
 | license | Open source |
 | docs | https://opencode.ai/v2/docs/ (v1: https://opencode.ai/docs/) |

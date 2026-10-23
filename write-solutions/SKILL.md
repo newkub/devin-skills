@@ -7,9 +7,9 @@ related:
   - deep-research
   - reframe
   - deep-review
-  - update-devin-global-skills
+  - update-agents-skills-global
   - resolve-errors
-  - dont-over-engineer
+  - simplify
   - run-test
 
 ---
@@ -60,7 +60,7 @@ Design a solution that fits the context
 
 Write the solution document to standard
 
-1. Run `/update-devin-global-skills` for structure
+1. Run `/update-agents-skills-global` for structure
 2. Write the problem statement, solution approach, and implementation plan
 3. Add examples and edge cases
 
@@ -108,7 +108,7 @@ Write the solution document to standard
 Manage the implementation systematically
 
 - Run `/resolve-errors` for minimal changes
-- Run `/dont-over-engineer` to reduce complexity
+- Run `/simplify` to reduce complexity
 - Add regression tests for critical fixes
 - Document changes and update references
 

@@ -17,7 +17,7 @@ Build Vite plugins with the standard Plugin API, with Rolldown compatibility sup
 
 Use `follow-create-vite-plugins` for the specifically covered tasks and workflows (create vite plugins)
 
-- Packages: `vite` (8.x uses Rolldown as the default bundler — universal hooks are per-environment via `this.environment`), `rolldown`, `typescript` — always confirm the latest versions with `/deep-research` + `/follow-best-practice` (not pinned in this file — per `/update-devin-global-skills`)
+- Packages: `vite` (8.x uses Rolldown as the default bundler — universal hooks are per-environment via `this.environment`), `rolldown`, `typescript` — always confirm the latest versions with `/deep-research` + `/follow-best-practice` (not pinned in this file — per `/update-agents-skills-global`)
 
 ## Execute
 

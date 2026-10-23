@@ -3,8 +3,8 @@ name: cleanup-github-issue
 description: Close, delete, or tidy up stale GitHub issues
 argument-hint: "[repo]"
 related:
-  - cleanup-files-in-computer
-  - cleanup-files-in-project
+  - cleanup-disk-computer
+  - cleanup-project
   - suggest-next-action
   - run-clean
   - run-cleanup
@@ -54,8 +54,8 @@ Use for maintaining the issue backlog
 - Close with a comment explaining the reason
 - Never mass-close without approval
 
-- Use /cleanup-files-in-computer if needed
-- Use /cleanup-files-in-project if needed
+- Use /cleanup-disk-computer if needed
+- Use /cleanup-project if needed
 - Use /run-clean if needed
 - Use /run-cleanup if needed
 

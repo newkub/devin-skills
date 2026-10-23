@@ -20,6 +20,7 @@ Set up and use a secret manager to handle secrets and environment variables in t
 ## Scope
 
 Use for every workspace that needs secrets management — local development, CI/CD, and production. Supports several secret managers, but Infisical is the recommended default
+- References: [Service Infisical API & Dependencies](references/apis.md), [Platform Integrations](references/platform-integrations.md)
 
 ## Execute
 

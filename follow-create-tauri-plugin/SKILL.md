@@ -17,7 +17,7 @@ Build custom Tauri plugins that extend Tauri applications with a Rust backend an
 
 Covers building plugins for desktop and mobile platforms with commands, state management, lifecycle events, and mobile native code
 
-- Packages: `tauri` crate, `@tauri-apps/cli`, `@tauri-apps/api` — always confirm the latest versions with `/deep-research` + `/follow-best-practice` (not pinned in this file — per `/update-devin-global-skills`)
+- Packages: `tauri` crate, `@tauri-apps/cli`, `@tauri-apps/api` — always confirm the latest versions with `/deep-research` + `/follow-best-practice` (not pinned in this file — per `/update-agents-skills-global`)
 
 ## Execute
 
@@ -111,7 +111,7 @@ export async function myCommand() {
 
 ### 2. Project Structure
 
-```
+```text
 tauri-plugin-<name>/
 ├── src/
 │   ├── commands.rs - Commands for the webview

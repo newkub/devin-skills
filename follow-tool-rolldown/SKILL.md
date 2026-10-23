@@ -7,6 +7,7 @@ related:
   - follow-create-plugins
   - follow-tool-tsdown
   - follow-tool-turborepo
+  - follow-tool-viteplus
   - follow-lang-typescript
 ---
 
@@ -20,6 +21,7 @@ Use for JavaScript/TypeScript projects that want a fast bundler, code splitting/
 
 - Use standalone `rolldown` when bundling outside Vite (e.g. libraries, custom toolchain); if the project already uses Vite 8, Rolldown is its built-in bundler — go to `follow-tool-vite`
 - Use `follow-tool-tsdown` for library builds that want zero-config on Rolldown (dts, dual format) instead of hand-written config
+- Boundary: inside a Vite+ project Rolldown runs through `vp build`/`vp pack` driven by the single `vite.config.ts` → `/follow-tool-viteplus`
 
 - Latest: `rolldown@1.2.11` (verified 2026-09-26) — 1.0 stable since May 2026 and the default bundler of Vite 8; requires Node.js `^20.19.0 | >=22.12.0`
 
@@ -95,7 +97,7 @@ Use for JavaScript/TypeScript projects that want a fast bundler, code splitting/
 
 ## Rules
 
-### 1. Installation
+### 1. Installation — Rules
 
 - Use `bun add -D rolldown` for the local install
 - Use `bunx rolldown` for a one-off build
@@ -132,6 +134,7 @@ Use for JavaScript/TypeScript projects that want a fast bundler, code splitting/
 
 
 - See best-practices/ for recommended patterns and pitfalls
+- References: [Rolldown — Best Practices](best-practices/rolldown.md), [apis](references/apis.md)
 
 ## Expected Outcome
 

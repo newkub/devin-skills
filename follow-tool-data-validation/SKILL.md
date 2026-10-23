@@ -109,6 +109,7 @@ Use for projects that must validate both external input (API, forms, CLI args) a
 
 
 - See best-practices/ for recommended patterns and pitfalls
+- References: [Data Validation — Best Practices](best-practices/data-validation.md), [apis](references/apis.md)
 
 ## Expected Outcome
 

@@ -15,8 +15,8 @@ related:
   - ask-me
   - report
   - report-progress
-  - commit-all-projects-in-drive-d
-  - push-all-projects-in-drive-d
+  - commit-all-my-projects
+  - push-all-my-projects
   - suggest-next-action
 ---
 
@@ -27,7 +27,7 @@ Apply the same action to multiple git projects on drive D — the discovered set
 ## Scope
 
 - In: drive-D project discovery, per-project dispatch, aggregated reporting; the action itself comes from the argument/context
-- Out: the current project only → `/apply-this-project`; committing/pushing many repos → `/commit-all-projects-in-drive-d` / `/push-all-projects-in-drive-d`; the generic apply modes → `/apply`
+- Out: the current project only → `/apply-this-project`; committing/pushing repos machine-wide → `/commit-all-my-projects` / `/push-all-my-projects`; the generic apply modes → `/apply`
 - Batch runner only — never edits project files directly; every change goes through `/apply-this-project` inside each repo
 
 ## Execute
@@ -64,7 +64,7 @@ Apply the same action to multiple git projects on drive D — the discovered set
 
 1. `/report table`: No., Project, Action, Status (done/skipped/failed), Evidence
 2. State source + date; list skipped projects with the reason
-3. Run `/suggest-next-action` (e.g. per-repo commit via `/commit-all-projects-in-drive-d` when the user wants them committed)
+3. Run `/suggest-next-action` (e.g. per-repo commit via `/commit-all-my-projects` when the user wants them committed)
 
 ## Rules
 

@@ -22,6 +22,7 @@ Use the ctx CLI (ctx.rs) as working memory for prior agent work: search indexed 
 - Boundary: ctx search reads indexed agent history, not the working tree — filesystem and AST search live in `/code-search`; git history search lives in `/git-search`
 - Any history-backed command needs an initialized index; graph and sift work without history setup
 - References: [apis](references/apis.md) · [cli](references/cli.md) · best-practices/
+- References: [Blame Readiness And Limits](best-practices/blame-readiness.md), [Evidence Discipline](best-practices/evidence-discipline.md), [History Search Versus Code Search](best-practices/history-vs-code-search.md)
 
 ## Execute
 
@@ -29,7 +30,7 @@ Use the ctx CLI (ctx.rs) as working memory for prior agent work: search indexed 
 
 > Goal: know whether ctx can answer before relying on it
 
-1. `ctx --version` — not installed → Windows: `irm https://ctx.rs/install.ps1 | iex`; macOS/Linux: `curl -fsSL https://ctx.rs/install | sh`
+1. `ctx --version` — not installed → Windows: `irm https://ctx.rs/install.ps1 -OutFile $env:TEMP\ctx-install.ps1; & $env:TEMP\ctx-install.ps1`; macOS/Linux: `curl -fsSL https://ctx.rs/install -o /tmp/ctx-install.sh && sh /tmp/ctx-install.sh`
 2. `ctx status` and `ctx sources` — confirm the local index is readable and which provider roots exist
 3. No index yet → `ctx setup`; stale index → `ctx import --all`; first indexing can take time
 4. ctx or the required evidence unavailable → state the limit instead of inventing results

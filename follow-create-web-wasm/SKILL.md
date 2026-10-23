@@ -30,7 +30,7 @@ Build a website project that runs heavy Rust computation in the browser via WebA
 
 Use when a task needs Rust performance in the browser without writing a backend, e.g. image/audio processing, simulation, cryptography, graph layout, or computational geometry
 
-- Packages: `wasm-pack`, `wasm-bindgen`, `serde-wasm-bindgen`, `vite-plugin-wasm-pack` — always verify the latest versions with `/deep-research` + `/follow-best-practice` (no pinning in this file — per `/update-devin-global-skills`); the `--target web` flow + `crate-type = ["cdylib"]` is still a requirement
+- Packages: `wasm-pack`, `wasm-bindgen`, `serde-wasm-bindgen`, `vite-plugin-wasm-pack` — always verify the latest versions with `/deep-research` + `/follow-best-practice` (no pinning in this file — per `/update-agents-skills-global`); the `--target web` flow + `crate-type = ["cdylib"]` is still a requirement
 
 ## Execute
 

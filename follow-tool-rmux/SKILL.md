@@ -112,6 +112,7 @@ Use for projects that want a tmux-compatible CLI or want to drive terminal sessi
 
 
 - See best-practices/ for recommended patterns and pitfalls
+- References: [RMUX — Best Practices](best-practices/rmux.md), [apis](references/apis.md)
 
 ## Expected Outcome
 

@@ -9,7 +9,7 @@ related:
   - follow-tool-mise
   - follow-tool-moonrepo
   - update-project
-  - update-dot-devin
+  - update-dot-agents-project
   - refactor
   - update-gitignore
   - research-setup-integrations
@@ -55,15 +55,15 @@ Update the project configuration so it is complete and consistent, reduce duplic
    - Move shared dependencies into `pnpm-workspace.yaml` catalogs or the `catalog:` field
    - Use `catalog:` in `package.json` instead of version numbers
    - Create a root `tsconfig.base.json` that every package `extends`
-   - Create a root `eslint.config.js` (flat config — `.eslintrc` was removed in ESLint 10) and `prettier.config.js`
+   - Create a root `eslint.config.js` (flat config — `.eslintrc` was removed in ESLint 10); formatter options live in the `fmt` block of the root `vite.config.ts` (Vite+) or `bunfig.toml` `[fmt]` (Bun), never a Prettier config
 3. Monorepo with bun workspace:
    - Check `bun-workspace.toml` or the `workspaces` field in `package.json`
    - Use `bun.catalogs` (if available) or root `package.json` `overrides`
-   - Create `bunfig.toml` for shared install config
+   - Create `bunfig.toml` for shared install config and `[fmt]` formatter options (only overrides — `bun fmt` reads `.prettierignore` and `.editorconfig`, never `.prettierrc`)
    - Create `tsconfig.base.json` for the workspaces to `extends`
 4. Single project:
-   - Check whether `tsconfig.json`, `eslint.config.*`, `prettier.config.*` use `extends`
-   - Consider shared config packages such as `@antfu/eslint-config`, `@tsconfig/*`, `prettier-config-standard`
+   - Check whether `tsconfig.json`, `eslint.config.*`, `vite.config.ts` use `extends`
+   - Consider shared config packages such as `@antfu/eslint-config`, `@tsconfig/*`
    - Check `mise.toml` or `.tool-versions` to pin versions
 
 ### 3. Update Package Manifest
@@ -97,13 +97,15 @@ Update the project configuration so it is complete and consistent, reduce duplic
    - Consolidate into `eslint.config.js` / `eslint.config.mjs` (flat config — migrate `.eslintrc` with `bunx @eslint/migrate-config`)
    - Use a shared config package when appropriate
    - Remove redundant `.eslintrc.*` files (the legacy format was removed in ESLint 10)
-3. Prettier:
-   - Consolidate into a root `prettier.config.*` or `.prettierrc`
-   - Reference it from `package.json#prettier`
+3. Formatter:
+   - Vite+ project: format options live in the `fmt` block of the root `vite.config.ts` (Oxfmt) — nested format configs are ignored
+   - Bun project: overrides live in `bunfig.toml` `[fmt]`; `bun fmt` reads `.prettierignore`/`.editorconfig`, never `.prettierrc`
+   - Biome project: keep formatter options in `biome.json`
+   - Do not create `prettier.config.*` or `.prettierrc` — Prettier is not part of the stack
 4. Vitest / Jest:
    - Create a shared test config, then have workspaces `extends` it or `defineConfig` from the shared one
 5. Build tools:
-   - Consolidate `vite.config.*`, `tsup.config.*` and use shared plugins where possible
+   - Consolidate `vite.config.*`, `tsdown.config.*` and use shared plugins where possible
 6. Knip / Taze:
    - Create `knip.config.*` or `knip.json` at the root
    - Create `taze.config.*` if it is used
@@ -135,7 +137,7 @@ Update the project configuration so it is complete and consistent, reduce duplic
 3. Check git hooks:
    - `lefthook.yml` or the `husky` config
    - Use `lint-staged` or `nano-staged` if needed
-4. Run `/update-dot-devin` for Devin-specific rules
+4. Run `/update-dot-agents-project` for Devin-specific rules
 
 ### 7. Update Editor And Environment
 
@@ -165,7 +167,7 @@ Update the project configuration so it is complete and consistent, reduce duplic
    - `moon check` or `moon run :check` (moonrepo)
    - `bun check` (Bun ≥ 1.4), `tsc --noEmit` or `tsc -b` (TypeScript)
    - `eslint .` (ESLint)
-   - `prettier --check .` (Prettier)
+   - `vp fmt --check` (Vite+) or `bun fmt --check` (Bun projects — add `--no-script` when a `fmt` script shadows the built-in)
    - `knip` (unused)
 3. Run `/report-config-files` again to verify
 4. Run `/report` to summarize the changes

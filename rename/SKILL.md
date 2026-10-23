@@ -5,7 +5,7 @@ argument-hint: "[old-name] [new-name] or <pattern> <replacement> [path]"
 related:
   - update-references
   - code-search
-  - review-devin-global-harness
+  - review-dot-agents-global-and-fix
   - resolve-errors
   - report
   - use-astgrep
@@ -110,7 +110,7 @@ Rename code identifiers with ast-grep, or rename files/skills/directories with c
 5. Update the whole body: `/<old-name>` → `/<new-name>`, paths, and markdown links
 6. Update `AGENTS.md` and `global_rules.md` if they contain slash references
 7. Run `/update-references` across the repo
-8. Run `/review-devin-global-harness` to confirm completeness
+8. Run `/review-dot-agents-global-and-fix` to confirm completeness
 
 ### 7. Batch Rename Files By Pattern
 

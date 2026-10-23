@@ -8,7 +8,7 @@ related:
   - learn-from-cli
   - check-types-definition
   - improve
-  - update-devin-global-skills
+  - update-agents-skills-global
   - check-reference
   - deep-validate
   - update-references
@@ -66,7 +66,7 @@ Use when there is new/newer reference material (e.g., docs that were just update
 
 1. Fix `stale`/`wrong` first — minimal edit, do not rewrite the whole file
 2. Fill in `missing` only where relevant to the skill's scope — do not dump the entire reference
-3. Every edit must follow the `/update-devin-global-skills` conventions: complete frontmatter, section order, backticks, ≤250 lines/file, no TODO/MOCK/placeholder
+3. Every edit must follow the `/update-agents-skills-global` conventions: complete frontmatter, section order, backticks, ≤250 lines/file, no TODO/MOCK/placeholder
 4. New content that is long detail → write it into `references/` instead of `SKILL.md` (Write References spec)
 5. Update version strings together with `verified YYYY-MM-DD` when verified from the actual source
 
@@ -109,7 +109,7 @@ Use when there is new/newer reference material (e.g., docs that were just update
 
 ### 3. Conventions
 
-- Every file touched must pass the `/update-devin-global-skills` conventions and `/check-reference`
+- Every file touched must pass the `/update-agents-skills-global` conventions and `/check-reference`
 - New files in `references/`/`best-practices/` must be referenced from `SKILL.md` (not orphans)
 - Use `/learn-from-web` `/learn-from-codebase` `/learn-from-cli` `/check-types-definition` as source adapters — do not rewrite logic
 

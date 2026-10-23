@@ -8,6 +8,11 @@ related:
   - follow-default-config
   - report
   - follow-lib-tstyche
+allowed-tools:
+  - exec
+  - grep
+  - glob
+  - find_file_by_name
 ---
 
 ## Goal

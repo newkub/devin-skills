@@ -22,6 +22,7 @@ Use when the task involves this library/tool — setup, usage, debugging, or bes
 - No CLI — used via programmatic API only (thus none)
 - Latest: `postgres@3.4.9` (verified 2026-09-13)
 - References: [apis](references/apis.md) 
+- References: [Best Practices: postgres.js (postgres Driver)](best-practices/postgres-js.md)
 ## Execute
 
 ### Workflows

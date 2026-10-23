@@ -4,7 +4,7 @@ description: Generate an analysis report — structure overview, root cause chai
 argument-hint: "[scope]"
 related:
   - report
-  - create-report-in-dot-devin
+  - create-report-to-dot-agents
 ---
 
 ## Goal
@@ -15,7 +15,7 @@ Turn the result of `/deep-analyze` into an analysis report — structure, findin
 
 - Use when `/deep-analyze` dispatches to `report`, or invoke standalone against existing analysis results
 - Covers: codebase structure, findings per area, root cause chains, tool/CLI analysis
-- Output: tables in chat, or a persistent artifact via `/create-report-in-dot-devin` if the user asks
+- Output: tables in chat, or a persistent artifact via `/create-report-to-dot-agents` if the user asks
 
 ## Execute
 
@@ -42,7 +42,7 @@ Turn the result of `/deep-analyze` into an analysis report — structure, findin
 
 1. Recommendations list ordered by impact/effort
 2. Distinguish quick wins vs structural changes
-3. If archiving is needed → run `/create-report-in-dot-devin`
+3. If archiving is needed → run `/create-report-to-dot-agents`
 
 ## Rules
 

@@ -19,6 +19,7 @@ Develop Solid.js applications with fine-grained reactivity, the render-once ment
 For Solid.js projects that aren't SolidStart (client-side only or integrated with other frameworks)
 
 - Latest: `solid-js@1.9.15` (stable), `2.0.0-rc.8` (next — release candidate), `1.10.0-beta.0` (beta) (verified 2026-09-18)
+- References: [SolidJS — Reactivity and the Render-Once Mental Model](best-practices/reactivity.md), [SolidJS — Rendering, Control Flow and Async](best-practices/rendering-and-async.md), [apis](references/apis.md), [cli](references/cli.md)
 
 ## Execute
 

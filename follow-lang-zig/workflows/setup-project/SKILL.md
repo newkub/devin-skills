@@ -22,9 +22,13 @@ For a fresh Zig project; Zig is pre-1.0 — live-check the installed `zig versio
 
 ### 1. Pin The Toolchain
 
+> Goal: Pin The Toolchain.
+
 1. `mise use -g zig` at the version the live check recommends; verify `zig version`; read the official Zig Guide section matching that version before coding `build.zig`
 
 ### 2. Scaffold
+
+> Goal: Scaffold.
 
 1. `zig init` (executable) or the library layout per the live-checked guide: `build.zig`, `build.zig.zon`, `src/` (+ `test/` when integration tests warrant it)
 2. Build graph: `b.addExecutable` with `root_module`/`root_source_file`, `b.installArtifact`, plus `run` and `test` steps wired to `-Doptimize`
@@ -32,11 +36,15 @@ For a fresh Zig project; Zig is pre-1.0 — live-check the installed `zig versio
 
 ### 3. Quality Gates
 
+> Goal: Quality Gates.
+
 1. `zig fmt` is the formatter — no separate style config; config files hold overrides only per `/follow-default-config`
 2. Add at least one `test "..."` block in `src/` passing from the first commit
 3. Layout for multi-module projects → `/follow-architecture` (Zig has no framework default)
 
 ### 4. Verify
+
+> Goal: Verify.
 
 1. `zig build` → `zig build test` → `zig fmt --check` all green
 2. On failure → run `/resolve-errors`

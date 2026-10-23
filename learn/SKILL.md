@@ -31,7 +31,7 @@ Use to learn something new — whether a concept, tool, library, framework, or c
 | Pattern | `/learn-pattern` — extract reusable patterns from real-world code |
 | User refs | `/learn-from-references` — extract patterns/conventions from refs the user points to directly (files, repos, docs, skills), then apply them to the current task |
 | Update skills | `/learn-from-references-and-improve-skills` — learn from refs, then sync the knowledge into skills (stale/wrong/missing) + `/improve coverage` to fill gaps |
-| Slides | `/report-slides` — build a Slidev presentation summarizing the knowledge in `.devin/temp/` |
+| Slides | `/report-in-slides` — build a Slidev presentation summarizing the knowledge in `.devin/temp/` |
 
 Call the skill from the table according to the topic, then follow the flow inside it — do not execute directly from this table.
 

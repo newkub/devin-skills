@@ -19,7 +19,7 @@ Build custom Biome linter plugins with GritQL to add project-specific rules
 
 Covers creating `.grit` plugin files, writing GritQL patterns, configuring `biome.jsonc`, and verifying plugins
 
-- Packages: `@biomejs/biome` (2.x — config is `biome.jsonc`, adds GritQL plugin support + `engine biome(1.0)` directive), `@biomejs/js-api` — always confirm the latest version via `/deep-research` + `/follow-best-practice` (no pinning in the file — per `/update-devin-global-skills`)
+- Packages: `@biomejs/biome` (2.x — config is `biome.jsonc`, adds GritQL plugin support + `engine biome(1.0)` directive), `@biomejs/js-api` — always confirm the latest version via `/deep-research` + `/follow-best-practice` (no pinning in the file — per `/update-agents-skills-global`)
 
 ## Execute
 

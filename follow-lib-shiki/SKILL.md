@@ -111,6 +111,7 @@ For JS/TS projects that need to highlight code blocks in UI, docs, markdown, or 
 - [CLI reference](references/cli.md)
 
 - See best-practices/ for recommended patterns and pitfalls
+- References: [Shiki — Best Practices](best-practices/shiki.md)
 
 ## Expected Outcome
 

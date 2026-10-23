@@ -70,7 +70,7 @@ Use when you need an evidence-based comparison between a subject and alternative
 1. Collect items where the subject is `❌ Missing` or `🟡 Worse` into a gap list — each gap lists: item, the alternative that has it, impact, rough effort, source
 2. Identify the subject's unique strengths that alternatives lack — these must be preserved (mark `🏆`)
 3. Set priorities: `🔴 Critical`, `🟠 High`, `🟡 Medium`, `🔵 Nice-to-have`
-4. Output ready to hand off to `/create-plan-in-dot-devin`, `/apply choose`, or `/idea-features`
+4. Output ready to hand off to `/create-plan-in-dot-agents`, `/apply choose`, or `/idea-features`
 
 ### 6. Generate Feature Ideas From Gaps
 
@@ -116,4 +116,4 @@ Use when you need an evidence-based comparison between a subject and alternative
 - Prioritized gap list (Critical → Nice-to-have) with impact/effort
 - Unique strengths to preserve
 - Own-brand, implementable idea features
-- Output ready to hand off to `/apply choose`, `/create-plan-in-dot-devin`, or `/idea-features`
+- Output ready to hand off to `/apply choose`, `/create-plan-in-dot-agents`, or `/idea-features`

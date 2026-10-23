@@ -21,6 +21,8 @@ interop — `StandardSchemaV1` interface (zod is an implementer), resolver patte
 
 ### 1. Standard Schema
 
+> Goal: Standard Schema.
+
 ```ts
 // Zod v3.24+ / v4 implement Standard Schema — every lib accepting StandardSchemaV1 works directly
 import type { StandardSchemaV1 } from '@standard-schema/spec'
@@ -31,6 +33,8 @@ import type { StandardSchemaV1 } from '@standard-schema/spec'
 - Zod schemas satisfy the Standard Schema contract — use them with any supporting lib, no adapter needed
 
 ### 2. Form Libraries
+
+> Goal: Form Libraries.
 
 ```tsx
 // react-hook-form
@@ -46,6 +50,8 @@ useForm({ resolver: zodResolver(FormSchema) })
 
 ### 3. JSON Schema Export (v4)
 
+> Goal: JSON Schema Export (v4).
+
 ```ts
 import { z } from 'zod'
 const jsonSchema = z.toJSONSchema(UserSchema)   // v4 native
@@ -57,11 +63,15 @@ const jsonSchema = z.toJSONSchema(UserSchema)   // v4 native
 
 ### 4. OpenAPI And Docs
 
+> Goal: OpenAPI And Docs.
+
 - `zod-to-openapi`/`@asteasolutions/zod-to-openapi` — OpenAPI spec from schemas (v3); v4 → `z.toJSONSchema` + OpenAPI tooling
 - oRPC/tRPC — schemas are the procedure input/output contract directly
 - `zod-openapi` ecosystem — check v4 support before adopting
 
 ### 5. Env/Config (application)
+
+> Goal: Env/Config (application).
 
 - Env schema → `z.toJSONSchema` → generated `.env.example` docs
 - Config schemas shared FE/BE — the same contract for both runtime and docs

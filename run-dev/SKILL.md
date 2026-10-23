@@ -3,6 +3,7 @@ name: run-dev
 description: Run the development server and fix errors
 argument-hint: "[scope]"
 related:
+  - follow-tool-viteplus
   - check-open-ports
   - resolve-errors
   - watch-terminal
@@ -37,7 +38,7 @@ Used to run any project's development server with error checking and fixing
 
 > Goal: Run Dev Server
 
-1. Run the dev server with the appropriate command (bun dev, npm run dev, cargo run)
+1. Run the dev server with the appropriate command (Vite+ project → `vp dev`; bun dev, npm run dev, cargo run)
 2. If there are errors, run `/resolve-errors` to fix them
 3. Track and fix errors immediately until they pass
 4. Verify the dev server starts successfully
@@ -94,6 +95,7 @@ Used to run any project's development server with error checking and fixing
 ### 1. Runtime Selection
 
 - Use the command that fits the runtime (bun dev, npm run dev, cargo run)
+- Vite+ project (`vite-plus` dependency or a root `vite.config.ts` with a `server` block) → `vp dev`; details in `/follow-tool-viteplus`
 - Check the ecosystem from the package manifest before choosing a command
 
 ### 2. Error Resolution

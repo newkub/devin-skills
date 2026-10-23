@@ -45,16 +45,16 @@ Not for:
 > Goal: Write equations with only one interpretation
 
 1. Start from the current state:
-   ```
+   ```text
    problem = current_state + missing_parts
    ```
 2. Write the option equations:
-   ```
+   ```text
    option_a = benefit_a + cost_a - risk_a
    option_b = benefit_b + cost_b - risk_b
    ```
 3. Write the outcome equation:
-   ```
+   ```text
    best_choice = option_a - option_b (if a is better)
    ```
 

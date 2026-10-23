@@ -2,6 +2,9 @@
 name: restore-files-deleted-file
 description: Recover deleted files — from the recycle bin, git history, or editor backups
 argument-hint: "<path-or-name>"
+related:
+  - git-restore
+  - check-uncommit
 ---
 
 ## Goal
@@ -13,6 +16,7 @@ Recover accidentally deleted files — try multiple channels in order: recycle b
 - Use when a file was deleted and needs to come back — whether it was committed or never committed
 - Channels in likelihood order: recycle bin → git history → editor local history → backups → undelete tools (last resort)
 - Does not cover filesystem-level recovery (photorec, etc.) — suggest it separately if needed
+- Related: `/git-restore` restores tracked files, `/check-uncommit` finds repositories with recoverable changes
 
 ## Execute
 

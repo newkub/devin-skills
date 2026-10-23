@@ -1,3 +1,4 @@
+#!/usr/bin/env bun
 // usage: bun scripts/verify-matrix.ts [--scope-maps <improve.md>,<optimize.md>]
 // Proves the references/review.md invariants (see `## Dimension Matrix` → `### Matrix Notes`): exits 1 with one line per violation.
 // Also proves the Impact/Cost/Fix-mode contract — a high-cost row never gates `pr`, and a codemod row is always backed by a mechanical detector.
@@ -110,7 +111,7 @@ for (const r of rows) {
 const scopePaths = scopeMapPaths().filter((p) => existsSync(p));
 if (scopePaths.length === 0) notes.push("scope-maps not found — pass --scope-maps to check Fix owner reachability");
 // names answered by their own top-level skill or a scope-map row, not by a per-label file
-const STANDALONE = new Set(["review-test", "review-devin-global-harness", "review-issues", "review-gaps", "usage"]);
+const STANDALONE = new Set(["review-test", "review-dot-agents-global-and-fix", "review-issues", "review-gaps", "usage"]);
 const scopes = new Set<string>();
 const labels: string[] = [];
 for (const path of scopePaths) {

@@ -17,6 +17,7 @@ Use TanStack AI fully — a provider-agnostic AI SDK: server-side `chat()` + ada
 For AI features not bound to a single provider (chat, tools, agents, streaming UI) — `0.x`: the API changes fast, always check `https://tanstack.com/ai/latest` before implementing
 
 - part of TanStack ecosystem — selection/dispatch lives in `/follow-lib-tanstack-ecosystem`
+- References: [TanStack AI — Best Practices](best-practices/tanstack-ai.md), [apis](references/apis.md)
 
 ## Execute
 

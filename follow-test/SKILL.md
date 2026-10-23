@@ -119,7 +119,7 @@ Scripts for testing per ecosystem:
 
 Directory structure for test files:
 
-```
+```text
 tests/
 ├── unit/                    # Unit tests
 │   ├── modules/

@@ -21,6 +21,8 @@ runtime validation + type derivation — external data boundaries (API, env, DB 
 
 ### 1. Define Schemas
 
+> Goal: Define Schemas.
+
 ```ts
 import { Schema } from "effect"
 
@@ -37,6 +39,8 @@ class Todo extends Schema.Class<Todo>("Todo")({
 
 ### 2. Decode/Encode
 
+> Goal: Decode/Encode.
+
 ```ts
 Schema.decodeUnknownSync(Todo)(raw)         // throws — boundaries you can trust
 Schema.decodeUnknown(Todo)(raw)             // Effect — ParseError in the E channel
@@ -48,12 +52,16 @@ Schema.encode(Todo)(todo)                   // domain → wire format
 
 ### 3. Transforms And Refinements
 
+> Goal: Transforms And Refinements.
+
 - `Schema.transform`/`transformOrFail` — string→Date, csv→array, etc.
 - `Schema.filter` / built-ins: `NonEmptyString`, `MinLength`, `Int`, `UUID`, `greaterThan`
 - `Schema.brand` nominal typing (`UserId`, `Email`) — prevents primitive mixups
 - `Schema.partial`/`pick`/`omit`/`required` — derive variants
 
 ### 4. Patterns
+
+> Goal: Patterns.
 
 1. `Tagged errors as schemas`: `Schema.TaggedError` — serialize errors across RPC/HTTP
 2. `Config/env validation`: decode env into a typed config at boot

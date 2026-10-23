@@ -145,7 +145,7 @@ Set these through the API or the dashboard:
 | Framework | Vite / Other |
 
 Or open the dashboard:
-```
+```text
 https://dash.cloudflare.com/?to=/:account/workers-and-pages/create
 ```
 
@@ -154,7 +154,7 @@ https://dash.cloudflare.com/?to=/:account/workers-and-pages/create
 > Goal: Enable Cloudflare Access if the user chose it
 
 1. Open the Cloudflare Zero Trust dashboard:
-   ```
+   ```text
    https://one.dash.cloudflare.com/
    ```
 2. Go to Access → Applications → Add an application

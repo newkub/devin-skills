@@ -13,7 +13,7 @@ related:
 
 ## Goal
 
-Find trustworthy API references for a given API, library, or tool — summarized as a cited list (merged `/research-api-references`)
+Find trustworthy API references for a given API, library, or tool — summarized as a cited list
 
 ## Scope
 

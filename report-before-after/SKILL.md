@@ -7,7 +7,7 @@ related:
   - plan
   - report
   - suggest-next-action
-  - update-devin-global-skills
+  - update-agents-skills-global
 ---
 
 ## Goal
@@ -118,7 +118,7 @@ Use the relevant workflows
 
 - Use `/plan` to plan
 - Use `/deep-analyze` to analyze
-- Use `/update-devin-global-skills` to create a workflow
+- Use `/update-agents-skills-global` to create a workflow
 
 - Final report via `/report-review` — one chat table (No./Action/Evidence/Severity/Risk/Priority/Owner skill/Status), no report files
 

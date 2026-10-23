@@ -18,9 +18,13 @@ For adding a module to an existing Lua project; dialect rules per [../../SKILL.m
 
 ### 1. Name And Place
 
+> Goal: Name And Place.
+
 1. snake_case file name that states intent (`http_client.lua`, `user_manager.lua`); no reserved words; place it under `src/`
 
 ### 2. Write The Module
+
+> Goal: Write The Module.
 
 1. Canonical shape: `local M = {}` … public `function M.public_func(param1)` … `return M`
 2. Privates stay `local` (faster than global table lookups, no namespace leaks)
@@ -28,14 +32,20 @@ For adding a module to an existing Lua project; dialect rules per [../../SKILL.m
 
 ### 3. Document
 
+> Goal: Document.
+
 1. LDoc format on every public function: `---` description, `-- @param`, `-- @return`; module header with `@module`
 
 ### 4. Test
+
+> Goal: Test.
 
 1. `spec/<module>_spec.lua` requiring the module; `describe`/`it` per public function; cover edge cases and the error convention
 2. Run `busted spec/<module>_spec.lua`; smoke-test interactively with the REPL (`lua`, then `require`)
 
 ### 5. Integrate
+
+> Goal: Integrate.
 
 1. Register paths in `.luarc.json`/`package.path` only if the module resolves outside defaults
 2. Add a usage example to the README/docs

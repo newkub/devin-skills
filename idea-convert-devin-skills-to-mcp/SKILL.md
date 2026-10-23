@@ -3,10 +3,10 @@ name: idea-convert-devin-skills-to-mcp
 description: Generate ideas and a draft to convert Devin skills into an MCP server (tools/resources/prompts)
 argument-hint: "[skill-name|family]"
 related:
-  - create-devin-global-mcp
+  - update-devin-global-mcp
   - deep-review
   - check-my-global-cli
-  - create-plan-in-dot-devin
+  - create-plan-in-dot-agents
   - deep-validate
   - report
 ---
@@ -32,7 +32,7 @@ Use when you want skills to be accessible from other MCP clients or to integrate
 
 1. If the argument specifies a skill/family → use it directly; if not → ask the user or survey the whole repo
 2. Read each skill's `SKILL.md` + `src/`, `scripts/`, `references/`
-3. Select 1-5 skills per round — if more, run `/create-plan-in-dot-devin`
+3. Select 1-5 skills per round — if more, run `/create-plan-in-dot-agents`
 
 ### 2. Map Skill To MCP Primitives
 
@@ -89,7 +89,7 @@ Use when you want skills to be accessible from other MCP clients or to integrate
 1. Run `/deep-validate` to check the draft — complete schema, no duplicate tool names, appropriate transport
 2. Run `/deep-review` if available — review the draft against MCP best practices
 3. Check that it doesn't duplicate already-installed MCP servers (`/check-my-global-cli` or `.devin/config.json` mcpServers)
-4. If the draft passes and the user confirms, convert → run `/create-devin-global-mcp` per the draft (this skill is idea/draft only — implementation lives in `/create-devin-global-mcp`); if there are no candidates → `/suggest-next-action`
+4. If the draft passes and the user confirms, convert → run `/update-devin-global-mcp create` per the draft (this skill is idea/draft only — implementation lives in `/update-devin-global-mcp`); if there are no candidates → `/suggest-next-action`
 
 ## Rules
 
@@ -106,7 +106,7 @@ Use when you want skills to be accessible from other MCP clients or to integrate
 - Output must be structured (JSON) — don't return raw prose if the consumer is an agent
 - Specify error cases: exit codes, missing deps, timeout
 - Store drafts in `.devin/temp/plan/<workspace>/` or the report — don't write server code until confirmed
-- When conversion is confirmed → always follow `/create-devin-global-mcp` (never implement an MCP server yourself in this skill)
+- When conversion is confirmed → always follow `/update-devin-global-mcp create` (never implement an MCP server yourself in this skill)
 - Use /deep-review if necessary
 
 ## Expected Outcome

@@ -3,9 +3,9 @@ name: follow-tool-madge
 description: Audit dependencies and circular imports with Madge
 argument-hint: [path/to/module]
 related:
-- run-verify
-- run-test
-- run-scan
+  - run-verify
+  - run-test
+  - run-scan
 ---
 
 ## Goal
@@ -18,6 +18,7 @@ For JS/TS projects with `madge` installed. Covers circular detection, per-file d
 
 - Latest: `madge@8.0.0` (npm, verified 2026-09-13)
 - References: [cli](references/cli.md) | [apis](references/apis.md) | best-practices/
+- References: [Madge — Best Practices](best-practices/madge.md)
 
 ## Execute
 

@@ -21,6 +21,7 @@ Use when a task involves this library/tool — setup, usage, debugging, or best 
 - Boundary: Capgo OTA updates cover only the web assets of a Capacitor app — native code changes must always ship through the App Store/Play Store; for general web releases see `/follow-tool-changesets` or `/follow-tool-changelogen`
 - Latest: `@capgo/capacitor-updater@8.51.25` / `@capgo/cli@8.66.0` (verified 2026-09-26)
 - References: [apis](references/apis.md) | [cli](references/cli.md) 
+- References: [Capgo Biometric Best Practices](best-practices/biometric-auth.md), [Capgo OTA Best Practices](best-practices/ota-updates.md)
 ## Execute
 
 ### 1. Install Plugins And CLI

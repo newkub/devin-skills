@@ -145,7 +145,7 @@ For monorepos with many workspace packages — not duplicating `/list-workspaces
 
 - The whole report must stay in chat only
 - Never open a browser, web preview, or HTML report
-- Never call `/open-web`, `/visualize-in-web`, `/open-devin-in-web`, `/report html`
+- Never call `/open-web`, `/visualize-in-web`, `/open-dot-agents-web`, `/report html`
 - If the graph is truly complex, use mermaid or a text graph in markdown instead
 
 - Use /refactor (workspace scope — split/merge/relocate members) if needed

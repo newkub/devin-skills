@@ -19,6 +19,7 @@ For published library packages in a pnpm monorepo — not app configuration; app
 
 - part of TanStack ecosystem — selection/dispatch lives in `/follow-lib-tanstack-ecosystem`
 - new packages should build with tsdown per the same docs — `/follow-tool-tsdown`
+- References: [TanStack Config — Best Practices](best-practices/tanstack-config.md), [apis](references/apis.md)
 
 ## Execute
 

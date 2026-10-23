@@ -26,7 +26,7 @@ route handler authoring — Nitro v3 uses the h3 event model (`defineHandler`); 
 1. Add `serverDir: "./server"` (or `scanDirs`) to `nitro.config.ts` — no directory is scanned by default
 2. Map files to URLs from the `api/` and `routes/` folders inside it:
 
-```
+```text
 server/api/hello.ts            → /api/hello
 server/api/users.get.ts        → GET  /api/users   (other methods → 405 + Allow)
 server/api/users.post.ts       → POST /api/users
@@ -57,11 +57,15 @@ export default defineHandler((event) => {
 
 ### 3. Advanced
 
+> Goal: Advanced.
+
 1. `WebSockets`: `defineWebSocketHandler` — nitro v3 ws support (cross-platform), route file in `api/` or `routes/`
 2. `Tasks`: `experimental: { tasks: true }` + `tasks/<name>.ts` (`defineTask`) under `serverDir`; nested folders join with `:` (`tasks/db/migrate.ts` → `db:migrate`); run from code with `runTask()` or from the CLI with `nitro task run <name>` against a running dev server
 3. `Route-specific middleware`: `middleware/` in route dirs or `event.context` guards
 
 ### 4. Verify
+
+> Goal: Verify.
 
 1. `wrangler dev`-equivalent: `bun run dev` + `curl` routes
 2. `/run-test` for handlers; fail → `/resolve-errors` max 3 rounds

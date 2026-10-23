@@ -4,7 +4,7 @@ description: Pick and apply the architecture pattern — Clean, Layered, monorep
 argument-hint: "[clean | layered | monorepo | architecture | target]"
 related:
   - refactor
-  - update-devin-global-skills
+  - update-agents-skills-global
   - deep-review
   - scan-codebase
   - relocation
@@ -37,7 +37,7 @@ Pick the one architecture pattern that fits the target from evidence, then apply
 
 An explicit argument answers `### 2` only — `### 1` (evidence + baseline), `### 3` (apply) and `### 4` (verify) always run.
 
-Handed off elsewhere: microservices/distributed topology (see `## Goal`) · the target is a skill package → `/update-devin-global-skills refactor` · folder move only → `/relocation` · naming only → `/rename` · boundary checking without a restructure → `/deep-review` dimension `architecture`
+Handed off elsewhere: microservices/distributed topology (see `## Goal`) · the target is a skill package → `/update-agents-skills-global refactor` · folder move only → `/relocation` · naming only → `/rename` · boundary checking without a restructure → `/deep-review` dimension `architecture`
 
 ## Execute
 
@@ -69,7 +69,7 @@ Handed off elsewhere: microservices/distributed topology (see `## Goal`) · the 
 1. Read the table top-down — row 0 is the evidence gate, rows 1–2 are mechanical, rows 3–5 are judgement driven by entry points, bounded-context count and external volatility; still unclear → run `/ask-me` before choosing, never mix patterns in one target — handle one target at a time
 2. Repo topology is orthogonal — single repo vs monorepo never selects the pattern: `## Monorepo Architecture` decides workspace layout only, and every workspace runs `### 2` independently; an `apps/*` workspace that is one deployable with one context answers row 3
 3. Target matches a row of `## File Structure By Workspace Type` → the owner skill's template is canonical for that stack; apply the chosen reference's Layer Table + Rules to its folders instead of the tree there — carry the direction, not the folder names
-4. Bulk scope → `/create-plan-in-dot-devin` first; while planning run `/use-lib-effective` — reuse before writing anything new
+4. Bulk scope → `/create-plan-in-dot-agents` first; while planning run `/use-lib-effective` — reuse before writing anything new
 
 ### 3. Apply The Pattern
 

@@ -132,6 +132,7 @@ For creating or refactoring a Neovim config at `~/.config/nvim` or a project-spe
 
 
 - See best-practices/ for recommended patterns and pitfalls
+- References: [Neovim (lazy.nvim) — Best Practices](best-practices/nvim.md), [apis](references/apis.md)
 
 ## Expected Outcome
 

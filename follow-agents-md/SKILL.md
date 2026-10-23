@@ -4,9 +4,9 @@ description: Execute the workspace AGENTS.md fully, with subagents for independe
 argument-hint: "[target]"
 related:
   - update-docs
-  - review-devin-global-harness
+  - review-dot-agents-global-and-fix
   - use-subagents
-  - create-plan-in-dot-devin
+  - create-plan-in-dot-agents
 
 ---
 
@@ -32,7 +32,7 @@ Find and follow `AGENTS.md` in every workspace, using subagents when the work in
 
 > Goal: know what needs to be done
 
-1. Run `/review-devin-global-harness` to read the relevant workflows/skills
+1. Run `/review-dot-agents-global-and-fix` to read the relevant workflows/skills
 2. Summarize the to-do list: workflows, skills, order, dependencies
 3. If several workflows are independent → note them for `/use-subagents`
 
@@ -44,7 +44,7 @@ Find and follow `AGENTS.md` in every workspace, using subagents when the work in
 2. Analyze the specified workflows and skills
 3. If there is a single workflow, follow it directly
 4. If it is a monorepo: repeat for each workspace
-5. If `AGENTS.md` lists many new tasks at once → always run `/create-plan-in-dot-devin` first, then execute per the plan
+5. If `AGENTS.md` lists many new tasks at once → always run `/create-plan-in-dot-agents` first, then execute per the plan
 
 ### 4. Use Subagents
 
@@ -80,7 +80,7 @@ Find and follow `AGENTS.md` in every workspace, using subagents when the work in
 
 ### 3. Plan Always
 
-- A large batch of new work at once (multiple features/files/tasks) → always run `/create-plan-in-dot-devin` before executing per `AGENTS.md`
+- A large batch of new work at once (multiple features/files/tasks) → always run `/create-plan-in-dot-agents` before executing per `AGENTS.md`
 
 
 ## Expected Outcome

@@ -18,6 +18,7 @@ Use TanStack Pacer fully — debounce, throttle, rate limit, queue, batch across
 Use instead of ad-hoc `setTimeout` utilities — search inputs, scroll/resize, API rate limiting, sequential tasks, batched updates — `0.x`: verify the latest API in the docs before implementing
 
 - part of TanStack ecosystem — selection/dispatch lives in `/follow-lib-tanstack-ecosystem`
+- References: [TanStack Pacer — Best Practices](best-practices/tanstack-pacer.md), [apis](references/apis.md)
 
 ## Execute
 

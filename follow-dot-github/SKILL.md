@@ -22,7 +22,7 @@ Used to create, improve, and audit the entire `.github` directory, including inv
 
 ### Standard Project
 
-```
+```text
 .github/
 ├── workflows/           # CI/CD workflows (YAML)
 ├── ISSUE_TEMPLATE/       # Issue templates
@@ -40,7 +40,7 @@ Used to create, improve, and audit the entire `.github` directory, including inv
 
 ### Monorepo
 
-```
+```text
 .github/
 ├── workflows/
 ├── ISSUE_TEMPLATE/

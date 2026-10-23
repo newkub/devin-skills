@@ -28,6 +28,7 @@ For projects using Elysia as the web framework on the Bun runtime — pick the w
 - Use Standard Schema (Zod, Valibot, ArkType, Effect Schema, Yup, Joi)
 - Build a type-safe client via Eden
 - Generate OpenAPI docs with `@elysia/openapi`
+- References: [Elysia — Best Practices](best-practices/elysia.md), [apis](references/apis.md), [cli](references/cli.md)
 
 ## Execute
 

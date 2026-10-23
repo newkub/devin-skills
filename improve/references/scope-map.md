@@ -3,7 +3,7 @@
 The single mapping table of scope → review domain + ownership boundary — other skills must not copy this table; point to this file instead (`/follow-single-of-source`)
 Every scope is handled by the `/improve` thin entry (or `/optimize` for metric-driven scope): review → `/deep-review <dimension>` | fix → `/deep-review <scope> then-fix`
 
-**Label resolution (mandatory)** — every name in the `Review domain(s)` column is either a plain dimension label, or a standalone skill name kept verbatim (`review-test`, `review-gaps`, `review-devin-global-harness`, `usage`). A dimension label takes the row(s) in `deep-review-codebase-everything/references/review.md` `## Dimension Matrix` whose `Aliases` column lists it (or whose row name equals it), plus the `always` tier — read that set from the table, never re-resolve by hand (resolution rules: `deep-review-codebase-everything/references/review.md` `### Label resolution`). A label with no row is a matrix gap: dispatch the `always` tier + the closest artifact-match rows and report the gap, never invent a dimension.
+**Label resolution (mandatory)** — every name in the `Review domain(s)` column is either a plain dimension label, or a standalone skill name kept verbatim (`review-test`, `review-gaps`, `review-dot-agents-global-and-fix`, `usage`). A dimension label takes the row(s) in `deep-review-codebase-everything/references/review.md` `## Dimension Matrix` whose `Aliases` column lists it (or whose row name equals it), plus the `always` tier — read that set from the table, never re-resolve by hand (resolution rules: `deep-review-codebase-everything/references/review.md` `### Label resolution`). A label with no row is a matrix gap: dispatch the `always` tier + the closest artifact-match rows and report the gap, never invent a dimension.
 
 | Scope (`/improve <scope>`) | Review domain(s) | Ownership / boundary |
 |---|---|---|
@@ -33,7 +33,7 @@ Every scope is handled by the `/improve` thin entry (or `/optimize` for metric-d
 | `delivery` | delivery | release pipeline end-to-end |
 | `deps` | dependencies | versions, lockfile, supply chain |
 | `desktop-app` | desktop-app | windowing, IPC, packaging |
-| `devin-global-skills` | review-devin-global-harness | harness review (skills, subagents, hooks, MCP, global rules) — fix via `/deep-review <scope> then-fix`, standards via `/update-devin-global-skills` |
+| `devin-global-skills` | review-dot-agents-global-and-fix | harness review (skills, subagents, hooks, MCP, global rules) — fix via `/deep-review <scope> then-fix`, standards via `/update-agents-skills-global` |
 | `docs` | docs | README/guides/structure; writing findings → `/improve writing` |
 | `dot-devin` | dot-devin | project devin config/assets |
 | `dx` | dx, bundle | tooling, onboarding; devtools dock/integrations → `/follow-tool-vite-devtools`, standalone devtool → `/follow-tool-devfra`; size → `/optimize bundle` |
@@ -41,7 +41,7 @@ Every scope is handled by the `/improve` thin entry (or `/optimize` for metric-d
 | `env-parity` | config, iac | dev/staging/prod config drift; never copy secret values — → `/follow-secret-manager` |
 | `error-handling` | stability, code-quality, frontend, uxui, api, cli | **sole owner** of error paths, retries, recovery, error states/error UI/error boundaries |
 | `events` | events | **messaging semantics**: schema, versioning, ordering, idempotency, DLQ, retry/backoff |
-| `features` | review-gaps, uxui, business | type-driven: inventory every type option via `/check-types-definition` → dead declared options → `/implement-to-production`, weak-UX → `/improve uxui`, new features → extend type options via `/create-plan-in-dot-devin`; net-new + platform → `/idea-features`; flags → `/update-config` |
+| `features` | review-gaps, uxui, business | type-driven: inventory every type option via `/check-types-definition` → dead declared options → `/implement-to-production`, weak-UX → `/improve uxui`, new features → extend type options via `/create-plan-in-dot-agents`; net-new + platform → `/idea-features`; flags → `/update-config` |
 | `form` | frontend, data-validation, accessibility | form UX + validation; native controls + Constraint Validation API first → `/follow-web-standard` |
 | `i18n` | i18n | locales, message format |
 | `mcp` | mcp | tools, resources, server hygiene |
@@ -76,4 +76,16 @@ Every scope is handled by the `/improve` thin entry (or `/optimize` for metric-d
 | `uxui` | uxui, accessibility, mobile, frontend, writing | design system/theme + interaction/navigation (RBAC UI, UX routing), motion (reduced-motion fallback + lib via `/follow-lib-animejs`), UX copy clarity/tone/consistency; native semantics/widgets → `/follow-web-standard`; error UI/copy → `/improve error-handling`, docs prose → `/improve writing`, onboarding copy → `/improve onboarding` |
 | `web` | seo, frontend | routing/SEO/metadata; error UI → `/improve error-handling`; SEO findings → `/improve seo` |
 | `workflows` | workflow | CI/CD workflow files |
-| `writing` | writing | prose quality — top-level skill `improve-writing` owns the criteria (clear, concise, explicit, bounded, terminology, ordered, followable) |
+| `writing` | writing | prose quality — `/simplify review` owns the criteria (clear, concise, explicit, bounded, terminology, ordered, followable) in `simplify/references/writing-quality.md` |
+
+## Evidence Tools
+
+Tool hints per scope — run the tool for deterministic evidence before judging a finding. A matrix row whose `Evidence` is `cli` makes its tool mandatory; `manual` rows may be skipped with the reason stated.
+
+| Scope | Skills |
+|-------|--------|
+| `a11y`, `form` | `follow-tool-unlighthouse` |
+| `seo`, `web` | `follow-tool-unlighthouse`, `follow-tool-takumi` |
+| `uxui` | `follow-lib-unocss`, `follow-lib-shiki`, `follow-lib-comark` |
+| `code-quality`, `consistency` | `follow-tool-knip`, `follow-tool-jscpd` |
+| `security`, `privacy` | `follow-tool-gitleaks`, `follow-tool-semgrep` |

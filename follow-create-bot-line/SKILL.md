@@ -2,6 +2,11 @@
 name: follow-create-bot-line
 description: Build a LINE bot with TypeScript/Bun — webhook, signature validation, rich menu
 argument-hint: "[features]"
+related:
+  - follow-create-bot
+  - follow-lang-typescript
+  - run-test
+  - follow-secret-manager
 ---
 
 ## Goal
@@ -11,6 +16,7 @@ Create a runnable LINE bot project with TypeScript/Bun, complete with webhook si
 ## Scope
 
 Use for building a LINE bot from scratch on Bun or Node.js; supports command bots, notifications, rich menus, and webhook deployments on Cloudflare/Railway/Vercel
+- Family dispatcher: `/follow-create-bot` — pick another platform from there
 
 ## Execute
 
@@ -18,7 +24,7 @@ Use for building a LINE bot from scratch on Bun or Node.js; supports command bot
 
 > Goal: Verify the tech stack before building
 
-1. Run `/deep-research` + `/follow-best-practice` to confirm the latest versions and patterns, following the conventions in `/update-devin-global-skills`
+1. Run `/deep-research` + `/follow-best-practice` to confirm the latest versions and patterns, following the conventions in `/update-agents-skills-global`
 2. Run `/deep-review` to summarize the tech stack in use
 3. Record the stack and library choices with reasons for later reference
 

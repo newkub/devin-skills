@@ -23,6 +23,7 @@ Use when the task involves markdown-it — parser/renderer, plugin ecosystem, CL
 
 - Latest: `markdown-it@15.0.2` (verified 2026-09-13) — v15: ESM+CJS dual, types included in the package (no `@types/markdown-it` needed)
 - References: [apis](references/apis.md) | [cli](references/cli.md) 
+- References: [markdown-it — Plugin Ecosystem and Custom Rules](best-practices/plugins.md), [markdown-it — Rendering Pipeline and Security](best-practices/rendering.md)
 ## Execute
 
 ### 1. Setup And Usage

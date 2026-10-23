@@ -143,7 +143,7 @@ Manage concurrent operations deterministically
 - Test `concurrent` scenarios
 - Document `concurrency` assumptions
 
-### 5. Input Validation
+### 5. Input Validation — Rules
 
 Validate inputs strictly
 
@@ -153,7 +153,7 @@ Validate inputs strictly
 - Document `requirements`
 - Return `predictable errors`
 
-### 6. Error Handling
+### 6. Error Handling — Rules
 
 Handle errors deterministically
 

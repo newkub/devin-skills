@@ -115,6 +115,7 @@ For projects that need API documentation, an API playground, a mock server, and 
 
 
 - See best-practices/ for recommended patterns and pitfalls
+- References: [Scalar API Docs Best Practices](best-practices/api-docs.md), [apis](references/apis.md)
 
 ## Expected Outcome
 

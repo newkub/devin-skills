@@ -1,12 +1,12 @@
 ---
 name: follow-devin-global-skills
-description: Read and use the skills available in global and project (.devin/skills) stores as appropriate
+description: Read and use the skills available in global and project (.agents/skills) stores as appropriate
 argument-hint: "[skill-name]"
 related:
   - search-skills
   - update-project-skills
   - check-reference
-  - update-devin-global-skills
+  - update-agents-skills-global
   - deep-validate
   - update-references
   - report
@@ -16,7 +16,7 @@ related:
 
 ## Goal
 
-Read and use the skills available in both the global store (`%APPDATA%\devin\skills`) and the project store (`.devin/skills`) as appropriate for the current task
+Read and use the skills available in both the global store (`%APPDATA%\devin\skills`) and the project store (`.agents/skills`) as appropriate for the current task
 
 ## Scope
 
@@ -31,8 +31,8 @@ Read and use the skills available in both the global store (`%APPDATA%\devin\ski
 
 > Goal: know which skills exist
 
-1. Run `/list-devin-global-skills` to see global skills
-2. If the project has `.devin/skills/`, list `.devin/skills/*` as well
+1. Run `/list-dot-agents-global` to see global skills
+2. If the project has `.agents/skills/`, list `.agents/skills/*` as well
 3. If a project `AGENTS.md` exists, read its `### Skills` section
 4. Build the `global` and `project` skill lists with paths
 
@@ -49,7 +49,7 @@ Read and use the skills available in both the global store (`%APPDATA%\devin\ski
 
 1. If `argument [skill-name]` is given → find the exact skill
 2. If not given → infer from the task context
-3. Search both the global store and the project's `.devin/skills/`
+3. Search both the global store and the project's `.agents/skills/`
 4. If a global and a project skill share a name → use the project skill unless the global is newer or the user specifies
 
 ### 4. Read Skill
@@ -107,7 +107,7 @@ Read and use the skills available in both the global store (`%APPDATA%\devin\ski
 - Use `argument-hint` as the skill specifies
 
 - Use /update-project-skills if needed
-- Use /update-devin-global-skills if needed (devin global skills)
+- Use /update-agents-skills-global if needed (devin global skills)
 - Use /deep-validate if needed
 
 ## Expected Outcome

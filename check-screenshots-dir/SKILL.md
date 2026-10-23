@@ -4,18 +4,22 @@ description: Fetch the latest screenshot groups by time range and analyze their 
 argument-hint: "[time-range-or-count]"
 related:
   - check-downloads-dir
-  - read-from-downloads
   - use-agents-capture
   - analyze-codebase-quality
   - report
 
   - suggest-next-action
   - run-dev
+allowed-tools:
+  - exec
+  - grep
+  - glob
+  - find_file_by_name
 ---
 
 ## Goal
 
-Fetch the latest capture groups from `C:\Users\Veerapong\Pictures\Screenshots` by time range or group count, then analyze the content and context that occurred together, not just the single most recent file
+Fetch the latest capture groups from `%USERPROFILE%\Pictures\Screenshots` by time range or group count, then analyze the content and context that occurred together, not just the single most recent file
 
 ## Scope
 
@@ -29,7 +33,7 @@ Fetch the latest capture groups from `C:\Users\Veerapong\Pictures\Screenshots` b
 
 > Goal: Find all capture files in the default path
 
-1. Use `exec` to run `Get-ChildItem -Path 'C:\Users\Veerapong\Pictures\Screenshots' -File | Sort-Object LastWriteTime -Descending`
+1. Use `exec` to run `Get-ChildItem -Path "$env:USERPROFILE\Pictures\Screenshots" -File | Sort-Object LastWriteTime -Descending`
 2. Record the file list: name, size, modified date
 3. If the folder has no files → stop and report
 
@@ -96,7 +100,6 @@ Fetch the latest capture groups from `C:\Users\Veerapong\Pictures\Screenshots` b
 - Use /report if needed
 - Use /run-dev if needed
 - Use `/check-downloads-dir` if needed
-- Use `/read-from-downloads` if needed
 
 ## Expected Outcome
 

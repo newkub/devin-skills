@@ -20,6 +20,8 @@ error consumption — issue inspection, formatting for APIs/forms, custom error 
 
 ### 1. ZodError Anatomy
 
+> Goal: ZodError Anatomy.
+
 ```ts
 const result = Schema.safeParse(data)
 if (!result.success) {
@@ -36,6 +38,8 @@ if (!result.success) {
 
 ### 2. Custom Messages
 
+> Goal: Custom Messages.
+
 ```ts
 z.string().min(1, 'Required')                                // inline message
 z.email({ error: 'Invalid email format' })                   // v4 error param
@@ -48,6 +52,8 @@ z.string({ error: (iss) => iss.input === undefined ? 'required' : 'invalid' })
 - Per-field params: `{ error: 'msg' }` in schema options
 
 ### 3. API Error Responses
+
+> Goal: API Error Responses.
 
 ```ts
 if (!parsed.success) {
@@ -62,6 +68,8 @@ if (!parsed.success) {
 - Never leak internal schema details on a public API — map to user-friendly fields
 
 ### 4. I18n And Locales
+
+> Goal: I18n And Locales.
 
 ```ts
 import { z } from 'zod'

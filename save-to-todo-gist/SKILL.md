@@ -43,7 +43,7 @@ Record unfinished work — pending items, blocked tasks, follow-ups — into a s
 
 1. Search for the gist: `gh gist list --limit 100`, then look for description `devin-todo` or file `devin-todo.md`
 2. If not found → create the `devin-todo.md` file with a header per convention:
-   ```
+   ```markdown
    | Title | Description | Status | Priority | Created | Project |
    |---|---|---|---|---|---|
    ```

@@ -21,6 +21,8 @@ routing surface — `app.get/post/put/delete/...`, path typing, `.group` prefix,
 
 ### 1. Route Basics
 
+> Goal: Route Basics.
+
 ```ts
 import { Elysia } from 'elysia'
 
@@ -39,11 +41,15 @@ new Elysia()
 
 ### 2. Path Params And Types
 
+> Goal: Path Params And Types.
+
 - `:param` typed as string by default — validate/transform via the `params` schema (TypeBox/Standard Schema)
 - `* wildcard`, `:param?` optional, custom path types — params inferred into the handler
 - `set.status`/`set.headers` — response control inside the handler
 
 ### 3. Groups, Guards, Mount
+
+> Goal: Groups, Guards, Mount.
 
 ```ts
 new Elysia()
@@ -59,6 +65,8 @@ new Elysia()
 - `.use(plugin)`/`mount` — compose sub-apps; instance isolation via `.use()` semantics (prefix per instance)
 
 ### 4. WebSocket Routes
+
+> Goal: WebSocket Routes.
 
 ```ts
 .ws('/chat', {

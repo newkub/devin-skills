@@ -20,6 +20,8 @@ Setup only — the v3→v4 upgrade is done by the `migrate-zod-v4` workflow; sch
 
 ### 1. Detect Version
 
+> Goal: Detect Version.
+
 ```bash
 bun pm ls zod     # or npm ls zod
 ```
@@ -29,6 +31,8 @@ bun pm ls zod     # or npm ls zod
 
 ### 2. Install
 
+> Goal: Install.
+
 ```bash
 bun add zod          # runtime dep — not -D
 ```
@@ -37,6 +41,8 @@ bun add zod          # runtime dep — not -D
 - Peer ecosystem: `@hookform/resolvers`, `zod-to-json-schema` compat — check v4 support per package
 
 ### 3. Import Patterns
+
+> Goal: Import Patterns.
 
 ```ts
 import { z } from 'zod'
@@ -49,11 +55,15 @@ import { z } from 'zod'
 
 ### 4. TSConfig Requirements
 
+> Goal: TSConfig Requirements.
+
 - `strict: true` — Zod type inference requires strict mode
 - TypeScript `>= 5.5` for v4 (v3 needs 4.5+)
 - No special JSX/module config needed
 
 ### 5. Verify
+
+> Goal: Verify.
 
 1. `bun check` clean
 2. Smoke test: `z.string().parse('x')` in a unit test

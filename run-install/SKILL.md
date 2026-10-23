@@ -3,6 +3,7 @@ name: run-install
 description: Install dependencies and resolve installation issues
 argument-hint: "[scope]"
 related:
+  - follow-tool-viteplus
   - deep-review
   - update-version-to-latest
   - follow-tool-mise
@@ -65,7 +66,7 @@ Python:
 > Goal: Install Dependencies
 
 JavaScript/TypeScript:
-1. Run `bun install` or the package manager in use
+1. Run `bun install` or the package manager in use (Vite+ project → `vp install`, see `/follow-tool-viteplus`)
 2. Follow the progress and errors
 3. Run postinstall scripts if there are any
 
@@ -110,6 +111,7 @@ Use the package manager matching the lockfile or manifest:
 JavaScript/TypeScript:
 | Manager | Command |
 |---------|---------|
+| Vite+ | `vp install` |
 | Bun | `bun install` |
 | npm | `npm install` |
 | pnpm | `pnpm install` |

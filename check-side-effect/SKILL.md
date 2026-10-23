@@ -16,7 +16,7 @@ related:
   - use-astgrep
   - deep-validate
   - report-review
-  - dont-over-engineer
+  - simplify
   - suggest-next-action
 ---
 
@@ -38,7 +38,7 @@ Use when a codebase claims a pure domain/core, when effects must be isolated beh
 
 - Not a security review (secret values, injection) → `/check-correctness`, `/review-issues`
 - Not a performance review (unbatched IO cost) → `/deep-review` dimension `performance`
-- Effect systems are optional — when the project does not use one, ports + dependency injection are a valid boundary (`/dont-over-engineer`)
+- Effect systems are optional — when the project does not use one, ports + dependency injection are a valid boundary (`/simplify guard`)
 
 ## Execute
 
@@ -116,7 +116,7 @@ Run only when the manifest declares an effect system; skip with `n/a` otherwise:
 1. Extract port + adapter, or move the call to the composition root → `/refactor` with the boundary rule from `/follow-architecture`
 2. Adopt or correct an effect pipeline (`Effect.gen`, `Layer`, error channel, `runPromise` at the edge) → `/follow-lib-effect-ts`
 3. File mixing computation and IO, or SRP split needed → `/check-code-structure` then `/refactor`
-4. Project lacking an effect system and small enough that ports suffice → state that explicitly; do not push Effect-TS (`/dont-over-engineer`)
+4. Project lacking an effect system and small enough that ports suffice → state that explicitly; do not push Effect-TS (`/simplify guard`)
 5. Re-run the Step 2 patterns on the fixed files only, confirm the hit is gone or now lives in `edge`, then close with `/suggest-next-action`
 
 ## Effect Patterns

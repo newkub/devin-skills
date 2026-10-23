@@ -9,7 +9,7 @@ related:
   - review-implement-to-production
   - implement-to-production
   - deep-review
-  - create-plan-in-dot-devin
+  - create-plan-in-dot-agents
   - report-review
   - ask-me
   - suggest-next-action
@@ -38,7 +38,7 @@ Review one dimension only: `gaps` — capability the scope promises but does not
 
 > Goal: a gap is only measurable against a promise
 
-1. Start with the deep pre-pass: `/deep-thinking` → `/deep-analyze` → `/deep-validate` (convention: `update-devin-global-skills` `## Conventions → Templates` row `review-*`)
+1. Start with the deep pre-pass: `/deep-thinking` → `/deep-analyze` → `/deep-validate` (convention: `update-agents-skills-global` `## Conventions → Templates` row `review-*`)
 2. Take `scope` from the argument — if missing or unclear → `/ask-me`
 3. Collect every promise the surface makes: `README.md`/`USAGE.md`/`FEATURES.md` claims, UI labels and menu items, route and command lists, type fields, config keys, feature flags, permissions, `TODO`/`FIXME`/`MOCK` markers, test names
 4. Pull the machine-made gap inventory as a baseline: `/review-implement-to-production` (report-only) on the scope (`missing`/`fake`/`partial`/`unwired`/`promised` with `file:line`) — then verify each entry yourself, never copy it blindly
@@ -66,7 +66,7 @@ Review one dimension only: `gaps` — capability the scope promises but does not
 
 1. Every finding needs two pieces of evidence: the promise (`file:line` of the claim) and the absence proof (the search that found no implementation, or the stub location)
 2. Severity: `Critical` (paid/advertised capability absent, security or data path missing) → `High` (user-visible flow incomplete) → `Medium` (edge or state coverage missing) → `Low` (unused declaration, doc drift)
-3. Score: Critical 0, High 25, Medium 50, Low 75, Info 100 → weighted average; grade A ≥90, B ≥80, C ≥70, D ≥60, F <60
+3. Score and grade per `/report-review` step 3 (the weights/grades SSOT) — never restate the formula here
 4. Exclude intentional scope cuts: an explicitly deferred feature in `TODO.md` or a documented limitation is not a gap — list it separately as "known deferral"
 5. Produce a `/report-review` table (chat, no files) with its canonical columns, plus this dimension's extras: `Area`, `Gap Class`, and the pair `Promise Evidence` + `Absence Evidence` in place of the single `Evidence` column — the owner column is `Owner skill`
 
@@ -76,7 +76,7 @@ Review one dimension only: `gaps` — capability the scope promises but does not
 
 1. If the user did not append `and fix` → ask which gaps to fill and wait
 2. Route each confirmed gap to its `Fill by` from `### 2`; anything that becomes net-new code goes through `/implement-to-production` so the result is production code, not a placeholder
-3. Multi-file or architectural fills → `/create-plan-in-dot-devin` first, then implement
+3. Multi-file or architectural fills → `/create-plan-in-dot-agents` first, then implement
 4. Domain-matched findings may be handed to `/deep-review <scope> then-fix fix all` instead of fixing inline (`fix all` because `and fix` already confirmed them)
 5. After filling → `/refactor` (SRP split) on touched files (≤250 lines, 1 responsibility), run build/lint/test, re-check the promise list from `### 1` step 3 is now honest → `/suggest-next-action`
 

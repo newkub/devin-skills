@@ -87,6 +87,7 @@ export default defineConfig({
 
 - See `best-practices/` for recommended patterns and pitfalls
 - See `references/apis.md` for the package and version reference
+- References: [Argos Visual Testing — Best Practices](best-practices/stable-screenshots.md)
 
 ## Expected Outcome
 

@@ -9,6 +9,7 @@ related:
   - follow-tool-vite
   - follow-tool-vitest
   - follow-tool-moonrepo
+  - follow-tool-viteplus
   - follow-tool-github-actions
   - run-build
   - run-test
@@ -24,7 +25,7 @@ Use for monorepos that need to orchestrate tasks, cache outputs, use remote cach
 
 - Package build pipeline: see `references/apis.md`
 
-- Boundary: use Turborepo for JS/TS monorepo task orchestration; if the project uses Moon, use `/follow-tool-moonrepo` instead; for dependency updates across workspaces, use `/follow-tool-taze`
+- Boundary: use Turborepo for JS/TS monorepo task orchestration; if the project uses Moon, use `/follow-tool-moonrepo` instead; for dependency updates across workspaces, use `/follow-tool-taze`; inside a Vite+ project run cached workspace tasks with `vp run`/`vpr` → `/follow-tool-viteplus`
 - Latest: `turbo@2.11.4` (verified 2026-09-26)
 
 ## Execute

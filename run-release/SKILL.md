@@ -13,7 +13,7 @@ related:
   - gen-changelog-md
   - publish-package-to-registry
   - use-my-packages-on-registry
-  - update-devin-global-skills
+  - update-agents-skills-global
 
 ---
 
@@ -213,7 +213,7 @@ bun run skills/gen-changelog-md/scripts/gen-release-md
 - Use /setup-cicd if needed
 - Use /use-my-packages-on-registry if needed
 - Use /deep-review if needed
-- Use /update-devin-global-skills if needed (release)
+- Use /update-agents-skills-global if needed (release)
 
 - Use /resolve-errors if needed
 

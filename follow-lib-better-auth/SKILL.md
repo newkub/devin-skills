@@ -24,6 +24,7 @@ Boundaries:
 
 - Latest: `better-auth@1.7.5` (verified 2026-09-16)
 - References: [apis](references/apis.md) | [cli](references/cli.md) 
+- References: [Better Auth — Best Practices](best-practices/better-auth.md)
 ## Execute
 
 ### Workflows

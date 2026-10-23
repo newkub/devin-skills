@@ -23,6 +23,7 @@ For `import`ing modules via `HTTPS URL` with automatic `tree-shaking`, `bundling
 - Use this skill only when loading modules via CDN URLs with no bundler (browser, Deno, no-build setups) — if the project has `package.json` + a bundler → install the package normally instead
 - Other CDNs: jsDelivr (`cdn.jsdelivr.net`), JSPM (`jspm.io`) — see official docs via `/learn-from-web`
 - `esm.sh` has a CLI for managing import maps in `index.html` — see `references/cli.md`
+- References: [esm.sh — Best Practices](best-practices/esm-sh.md), [apis](references/apis.md)
 
 ## Execute
 

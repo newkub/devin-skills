@@ -9,7 +9,7 @@ related:
   - report
   - suggest-next-action
   - report-progress
-  - dont-over-engineer
+  - simplify
   - deep-validate
   - continue
 
@@ -129,7 +129,7 @@ Use for repeating work that must be verified until it passes the condition, or w
 - Never create a new abstraction, layer, or dependency unless truly necessary
 - Never optimize a part that is not a bottleneck or has no evidence
 - Never add features or config outside the current scope
-- If in doubt about over-engineering, do `/dont-over-engineer`
+- If in doubt about over-engineering, do `/simplify guard`
 
 ### 5. Agentic Loop Guardrails (merged from `/follow-loop-engineering`)
 

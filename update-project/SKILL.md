@@ -4,7 +4,7 @@ description: Update root and workspace AGENTS.md by checking git log, syncing pr
 argument-hint: "[scope]"
 related:
   - update-config
-  - update-dot-devin
+  - update-dot-agents-project
   - update-docs
   - update-astgrep-rules
   - update-gitignore
@@ -12,7 +12,6 @@ related:
   - update-agents-md
   - update-tests
   - update-specs
-  - update-project-skills
   - update-version-to-latest
   - use-subagents
   - deep-review
@@ -32,6 +31,7 @@ Use after shipping every workspace — check each workspace's latest git log, re
 In a monorepo this covers the root project and every workspace — each workspace's `AGENTS.md` (Step 4) and its drifted config/docs. Submodule workspaces have their own remote and history → report them as `skipped` instead of editing them
 
 Boundary: a quick root sync — for a comprehensive pre-release update with a deep analysis baseline → front-load `/deep-analyze` + `/deep-review` before Step 1
+- References: [Target Dispatch](references/target-dispatch.md)
 
 ## Execute
 
@@ -66,16 +66,16 @@ Boundary: a quick root sync — for a comprehensive pre-release update with a de
 
 1. Read the root `package.json`
 2. Read `AGENTS.md` if present
-3. Inspect `docs/`, `rules/`, `.devin/`, `.vscode/`
+3. Inspect `docs/`, `rules/`, `.agents/`, `.vscode/`
 4. Identify orchestration tools (moon, turbo)
 5. Run updates in order:
    - `/deep-review` (must run if the project has CI/CD)
    - `/setup-cicd` (if the CI/CD config drifted or isn't ready)
    - `/update-version-to-latest` (if runtime, deps, tools, or any versioned config need updating to latest)
    - `/update-config` to sync project config, shared config, and the dependencies catalog
-   - `/update-dot-devin`
-   - `/cleanup-files-in-project` (if needed)
-   - package manifest setup (merged `/setup-package`) — check required fields + scripts per `references/setup-package.md`
+   - `/update-dot-agents-project`
+   - `/cleanup-project` (if needed)
+   - package manifest setup (merged from `/setup-package`) — check required fields + scripts per `references/setup-package.md`
    - `/update-readme-md`
    - `/update-agents-md` for the root `AGENTS.md` (each workspace's `AGENTS.md` → Step 4)
    - `/update-usage-md` to create/update `USAGE.md` at each workspace root
@@ -104,9 +104,9 @@ Boundary: a quick root sync — for a comprehensive pre-release update with a de
 
 ### 5. Update Project Skills
 
-> Goal: Project skills in `.devin/skills/` are current
+> Goal: Project skills in `.agents/skills/` are current
 
-1. Run `/update-project-skills` to create or update skills in `.devin/skills/`
+1. Run `/update-dot-agents-project skills` to create or update skills in `.agents/skills/`
 2. Verify the created skills pass `/deep-validate`
 3. Confirm the project `AGENTS.md` references all new skills
 
@@ -214,13 +214,13 @@ Boundary: a quick root sync — for a comprehensive pre-release update with a de
 - `Constraints`: write only `<workspace-path>/AGENTS.md`, never the root/other workspaces/source code; no commits; deterministic; submodule workspace (own remote) or no manifest → report `skipped`
 - `Full detail`: `references/subagent-agents-md-updater.md`
 
-### project-skills-updater — Update project skills in .devin/skills/ (Step 5; parallel with the Step 3 domains)
+### project-skills-updater — Update project skills in .agents/skills/ (Step 5; parallel with the Step 3 domains)
 
 - `Inputs`: `project-path`, `changed-info` (optional — identifies skills that need syncing)
 - `Tools`: `read`, `grep`, `find_file_by_name`, `exec`, `edit`
-- `Execute`: run `/update-project-skills` to create/update skills per the codebase → use `changed-info` to map the features/flows that changed → skills needing sync → verify via `/deep-validate` (frontmatter, references, no broken links) → confirm the root `AGENTS.md` references all new skills → report a gap if any are missing
+- `Execute`: run `/update-dot-agents-project skills` to create/update skills per the codebase → use `changed-info` to map the features/flows that changed → skills needing sync → verify via `/deep-validate` (frontmatter, references, no broken links) → confirm the root `AGENTS.md` references all new skills → report a gap if any are missing
 - `Output`: structured summary — skills created/updated/removed (path+reason), validation results, AGENTS.md gaps for the parent to fix
-- `Constraints`: modify only `.devin/skills/`, never touch root docs/code (never edit `AGENTS.md` itself — the parent handles it); no commits; `.devin/skills/` missing/not needed → report `skipped`
+- `Constraints`: modify only `.agents/skills/`, never touch root docs/code (never edit `AGENTS.md` itself — the parent handles it); no commits; `.agents/skills/` missing/not needed → report `skipped`
 - `Full detail`: `references/subagent-project-skills-updater.md`
 
 ### github-metadata-updater — Sync GitHub repo metadata and branch protection (Step 6; remote-only, never touches local files)
@@ -239,7 +239,7 @@ Boundary: a quick root sync — for a comprehensive pre-release update with a de
 - Root `AGENTS.md` and `README.md` were updated
 - Every workspace has a followable `AGENTS.md`, written 1 subagent per workspace via `/use-subagents`
 - Project docs, config, rules, and tooling are in sync
-- Project skills in `.devin/skills/` were updated via `/update-project-skills`
+- Project skills in `.agents/skills/` were updated via `/update-dot-agents-project skills`
 - GitHub repo metadata was updated via `/update-github-metadata`
 - The root project passed `/deep-validate`
 - Dependencies and versioned items were updated if `/update-version-to-latest` was chosen

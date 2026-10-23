@@ -20,6 +20,7 @@ Use `gitleaks` to prevent secrets (API keys, tokens, private keys) from entering
 - Latest: `gitleaks@v8` line (Gitleaks by Zachary Rice, OSS) — upstream is feature-complete, security patches only
 - Docs: https://github.com/gitleaks/gitleaks
 - References: [cli](references/cli.md) | [apis](references/apis.md) | best-practices/
+- References: [gitleaks — Best Practices](best-practices/gitleaks.md)
 
 ## Execute
 

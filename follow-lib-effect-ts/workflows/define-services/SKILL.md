@@ -55,6 +55,8 @@ const AppLayer = Layer.mergeAll(Database.Default, HttpLive)
 
 ### 3. Consume In Effects
 
+> Goal: Consume In Effects.
+
 ```ts
 const program = Effect.gen(function* () {
   const repo = yield* TodoRepo          // yield* the service tag for its requirements
@@ -67,6 +69,8 @@ Effect.runPromise(program.pipe(Effect.provide(TodoRepo.Default)))
 - Access pattern variants: `Effect.serviceFunctions`, `Effect.serviceMembers` for the fn style
 
 ### 4. Test Substitution
+
+> Goal: Test Substitution.
 
 - `Layer.mock(TodoRepo)` (v3.17+) with a partial impl, or `Layer.succeed(TodoRepo, fakeImpl)` — see `test-effect`
 

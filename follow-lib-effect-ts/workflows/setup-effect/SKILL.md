@@ -26,7 +26,7 @@ Install Effect-TS and configure TypeScript/project structure so `Effect`, `Layer
 
 > Goal: check the environment before setup
 
-1. Read `package.json` — if `effect` is already there → skip to verify; if the version is v4 RC → read the Version Notes in [../../references/effect-ts.md](../../references/effect-ts.md)
+1. Read `package.json` — if `effect` is already there → skip to verify; if the version is v4 RC → check the official docs linked in [../../references/apis.md](../../references/apis.md)
 2. Confirm TypeScript `>= 5.4` (`bunx tsc --version`)
 3. Detect the package manager from the lockfile and use the matching command
 
@@ -57,7 +57,7 @@ Install Effect-TS and configure TypeScript/project structure so `Effect`, `Layer
 3. Errors: `Data.TaggedError` for expected errors, then catch with `Effect.catchTag`/`catchTags`
 4. DI: `Effect.Service` (v3.9+) for a service with its default layer, or `Context.Tag` + `Layer.succeed`/`Layer.effect` for manual
 5. Config: `Config.string`/`Config.redacted` for env — never read `process.env` directly in services
-6. Run only at the boundary: `Effect.runPromise`/`BunRuntime.runMain` at the entry point only — see [../../references/patterns.md](../../references/patterns.md)
+6. Run only at the boundary: `Effect.runPromise`/`BunRuntime.runMain` at the entry point only
 
 ### 5. Verify
 

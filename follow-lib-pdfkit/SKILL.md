@@ -21,6 +21,7 @@ Use when the task involves this library/tool — setup, usage, debugging, or bes
 - No CLI — used via programmatic API only (thus none)
 - Latest: `pdfkit@0.20.2` (verified 2026-09-13)
 - References: [apis](references/apis.md) 
+- References: [Best Practices: pdfkit (Server PDF Generation)](best-practices/pdf-generation.md)
 ## Execute
 
 ### 1. Setup And Usage

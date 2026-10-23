@@ -20,6 +20,8 @@ validation application — `.parse`/`.safeParse`/`.parseAsync`, boundary placeme
 
 ### 1. Parse vs SafeParse
 
+> Goal: Parse vs SafeParse.
+
 ```ts
 // throw on invalid — high-trust boundaries or 500-worthy ones
 const user = UserSchema.parse(rawInput)
@@ -36,6 +38,8 @@ await Schema.safeParseAsync(data)
 
 ### 2. API Boundary Validation
 
+> Goal: API Boundary Validation.
+
 ```ts
 // request body
 const body = await req.json()
@@ -47,6 +51,8 @@ const ext = ExternalApiResponse.parse(await res.json())
 ```
 
 ### 3. Env/Config Validation
+
+> Goal: Env/Config Validation.
 
 ```ts
 const Env = z.object({
@@ -60,6 +66,8 @@ export const env = Env.parse(process.env)   // fail-fast at boot
 - Validate env at startup — fail fast before the app runs; use `z.coerce.*` for string→number/bool env vars
 
 ### 4. Data Sources
+
+> Goal: Data Sources.
 
 1. `Request bodies/params/query`: validate before business logic
 2. `External API responses`: validate if trust is low; skip if it's an internal type-safe contract (perf)

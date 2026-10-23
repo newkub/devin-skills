@@ -22,6 +22,7 @@ Use `follow-tool-aube` for the specified tasks and workflows
 - Boundary: Aube is a Node.js package manager (install/run/update deps) — use it instead of `npm`/`pnpm`/`yarn`/`bun install` when the project chose Aube; for Bun runtime setup see `/use-bun-native-api`, for CI work see `/setup-cicd`
 - Latest: `aube@2.4.0` (GitHub `aubepkg/aube`, crates.io `aube`) / npm `@endevco/aube@2.4.0` (npm dist-tag lags) (verified 2026-09-26)
 - References:  | [apis](references/apis.md) | [cli](references/cli.md) 
+- References: [Aube Best Practices](best-practices/aube-usage.md)
 ## Execute
 
 ### 1. Installation

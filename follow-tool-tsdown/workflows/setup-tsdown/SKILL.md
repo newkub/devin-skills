@@ -16,7 +16,6 @@ Install tsdown and set up a basic `tsdown.config.ts` for a TypeScript library â€
 
 - First-time tsdown setup in a TypeScript library project
 - Covers install, `tsdown.config.ts`, `entry`/`format`/`dts`/`sourcemap`, build scripts
-- Migration from tsup â†’ `workflows/migrate-from-tsup/SKILL.md`
 
 ## Execute
 

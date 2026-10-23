@@ -40,7 +40,7 @@ CLI explorer variant (typed `Command` schema, Human/Agent modes): [references/cl
 
 > Goal: build on the skills that already exist, not on memory
 
-1. Run `/follow-devin-global-skills` — list global (`%APPDATA%\devin\skills`) and project (`.devin/skills/`) skills matching the target stack and domain
+1. Run `/follow-devin-global-skills` — list global (`%APPDATA%\devin\skills`) and project (`.agents/skills/`) skills matching the target stack and domain
 2. Read the matching skills actually used here: `/follow-solid-framework`, `/follow-lib-solidjs`, `/follow-lib-unocss`, `/follow-tool-vite`, `/follow-web-standard`, `/follow-design-system` (plus any project skill that overrides them)
 3. Project `AGENTS.md` → read its `### Skills` / `### Architecture` before choosing the layout; verify each skill's `related` exists and its content is fresh per `/follow-up-to-date`
 
@@ -105,7 +105,7 @@ CLI explorer variant (typed `Command` schema, Human/Agent modes): [references/cl
 ## Rules
 
 - Prototypes are written to OS temp only — never write into the project (unless the user orders it)
-- Always run `/follow-devin-global-skills` first — the stack skills (and any project `.devin/skills/`) are the source of conventions; never restate or invent config from memory
+- Always run `/follow-devin-global-skills` first — the stack skills (and any project `.agents/skills/`) are the source of conventions; never restate or invent config from memory
 - Typed data schema = single source of truth — every view derives from it
 - CLI explorer variant: the `Command` schema is the source — Human/Agent modes derive from it and Agent Mode markdown is always generated programmatically
 - UnoCSS `presetWind4` only — no Tailwind/Bootstrap/large CSS stylesheets; CSS only for what UnoCSS cannot do

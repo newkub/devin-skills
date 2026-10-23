@@ -116,6 +116,7 @@ For GitHub libraries that want preview packages for every commit and pull reques
 
 
 - See best-practices/ for recommended patterns and pitfalls
+- References: [pkg.pr.new — Best Practices](best-practices/pkg-new.md), [apis](references/apis.md)
 
 ## Expected Outcome
 

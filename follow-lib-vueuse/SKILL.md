@@ -19,6 +19,7 @@ Use VueUse v15 composables effectively for Vue 3.5+ applications
 For Vue 3.5+ projects using VueUse v15 — covers installation, core composables, the latest features, best practices, and testing
 
 - Latest: `@vueuse/core@15.0.0` (verified 2026-09-24) — v15 breaking: drops Node 20, removes deprecated timer options (use `scheduler` only), `useThrottleFn` default `trailing` false→true, removes `templateRef`, `useIDBKeyval` syncs across tabs
+- References: [VueUse — Best Practices](best-practices/vueuse.md), [apis](references/apis.md)
 
 ## Execute
 

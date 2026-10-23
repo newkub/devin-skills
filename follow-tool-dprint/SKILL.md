@@ -10,6 +10,7 @@ related:
   - follow-best-practice
   - setup-cicd
   - follow-tool-biome
+  - follow-tool-viteplus
   - run-lint
   - run-format
 ---
@@ -22,9 +23,10 @@ Set up and use dprint for formatting code in many languages with its pluggable a
 
 Use for projects that need multi-language code formatting
 
-- Boundary: dprint is a formatter-only, pluggable tool (TS/JS, JSON, markdown, toml, yaml, CSS, HTML, Python, Go, PHP) — no linting; when one tool should lint+format JS/TS, use `/follow-tool-biome` instead (or use dprint only for languages Biome does not cover)
+- Boundary: dprint is a formatter-only, pluggable tool (TS/JS, JSON, markdown, toml, yaml, CSS, HTML, Python, Go, PHP) — no linting; when one tool should lint+format JS/TS, use `/follow-tool-biome` instead (or use dprint only for languages Biome does not cover); on a Bun-runtime project prefer the built-in `bun fmt` for the languages it covers and keep dprint only for what falls outside it (Python, Go, PHP, Dockerfile); inside a Vite+ project `vp fmt` (Oxfmt, Prettier-compatible) covers the JS/TS/JSON/Markdown/CSS/YAML cases → `/follow-tool-viteplus`
 - Latest: `dprint@0.57.4` (verified 2026-09-24) — since 0.56.0, plugins from the npm registry (`npm:@dprint/...`) are recommended
 - References: [apis](references/apis.md) | [cli](references/cli.md) 
+- References: [dprint — Best Practices](best-practices/dprint.md)
 ## Execute
 
 ### 1. Precondition Check

@@ -22,9 +22,13 @@ For a fresh PHP project (vanilla or framework); live-check the current stable PH
 
 ### 1. Install The Toolchain
 
+> Goal: Install The Toolchain.
+
 1. Install PHP (stable line from the live check) and Composer (https://getcomposer.org/download/; Windows: Composer-Setup.exe); verify `php -v` and `composer --version`
 
 ### 2. Scaffold
+
+> Goal: Scaffold.
 
 1. `composer init` — set `require.php` to the live-checked platform version (never higher than what deploys run)
 2. PSR-4 in `composer.json`: `"autoload": { "psr-4": { "Vendor\\Package\\": "src/" } }` + `autoload-dev` mapping `tests/`
@@ -33,12 +37,16 @@ For a fresh PHP project (vanilla or framework); live-check the current stable PH
 
 ### 3. Quality Tools As Dev Deps
 
+> Goal: Quality Tools As Dev Deps.
+
 1. `composer require --dev phpstan/phpstan friendsofphp/php-cs-fixer phpunit/phpunit`
 2. `phpstan.neon`: start the level the codebase can hold and raise it (target level 8 for new code), `paths: [src]`
 3. `.php-cs-fixer.php`: `@PSR12` over `src` and `tests` — overrides only, no cargo-culted rules
 4. `declare(strict_types=1);` enforced from the first file
 
 ### 4. Verify
+
+> Goal: Verify.
 
 1. `composer validate` → `vendor/bin/php-cs-fixer fix --dry-run --diff` clean → `vendor/bin/phpstan analyse` passes → `vendor/bin/phpunit` green (add one passing smoke test first)
 2. On failure → run `/resolve-errors`

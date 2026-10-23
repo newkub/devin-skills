@@ -14,7 +14,7 @@ related:
   - ask-me
   - suggest-next-action
   - implement-to-production
-  - create-plan-in-dot-devin
+  - create-plan-in-dot-agents
   - improve
   - bench-competitors
 ---
@@ -28,8 +28,8 @@ Generate 30 feature ideas for a project/topic — covering `extends` (extend wha
 - output = a table in chat only — no web viewer, no `ideas.json`, no more writing files to temp/skill dir/target repo (the old model has been removed)
 - ideas that are gap-fixes for the existing implementation → `/improve features`; need market evidence for net-new → `/bench-competitors`
 - need to screen which idea "should actually be done" before planning (demand/feasibility evidence + verdict) → `/validate-idea`
-- don't implement ideas — ideas the user confirms always go to `/create-plan-in-dot-devin`, then `/implement-to-production`
-- an idea the user has chosen but hasn't designed yet → design before planning: `/design-cli-prototype` / `/design-tui-prototype` (answer in chat) or `/design-html-prototype` / `/design-web-prototype` (when you need to see the visual), then `/create-plan-in-dot-devin`
+- don't implement ideas — ideas the user confirms always go to `/create-plan-in-dot-agents`, then `/implement-to-production`
+- an idea the user has chosen but hasn't designed yet → design before planning: `/design-cli-prototype` / `/design-tui-prototype` (answer in chat) or `/design-html-prototype` / `/design-web-prototype` (when you need to see the visual), then `/create-plan-in-dot-agents`
 - purely UX/UI without targeting the feature set → `/idea-uxui` instead
 
 ## Execute
@@ -68,12 +68,12 @@ Always generate `30 items`, mixing `extends` + `new` + `platform` according to t
 1. `Sort by Impact: High → Medium → Low` — within the same impact, put `new`/`platform` that unlock other work first; renumber `No.` after sorting
 2. Answer in chat as a `single markdown table` with all 30 rows — no grouping, create no files, serve nothing
 3. End with a short summary: the proportion of extends/new/platform, the number of High-impact, the top 3 ideas recommended to start with + reasons
-4. Run `/suggest-next-action` — ideas the user confirms → `/create-plan-in-dot-devin` → `/implement-to-production`
+4. Run `/suggest-next-action` — ideas the user confirms → `/create-plan-in-dot-agents` → `/implement-to-production`
 
 ## Rules
 
 - Always 30 ideas — never fewer; every column has a real value, no placeholders
-- Chat only — never create viewer/data/report files; if the user wants a report file → use `/create-report-in-dot-devin` separately
+- Chat only — never create viewer/data/report files; if the user wants a report file → use `/create-report-to-dot-agents` separately
 - `new` must be a genuinely net-new capability (new flow/module/integration/surface) — filling a gap in what exists = `extends`
 - Every Description/Why/Usage references the target project's real context — never propose a feature that conflicts with the existing architecture
 - Use `/reframe` if the ideas are stale or stuck in the same frame

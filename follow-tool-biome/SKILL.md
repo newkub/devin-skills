@@ -11,6 +11,7 @@ related:
   - setup-cicd
   - follow-tool-dprint
   - follow-tool-eslint
+  - follow-tool-viteplus
   - run-lint
   - run-format
 
@@ -24,10 +25,11 @@ Install and configure Biome for linting and formatting with Bun
 
 Use `follow-tool-biome` for the specified tasks and workflows only
 
-- Boundary: Biome combines linter + formatter + assist for JS/TS/JSON/CSS in one tool — a replacement for ESLint+Prettier; if the project must format many languages (markdown, toml, yaml, python, php) use `/follow-tool-dprint` alongside or instead; if ESLint is required see `/follow-tool-eslint`; the Ultracite preset on Biome — see official docs via `/learn-from-web`
+- Boundary: Biome combines linter + formatter + assist for JS/TS/JSON/CSS in one tool — a replacement for ESLint+Prettier; if the project must format many languages (markdown, toml, yaml, python, php) use `/follow-tool-dprint` alongside or instead; on a Bun-runtime project, formatting may be delegated to the built-in `bun fmt` (no install) while Biome keeps lint + assist — `bun fmt` never lints; if ESLint is required see `/follow-tool-eslint`; the Ultracite preset on Biome — see official docs via `/learn-from-web`; inside a Vite+ project the equivalent is `vp lint`/`vp fmt` (Oxlint + Oxfmt, Prettier-compatible) → `/follow-tool-viteplus`
 
 - Latest: `@biomejs/biome@2.5.14` (verified 2026-09-26)
 - References: [apis](references/apis.md) | [cli](references/cli.md) 
+- References: [Biome Best Practices](best-practices/biome-usage.md)
 ## Execute
 
 ### 1. Setup
@@ -189,7 +191,7 @@ jobs:
 - Must have a `lint:fix` script: `biome lint --write` (fix issues)
 - Must have a `format` script: `biome format --write`
 
-### 4. Optional Domains
+### 4. Optional Domains — Rules
 
 - Domains use `recommended` only, never `all`
 - Astro: for Astro projects

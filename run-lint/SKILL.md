@@ -26,6 +26,7 @@ Run lint for all project types and handle errors/warnings from the linter
 
 1. Check the project type and lint config before running
 2. Run lint as defined in the config:
+   - Vite+ project (`vite-plus` dependency or a root `vite.config.ts` `lint` block): run `vp lint`, or `vp check --no-fmt` when lint + type-aware check is wanted (see `/follow-tool-viteplus`)
    - For a monorepo: run `bun run lint` or `turbo lint`
    - For a typical project: run the lint command per the config
 3. Wait for lint to finish before continuing
@@ -58,7 +59,7 @@ Run lint for all project types and handle errors/warnings from the linter
 
 > Goal: Verify
 
-1. Run lint again to confirm
+1. Run lint again to confirm (`vp lint` / `vp check --no-fmt` in a Vite+ project)
 2. Check that no errors/warnings remain
 3. Run all tests to confirm the code works
 
@@ -68,7 +69,7 @@ Run lint for all project types and handle errors/warnings from the linter
 
 Never edit any config file
 
-- Do not edit biome.jsonc, eslint.config.js, tsconfig.json, or any other config file
+- Do not edit biome.jsonc, eslint.config.js, tsconfig.json, the root `vite.config.ts` `lint` block, or any other config file
 - Fix the code to pass the existing lint rules
 - If the config is unsuitable, notify the user instead of editing it yourself
 

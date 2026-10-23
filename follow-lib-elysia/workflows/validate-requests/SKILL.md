@@ -21,6 +21,8 @@ request/response validation — `t.Object`/`t.String`/... schema keys per handle
 
 ### 1. Per-Route Schemas
 
+> Goal: Per-Route Schemas.
+
 ```ts
 import { Elysia, t } from 'elysia'
 
@@ -43,11 +45,15 @@ app.post('/users', ({ body }) => body, {
 
 ### 2. TypeBox Essentials
 
+> Goal: TypeBox Essentials.
+
 - `t.Object`, `t.String({ format })`, `t.Number`, `t.Integer`, `t.Boolean`, `t.Array(t.X)`, `t.Union`, `t.Literal`, `t.Record`, `t.Optional`, `t.Nullable`, `t.Partial`, `t.Pick`, `t.Omit`, `t.Ref`/`t.Model` shared
 - `t.File({ type: 'image', maxSize: '5m' })` — upload validation
 - Custom formats: `t.String({ format: 'email'|'uuid'|'date-time'|... })`
 
 ### 3. Shared Models
+
+> Goal: Shared Models.
 
 ```ts
 app.model({ user: t.Object({...}), error: t.Object({ message: t.String() }) })
@@ -59,6 +65,8 @@ app.post('/', h, { body: 'user', response: { 422: 'error' } })   // string ref �
 
 ### 4. Standard Schema Interop
 
+> Goal: Standard Schema Interop.
+
 ```ts
 import { z } from 'zod'
 app.post('/', h, { body: z.object({ name: z.string() }) })  // Zod/Valibot/ArkType work directly
@@ -68,6 +76,8 @@ app.post('/', h, { body: z.object({ name: z.string() }) })  // Zod/Valibot/ArkTy
 - TypeBox preferred — JIT-compiled fastest + Elysia-native inference; Standard Schema when schemas are shared with other libs
 
 ### 5. Inference
+
+> Goal: Inference.
 
 - `t` schemas → typed `body`/`params`/`query`/`headers` in the handler automatically
 - Response schema → client type inference via Eden (`use-eden`)

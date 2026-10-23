@@ -5,6 +5,7 @@ argument-hint: "[scope]"
 related:
   - follow-monorepo
   - follow-tool-turborepo
+  - follow-tool-viteplus
   - follow-tool-mise
   - follow-tool-github-actions
   - use-subagents
@@ -26,6 +27,7 @@ For projects that choose moonrepo as the monorepo orchestrator instead of turbor
 
 - If the repo still uses turborepo → use `/follow-tool-turborepo` (or migrate per Step 5)
 - If the job is tool version/env management rather than task orchestration → use `/follow-tool-mise`
+- If the repo uses Vite+ workspaces, `vp run` covers cached task orchestration → `/follow-tool-viteplus`
 
 ## Execute
 

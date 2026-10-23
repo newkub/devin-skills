@@ -2,6 +2,11 @@
 name: follow-create-bot-slack
 description: Build a Slack bot with TypeScript/Bun — slash commands, events, Socket Mode
 argument-hint: "[features]"
+related:
+  - follow-create-bot
+  - follow-create-bot-discord
+  - follow-lang-typescript
+  - run-test
 ---
 
 ## Goal
@@ -11,6 +16,7 @@ Create a runnable Slack bot project with TypeScript/Bun, complete with slash com
 ## Scope
 
 Use for building a Slack bot from scratch on Bun or Node.js; supports notification bots, slash command workflows, interactive messages, and workspace integrations
+- Family dispatcher: `/follow-create-bot` — the Discord variant is `/follow-create-bot-discord`
 
 ## Execute
 
@@ -18,7 +24,7 @@ Use for building a Slack bot from scratch on Bun or Node.js; supports notificati
 
 > Goal: Verify the tech stack before building
 
-1. Run `/deep-research` + `/follow-best-practice` to confirm the latest versions and patterns, following the conventions in `/update-devin-global-skills`
+1. Run `/deep-research` + `/follow-best-practice` to confirm the latest versions and patterns, following the conventions in `/update-agents-skills-global`
 2. Run `/deep-review` to summarize the tech stack in use
 3. Record the stack and library choices with reasons for later reference
 

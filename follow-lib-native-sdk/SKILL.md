@@ -19,6 +19,7 @@ When you want a truly native desktop app (Metal/Direct2D/software renderer), not
 - Boundary: Tauri = Rust backend + web frontend (webview shell) → `/follow-create-desktop-tauri`; GPUI Kit = Rust-only components/entity model → `/follow-lib-gpui-kit`; Native SDK = TS+markup AOT, no runtime in the binary
 - Mobile (iOS/Android) is `Experimental` — verified on simulators/emulators only; desktop is the mature surface
 - WebViews still work as an optional path (embed a web page/host an existing frontend) — not the default path
+- References: [apis](references/apis.md), [cli](references/cli.md)
 
 ## Facts (verified 2026-10-13)
 

@@ -23,6 +23,7 @@ Use when the task involves `es-toolkit` — install, array/object/string/math/pr
 - The core API (`es-toolkit`) is 2-3× faster than lodash and up to 97% smaller in bundle via tree-shaking — `es-toolkit/compat` mirrors lodash 1:1 for migration only (larger and slower than core)
 - For data-first/data-last functional composition + `pipe` → `/follow-lib-remedajs`; es-toolkit is an imperative utility (lodash-style signatures) with no pipe
 - See best-practices/ for recommended patterns and pitfalls
+- References: [es-toolkit Best Practices](best-practices/es-toolkit.md)
 
 ## Execute
 

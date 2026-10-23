@@ -7,12 +7,11 @@ triggers:
   - model
 related:
   - update-devin
-  - update-devin-harness
-  - update-devin-global-skills
+  - review-dot-agents-global-and-fix
+  - update-agents-skills-global
   - update-devin-global-subagents
-  - update-devin-project-rules
+  - update-dot-agents-project
   - update-astgrep-rules
-  - review-devin-global-harness
   - check-reference
   - update-references
   - use-related-skills
@@ -25,14 +24,14 @@ related:
 
 ## Goal
 
-Keep the machine-wide agent rules file (`global_rules.md`) correct, enforceable, and in sync with the skills it cites — the single owner of global rules content, while `/update-devin-harness` keeps the rules/skills/subagents layers aligned
+Keep the machine-wide agent rules file (`global_rules.md`) correct, enforceable, and in sync with the skills it cites — the single owner of global rules content, while `/review-dot-agents-global-and-fix` keeps the rules/skills/subagents layers aligned
 
 ## Scope
 
-- Owns `global_rules.md` only — project-level `.devin/rules/*.md` → `/update-devin-project-rules`; project ast-grep `rules/` → `/update-astgrep-rules`; cross-layer alignment (rules vs skills vs subagents) → `/update-devin-harness`, which delegates the rules edit here
+- Owns `global_rules.md` only — project-level `.devin/rules/*.md` → `/update-dot-agents-project`; project ast-grep `rules/` → `/update-astgrep-rules`; cross-layer alignment (rules vs skills vs subagents) → `/review-dot-agents-global-and-fix`, which delegates the rules edit here
 - `/update-devin global-rules` dispatches here
 - Argument routes the work: `add` a new rule · `update` an existing rule · `remove` a rule · `audit` (read-only health check) — no argument → `/ask-me`
-- Boundary with `/update-devin-harness`: this skill edits the rules file and syncs reverse references; harness owns detecting that layers disagree
+- Boundary with `/review-dot-agents-global-and-fix`: this skill edits the rules file and syncs reverse references; harness owns detecting that layers disagree
 
 ## Execute
 
@@ -40,7 +39,7 @@ Keep the machine-wide agent rules file (`global_rules.md`) correct, enforceable,
 
 > Goal: know the current rules and what the change really means
 
-1. Read the rules file — canonical path on this machine: `C:\Users\Veerapong\.codeium\windsurf\memories\global_rules.md` (the `global-rules:` entry in the skills repo `AGENTS.md` records the source; other installs keep it in dotfiles/chezmoi — check there before creating a second copy)
+1. Read the rules file — canonical path on this machine: `%USERPROFILE%\.codeium\windsurf\memories\global_rules.md` (the `global-rules:` entry in the skills repo `AGENTS.md` records the source; other installs keep it in dotfiles/chezmoi — check there before creating a second copy)
 2. For each existing section record: number, title, the skills/commands it cites, and its intent — never edit blind
 3. Capture the requested change as one falsifiable rule: what agent behavior changes, when it triggers, which skill enforces it
 
@@ -74,7 +73,7 @@ Keep the machine-wide agent rules file (`global_rules.md`) correct, enforceable,
 > Goal: the rest of the ecosystem cites the truth
 
 1. Rule renamed/moved/removed → `/update-references` across the skills repo so no file cites a dead section
-2. New rule whose enforcement lives in a skill → confirm that skill mentions the global rule back (its `## Rules`/`## Scope`); update the skill via `/update-devin-global-skills` if not
+2. New rule whose enforcement lives in a skill → confirm that skill mentions the global rule back (its `## Rules`/`## Scope`); update the skill via `/update-agents-skills-global` if not
 3. Skills repo `AGENTS.md` `global-rules:` entry still names this file's source path — fix if drifted
 
 ### 6. Validate
@@ -82,7 +81,7 @@ Keep the machine-wide agent rules file (`global_rules.md`) correct, enforceable,
 > Goal: the edit is safe
 
 1. `/deep-validate` the file — numbering sequential, every cited skill has a real dir, no TODO/placeholder, no duplicate intent
-2. `/review-devin-global-harness` when the change touches layer contracts (skills/subagents must follow suit)
+2. `/review-dot-agents-global-and-fix` when the change touches layer contracts (skills/subagents must follow suit)
 3. If the file is git-tracked (dotfiles repo) → `git diff` review of the edit; otherwise re-read the file end-to-end
 
 ### 7. Report And Ship
@@ -98,7 +97,7 @@ Keep the machine-wide agent rules file (`global_rules.md`) correct, enforceable,
 - Every rule is enforceable by citing a real skill/command with an explicit trigger — vague rules ("write good code") are rejected
 - Numbering is a stable contract — append, don't renumber; renumbering needs user confirmation and a full `/update-references` pass
 - Minimal + idempotent: one rule per topic, no twins, no reformatting of untouched sections
-- `/update-devin-harness` remains the alignment layer above this skill — this skill never edits skills/subagents directly, it routes via `/update-devin-global-skills` / `/update-devin-global-subagents` owners
+- `/review-dot-agents-global-and-fix` remains the alignment layer above this skill — this skill never edits skills/subagents directly, it routes via `/update-agents-skills-global` / `/update-devin-global-subagents` owners
 
 ## Expected Outcome
 

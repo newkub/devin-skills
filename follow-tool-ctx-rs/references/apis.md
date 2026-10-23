@@ -6,7 +6,7 @@
 |---|---|
 | package | ctx (`ctxrs/ctx`) |
 | install (Windows) | `irm https://ctx.rs/install.ps1 \| iex` |
-| install (macOS/Linux) | `curl -fsSL https://ctx.rs/install \| sh` |
+| install (macOS/Linux) | `curl -fsSL https://ctx.rs/install -o /tmp/ctx-install.sh && sh /tmp/ctx-install.sh` |
 | stable version | 2.2.8 (`Cargo.toml` on `main`, observed 2026-10-22) |
 | license | Apache-2.0 |
 | docs | https://ctx.rs |

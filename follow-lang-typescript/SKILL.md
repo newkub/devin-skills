@@ -15,6 +15,7 @@ related:
   - improve
   - deep-research
   - follow-lib-tstyche
+  - follow-tool-viteplus
 ---
 
 ## Goal
@@ -56,7 +57,7 @@ For TypeScript projects — type system, code quality, testing, documentation. P
 2. Use named exports (tree-shaking) and `import type` for type-only imports (enforced by `verbatimModuleSyntax`)
 3. Use `interface` for extensible object shapes, `type` for unions/tuples/complex types
 4. Use `===`, template literals, destructuring, and generic constraints (`K extends keyof T`)
-5. Run the linter/formatter via `/run-lint`/`/run-format`; Biome or ESLint per project config
+5. Run the linter/formatter via `/run-lint`/`/run-format`; Biome, ESLint, or the unified Vite+ pipeline (`vp check` = Oxfmt + Oxlint + type-aware check) per project config — see `/follow-tool-viteplus`
 
 ### 4. Setup Testing
 
@@ -85,6 +86,7 @@ For TypeScript projects — type system, code quality, testing, documentation. P
 
 - Return-type annotations, `const`, named exports, `import type`, `interface` vs `type` per shape complexity
 - `===` only, template literals, generic constraints for reusable code
+- Vite 8+ projects → prefer one `vp check`/`vp fmt`/`vp lint` pipeline (`/follow-tool-viteplus`) over stacking separate formatter/linter installs; `vp check` is not a full `tsc` replacement, so keep `/run-typecheck` as the type gate
 
 ### 3. No Stale Pins
 

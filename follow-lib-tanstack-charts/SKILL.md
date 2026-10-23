@@ -19,6 +19,7 @@ For data visualization with TanStack Charts `1.x` (stable API contract since 1.0
 
 - part of TanStack ecosystem — selection/dispatch lives in `/follow-lib-tanstack-ecosystem`
 - if the project wants a batteries-included chart kit or deep D3 composition instead → compare via `/ask-me`
+- References: [TanStack Charts — Best Practices](best-practices/tanstack-charts.md), [apis](references/apis.md)
 
 ## Execute
 

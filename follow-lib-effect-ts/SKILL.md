@@ -29,6 +29,7 @@ For projects that need functional programming with Effect-TS — pick the workfl
 - Create the project structure per Effect architecture
 - Write code with `Effect.gen`, `Effect.fn`, `Data.TaggedError`, `Context.Tag`, `Effect.Service`, `Layer`, `Schedule`, `Schema`
 - Write tests with `vitest` and `@effect/vitest`
+- References: [Effect-TS — Best Practices](best-practices/effect.md), [apis](references/apis.md)
 
 ## Execute
 

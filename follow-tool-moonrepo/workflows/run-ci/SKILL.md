@@ -81,7 +81,7 @@ Use when the monorepo already uses moonrepo and needs CI integration (GitHub Act
    ```
 2. Other providers: install moon via the package manager (`bun add -D @moonrepo/cli`) then run `bunx moon ci`
 3. PR report comment: use `moonrepo/run-report-action@v1` after `moon ci` with `if: success() || failure()`
-4. See the full provider matrix in [references/ci.md](../../references/ci.md)
+4. See the full provider matrix in the official moon CI docs
 
 ### 6. Shard Across Jobs (Optional)
 
@@ -91,7 +91,7 @@ Use when the monorepo already uses moonrepo and needs CI integration (GitHub Act
    ```sh
    moon ci --job ${{ matrix.index }} --job-total 2
    ```
-2. GitHub: emulate parallelism with `strategy.matrix.index`; Buildkite/CircleCI use native parallelism keys — examples in [references/ci.md](../../references/ci.md)
+2. GitHub: emulate parallelism with `strategy.matrix.index`; Buildkite/CircleCI use native parallelism keys — examples in the official moon CI docs
 
 ### 7. Cache Artifacts
 
@@ -131,7 +131,7 @@ Use when the monorepo already uses moonrepo and needs CI integration (GitHub Act
 
 ## References
 
-- [CI provider configs, sharding, remote cache](../../references/ci.md)
+- [CLI reference](../../references/cli.md) — `moon ci` flags, affected tasks, and `runInCI`
 
 ## Expected Outcome
 

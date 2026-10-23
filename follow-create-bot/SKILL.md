@@ -18,7 +18,7 @@ Build a bot for the specified platform — Slack, Discord, Telegram, LINE, or Gi
 - Use when creating a chat bot or a GitHub automation bot
 - Follow `/deep-review` for runtime and dependencies
 
-- SDKs: `discord.js`, `grammy`, `@slack/bolt`, `@line/bot-sdk`, `probot` — always confirm the latest versions with `/deep-research` + `/follow-best-practice` (not pinned in files — per `/update-devin-global-skills`)
+- SDKs: `discord.js`, `grammy`, `@slack/bolt`, `@line/bot-sdk`, `probot` — always confirm the latest versions with `/deep-research` + `/follow-best-practice` (not pinned in files — per `/update-agents-skills-global`)
 - Breaking: `@line/bot-sdk` v11 removed the legacy `Client`/`OAuth` — use `LineBotClient.fromChannelAccessToken()` or `messagingApi.MessagingApiClient` instead
 - Breaking: `@slack/bolt` v5 requires Node.js ≥20, removes the `agent`/`clientTls` options and `WorkflowStep`/`app.step()` (use `app.function()`)
 - Breaking: `discord.js` v14 deprecates the `ready` event → use `Events.ClientReady` (removed in v15)

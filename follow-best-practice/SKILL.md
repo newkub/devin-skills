@@ -8,7 +8,7 @@ related:
   - search-skills
   - follow-my-techstack
   - review-use-lib-effective
-  - update-devin-global-skills
+  - update-agents-skills-global
 
 ---
 
@@ -43,7 +43,7 @@ Apply to every workspace and every kind of work (code, workflow, config, documen
 2. Follow `/learn-from-web` for systematic learning from web sources — for the gaps only, never re-research what `best-practices/` already answers
 3. Follow `/deep-research` when deep information from multiple sources is needed
 4. Verify the information is current against the version the manifest installed — a practice for another major version is not a best practice for this repo
-5. A dep with no owner skill or no `best-practices/` → research it, then persist the result through `/update-devin-global-skills` (create the skill or backfill the file) instead of leaving it in chat
+5. A dep with no owner skill or no `best-practices/` → research it, then persist the result through `/update-agents-skills-global` (create the skill or backfill the file) instead of leaving it in chat
 
 ### 3. Apply Best Practices
 
@@ -129,7 +129,7 @@ Every practice must trace to the manifest or an owner skill — never to memory 
 
 - Start from the package manifest and its lockfile — the deps, scripts, and versions there are the only facts about the stack
 - Every dep in the manifest that a `follow-*` skill owns → read that skill's `best-practices/` before writing code; when the file and generic web advice disagree, the `best-practices/` file wins
-- A dep with no owner skill, or an owner skill with no `best-practices/` → research it, then persist it via `/update-devin-global-skills` (new skill or backfilled `best-practices/` file) — a gap that stays in chat is lost
+- A dep with no owner skill, or an owner skill with no `best-practices/` → research it, then persist it via `/update-agents-skills-global` (new skill or backfilled `best-practices/` file) — a gap that stays in chat is lost
 - Project conventions (`AGENTS.md`, `.devin/rules`, existing patterns) outrank generic best practices — apply the practice with a minimal diff, never rewrite the whole file to match a guide
 
 ## Expected Outcome
@@ -139,4 +139,4 @@ Every practice must trace to the manifest or an owner skill — never to memory 
 - Consistency across the project
 - Correct and up-to-date best practices
 - Suitable patterns and conventions
-- Every dependency touched is covered by its owner skill's `best-practices/`, or the gap is recorded and routed to `/update-devin-global-skills`
+- Every dependency touched is covered by its owner skill's `best-practices/`, or the gap is recorded and routed to `/update-agents-skills-global`

@@ -22,7 +22,7 @@ Use for creating a new NuShell plugin in Rust with the `nu-plugin` and `nu-proto
 
 > Goal: scaffold the project structure for a NuShell plugin
 
-1. Run `/deep-research` + `/follow-best-practice` to confirm the latest NuShell/nu-plugin versions, per the conventions in `/update-devin-global-skills` — `nu-plugin`/`nu-protocol` must match the installed NuShell version
+1. Run `/deep-research` + `/follow-best-practice` to confirm the latest NuShell/nu-plugin versions, per the conventions in `/update-agents-skills-global` — `nu-plugin`/`nu-protocol` must match the installed NuShell version
 2. Create the project with `cargo new nu_plugin_<name>`
 3. Edit `Cargo.toml` to add the dependencies: `nu-plugin` + `nu-protocol` (same version as the installed NuShell — not pinned in this skill)
 3. Set `edition = "2024"` and match the version to the installed NuShell

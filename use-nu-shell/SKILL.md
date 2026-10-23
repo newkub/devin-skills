@@ -124,7 +124,6 @@ Try to run commands without creating temporary files:
 - Use `.devin/scripts/` for permanent scripts
 - Use `$env:TEMP` for throwaway scripts (the OS temp directory; don't create them in the project)
 - Use `.nu` for Nushell scripts
-- alias stub: `/use-nushell` — forwards to this skill
 
 ## Expected Outcome
 

@@ -20,6 +20,7 @@ Used for:
 - Creating/editing `.github/runs-on.yml` and `.github/workflows/*.yml`
 - Validating that runners really work
 Not included: creating an AWS account, purchasing a license, or automatic commit/push
+- References: [Package manifest](references/package-manifest.md)
 
 ## Execute
 

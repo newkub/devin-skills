@@ -23,6 +23,7 @@ Use when the task involves `@line/liff` — the client-side (browser/LINE app) L
 
 - Latest: `@line/liff@2.31.0` (verified 2026-09-13)
 - References: [apis](references/apis.md) 
+- References: [LINE LIFF — Init, Auth And API Boundaries](best-practices/liff.md)
 ## Execute
 
 ### 1. Check Preconditions

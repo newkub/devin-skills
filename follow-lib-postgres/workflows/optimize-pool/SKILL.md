@@ -1,5 +1,5 @@
 ---
-name: follow-lib-postgres-optimize pool
+name: follow-lib-postgres-optimize-pool
 description: tune postgres.js pool — max connections, prepared statements, timeouts
 argument-hint: "[pool-or-query]"
 related:

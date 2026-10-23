@@ -21,7 +21,7 @@ Build high-performance CLI applications with the Bun runtime, structured per con
 
 For building CLI applications with the Bun runtime — does not cover library bundling (see `/follow-tool-bunup`) — if Bun vs Rust is not yet decided, use `/follow-create-cli` to pick the stack first
 
-- Packages: `bun`, `cac` (ESM-only — `cli.on` → `cli.addEventListener`), `picocolors`, `bunup` — always confirm the latest versions with `/deep-research` + `/follow-best-practice` (never pinned in this file — per `/update-devin-global-skills`); check the latest Bun native APIs via `/learn-from-cli` (`bun --help`)
+- Packages: `bun`, `cac` (ESM-only — `cli.on` → `cli.addEventListener`), `picocolors`, `bunup` — always confirm the latest versions with `/deep-research` + `/follow-best-practice` (never pinned in this file — per `/update-agents-skills-global`); check the latest Bun native APIs via `/learn-from-cli` (`bun --help`)
 
 ## Execute
 

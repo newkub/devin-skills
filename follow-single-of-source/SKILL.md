@@ -4,12 +4,12 @@ description: Single source of truth — one canonical definition, everything els
 argument-hint: "[topic-or-file]"
 related:
   - follow-best-practice
-  - update-devin-global-skills
+  - update-agents-skills-global
   - new-skills
   - idea-merge
   - refactor
   - use-lib-effective
-  - review-devin-global-harness
+  - review-dot-agents-global-and-fix
   - update-references
   - update-config
 ---
@@ -69,11 +69,11 @@ Use when creating/editing skills, docs, config, or data that could become duplic
 - If duplication is truly required (e.g. performance/embedding) → add a drift check or sync note
 - Always edit the canonical; never edit a derived copy directly
 - Use `/follow-best-practice` if needed
-- Use `/update-devin-global-skills` if needed
+- Use `/update-agents-skills-global` if needed
 - Use `/new-skills` if needed
 - Use `/idea-merge` if needed
 - Use `/refactor` if needed
-- Use `/review-devin-global-harness` if needed
+- Use `/review-dot-agents-global-and-fix` if needed
 - Use `/update-config` if needed
 
 

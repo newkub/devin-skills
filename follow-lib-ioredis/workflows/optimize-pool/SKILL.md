@@ -1,5 +1,5 @@
 ---
-name: follow-lib-ioredis-optimize pool
+name: follow-lib-ioredis-optimize-pool
 description: optimize ioredis — pipelining, connection reuse, retry/offline queue tuning
 argument-hint: "[command-or-scope]"
 related:

@@ -22,10 +22,14 @@ For a new standalone Lua project (not an embedded host plugin); first confirm th
 
 ### 1. Install The Toolchain
 
+> Goal: Install The Toolchain.
+
 1. `mise use -g lua` (or the host's bundled runtime) and LuaRocks; verify `lua -v` / `luajit -v` / `luarocks --version` (see `references/toolchain.md`)
 2. Install project tools: `luarocks install luacheck`, `luarocks install busted`; a formatter (e.g. StyLua) per project choice
 
 ### 2. Scaffold
+
+> Goal: Scaffold.
 
 1. Create the layout: `src/` source, `spec/` tests, `docs/`, `assets/` as needed
 2. Entry `src/main.lua` requires the `config` and `utils` modules and calls `main()`
@@ -33,16 +37,22 @@ For a new standalone Lua project (not an embedded host plugin); first confirm th
 
 ### 3. Configure
 
+> Goal: Configure.
+
 1. `.luacheckrc`: set `std` to match the chosen dialect (live-checked, not copied from a template); gate unused/undefined globals
 2. `.luarc.json` (LuaLS): `runtime.version` matching the dialect, `workspace.library = ["./src"]`; add host globals to `diagnostics.globals` when embedding
 3. Keep configs to overrides only per `/follow-default-config`; `.gitignore` for `*.luac`, `tmp/`, logs
 
 ### 4. Add A First Test
 
+> Goal: Add A First Test.
+
 1. `spec/main_spec.lua` with `describe`/`it` (busted); name test files `*_spec.lua`
 2. Run `busted` — it must pass before any feature work starts
 
 ### 5. Verify
+
+> Goal: Verify.
 
 1. `lua src/main.lua` runs; `busted` passes; `luacheck src spec` is clean
 2. On failure → run `/resolve-errors`

@@ -123,7 +123,7 @@ env:
 
 ```bash
 #### Install via Foundry
-curl -fsSL https://signoz.io/foundry.sh | bash
+curl -fsSL https://signoz.io/foundry.sh -o /tmp/signoz-foundry.sh && bash /tmp/signoz-foundry.sh
 
 #### Create casting.yaml
 #### flavor: compose

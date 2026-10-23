@@ -3,7 +3,7 @@ name: read-related
 description: Read and summarize related skills recursively
 argument-hint: "[skill-name]"
 related:
-  - review-devin-global-harness
+  - review-dot-agents-global-and-fix
   - report
   - suggest-next-action
   - deep-review
@@ -23,7 +23,7 @@ Use before writing or editing a skill, to gather the needed context
 
 > Goal: read the related skills
 
-1. Run `/review-devin-global-harness` to build the dependency graph and summarize skills
+1. Run `/review-dot-agents-global-and-fix` to build the dependency graph and summarize skills
 
 ### 2. Synthesize And Report
 
@@ -38,9 +38,9 @@ Use before writing or editing a skill, to gather the needed context
 
 ### 1. Orchestration Only
 
-- Act as an orchestrator calling `/review-devin-global-harness` directly — do not redo the work
+- Act as an orchestrator calling `/review-dot-agents-global-and-fix` directly — do not redo the work
 - Do not use `/deep-review` — it would duplicate the related-context reading
-- Do not duplicate the content of `/review-devin-global-harness`
+- Do not duplicate the content of `/review-dot-agents-global-and-fix`
 
 ### 2. Output
 

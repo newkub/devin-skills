@@ -4,7 +4,7 @@ description: Create a Devin CLI plugin bundling skills, rules, agents, hooks, an
 argument-hint: "[plugin-name]"
 related:
   - follow-create-sdk
-  - update-devin-global-skills
+  - update-agents-skills-global
   - deep-review
   - ship
   - update-references
@@ -18,7 +18,7 @@ Create a Devin CLI plugin that bundles skills, rules, agents, hooks, and MCP ser
 
 Use for creating a new plugin or improving an existing one so it can be installed and shared via GitHub repo, git URL, or local folder
 
-- Devin CLI is not published on npm (the `devin` npm package = unrelated stub) — check the version with `devin --version`; always confirm the latest docs/format with `/deep-research` + `/follow-best-practice` (per `/update-devin-global-skills`)
+- Devin CLI is not published on npm (the `devin` npm package = unrelated stub) — check the version with `devin --version`; always confirm the latest docs/format with `/deep-research` + `/follow-best-practice` (per `/update-agents-skills-global`)
 
 ## Execute
 
@@ -46,7 +46,7 @@ Use for creating a new plugin or improving an existing one so it can be installe
 
 1. Create the root directory `<plugin-name>/`
 2. Create `.devin-plugin/plugin.json` for the manifest
-3. Create `skills/` and the sub-skills per `/update-devin-global-skills`
+3. Create `skills/` and the sub-skills per `/update-agents-skills-global`
 4. Create `AGENTS.md` if always-on rules are wanted
 5. Create `rules/` if triggered rules are wanted
 6. Create `agents/` if custom subagents are wanted
@@ -70,7 +70,7 @@ Use for creating a new plugin or improving an existing one so it can be installe
 
 > Goal: create skills inside the plugin
 
-1. Follow `/update-devin-global-skills` for each skill
+1. Follow `/update-agents-skills-global` for each skill
 2. Place `SKILL.md` at `skills/<skill-name>/SKILL.md`
 3. Check that skill names are unique within the plugin
 4. Test invocation with `/<plugin-name>:<skill-name>`
@@ -125,7 +125,7 @@ Use for creating a new plugin or improving an existing one so it can be installe
 ### 1. Plugin Structure
 
 - `.devin-plugin/plugin.json` is required and must have a unique `name`
-- `skills/` holds skill files per `/update-devin-global-skills`
+- `skills/` holds skill files per `/update-agents-skills-global`
 - `AGENTS.md` optional for always-on rules
 - `rules/` optional for triggered rules
 - `agents/` optional for custom subagents (local only)

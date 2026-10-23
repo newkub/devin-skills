@@ -3,6 +3,7 @@ name: follow-tool-linter
 description: Use a linter in the project
 argument-hint: "[scope]"
 related:
+  - follow-tool-viteplus
   - follow-tool-biome
   - follow-tool-eslint
   - follow-tool-formatter
@@ -22,9 +23,11 @@ Use a linter in the project per tech stack
 
 Use linters for projects per tech stack
 
-- Boundary: this skill helps pick and wire a linter into the repo/CI — after picking a tool, use the dedicated skill (`/follow-tool-eslint`, `/follow-tool-biome`) for detailed config; formatting lives in `/follow-tool-formatter`
+- Boundary: this skill helps pick and wire a linter into the repo/CI — after picking a tool, use the dedicated skill (`/follow-tool-eslint`, `/follow-tool-biome`, `/follow-tool-viteplus`) for detailed config; formatting lives in `/follow-tool-formatter`
+- Vite+ projects: `vp lint` (bundled Oxlint) and `vp check` (fmt + lint + type-aware) are the entry points, and Oxlint rules live in the root `vite.config.ts` `lint` block — see `/follow-tool-viteplus`
 - Latest: oxlint `1.85.0`, biome `2.5.14`, eslint `10.11.0`, ruff `0.16.7`, golangci-lint `2.13.2` (verified 2026-09-26)
 - References: [cli](references/cli.md) | [apis](references/apis.md) 
+- References: [Linter — Best Practices](best-practices/linter.md)
 ## Execute
 
 ### 1. Select Linter
@@ -33,7 +36,8 @@ Use linters for projects per tech stack
 
 1. Check the project's tech stack
 2. Pick a suitable linter:
-   - TypeScript/JavaScript: oxlint or biome
+   - TypeScript/JavaScript in a Vite+ project: `vp lint` (bundled Oxlint) — `vp check` for lint + format + type-aware in one pass
+   - TypeScript/JavaScript (non-Vite+): oxlint or biome
    - Rust: clippy
    - Go: golangci-lint
    - Python: ruff
@@ -42,18 +46,19 @@ Use linters for projects per tech stack
 
 > Goal: install and configure the linter
 
-1. Run `/follow-tool-biome` for TypeScript/JavaScript
-2. Run `/follow-tool-eslint` for TypeScript/JavaScript
-3. For oxlint: `bun add -D oxlint` then `bunx oxlint` — for type-aware rules, install `oxlint-tsgolint` as well
-4. Run `clippy` for Rust (`rustup component add clippy` then `cargo clippy`)
-5. For Python: `pipx install ruff` then `ruff check` (+ `ruff format` for the formatter)
-6. For Go: `mise use -g golangci-lint` then `golangci-lint run`
+1. Run `/follow-tool-viteplus` for a Vite+ project — lint rules go in the root `vite.config.ts` `lint` block, type-aware rules need both `lint.options.typeAware` and `lint.options.typeCheck`
+2. Run `/follow-tool-biome` for TypeScript/JavaScript
+3. Run `/follow-tool-eslint` for TypeScript/JavaScript
+4. For oxlint (non-Vite+): `bun add -D oxlint` then `bunx oxlint` — for type-aware rules, install `oxlint-tsgolint` as well
+5. Run `clippy` for Rust (`rustup component add clippy` then `cargo clippy`)
+6. For Python: `pipx install ruff` then `ruff check` (+ `ruff format` for the formatter)
+7. For Go: `mise use -g golangci-lint` then `golangci-lint run`
 
 ### 3. Validate
 
 > Goal: test the linter and check the configuration
 
-1. Run the linter as a test (e.g. `bun run lint` or `bunx <linter> .`)
+1. Run the linter as a test (e.g. `vp lint`, `bun run lint`, or `bunx <linter> .`)
 2. Check the configuration — effective rules match the intent, files that should be ignored aren't linted
 3. Do `/run-verify` for a combined lint + typecheck check
 
@@ -61,8 +66,8 @@ Use linters for projects per tech stack
 
 > Goal: the linter runs in CI and pre-commit
 
-1. Add a lint step in CI (`/follow-tool-github-actions` for GitHub Actions) — use check mode, not fix
-2. git hooks for linting staged files: a repo with `.moon/workspace.yml` → moon's `vcs.hooks`, e.g. `moon run :lint --affected --status=staged` (see `/follow-tool-moonrepo`); other repos or parallel staged-file linting → `/follow-tool-hk`
+1. Add a lint step in CI (`/follow-tool-github-actions` for GitHub Actions) — use check mode, not fix; a Vite+ project runs `vp check` (add `--deny-warnings` for a zero-warning gate)
+2. git hooks for linting staged files: a Vite+ project → `vp staged` with `staged: { '*': 'vp check --fix' }` in the root `vite.config.ts`; a repo with `.moon/workspace.yml` → moon's `vcs.hooks`, e.g. `moon run :lint --affected --status=staged` (see `/follow-tool-moonrepo`); other repos or parallel staged-file linting → `/follow-tool-hk`
 3. Use `--max-warnings 0` or the equivalent in CI when a zero-warning gate is wanted
 4. On failing lint findings → do `/resolve-errors` before committing
 
@@ -78,6 +83,7 @@ Use linters for projects per tech stack
 
 - Use `/resolve-errors` when errors are found
 
+- Use `/follow-tool-viteplus` for a Vite+ project (`vp lint`, `vp check`, `vp staged`)
 - Use `/follow-tool-biome` for detailed Biome config
 - Use `/follow-tool-eslint` for detailed ESLint config
 - Use `/follow-tool-formatter` for the formatter (separate from lint)

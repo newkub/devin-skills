@@ -20,6 +20,8 @@ Use the Drizzle Relational Query Builder (RQB) — `db.query.<table>` API, `with
 
 ### 1. RQB Basics
 
+> Goal: RQB Basics.
+
 ```ts
 const db = drizzle(client, { schema })   // schema required for db.query API
 
@@ -33,6 +35,8 @@ await db.query.users.findMany({
 ```
 
 ### 2. Selection And Relations
+
+> Goal: Selection And Relations.
 
 ```ts
 await db.query.users.findMany({
@@ -54,6 +58,8 @@ await db.query.users.findMany({
 
 ### 3. When To Use SQL-Style Instead
 
+> Goal: When To Use SQL-Style Instead.
+
 ```ts
 // joins manual, aggregations, unions, subqueries → select() API
 await db.select({ u: users, count: count(posts.id) })
@@ -65,6 +71,8 @@ await db.select({ u: users, count: count(posts.id) })
 - `count()`, `avg()`, `sum()`, `sql<>` raw expressions, `getViewSelectedFields`
 
 ### 4. Pagination Patterns
+
+> Goal: Pagination Patterns.
 
 - Offset: `limit`+`offset` (simple); cursor: `where(gt(id, cursor))` + `limit` + orderBy (scalable)
 - RQB `limit` in `with` levels = per-parent limit (v0.31+ `limit` semantics — check the docs version)

@@ -1,5 +1,5 @@
 ---
-name: follow-tool-github-actions-optimize ci
+name: follow-tool-github-actions-optimize-ci
 description: Tune GitHub Actions CI — caching, matrix, concurrency, artifact reuse for speed
 argument-hint: "[scope]"
 related:

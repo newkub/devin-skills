@@ -25,20 +25,28 @@ For a fresh TypeScript project; live-check the latest stable TypeScript and its 
 
 ### 1. Pin The Runtime And Compiler
 
+> Goal: Pin The Runtime And Compiler.
+
 1. `mise use -g node` (or `bun`) at the live-checked version; `npm install -D typescript` at the latest stable — versions resolve from the live check, never from memory
 
 ### 2. Scaffold
+
+> Goal: Scaffold.
 
 1. `npm init` (or `bun init`) with `"type": "module"`; layout `src/` + `tests/` (or co-located `*.test.ts`)
 2. `tsconfig.json`: `strict: true` plus the enhanced checks listed in Step 1 of [../../SKILL.md](../../SKILL.md) — overrides only per `/follow-default-config`; verify each option still exists via `/check-types-definition` on the installed compiler
 
 ### 3. Quality Tools As Dev Deps
 
+> Goal: Quality Tools As Dev Deps.
+
 1. Linter/formatter per `/follow-my-techstack` (Biome default; `@typescript-eslint` only when a required rule lives there)
 2. `vitest` + `expect-type`; one passing smoke test from the first commit
 3. Scripts in `package.json`: `typecheck` (`bun check` when Bun ≥ 1.4 is available, else `tsc --noEmit`), `lint`, `test`
 
 ### 4. Verify
+
+> Goal: Verify.
 
 1. `bun check` (or `tsc --noEmit`) clean → lint/format check clean → `vitest run` green → `bunx type-coverage --detail` shows no `any`
 2. On failure → run `/resolve-errors`

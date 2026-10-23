@@ -72,7 +72,7 @@ Use when the user only says "I want to build.../I want features..." without a de
 
 1. Ask with `/ask-me` 1-4 questions per step — goal, users, scope, priorities; if the user is unsure → offer options + a recommendation
 2. Keep asking until fully understood → summarize as short bullets in chat for the user to confirm — never create report files
-3. After confirmation → continue to Step 5 to suggest actions, or hand off to `/idea-features`, `/implement-to-production`, `/create-plan-in-dot-devin` per context
+3. After confirmation → continue to Step 5 to suggest actions, or hand off to `/idea-features`, `/implement-to-production`, `/create-plan-in-dot-agents` per context
 
 ### 5. Evaluate Priority
 

@@ -28,7 +28,7 @@
 | fuzzy pick | `fzf` / `tv` (television) | installed | interactive |
 | search & replace | `sad` | installed (scoop) | bulk edits |
 | count LOC | `scc` / `loc` / `rloc` | installed | `/follow-tool-loc` |
-| disk usage | `dua` / `duf` | installed | `/cleanup-files-in-computer` |
+| disk usage | `dua` / `duf` | installed | `/cleanup-disk-computer` |
 | secrets scan | `gitleaks` | installed | `/check-secrets` |
 | copy-paste detection | `jscpd` | installed | `/deep-review` (`code-quality`) |
 | reuse existing code / dedup | `rg` + `sg` + `jscpd` | installed | `/use-lib-effective` `### 5` |
@@ -71,7 +71,7 @@
 | package manager (alt) | `aube` / `pnpm` / `ni` | installed | `/follow-tool-aube` |
 | monorepo tasks | `moon` / `task` | installed | `/follow-monorepo` |
 | version bumps | `taze` / `changelogen` | installed | `/follow-tool-taze`, `/follow-tool-changelogen` |
-| lint/format JS/TS | `biome` / `oxlint` / `oxfmt` | installed | `/run-lint`, `/run-format` |
+| lint/format JS/TS | `biome` / `oxlint` / `oxfmt` / `bun fmt` (built in) | installed | `/run-lint`, `/run-format` |
 | test coverage to target | project coverage runner (`vitest`/`jest`/`c8`/`cargo-llvm-cov` per project) | per project | `/run-test coverage` (→ `/deep-test coverage`) |
 | fast typecheck | `tsc` (`typescript@7` native) / `vue-tsc` | installed | `/run-typecheck` |
 | watch + rerun | `watchexec` | installed | `/run-watch` |
@@ -85,7 +85,7 @@
 | build devtool once, mount anywhere | `devframe` | `bun add devframe` (+ `cac` peer) | `/follow-tool-devfra` |
 | bundle analyze/visualize (source-map accurate) | `sonda` (bundler plugin) | `bun add -D sonda` | `/follow-tool-sonda`, `/report-bundle` |
 | inspect node_modules (tree, dupes, sizes) | `node-modules-inspector` | `bunx node-modules-inspector` | `/follow-tool-node-modules-inspector`, `/report-bundle` |
-| cleanup dev dirs | `clean-dev-dirs` / `npkill` / `gleanup` / `cargo-sweep` | installed | `/cleanup-files-in-computer` |
+| cleanup dev dirs | `clean-dev-dirs` / `npkill` / `gleanup` / `cargo-sweep` | installed | `/cleanup-disk-computer` |
 | OCI image from source | `nixpacks` | installed (scoop) | `/follow-create-docker` |
 
 ## Browser And Capture

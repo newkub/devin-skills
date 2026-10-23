@@ -1,5 +1,5 @@
 ---
-name: follow-tool-vitest-optimize tests
+name: follow-tool-vitest-optimize-tests
 description: Tune Vitest test performance — isolation, pool options, sharding, watch excludes
 argument-hint: "[scope]"
 related:

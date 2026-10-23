@@ -23,6 +23,7 @@ Define guidelines for developing Vue.js applications with Vue 3.5+, the Composit
 For Vue 3 projects on either Vite 8 or Nuxt 4 (Vue 3.5.43 is the latest stable, Vue 3.6 is still in RC — `3.6.0-rc.8`)
 
 - Latest: `vue@3.5.43` / `vue-router@5.3.1` / `pinia@4.0.3` / `vite@8.3.1` / `nuxt@4.5.2` (verified 2026-09-26)
+- References: [Vue — Best Practices](best-practices/vue.md), [apis](references/apis.md), [cli](references/cli.md)
 
 ## Execute
 

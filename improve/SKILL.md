@@ -8,15 +8,6 @@ related:
   - report-review
   - suggest-next-action
   - ask-me
-  - follow-tool-unlighthouse
-  - follow-tool-takumi
-  - follow-lib-unocss
-  - follow-lib-shiki
-  - follow-lib-comark
-  - follow-tool-knip
-  - follow-tool-jscpd
-  - follow-tool-gitleaks
-  - follow-tool-semgrep
 ---
 
 ## Goal
@@ -31,21 +22,9 @@ Use when the user asks what this scope "should improve" without naming a domain 
 - If the scope is metric-driven (bundle, latency, cost, cache hit...) → use `/optimize` instead; never fix perf ad-hoc in the improve path
 - If you want to fix with per-item confirmation → run `/deep-review <scope> then-fix` directly
 
-### Tools And Libraries
-
-Hints per scope — run the tool for deterministic evidence before judging a finding; not every row is mandatory:
-
-| Scope | Skills |
-|-------|--------|
-| `a11y`, `form` | `follow-tool-unlighthouse` |
-| `seo`, `web` | `follow-tool-unlighthouse`, `follow-tool-takumi` |
-| `uxui` | `follow-lib-unocss`, `follow-lib-shiki`, `follow-lib-comark` |
-| `code-quality`, `consistency` | `follow-tool-knip`, `follow-tool-jscpd` |
-| `security`, `privacy` | `follow-tool-gitleaks`, `follow-tool-semgrep` |
-
 ## References
 
-- `references/scope-map.md` — the SSOT table: every scope → review domain(s) + ownership/boundary (merges the single `/follow-improve` that was folded into this skill)
+- `references/scope-map.md` — the SSOT table: every scope → review domain(s) + ownership/boundary (merges the single `/follow-improve` that was folded into this skill); `## Evidence Tools` there lists the per-scope evidence tools
 
 ## Execute
 
@@ -75,6 +54,6 @@ Hints per scope — run the tool for deterministic evidence before judging a fin
 
 ## Expected Outcome
 
-- A prioritized improvement list from `/deep-review` with a coverage matrix
+- A prioritized improvement list from `/deep-review`, carrying the coverage matrix built by `deep-review-codebase-everything` `### 4. Report`
 - All findings are routed to `/deep-review <scope> then-fix` per domain and either fixed completely or given a reason for not fixing
 - Metric-driven findings are forwarded to `/optimize` — never mixed into the improve path

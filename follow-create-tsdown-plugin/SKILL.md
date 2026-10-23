@@ -18,7 +18,7 @@ Build tsdown plugins with a Rolldown-compatible plugin API plus tsdown-specific 
 
 Use for building plugins for the `tsdown` bundler in TypeScript, covering plugin objects, hooks, build, tests, and the npm package
 
-- Package: `tsdown` (0.x — API may change) — always confirm the latest version with `/deep-research` + `/follow-best-practice` (not pinned in this file — per `/update-devin-global-skills`); `TsdownPlugin` from `tsdown/plugins` + the `tsdownConfig`/`tsdownConfigResolved` hooks on the Rolldown plugin API
+- Package: `tsdown` (0.x — API may change) — always confirm the latest version with `/deep-research` + `/follow-best-practice` (not pinned in this file — per `/update-agents-skills-global`); `TsdownPlugin` from `tsdown/plugins` + the `tsdownConfig`/`tsdownConfigResolved` hooks on the Rolldown plugin API
 
 ## Execute
 
@@ -151,13 +151,6 @@ Use for building plugins for the `tsdown` bundler in TypeScript, covering plugin
 - Externalize `tsdown`, `rolldown`, `vite` in the build
 - Generate `.d.ts` with `bunup` or `tsdown`
 - Use the `exports` field in `package.json`
-
-### 6. Migration
-
-- Use `bunx tsdown-migrate` to migrate from `tsup`
-- Check the output after migrating
-- Use /follow-create-plugins when needed
-
 
 ## Expected Outcome
 

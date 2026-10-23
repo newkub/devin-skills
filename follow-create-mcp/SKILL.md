@@ -20,7 +20,7 @@ related:
   - deep-review
   - follow-single-responsibility
   - deep-validate
-  - create-devin-global-mcp
+  - update-devin-global-mcp
 
 ---
 
@@ -33,12 +33,12 @@ Build a new MCP server, starting with Rust first and falling back to TypeScript 
 Use when a skill or project needs to expose tools, resources, or prompts over the Model Context Protocol (MCP), supporting stdio, Streamable HTTP, and SSE transports
 
 - Build the server only; do not register it in `mcp_config.json`
-- To register in the Devin global MCP config, use `/create-devin-global-mcp` afterwards
-- To register in the project MCP config, use `/update-devin-project-mcp`
+- To register in the global MCP config, use `/update-devin-global-mcp create` afterwards
+- To register in the project MCP config, use `/update-dot-agents-project`
 
 See also: `/deep-review`, `/follow-lang-rust`, `/follow-lang-typescript`
 
-- SDKs: `@modelcontextprotocol/sdk` (TS — `@modelcontextprotocol/server` is legacy), `rmcp` (Rust official — `cargo add rmcp --features server`) — always confirm the latest versions with `/deep-research` + `/follow-best-practice` (no pinning in this file — per `/update-devin-global-skills`)
+- SDKs: `@modelcontextprotocol/sdk` (TS — `@modelcontextprotocol/server` is legacy), `rmcp` (Rust official — `cargo add rmcp --features server`) — always confirm the latest versions with `/deep-research` + `/follow-best-practice` (no pinning in this file — per `/update-agents-skills-global`)
 
 ## Execute
 
@@ -128,8 +128,8 @@ See also: `/deep-review`, `/follow-lang-rust`, `/follow-lang-typescript`
 ### 4. No Registry In This Skill
 
 - Build the server only; do not register it in `mcp_config.json`
-- To register in the Devin global config, hand off to `/create-devin-global-mcp`
-- To register in the project config, hand off to `/update-devin-project-mcp`
+- To register in the global config, hand off to `/update-devin-global-mcp create`
+- To register in the project config, hand off to `/update-dot-agents-project`
 
 ### 5. Integration
 
@@ -146,4 +146,4 @@ See also: `/deep-review`, `/follow-lang-rust`, `/follow-lang-typescript`
 - Tools/resources/prompts are exposed over the MCP protocol
 - The chosen transport has been tested and passes
 - Passes `/deep-validate` and `/ship`
-- Ready to hand off for registration via `/create-devin-global-mcp` or `/update-devin-project-mcp` if needed
+- Ready to hand off for registration via `/update-devin-global-mcp create` or `/update-dot-agents-project mcp` if needed

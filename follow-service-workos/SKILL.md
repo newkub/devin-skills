@@ -17,6 +17,7 @@ Configure and use WorkOS APIs for authentication and identity management
 ## Scope
 
 Use in projects that need WorkOS SSO, SCIM, User Management, or Admin Portal
+- References: [Package manifest](references/package-manifest.md)
 
 ## Execute
 

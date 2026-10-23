@@ -2,6 +2,12 @@
 name: follow-create-bot-github
 description: Build a GitHub bot with GitHub Apps or Probot — webhooks, events, deploy
 argument-hint: "[features]"
+related:
+  - follow-create-bot
+  - follow-create-bot-github-app
+  - follow-create-bun-cli
+  - follow-tool-github-actions
+  - follow-deploy
 ---
 
 ## Goal
@@ -11,6 +17,7 @@ Build a GitHub bot with GitHub Apps or the Probot framework, with webhook recept
 ## Scope
 
 Use for building a GitHub bot with TypeScript/Bun/Node.js — covers app registration, webhooks (issues, pull requests, push), auth, tests, and deployment
+- Family dispatcher: `/follow-create-bot` — the full GitHub App variant is `/follow-create-bot-github-app`
 
 ## Execute
 
@@ -18,7 +25,7 @@ Use for building a GitHub bot with TypeScript/Bun/Node.js — covers app registr
 
 > Goal: Verify the tech stack before building
 
-1. Run `/deep-research` + `/follow-best-practice` to confirm the latest versions and patterns, following the conventions in `/update-devin-global-skills`
+1. Run `/deep-research` + `/follow-best-practice` to confirm the latest versions and patterns, following the conventions in `/update-agents-skills-global`
 2. Run `/deep-review` to summarize the tech stack in use
 3. Record the stack and library choices with reasons for later reference
 

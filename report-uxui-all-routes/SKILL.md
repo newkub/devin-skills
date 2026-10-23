@@ -22,6 +22,7 @@ Build a report of all routes of an app or website in a markdown table, for plann
 - Identifies route/screen, tab group, method, purpose, actions, entry points
 - Combine with `/report-uxui` to produce the complete wireframe
 - For an ANSI table per the context, use `/report`
+- References: [Website Framework Routing Conventions](references/frameworks.md)
 
 ## Execute
 

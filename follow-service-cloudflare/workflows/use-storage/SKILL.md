@@ -20,6 +20,8 @@ The storage layer of Workers — pick correctly: KV (~64KB-25MB values, eventual
 
 ### 1. Provision And Bind
 
+> Goal: Provision And Bind.
+
 ```bash
 wrangler kv namespace create CACHE
 wrangler r2 bucket create my-bucket
@@ -59,9 +61,13 @@ await env.BUCKET.list({ prefix, limit, cursor })
 
 ### 4. Cache API (optional)
 
+> Goal: Cache API (optional).
+
 - `caches.default` — per-colo HTTP cache for Response objects; good for hot paths that don't need global consistency
 
 ### 5. Verify
+
+> Goal: Verify.
 
 1. `wrangler dev` with a real put/get/delete round trip (local = miniflare-backed)
 2. `/run-test`; fail → `/resolve-errors`

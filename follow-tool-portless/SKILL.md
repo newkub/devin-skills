@@ -104,6 +104,7 @@ PORTLESS=0 pnpm dev                          # bypass the proxy
 ## References
 
 - See `best-practices/portless.md` for recommended patterns and pitfalls
+- References: [apis](references/apis.md), [cli](references/cli.md)
 
 ## Expected Outcome
 

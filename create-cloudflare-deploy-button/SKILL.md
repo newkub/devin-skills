@@ -49,12 +49,12 @@ Make the repo ready for the Deploy to Cloudflare button — when someone clicks 
 > Goal: get a URL correct for the repo structure
 
 1. Base form:
-   ```
+   ```text
    https://deploy.workers.cloudflare.com/?url=<git-repo-url>
    ```
 2. Take the repo URL from `git remote -v` — drop the `.git` suffix, e.g. `https://github.com/<owner>/<repo>`
 3. Monorepo → point at the subdirectory via a tree path:
-   ```
+   ```text
    https://deploy.workers.cloudflare.com/?url=https://github.com/<owner>/<repo>/tree/<branch>/<subdir>
    ```
    the subdirectory must be self-contained including dependencies — otherwise the build fails

@@ -64,7 +64,7 @@ Use before a migration ships, after a data incident, or when a schema and its co
 
 1. Order: backup and rollback path → corruption or data-loss risk → constraint and transaction gaps → schema drift → query and index health → client and analytics consistency
 2. Cross-reference: one missing constraint often explains several orphan, duplicate, or soft-delete findings — fix it once and re-run every query it covers
-3. Large or cross-workspace set → `/create-plan-in-dot-devin`; without `then-fix` stop here with the ordered table
+3. Large or cross-workspace set → `/create-plan-in-dot-agents`; without `then-fix` stop here with the ordered table
 
 ### 5. Fix Through The Owners
 

@@ -23,6 +23,7 @@ Set up Auto for packages and workspaces that need automated releases
 - Boundary: Auto computes the semver bump from PR labels (not commit messages directly) — for changelogs from conventional commits use `/follow-tool-changelogen`, for monorepo multi-package versioning use `/follow-tool-changesets`, for alternatives see `/follow-tool-release-it` and `/follow-tool-semantic-release`
 - Latest: `auto@11.3.6` / `@auto-it/core@11.3.6` (verified 2026-09-13)
 - References: [apis](references/apis.md) | [cli](references/cli.md) 
+- References: [Auto Best Practices](best-practices/release-automation.md)
 ## Execute
 
 ### 1. Install Auto

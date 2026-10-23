@@ -4,10 +4,14 @@ description: Check OS, shell, environment variables, and global root paths
 argument-hint: "[scope]"
 related:
   - check-code-structure
-  - update-devin-global-skills
+  - update-agents-skills-global
   - alternative
   - report
-
+allowed-tools:
+  - exec
+  - grep
+  - glob
+  - find_file_by_name
 ---
 
 ## Goal
@@ -111,11 +115,6 @@ $env:USERPROFILE\.codeium\windsurf\mcp_config.json
 > Goal: Check MCP configuration
 
 1. Run `Get-Content $env:USERPROFILE\.codeium\windsurf\mcp_config.json` to show the MCP config
-
-```powershell
-# Read MCP config
-Get-Content $env:USERPROFILE\.codeium\windsurf\mcp_config.json
-```
 
 ### 6. Check Global Workflows
 
@@ -234,8 +233,7 @@ Report in table format per `/report`:
 - Use a "No." column first, ordered 1, 2, 3, ...
 - Use appropriate headers and alignment
 - Use symbols (✅, ❌, ⚠️) for status
-
-- Use /check-code-structure, /update-devin-global-skills, /alternative if needed
+- Use /check-code-structure, /update-agents-skills-global, /alternative if needed
 
 ## Expected Outcome
 

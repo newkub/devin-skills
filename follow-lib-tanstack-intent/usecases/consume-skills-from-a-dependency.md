@@ -22,7 +22,7 @@ The skill content is generated for one release. A skill discovered from a packag
 
 | Where | Use when |
 |-------|----------|
-| project `.devin/skills/` | the skill is tied to this repo's dependency version |
+| project `.agents/skills/` | the skill is tied to this repo's dependency version |
 | global skills store | the skill is useful in every project at that version |
 
 Project store wins for a versioned library: it travels with the lockfile, so the next developer gets the matching instructions. Global store is for cross-project conventions, not for "whatever version I happened to install here".

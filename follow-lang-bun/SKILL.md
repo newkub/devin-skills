@@ -9,6 +9,7 @@ related:
   - follow-lang-typescript
   - follow-create-bun-cli
   - follow-tool-bunup
+  - follow-tool-viteplus
   - follow-best-practice
   - setup-cicd
   - use-scripts
@@ -83,9 +84,10 @@ For creating or improving projects that run on the Bun runtime, single package a
 
 > Goal: keep configuration in the right files
 
-1. `bunfig.toml` sections: `[install]` (`minimumReleaseAge`, `exact`), `[test]`, `[build]`, runtime/env options — the single config for the Bun toolchain
+1. `bunfig.toml` sections: `[install]` (`minimumReleaseAge`, `exact`), `[test]`, `[build]`, `[fmt]`, runtime/env options — the single config for the Bun toolchain
 2. `package.json` stays the source of truth for scripts, dependencies, workspaces, `trustedDependencies`, `overrides`/`resolutions`
 3. TypeScript: `bun add -d bun-types typescript` and a bundler-style `tsconfig.json` — `"moduleResolution": "bundler"`, `"target"/"lib": "ESNext"`, `"module": "Preserve"`, `"noEmit": true`, `"verbatimModuleSyntax": true`, `"allowImportingTsExtensions": true`, `strict`, `"types": ["bun-types"]`
+4. Formatting: `bun fmt` is the built-in Prettier-compatible formatter (zero install) — configure it in `bunfig.toml [fmt]` (`printWidth`, `tabWidth`, `useTabs`, `semi`, `singleQuote`, `trailingComma`); it reads `.prettierignore`/`.editorconfig`, never `.prettierrc`; Vite+ projects use `vp fmt` instead (`/follow-tool-viteplus`)
 
 ### 8. Use Bun APIs
 
@@ -147,5 +149,5 @@ For creating or improving projects that run on the Bun runtime, single package a
 - Bun project set up per official conventions with a committed `bun.lock`
 - TS/JSX run with no build step; tests pass via `bun test` with coverage
 - Builds/compiles succeed via `bun build`; typecheck passes via `bun check`
-- `bunfig.toml` covers runtime, install, test, and build configuration
+- `bunfig.toml` covers runtime, install, test, build, and format configuration
 - Bun native APIs used appropriately through `/use-bun-native-api`

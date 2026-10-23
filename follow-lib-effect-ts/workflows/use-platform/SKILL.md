@@ -20,6 +20,8 @@ platform services (v3: `@effect/platform`, `platform-node`, `platform-bun`, `pla
 
 ### 1. Install Per Runtime
 
+> Goal: Install Per Runtime.
+
 ```bash
 bun i @effect/platform @effect/platform-bun      # Bun
 # @effect/platform-node (Node), @effect/platform-browser (browser)
@@ -28,6 +30,8 @@ bun i @effect/platform @effect/platform-bun      # Bun
 - Every service is a Tag — provide with the runtime layer: `BunContext.layer`, `NodeContext.layer`
 
 ### 2. Core Services
+
+> Goal: Core Services.
 
 ```ts
 import { FileSystem, Path, Command, Terminal } from "@effect/platform"
@@ -43,6 +47,8 @@ const program = Effect.gen(function* () {
 
 ### 3. HttpServer And HttpClient
 
+> Goal: HttpServer And HttpClient.
+
 ```ts
 // server: HttpServer.router + HttpServer.server.serve()
 const HttpLive = HttpRouter.Default.pipe(Layer.provide(BunHttpServer.layer({ port: 3000 })))
@@ -54,10 +60,14 @@ const HttpLive = HttpRouter.Default.pipe(Layer.provide(BunHttpServer.layer({ por
 
 ### 4. Command And Interop
 
+> Goal: Command And Interop.
+
 - `Command.make("bun", "x", "tsc")` — spawn processes effectfully, stdout capture
 - `Socket` — tcp/ws clients; `KeyValueStore` — KV abstraction (redis/fs/memory)
 
 ### 5. Testability
+
+> Goal: Testability.
 
 - Platform services are mockable via Layer — `FileSystem` has `FileSystem.layerNoop`/test impls
 - Don't import `fs`/`path` directly inside Effect code — always go through platform services

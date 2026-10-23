@@ -20,6 +20,7 @@ Research deeply across multiple sources to get a complete, correct, and current 
 ## Scope
 
 Use for work that needs deep information from many sources, e.g. comparing libraries, finding best practices, checking compatibility, benchmarks, security, migration, licensing. Not for quick lookups (use `/learn-from-web`) and not for reading a single library's docs (use `/follow-best-practice`)
+- References: [AI Documentation Tools](references/ai-docs.md), [Cross-Reference And Validate](references/cross-validate.md), [CRW For Official Docs](references/crw.md), [Freshness And Compatibility](references/freshness.md), [Package And Code Research](references/package-code-research.md), [Source Selection](references/sources.md), [Synthesize Findings](references/synthesize.md), [Topic And Scope](references/topic-and-scope.md), [Web Search](references/websearch.md)
 
 ## Execute
 

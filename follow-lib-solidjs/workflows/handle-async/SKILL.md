@@ -20,6 +20,8 @@ async lifecycle — `createResource`, `Suspense`, `ErrorBoundary` integration, `
 
 ### 1. createResource
 
+> Goal: createResource.
+
 ```ts
 const [data, { refetch, mutate }] = createResource(userId, fetchUser)
 // userId() changes → auto refetch (source signal)
@@ -36,6 +38,8 @@ refetch()        // re-fetch
 
 ### 2. Suspense And Boundaries
 
+> Goal: Suspense And Boundaries.
+
 ```tsx
 <Suspense fallback={<Spinner />}>
   <Profile />         {/* uses data() — suspends until resolved */}
@@ -48,6 +52,8 @@ refetch()        // re-fetch
 
 ### 3. Transitions And Deferred
 
+> Goal: Transitions And Deferred.
+
 ```ts
 const [pending, start] = useTransition()
 start(() => setTab('heavy'))    // keeps the old UI until the new branch resolves
@@ -57,6 +63,8 @@ start(() => setTab('heavy'))    // keeps the old UI until the new branch resolve
 - `createDeferred` — defer an expensive computed (debounce-like)
 
 ### 4. Code Split And SSR
+
+> Goal: Code Split And SSR.
 
 - `const Heavy = lazy(() => import('./Heavy'))` — component code split + Suspense-ready
 - SSR: `Suspense` streaming — the page renders first, pending chunks stream in after (SolidStart)

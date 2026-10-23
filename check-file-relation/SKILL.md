@@ -7,6 +7,11 @@ related:
   - deep-review
   - check-code-structure
 
+allowed-tools:
+  - exec
+  - grep
+  - glob
+  - find_file_by_name
 ---
 
 ## Goal
@@ -19,7 +24,7 @@ Rust CLI that detects the dependency graph between files from import statements 
 - Built-in extractors: `import`/`export from`/`require`/dynamic `import()` (JS/TS family), `use`/`mod`/`crate::`/`super::` (Rust), `import` (Go), `import`/`from x import` (Python), `import` (Java/Kotlin), `using` (C#)
 - Custom patterns via `--pattern '<regex>'` (repeatable, first capture group = module specifier)
 - Resolve relative/`crate::`/`@/`/`~/` paths to real files (filling in extensions, `index.*`, `mod.rs`, `__init__.py`)
-- Single source: `src/main.rs` + `Cargo.toml` — deps: `ignore`, `regex`, `serde`/`serde_json`, `globset`
+- Module layout: `src/main.rs` (CLI entry) + `src/args.rs` (flags/usage) + `src/walk.rs` (file discovery) + `src/resolve.rs` (specifier resolution) + `src/graph.rs` (import extraction/ordering) + `src/concat.rs` (bundler) + `Cargo.toml` — deps: `ignore`, `regex`, `serde_json`, `globset`
 
 ## Execute
 

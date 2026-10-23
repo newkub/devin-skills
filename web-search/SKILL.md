@@ -27,7 +27,7 @@ Find current web sources, read them, and return cited, token-efficient results u
 
 > Goal: know the tool works before promising results
 
-1. `crw --version` — missing → install: `curl -fsSL https://fastcrw.com/install | sh`, or `cargo install crw-cli`; `bunx crw-mcp` only for MCP use
+1. `crw --version` — missing → install: `curl -fsSL https://fastcrw.com/install -o /tmp/crw-install.sh && sh /tmp/crw-install.sh`, or `cargo install crw-cli`; `bunx crw-mcp` only for MCP use
 2. First run → `crw setup`; hosted mode needs `CRW_API_KEY`, self-hosted needs none
 3. Unavailable and cannot install → state the limit and fall back to the built-in search or fetch
 

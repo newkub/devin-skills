@@ -23,6 +23,7 @@ Use for projects that need automated changelog generation and release management
 - Boundary: changelogen generates a changelog + bumps versions from conventional commits in a single git repo — for monorepo multi-package versioning use `/follow-tool-changesets`; for PR-label-based releases use `/follow-tool-auto-it`; for full release pipelines see `/follow-tool-release-it` or `/follow-tool-semantic-release`
 - Latest: `changelogen@0.6.2` (verified 2026-09-13)
 - References: [apis](references/apis.md) | [cli](references/cli.md) 
+- References: [Changelogen Best Practices](best-practices/changelog-releases.md)
 ## Execute
 
 ### Workflows

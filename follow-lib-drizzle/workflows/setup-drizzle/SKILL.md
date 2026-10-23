@@ -35,7 +35,7 @@ Install Drizzle ORM, the driver, and `drizzle-kit`, then create `drizzle.config.
 > Goal: install `drizzle-orm`, the driver, and `drizzle-kit`
 
 1. Run `bun add drizzle-orm` then `bun add -D drizzle-kit` (or the package manager matching the lockfile)
-2. Install the driver per runtime/database — see [../../references/components/drivers.md](../../references/components/drivers.md)
+2. Install the driver per runtime/database
 3. Confirm the dependencies landed correctly in `package.json` (`drizzle-orm` as a runtime dep, `drizzle-kit` as dev)
 4. If unsure about a version/API → run `/learn-from-web` to check the official docs
 
@@ -43,7 +43,7 @@ Install Drizzle ORM, the driver, and `drizzle-kit`, then create `drizzle.config.
 
 > Goal: create the minimal necessary config
 
-1. Create `drizzle.config.ts` with `defineConfig` — see [../../references/components/config.md](../../references/components/config.md)
+1. Create `drizzle.config.ts` with `defineConfig`
 2. Specify `dialect`, `schema`, `out` and `dbCredentials.url` read from `DATABASE_URL`
 3. Specify `driver` only when using a special driver (`turso`, `d1-http`, `pglite`, `neon-http`, etc.)
 4. Never hardcode credentials — store secrets via `/follow-secret-manager`
@@ -52,7 +52,7 @@ Install Drizzle ORM, the driver, and `drizzle-kit`, then create `drizzle.config.
 
 > Goal: create `schema.ts` and the db client exporting `db`
 
-1. Create `src/db/schema.ts` with `pgTable`/`mysqlTable`/`sqliteTable` per the dialect — see [../../references/api/schema.md](../../references/api/schema.md)
+1. Create `src/db/schema.ts` with `pgTable`/`mysqlTable`/`sqliteTable` per the dialect
 2. Create types with `typeof table.$inferSelect` and `$inferInsert`; define `relations()` if using relational queries
 3. Create `src/db/index.ts` that calls `drizzle(url, { schema })` then exports the `db` instance — for SQLite enable WAL mode (`PRAGMA journal_mode = WAL`)
 4. Never expose credentials in source code

@@ -13,7 +13,7 @@ related:
   - follow-create-rust-cli
   - follow-tool-git
   - refactor
-  - update-devin-global-skills
+  - update-agents-skills-global
 
 ---
 
@@ -79,7 +79,7 @@ This skill ships a Rust CLI for fast checks and use outside Devin.
 - Use /follow-create-rust-cli if needed
 - Use /follow-tool-git if needed
 - Use /refactor if needed
-- Use /update-devin-global-skills if needed (should update)
+- Use /update-agents-skills-global if needed (should update)
 
 ## Expected Outcome
 

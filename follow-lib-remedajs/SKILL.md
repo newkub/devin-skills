@@ -25,6 +25,7 @@ Use when the task involves `remeda` — installation, array/object/string/number
 - `debounce` deprecated → use `funnel`; `pathOr` deprecated → use `defaultTo(prop(obj, ...path), fallback)`
 - If you need a full effect system (lazy programs, fibers, supervision) → `/follow-lib-effect-ts`; Remeda is a pure utility library with no async/effect primitives
 - See best-practices/ for recommended patterns and pitfalls
+- References: [Remeda — Best Practices](best-practices/remedajs.md)
 
 ## Execute
 

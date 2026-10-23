@@ -62,7 +62,7 @@ Verify that coverage reaches 100% in every category; if not, write tests and re-
 
 1. If coverage reaches 100% → report framework, metrics, report location
 2. If below 100% → report remaining gaps, failing categories, next step
-3. Persist raw results → `.devin/temp/report/<workspace>/coverage-<time>.md` per the `/create-report-in-dot-devin` format — metrics table + gaps so `/update-docs` can reuse them
+3. Persist raw results → `.devin/temp/report/<workspace>/coverage-<time>.md` per the `/create-report-to-dot-agents` format — metrics table + gaps so `/update-docs` can reuse them
 4. Run `/suggest-next-action`
 
 ## Rules

@@ -16,7 +16,7 @@ Set up and manage Neovim plugins with `lazy.nvim` per best practices
 
 Use for projects that create or manage Neovim plugins
 
-- Packages: Neovim >= 0.8.0 + `lazy.nvim` — always confirm the latest versions with `/deep-research` + `/follow-best-practice` (no pinning in this file — per `/update-devin-global-skills`)
+- Packages: Neovim >= 0.8.0 + `lazy.nvim` — always confirm the latest versions with `/deep-research` + `/follow-best-practice` (no pinning in this file — per `/update-agents-skills-global`)
 - Neovim 0.12 ships the built-in `vim.pack` plugin manager — an acceptable alternative to lazy.nvim when advanced lazy-loading features aren't needed
 
 ## Execute

@@ -4,7 +4,7 @@ description: Enforce following deep-review — run/read findings before planning
 argument-hint: "[scope]"
 related:
   - deep-review
-  - create-plan-in-dot-devin
+  - create-plan-in-dot-agents
   - report
   - suggest-next-action
 ---
@@ -15,7 +15,7 @@ Ensure the next piece of work follows `/deep-review` — always have the latest 
 
 ## Scope
 
-Use before `/create-plan-in-dot-devin`, implementation, or refactoring that needs evidence from review — aggregate findings from a `/deep-review` report or dimensional reviews already run
+Use before `/create-plan-in-dot-agents`, implementation, or refactoring that needs evidence from review — aggregate findings from a `/deep-review` report or dimensional reviews already run
 
 - See also: /deep-review (the `then-fix` argument adds the fix pass)
 
@@ -50,7 +50,7 @@ Use before `/create-plan-in-dot-devin`, implementation, or refactoring that need
 > Goal: summarize how the findings were used
 
 1. Run `/report` with columns: `No.`, `Finding`, `Severity`, `Action`, `Mapped To`
-2. Run `/suggest-next-action` — normally `/create-plan-in-dot-devin` or `/deep-review then-fix`
+2. Run `/suggest-next-action` — normally `/create-plan-in-dot-agents` or `/deep-review then-fix`
 
 ## Rules
 
@@ -66,5 +66,5 @@ Use before `/create-plan-in-dot-devin`, implementation, or refactoring that need
 
 - The latest findings are always ready before the main work starts
 - Every in-scope Critical/High finding is mapped to the work
-- The next task (`/create-plan-in-dot-devin`, implementation) has a clear evidence base
+- The next task (`/create-plan-in-dot-agents`, implementation) has a clear evidence base
 - The findings → actions mapping report is complete

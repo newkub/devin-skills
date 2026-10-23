@@ -21,6 +21,7 @@ For Rust projects that want to reuse build artifacts across checkouts/worktrees/
 - Boundary: if you need to cache other compilers beyond Rust/C/C++ or distributed compilation → use `sccache`; mbx already defers to a `RUSTC_WRAPPER` pointing at another cache
 - Latest: `mbx@1.18.0` (verified 2026-09-26, GitHub `jdx/mr-boxington` releases) — crate name `mbx`, mise tool name `mr-boxington`
 - References: [API + CLI tables](references/apis.md), [cli](references/cli.md)
+- References: [mbx (Mr Boxington) — Shared Cargo Build Cache](best-practices/mbx.md)
 
 ## Execute
 

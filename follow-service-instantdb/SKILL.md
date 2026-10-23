@@ -28,6 +28,7 @@ Used for:
 Not included:
 - Creating UI components per framework (use `follow-lib-react`, `follow-create-web` (nextjs), etc.)
 - Self-hosting (see official docs)
+- References: [Apis](references/apis.md), [Instantdb cli](references/instantdb-cli.md), [Instantdb website](references/instantdb-website.md), [Package manifest](references/package-manifest.md), [Routes](references/routes.md), [Website](references/website.md)
 
 ## Execute
 

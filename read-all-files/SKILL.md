@@ -7,7 +7,7 @@ related:
   - deep-analyze
   - report-file-structure
   - read-devin-context
-  - update-devin-global-skills
+  - update-agents-skills-global
 ---
 
 ## Goal
@@ -80,7 +80,7 @@ CLI engine: `<skills>/check-file-relation/target/release/check-file-relation.exe
 - Skip unrelated files — scope with `--include`/`--ext`/`--from`
 - The output may contain secrets → run `/check-secrets` before feeding it to an LLM
 - Use /read-devin-context if needed
-- If reading to improve devin global skills → pair with `/update-devin-global-skills`
+- If reading to improve devin global skills → pair with `/update-agents-skills-global`
 
 ## Expected Outcome
 

@@ -1,6 +1,3 @@
-[submodule "open-devin-in-web"]
-	path = open-devin-in-web
-	url = ../open-devin-in-web.git
 [submodule "open-files-in-web"]
 	path = open-files-in-web
 	url = ../open-files-in-web.git

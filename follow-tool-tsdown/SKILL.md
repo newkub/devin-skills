@@ -5,6 +5,7 @@ argument-hint: "[scope]"
 related:
   - follow-tool-rolldown
   - follow-tool-vite
+  - follow-tool-viteplus
   - follow-tool-bunup
   - follow-create-plugins
   - follow-tool-turborepo
@@ -21,7 +22,7 @@ Set up tsdown as a TypeScript library bundler on Rolldown, with type declaration
 
 Use for TypeScript library projects that need bundling to ESM/CJS/IIFE with `.d.ts` generation
 
-- Boundary: use tsdown when bundling a library (publish to a registry) — app bundling/dev server → `/follow-tool-vite`; raw bundler tuning → `/follow-tool-rolldown`; an alternative library bundler → `/follow-tool-bunup`; migrating from `tsup` → `workflows/migrate-from-tsup`
+- Boundary: use tsdown when bundling a library (publish to a registry) — app bundling/dev server → `/follow-tool-vite`; raw bundler tuning → `/follow-tool-rolldown`; an alternative library bundler → `/follow-tool-bunup`; inside a Vite+ project `vp pack` wraps tsdown → `/follow-tool-viteplus`
 - Latest: `tsdown@0.23.0` (verified 2026-09-13) — requires Node.js `^22.18.0 | ^24.11.0 | >=26.0.0` at build time (output target can be lower via `target`)
 
 ## Execute
@@ -88,7 +89,6 @@ Use for TypeScript library projects that need bundling to ESM/CJS/IIFE with `.d.
 | Topic | Workflow |
 |-------|----------|
 | first-time setup (install, config, entry/dts/sourcemap) | `workflows/setup-tsdown/SKILL.md` |
-| migrate from tsup | `workflows/migrate-from-tsup/SKILL.md` |
 
 ## Rules
 
@@ -116,11 +116,7 @@ Use for TypeScript library projects that need bundling to ESM/CJS/IIFE with `.d.
 - Use the `vue` or `react` dts option when working with a framework
 - Verify all `.d.ts` files are generated
 
-### 5. Migration
-
-- Use `bunx tsdown-migrate` to migrate from `tsup`
-- Verify the output stays the same after migration
-- Fix incompatible config
+### 5. Related
 
 - Use /follow-tool-rolldown if needed
 - Use /follow-tool-vite if needed
@@ -133,6 +129,7 @@ Use for TypeScript library projects that need bundling to ESM/CJS/IIFE with `.d.
 ## References
 
 - [CLI reference](references/cli.md)
+- References: [tsdown — Best Practices](best-practices/tsdown.md), [apis](references/apis.md)
 
 
 ## File Structure

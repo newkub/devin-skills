@@ -14,6 +14,7 @@ Use the Bun shell runtime to execute commands and shell operations via `bun -e` 
 ## Scope
 
 Use `use-bun-shell` only for the tasks and workflows it covers (bun shell)
+- References: [Package Manifest](references/package-manifest.md)
 
 ## Execute
 

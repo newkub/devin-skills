@@ -25,6 +25,7 @@ Boundaries:
 
 - Latest: `dompurify@3.4.16` (verified 2026-09-24)
 - References: [apis](references/apis.md) 
+- References: [DOMPurify — Best Practices](best-practices/dompurify.md)
 ## Execute
 
 ### 1. Install

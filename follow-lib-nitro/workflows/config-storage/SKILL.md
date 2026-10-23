@@ -20,6 +20,8 @@ server-side caching/storage — unstorage mounts, route rules (`cache`, `swr`, `
 
 ### 1. useStorage Basics
 
+> Goal: useStorage Basics.
+
 ```ts
 const storage = useStorage()                    // default mount
 await storage.setItem('key', value)
@@ -31,6 +33,8 @@ await storage.getKeys('prefix:')
 - Mounts: `useStorage('cache')` / `useStorage('data')` — separate namespaces per driver
 
 ### 2. Mounts And Drivers
+
+> Goal: Mounts And Drivers.
 
 ```ts
 // nitro.config.ts
@@ -47,6 +51,8 @@ export default defineNitroConfig({
 
 ### 3. Route Rules Caching
 
+> Goal: Route Rules Caching.
+
 ```ts
 routeRules: {
   '/api/heavy': { cache: { maxAge: 300 } },              // response cache
@@ -59,6 +65,8 @@ routeRules: {
 - `isr`/`swr` keys depend on preset support (vercel/netlify/cloudflare support different ones — check the docs)
 
 ### 4. Verify
+
+> Goal: Verify.
 
 1. Cache hit: the second request is fast/doesn't enter the handler (compare with a log inside the handler)
 2. `/run-test`; fail → `/resolve-errors` max 3 rounds

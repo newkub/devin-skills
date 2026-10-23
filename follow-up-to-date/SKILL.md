@@ -7,7 +7,7 @@ related:
   - update-version-to-latest
   - check-should-update
   - deep-review
-  - update-devin-global-skills
+  - update-agents-skills-global
   - follow-devin-global-skills
   - update-agents-md
   - update-docs
@@ -59,7 +59,7 @@ Not the executor of fixes — project code → `/keepup-source-code`, deps/versi
 |-----|--------|----------|
 | 1 | project source code (docs/tests/config in sync with code) | `/keepup-source-code` |
 | 2 | dependencies, runtime, tools, CI, lockfile | `/update-version-to-latest` |
-| 3 | global skill content/repo standards | `/update-devin-global-skills` |
+| 3 | global skill content/repo standards | `/update-agents-skills-global` |
 | 4 | project docs / `AGENTS.md` | `/update-docs`, `/update-agents-md` |
 | 5 | locally installed programs | `/update-all-program-in-computer` |
 | 6 | dotfiles | `/update-chezmoi` |
@@ -90,7 +90,7 @@ Not the executor of fixes — project code → `/keepup-source-code`, deps/versi
 ### 1. Verify Before Use
 
 - Never use a version, API signature, command, or fact that may be old without live-checking first — always verify in step `### 2`
-- Never pin versions in skill/guide docs — live-check at use time (`update-devin-global-skills` `## Conventions` standard)
+- Never pin versions in skill/guide docs — live-check at use time (`update-agents-skills-global` `## Conventions` standard)
 - "Up-to-date" is measured by evidence (registry, release tag, official docs, git diff), not memory
 
 ### 2. Methodology Only

@@ -23,6 +23,7 @@ Use with all kinds of TypeScript projects including frontend, backend, full-stac
 - Use this skill for the Zod v4 API (`z.object`, `.safeParse`, `z.infer`, `zod/mini`, `zod/v4` subpaths)
 - Migrate v3 → v4 → workflow `workflows/migrate-zod-v4/SKILL.md`
 - If the project uses ArkType or needs to compare schema libraries → `/follow-lib-arktype`; Zod v4 supports Standard Schema and works with form/validation libs
+- References: [Zod — Best Practices](best-practices/zod.md), [apis](references/apis.md)
 
 ## Execute
 

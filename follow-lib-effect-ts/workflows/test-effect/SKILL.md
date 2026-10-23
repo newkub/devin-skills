@@ -21,6 +21,8 @@ testing Effect code — `@effect/vitest` (`it.effect`, `it.scoped`, `it.live`), 
 
 ### 1. Setup
 
+> Goal: Setup.
+
 ```bash
 bun i -D @effect/vitest vitest
 ```
@@ -31,6 +33,8 @@ import { describe, it } from "@effect/vitest"
 ```
 
 ### 2. Basic Assertions
+
+> Goal: Basic Assertions.
 
 ```ts
 it.effect("returns todos", () =>
@@ -52,6 +56,8 @@ it.effect("fails with NotFound", () =>
 
 ### 3. TestClock And Time
 
+> Goal: TestClock And Time.
+
 ```ts
 yield* TestClock.adjust("5 seconds")   // advance deterministic clock
 ```
@@ -60,6 +66,8 @@ yield* TestClock.adjust("5 seconds")   // advance deterministic clock
 - Timing-sensitive integration uses `it.live`
 
 ### 4. Layer Substitution
+
+> Goal: Layer Substitution.
 
 ```ts
 const TestLayer = Layer.mergeAll(
@@ -73,6 +81,8 @@ it.effect("with fake repo", () => program.pipe(Effect.provide(TestLayer)))
 - Platform services: `FileSystem` in-memory layers, `Terminal` capture — see `use-platform`
 
 ### 5. Property Testing
+
+> Goal: Property Testing.
 
 - `Arbitrary.make(Schema)` → fast-check generators from schemas — random valid inputs
 

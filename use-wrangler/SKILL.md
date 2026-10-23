@@ -19,6 +19,7 @@ Manage Cloudflare Workers/Pages end-to-end with the `wrangler` CLI — init, dev
 ## Scope
 
 Use when the task involves Cloudflare Workers, Pages, KV, D1, R2, Queues, or Durable Objects — covering local dev, deploy, config (`wrangler.toml`/`wrangler.jsonc`), and observability — to create a new project follow `/create-cloudflare-worker` first, then use this skill for day-to-day commands
+- References: [Package Manifest](references/package-manifest.md)
 
 ## Execute
 

@@ -11,6 +11,7 @@ related:
   - setup-cicd
   - run-lint
   - run-format
+  - follow-tool-viteplus
 
 ---
 
@@ -23,9 +24,11 @@ Configure ESLint 10 with the flat config format and a complete plugin setup
 Use for configuring ESLint 10 in TypeScript, Vue, and Nuxt projects
 
 - Latest: `eslint@10.11.0` — flat config only (eslintrc removed), Node `^20.19 | ^22.13 | >=24` (verified 2026-09-26) — pairs with `typescript-eslint@8.70.1`
+- Boundary: inside a Vite+ project lint with `vp lint` (Oxlint) → `/follow-tool-viteplus`; keep this skill for ESLint-only plugins/rules and ESLint-based editor setups
 
 - eslint-plugin-oxlint: read official docs via `/learn-from-web`
 - References: [cli](references/cli.md) 
+- References: [ESLint Best Practices](best-practices/flat-config.md), [apis](references/apis.md)
 ## Execute
 
 ### 1. Install Core Dependencies
@@ -33,7 +36,7 @@ Use for configuring ESLint 10 in TypeScript, Vue, and Nuxt projects
 > Goal: install ESLint core dependencies
 
 1. Run `bun add -D eslint @eslint/js typescript-eslint`
-2. Run `bun add -D eslint-config-prettier`
+2. Run `bun add -D eslint-config-prettier` — style-rule compat layer for whichever formatter owns style (`vp fmt`/Oxfmt or `bun fmt`); it installs no formatter
 
 ### 2. Install Vue/Nuxt Plugins
 
@@ -67,7 +70,7 @@ import { defineConfig } from 'eslint/config'
 import js from '@eslint/js'
 import ts from 'typescript-eslint'
 import vue from 'eslint-plugin-vue'
-import prettier from 'eslint-config-prettier'
+import formatCompat from 'eslint-config-prettier'
 import importPlugin from 'eslint-plugin-import'
 import unusedImports from 'eslint-plugin-unused-imports'
 import noSecrets from 'eslint-plugin-no-secrets'
@@ -81,7 +84,7 @@ export default defineConfig([
   js.configs.recommended,
   ...ts.configs.recommended,
   ...vue.configs['flat/recommended'],
-  prettier,
+  formatCompat,
   {
     files: ['/*.{ts,tsx,vue}'],
     plugins: {
@@ -190,7 +193,7 @@ Configure per ESLint 10 standards
 - Use `eslint.config.ts` instead of `.eslintrc` (Flat Config — eslintrc was removed in ESLint 10)
 - Use `defineConfig()` from `eslint/config`
 - Use `typescript-eslint` instead of `@typescript-eslint/parser`
-- Put the `prettier` config last
+- Put the style-rule compat config (`eslint-config-prettier`) last — it disables ESLint style rules so the formatter (`vp fmt`/Oxfmt or `bun fmt`) owns style
 - Do not use `.eslintignore` in ESLint 10 — use `ignores` in the flat config
 - Config lookup in v10 starts from the linted file's directory upward (not cwd) — pass `--config <path>` to keep the old behavior
 - Migrate from v9 → v10 with the codemod `bunx codemod @eslint/v9-to-v10` (Codemod Registry — not an npm package; has sub-codemods `@eslint/v9-to-v10-config`, `-custom-rules`, `-ruletester`, `-linter-api`) per the official guide `https://eslint.org/docs/latest/use/migrate-to-10.0.0`

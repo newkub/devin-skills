@@ -57,7 +57,7 @@ Follow [references/cli-discovery.md](references/cli-discovery.md) — `--version
 > Goal: the knowledge is recorded completely
 
 1. If learning for yourself → summarize in chat per `/report`
-2. If invoked for a skill's dependency → write the real `references/<dep>/cli.md` per `update-devin-global-skills` (`## Conventions → Write References`) (mandatory, never skip)
+2. If invoked for a skill's dependency → write the real `references/<dep>/cli.md` per `update-agents-skills-global` (`## Conventions → Write References`) (mandatory, never skip)
 3. Use the real output from running — never guess flags or options
 4. If writing >10 files → run `/use-scripts`
 5. Run `/check-reference` against the commands written

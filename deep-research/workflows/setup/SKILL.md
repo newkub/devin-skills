@@ -15,7 +15,7 @@ related:
 
 ## Goal
 
-Search and summarize the setup, config, CI/CD, and boilerplate of a tool, framework, or service you need to install, cross-checked from multiple sources (merged `/research-setup`)
+Search and summarize the setup, config, CI/CD, and boilerplate of a tool, framework, or service you need to install, cross-checked from multiple sources
 
 ## Scope
 

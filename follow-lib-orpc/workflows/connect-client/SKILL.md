@@ -21,6 +21,8 @@ client-side — `@orpc/client` (`createORPCClient`/`createRouterClient`), `RPCLi
 
 ### 1. Create Client
 
+> Goal: Create Client.
+
 ```ts
 import { createORPCClient } from '@orpc/client'
 import { RPCLink } from '@orpc/client/fetch'
@@ -39,6 +41,8 @@ export const client: ContractRouterClient<typeof contract> = createORPCClient(li
 
 ### 2. Call Procedures
 
+> Goal: Call Procedures.
+
 ```ts
 const user = await client.getUser({ id })
 // typed errors: try/catch → ORPCError with .code matching contract errors
@@ -48,6 +52,8 @@ const user = await client.getUser({ id })
 - `safe()` variant (v1+): `const [err, data] = await client.getUser.safe(input)` — no throw
 
 ### 3. TanStack Query Integration
+
+> Goal: TanStack Query Integration.
 
 ```ts
 import { createORPCReactQueryUtils } from '@orpc/tanstack-query'  // or the latest orpc helper
@@ -62,6 +68,8 @@ useMutation(orpc.createUser.mutationOptions())
 - React/Vue/Solid variants available (`@orpc/react-query`, `@orpc/vue-query`, `@orpc/solid-query` legacy paths — check the latest docs)
 
 ### 4. Server-Side Client
+
+> Goal: Server-Side Client.
 
 - `createRouterClient(router)` — call the router in-process (SSR/tests/edge) without an HTTP hop
 

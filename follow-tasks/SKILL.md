@@ -27,6 +27,7 @@ Set up scripts in `package.json` or `Cargo.toml` per the Minimal, Standard, Comp
 ## Scope
 
 Setting up scripts for packages and workspaces in a monorepo; excludes hand-writing config files (use `/deep-review`); coordinates with `/run-scan`, `/run-lint`, `/run-typecheck`, `/run-build`, `/run-test` (coverage) to execute the configured scripts; `/run-all-tasks` runs the full task suite defined here
+- References: [package.json Script Examples](references/package-json-examples.md)
 
 ## Execute
 

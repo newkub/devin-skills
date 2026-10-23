@@ -60,7 +60,7 @@ For domain-specific deletes, call the skill directly: `/delete-cicd-fails`, `/de
 > Goal: Always check before applying — never apply until the criteria pass
 
 1. `Capture context` — take the action/context; unclear → `/ask-me`; define scope, dependencies, expected outcome
-2. `Select validation` — code → `/run-check`; skill/rules/config → `/deep-validate`; reference/path → `/check-reference` or `/review-devin-global-harness`; architecture/design → the fitting `/review`; decision → `/rethink`
+2. `Select validation` — code → `/run-check`; skill/rules/config → `/deep-validate`; reference/path → `/check-reference` or `/review-dot-agents-global-and-fix`; architecture/design → the fitting `/review`; decision → `/rethink`
 3. `Run validation` — record passed/failed, findings, warnings; order by severity; `/report table` (`No. | Check | Status | Findings`)
 4. `Decide` — all pass → apply; low warnings → notify the user and apply once confirmed; error/blocker → fix until it passes; unsure → `/ask-me`
 5. `Apply` — suggestion-only → `/follow-your-suggestion`; file ops in many places → `/all-this-patterns`; multiple steps → `/manage`
@@ -75,8 +75,8 @@ For domain-specific deletes, call the skill directly: `/delete-cicd-fails`, `/de
 3. `Dry run` — show the deletion list + refs that would break + total size → ask `proceed`/`skip`/`cancel`
 4. `Backup` — under git → recoverable via git, no backup needed; not in git/uncommitted → copy to `%TEMP%` or `.trash/` and record the path
 5. `Delete` — `Remove-Item`/`rm`; directory → recursive once confirmed; important targets (config, keys) → double confirm; deletion fails → report the error and stop
-6. `Update references` — `/update-references` fixes/removes refs pointing at the targets; `/review-devin-global-harness` checks for broken refs (fix up to 3 rounds)
-7. `Validate` — confirm the deletion actually happened; `/run-check`; `/review-devin-global-harness` again; fails → `/resolve-errors` then retry
+6. `Update references` — `/update-references` fixes/removes refs pointing at the targets; `/review-dot-agents-global-and-fix` checks for broken refs (fix up to 3 rounds)
+7. `Validate` — confirm the deletion actually happened; `/run-check`; `/review-dot-agents-global-and-fix` again; fails → `/resolve-errors` then retry
 8. `Report` — deleted list + fixed refs + remaining broken refs → `/suggest-next-action`
 
 ## Rules

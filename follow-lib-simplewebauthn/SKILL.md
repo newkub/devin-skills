@@ -22,6 +22,7 @@ Use when the task involves manual passkeys/WebAuthn — setup, ceremonies, crede
 
 - Latest: `@simplewebauthn/server@14.0.2` / `@simplewebauthn/browser@14.0.0` (verified 2026-09-16)
 - References: [apis](references/apis.md) 
+- References: [SimpleWebAuthn — Ceremonies and Credential Storage](best-practices/ceremonies-and-credentials.md), [SimpleWebAuthn — Passkey UX and Client-Side Patterns](best-practices/passkey-ux.md)
 ## Execute
 
 ### Workflows

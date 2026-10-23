@@ -24,7 +24,7 @@ Use for projects/workspaces that need to keep dependencies up-to-date with the t
 
 1. Run `bunx taze` — scans dependencies and shows available updates (no install needed; or `bun add -D taze` to pin it)
 2. Use `bunx taze --json` for machine-readable output (agents/CI)
-3. See more options in [references/taze.md](../../references/taze.md)
+3. See more options in the official docs (URL in [references/apis.md](../../references/apis.md))
 
 ### 2. Update Modes
 

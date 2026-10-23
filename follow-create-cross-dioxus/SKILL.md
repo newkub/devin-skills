@@ -22,7 +22,7 @@ Configure Dioxus to build cross-platform applications (Desktop, Web, Mobile) wit
 - Develop the application with Rust
 - Build for multiple platforms
 
-- Packages: `dioxus` crate + `dioxus-cli` (`dx`) — always confirm the latest version via `/deep-research` + `/follow-best-practice` (0.8.x is pre-release — never adopt without checking migration notes; no pins in this file, per `/update-devin-global-skills`)
+- Packages: `dioxus` crate + `dioxus-cli` (`dx`) — always confirm the latest version via `/deep-research` + `/follow-best-practice` (0.8.x is pre-release — never adopt without checking migration notes; no pins in this file, per `/update-agents-skills-global`)
 
 ## Execute
 
@@ -41,7 +41,7 @@ Configure Dioxus to build cross-platform applications (Desktop, Web, Mobile) wit
 > Goal: install the Dioxus CLI and create the project
 
 1. Install the Dioxus CLI (pick one method):
-   - prebuilt binary: `curl -sSL https://dioxus.dev/install.sh | bash`
+   - prebuilt binary: `curl -sSL https://dioxus.dev/install.sh -o /tmp/dioxus-install.sh && bash /tmp/dioxus-install.sh`
    - `cargo binstall dioxus-cli --force`
    - build from source (slow): `cargo install dioxus-cli`
 2. Verify `dx --version`

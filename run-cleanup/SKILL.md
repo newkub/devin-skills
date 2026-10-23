@@ -3,8 +3,8 @@ name: run-cleanup
 description: Run cleanup tasks to delete build artifacts and cache
 argument-hint: "[scope]"
 related:
-  - cleanup-files-in-computer
-  - cleanup-files-in-project
+  - cleanup-disk-computer
+  - cleanup-project
   - cleanup
   - run-check
   - run-verify
@@ -42,8 +42,8 @@ Use `run-cleanup` for tasks and workflows within its coverage (cleanup)
 > Goal: Delete artifacts safely
 
 1. Delete build artifacts with the appropriate commands (`rm -rf`, `cargo clean`, `bun pm cache rm`, etc.)
-2. If system-wide cleanup is needed → run `/cleanup-files-in-computer`
-3. If project cleanup is needed → run `/cleanup-files-in-project`
+2. If system-wide cleanup is needed → run `/cleanup-disk-computer`
+3. If project cleanup is needed → run `/cleanup-project`
 4. If files are locked → close the locking processes, then retry deletion
 
 ### 3. Verify
@@ -60,8 +60,8 @@ Use `run-cleanup` for tasks and workflows within its coverage (cleanup)
 - Delete only artifacts listed in `.gitignore` or that are build output
 - Never delete source files, config, or user data
 - If files are locked → resolve the locks before deleting
-- Use `/cleanup-files-in-computer` for system cleanup
-- Use `/cleanup-files-in-project` for project cleanup
+- Use `/cleanup-disk-computer` for system cleanup
+- Use `/cleanup-project` for project cleanup
 - Use `/cleanup-git-branch` for branch cleanup
 - Use `/suggest-next-action` after finishing to recommend the next step
 - Use /run-clean if needed

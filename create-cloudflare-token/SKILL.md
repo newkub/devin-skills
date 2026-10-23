@@ -70,7 +70,7 @@ Common permission keys:
    ```
 2. URL-encode the JSON with `encodeURIComponent`
 3. Assemble the URL:
-   ```
+   ```text
    https://dash.cloudflare.com/profile/api-tokens?permissionGroupKeys=<ENCODED_JSON>&accountId=*&zoneId=all&name=<TOKEN_NAME>
    ```
 4. Open the URL in a browser or hand it to the user

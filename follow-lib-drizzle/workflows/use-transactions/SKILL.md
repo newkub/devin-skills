@@ -20,6 +20,8 @@ write paths — `insert`/`update`/`delete`/`returning`, `onConflict*`, `db.trans
 
 ### 1. CRUD Mutations
 
+> Goal: CRUD Mutations.
+
 ```ts
 await db.insert(users).values({ email, name }).returning()
 await db.insert(users).values([...rows])                       // bulk
@@ -32,6 +34,8 @@ await db.delete(users).where(eq(users.id, id)).returning()
 - `$dynamic()` — build queries conditionally (`let q = db.select().$dynamic()`)
 
 ### 2. Transactions
+
+> Goal: Transactions.
 
 ```ts
 await db.transaction(async (tx) => {
@@ -47,6 +51,8 @@ await db.transaction(async (tx) => {
 
 ### 3. Batch And Prepared
 
+> Goal: Batch And Prepared.
+
 ```ts
 await db.batch([db.insert(logs).values(a), db.update(stats).set(...)]) // libsql/d1 atomic batch
 const prepared = db.select().from(users).where(eq(users.id, sql.placeholder('id'))).prepare()
@@ -57,6 +63,8 @@ await prepared.execute({ id: 1 })
 - `sql.placeholder` + `.prepare()` — reuse statement plans on hot paths
 
 ### 4. Concurrency Patterns
+
+> Goal: Concurrency Patterns.
 
 - Optimistic: version column + `where(and(eq(id), eq(version, v)))` → 0 rows = conflict
 - Pessimistic: `select().for('update')` (pg) row lock inside the tx

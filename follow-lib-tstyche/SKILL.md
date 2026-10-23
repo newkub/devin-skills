@@ -29,6 +29,7 @@ Use when the task involves `tstyche` — install, config, type assertions, testi
 - Latest: `tstyche@7.2.5` (verified 2026-10-15) — MIT, `node >= 22`, peer `typescript >= 5.4` (TypeScript 7 not yet supported — falls back to 6.0)
 - Official agent skills also ship at `tstyche/tstyche-skills` (`bunx skills add tstyche/tstyche-skills`) — this repo's skill is the Devin-standard equivalent
 - References: [apis](references/apis.md) · [cli](references/cli.md) · See best-practices/ for recommended patterns and pitfalls
+- References: [TSTyche — Best Practices](best-practices/tstyche.md)
 
 ## Execute
 

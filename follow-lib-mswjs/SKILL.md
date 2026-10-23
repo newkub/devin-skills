@@ -23,6 +23,7 @@ Set up and use MSW to mock network requests at the real network layer — coveri
 
 - Latest stable: `msw@2.15.0` (verified 2026-09-13) — `msw@3.0.3` just released (ESM-only, requires Node 22+/TS 5.9+, `onUnhandledRequest` → `onUnhandledFrame`, GraphQL split into `msw/graphql`, no `msw/native`) — too new to pin; live-check via `/deep-research` before using v3
 - References: [apis](references/apis.md) | [cli](references/cli.md) 
+- References: [MSW — Dev Worker and Test Server Wiring](best-practices/wiring.md)
 ## Execute
 
 ### Workflows

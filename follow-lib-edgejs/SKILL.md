@@ -28,6 +28,7 @@ For Node.js/Bun projects that need an ESM-only backend template engine with no b
 - Extend with plugins and custom tags when needed
 
 - Latest: `edge.js@6.5.1` (verified 2026-09-13)
+- References: [Edge.js — Best Practices](best-practices/edgejs.md)
 
 ## Execute
 

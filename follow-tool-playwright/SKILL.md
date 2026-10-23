@@ -238,6 +238,7 @@ Follow best practices:
 
 - See best-practices/ for recommended patterns and pitfalls
 - See usecases/ for end-to-end scenario recipes — logged-in flows: `usecases/auth-and-storage-state.md`; CI sharding + trace: `usecases/ci-sharding-and-trace.md`
+- References: [Playwright — Best Practices](best-practices/playwright.md), [apis](references/apis.md)
 
 ## Expected Outcome
 

@@ -20,6 +20,8 @@ seed/test data generation — `drizzle-seed` package (`seed()`, `reset()`), cust
 
 ### 1. Install And Basic Seed
 
+> Goal: Install And Basic Seed.
+
 ```bash
 bun i -D drizzle-seed
 ```
@@ -33,6 +35,8 @@ await seed(db, schema, { count: 100 })       // rows per table
 ```
 
 ### 2. Controlled Generation
+
+> Goal: Controlled Generation.
 
 ```ts
 await seed(db, { users: schema.users, posts: schema.posts }).refine((f) => ({
@@ -50,6 +54,8 @@ await seed(db, { users: schema.users, posts: schema.posts }).refine((f) => ({
 
 ### 3. Reset
 
+> Goal: Reset.
+
 ```ts
 import { reset } from 'drizzle-seed'
 await reset(db, schema)                      // truncate all tables (FK-safe order)
@@ -58,6 +64,8 @@ await reset(db, schema)                      // truncate all tables (FK-safe ord
 - `reset` clears tables respecting FK order — faster than a manual truncate chain
 
 ### 4. Seed Scripts Per Env
+
+> Goal: Seed Scripts Per Env.
 
 - `scripts/seed.ts` — `bun run db:seed` npm script; dev seeds (rich fixtures) vs test seeds (minimal deterministic)
 - Test integration: seed in `beforeEach`/`beforeAll` + `reset` cleanup — or per-test transaction rollback

@@ -21,7 +21,7 @@ Build Rust library crates with Cargo that have a clear public API, complete docs
 
 Use for building library crates in pure Rust or with FFI, covering `Cargo.toml`, `src/lib.rs`, tests, examples, documentation, and CI
 
-- Rust stable + `edition = "2024"` in `Cargo.toml` — always confirm the latest versions with `/deep-research` + `/follow-best-practice` (not pinned in this file — per `/update-devin-global-skills`)
+- Rust stable + `edition = "2024"` in `Cargo.toml` — always confirm the latest versions with `/deep-research` + `/follow-best-practice` (not pinned in this file — per `/update-agents-skills-global`)
 
 ## Execute
 

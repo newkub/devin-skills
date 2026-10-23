@@ -47,7 +47,7 @@ Use `replace` to replace content in files or code, choosing the method by the na
 > Goal: Update references after replace
 
 1. If the replacement changes an identifier, path, or skill name → run `/update-references`
-2. Run `/review-devin-global-harness` or `/deep-validate` to check
+2. Run `/review-dot-agents-global-and-fix` or `/deep-validate` to check
 
 ## Rules
 

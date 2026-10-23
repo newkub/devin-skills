@@ -3,6 +3,7 @@ name: run-test
 description: Thin test dispatcher — route a domain or `all` to /deep-test; unit is the default
 argument-hint: "[domain|all] [scope] [target%]"
 related:
+  - follow-tool-viteplus
   - deep-test
   - update-tests
   - resolve-errors
@@ -32,7 +33,7 @@ Dispatcher only: every workflow (quick run path + deep steps + signals table) li
 1. Argument is a domain name (`api`, `smoke`, `website`, ...) → run `/deep-test <domain>` and follow its `## Run Quick Path` (deep pass only when the argument asks for analysis)
 2. Argument is `all` or several signals match at once → run `/deep-test all` (the orchestrator picks domains from signals in fail-fast order)
 3. No argument and a plain unit scope → `/deep-test unit`
-4. Detect the framework from the manifest/config as `/deep-test unit` does (Vitest, Jest, Bun test, Node test runner, Mocha, pytest, go test, cargo test/nextest, dotnet test)
+4. Detect the framework from the manifest/config as `/deep-test unit` does (Vitest, Jest, Bun test, Node test runner, Mocha, pytest, go test, cargo test/nextest, dotnet test); a Vite+ project runs `vp test` and imports from `vite-plus/test` (see `/follow-tool-viteplus`)
 5. Run `/run-check` (lint + typecheck) before the suite so failures are real test failures; report in chat via `/report-review` and persist per the domain reference
 
 ## Rules

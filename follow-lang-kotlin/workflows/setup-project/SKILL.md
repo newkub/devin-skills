@@ -22,10 +22,14 @@ For a fresh Kotlin project; live-check the latest stable Kotlin, Compose Multipl
 
 ### 1. Pin The Toolchain
 
+> Goal: Pin The Toolchain.
+
 1. `mise use -g java` for the JDK the live check recommends; verify `java -version` and `kotlinc -version` where the standalone compiler is used
 2. Gradle via the wrapper only (`gradle wrapper` once, then `./gradlew` everywhere) — never a machine-global Gradle
 
 ### 2. Scaffold
+
+> Goal: Scaffold.
 
 1. `build.gradle.kts` (Kotlin DSL) with the Kotlin plugin at the live-checked version; `settings.gradle.kts` with `rootProject.name`
 2. Version catalog `gradle/libs.versions.toml` for all versions — one place, referenced as `alias(libs.plugins...)`/`libs.xxx`
@@ -34,10 +38,14 @@ For a fresh Kotlin project; live-check the latest stable Kotlin, Compose Multipl
 
 ### 3. Add Dependencies Deliberately
 
+> Goal: Add Dependencies Deliberately.
+
 1. Coroutines (+ Flow/StateFlow) for async, Koin for DI, Ktor for HTTP, Arrow for functional error handling — confirm each optional dep with the user before adding; versions only from the live check
 2. Test deps: `kotlin.test`/JUnit 5, `runTest`, MockK
 
 ### 4. Quality Gates
+
+> Goal: Quality Gates.
 
 1. Add `ktlint` (format) and `detekt` (static analysis) plugins; fail the build on new violations
 2. Verify: `./gradlew build` → `./gradlew test` → `./gradlew ktlintCheck detekt` all green

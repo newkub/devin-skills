@@ -3,7 +3,7 @@
 | key | value |
 | --- | --- |
 | package | `@qoder-ai/qodercli` (legacy npm) / native standalone binary |
-| install cmd (recommended) | `curl -fsSL https://qoder.com/install \| bash` (macOS/Linux); `irm https://qoder.com/install.ps1 \| iex` (Windows PowerShell) |
+| install cmd (recommended) | `curl -fsSL https://qoder.com/install -o /tmp/qoder-install.sh && bash /tmp/qoder-install.sh` (macOS/Linux); `irm https://qoder.com/install.ps1 -OutFile $env:TEMP\qoder-install.ps1; & $env:TEMP\qoder-install.ps1` (Windows PowerShell) |
 | install cmd (npm) | `npm install -g @qoder-ai/qodercli` (Node ≥ 20, slower) |
 | stable version | `1.1.71` (local check 2026-10-15) |
 | license | proprietary (Qoder) |

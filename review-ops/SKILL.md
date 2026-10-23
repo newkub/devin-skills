@@ -65,7 +65,7 @@ Use before a release, after a failed deploy, or when the runtime or supply chain
 
 1. Order: secret and permission exposure in CI → broken or unverifiable delivery → EOL runtime and vulnerable dependency → drift between IaC and live → observability and runbook gaps → cost and hygiene
 2. Cross-reference: one unpinned action or one shared workflow often explains several findings — fix it once and re-check every workflow it touches
-3. Large or cross-workspace set → `/create-plan-in-dot-devin`; without `then-fix` stop here with the ordered table
+3. Large or cross-workspace set → `/create-plan-in-dot-agents`; without `then-fix` stop here with the ordered table
 
 ### 5. Fix Through The Owners
 

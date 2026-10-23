@@ -4,11 +4,11 @@ description: Generate skill relation ideas — points where use-related-skills s
 argument-hint: "[skill-name|family|all]"
 related:
   - use-related-skills
-  - idea-new-devin-global-skills
-  - update-devin-global-skills
-  - update-devin-harness
-  - list-devin-global-skills
-  - create-plan-in-dot-devin
+  - idea-agent-skills
+  - update-agents-skills-global
+  - review-dot-agents-global-and-fix
+  - list-dot-agents-global
+  - create-plan-in-dot-agents
   - report
 ---
 
@@ -32,9 +32,9 @@ Use when you want to check and expand the relations between devin global skills:
 > Goal: Define the scope of skills to analyze
 
 1. If the argument specifies a skill/family → use it directly; if `all` or unspecified → survey the whole global skills directory
-2. Run `/list-devin-global-skills` to get the full list of skills with `name`, `description`
+2. Run `/list-dot-agents-global` to get the full list of skills with `name`, `description`
 3. Read the `SKILL.md` frontmatter + `Execute` of each skill in scope
-4. If scope > 10 skills → run `/create-plan-in-dot-devin` instead of analyzing in a single round
+4. If scope > 10 skills → run `/create-plan-in-dot-agents` instead of analyzing in a single round
 
 ### 2. Build Relations Graph
 
@@ -63,7 +63,7 @@ Use when you want to check and expand the relations between devin global skills:
    - `type`: `add-related-edge`, `add-invocation-step`, `new-skill`, `remove-broken-ref`
    - `source skill`, `target skill`, the rationale, and the relation kind (`direct dependency`, `complementary`, `follow-up`, `alternative`)
    - a draft diff of the frontmatter/Execute step to change (not applied until confirmed)
-2. For `new-skill` ideas → specify the name in the form `<verb>-<domain>` and draft `name`/`description`/`related` — implementation lives in `/idea-new-devin-global-skills` + `/update-devin-global-skills`
+2. For `new-skill` ideas → specify the name in the form `<verb>-<domain>` and draft `name`/`description`/`related` — implementation lives in `/idea-agent-skills` + `/update-agents-skills-global`
 3. Run `/report` table: `No.`, `Type`, `Source`, `Target`, `Kind`, `Rationale`, `Priority` — continuous numbering, no reset between runs
 
 ### 5. Validate And Handoff
@@ -72,15 +72,15 @@ Use when you want to check and expand the relations between devin global skills:
 
 1. Check that every target skill actually exists, doesn't duplicate the existing `related`, and isn't a self-reference
 2. Rank by impact: broken refs > missing invocation steps > missing edges > new-skill ideas
-3. If the user confirms → run `/follow-your-suggestion` then apply via `/use-related-skills` (the Update Related Skills step) or `/update-devin-global-skills` — this skill is idea/draft only
-4. If the draft touches `global_rules.md` → specify that applying must go through `/update-devin-harness`
+3. If the user confirms → run `/follow-your-suggestion` then apply via `/use-related-skills` (the Update Related Skills step) or `/update-agents-skills-global` — this skill is idea/draft only
+4. If the draft touches `global_rules.md` → specify that applying must go through `/review-dot-agents-global-and-fix`
 5. If there are no gaps → report that the graph is already complete and run `/suggest-next-action`
 
 ## Rules
 
 ### 1. Draft Only
 
-- Never edit `SKILL.md`, `related`, or `global_rules.md` in this skill — only produce a draft, then hand off to `/use-related-skills`, `/update-devin-global-skills`, or `/update-devin-harness`
+- Never edit `SKILL.md`, `related`, or `global_rules.md` in this skill — only produce a draft, then hand off to `/use-related-skills`, `/update-agents-skills-global`, or `/review-dot-agents-global-and-fix`
 - Every idea must cite evidence from real files (frontmatter, Execute steps) — never guess from the name alone
 - Proposed `related` edges must make sense both ways (`Goal`/`Scope`/`Execute` genuinely related) — not just linking everything together
 
@@ -88,7 +88,7 @@ Use when you want to check and expand the relations between devin global skills:
 
 - Don't force symmetry — propose a reverse edge only when the target should know that a source invokes it
 - Limit `related` to ≤ 10 entries per skill — if it exceeds this, propose only the most relevant and explain what should be dropped
-- When proposing an invocation step, write it per `update-devin-global-skills` (`## Conventions → Invoke Skills`)
+- When proposing an invocation step, write it per `update-agents-skills-global` (`## Conventions → Invoke Skills`)
 - Continuous numbering continuing from the previous idea report if any — don't delete old ideas
 
 ## Expected Outcome
@@ -96,4 +96,4 @@ Use when you want to check and expand the relations between devin global skills:
 - The relations graph of skills in scope with the broken/asymmetric edges found
 - An ideas table: edges to add, points where `/use-related-skills` should be invoked, new skill ideas
 - Priority + rationale per idea with a draft diff that can be applied immediately after confirmation
-- A clear handoff path (`/follow-your-suggestion` → `/use-related-skills` or `/update-devin-global-skills`)
+- A clear handoff path (`/follow-your-suggestion` → `/use-related-skills` or `/update-agents-skills-global`)

@@ -18,6 +18,7 @@ Use TanStack Table (v9) fully — headless datagrid: columns, row models, sortin
 Works with data tables of any size — headless = the library manages state/logic, `you render the UI entirely yourself`; many rows → `follow-virtual`
 
 - part of TanStack ecosystem — selection/dispatch lives in `/follow-lib-tanstack-ecosystem`
+- References: [TanStack Table — Best Practices](best-practices/tanstack-table.md), [apis](references/apis.md)
 
 ## Execute
 

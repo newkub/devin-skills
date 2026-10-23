@@ -39,7 +39,7 @@ Choose the right web project type and hand the work off to the correct skill
 | TanStack Start (Solid) | `/follow-solid-framework` |
 | Docs site (single-page README+docs, Comark Vue → CF Workers) | `/follow-create-web-docs` |
 
-- Default toolchain: `vite` (Rolldown-powered since v8) — always confirm the latest version with `/deep-research` + `/follow-best-practice` (never pinned in this file — per `/update-devin-global-skills`)
+- Default toolchain: `vite` (Rolldown-powered since v8) — always confirm the latest version with `/deep-research` + `/follow-best-practice` (never pinned in this file — per `/update-agents-skills-global`)
 
 ## Execute
 

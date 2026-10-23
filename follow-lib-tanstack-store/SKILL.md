@@ -18,6 +18,7 @@ Use TanStack Store fully — a framework-agnostic client state store: stores, fi
 Use for `client state` (UI state, drafts, prefs, ephemeral) — for server state use `follow-query`/`follow-db`; a good Zustand-style store replacement when you're already in the TanStack ecosystem
 
 - part of TanStack ecosystem — selection/dispatch lives in `/follow-lib-tanstack-ecosystem`
+- References: [TanStack Store — Best Practices](best-practices/tanstack-store.md), [apis](references/apis.md)
 
 ## Execute
 

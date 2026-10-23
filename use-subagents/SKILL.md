@@ -66,7 +66,7 @@ See more: /follow-agents-md
 
 > Goal: Pick the role that fits each subtask
 
-1. Run `/list-devin-global-subagents` — it enumerates every global profile in `%APPDATA%\devin\agents`; also use the profiles listed in the system prompt
+1. Run `/list-dot-agents-global` — it enumerates every global profile in `%APPDATA%\devin\agents`; also use the profiles listed in the system prompt
 2. Pick the profile that matches the subtask's role (e.g. `fixer`, `debugger`, `refactor`, `qa`, `security-auditor`, `architect`)
 3. If there is no role you need → use `subagent_general` or `subagent_explore`
 4. If unsure → run `/ask-me` first
@@ -154,7 +154,7 @@ These skills have subagent profiles for parallel independent work — the profil
 | 15 | `follow-tool-moonrepo` | `SKILL.md ## Subagents` → `project-configurator` | configure/verify `moon.yml` for one project |
 | 16 | `implement-to-production` | `SKILL.md ## Subagents` → `feature-implementer`, `review-sweeper` | implement per item, review per domain (gap inventory → row 19) |
 | 17 | `review` | `SKILL.md ## Subagents` → `codebase-reviewer` (+ checklist/scoring/report in `references/`) | codebase-wide review per dimension |
-| 18 | `update-devin-global-skills` | `references/workflows.md` (`## Profile skill-updater`, reached via `SKILL.md` `## Conventions → Workflows And Subagents`) | update one skill per the instructions in a bulk update |
+| 18 | `update-agents-skills-global` | `references/workflows.md` (`## Profile skill-updater`, reached via `SKILL.md` `## Conventions → Workflows And Subagents`) | update one skill per the instructions in a bulk update |
 | 19 | `review-implement-to-production` | `SKILL.md ## Subagents` → `gap-scanner` | inventory not-yet-implemented items in one directory/workspace (read-only) |
 | 20 | `ship` | `SKILL.md ## Subagents` → `part-reviewer` | review one part (workspace/module/layer) of the changed pre-ship scope (read-only) |
 

@@ -7,7 +7,7 @@ related:
   - scan-codebase
   - deep-analyze
   - report-file-structure
-  - create-report-in-dot-devin
+  - create-report-to-dot-agents
 
 ---
 
@@ -80,7 +80,7 @@ Output structure:
 - <what people commonly get wrong>
 ```
 
-5. Save with `/create-report-in-dot-devin` if the user wants it kept
+5. Save with `/create-report-to-dot-agents` if the user wants it kept
 
 ## Rules
 

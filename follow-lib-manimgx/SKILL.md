@@ -25,6 +25,7 @@ Use ManimGX to create math and 3D videos from Python scenes — the API is compa
 - Use `/follow-lang-python` for general Python rules (venv, typing, tooling)
 - If you need a video outline/script before writing scenes → do `/create-video-story` or `/gen-media` first, then map the shots to scenes
 - See best-practices/ for recommended patterns and pitfalls
+- References: [ManimGX — Coming From Manim CE](best-practices/from-manim-ce.md), [ManimGX — Inspect, Render And Report](best-practices/inspect-and-render.md), [ManimGX — Scene Authoring](best-practices/scene-authoring.md)
 
 ## Execute
 
@@ -43,7 +44,7 @@ Use ManimGX to create math and 3D videos from Python scenes — the API is compa
 
 1. Install as a tool: `uv tool install --python 3.14 manimgx` then verify with `manimgx --version` — if uv warns that `~/.local/bin` is not on PATH, run `uv tool update-shell` and open a new shell (or call `~/.local/bin/manimgx` directly)
 2. Never skip `--python 3.14` — without it uv uses the machine's default Python (3.9 on macOS) and won't find `manimgx`
-3. No uv yet → `curl -LsSf https://astral.sh/uv/install.sh | sh` then `source $HOME/.local/bin/env`
+3. No uv yet → `curl -LsSf https://astral.sh/uv/install.sh -o /tmp/uv-install.sh && sh /tmp/uv-install.sh` then `source $HOME/.local/bin/env`
 4. Don't want a permanent install → `uvx --python 3.14 manimgx <command>`
 5. In a project with a venv → `python3.14 -m venv .venv && .venv/bin/pip install manimgx` (Windows: `.venv\Scripts\pip.exe`); with uv → `uv venv --python 3.14 .venv && uv pip install --python .venv/Scripts/python.exe manimgx`
 6. Web side → `npm install manimgx` then `import "manimgx";` in a module script

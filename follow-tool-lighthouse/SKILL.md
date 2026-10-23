@@ -21,6 +21,7 @@ Use for auditing a single page/specific route directly with the `lighthouse` CLI
 - Boundary: site-wide crawl of every route → `/follow-tool-unlighthouse`; E2E user-flow assertions → `/follow-tool-playwright`; Lighthouse in a CI workflow → `/follow-tool-github-actions`; auditing in an open browser without the CLI (a11y/SEO/best-practices/agentic — not perf) → `lighthouse_audit` in `chrome-devtools-mcp` per `/use-chrome-devtools`
 - Latest: `lighthouse@13.5.0` (verified 2026-09-28) — categories added `agentic-browsing` in v13
 - Requires Chrome/Chromium ≥ v66 on the machine — or specify it via the `CHROME_PATH` env var
+- References: [Lighthouse CLI — Best Practices](best-practices/lighthouse.md), [apis](references/apis.md), [cli](references/cli.md)
 
 ## Execute
 

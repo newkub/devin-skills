@@ -143,6 +143,7 @@ cmd "deploy" help="Deploy to production" effect="destructive" {
 
 
 - See best-practices/ for recommended patterns and pitfalls
+- References: [usage — Best Practices](best-practices/usage.md), [apis](references/apis.md)
 
 ## Expected Outcome
 

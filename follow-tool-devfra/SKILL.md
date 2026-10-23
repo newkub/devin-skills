@@ -26,6 +26,7 @@ Use for a project that needs a devtool (inspector, analyzer, data explorer, term
 - Pick the serving path: standard handler, `cac` CLI, dev server, build, MCP, Vite/embedded, framework kits (`@devframes/vite|nuxt|next`)
 - Compose several devframes via `@devframes/hub`
 - Has a CLI adapter (`devframe/adapters/cac`) → see `references/cli.md`
+- References: [Devframe — Best Practices](best-practices/devframe.md)
 
 ## Execute
 

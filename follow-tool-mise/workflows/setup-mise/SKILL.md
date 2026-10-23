@@ -30,7 +30,7 @@ For a machine/project without mise yet — install, shell activation, `mise doct
 > Goal: install mise per OS
 
 1. Pick the method for the environment:
-   - Unix (macOS/Linux): `curl https://mise.run | sh`
+   - Unix (macOS/Linux): `curl https://mise.run -o /tmp/mise-install.sh && sh /tmp/mise-install.sh`
    - Windows: `winget install jdx.mise` or `scoop install mise`
    - Cargo: `cargo install mise`
    - See official docs for other methods if unsure

@@ -29,11 +29,11 @@ Used when a file or workspace is badly damaged such that `git restore` does not 
 
 > Goal: Read the Devin CLI history
 
-1. Look at the folder `C:\Users\Veerapong\AppData\Roaming\devin\cli\summaries`
+1. Look at the folder `%APPDATA%\devin\cli\summaries`
 2. Find the latest `history_*.md` file (sorted by name or modified time)
 3. Read the latest summary file that matches the period before the file was damaged
 4. Search for the commands the user gave and the actions the agent took
-5. Look in the folder `C:\Users\Veerapong\AppData\Roaming\devin\cli` for additional logs or session files if any
+5. Look in the folder `%APPDATA%\devin\cli` for additional logs or session files if any
 6. Record the list of related commands/files
 
 ### 3. Correlate With Last Commit

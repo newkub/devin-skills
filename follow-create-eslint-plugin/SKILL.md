@@ -19,7 +19,7 @@ Create custom ESLint plugins with JavaScript/TypeScript to add project-specific 
 
 Use for creating custom ESLint plugins with JavaScript/TypeScript, covering the plugin entry, custom rules, metadata, testing, and flat config
 
-- Packages: `eslint` (10.x — flat config only, Node >= 20.19, deprecated `context`/`SourceCode` members removed, fixer text must be a string, stricter RuleTester), `typescript-eslint` — always confirm the latest versions with `/deep-research` + `/follow-best-practice` (don't pin in files — per `/update-devin-global-skills`)
+- Packages: `eslint` (10.x — flat config only, Node >= 20.19, deprecated `context`/`SourceCode` members removed, fixer text must be a string, stricter RuleTester), `typescript-eslint` — always confirm the latest versions with `/deep-research` + `/follow-best-practice` (don't pin in files — per `/update-agents-skills-global`)
 
 ## Execute
 

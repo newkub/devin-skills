@@ -20,6 +20,8 @@ Use when a Worker/Pages needs a SQL database — migration command details live 
 
 ### 1. Provision And Bind
 
+> Goal: Provision And Bind.
+
 1. `wrangler d1 create <NAME>` — keep the `database_id`
 2. Bind in `wrangler.jsonc`: `d1_databases: [{ binding: "DB", database_name, database_id }]`
 3. `wrangler types` regenerate `Env`
@@ -54,6 +56,8 @@ await env.DB.batch([stmt1, stmt2, stmt3])
 - `withSession`/`bookmark` for read-replication consistency (check the latest docs)
 
 ### 4. Verify
+
+> Goal: Verify.
 
 1. `wrangler dev` and run real queries through local D1
 2. `/run-test`; fail → `/resolve-errors` max 3 rounds

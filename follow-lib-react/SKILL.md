@@ -24,6 +24,7 @@ Use for developing React 19.2+ applications with Vite or Next.js, TypeScript, an
 - No own CLI — used through the bundler/framework (Vite, Next.js) (thus none)
 - Latest: `react@19.3.0` / `react-dom@19.3.0` (verified 2026-09-16)
 - References: [apis](references/apis.md) 
+- References: [React — Best Practices](best-practices/react.md)
 ## Execute
 
 ### 1. Setup Project Structure

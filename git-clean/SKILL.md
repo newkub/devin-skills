@@ -5,7 +5,7 @@ argument-hint: "[-fd|-fdx|paths...]"
 related:
   - git-restore
   - git-stash
-  - cleanup-files-in-project
+  - cleanup-project
   - ask-me
 ---
 
@@ -17,7 +17,7 @@ Remove untracked files with `git clean` — always dry-run first, because untrac
 
 - `git clean -fd` (untracked files+dirs), `-fdx` (including ignored — build output), `-n` dry-run
 - fills the gap of `/git-restore`, which does not touch untracked files
-- general build artifact/dependency cache cleanup → `/cleanup-files-in-project`
+- general build artifact/dependency cache cleanup → `/cleanup-project`
 
 ## Execute
 

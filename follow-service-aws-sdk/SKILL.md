@@ -18,6 +18,7 @@ Use the AWS SDK per best practices for connecting to AWS cloud services
 ## Scope
 
 Use for developing applications that need to interact with AWS services such as S3, Lambda, DynamoDB, and others
+- References: [Apis](references/apis.md), [Aws sdk](references/aws-sdk.md), [Package manifest](references/package-manifest.md), [Routes](references/routes.md), [Website](references/website.md)
 
 ## Execute
 

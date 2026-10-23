@@ -115,6 +115,7 @@ For projects that want an offline API client, collections as text files in the r
 | Run the collection as a CI gate | `usecases/run-collection-in-ci.md` |
 
 - See usecases/ for end-to-end scenario recipes
+- References: [Bruno Best Practices](best-practices/bruno-collections.md)
 
 ## Expected Outcome
 

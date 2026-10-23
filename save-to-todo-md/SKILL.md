@@ -57,7 +57,7 @@ Record unfinished work — pending items, blocked tasks, follow-ups — from the
 2. In `--drive` mode → first run `/enhance-prompt` to turn the content into a numbered list, and stop if a duplicate title is found in `D:\TODO.md`
 3. Read the target `TODO.md` if it exists — keep the existing structure
 4. If it does not exist yet → create it with a header per the `/update-todo-md` convention:
-   ```
+   ```markdown
    | Title | Description | Status | Priority | Created |
    |---|---|---|---|---|
    ```

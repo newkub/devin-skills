@@ -63,7 +63,7 @@ Use to create, improve, and verify the entire `.vscode` directory. Does not over
 1. Run `/deep-analyze` to see the tech stack and structure
 2. Run `/check-monorepo` to check the project type
 3. Identify the package manager (Bun, npm, pnpm, yarn)
-4. Identify the formatter/linter (Biome, ESLint, Prettier)
+4. Identify the formatter/linter (Vite+ `vp fmt`/`vp lint` on Oxfmt + Oxlint, Biome, ESLint, or the built-in `bun fmt` on a Bun-runtime project — no install)
 5. Identify the type checker (tsc)
 6. Identify the test runner (Vitest, Jest, Playwright)
 7. If the project type is unclear → stop and report
@@ -77,6 +77,7 @@ Use to create, improve, and verify the entire `.vscode` directory. Does not over
    - `editor.defaultFormatter` → the formatter in use (e.g. `biomejs.biome` for Biome)
    - `editor.formatOnSave` → `true`
    - `[language]` overrides if needed
+   - `bun fmt` has no documented editor extension → keep `formatOnSave` on an installed formatter extension, or drive `bun fmt <file>` / `bun fmt --stdin-filepath` from a task; do not point `defaultFormatter` at a non-existent extension
 3. Define editor associations (`workbench.editorAssociations`):
    - `*.md` → `vscode.markdown.preview.editor` (open every markdown file in preview by default)
    - For other files such as `*.svg`, `*.drawio`, use editor associations as appropriate

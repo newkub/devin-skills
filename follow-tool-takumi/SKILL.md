@@ -96,6 +96,7 @@ For JS/TS projects that need programmatic image generation — OG images, social
 - [API reference](references/apis.md)
 
 - See best-practices/ for recommended patterns and pitfalls
+- References: [Takumi — Best Practices](best-practices/takumi.md)
 
 ## Expected Outcome
 

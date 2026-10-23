@@ -19,6 +19,7 @@ The full git worktree lifecycle: create a worktree under `worktrees/` at the rep
 ## Scope
 
 Use for git repositories that need to work on several branches at once without disturbing the main working tree. Covers creating worktrees, doing the work, merging back, and cleanup
+- References: [Package Manifest](references/package-manifest.md)
 
 ## Execute
 

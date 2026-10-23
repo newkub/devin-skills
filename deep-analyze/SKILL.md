@@ -141,7 +141,7 @@ Covers analysis across many dimensions:
 
 1. Follow `workflows/report-analysis/SKILL.md` — organize findings, root cause chains, evidence
 2. Aggregate per-domain scores from the dispatched `/deep-review` dimensions → overall score + grade — table `No. | Domain | Score | Grade | Top Finding`
-3. Run `/report-deep` or `/create-report-in-dot-devin` for a persistent artifact
+3. Run `/report-deep` or `/create-report-to-dot-agents` for a persistent artifact
 4. Provide recommendations by priority and impact with action items + roadmap
 
 ## Rules

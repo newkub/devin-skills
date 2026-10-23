@@ -29,6 +29,7 @@ Boundaries:
 - Latest: `animejs@4.5.0` (verified 2026-09-13)
 - v5 beta: `animejs@beta` (`5.0.0-beta.2`) has breaking changes — fixed transform render order (`perspective`>`translate`>`rotate`>`scale`>`skew`), the 3rd callback arg of function-based values changes from `total` (Number) to `targets` (Array), the stagger `use` signature changes accordingly, `matrix`/`matrix3d` cannot be animated directly
 - References: [apis](references/apis.md) 
+- References: [Anime.js — Best Practices](best-practices/animejs.md)
 ## Execute
 
 ### 1. Install And Setup

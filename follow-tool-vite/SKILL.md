@@ -11,6 +11,7 @@ related:
   - follow-tool-vite-plugins
   - follow-create-plugins
   - follow-tool-biome
+  - follow-tool-viteplus
   - follow-lang-typescript
 
 ---
@@ -25,7 +26,7 @@ Use for modern web applications that use Vite as their build tool and dev server
 
 - gzip/brotli pre-compression: see `references/apis.md`
 
-- Boundary: Vite is for app dev server/build — library bundling → `/follow-tool-tsdown`; raw bundler internals → `/follow-tool-rolldown`; static docs site → `/follow-tool-vitepress`; devtools (inspector/analyzer mounted in the app or standalone) → `/follow-tool-devfra`; testing setup → `/follow-tool-vitest`
+- Boundary: Vite is for app dev server/build — library bundling → `/follow-tool-tsdown`; raw bundler internals → `/follow-tool-rolldown`; static docs site → `/follow-tool-vitepress`; devtools (inspector/analyzer mounted in the app or standalone) → `/follow-tool-devfra`; testing setup → `/follow-tool-vitest`; inside a Vite+ project the same dev server/build runs as `vp dev`/`vp build` from one `vite.config.ts` → `/follow-tool-viteplus`
 
 ## Execute
 
@@ -156,6 +157,7 @@ Use for modern web applications that use Vite as their build tool and dev server
 ## References
 
 - [CLI reference](references/cli.md)
+- References: [Vite 8 — Best Practices](best-practices/vite.md)
 
 ## File Structure
 

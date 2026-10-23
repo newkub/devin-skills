@@ -70,7 +70,7 @@ Use when the question is "does this structure need to change" rather than "what 
 2. Classify each target: structure-only (belongs here) or behavior-changing (owned by `/review-implement-to-production` or the feature's own fixer) — behavior-changing items are removed with the reason
 3. Drop anything that is pure naming, pure formatting, or a move with no structural gain — they have their own skills and would dilute the refactor
 4. Empty table → report clean and stop; never invent a refactor to have something to do
-5. A large or cross-workspace set → plan it with `/create-plan-in-dot-devin`; an irreversible or wide-reaching move → `/report-before-after` and confirm before editing
+5. A large or cross-workspace set → plan it with `/create-plan-in-dot-agents`; an irreversible or wide-reaching move → `/report-before-after` and confirm before editing
 
 ### 5. Fix
 
@@ -90,7 +90,7 @@ Use when the question is "does this structure need to change" rather than "what 
 2. Diff every barrel/index in the change set against the baseline sha — an added, removed, or re-signatured export is a behavior change, not a refactor
 3. Run `/update-references` when a path or name moved, then prove no stale reference remains (`rg "<old-path>|<old-name>"` returns nothing)
 4. Report the finding tables through `/report-review`, then before → after with `/report-before-after`: file counts, line counts, finding count, verify status
-5. Persist a structural rule that should not recur via `/update-astgrep-rules` (batchable pattern) or `/update-devin-project-rules` (convention)
+5. Persist a structural rule that should not recur via `/update-astgrep-rules` (batchable pattern) or `/update-dot-agents-project` (convention)
 6. Close with `/suggest-next-action`
 
 ## Rules

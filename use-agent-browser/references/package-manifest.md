@@ -1,6 +1,6 @@
 # Package Manifest
 
-> Metadata of the primary package(s) this skill installs or covers. Update during `/update-devin-global-skills` or `/deep-review` runs.
+> Metadata of the primary package(s) this skill installs or covers. Update during `/update-agents-skills-global` or `/deep-review` runs.
 
 ## Primary Package
 

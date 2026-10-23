@@ -92,13 +92,13 @@ For frontend projects that want a component library, visual documentation, and i
 
 ## Rules
 
-### 1. Installation
+### 1. Installation — Rules
 
 - Use `bun create storybook@latest` for the latest version
 - Use `--type` if auto-detect fails
 - Use the official framework packages
 
-### 2. Configuration
+### 2. Configuration — Rules
 
 - Use `.storybook/main.ts` for config
 - Use `.storybook/preview.ts` for global rendering
@@ -136,6 +136,7 @@ For frontend projects that want a component library, visual documentation, and i
 
 
 - See best-practices/ for recommended patterns and pitfalls
+- References: [Storybook — Best Practices](best-practices/storybook.md), [apis](references/apis.md)
 
 ## Expected Outcome
 

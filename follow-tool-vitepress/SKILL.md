@@ -22,6 +22,7 @@ Use for every project that wants a VitePress documentation site — boundary: fo
 
 - Latest stable: `vitepress@1.6.4` (verified 2026-09-13); `vitepress@next` = `2.0.0-alpha.20` (preview for Vite 8/rolldown)
 - References: [cli](references/cli.md) | best-practices/
+- References: [VitePress — Best Practices](best-practices/vitepress.md), [apis](references/apis.md)
 
 ## Execute
 

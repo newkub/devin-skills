@@ -22,6 +22,7 @@ Use with every git project, whether local workflow, collaboration, or history in
 
 - Latest: `git@2.55.0` (git-for-windows), `simple-git@4.0.1` / `isomorphic-git@1.42.2` / gh CLI `2.101.0` (verified 2026-09-26)
 - References: [cli](references/cli.md) | [apis](references/apis.md) 
+- References: [Git Daily Workflow Best Practices](best-practices/daily-workflow.md), [Git History Safety Best Practices](best-practices/history-safety.md)
 ## Execute
 
 ### 1. Setup Repository

@@ -10,7 +10,7 @@ related:
   - deep-review
   - run-test
   - update-tests
-  - update-devin-global-skills
+  - update-agents-skills-global
   - follow-create-web
   - follow-create-cli
   - follow-create-rust-cli
@@ -26,7 +26,7 @@ Use when the user wants to create a project/plugin/library/extension/CLI/skills/
 
 - If the goal is `sdk`/`library`/`framework-agnostic` → use the `## Framework-Agnostic Pattern` below (Core + Adapters)
 
-- Build toolchain: `typescript` + `tsdown` — always confirm the latest versions with `/deep-research` + `/follow-best-practice` (not pinned in this file — per `/update-devin-global-skills`)
+- Build toolchain: `typescript` + `tsdown` — always confirm the latest versions with `/deep-research` + `/follow-best-practice` (not pinned in this file — per `/update-agents-skills-global`)
 
 ## Execute
 
@@ -52,10 +52,10 @@ Use when the user wants to create a project/plugin/library/extension/CLI/skills/
 1. Use `/code-search` or `exec` to find `follow-create-*/SKILL.md` in `%APPDATA%\devin\skills`
 2. Read each skill's frontmatter (`name`, `description`)
 3. Build a list: skill name, description, approximate category
-   - `skills` → `update-devin-global-skills`
-   - `devin skills` → `update-devin-global-skills`
-   - `project skills` → `follow-create-devin-project-skills`
-   - `update all skills` → `update-devin-global-skills`
+   - `skills` → `update-agents-skills-global`
+   - `devin skills` → `update-agents-skills-global`
+   - `project skills` → `update-dot-agents-project`
+   - `update all skills` → `update-agents-skills-global`
    - `subagents` → `update-devin-global-subagents`
    - `mcp`/`plugins` → `follow-create-devin-plugins`, `follow-create-claude-plugin`, `follow-create-codex-plugin`
    - `web` → `follow-create-web` (+ `follow-create-web-nextjs`, `-nuxt`, `-astro`, `-svelte`, `-solidstart` per framework)

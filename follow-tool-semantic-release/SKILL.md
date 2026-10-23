@@ -93,7 +93,7 @@ For projects using conventional commits that want to automate release, changelog
 - Check the commit history before a release
 - Use `feat`, `fix`, `BREAKING CHANGE` correctly
 
-### 2. Configuration
+### 2. Configuration — Rules
 
 - Use a clear `release.config.cjs` or `.releaserc`
 - Never hard-code tokens or secrets
@@ -124,6 +124,7 @@ For projects using conventional commits that want to automate release, changelog
 - Use /run-release if needed
 
 - See best-practices/ for recommended patterns and pitfalls
+- References: [Semantic Release Best Practices](best-practices/release-automation.md), [apis](references/apis.md)
 
 ## Expected Outcome
 

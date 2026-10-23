@@ -22,6 +22,7 @@ Pick the Vite plugin that fits the job and set it up in `vite.config.ts` — the
 - Vite core config (resolve/build/server) → `/follow-tool-vite`
 - Catalog sources: `search-raindrop` bookmarks + `search-github-star` (vite-plugin by stars) + awesome-vite
 - References: [apis](references/apis.md) | best-practices/ — no `cli.md`: the catalog wraps no CLI of its own
+- References: [Vite Plugins — Best Practices](best-practices/vite-plugins.md)
 
 ## Execute
 

@@ -72,6 +72,7 @@ Use when a diagram must be explored, shared, or presented — not when inline ma
 
 - See `best-practices/` for recommended patterns and pitfalls
 - See `references/apis.md` for the package and version reference, `references/cli.md` for the CLI surface
+- References: [Archify Diagram Authoring — Best Practices](best-practices/diagram-authoring.md)
 
 ## Expected Outcome
 

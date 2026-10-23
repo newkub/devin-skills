@@ -29,6 +29,7 @@ Boundaries:
 - Latest: `arktype@2.2.3` (verified 2026-09-13)
 - Key v2.2 features: `type.fn` (validated functions), type-safe regex via `arkregex` (`x/.../` literal + named groups), `@ark/json-schema` (bidirectional JSON Schema), Standard Schema validators embeddable directly in definitions, `|>` pipe operator, `type.valueOf` for TS enums, keywords `string.hex`/`string.regex`, serializable `ArkErrors`
 - References: [apis](references/apis.md) 
+- References: [Arktype — Best Practices](best-practices/arktype.md)
 ## Execute
 
 ### Workflows

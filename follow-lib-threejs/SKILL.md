@@ -20,6 +20,7 @@ Use when the task involves 3D rendering — scene, camera, lights, materials, mo
 - For 2D canvas/SVG that doesn't need the GPU → consider `follow-lib-animejs` or Canvas2D instead
 - The npm package `three` is versioned as `0.1xx.x`, matching the `rXXX` release — latest `0.186.x` (r186, verified 2026-09-17)
 - References: threejs.org/manual | threejs.org/docs | github.com/mrdoob/three.js/wiki/Migration-Guide
+- References: [Three.js — Best Practices](best-practices/threejs.md), [apis](references/apis.md)
 
 ## Execute
 

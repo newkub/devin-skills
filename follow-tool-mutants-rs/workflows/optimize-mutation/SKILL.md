@@ -1,5 +1,5 @@
 ---
-name: follow-tool-mutants-rs-optimize mutation
+name: follow-tool-mutants-rs-optimize-mutation
 description: Make cargo-mutants faster — skip lists, shard/parallel jobs, CI integration
 argument-hint: "[scope]"
 related:

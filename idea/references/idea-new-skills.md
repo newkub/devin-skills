@@ -8,7 +8,7 @@ Generate concrete ideas for new Devin skills by analyzing gaps in the existing s
 
 Use when the user wants ideas for a new skill, notices that some workflow is missing, or asks "should there be a skill for X?" The output is an ordered list of skill proposals with name, description, and trigger
 
-See also: /review-devin-global-harness, /update-devin-global-skills, /search-skills
+See also: /review-dot-agents-global-and-fix, /update-agents-skills-global, /search-skills
 
 ## Execute
 
@@ -68,7 +68,7 @@ See also: /review-devin-global-harness, /update-devin-global-skills, /search-ski
 
 > Goal: Create the selected skills
 
-1. For each selected idea, call `/new-skills` or `/update-devin-global-skills`
+1. For each selected idea, call `/new-skills` or `/update-agents-skills-global`
 2. Let the user customize the skill before creating
 3. Verify each skill with `/deep-validate`
 4. Update references with `/update-references`

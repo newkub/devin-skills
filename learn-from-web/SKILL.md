@@ -9,7 +9,7 @@ related:
   - check-types-definition
   - learn-from-codebase
   - deep-research
-  - create-report-in-dot-devin
+  - create-report-to-dot-agents
   - check-reference
   - use-scripts
 ---
@@ -63,7 +63,7 @@ Follow [references/web-research.md](references/web-research.md) — the order `O
 > Goal: The output matches the calling context
 
 - If learning for yourself → write a learning path following the structure below
-- If called as a dependency of a skill → write actual reference files per `update-devin-global-skills` (`## Conventions → Write References`) (mandatory, do not skip)
+- If called as a dependency of a skill → write actual reference files per `update-agents-skills-global` (`## Conventions → Write References`) (mandatory, do not skip)
 - If writing content across many files → run `/check-reference` on each piece, and `/use-scripts` if >10 files
 
 ```markdown
@@ -89,7 +89,7 @@ Follow [references/web-research.md](references/web-research.md) — the order `O
 - <all URLs used with a one-line summary>
 ```
 
-5. Record it with `/create-report-in-dot-devin` if the user wants to keep it
+5. Record it with `/create-report-to-dot-agents` if the user wants to keep it
 
 ## Rules
 

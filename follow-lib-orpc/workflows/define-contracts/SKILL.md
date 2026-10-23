@@ -21,6 +21,8 @@ contract layer — `@orpc/contract` (`oc` builder), input/output validation cont
 
 ### 1. Contract Builder
 
+> Goal: Contract Builder.
+
 ```ts
 import { oc } from '@orpc/contract'
 import { z } from 'zod'
@@ -41,16 +43,22 @@ export const contract = oc.router({
 
 ### 2. Contract Router Organization
 
+> Goal: Contract Router Organization.
+
 - `contracts/` dir per domain — compose `oc.router({ domain: domainContract })`
 - Contract package shareable (npm/workspace pkg) — client imports types without depending on server code
 - `InferContractRouterInputs`/`InferContractRouterOutputs` — derive types from the contract
 
 ### 3. Error Maps
 
+> Goal: Error Maps.
+
 - `.errors({ KEY: { status, data: Schema } })` — typed declared errors per procedure
 - Common error keys shared base contract: `oc.errors({ UNAUTHORIZED: {...} })` → spread per proc
 
 ### 4. Contract-First Workflow
+
+> Goal: Contract-First Workflow.
 
 1. Define contract → review API surface (types, errors, routes)
 2. `implement(contract)` on the server → `createRouterClient(contract)` on the client

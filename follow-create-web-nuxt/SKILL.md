@@ -18,7 +18,7 @@ Define guidelines for developing Nuxt 4 applications at peak performance
 
 Covers setup, directory structure, configuration, code standards, performance, plugins, assets, error handling, and verification for Nuxt 4 projects (Nuxt 3 EOL July 2026)
 
-- Packages: `nuxt` 4.x (Node `^22.19.0 || ^24.11.0 || >=26.0.0`, Vue 3.5+, the Nitro server engine builds `.output` deployable to Node/serverless/edge), `nuxi` CLI, `@nuxt/ui` 4.x (Reka UI + Tailwind CSS + Tailwind Variants — run `bun add @nuxt/ui tailwindcss`, then `@import "tailwindcss"; @import "@nuxt/ui";` in `app/assets/css/main.css`) — always verify the latest versions with `/deep-research` + `/follow-best-practice` (no pinning in this file — per `/update-devin-global-skills`)
+- Packages: `nuxt` 4.x (Node `^22.19.0 || ^24.11.0 || >=26.0.0`, Vue 3.5+, the Nitro server engine builds `.output` deployable to Node/serverless/edge), `nuxi` CLI, `@nuxt/ui` 4.x (Reka UI + Tailwind CSS + Tailwind Variants — run `bun add @nuxt/ui tailwindcss`, then `@import "tailwindcss"; @import "@nuxt/ui";` in `app/assets/css/main.css`) — always verify the latest versions with `/deep-research` + `/follow-best-practice` (no pinning in this file — per `/update-agents-skills-global`)
 
 ## Execute
 

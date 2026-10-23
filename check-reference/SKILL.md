@@ -3,12 +3,17 @@ name: check-reference
 description: Read references from various sources to verify correctness
 argument-hint: "[scope]"
 related:
-  - review-devin-global-harness
+  - review-dot-agents-global-and-fix
   - check-secrets
   - update-references
   - check-types-definition
   - deep-research
 
+allowed-tools:
+  - exec
+  - grep
+  - glob
+  - find_file_by_name
 ---
 ## Goal
 
@@ -89,7 +94,7 @@ Check that the information is current:
 
 - Use /check-types-definition if needed (type/API surface vs the real source)
 - Use /deep-research if needed (deep verification across multiple sources)
-- Use /review-devin-global-harness if needed
+- Use /review-dot-agents-global-and-fix if needed
 - Use /check-secrets secrets-leak if needed
 - Use /update-references if needed
 

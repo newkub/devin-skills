@@ -26,7 +26,7 @@ Used to create, improve, and build Tauri desktop apps with Bun and Vite
 - Add plugins as needed
 - Build and test on target platforms
 
-- Packages: `tauri`, `@tauri-apps/cli`, `@tauri-apps/api` — always confirm the latest versions via `/deep-research` + `/follow-best-practice` (no pins in this file — per `/update-devin-global-skills`); v2 uses capabilities files (`src-tauri/capabilities/*.json`) instead of the v1 allowlist and supports mobile targets
+- Packages: `tauri`, `@tauri-apps/cli`, `@tauri-apps/api` — always confirm the latest versions via `/deep-research` + `/follow-best-practice` (no pins in this file — per `/update-agents-skills-global`); v2 uses capabilities files (`src-tauri/capabilities/*.json`) instead of the v1 allowlist and supports mobile targets
 
 - Boundary: if true native is required — no WebView/JS runtime in the binary (TS core + `.native` markup, AOT via Zig) → use `/follow-lib-native-sdk` instead of Tauri
 

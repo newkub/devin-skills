@@ -61,7 +61,7 @@ Canonical tech stack + default picks per category, grouped by ecosystem.
 | Agent Sandbox | `Cloudflare Sandbox SDK` | `Beam` (→hosted) | - | - |
 | AI Memory | `Cloudflare Agent Memory` | `supermemory` (→hosted) | - | - |
 | Linter | `Biome` | `Oxlint` (→big repo/speed), `ESLint` (→compat) | `Clippy` | - |
-| Formatter | `Biome` | `dprint` (→other languages), `oxfmt` (→oxc formatter, new) | `rustfmt` | `dprint` |
+| Formatter | `Biome` | `bun fmt` (→Bun runtime, built in), `dprint` (→other languages), `oxfmt` (→oxc formatter, new) | `rustfmt` | `dprint` |
 | Code Search | `ast-grep` | `GritQL` (→in Biome), `Semgrep` (→security) | `ast-grep` | - |
 | Dep Hygiene | `Knip` (unused) | `madge` (circular), `publint` + `attw` (package lint) | `cargo-udeps` | `cargo-modules` |
 | Testing | `Vitest` + `Playwright` | `happy-dom` (→DOM env), `fast-check` (→property, `/follow-lib-fast-check`), `TSTyche` (→types, `/follow-lib-tstyche`) | `cargo-nextest` | `insta` (→snapshot), `proptest` (→property) |
@@ -88,7 +88,7 @@ Canonical tech stack + default picks per category, grouped by ecosystem.
 |---|---|---|
 | Bundler | `Rolldown` | `rolldown` (standalone bundler), `vite@^8` (Rolldown engine built in — the `rolldown-vite` preview is retired) |
 | Library Bundler | `tsdown` | `bunup` (→Bun-first, `/follow-tool-bunup`) |
-| Unified Toolchain | - | `Vite+` (→want an all-in-one, still new) |
+| Unified Toolchain | `Vite+` (→Vite-based repos, `/follow-tool-viteplus`) | `Bun` all-in-one (→Bun-native repos: `bun fmt`/`bun test`/`bun build`, `/follow-lang-bun`) |
 | Dev Server / HMR | `Vite` | - |
 | Test Runner | `Vitest` | `@cloudflare/vitest-pool-workers` (→test Workers) |
 | Docs | `VitePress` | `Slidev` (→slides), `Astro` (→content site) |
@@ -96,7 +96,7 @@ Canonical tech stack + default picks per category, grouped by ecosystem.
 | Universal Plugin API | `unplugin` | `unplugin-auto-import`, `unplugin-vue-components`, `unplugin-icons` |
 | Plugin Authoring | `withFilter` (Rolldown hook filter) | native plugins (`enableNativePlugin`, experimental) |
 | Common Plugins | - | `@cloudflare/vite-plugin` (→Workers in Vite), `vite-plugin-pwa`, `vite-tsconfig-paths`, `vite-plugin-devtools` |
-| Native Speed | `lightningcss` (CSS) | `oxfmt` (format) |
+| Native Speed | `lightningcss` (CSS) | `oxfmt` (format), `bun fmt` (→Bun runtime, no install) |
 | Bundle Analysis | `sonda` | `bundlewatch` |
 | Inspect / Debug | `vite-plugin-inspect` | `node-modules-inspector` |
 | DevTools Framework | `@vitejs/devtools` (→`/follow-tool-vite-devtools`) | `@vitejs/devtools-kit` (→author integrations), `devframe` (→framework-neutral, `/follow-tool-devfra`), `wrikka-vite-devtools` (→project-specific dock, `/use-wrikka-vite-devtools`) |

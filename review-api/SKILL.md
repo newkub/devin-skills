@@ -63,7 +63,7 @@ Use when an endpoint, schema, webhook, or client integration changes, or before 
 
 1. Order: active consumer break → idempotency and webhook duplication → mass-assignment and input limits → pagination correctness → deprecation policy and lifecycle → error-shape consistency
 2. Cross-reference: one missing validation boundary often explains several mass-assignment and input-limit findings — fix it once and re-run every request it covers
-3. Large or cross-workspace set → `/create-plan-in-dot-devin`; without `then-fix` stop here with the ordered table
+3. Large or cross-workspace set → `/create-plan-in-dot-agents`; without `then-fix` stop here with the ordered table
 
 ### 5. Fix Through The Owners
 

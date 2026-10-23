@@ -88,7 +88,7 @@ Use when a scope's dependency usage needs auditing: a library imported but barel
 2. Severity comes from the row's `Default severity` (`Medium`) and its stated trigger (`High` when a deprecated API or missing setup costs runtime/bundle or blocks an upgrade) — no other level is invented here
 3. A misuse that breaks user data or security is a `security`/`correctness` finding and routes there instead; this dimension does not inflate its severity to keep it
 4. A deliberate, recorded deviation (comment, ADR, catalog `(→ ...)` condition) is listed as a known decision, not a finding
-5. Score: Critical 0, High 25, Medium 50, Low 75, Info 100 → weighted average; grade A ≥90, B ≥80, C ≥70, D ≥60, F <60
+5. Score and grade per `/report-review` step 3 (the weights/grades SSOT) — never restate the formula here
 
 ### 5. Report
 

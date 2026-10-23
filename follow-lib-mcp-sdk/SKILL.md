@@ -25,6 +25,7 @@ Use when the task involves `@modelcontextprotocol/sdk` — creating/modifying an
 
 - Latest: `@modelcontextprotocol/sdk@1.30.0` (verified 2026-09-13)
 - References: [apis](references/apis.md) | [cli](references/cli.md) 
+- References: [MCP SDK — Tool Design and Schemas](best-practices/tool-design.md)
 ## Execute
 
 ### Workflows

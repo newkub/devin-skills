@@ -19,7 +19,7 @@ Build high-performance CLI applications with Rust, with type safety and zero-cos
 
 Use for building CLI applications with the Rust runtime — if Rust vs Bun is unclear, use `/follow-create-cli` to pick the stack first
 
-- Packages: Rust toolchain (`edition = "2024"`), `clap` (derive API — 4.x renamed the builder `App` → `Command`), `color-eyre`, `cargo-dist`, `thiserror`/`anyhow`, `serde` — always confirm the latest versions with `/deep-research` + `/follow-best-practice` (not pinned in this file — per `/update-devin-global-skills`)
+- Packages: Rust toolchain (`edition = "2024"`), `clap` (derive API — 4.x renamed the builder `App` → `Command`), `color-eyre`, `cargo-dist`, `thiserror`/`anyhow`, `serde` — always confirm the latest versions with `/deep-research` + `/follow-best-practice` (not pinned in this file — per `/update-agents-skills-global`)
 
 ## Execute
 

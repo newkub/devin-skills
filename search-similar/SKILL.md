@@ -36,7 +36,7 @@ See also: /use-astgrep
 
 > Goal: find similars via name matching
 
-1. Run `/list-devin-global-skills` to view the skill list
+1. Run `/list-dot-agents-global` to view the skill list
 2. Find skills whose prefix or name resembles the target
 3. Find skills with matching keywords in `description` or `name`
 4. Record candidates with score > 0

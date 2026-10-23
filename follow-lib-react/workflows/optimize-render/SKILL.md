@@ -1,5 +1,5 @@
 ---
-name: follow-lib-react-optimize render
+name: follow-lib-react-optimize-render
 description: Optimize React renders — memo/useMemo/useCallback, React Compiler, profiling
 argument-hint: "[scope]"
 related:

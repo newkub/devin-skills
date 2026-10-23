@@ -27,6 +27,7 @@ Used for:
 - Local development with the Supabase CLI
 - Database migrations and type generation
 - Secrets, storage, branches, and CI/CD integration
+- References: [Apis](references/apis.md), [Package manifest](references/package-manifest.md), [Routes](references/routes.md), [Website](references/website.md)
 
 ## Execute
 

@@ -25,6 +25,7 @@ For projects wanting the current TanStack ecosystem (see the latest list at `htt
 - Tooling: `Devtools` (unified workbench, alpha), `CLI` (project scaffolding), `Intent` (agent skills in packages), `Config` (shared lint/build/publish packages; the `@tanstack/config` umbrella is deprecated)
 
 Versions move: read the installed version from `package.json` and the current one from the registry at use time — never copy a version list from this file.
+- References: [TanStack Ecosystem — Best Practices](best-practices/tanstack-ecosystem.md)
 
 ## Execute
 

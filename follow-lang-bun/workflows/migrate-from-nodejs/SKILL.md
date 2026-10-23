@@ -21,16 +21,22 @@ For an existing Node.js project (npm/pnpm/yarn) moving onto Bun — full migrati
 
 ### 1. Prerequisites
 
+> Goal: Prerequisites.
+
 1. `bun --version` shows a current supported release (see the Install And Setup step of [../../SKILL.md](../../SKILL.md))
 2. Clean `git status` — commit before migrating
 
 ### 2. Replace The Package Manager
+
+> Goal: Replace The Package Manager.
 
 1. Run `bun pm migrate` first — it converts the existing lockfile into `bun.lock` preserving resolved versions
 2. Then remove `node_modules` + the old lockfile (`package-lock.json`/`yarn.lock`/`pnpm-lock.yaml`) and run `bun install`
 3. Declare `trustedDependencies` for packages relying on `postinstall` (esbuild, sharp, prisma, puppeteer) — `bun pm untrusted` lists blocked ones
 
 ### 3. Update Scripts
+
+> Goal: Update Scripts.
 
 | old | new |
 |-----|-----|
@@ -48,6 +54,8 @@ For an existing Node.js project (npm/pnpm/yarn) moving onto Bun — full migrati
 
 ### 4. Compatibility Checklist
 
+> Goal: Compatibility Checklist.
+
 1. `node:*` imports and Node globals (`process`, `Buffer`, `__dirname`, `require`) mostly work; migrating to ESM is still recommended
 2. Native addons (`.node`, node-gyp) — Node-API is supported; packages relying on V8 internals may break
 3. `import.meta.url` patterns work; `import.meta.dirname`/`filename` are provided
@@ -57,15 +65,21 @@ For an existing Node.js project (npm/pnpm/yarn) moving onto Bun — full migrati
 
 ### 5. Gradual Adoption (optional)
 
+> Goal: Gradual Adoption (optional).
+
 1. `bun install` alone as just the package manager works — the runtime can stay `node`
 2. `bun test` can be adopted separately; keep a `"start:node": "node dist/index.js"` fallback script
 
 ### 6. Verify
 
+> Goal: Verify.
+
 1. `bun run dev`, `bun test`, `bun run build`, `bun check` all pass
 2. On failure → run `/resolve-errors`
 
 ### 7. Rollback
+
+> Goal: Rollback.
 
 1. `bun.lock` doesn't conflict with npm — `npm install` regenerates the old lockfile from the committed `package.json`
 2. The original lockfile stays in git history — revert anytime

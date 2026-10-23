@@ -19,6 +19,11 @@ related:
   - ask-me
   - suggest-next-action
 
+allowed-tools:
+  - exec
+  - grep
+  - glob
+  - find_file_by_name
 ---
 
 ## Goal
@@ -75,7 +80,7 @@ Use for any correctness question when the artifact type is not yet decided, or w
 
 > Goal: one table, one verdict per target
 
-1. Report in chat via `/report-review` — columns `No. | Target | Authority | Expected | Actual | Verdict | Severity | Fix owner`; no report files unless the user asks (`/create-report-in-dot-devin`)
+1. Report in chat via `/report-review` — columns `No. | Target | Authority | Expected | Actual | Verdict | Severity | Fix owner`; no report files unless the user asks (`/create-report-to-dot-agents`)
 2. Verdict per target: `correct` / `incorrect` / `unverified`; Severity: `high` (locks in a bug or nothing is verified), `medium` (drift, weak coverage), `low` (wording/naming)
 3. Summarize: checked count, correct count, incorrect count, unverified count, and the single highest-severity finding
 

@@ -74,4 +74,4 @@ Use when the current task or skill needs another skill to carry on, with a clear
 - The most suitable skill is selected and invoked
 - Context is passed on to the chosen skill
 - A summary report of the skills used and their results exists
-- Used together with `/use-related-skills` in `/update-devin-global-skills`
+- Used together with `/use-related-skills` in `/update-agents-skills-global`

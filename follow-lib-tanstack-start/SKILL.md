@@ -18,6 +18,7 @@ Use TanStack Start fully from scaffold to deploy — SSR/streaming, `createServe
 Works with React/Solid full-stack apps — SSR routes, server functions, REST endpoints, middleware; supports only React/Solid — Vue/Svelte → Nuxt/SvelteKit; routing details → `follow-router`
 
 - part of TanStack ecosystem — selection/dispatch lives in `/follow-lib-tanstack-ecosystem`
+- References: [TanStack Start — Best Practices](best-practices/tanstack-start.md), [apis](references/apis.md)
 
 ## Execute
 

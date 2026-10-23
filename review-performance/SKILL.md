@@ -65,7 +65,7 @@ Use before a release, after a regression, or when a budget is suspected — a ro
 
 1. Order: blocking render and interaction → request waterfalls and caching → bundle and asset weight → memory and leaks → capacity and cost
 2. Cross-reference: one missing cache header or one eager import often explains several findings — fix it once and re-measure every budget it touched
-3. Large or cross-workspace set → `/create-plan-in-dot-devin`; without `then-fix` stop here with the ordered table and the baseline numbers
+3. Large or cross-workspace set → `/create-plan-in-dot-agents`; without `then-fix` stop here with the ordered table and the baseline numbers
 
 ### 5. Fix Through The Owners
 

@@ -20,6 +20,7 @@ Deploy applications on the Vercel platform with auto-build, preview deployments,
 - For related skills: `open-web-for-config-secret`, `follow-service-vercel`, `deploy-to-vercel`
 
 Covers installing the Vercel CLI, linking a project, configuring, building, deploying, environment variables, serverless/edge functions, and CI/CD
+- References: [Apis](references/apis.md), [Follow service vercel cli apis](references/follow-service-vercel-cli-apis.md), [Follow service vercel cli routes](references/follow-service-vercel-cli-routes.md), [Follow service vercel cli vercel cli](references/follow-service-vercel-cli-vercel-cli.md), [Follow service vercel cli website](references/follow-service-vercel-cli-website.md), [Package manifest](references/package-manifest.md), [Routes](references/routes.md), [Vercel cli](references/vercel-cli.md)
 
 ## Execute
 

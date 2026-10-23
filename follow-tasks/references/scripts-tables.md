@@ -27,6 +27,7 @@ Bun 1.4 has built-in commands that can replace external tools — use when the p
 | test | `bun test` (or `bun test --coverage` for coverage) |
 | security | `bun audit` (has `bun audit fix`) |
 | CI install | `bun ci` (frozen lockfile, equivalent of `npm ci`) |
+| format | `bun fmt` (`--check` to verify without writing, `--no-script` when a `fmt` script shadows the built-in) — formats JS/TS, CSS, HTML/Vue/Svelte, JSON/YAML/TOML, Markdown, GraphQL; never lints |
 | Monorepo tasks | `bun run --workspaces <script>` or `bun --filter '<name>' <script>` |
 
 ## Required Scripts
@@ -41,8 +42,8 @@ The baseline scripts every project must have to guarantee code quality:
 | build | `bun build` | `nuxi build` | `next build` | `vite build` | `vite build` | `tauri build` | `cargo build` | `python -m build` | `go build .` |
 | typecheck | `bun check` | `nuxi typecheck` | `tsc --noEmit` | `tsc --noEmit` | `svelte-check --tsconfig ./tsconfig.json` | `tsc --noEmit` | `cargo check` | `mypy src` | `go vet ./...` |
 | lint | `biome lint` | `biome lint` | `biome lint` | `biome lint` | `biome lint` | `biome lint` | `cargo clippy` | `ruff check` | `golangci-lint run` |
-| format | `biome format --write` | `biome format --write` | `biome format --write` | `biome format --write` | `biome format --write` | `biome format --write` | `cargo fmt` | `ruff format` | `gofmt -w .` |
-| format:check | `biome ci` | `biome ci` | `biome ci` | `biome ci` | `biome ci` | `biome ci` | `cargo fmt --check` | `ruff format --check` | `test -z "$(gofmt -l .)"` |
+| format | `bun fmt` | `biome format --write` | `biome format --write` | `biome format --write` | `biome format --write` | `biome format --write` | `cargo fmt` | `ruff format` | `gofmt -w .` |
+| format:check | `bun fmt --check` | `biome ci` | `biome ci` | `biome ci` | `biome ci` | `biome ci` | `cargo fmt --check` | `ruff format --check` | `test -z "$(gofmt -l .)"` |
 | test | `vitest run` | `vitest run` | `vitest run` | `vitest run` | `vitest run` | `vitest run` | `cargo nextest run` | `pytest` | `go test ./...` |
 | scan | `ast-grep scan` | `ast-grep scan` | `ast-grep scan` | `ast-grep scan` | `ast-grep scan` | `ast-grep scan` | `cargo clippy --all-targets` | `ruff check` | `golangci-lint run` |
 | check | `format && lint && typecheck && scan` | `format && lint && typecheck && scan` | `format && lint && typecheck && scan` | `format && lint && typecheck && scan` | `format && lint && typecheck && scan` | `format && lint && typecheck && scan` | `cargo fmt && cargo clippy && cargo check` | `ruff format && ruff check && mypy src` | `gofmt -w . && golangci-lint run && go vet ./...` |

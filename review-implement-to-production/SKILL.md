@@ -15,7 +15,7 @@ related:
   - update-todo-md
   - check-secrets
   - no-use-ignore
-  - create-plan-in-dot-devin
+  - create-plan-in-dot-agents
   - suggest-next-action
   - ask-me
 ---
@@ -30,7 +30,7 @@ Use before implementation, before release, or whenever the question is "what is 
 
 - Entered through `/deep-review` with `implement`, `gaps`, or `not-implemented`, or called by name; no argument is rewritten
 - Scan only contracts that actually exist: half-written code, renderable UI, declared routes/schemas/specs, and terms declared in docs. Net-new features nobody designed yet are not gaps (`/idea-features`)
-- Boundaries: code quality and security → `/deep-review-codebase-everything`; dead code with no consumer → `/follow-tool-knip`; tests that assert nothing → `/review-tests`; the fix plan → `/create-plan-in-dot-devin`; the fix run → `/implement-to-production`
+- Boundaries: code quality and security → `/deep-review-codebase-everything`; dead code with no consumer → `/follow-tool-knip`; tests that assert nothing → `/review-tests`; the fix plan → `/create-plan-in-dot-agents`; the fix run → `/implement-to-production`
 - Without `then-fix` the run is report-only: the queue is the deliverable and nothing is edited
 - With `then-fix` the confirmed queue drives `/implement-to-production`, which implements every item; the preset does not implement items itself
 
@@ -110,7 +110,7 @@ Use before implementation, before release, or whenever the question is "what is 
 1. Confirm the fix list with `/ask-me` — per item by default, `/follow-your-suggestion` for the report as-is, `/fix all` when the user says so; `dont-ask-me`/`/ship` follow the report as-is
 2. Pass the queue to `/implement-to-production` as its entry queue, so it does not re-scan; a queue item with no design for its surface yet → design first (`/design-cli-prototype`, `/design-tui-prototype`, `/design-web-prototype`, `/design-html-prototype`), then implement
 3. Every item is implemented or reported `blocked`/`deferred` with a reason — never a partial subset reported as done
-4. Many fixes across unrelated modules → `/create-plan-in-dot-devin` first, then run the batches
+4. Many fixes across unrelated modules → `/create-plan-in-dot-agents` first, then run the batches
 
 ### 9. Re-Scan And Close
 

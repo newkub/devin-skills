@@ -20,7 +20,7 @@ Build Rolldown plugins with TypeScript that work with the Rolldown bundler, supp
 
 Use for building JavaScript/TypeScript plugins for Rolldown or Vite 8+, covering the plugin object, hooks, filters, build, and tests
 
-- Packages: `rolldown` (the main bundler in Rolldown-powered `vite`), `vite` — always confirm the latest versions with `/deep-research` + `/follow-best-practice` (not pinned in this file — per `/update-devin-global-skills`); 1.x has hook filters (`rolldown/filter`: `exactRegex`, `prefixRegex`); external `rolldown`/`vite` in the plugin build
+- Packages: `rolldown` (the main bundler in Rolldown-powered `vite`), `vite` — always confirm the latest versions with `/deep-research` + `/follow-best-practice` (not pinned in this file — per `/update-agents-skills-global`); 1.x has hook filters (`rolldown/filter`: `exactRegex`, `prefixRegex`); external `rolldown`/`vite` in the plugin build
 
 ## Execute
 

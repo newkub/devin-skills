@@ -40,8 +40,8 @@ Core principle: humans read the CLI visually, agents consume it structurally —
 
 > Goal: design on top of the conventions that already exist, not from memory
 
-1. Run `/follow-devin-global-skills` — list global (`%APPDATA%\devin\skills`) and project (`.devin/skills/`) skills matching the CLI domain
-2. Read the ones this design must obey: `/follow-create-cli` (+ `/follow-create-bun-cli` / `/follow-create-rust-cli`), `/follow-tool-usage`, `/learn-from-cli`, `/follow-tool-devin-cli` when the target is an agent-facing CLI
+1. Run `/follow-devin-global-skills` — list global (`%APPDATA%\devin\skills`) and project (`.agents/skills/`) skills matching the CLI domain
+2. Read the ones this design must obey: `/follow-create-cli` (+ `/follow-create-bun-cli` / `/follow-create-rust-cli`), `/follow-tool-usage`, `/learn-from-cli`, `/use-devin-cli` when the target is an agent-facing CLI
 3. Project `AGENTS.md` → read its `### Skills` section; note the conventions (naming, output, exit codes) the project already follows before proposing new ones
 
 ### 2. Clarify Intent

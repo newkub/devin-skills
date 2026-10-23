@@ -80,7 +80,7 @@ Use before trusting a suite, after a green run that felt too easy, or when cover
 1. Order by risk: `false-green` → `gap` on money/auth/data → `flaky` → `brittle` → `slow` → `hygiene` → `dead`
 2. A flaky spec is quarantined with owner + expiry before it is fixed, per `/check-flaky-tests`, so it stops masking other failures
 3. Coverage targets are not the goal — close the highest-risk gaps first, then re-measure; never raise a number by testing getters
-4. Large suite work → `/create-plan-in-dot-devin`; a missing framework → `/follow-tool-vitest` (or the stack's runner), and browser flows → `/follow-tool-playwright`, before writing specs
+4. Large suite work → `/create-plan-in-dot-agents`; a missing framework → `/follow-tool-vitest` (or the stack's runner), and browser flows → `/follow-tool-playwright`, before writing specs
 5. Without `then-fix` → stop here, report the ordered table with evidence, and close with `/suggest-next-action`
 
 ### 6. Fix Through The Test Owners

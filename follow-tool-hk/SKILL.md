@@ -4,6 +4,7 @@ description: Set up and use hk for Git hooks instead of Lefthook/pre-commit
 argument-hint: "[scope]"
 related:
   - follow-tool-mise
+  - follow-tool-viteplus
   - run-verify
   - fix
 
@@ -17,11 +18,12 @@ Set up hk as the Git hook manager replacing Lefthook, with a type-safe and fast 
 
 Use hk for pre-commit, pre-push, pre-merge-commit and the `check`/`fix` commands
 
-- Boundary: if the repo already uses moonrepo → moon's `vcs.hooks` (v1.9+) is enough for general hooks (`moon run :lint --affected --status=staged`) — use hk when you want parallel staged-file linting, non-moon hook steps, or one hook config across repos
+- Boundary: if the repo already uses moonrepo → moon's `vcs.hooks` (v1.9+) is enough for general hooks (`moon run :lint --affected --status=staged`) — use hk when you want parallel staged-file linting, non-moon hook steps, or one hook config across repos; inside a Vite+ project use `vp staged` (lint-staged 17, `staged: { '*': 'vp check --fix' }`) → `/follow-tool-viteplus`
 
 - General git hooks patterns: see `references/apis.md`
 - Latest: `hk@2.2.0` (verified 2026-09-24) — v2 breaking: config is Pkl-only (removed `hk.toml`/`hk.yaml`/`.hkrc.pkl`), builtin variants (`gitleaks_staged`, `knip_strict`, `pinact_v3`) replaced by typed options such as `(Builtins.gitleaks) { scan = "staged" }`, `hk generate` → `hk init`, pre-commit fix+stage automatic — migration guide: `https://hk.jdx.dev/migration-v2`
 - References: [cli](references/cli.md) | [apis](references/apis.md) | best-practices/ 
+- References: [hk — Best Practices](best-practices/hk.md)
 ## Execute
 
 ### 1. Install hk

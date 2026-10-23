@@ -6,7 +6,7 @@ related:
   - update-references
   - resolve-errors
   - refactor
-  - review-devin-global-harness
+  - review-dot-agents-global-and-fix
   - scan-codebase
   - report
 ---
@@ -73,7 +73,7 @@ Use when editing one file affects other files that reference it, e.g.:
 
 > Goal: no broken references
 
-1. Run `/review-devin-global-harness`
+1. Run `/review-dot-agents-global-and-fix`
 2. Run `/resolve-errors` if there are build/lint/typecheck errors
 3. If it fails → fix and recheck (max 3 rounds)
 

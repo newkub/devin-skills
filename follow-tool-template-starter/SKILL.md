@@ -105,6 +105,7 @@ Use for cloning templates from `https://github.com/newkub/template-starter/tree/
 
 
 - See best-practices/ for recommended patterns and pitfalls
+- References: [template-starter (degit) — Best Practices](best-practices/template-starter.md), [apis](references/apis.md)
 
 ## Expected Outcome
 

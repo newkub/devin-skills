@@ -26,6 +26,7 @@ Use for creating UI components with the Zaidan registry on SolidJS for Vite, Sol
 - If the project uses the `shadcn-solid` CLI or needs UnoCSS styling, use `/follow-lib-shadcn-solid` instead
 
 - Latest: `shadcn@4.21.0` / `@kobalte/core@0.13.14` / `corvu@0.7.2` / `solid-js@1.9.15` / `tailwindcss@4.3.3` (verified 2026-09-16)
+- References: [Zaidan UI — Best Practices](best-practices/zaidan-ui.md), [apis](references/apis.md)
 
 ## Execute
 

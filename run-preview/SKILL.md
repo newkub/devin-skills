@@ -3,6 +3,7 @@ name: run-preview
 description: Run a preview build to test before an actual deploy
 argument-hint: "[scope]"
 related:
+  - follow-tool-viteplus
   - deep-review
   - run-build
   - watch-browser
@@ -35,7 +36,7 @@ Create a preview build for testing
 1. Run `/run-build` to create the preview build
 2. Set the build mode to preview, not production
 3. Check the build output for errors
-4. For Vite: use `bun run build` then `bun run preview`
+4. For Vite: use `bun run build` then `bun run preview`; a Vite+ project uses `vp build` then `vp preview` (`/follow-tool-viteplus`)
 5. For Next.js: use `bun run build` then `bun run start`
 6. For Nuxt: use `bun run build` then `bun run preview`
 7. For Vercel: use `bunx vercel preview` for a deployment preview

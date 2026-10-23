@@ -4,7 +4,7 @@ description: Collect issues I created → implement each issue → comment a sum
 argument-hint: "[issue-or-repo-or-filter]"
 related:
   - implement-to-production
-  - create-plan-in-dot-devin
+  - create-plan-in-dot-agents
   - run-verify
   - resolve-github-pr
   - use-subagents
@@ -22,7 +22,7 @@ Collect all GitHub issues created by me (`@me`) then implement each issue via `/
 - If an issue number is specified → resolve only that issue (verify the implementation then comment + close)
 - Implement each issue with `/implement-to-production` in priority order
 - Do not touch others' issues and do not implement beyond the scope of each issue
-- If a single issue needs a plan first → use `/create-plan-in-dot-devin` for the single issue
+- If a single issue needs a plan first → use `/create-plan-in-dot-agents` for the single issue
 - If an issue is linked to a PR → use `/resolve-github-pr` so the merge closes the issue automatically
 
 ## Execute
@@ -148,7 +148,7 @@ A subagent for implementing a single GitHub issue end to end — read the issue 
 
 1. Read the issue with `gh issue view <issue> --comments` — pull the acceptance criteria and context from the comments
 2. Confirm the issue is `--author @me` per the parent's scope — if not, return `skipped`
-3. Lay out a short implementation plan from the acceptance criteria — if complex, run `/create-plan-in-dot-devin`
+3. Lay out a short implementation plan from the acceptance criteria — if complex, run `/create-plan-in-dot-agents`
 4. Create a branch per `branch-convention`
 5. Implement only what the issue specifies — if extra work is found, record it and suggest `/create-github-issue` rather than doing it yourself
 6. Run `verify-commands` — lint, typecheck, tests pass before returning

@@ -5,7 +5,7 @@ argument-hint: "[setup-infra|setup-coverage|deploy-production] [scope-or-plan]"
 related:
   - review-implement-to-production
   - deep-review
-  - create-plan-in-dot-devin
+  - create-plan-in-dot-agents
   - refactor
   - deep-test
   - deep-validate
@@ -51,9 +51,9 @@ Convert every TODO, MOCK, FAKE, STUB, placeholder, and dead UI into real product
 
 > Goal: confirm the architecture before starting
 
-1. Always run `/create-plan-in-dot-devin` (an existing plan file → read it and follow it), then run `/deep-review` to inspect boundaries, layers, and data flow
+1. Always run `/create-plan-in-dot-agents` (an existing plan file → read it and follow it), then run `/deep-review` to inspect boundaries, layers, and data flow
 2. Implementing in `packages/`, `crates/`, or `apps/` → run `/follow-architecture` to pick and apply that directory's pattern (`packages/`/`crates/` → `clean`, `apps/` → `layered`)
-3. Before the first line run `/follow-best-practice` for the stack in the manifest — the owner skills' `best-practices/` are the patterns the new code must follow, and the same call lists which deps already have an owner skill. A dep with none → persist the research via `/update-devin-global-skills`
+3. Before the first line run `/follow-best-practice` for the stack in the manifest — the owner skills' `best-practices/` are the patterns the new code must follow, and the same call lists which deps already have an owner skill. A dep with none → persist the research via `/update-agents-skills-global`
 4. If the architecture is unclear or a big structure change is needed → run `/ask-me` first. Identify the critical path: schema → data → API → UX/UI
 5. Draft the rollback plan here, before any code or migration: the method (`git revert <merge-commit>`, redeploy the previous version, platform rollback), the reverse path for each schema change (down-migration / restore from backup), and the current production version/revision for later comparison. Write it into the plan file so a destructive step never runs without one; `### 9.6` confirms it is executable
 
@@ -96,7 +96,7 @@ Convert every TODO, MOCK, FAKE, STUB, placeholder, and dead UI into real product
 1. If the project has a `TODO.md` → gather its pending items through `## Input Flows` → `TODO.md` (that bullet owns the artifact; do not parse the table ad hoc here), or use `/update-todo-md` to read/enhance the prompt
 2. Use every item from `/review-implement-to-production` (step 1) as the queue — do not scan for markers again. A new item found along the way → add it to the queue immediately. Only for hardcoded values the report does not cover → run `/check-secrets hardcoded-values`
 3. If the entire input is `TODO.md` → `## Input Flows` → `TODO.md` also sets the ordering and status tracking for the whole run
-4. Replace MOCK/FAKE/STUB with real implementations per this skill's flow, and complete every item in the queue — never implement only some items and report it as done. Several independent items → spawn the `feature-implementer` profile one item at a time in parallel (pass it the contracts from steps 4–5); `missing` features from the `### 5` checklist are handled the same way. Core business, large net-new work → `/idea-features` + `/create-plan-in-dot-devin` first
+4. Replace MOCK/FAKE/STUB with real implementations per this skill's flow, and complete every item in the queue — never implement only some items and report it as done. Several independent items → spawn the `feature-implementer` profile one item at a time in parallel (pass it the contracts from steps 4–5); `missing` features from the `### 5` checklist are handled the same way. Core business, large net-new work → `/idea-features` + `/create-plan-in-dot-agents` first
 5. Implement each feature/fix with `## TDD Loop` — write a failing test that locks the behavior first, then the code to pass, then refactor in a separate commit
 6. Run `/use-lib-effective` before writing a new implementation — use the installed deps or the preferred stack to their full potential. If a new dependency must be added → run `/use-my-packages-on-registry` first to install the packages we publish ourselves, then use that package's `/follow-lib-*`; choose an external dep only when no suitable one exists
 7. After implement → run `/update-todo-md` to set completed items to `completed`
@@ -120,7 +120,7 @@ Convert every TODO, MOCK, FAKE, STUB, placeholder, and dead UI into real product
 2. Always run `/improve uxui` when the scope has UI and it is wired to work per `### 5`. Prerequisites: the dev server is running (`/check-open-ports` then `/run-dev`, reusing the one from the `### 5` sweep) and `scope` = every route + the `### 5` element checklist + a browser pass (`/watch-browser fix`) that reviews the UI as actually rendered. Cover every finding, never only part of them; a project without UI may skip this step with a reported reason
 3. Run `/improve` in the other domains touched — the files changed and their related systems (error handling, consistency, stability, a11y per context), not only TODO items
 4. Run `/update-references` after a move/rename/delete, and `/follow-tool-knip` — consider removing or implementing the dead code it finds
-5. Always run `/update-project` after implement + refactor — sync docs, config, rules, AGENTS.md, README, and tooling to the current codebase (never skip; docs must not be stale before the verify gate). Run `/update-dot-devin` if the `.devin/` structure changed, and `/update-todo-md` if the TODO items changed
+5. Always run `/update-project` after implement + refactor — sync docs, config, rules, AGENTS.md, README, and tooling to the current codebase (never skip; docs must not be stale before the verify gate). Run `/update-dot-agents-project` if the `.devin/` structure changed, and `/update-todo-md` if the TODO items changed
 
 ### 9. Verify, Deploy Gate, Rollback Plan, And Finalize
 
@@ -145,7 +145,7 @@ Convert every TODO, MOCK, FAKE, STUB, placeholder, and dead UI into real product
 1. Understand: read the spec/issue/plan item/`TODO.md` row. The expected input/output and error cases must fit in one sentence. Check the existing tests for that unit and extend instead of duplicating. Work one smallest testable behavior at a time (one function, one rule, one endpoint response)
 2. Write the failing test: one test = one behavior, named scenario + expectation (`rejects expired token`, not `test1`). Assert on the real public contract (return value, thrown error, HTTP status, rendered state), not internal calls. It must fail for the expected reason — a test that passes the first time asserts nothing or the feature already exists. Never use placeholder assertions or empty tests
 3. Make it pass: write just enough code for the test — no speculative branches, no extra features, no refactor at this stage (Two Hats). Run the whole suite, not only the new test; a broken test → fix it before continuing. Add a dep only once the manifest/catalog sanctions it
-4. Refactor: rename, remove duplication, split by concern — apply `/refactor` `## Rules` + `## Guide` (smell → technique). Re-run the tests after each step; a red suite midway → revert only that step. Stop when the code reads clearly (`/dont-over-engineer`, rule of three). Structural changes go in a commit separate from the implementation
+4. Refactor: rename, remove duplication, split by concern — apply `/refactor` `## Rules` + `## Guide` (smell → technique). Re-run the tests after each step; a red suite midway → revert only that step. Stop when the code reads clearly (`/simplify guard`, rule of three). Structural changes go in a commit separate from the implementation
 5. Repeat and integrate: loop steps 2–4 one behavior at a time and `/git-commit` a checkpoint on every green cycle. Cover the boundary cases the implementation reveals: empty/invalid input, concurrent/duplicate calls, permission denied, upstream failure. Property-based/fuzz → `/deep-test property`; database-backed → `/deep-test database`; cross-module contracts → `/deep-test contract`. Finish an item with the full suite + `/run-check` + `/run-verify`
 6. No production code without a failing test that locks the behavior first — a test written after the code cannot prove the behavior is locked. Untested legacy code → characterization tests first (`/update-tests`)
 7. One test asserts one behavior — multiple behaviors in one test → split it. One cycle commits one concern and never mixes refactor/fix/feature, and every cycle ends with a green suite, not a visual check. An assertion that can never fail is a dead test → check/fix it via `/deep-test test-correctness`
@@ -157,7 +157,7 @@ Convert every TODO, MOCK, FAKE, STUB, placeholder, and dead UI into real product
 - Plan File (`.devin/temp/plan/<workspace>/<title-date>.md`):
   1. Identify the file from the argument (path or title; absent → list them and ask the user to choose)
   2. Build the task list from tasks with `status: pending`, ordered per `## Execution Order`
-  3. Do them one at a time along the critical path; a complex task → `/create-plan-in-dot-devin` again before starting
+  3. Do them one at a time along the critical path; a complex task → `/create-plan-in-dot-agents` again before starting
   4. Set the status to `in-progress`/`completed` as you go
   5. Once every task is `completed` → `/deep-validate` + `/run-verify`
   6. Delete the plan file only when the work is complete (never before confirming), then report a summary
@@ -165,7 +165,7 @@ Convert every TODO, MOCK, FAKE, STUB, placeholder, and dead UI into real product
 - `TODO.md` (project root; absent → stop and report):
   1. Split the table rows (Title/Description/Status/Priority/Created)
   2. Filter `pending`/`in-progress`, sort priority high→medium→low, no-blocker tasks first, created oldest→newest
-  3. Implement one task at a time with the main flow (an easy task whose state already exists → `/continue`; a complex one → `/create-plan-in-dot-devin` first; unclear → ask the user)
+  3. Implement one task at a time with the main flow (an easy task whose state already exists → `/continue`; a complex one → `/create-plan-in-dot-agents` first; unclear → ask the user)
   4. Mark `completed`/`blocked` with a reason immediately, adding sub-tasks when needed
   5. Loop until no `pending` remains (`blocked` remaining → report and ask the user)
   6. Finish with `/deep-validate` → `/run-verify` → `/ship` → `/report` summarizing every task
@@ -192,9 +192,9 @@ Convert every TODO, MOCK, FAKE, STUB, placeholder, and dead UI into real product
 - No Mock In Production — no mock implementation, simulated delay, in-memory store instead of a real service, or silent fallback to mock data in production code. The queue opened in `### 1.2` is closed in full: a promise that cannot be kept is reported blocked/deferred with a reason, never silently dropped (the dead-UI definition is owned by `## Scope`; the zero-new-marker check by `### 9.1`)
 - Type And Validation Flow — types flow schema → validation schema → API types → UI types; infer types from the schema instead of re-declaring them; avoid `any`, use `unknown` instead
 - Safety And User Confirmation — a destructive migration needs a dry-run plus the user's confirmation; external services that are not ready → report the options before proceeding; never hardcode secrets or keys — store them with `/follow-secret-manager`; the gate in `### 9` must be green before deploy, no exception; record the URL and version on every deploy
-- Minimal And Maintainable — always read the `/refactor` rules before implementing and always run `/refactor` after implement (step 8), never skip; follow `/dont-over-engineer`; before rewriting or when you find duplicates → `/use-lib-effective`; for a new dep → check the packages we own with `/use-my-packages-on-registry` before an external dep; preserve the public API unless it truly must change; files no longer than 250 lines
-- Best Practice First — every implementation starts from `/follow-best-practice`: the manifest's deps mapped to their owner skills, and those skills' `best-practices/` followed as written; a pattern that contradicts them needs a stated reason, never a silent preference; a dep with no `best-practices/` → backfill through `/update-devin-global-skills`
-- Plan Always — every implement task must have a plan from `/create-plan-in-dot-devin` first; never start steps 4–9 without a plan (`setup-infra` runs only `### 3`, so it needs none)
+- Minimal And Maintainable — always read the `/refactor` rules before implementing and always run `/refactor` after implement (step 8), never skip; follow `/simplify guard`; before rewriting or when you find duplicates → `/use-lib-effective`; for a new dep → check the packages we own with `/use-my-packages-on-registry` before an external dep; preserve the public API unless it truly must change; files no longer than 250 lines
+- Best Practice First — every implementation starts from `/follow-best-practice`: the manifest's deps mapped to their owner skills, and those skills' `best-practices/` followed as written; a pattern that contradicts them needs a stated reason, never a silent preference; a dep with no `best-practices/` → backfill through `/update-agents-skills-global`
+- Plan Always — every implement task must have a plan from `/create-plan-in-dot-agents` first; never start steps 4–9 without a plan (`setup-infra` runs only `### 3`, so it needs none)
 - Test First — no production code without a failing test that locks the behavior first; after implementing every item → `/deep-test` every domain touched (`unit`/`integration`/`api`/`e2e`/`website`) until green before entering the verify gate in `### 9` — a test that is not green means the work is not done (cycle order, coverage setup, and commit splitting are owned by `## TDD Loop`)
 
 ## Subagents

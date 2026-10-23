@@ -35,7 +35,7 @@ For projects using conventional commits that want automated releases — install
 > Goal: Install semantic-release and the core plugins
 
 1. Run `bun add -D semantic-release` (or the project's package manager)
-2. Install plugins as needed, e.g. `bun add -D @semantic-release/changelog @semantic-release/git` — for the plugin list see [references/semantic-release.md](../../references/semantic-release.md)
+2. Install plugins as needed, e.g. `bun add -D @semantic-release/changelog @semantic-release/git` — for the plugin list see the official docs (URL in [references/apis.md](../../references/apis.md))
 3. Confirm with `bunx semantic-release --version`
 
 ### 3. Setup Auth Tokens

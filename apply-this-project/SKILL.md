@@ -7,7 +7,7 @@ related:
   - apply-projects-in-drive-d
   - scan-codebase
   - check-should-update
-  - dont-over-engineer
+  - simplify
   - all-this-patterns
   - ask-me
   - run-check
@@ -43,14 +43,14 @@ Apply a decided action to the current project end to end — mode from `/apply` 
 
 1. Run `/scan-codebase` to find the affected files/patterns; check `git status` — record any in-progress work, do not clobber it
 2. Run `/check-should-update` per candidate target — skip targets that don't actually need the action
-3. Plan the minimal change set with `/dont-over-engineer`; the action reaching several places → `/all-this-patterns` inside this project
+3. Plan the minimal change set with `/simplify guard`; the action reaching several places → `/all-this-patterns` inside this project
 
 ### 3. Apply
 
 > Goal: execute the action on this project only
 
 1. Apply target by target, one responsibility per change; mix no refactor with behavior changes in one pass
-2. `delete`-mode targets → follow `/apply` `## Mode: Delete` fully (identify → impact → dry run → backup → delete) before any reference updates
+2. `delete`-mode targets → follow `/apply` `### Mode: Delete` fully (identify → impact → dry run → backup → delete) before any reference updates
 3. After editing, run `/update-references` when files moved/renamed/deleted
 
 ### 4. Verify And Report

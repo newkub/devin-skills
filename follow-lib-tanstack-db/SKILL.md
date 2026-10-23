@@ -19,6 +19,7 @@ Use when you need a local-first/reactive data layer that queries client-side lik
 
 - part of TanStack ecosystem — selection/dispatch lives in `/follow-lib-tanstack-ecosystem`
 - end-to-end usage recipes per application scenario (code verified against https://tanstack.com/db docs) are in `usecases/`: REST CRUD via Query, live queries/joins, aggregations & groupBy, optimistic mutations & transactions, ElectricSQL realtime sync, local-first collections, derived collections, non-hook usage & SSR hydration
+- References: [TanStack DB — Best Practices](best-practices/tanstack-db.md), [apis](references/apis.md)
 
 ## Execute
 

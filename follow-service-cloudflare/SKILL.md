@@ -26,6 +26,7 @@ Used for:
 - Nitro preset for Nuxt and other frameworks deploying to Cloudflare
 - Secrets, environment variables, bindings, and CI/CD integration
 - Local development, staging/production deploy, version management, and rollback
+- References: [Service Cloudflare API & Dependencies](references/apis.md), [Wrangler Commands](references/commands.md), [Wrangler Install And Authentication](references/install-and-auth.md), [Wrangler CLI Overview](references/overview.md), [Package Manifest](references/package-manifest.md), [Cloudflare Workers Reference](references/workers-overview.md)
 
 ## Execute
 

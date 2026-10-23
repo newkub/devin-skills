@@ -17,6 +17,7 @@ Use PowerShell or PowerShell Core (`pwsh`) effectively for shell commands, scrip
 ## Scope
 
 Use for Windows system administration, file operations, automation, and cross-platform scripting with `pwsh`
+- References: [Package Manifest](references/package-manifest.md)
 
 ## Execute
 

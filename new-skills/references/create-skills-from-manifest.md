@@ -30,7 +30,7 @@ Covers reading the package manifest, checking the global skills, and creating th
 
 > Goal: Create Missing Skills
 
-1. Run `/update-devin-global-skills` for each missing skill
+1. Run `/update-agents-skills-global` for each missing skill
 2. Create the folder structure per the standard
 3. Write the SKILL.md index and content files
 4. Use `/learn` (web) before writing the content
@@ -83,7 +83,7 @@ Location of the global skills:
 Create skills in a batch:
 
 - Create all the missing skills at once
-- Use `/update-devin-global-skills` for each skill
+- Use `/update-agents-skills-global` for each skill
 - Maintain consistency throughout
 
 ### 5. Error Handling
@@ -109,7 +109,7 @@ Handle errors:
 
 - Forgetting to check whether the dependency has a skill in the system
 - Creating skills that already exist in the global
-- Not using `/update-devin-global-skills` to create them
+- Not using `/update-agents-skills-global` to create them
 - Not checking the folder structure after creation
 
 ## Anti-Patterns

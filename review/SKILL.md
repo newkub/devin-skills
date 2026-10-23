@@ -7,12 +7,11 @@ related:
   - review-gaps
   - deep-review
   - update-astgrep-rules
-  - update-devin-project-rules
+  - update-dot-agents-project
   - follow-parallel
   - report-review
-  - create-plan-in-dot-devin
+  - create-plan-in-dot-agents
   - refactor
-  - improve
   - ask-me
   - use-subagents
   - deep-thinking
@@ -38,10 +37,10 @@ Review anything the user points at (code, docs, a feature area, a plan, a config
 
 > Goal: know exactly what is being reviewed before judging it
 
-1. Start with the deep pre-pass: `/deep-thinking` → `/deep-analyze` → `/deep-validate` (convention: `update-devin-global-skills` `## Conventions → Templates` row `review-*`)
+1. Start with the deep pre-pass: `/deep-thinking` → `/deep-analyze` → `/deep-validate` (convention: `update-agents-skills-global` `## Conventions → Templates` row `review-*`)
 2. Take `scope` from the argument — if missing or unclear → `/ask-me`
 3. Survey the surface of the scope — related files, routes, guards, components, stores, docs, tests — so hidden spots are not missed
-4. If the scope is codebase-wide or multi-dimension → run `/deep-review` on it and use its findings as the input to `### 2`
+4. If the scope is codebase-wide or multi-dimension → run `/deep-review` once and reuse its findings instead of re-deriving the same dimensions in `### 2`
 
 ### 2. Run The Dimensions
 
@@ -49,19 +48,19 @@ Review anything the user points at (code, docs, a feature area, a plan, a config
 
 1. Issues → run `/review-issues` on the same `scope` (dead action, wrong guard, silent failure, logic/type error, async misuse, leak, race, contract mismatch, stale state, config drift)
 2. Gaps → run `/review-gaps` on the same `scope` (promised-but-absent, partial, stub left in place, unwired, declared-but-unused, missing states, dead integration, doc drift, test gap, a11y gap)
-3. The two are independent → run them in parallel through `/follow-parallel`; pass the same `scope` plus any `/deep-review` findings from `### 1` into both
-4. Inconsistencies → review here: the same flow done differently across siblings (one side validates while the other doesn't, naming/structure drift), because this dimension needs both sides in view at once
+3. The two are independent → run them in parallel through `/follow-parallel`; pass the same `scope` plus any `/deep-review` findings from `### 1` into both; whatever `/deep-review` already reported for these dimensions is reused, never re-derived
+4. Inconsistencies → review here (matrix aliases `alignment` for correctness, `redundancy` for code-quality): the same flow done differently across siblings (one side validates while the other doesn't, naming/structure drift), because this dimension needs both sides in view at once
 
 - Every finding must have `file:line` evidence — no evidence, no finding; state uncertainty instead of guessing
 - Never count an intentional mock/stub/demo as a finding unless the surface promises it really works
-- Use the code-quality checkers (`/run-check`, `/check-long-files`) as evidence sources when reviewing code
+- Use the code-quality checkers (`/run-check`, `/check-long-files`) as evidence sources when reviewing code; `/follow-tool-jscpd` for duplication and `/follow-tool-knip` for unused exports
 
 ### 3. Present And Confirm
 
 > Goal: a prioritized report before any fix
 
 1. Merge the findings from `/review-issues`, `/review-gaps`, and the `### 2` inconsistency pass into one deduplicated list, ordered by severity — Critical/High first
-2. Score the merged set: Critical 0, High 25, Medium 50, Low 75, Info 100 → weighted average; grade A ≥90, B ≥80, C ≥70, D ≥60, F <60 — the summary line carries it
+2. Score and grade per `/report-review` step 3 (the weights/grades SSOT) — never restate the formula here
 3. Produce a `/report-review` table (chat, no files) with its canonical columns, plus this dimension's extras: `Area`, `Type` (issue|gap|inconsistency) — the owner column is `Owner skill`
 4. If the user did not append `and fix` → ask which items to fix and wait for confirmation
 
@@ -71,11 +70,11 @@ Review anything the user points at (code, docs, a feature area, a plan, a config
 
 1. Route each confirmed finding to `/deep-review <scope> then-fix fix all` by matching domain (`fix all` because `and fix` already confirmed them); findings with no matching domain are fixed directly from the evidence
 2. Issue findings → fix at the cause (never suppress the symptom); gap findings → fill through the `/review-gaps` path so no new stub or `TODO` is left behind
-3. A finding that turns into a scoped improvement program rather than a single fix → hand it to `/improve <scope>`
-4. Large additions → always `/create-plan-in-dot-devin` before implementing; never skip
-5. After all fixes → run `/refactor` (step 2, SRP split) on the touched files (≤250 lines, 1 responsibility)
-6. Persist durable findings so the next review catches them instead of re-reporting them: patterns, imports, and API misuse → `/update-astgrep-rules`; conventions and agent guidance → `/update-devin-project-rules`; routing follows `deep-review-codebase-everything` `### 5. Persist`. Confirm every new rule fires on the original `file:line`
-7. Run the project build/lint/test to verify → `/suggest-next-action`
+3. A finding that turns into a scoped improvement program rather than a single fix → `/create-plan-in-dot-agents` for it and implement from that plan — never a silent bulk rewrite
+4. Large additions → always `/create-plan-in-dot-agents` before implementing; never skip
+5. After all fixes → run `/refactor` (`### 3` item 1, SRP split) on the touched files (≤250 lines, 1 responsibility)
+6. Persist durable findings so the next review catches them instead of re-reporting them: patterns, imports, and API misuse → `/update-astgrep-rules`; conventions and agent guidance → `/update-dot-agents-project`; routing follows `deep-review-codebase-everything` `### 5. Persist`. Confirm every new rule fires on the original `file:line`
+7. Verify with `/run-verify` → `/suggest-next-action`
 
 ## Rules
 
@@ -92,7 +91,7 @@ Review anything the user points at (code, docs, a feature area, a plan, a config
 
 ### 3. Confirmation
 - Don't fix without confirmation — unless the user puts `and fix` in the command
-- Every confirmed addition → `/create-plan-in-dot-devin` before implementing
+- Every confirmed addition → `/create-plan-in-dot-agents` before implementing
 
 ### 4. Formatting
 - Never use `**` bold markers — use backticks for emphasis
@@ -103,5 +102,5 @@ Review anything the user points at (code, docs, a feature area, a plan, a config
 
 - The scope is reviewed across `issues` (via `/review-issues`), `gaps` (via `/review-gaps`), and inconsistencies (here) with complete type, severity, and evidence
 - A scored, severity-ordered `/report-review` table is presented and the fix set is confirmed by the user
-- Confirmed findings are fixed + verified via build/lint, with SRP respected on touched files
+- Confirmed findings are fixed + verified via `/run-verify`, with SRP respected on touched files
 - Durable findings are persisted as ast-grep rules or `.devin/rules` conventions, each proven on its original `file:line`

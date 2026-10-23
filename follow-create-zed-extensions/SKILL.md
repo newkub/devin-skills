@@ -18,7 +18,7 @@ Create a Zed extension project with an `extension.toml` manifest, Rust/WASM code
 
 Use to create Zed extensions that provide languages, themes, icon themes, snippets, debuggers, or MCP servers — supporting both pure-manifest extensions and Rust/WASM custom code
 
-- Package: `zed_extension_api` (crates.io, 0.x — check compatibility with the target Zed version) — always confirm the latest version with `/deep-research` + `/follow-best-practice` (never pinned in this file — per `/update-devin-global-skills`); target `wasm32-wasip2` (wasip1 deprecated), `schema_version = 1`
+- Package: `zed_extension_api` (crates.io, 0.x — check compatibility with the target Zed version) — always confirm the latest version with `/deep-research` + `/follow-best-practice` (never pinned in this file — per `/update-agents-skills-global`); target `wasm32-wasip2` (wasip1 deprecated), `schema_version = 1`
 
 ## Execute
 

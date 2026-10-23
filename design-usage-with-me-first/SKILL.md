@@ -35,7 +35,7 @@ Use when you want to lay out usage documentation before writing it for real — 
 
 > Goal: follow the docs conventions that already exist, not from memory
 
-1. Run `/follow-devin-global-skills` — list global (`%APPDATA%\devin\skills`) and project (`.devin/skills/`) skills matching the target workspace
+1. Run `/follow-devin-global-skills` — list global (`%APPDATA%\devin\skills`) and project (`.agents/skills/`) skills matching the target workspace
 2. Read `/update-usage-md` (the standard this draft must satisfy) plus the surface skills it points to (`/follow-tool-usage` for CLI specs, `/follow-lib-*` for the libraries in use)
 3. Project `AGENTS.md` → read its `### Skills` section; reuse the section names and tone the project's docs already use
 

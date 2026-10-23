@@ -4,7 +4,7 @@ description: Config convention — keep only overrides; never restate defaults (
 argument-hint: "[config-path]"
 related:
   - check-types-definition
-  - update-devin-global-skills
+  - update-agents-skills-global
 ---
 
 ## Goal
@@ -47,7 +47,7 @@ Apply whenever writing/editing/auditing a config file (`uno.config.ts`, `vite.co
 - Never remove a key that differs from the default, or a key the docs mark "recommended explicit" even when it equals the default
 - Never strip a shared/base config if downstream merge logic requires that key
 - Report all removed keys + reasons before committing
-- When writing config guidance into a skill, the standard is enforced by `update-devin-global-skills` (`## Conventions → Templates` row `config-*`) — every skill that edits config must reference this skill
+- When writing config guidance into a skill, the standard is enforced by `update-agents-skills-global` (`## Conventions → Templates` row `config-*`) — every skill that edits config must reference this skill
 
 ## Expected Outcome
 

@@ -9,7 +9,7 @@ related:
   - deep-validate
   - use-subagents
   - report-review
-  - update-devin-project-rules
+  - update-dot-agents-project
   - update-astgrep-rules
   - update-review-cli
   - follow-deep
@@ -31,7 +31,7 @@ Use when a scope (path, workspace, diff, whole repo, issue, plan) needs a review
 - Dimensions are not a fixed catalog. `references/review.md` (`## Dimension Matrix`) seeds candidates per artifact (tiered) and carries each row's `Check` proof statement, while `/deep-thinking` plus the review CLI/linter output decide applicability — never a blind sweep. The deterministic-scan shape is the stated deviation from the `deep-*` template: evidence comes from the CLI slice, not per-dimension `/deep-research`
 - The matrix is the row contract — `references/review.md` (`## Dimension Matrix`) defines every column. The ones this skill acts on: `Tier` (budget), `Applies to` (artifact match), `Impact` (ordering), `Cost` (run cap), `Fix mode`, `Evidence`, `Default severity`, `N/A condition` (the only legal skip), `Check` (the proof statement), `Authority`, `CLI domain` (slice + gap), `Enforcement`, `Gate`, `Aliases` (label resolution), `Tool/skill`, and `Fix owner`. Every later step reads the row instead of re-deciding
 - The matrix is advisory data, not a pipeline. `Fix owner` words bind to the `improve`/`optimize` scope-map vocabulary and to `## Domain Map` in `references/review.md`, so routing never remaps ad hoc
-- Domain knowledge is delegated: mechanical checks live in the review CLI and ast-grep `rules/`, agent guidance lives in `.devin/rules/`, and conventions live in `follow-*`/`review-devin-global-harness`
+- Domain knowledge is delegated: mechanical checks live in the review CLI and ast-grep `rules/`, agent guidance lives in `.devin/rules/`, and conventions live in `follow-*`/`review-dot-agents-global-and-fix`
 - Preset doors — `references/presets.md` (`## Preset Map`) names this engine plus every `review-*` door, its tier, the matrix labels it seeds, and the fix route it owns. A door keeps the deep pipeline inside: a preset argument (e.g. `security`, `performance`, `data`, `ops`) seeds exactly those labels through this same pipeline; no preset argument means the standard tiered sweep. A preset never restates a check and never runs its own scan
 - One dimension only, without a preset, → `/deep-review-codebase-everything <scope> <label>`. `references/review.md` `### Label resolution` resolves the label to its matrix rows and lands right back here with only those rows selected. `/review-issues` (provably wrong behavior) and `/review-gaps` (promised but not delivered) hold their own dimension work, and `/review` runs both plus the inconsistency pass
 - Fix mode (`then-fix`) — confirm per finding first (default), follow the original suggestion (`/follow-your-suggestion`), or `fix all` as the user specifies. Per global rules, the confirm gate is skipped only in the `dont-ask-me`/`/ship` flow
@@ -80,14 +80,14 @@ Every run follows the seven principles in order; a run without `then-fix` stops 
 1. Run `/report-review` — summary first (score/grade, findings by severity and dimension, mode + scope, and `must-fix-before-production` = every Critical/High finding in a row whose `Gate` is `pr` or `release`), then one findings table per dimension with the columns `/report-review` `## Execute` step 4 defines. This skill adds the `analyzer-gap` Y/N flag from step 3 item 6 and orders each table by `Impact` then `Severity`; `Owner skill` is the report's `fixSkill` — never remap it
 2. Include `Coverage` built from the ledger: rows = workspace, columns = dimension, cell = done/`covered-capture`/`covered-manual`/skipped(reason)/failed — coverage is proven, not claimed
 3. Interrupted midway → report the partial coverage matrix immediately; a partial report beats no report
-4. Only on explicit user request → `/create-report-in-dot-devin` with title `deep-review-codebase-everything`
+4. Only on explicit user request → `/create-report-to-dot-agents` with title `deep-review-codebase-everything`
 5. Before finishing, verify with `/deep-validate`: every row has real evidence and every ledger dimension appears
 
 ### 5. Persist
 
 > Goal: findings become durable — the same finding must not survive the next run
 
-1. Findings whose matrix `Enforcement` is `devin-rule` (natural-language conventions/agent guidance) → `/update-devin-project-rules` (author `.devin/rules/*.md` for the workspace type)
+1. Findings whose matrix `Enforcement` is `devin-rule` (natural-language conventions/agent guidance) → `/update-dot-agents-project` (author `.devin/rules/*.md` for the workspace type)
 2. Findings whose `Enforcement` is `ast-grep` (imports, patterns, API misuse, naming) → `/update-astgrep-rules` (AST rules + `sgconfig.yml`)
 3. Findings whose `Enforcement` is `cli-check` → `/update-review-cli` adds the analyzer check, with a rule-id prefix that lands the row in its `CLI domain`; analyzer bugs → `update-review-cli/references/known-issues.md`. `Enforcement: test` → `/update-tests` asserts the invariant. `Enforcement: none` → state in the report that the row is measurement-only and cannot be made durable
 4. After persisting, re-run the analyzer on the original violation only (`--diff` or the single file named in the evidence — never a full rescan, per `## Rules`) to confirm the finding now fails loudly or is gone. A rule that does not fire on the original violation is not durable
@@ -99,7 +99,7 @@ Every run follows the seven principles in order; a run without `then-fix` stops 
 
 1. Map each finding to its fix route in `references/review.md` `## Domain Map`: metric domains → `/optimize <scope>`; architecture → `/follow-architecture`/`/refactor`; the rest → `### Fix boilerplate` in that file
 2. Order the fix sequence Foundation → Dependencies → High impact → Critical path → High risk, with a rough effort (not a flat TODO). Rank the tiers by the row's `Impact`; inside each tier group by `Fix mode` — `codemod` batches first, then `test-first`, then `agent`, with `decision` last because it needs the user. Step 7 then works the confirmed set severity-first inside each tier
-3. Cross-reference the set for a shared root cause so one fix closes every finding it explains (an already-covered finding is merged, not re-fixed); many fixes across unrelated modules → plan them with `/create-plan-in-dot-devin` first
+3. Cross-reference the set for a shared root cause so one fix closes every finding it explains (an already-covered finding is merged, not re-fixed); many fixes across unrelated modules → plan them with `/create-plan-in-dot-agents` first
 4. Without `then-fix` → stop here: report the sequence and close with `/suggest-next-action` (`/deep-review-codebase-everything <scope> then-fix` is the next action)
 
 ### 7. Fix

@@ -18,6 +18,7 @@ Use TanStack Router (v1) fully — createRouter, file-based routes, type-safe pa
 Works with React/Solid apps — covers route tree, params/search validation, data loading (`loader`), navigation APIs, nested layouts, pending/error states; full-stack SSR → `follow-start`
 
 - part of TanStack ecosystem — selection/dispatch lives in `/follow-lib-tanstack-ecosystem`
+- References: [TanStack Router — Best Practices](best-practices/tanstack-router.md), [apis](references/apis.md)
 
 ## Execute
 

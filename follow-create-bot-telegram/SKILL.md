@@ -2,6 +2,11 @@
 name: follow-create-bot-telegram
 description: Build a Telegram bot with TypeScript/Bun — grammy, commands, webhook/polling
 argument-hint: "[features]"
+related:
+  - follow-create-bot
+  - follow-lang-typescript
+  - run-test
+  - follow-secret-manager
 ---
 
 ## Goal
@@ -11,6 +16,7 @@ Create a runnable Telegram bot project with TypeScript/Bun, complete with comman
 ## Scope
 
 Use for building a Telegram bot from scratch on Bun or Node.js; supports command bots, conversational flows, notifications, and webhook deployments
+- Family dispatcher: `/follow-create-bot` — pick another platform from there
 
 ## Execute
 
@@ -18,7 +24,7 @@ Use for building a Telegram bot from scratch on Bun or Node.js; supports command
 
 > Goal: Verify the tech stack before building
 
-1. Run `/deep-research` + `/follow-best-practice` to confirm the latest versions and patterns, following the conventions in `/update-devin-global-skills`
+1. Run `/deep-research` + `/follow-best-practice` to confirm the latest versions and patterns, following the conventions in `/update-agents-skills-global`
 2. Run `/deep-review` to summarize the tech stack in use
 3. Record the stack and library choices with reasons for later reference
 

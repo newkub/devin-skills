@@ -1,5 +1,5 @@
 ---
-name: report-html
+name: report-in-html
 description: Create a single HTML file that presents project analysis, analysis results, or a feature plan in the browser. The report supports interactive tables with sort, filter, group, se...
 related:
   - report

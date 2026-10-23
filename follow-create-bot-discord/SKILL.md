@@ -2,6 +2,11 @@
 name: follow-create-bot-discord
 description: Build a Discord bot with TypeScript/Bun — slash commands, auto-load, intents
 argument-hint: "[features]"
+related:
+  - follow-create-bot
+  - follow-lang-typescript
+  - run-test
+  - follow-secret-manager
 ---
 
 ## Goal
@@ -11,6 +16,7 @@ Create a runnable Discord bot project with TypeScript/Bun, complete with slash c
 ## Scope
 
 Use for building a Discord bot from scratch on Bun or Node.js; supports slash commands, buttons, select menus, modals, context menus, and deployment
+- Family dispatcher: `/follow-create-bot` — pick another platform from there
 
 ## Execute
 
@@ -18,7 +24,7 @@ Use for building a Discord bot from scratch on Bun or Node.js; supports slash co
 
 > Goal: Verify the tech stack before building
 
-1. Run `/deep-research` + `/follow-best-practice` to confirm the latest versions and patterns, following the conventions in `/update-devin-global-skills`
+1. Run `/deep-research` + `/follow-best-practice` to confirm the latest versions and patterns, following the conventions in `/update-agents-skills-global`
 2. Run `/deep-review` to summarize the tech stack in use
 3. Record the stack and library choices with reasons for later reference
 

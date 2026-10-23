@@ -3,6 +3,7 @@ name: run-verify
 description: Run full-cycle verify on local or CI/CD based on project size
 argument-hint: "[scope]"
 related:
+  - follow-tool-viteplus
   - deep-review
   - run-scan
   - run-lint
@@ -31,6 +32,7 @@ Use as the single consolidation point for all verify work
 - Large project, monorepo, or heavy build/test → push the branch to CI/CD, then watch and resolve errors
 - Mode can be forced: `/run-verify --local` or `/run-verify --ci`
 - If an end-to-end readiness gate is needed (before ship/deploy or after a big task) → also do the `Deep Verify` section below
+- Vite+ project: `vp check` covers format + lint + type-aware, but it is not a full `tsc` replacement and does not run scan/tests/build — the `verify` script still needs all six parts (see `/follow-tool-viteplus`)
 - Never merge, release, or deploy automatically
 - Use after `/implement-to-production` to verify before ship
 - This runs the `verify` subset only — to run the project's FULL task manifest (all scripts incl. custom `db:*`, `security`, `docs:build`) → use `/run-all-tasks`
@@ -66,7 +68,7 @@ Use as the single consolidation point for all verify work
 1. Read the package manifest (`package.json`, `Cargo.toml`, etc.)
 2. If there is no `verify` script → run `/follow-tasks` to create `verify` = `scan + format + lint + typecheck + test + build` (format before lint)
 3. If `verify` is missing any of the 6 parts → run `/follow-tasks` to fill them in
-4. Run the `verify` script on local (e.g. `bun run verify`)
+4. Run the `verify` script on local (e.g. `bun run verify`; Vite+ project → `vp run verify`)
 5. If it fails → run `/resolve-errors` then retry up to 3 times
 
 ### 4. CI/CD Mode (Large Project)

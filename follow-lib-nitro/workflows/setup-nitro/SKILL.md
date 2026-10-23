@@ -22,11 +22,15 @@ first-time Nitro setup in a Vite-based app — routes/handlers → `define-route
 
 ### 1. Install
 
+> Goal: Install.
+
 ```bash
 bun i -D nitro
 ```
 
 ### 2. Configure Vite Plugin
+
+> Goal: Configure Vite Plugin.
 
 ```ts
 import { nitro } from 'nitro/vite'
@@ -45,15 +49,21 @@ process.env.NITRO_PRESET ??= 'bun'   // in vite.config.ts before defineConfig
 
 ### 3. Nitro Config (optional)
 
+> Goal: Nitro Config (optional).
+
 `nitro.config.ts` for server options (`routeRules`, `storage`, `prerender`, `srcDir`) — details in the docs; app-level wiring via `defineNitroConfig`
 
 ### 4. Dev And Build
+
+> Goal: Dev And Build.
 
 1. `bun run dev` — nitro dev server via the vite pipeline (HMR + server auto-reload)
 2. `bun run build` → `.output/server/index.mjs` + `.output/public/`
 3. Run output: `bun .output/server/index.mjs` (preset `bun`) — no dependency on the dev toolchain
 
 ### 5. Verify
+
+> Goal: Verify.
 
 1. `/run-dev` — API routes respond
 2. `/run-build` → `.output/` generated, `bun .output/server/index.mjs` really serves

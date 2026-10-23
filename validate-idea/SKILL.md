@@ -15,7 +15,7 @@ related:
   - prioritize
   - pick-bestest
   - ask-me
-  - create-plan-in-dot-devin
+  - create-plan-in-dot-agents
   - report-review
   - suggest-next-action
 
@@ -29,8 +29,8 @@ Decide whether an idea deserves building `before` any work — turn it into a fa
 
 - Use for one idea (or up to ~3 compared side by side) coming from `/idea-features`, `/idea-uxui`, `/idea`, a user request, or a competitor gap
 - More than ~3 ideas, or a ranked backlog wanted → `/prioritize` (this skill validates, that one orders)
-- Not yet invented → `/idea-features` / `/idea-uxui`; already confirmed and just needs a plan → `/create-plan-in-dot-devin`; only a comparison of known competitors wanted → `/compare-competitors`
-- Chat-only: verdict + tables in the reply; persist a report only on explicit request → `/create-report-in-dot-devin`
+- Not yet invented → `/idea-features` / `/idea-uxui`; already confirmed and just needs a plan → `/create-plan-in-dot-agents`; only a comparison of known competitors wanted → `/compare-competitors`
+- Chat-only: verdict + tables in the reply; persist a report only on explicit request → `/create-report-to-dot-agents`
 
 ## Execute
 
@@ -76,8 +76,8 @@ Decide whether an idea deserves building `before` any work — turn it into a fa
 
 > Goal: the verdict turns into work immediately
 
-1. `GO` on a UI/CLI/TUI surface not designed yet → `/design-cli-prototype` / `/design-tui-prototype` (chat) or `/design-html-prototype` / `/design-web-prototype` (visual), then `/create-plan-in-dot-devin` → `/implement-to-production`
-2. `GO` on a clear backend/docs/quality change → `/create-plan-in-dot-devin` directly
+1. `GO` on a UI/CLI/TUI surface not designed yet → `/design-cli-prototype` / `/design-tui-prototype` (chat) or `/design-html-prototype` / `/design-web-prototype` (visual), then `/create-plan-in-dot-agents` → `/implement-to-production`
+2. `GO` on a clear backend/docs/quality change → `/create-plan-in-dot-agents` directly
 3. `PIVOT` → `/reframe` the claim, or `/idea-features` / `/idea-uxui` for the replacement shape; validate the new shape again before building
 4. `NO-GO` → `/idea-merge` if the idea belongs inside an existing feature instead; otherwise stop and report
 5. Several viable ideas competing for the same slot → `/prioritize` or `/pick-bestest`
@@ -87,7 +87,7 @@ Decide whether an idea deserves building `before` any work — turn it into a fa
 
 ### 1. Chat Only
 
-- Never create files, `ideas.json`, or temp reports in this skill — persistence only on explicit request via `/create-report-in-dot-devin`
+- Never create files, `ideas.json`, or temp reports in this skill — persistence only on explicit request via `/create-report-to-dot-agents`
 - One reply, one verdict per idea; keep the tables compact
 
 ### 2. Evidence Or Label It

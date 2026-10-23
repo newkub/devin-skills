@@ -25,6 +25,7 @@ Use for a project that needs a license file at the root directory and a declarat
 
 - Latest: version-agnostic (license/linting guide; Python build backends pinned in the skill) (verified 2026-09-13)
 - References: [apis](references/apis.md) 
+- References: [License Management — Choosing and Declaring a License Correctly](best-practices/licensing.md)
 ## Execute
 
 ### 1. Choose License

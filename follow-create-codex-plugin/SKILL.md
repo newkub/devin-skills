@@ -8,7 +8,7 @@ related:
   - follow-create-plugins
   - follow-create-sdk
   - follow-harness-engineering
-  - update-devin-global-skills
+  - update-agents-skills-global
   - report
 
 ---
@@ -20,7 +20,7 @@ Build a Codex (ChatGPT Work / OpenAI Codex) plugin that can be installed and use
 
 Used to create a Codex plugin from scratch to extend ChatGPT Work and Codex with custom skills, MCP tools, and apps
 
-- Format: portable Agent Plugins — root `plugin.json` + `mcp.json` + `skills/` + `extensions.com.openai`; `.codex-plugin/plugin.json` is a compatibility fallback — always confirm the latest schema via `/deep-research` + `/follow-best-practice` (Codex CLI 0.x may break — no version pins in this file, per `/update-devin-global-skills`)
+- Format: portable Agent Plugins — root `plugin.json` + `mcp.json` + `skills/` + `extensions.com.openai`; `.codex-plugin/plugin.json` is a compatibility fallback — always confirm the latest schema via `/deep-research` + `/follow-best-practice` (Codex CLI 0.x may break — no version pins in this file, per `/update-agents-skills-global`)
 
 ## Execute
 
@@ -60,7 +60,7 @@ Used to create a Codex plugin from scratch to extend ChatGPT Work and Codex with
 
 > Goal: build each component per convention
 
-1. For `skills/`: create `skills/<name>/SKILL.md` per `/update-devin-global-skills`
+1. For `skills/`: create `skills/<name>/SKILL.md` per `/update-agents-skills-global`
 2. For `mcp.json`: declare named entries in `mcpServers` with transport `type` (`streamable-http` + `url` for remote)
 3. For `.app.json`: reference the `plugin_asdk_app...` ID registered in ChatGPT developer mode
 4. Define `interface` under `extensions.com.openai` for `displayName`, `shortDescription`, `longDescription`, `developerName`, `category`, `capabilities`, `defaultPrompt`, `brandColor`, `composerIcon`, `logo`, `screenshots`
@@ -94,7 +94,7 @@ Used to create a Codex plugin from scratch to extend ChatGPT Work and Codex with
 - Never hardcode secrets or credentials in plugin files
 - Use environment variables for API keys and app IDs
 - Create only the components actually used
-- Use the `SKILL.md` format per `/update-devin-global-skills`
+- Use the `SKILL.md` format per `/update-agents-skills-global`
 - Plugin-bundled hooks are non-managed — Codex skips them until the user trusts the hook definition
 
 - Use /deep-review if needed
@@ -114,7 +114,7 @@ Used to create a Codex plugin from scratch to extend ChatGPT Work and Codex with
 ## Guide
 
 - `/deep-research` + `/follow-best-practice` — latest official docs/schema (no pins in this file)
-- `/update-devin-global-skills` — SKILL.md format
+- `/update-agents-skills-global` — SKILL.md format
 - `/update-devin-global-subagents` — AGENT.md format
 - `/follow-harness-engineering` — hooks, agents, lifecycle
 - `/follow-create-claude-plugin` — if the plugin should later be ported to Claude

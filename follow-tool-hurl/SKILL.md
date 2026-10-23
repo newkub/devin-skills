@@ -100,6 +100,7 @@ Use for projects that want API test files diffable in Git, run on a pure CLI wit
 
 
 - See best-practices/ for recommended patterns and pitfalls
+- References: [Hurl — Best Practices](best-practices/hurl.md)
 
 ## Expected Outcome
 

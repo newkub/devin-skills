@@ -22,7 +22,7 @@ Use for creating, improving, and releasing Web Extensions with WXT; supports Typ
 - Separate pure logic from browser API integration
 - Set up CI/CD for releasing to the Chrome Web Store
 
-- Package: `wxt` (0.x — minor releases may break) — always confirm the latest version with `/deep-research` + `/follow-best-practice` (not pinned in files — per `/update-devin-global-skills`)
+- Package: `wxt` (0.x — minor releases may break) — always confirm the latest version with `/deep-research` + `/follow-best-practice` (not pinned in files — per `/update-agents-skills-global`)
 
 ## Execute
 
@@ -134,7 +134,7 @@ project/
 - Use `bun run dev` for development mode
 - Use TypeScript for type safety
 - Write tests for pure logic
-- Use ESLint and Prettier for code quality
+- Lint/format with `vp check` in a Vite+ project (Oxlint + Oxfmt) or Biome; never install Prettier
 - Use /run-dev if needed
 
 ## Expected Outcome

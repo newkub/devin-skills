@@ -10,8 +10,8 @@ allowed-tools:
 related:
   - list-dependencies
   - search-mcp
-  - list-devin-global-mcp
-  - update-devin-project-mcp
+  - list-dot-agents-global
+  - update-dot-agents-project
   - update-devin-global-mcp
   - download-program
   - run-install
@@ -39,7 +39,7 @@ The `-mcp` suffix is honored literally: packages from manifests and MCP servers 
 | Find MCP servers worth adopting | `/search-mcp` |
 | Install a global OS tool or CLI | `/download-program`, `/follow-tool-mise` |
 | Install project dependencies | `/run-install` |
-| Register a project MCP server | `/update-devin-project-mcp` |
+| Register a project MCP server | `/update-dot-agents-project` |
 | Register a global MCP server | `/update-devin-global-mcp` |
 
 - Read-only advisor: no install, no manifest edit, no MCP config edit
@@ -83,10 +83,10 @@ The `-mcp` suffix is honored literally: packages from manifests and MCP servers 
 > Goal: the same row shape for servers
 
 1. Read project config: `.devin/mcp_config.json`, `.mcp.json`, and any project-level config the runtime documents
-2. Read the global set via `/list-devin-global-mcp` (`%APPDATA%\devin\mcp_config.json`)
+2. Read the global set via `/list-dot-agents-global` (`%APPDATA%\devin\mcp_config.json`)
 3. Flag servers declared in both places — project config wins for reproducibility; the duplicate is a finding
 4. Flag servers declared but never used in the current session, and servers used but not declared anywhere
-5. Do not list available tools here; `/list-devin-global-mcp` owns that
+5. Do not list available tools here; `/list-dot-agents-global` owns that
 
 ### 5. Classify Global vs Project
 
@@ -115,7 +115,7 @@ The `-mcp` suffix is honored literally: packages from manifests and MCP servers 
 
 1. Global OS tool or standalone CLI → `/download-program` or `/follow-tool-mise`
 2. Project packages → `/run-install`; monorepo-wide tools go to the root workspace, single-workspace tools stay in that workspace
-3. Project MCP server → `/update-devin-project-mcp`; global MCP server → `/update-devin-global-mcp`
+3. Project MCP server → `/update-dot-agents-project`; global MCP server → `/update-devin-global-mcp`
 4. Duplicated or unused dependency → `/list-dependencies` for the full analysis, then its fix owner
 5. Close with `/suggest-next-action`
 

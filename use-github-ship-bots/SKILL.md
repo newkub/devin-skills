@@ -16,7 +16,7 @@ triggers:
 related:
   - follow-create-bot
   - resolve-github-issue-by-me
-  - create-plan-in-dot-devin
+  - create-plan-in-dot-agents
   - run-verify
   - resolve-errors
   - setup-cicd
@@ -134,7 +134,7 @@ Ship a bot project per a plan or GitHub issue: create the project, implement han
 ## Rules
 
 - Do not start implementing if the plan is unclear
-- Use `/create-plan-in-dot-devin` if a new plan is needed
+- Use `/create-plan-in-dot-agents` if a new plan is needed
 - Use `/resolve-github-issue-by-me` when starting implementation from an issue
 - Keep webhook wiring separate from business logic
 - Wrap every handler in `try/catch`

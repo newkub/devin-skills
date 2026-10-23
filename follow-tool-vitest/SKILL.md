@@ -8,6 +8,7 @@ related:
   - update-tests
   - run-test
   - follow-lib-tstyche
+  - follow-tool-viteplus
 
 ---
 
@@ -21,7 +22,7 @@ Install and set up Vitest 5 for unit testing in single projects and monorepos
 
 - jsdom DOM environment — see `references/apis.md`
 
-- Boundary: use Vitest for unit/integration tests — for E2E/browser flows use `/follow-tool-playwright`; for component DOM queries use the `/follow-tool-vite` workflow `testing-library`
+- Boundary: use Vitest for unit/integration tests — for E2E/browser flows use `/follow-tool-playwright`; for component DOM queries use the `/follow-tool-vite` workflow `testing-library`; inside a Vite+ project run tests with `vp test` (imports from `vite-plus/test`) → `/follow-tool-viteplus`
 
 ## Execute
 
@@ -223,6 +224,7 @@ Install and set up Vitest 5 for unit testing in single projects and monorepos
 
 - See best-practices/ for recommended patterns and pitfalls
 - See usecases/ for end-to-end scenario recipes
+- References: [Vitest — Best Practices](best-practices/vitest.md)
 
 ## Expected Outcome
 

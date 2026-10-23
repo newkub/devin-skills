@@ -5,7 +5,7 @@ argument-hint: "[scope-or-findings-source]"
 related:
   - deep-review
   - report
-  - create-report-in-dot-devin
+  - create-report-to-dot-agents
   - suggest-next-action
 ---
 
@@ -15,15 +15,15 @@ Report review results as chat tables — every row has an actionable step and re
 
 ## Scope
 
-- The final report of every `review-*`/`deep-review`/`report-*` — canonical format per `update-devin-global-skills` `## Conventions → Templates` rows `review-*`/`report-*`
+- The final report of every `review-*`/`deep-review`/`report-*` — canonical format per `update-agents-skills-global` `## Conventions → Templates` rows `review-*`/`report-*`
 - Called standalone with no findings data → collect first with `/deep-review`
-- Files are created only when the user explicitly asks → `/create-report-in-dot-devin`; artifacts per the skill's nature (HTML/slides/diagram/schema file) can still be created via the owner skill
+- Files are created only when the user explicitly asks → `/create-report-to-dot-agents`; artifacts per the skill's nature (HTML/slides/diagram/schema file) can still be created via the owner skill
 
 ## Execute
 
 1. Collect findings from the source — `review-report.json` (findings table), dimension `review-*` results, or the scope the user specified; none → run `/deep-review` first
 2. Dedup key = `file + rule/message-normalized + dimension` (merge into the highest severity + the more specific `fixSkill`), then order by severity → priority: P0 🔴 Critical (fix now, blocks ship) → P1 🟠 High (fix before ship) → P2 🟡 Medium (fix in this cycle) → P3 🟢 Low (nice to have) → P4 informational/hygiene
-3. Summarize at the report header: score/grade (if any), finding counts per severity, mode (full/diff) + the scope run, confidence
+3. Score at the report header — the SSOT every `review-*` cites instead of restating the formula: severity weights Critical 0, High 25, Medium 50, Low 75, Info 100 → weighted average; grade A ≥90, B ≥80, C ≥70, D ≥60, F <60. Also state finding counts per severity, mode (full/diff) + the scope run, confidence
 4. Report one findings table PER dimension (grouped severity→priority inside each) with fixed columns:
 
    | No. | Finding | Action | Evidence | Severity | Risk | Priority | Owner skill | Status |
@@ -51,4 +51,4 @@ Report review results as chat tables — every row has an actionable step and re
 
 - Complete tables in chat — every row with a real `Finding` + `Action` + `Evidence` + summary + execution order
 - Coverage clearly stated — every dimension done/skipped/failed
-- No report files created (unless the user asks → `/create-report-in-dot-devin`)
+- No report files created (unless the user asks → `/create-report-to-dot-agents`)

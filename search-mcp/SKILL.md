@@ -36,7 +36,7 @@ Find relevant MCP servers
 - Identify the interesting ones
 
 - Use /follow-create-mcp if needed
-- Use /list-devin-global-mcp if needed
+- Use /list-dot-agents-global if needed
 - Use /update-devin-global-mcp if needed
 - Use /follow-tool-crw if needed
 - Use /learn-from-web if needed

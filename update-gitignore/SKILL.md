@@ -80,7 +80,7 @@ Use for any project that needs its `.gitignore` improved
 - For Moonrepo, ignore `.moon/cache`
 - For Rust/Tauri, ignore `target/`, `pkg/`, `gen/`
 - For VitePress, ignore `.vitepress/dist`, `.vitepress/cache`
-- For the Devin CLI, always ignore `.devin/temp/` (plan/report artifacts — created by `/create-plan-in-dot-devin` and `/report`)
+- For the Devin CLI, always ignore `.devin/temp/` (plan/report artifacts — created by `/create-plan-in-dot-agents` and `/report`)
 
 ### 3. Consistency
 
@@ -94,7 +94,7 @@ Add only patterns for tools the project really uses (check manifests first):
 - Dependencies: `node_modules/`, `.pnp`, `.pnp.js`
 - Build: `dist/`, `build/`, `.output/`, `*.tsbuildinfo`
 - Build Tools: `.turbo/`, `.vite/`, `.swc/`, `.vinxi/`, `.solid/`
-- Linter Cache: `.eslintcache`, `.prettiercache`, `.biome/`, `.oxlint/`
+- Linter Cache: `.eslintcache`, `.biome/`, `.oxlint/`
 - Testing: `coverage/`, `test-results/`, `playwright-report/`
 - Environment: `.env*`, `!.env.example`, `.dev.vars`, `*.local`
 - Logs: `*.log`, `logs/`
