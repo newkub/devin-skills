@@ -11,6 +11,8 @@ related:
   - review-dot-agents-global-and-fix
   - deep-validate
   - update-references
+  - add-to-global-skills
+  - reflex-to-improve-dot-agents-global
 
 ---
 
@@ -20,7 +22,7 @@ Create one new devin global skill from a given idea or topic, without duplicatin
 
 ## Scope
 
-Use only when work requires creating a new skill — updating an existing skill's content → `/update-agents-skills-global`, refactoring an existing skill's structure → `/update-agents-skills-global refactor`
+Use only when work requires creating a new skill — updating an existing skill's content → `/update-agents-skills-global`, refactoring an existing skill's structure → `/update-agents-skills-global refactor`, promoting an artifact that already exists (project skill, CLI tool, session) → `/add-to-global-skills`, deciding at the end of a task whether anything is worth improving in any dot-agents layer → `/reflex-to-improve-dot-agents-global`
 
 To create skills from dependencies in a package manifest (`package.json`, `Cargo.toml`) that do not yet exist globally → see the flow in [references/create-skills-from-manifest.md](references/create-skills-from-manifest.md) (adjust the path to `%APPDATA%\devin\skills`)
 
@@ -98,12 +100,13 @@ Pick a prefix by a single semantic only — never create a new skill that violat
 | 3 | `deep-*` | Orchestrator over multiple steps/dimensions | dispatches to sub-skills | Per sub-skill |
 
 - Never create new `improve-*` or `optimize-*` — fixers live in `deep-review-codebase-everything` (`### 7. Fix` + `references/review.md` `## Domain Map` fix owner, runs only when the user confirms) — the only exception the user approved: `improve-usage-md`; creating a new exception requires editing this contract + `AGENTS.md` with a user override reason only
+- Two user-approved lifecycle exceptions (2026-10-24): `add-to-global-skills` (artifact → global package promotion) and `reflex-to-improve-dot-agents-global` (end-of-task decision across every dot-agents layer — skill, rule, subagent, hook, MCP, project scaffold — that hands each confirmed item to its layer owner) — each is a single named skill, never a prefix family, so no sibling `add-*`/`reflex-*` skill may be created; a third exception needs this contract + `AGENTS.md` edited with a user override reason
 - One direction: `check` → `review` → `### 7. Fix` (`deep-review-codebase-everything/SKILL.md`) — never reverse
 - A new review dimension → a new row in `deep-review-codebase-everything/references/review.md` (`## Dimension Matrix`, including its `Check` statement) + a scope-map label, never a new `review-*` assessor dir; a new domain door goes through the preset map instead (next rule); write any fix as a route in `deep-review-codebase-everything/references/review.md` `## Domain Map`, never `workflows/fix-*/` or `references/fix-*.md`
 - Ninth survivor override — the user explicitly requested `review-use-lib-effective` (2026-10-22) as the assessor for the `lib-usage` dimension, paired with `/use-lib-effective`; it resolves its matrix row and delegates checks to `/deep-review`, never duplicates the `follow-lib-*` catalog, and never becomes a preset
 - A new preset door (the twelve rows in `deep-review-codebase-everything/references/presets.md` `## Preset Map`: the engine plus eleven `review-*` doors) is allowed only when it spans at least two matrix rows and owns a domain-level confirm + fix sequence that the matrix routing cannot express — it is named `review-<domain>`, reuses the `deep-review-codebase-everything` pipeline, stays a single `SKILL.md`, and the general `/deep-review` gains its door + alias; a single-row rename stays a `<label>` call, never a preset
 - Every `design-*` opens with `/ask-me` before drafting or building (convention: `update-agents-skills-global` `## Conventions → Templates` row `design-*`)
-- If a new skill overlaps an existing scope → merge into the existing one instead of creating a new one (`/merge`, `/idea-merge`)
+- If a new skill overlaps an existing scope → merge into the existing one instead of creating a new one (`/merge-files`, `/idea-merge`)
 
 ### 5. References
 
