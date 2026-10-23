@@ -1,6 +1,6 @@
 ---
 name: report-todo
-description: Action plan table in chat: No., Action, Before, After, Why, File Change, Risk
+description: Plan table: architecture, tasks, priority, acceptance criteria, verification
 argument-hint: "[actions-or-context]"
 related:
   - report
@@ -9,7 +9,7 @@ related:
 
 ## Goal
 
-Answer with an action plan as a numbered table — one action per row, each row stating what changes and which files it touches — before any work starts
+Answer with the target architecture picture and a numbered task-plan table — one task per row, each row stating what changes, where, and how it is accepted — before any work starts
 
 ## Scope
 
@@ -28,54 +28,85 @@ Answer with an action plan as a numbered table — one action per row, each row 
 3. Split each action to one responsibility
 4. Order by impact and risk, highest first
 
-### 2. Build The Table
+### 2. Draw The Architecture
 
-> Goal: show each action with its before/after and file impact
+> Goal: show the image of what it should be before listing tasks
+
+1. Draw this section before the table whenever the plan changes structure (folders, modules, dependency direction, data flow)
+2. Pick the fitting form: a file tree for layout changes, an ANSI box diagram for flows and dependencies — every outer box uses uniform width and stays undistorted (fix with `/draw-ansi` when needed)
+3. When a relation flips direction (a dependency reverses, a module moves sides), show `before` then `after` as two diagrams
+4. No emoji and no `**` bold inside diagrams
+5. Skip this section when nothing structural changes
+
+### 3. Build The Table
+
+> Goal: show each task with its type, priority, place, and acceptance
 
 1. Follow `/report` so the table starts with `No.` numbered 1, 2, 3, ...
-2. Use exactly these columns: No., Action, Before, After, Why, File Change, Risk
-3. `Action` is one short imperative phrase
-4. `Before` is the current state; `After` is the state once done
-5. `Why` is the reason or the problem it solves — one clause
-6. `File Change` lists the exact paths to create, edit, move, or delete; use `TBD` when unknown
-7. `Risk` is low, medium, or high plus the failure mode when it matters
-8. Use backticks for paths, commands, and skill names
+2. Required columns (8): No., Task, Type, Priority, Location, Status, Solution, Acceptance Criteria
+   - `Task` — one short imperative phrase
+   - `Type` — feat, fix, refactor, chore, docs, test, or delete
+   - `Priority` — P0, P1, P2 by impact
+   - `Location` — the exact paths or module the task touches; `TBD` when unknown
+   - `Status` — todo, doing, done, blocked
+   - `Solution` — the approach in one clause
+   - `Acceptance Criteria` — the observable condition that closes the row
+3. Optional columns — Problem, Root Cause, Purpose, Expected, Dependencies, Verification, Resolution, Examples, Skill, Risk — add only the ones that carry information for this plan
+4. Keep the table at most 9 columns; when more are needed, move the overflow into a second detail table keyed by `No.`
+5. Use backticks for paths, commands, and skill names
 
-Example:
+Example A — 8 required plus one optional:
 
-| No. | Action | Before | After | Why | File Change | Risk |
-|---|---|---|---|---|---|---|
-| 1 | Centralize harness paths | Skills point at `%APPDATA%\devin\*` | Skills point at `~/.agents` | One source of truth | `skills/*/SKILL.md` | Medium — stale links break routing |
-| 2 | Remove absorbed skill dirs | 19 duplicate packages | Merged packages only | Removes duplication | `skills/update-dot-agents-project/`, ... | Low — backup exists |
-| 3 | Verify the tree | Unverified edits | Lint and structure clean | Prove the change | none | Low — read-only |
+| No. | Task | Type | Priority | Location | Status | Solution | Acceptance Criteria | Risk |
+|---|---|---|---|---|---|---|---|---|
+| 1 | Centralize harness paths | refactor | P0 | `skills/*/SKILL.md` | todo | Point skills at `~/.agents` | No stale `%APPDATA%` path remains | Medium — stale links break routing |
+| 2 | Remove absorbed skill dirs | delete | P1 | `skills/update-dot-agents-project/` | todo | Merge duplicates into one package | Tree has one package per skill | Low — backup exists |
+| 3 | Verify the tree | test | P2 | none | todo | Run lint and structure checks | Both checks pass clean | Low — read-only |
 
-### 3. Add The Numbered Summary
+Example B — overflow into a detail table keyed by `No.`:
+
+| No. | Task | Type | Priority | Location | Status | Solution | Acceptance Criteria | Dependencies |
+|---|---|---|---|---|---|---|---|---|
+| 1 | Split worker into modules | refactor | P0 | `src/worker/` | todo | One handler per file behind a fetch router | Each file exports one handler group | — |
+| 2 | Recover unique sources first | chore | P0 | `src/worker/{ai,deploy,github,mcp,shared}.ts` | todo | Copy split before deleting the old workspace | All 5 files present in target | No. 1 |
+
+| No. | Root Cause | Verification |
+|---|---|---|
+| 1 | One file mixed OAuth, proxy, and save logic | Import graph shows no cross-handler cycles |
+| 2 | Old copy was the only place holding the split | `diff -rq` between backup zip and target is clean |
+
+### 4. Add The Numbered Summary
 
 > Goal: give a short read-aloud version below the table
 
 1. Add a `Summary` line, then a numbered list from `/report` with one line per row
-2. Keep each line to action, target, and reason
+2. Keep each line to task, target, and reason
 3. Close with `Start at No. N: ...`
 
-### 4. Validate
+### 5. Validate
 
 > Goal: check the answer before sending
 
-1. `No.` is the first column and counts from 1 with no gaps
-2. Every row has one action and the seven columns
-3. Every path is plausible; unknown ones say `TBD`
-4. No `**` bold, no emoji status, no extra columns
+1. The architecture diagram (when structural change exists) comes before the table and its outer boxes are uniform width
+2. `No.` is the first column and counts from 1 with no gaps
+3. Every row carries all 8 required columns
+4. The main table has at most 9 columns; any overflow lives in a detail table keyed by `No.`
+5. Every path is plausible; unknown ones say `TBD`
+6. No `**` bold, no emoji status
 
 ## Rules
 
 - Answer in chat only; never create a report file from this skill
-- One action per row, single responsibility
-- `File Change` names paths that the action really writes; read-only actions say `none`
+- One task per row, single responsibility
+- Architecture first, table second; diagrams use file tree or ANSI with uniform outer boxes, before/after when a direction flips
+- `Location` names paths the task really touches; read-only tasks say `none`
 - Never invent a file path — use `TBD` when it cannot be known yet
+- Prefer the 8 required columns; add optional columns only when they answer a question the reader has
 - The plan stays read-only; start work only after the user confirms
 
 ## Expected Outcome
 
-- A table with `No.` first and the seven columns filled with evidence
+- An architecture picture of what it should be, drawn before the plan table when structure changes
+- A table with `No.` first, the 8 required columns filled with evidence, optional columns chosen for fit, capped at 9 columns with overflow in a keyed detail table
 - A numbered summary and a start line below the table
 - A plan the user can approve row by row without asking what each change touches
