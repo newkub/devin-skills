@@ -75,7 +75,7 @@ Use when there is context or multiple tasks to the point of not knowing what to 
 
 > Goal: track progress
 
-1. Do `/report-todo` to update the status
+1. Do `/report-todo` to refresh the plan table with the new `Before` → `After` state
 2. Do `/suggest-next-action` when each round finishes
 3. If the user presses `.` → `/follow-enter-dot`
 
