@@ -140,6 +140,11 @@ export function useWorkbench(
     return idx === null ? null : (diff.fileList()[idx] ?? null);
   });
 
+  const activeVisible = createMemo(() => {
+    const idx = activeIdx();
+    return idx !== null && indices().includes(idx);
+  });
+
   return {
     source,
     activeIdx,
@@ -156,6 +161,7 @@ export function useWorkbench(
     allItems,
     viewerItems,
     activeFile,
+    activeVisible,
     open,
     reload,
     selectFile,

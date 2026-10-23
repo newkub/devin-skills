@@ -187,6 +187,7 @@ export default function App() {
               loading={diff.loading()}
               scrollTarget={viewer.scrollTarget()}
               activeFile={viewer.activeFile()}
+              activeVisible={viewer.activeVisible()}
               focus={options().layout === 'focus'}
               onApi={(api) => {
                 viewerApi = api;

@@ -19,6 +19,7 @@ export default function DiffPanel(props: {
   loading: boolean;
   scrollTarget: { id: string; nonce: number } | null;
   activeFile: FileEntry | null;
+  activeVisible: boolean;
   focus: boolean;
   onApi: (api: ViewerApi) => void;
 }) {
@@ -124,15 +125,34 @@ export default function DiffPanel(props: {
           <Show
             when={props.activeFile}
             fallback={
-              <EmptyHint icon="i-mdi-check-circle-outline" title="No changes to display">
-                This source has no file changes, or every change was filtered out by the sidebar.
-              </EmptyHint>
+              <Show
+                when={props.focus}
+                fallback={
+                  <EmptyHint icon="i-mdi-check-circle-outline" title="No changes to display">
+                    This source has no file changes, or every change was filtered out by the sidebar.
+                  </EmptyHint>
+                }
+              >
+                <EmptyHint icon="i-mdi-file-search-outline" title="Select a file to preview">
+                  Pick a file from the sidebar to preview its diff in focus mode.
+                </EmptyHint>
+              </Show>
             }
           >
-            <EmptyHint icon="i-mdi-file-question-outline" title="No preview for this file">
-              <span class="font-mono">{props.activeFile!.name}</span> is binary or its patch could not be
-              parsed. Use the sidebar to pick another file.
-            </EmptyHint>
+            <Show
+              when={props.activeVisible}
+              fallback={
+                <EmptyHint icon="i-mdi-filter-remove-outline" title="File hidden by filters">
+                  <span class="font-mono">{props.activeFile!.name}</span> is excluded by the current
+                  search, status filter, or viewed-files toggle. Clear the filters to preview it again.
+                </EmptyHint>
+              }
+            >
+              <EmptyHint icon="i-mdi-file-question-outline" title="No preview for this file">
+                <span class="font-mono">{props.activeFile!.name}</span> is binary or its patch could not be
+                parsed. Use the sidebar to pick another file.
+              </EmptyHint>
+            </Show>
           </Show>
         </div>
       </Show>
