@@ -7,7 +7,7 @@ related:
   - follow-tool-git
   - check-git-logs
   - git-file-history
-  - diff-file-history
+  - report-diff-in-web
   - git-bisect
   - deep-debug
   - report
@@ -86,7 +86,7 @@ Find the commit, change, file, or line that explains a behavior — commit-messa
 1. Run `/report` with columns: No. · Commit SHA · Date · Author · Scope · Match
 2. Order newest first; include path and line with each snippet
 3. State the pattern, range, and path filters used
-4. Route the next step: `/git-bisect`, `/git-file-history`, `/diff-file-history`, `/follow-tool-git`, or `/deep-debug`
+4. Route the next step: `/git-bisect`, `/git-file-history`, `/report-diff-in-web history`, `/follow-tool-git`, or `/deep-debug`
 
 ## Rules
 

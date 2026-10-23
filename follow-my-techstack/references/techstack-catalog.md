@@ -1,6 +1,6 @@
 # Tech Stack Catalog
 
-Canonical tech stack + default picks per category, grouped by ecosystem —
+Canonical tech stack + default picks per category, grouped by ecosystem.
 
 ## How To Select
 
@@ -9,7 +9,6 @@ Canonical tech stack + default picks per category, grouped by ecosystem —
 - If the wanted library isn't in the table → run `/deep-research dependencies`, then update this catalog
 
 ## Core — TypeScript ↔ Rust
-
 | Category | TS Default | TS Alternatives | Rust Default | Rust Alternatives |
 |---|---|---|---|---|
 | Runtime | `Bun` | - | `Rust` | - |
@@ -19,9 +18,10 @@ Canonical tech stack + default picks per category, grouped by ecosystem —
 | Type Checker | `tsc` | - | `rustc` | - |
 | Tool Version Manager | `mise` | - | `mise` | - |
 | Web Framework | `Elysia` | `Hono` (→CF Workers/multi-runtime), `Nitro` (→in Nuxt) | `Axum` | `Actix Web` |
-| Full-stack Framework | `Nuxt 4` (Vue), `TanStack Start` (Solid) | `Astro` (→content site), `SvelteKit` (→Svelte) | `Dioxus` | - |
+| Full-stack Framework | `Nuxt 4` (Vue), `TanStack Start` (Solid) | `Astro` (→content site), `SvelteKit` (→Svelte), `Next.js` (→React, `/follow-lib-react`) | `Dioxus` | - |
 | Desktop App | `Tauri` | `Native SDK` (→`/follow-lib-native-sdk` — TS+markup AOT, no runtime) | `Tauri` (Rust backend) | `gpui-kit` (→`/follow-lib-gpui-kit`) |
 | Mobile App | `Capacitor` | - | - | - |
+| Mobile OTA / Native Auth | `Capgo` (see `/follow-tool-capgo`) | - | - | - |
 | ORM | `Drizzle` | - | `SQLx` | `SeaORM` (→need full ORM) |
 | SQL / KV Driver | `postgres`, `ioredis` | - | `sqlx`, `fred` | - |
 | Database Migration | `drizzle-kit` | - | `SQLx` migrations | - |
@@ -34,6 +34,7 @@ Canonical tech stack + default picks per category, grouped by ecosystem —
 | Data Fetching | `TanStack Query` | `pinia-colada` (→light Vue) | `reqwest` | - |
 | Caching | `TanStack Query` cache | - | `moka` | - |
 | Markdown | `marked` + `shiki` | `markdown-it`, `comark` | `pulldown-cmark` | `comrak`, `syntect` (→highlight) |
+| HTML Templating | `Edge.js` (see `/follow-lib-edgejs`) | - | - | - |
 | i18n | `vue-i18n` (`@intlify/*`) | - | `fluent` | - |
 | CLI Framework | `citty` (+`usage` spec) | `cac`, `commander`, `TanStack CLI` | `Clap` | - |
 | TUI | `OpenTUI` (+`tuiparts`) | - | `Ratatui` | `crossterm` |
@@ -45,7 +46,8 @@ Canonical tech stack + default picks per category, grouped by ecosystem —
 | Stream | `effect` Stream | `rxjs` | `futures` + `tokio-stream` | `async_stream` |
 | STM | `effect` STM | - | `stm` | `async-stm` |
 | HTTP Client | `ofetch` | `ky`, `fetch` (→no dep needed) | `reqwest` | `ureq` (→blocking/light) |
-| HTTP Mocking | `msw` | `emulate` (→local API emulation) | `wiremock` | - |
+| HTTP Mocking | `msw` (see `/follow-lib-mswjs`) | `emulate` (→local API emulation) | `wiremock` | - |
+| API Testing | `Hurl` (see `/follow-tool-hurl`) | `Bruno` (see `/follow-tool-bruno`) | - | - |
 | Logging | `pino` (prod) | `consola` (→dev/CLI pretty) | `tracing` | - |
 | Observability | `OpenTelemetry` + `SigNoz` (see `/follow-service-signoz`) | `Parca` (→profiling) | `tracing-opentelemetry` | `opentelemetry` |
 | MCP Server | `@modelcontextprotocol/sdk` | - | `rmcp` | - |
@@ -54,17 +56,19 @@ Canonical tech stack + default picks per category, grouped by ecosystem —
 | Config / Env | `c12` | `unconfig`, `dotenv` | `figment` | `config-rs`, `dotenvy` |
 | Utilities | `es-toolkit`, `ts-pattern` | `pathe`, `defu`, `ufo`, `nanoid`, unjs: `jiti`, `giget`, `scule`, `mlly`, `ohash`, `nypm` | `itertools`, `derive_more`, `bon`, `camino` | `uuid`, `ulid`, `secrecy`, `zeroize` |
 | Local DB / IndexedDB | `Dexie` | - | - | - |
-| LLM Inference | - | - | `mistral.rs` | - |
+| LLM Inference | `vLLM` (→OpenAI-compatible serving, `/follow-tool-vllm`) | - | `mistral.rs` | - |
+| Durable Workflows | `Vercel Workflow SDK` (`/follow-lib-workflow-sdk`) | - | - | - |
 | Agent Sandbox | `Cloudflare Sandbox SDK` | `Beam` (→hosted) | - | - |
 | AI Memory | `Cloudflare Agent Memory` | `supermemory` (→hosted) | - | - |
 | Linter | `Biome` | `Oxlint` (→big repo/speed), `ESLint` (→compat) | `Clippy` | - |
 | Formatter | `Biome` | `dprint` (→other languages), `oxfmt` (→oxc formatter, new) | `rustfmt` | `dprint` |
 | Code Search | `ast-grep` | `GritQL` (→in Biome), `Semgrep` (→security) | `ast-grep` | - |
 | Dep Hygiene | `Knip` (unused) | `madge` (circular), `publint` + `attw` (package lint) | `cargo-udeps` | `cargo-modules` |
-| Testing | `Vitest` + `Playwright` | `happy-dom` (→DOM env) | `cargo-nextest` | `insta` (→snapshot), `proptest` (→property) |
+| Testing | `Vitest` + `Playwright` | `happy-dom` (→DOM env), `fast-check` (→property, `/follow-lib-fast-check`), `TSTyche` (→types, `/follow-lib-tstyche`) | `cargo-nextest` | `insta` (→snapshot), `proptest` (→property) |
 | E2E (Mobile/UI) | `Playwright` (→web, `/follow-tool-playwright`) | `Maestro` (→Android/iOS/web YAML flows + MCP, `/follow-tool-maestro`), `e2e` (→agentic, `/follow-tool-e2e`) | - | - |
 | Visual Testing | `Argos` (see `/follow-tool-argos`) | Playwright `toHaveScreenshot` (→committed snapshots) | `insta` (→snapshot) | - |
 | Security Audit (agent) | `security-audit-skill` (→Cloudflare multi-phase audit, `/follow-tool-security-audit-skill`) | `deepsec` (→CI scan pipeline, `/follow-tool-deepsec`) | - | - |
+| Secret Scanning | `gitleaks` (see `/follow-tool-gitleaks`) | - | - | - |
 | Mutation Testing | `Stryker` | - | `cargo-mutants` | - |
 | Benchmark | `mitata` | Vitest bench, `hyperfine` (→CLI) | `criterion` | `divan` |
 | Code Coverage | `v8` (via Vitest) | - | `cargo-llvm-cov` | `tarpaulin` |
@@ -74,17 +78,16 @@ Canonical tech stack + default picks per category, grouped by ecosystem —
 | CLI Spec | `usage` | - | `usage` | - |
 | CI/CD | `GitHub Actions` | `act` (→local), `RunsOn` (→self-hosted), `Harness`, `BuildBuddy` (→enterprise/Bazel) | `GitHub Actions` | - |
 | Dependency Updates | `taze` | `Renovate` (→auto PRs), `pkg.pr.new` (→preview) | `cargo-outdated` | `cargo-update` |
-| Release | `Changesets` (monorepo) | `semantic-release` (→full-auto), `release-it` (→single pkg), `changelogen` (→changelog only), `Auto` | `release-plz` + `cargo-dist` | - |
+| Release | `Changesets` (monorepo) | `semantic-release` (→full-auto), `release-it` (→single pkg), `changelogen` (→changelog only), `Auto`, `packslip` (→signed manifests, `/follow-tool-packslip`) | `release-plz` + `cargo-dist` | - |
 | Error Monitoring | `Sentry` | - | `Sentry` | - |
 | Code Metrics | `loc` | - | `tokei` | `scc` |
 | CLI / Shell Tools | `jq`, `gh`, `watchexec`, `just`, `nushell`, `pwsh`, `ni` | `yq`, `Bun Shell` | `jaq`, `watchexec`, `just`, `nushell` | - |
 
 ## Vite / Rolldown Ecosystem
-
 | Category | Default | Alternatives |
 |---|---|---|
 | Bundler | `Rolldown` | `rolldown` (standalone bundler), `vite@^8` (Rolldown engine built in — the `rolldown-vite` preview is retired) |
-| Library Bundler | `tsdown` | - |
+| Library Bundler | `tsdown` | `bunup` (→Bun-first, `/follow-tool-bunup`) |
 | Unified Toolchain | - | `Vite+` (→want an all-in-one, still new) |
 | Dev Server / HMR | `Vite` | - |
 | Test Runner | `Vitest` | `@cloudflare/vitest-pool-workers` (→test Workers) |
@@ -115,7 +118,6 @@ Canonical tech stack + default picks per category, grouped by ecosystem —
 | Deployment | `NuxtHub` | - |
 
 ## TanStack Ecosystem
-
 | Category | Default | Alternatives |
 |---|---|---|
 | Full-stack | `TanStack Start` | - |
@@ -138,7 +140,6 @@ Canonical tech stack + default picks per category, grouped by ecosystem —
 | Markdown | `TanStack Markdown` | - |
 
 ## TypeScript Libraries (General)
-
 | Category | Default | Alternatives |
 |---|---|---|
 | Utilities | `remeda` (see `/follow-lib-remedajs`) | `es-toolkit`, `radash`, `lodash-es` |
@@ -153,6 +154,17 @@ Canonical tech stack + default picks per category, grouped by ecosystem —
 | Passkeys / WebAuthn | `simplewebauthn` (see `/follow-lib-simplewebauthn`) | - |
 | AI SDK | `openai` (see `/follow-lib-openai`), `claude-agent-sdk` (see `/follow-service-claude-agent-sdk`) | - |
 | Diagram (interactive) | `archify` (→agent skill, standalone HTML artifact, see `/follow-tool-archify`) | `mermaid` (→inline docs, `/create-mermaid-diagram`), `excalidraw`/`tldraw` (→whiteboard) |
+| Diff Viewer | `@pierre/diffs` (see `/follow-lib-diffs`) | - |
+| UI Components (Solid) | `shadcn-solid` (see `/follow-lib-shadcn-solid`) | `Zaidan UI` (see `/follow-lib-zaidan-ui`) |
+| 3D / WebGL | `three.js` (see `/follow-lib-threejs`) | - |
+| Video | `Remotion` (see `/follow-lib-remotion`) | `ManimGX` (→math/3D video, `/follow-lib-manimgx`) |
+| Social Images / PDF | `Takumi` (see `/follow-tool-takumi`) | - |
+| HTML Sanitization | `DOMPurify` (see `/follow-lib-dompurify`) | - |
+| In-browser Runtime | `Vivari` (see `/follow-lib-vivari`) | - |
+| Web Performance | `web-vitals` (see `/follow-lib-web-vitals`) | `Lighthouse` (→audit, `/follow-tool-lighthouse`), `Unlighthouse` (→site-wide, `/follow-tool-unlighthouse`) |
+| Component Workshop | `Storybook` (see `/follow-tool-storybook`) | - |
+| Duplicate Code | `jscpd` (see `/follow-tool-jscpd`) | - |
+| React Performance | `react-scan` (see `/follow-tool-react-scan`) | - |
 
 ## Rust Ecosystem
 
@@ -164,7 +176,7 @@ Canonical tech stack + default picks per category, grouped by ecosystem —
 | DataFrame / Arrow | `polars` | `arrow` |
 | Cross-platform UI | `Dioxus` (see `/follow-create-cross-dioxus`) | - |
 | Modern Shell Utils | `eza`, `bat`, `fd`, `ripgrep` | `sd`, `delta`, `starship`, `zoxide` |
-| Cargo Tooling | `cargo-dist` | `cargo-deny`, `cargo-audit`, `cargo-watch`, `cargo-edit`, `cargo-bloat` |
+| Cargo Tooling | `cargo-dist` | `cargo-deny`, `cargo-audit`, `cargo-watch`, `cargo-edit`, `cargo-bloat`, `mr boxington` (→shared Cargo cache, `/follow-tool-mr-boxington`) |
 
 ## Cloudflare
 
@@ -204,10 +216,11 @@ Canonical tech stack + default picks per category, grouped by ecosystem —
 | Session Replay | `LogRocket` | - | - |
 | IaC | `Pulumi` | `OpenTofu` (→HCL/Terraform-compatible) | - |
 | SMS / OTP | `Twilio` (see `/follow-service-twilio`) | - | - |
+| Messaging (LINE) | `LIFF` (see `/follow-lib-line-liff`) | - | - |
 | CI Runner | `RunsOn` (see `/follow-service-run-on`) | - | - |
 | Deploy Platforms | `Cloudflare Workers` | `NuxtHub` (→Nuxt), `Vercel` (→Next.js), `Railway` (→prototype), `Dokploy`, `Sevalla` (→self-hosted) | - |
 | Bookmarking | `raindrop-cli` (`jvm/raindrop-cli`) — see `/list-raindrop-favorite`, `/list-recent-bookmark-raindrop`, `/search-raindrop` | - | - |
-| Secrets Management | `/follow-secret-manager`, `Cloudflare Secrets Store` | - | `/open-web-for-config-secret` |
+| Secrets Management | `fnox` (see `/follow-tool-fnox`), `/follow-secret-manager`, `Cloudflare Secrets Store` | - | `/open-web-for-config-secret` |
 | SEO Platform | `OpenSEO` (→MIT self-host, BYO DataForSEO usage key — see `/follow-tool-openseo`) | Hosted `openseo.so` (→subscription, non-free) | - |
 
 ## Default Must-Have Libraries
@@ -223,6 +236,11 @@ Canonical tech stack + default picks per category, grouped by ecosystem —
 - If it has background daemons/processes: add `pitchfork` (see `/follow-tool-pitchfork`)
 - If building a CLI or needing completions/docs/manpages: add `usage` (see `/follow-tool-usage`)
 - If it has animation/interactive visuals: add `/deep-review`
+- If it renders diffs / code review: add `@pierre/diffs` (see `/follow-lib-diffs`)
+- If it has video or social images: add `Remotion`, `ManimGX`, or `Takumi`
+- If it needs property or type testing: add `fast-check` + `TSTyche`
+- If it renders user HTML: add `DOMPurify` (see `/follow-lib-dompurify`)
+- If it tracks Core Web Vitals: add `web-vitals` + `Lighthouse` (see `/follow-lib-web-vitals`)
 
 ## Fast Parser And Bundler
 

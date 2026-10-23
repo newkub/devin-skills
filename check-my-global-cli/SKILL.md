@@ -7,6 +7,11 @@ related:
   - report
   - run-test
 
+allowed-tools:
+  - exec
+  - grep
+  - glob
+  - find_file_by_name
 ---
 
 ## Goal
@@ -21,6 +26,7 @@ Use to survey installed CLI tools from `mise`, `scoop`, `winget`, and `bun` and 
 - Commands, subcommands, and options of each tool
 - Usage frequency and complexity
 - Suitability for conversion into skills
+- References: [Global CLI Inventory](references/global-cli-commands.md), [Configuration Reference](references/global-cli-configuration.md)
 
 ## Execute
 

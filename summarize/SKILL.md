@@ -5,7 +5,7 @@ argument-hint: "<context>"
 related:
   - scan-codebase
   - report
-  - report-git-diff
+  - report-diff-in-web
 
 ---
 ## Goal
@@ -36,7 +36,7 @@ Use when the user wants a summary without naming a specific sub-skill; `summariz
 3. If a bullet/numbered list is needed → run `/report`
 4. If `code` → run `/scan-codebase` then `/report`
 5. If `file` → read the file and summarize
-6. If `changes` → run `/list-git-commit` or `/report-git-diff`
+6. If `changes` → run `/list-git-commit` or `/report-diff-in-web`
 7. If nothing matches a sub-skill → summarize directly with `/report`
 
 ### 3. Summarize

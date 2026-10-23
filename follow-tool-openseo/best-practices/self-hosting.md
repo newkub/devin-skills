@@ -17,17 +17,17 @@ Patterns verified against the `every-app/open-seo` README (MIT) and openseo.so d
 ## 3. MCP Workflow Design
 
 - Register one MCP server per self-hosted instance; give the agent project context so skills (keyword research, seo-audit, competitor-analysis) write into the right workspace
-- Pre-built skills first; author custom skills only when a repeated business workflow isn't covered (`/follow-create-devin-project-skills` for project-local skills)
+- Pre-built skills first; author custom skills only when a repeated business workflow isn't covered (`/update-dot-agents-project` for project-local skills)
 - Reports live in OpenSEO — link them from PRs/plans instead of copying tables that go stale
 
 ## 4. Turn SEO Findings Into Repo Changes
 
 - Site-audit output → map each technical issue to code: meta/structured data/canonical fixes in the app router or head manager (`/follow-lib-*` for the stack), robots/sitemap from the deploy skill (`/follow-create-web` robots step)
 - Keep one tracked list per site (issue → file → status); close through `/deep-review seo then-fix`, verify with a re-crawl after deploy
-- AI-visibility and rank-tracking are directional signals — decide content work from `/create-plan-in-dot-devin`, not from one noisy position change
+- AI-visibility and rank-tracking are directional signals — decide content work from `/create-plan-in-dot-agents`, not from one noisy position change
 
 ## 5. Pitfalls
 
 - Committing the DataForSEO key or instance `.env` — run `/check-secrets` after first setup
 - Treating DataForSEO numbers as ground truth for your own site's rankings — cross-check with connected Google Search Console data where available
-- Upgrading the fork blindly: it's MIT and vibe-codeable, but pull upstream before local edits diverge (`/diff-file-history` on key files)
+- Upgrading the fork blindly: it's MIT and vibe-codeable, but pull upstream before local edits diverge (`/report-diff-in-web history` on key files)

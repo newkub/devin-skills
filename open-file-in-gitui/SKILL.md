@@ -6,7 +6,7 @@ related:
   - follow-tool-git
   - open-wezterm
   - open-in-zed
-  - open-diff
+  - report-diff-in-web
   - git-file-history
   - open-in-explorer
 ---
@@ -17,7 +17,7 @@ Open the specified file in gitui's Files tab with `gitui -f <file>`, spawned in 
 
 ## Scope
 
-Use when viewing one file's stage/unstage status and diff in gitui from the current context (a user-specified path, the open file, or the current working directory). Supports Windows, macOS, and Linux with `gitui` in PATH — to view a diff in a browser use /open-diff, to open a file in an editor use /open-in-zed, to open an empty terminal use /open-wezterm
+Use when viewing one file's stage/unstage status and diff in gitui from the current context (a user-specified path, the open file, or the current working directory). Supports Windows, macOS, and Linux with `gitui` in PATH — to view a diff in a browser use /report-diff-in-web open, to open a file in an editor use /open-in-zed, to open an empty terminal use /open-wezterm
 
 ## Execute
 
@@ -73,7 +73,7 @@ Use when viewing one file's stage/unstage status and diff in gitui from the curr
 > Goal: Confirm gitui opened with the file selected
 
 1. Check the terminal process was spawned (`wezterm` exit 0, or `tmux ls` shows the new session) — this does not mean gitui is still running, only that the command was delivered
-2. If gitui opened but the file is not selected = the file has no change in the Files tab (clean/ignored) → tell the user directly and offer routes: edit the file first, view history with `git log -p -- <file>` / /git-file-history, or open the diff in a browser with /open-diff
+2. If gitui opened but the file is not selected = the file has no change in the Files tab (clean/ignored) → tell the user directly and offer routes: edit the file first, view history with `git log -p -- <file>` / /git-file-history, or open the diff in a browser with /report-diff-in-web open
 3. Report: file path, repo root, terminal used, the full command used, and a note that key bindings are visible in gitui's footer (press `?` in normal mode)
 4. To select the file in File Explorer instead of the TUI use /open-in-explorer; to open it in an editor use /open-in-zed
 
@@ -102,7 +102,7 @@ Use when viewing one file's stage/unstage status and diff in gitui from the curr
 - Use /follow-tool-git if needed
 - Use /open-wezterm if needed
 - Use /open-in-zed if needed
-- Use /open-diff if needed
+- Use /report-diff-in-web open if needed
 - Use /git-file-history if needed
 - Use /open-in-explorer if needed
 

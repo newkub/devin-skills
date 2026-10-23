@@ -66,12 +66,13 @@ Use for on-demand full-codebase or focused security review executed by the codin
 ### 3. Boundaries With Other Skills
 
 - Recurring/CI scans → `/follow-tool-deepsec`; defense-in-depth absence where another layer prevents the attack → hardening note in the report, not a finding
-- Persist confirmed outcomes via `/update-devin-project-rules` / `/update-astgrep-rules` so the next audit builds on them
+- Persist confirmed outcomes via `/update-dot-agents-project` / `/update-astgrep-rules` so the next audit builds on them
 - See references/ for the skill file, validator, and report artifact tables
 
 ## References
 
 - See `best-practices/audit-practice.md` for recommended audit patterns and pitfalls
+- References: [apis](references/apis.md)
 
 ## Expected Outcome
 

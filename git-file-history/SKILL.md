@@ -18,7 +18,7 @@ View the git file history of a given file via the already-released `@wrikka/git-
 
 Use to view the git file history of any file in a workspace that has a git repository and has `@wrikka/git-cli` installed
 
-Boundary: interactive HTML viewer only — find the commit matching a condition → `/check-git-logs`; analyze evolution/patterns → `/diff-file-history`
+Boundary: interactive HTML viewer only — find the commit matching a condition → `/check-git-logs`; analyze evolution/patterns → `/report-diff-in-web history`
 
 ## Execute
 

@@ -35,7 +35,7 @@ Use when a project needs real SEO data + agent workflows without a paid suite â€
 > Goal: the coding agent queries SEO data directly
 
 1. Follow `openseo.so/docs/agent-setup` to register the OpenSEO MCP server with the agent
-2. For Devin: register via `/create-devin-global-mcp` pointing at your self-hosted instance
+2. For the agent: register via `/update-devin-global-mcp create` pointing at your self-hosted instance
 3. Install the pre-built agent skills or build focused ones (`/seo-audit`, `/keyword-research`, `/competitor-analysis`, `/seo-coach`)
 
 ### 3. Run A Workflow
@@ -63,7 +63,7 @@ Use when a project needs real SEO data + agent workflows without a paid suite â€
 
 ### 2. SEO Fixes Land In Code
 
-- Findings are not done until applied: technical audit items â†’ `/fix` with evidence; content/keyword outputs feed the project docs/plan via `/create-plan-in-dot-devin` when bulk work follows
+- Findings are not done until applied: technical audit items â†’ `/fix` with evidence; content/keyword outputs feed the project docs/plan via `/create-plan-in-dot-agents` when bulk work follows
 
 ### 3. No Invented Metrics
 
@@ -74,6 +74,7 @@ Use when a project needs real SEO data + agent workflows without a paid suite â€
 ## References
 
 - See `best-practices/self-hosting.md` for recommended self-hosting patterns and pitfalls
+- References: [apis](references/apis.md)
 
 ## Expected Outcome
 

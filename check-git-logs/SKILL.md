@@ -11,6 +11,11 @@ related:
   - report
   - suggest-next-action
 
+allowed-tools:
+  - exec
+  - grep
+  - glob
+  - find_file_by_name
 ---
 
 ## Goal
@@ -23,7 +28,7 @@ Find the change history of a specified file by walking `git log` from newest bac
 - Supports local git repos and remote GitHub repos
 - Show the commits matching the condition along with the file content in that commit
 - Used as a helper tool in `/deep-debug` and `/restore-files`
-- Boundary: finds condition-matching commits only — interactive viewer → `/git-file-history`; evolution analysis → `/diff-file-history`; searching by message, pickaxe, content at a revision, or line attribution → `/git-search`
+- Boundary: finds condition-matching commits only — interactive viewer → `/git-file-history`; evolution analysis → `/report-diff-in-web history`; searching by message, pickaxe, content at a revision, or line attribution → `/git-search`
 
 - See also: /git-file-history, /restore-files-from-my-dotfiles
 

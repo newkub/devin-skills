@@ -35,6 +35,7 @@
 | semantic/doc search | DeepWiki / Context7 MCP / `ctx7` | MCP config | `/learn-from-web`, `/deep-research` |
 | compare subject vs competitors | DeepWiki / Context7 MCP / `crw` | MCP config | `/compare-competitors` |
 | markdown lint | `rumdl` | installed | `/check-*` docs |
+| lint skill packages (structure/references/content/secrets/code) | `bun check-agents-lint/scripts/check-agents-lint.ts` | bundled with the skill | `/check-agents-lint` |
 | find projects | filesystem scan | — | `/search-project-in-drive-d` |
 
 ## Data And Transform
@@ -44,7 +45,7 @@
 | JSON query | `jq` / `fx` | installed | `/use-scripts` |
 | YAML/TOML/XML query | `yq` | installed | `/use-scripts` |
 | structured pipelines | `nu` (nushell) | installed | `/use-nu-shell`, `/use-scripts` |
-| pretty diff | `delta` / `git-split-diffs` | installed | `/report-git-diff` |
+| pretty diff | `delta` / `git-split-diffs` | installed | `/report-diff-in-web` |
 | .env lint | `dotenv-linter` | installed | `/deep-review` dimension `config` |
 | secrets injection | `infisical` / `phase` | installed (scoop) | `/open-web-for-config-secret` |
 
@@ -134,8 +135,8 @@
 
 | Action | Tool | Install | Skill |
 |--------|------|---------|-------|
-| coding agents | `amp` / `codex` / `opencode` / `stakpak` / `devin` / `qoder` | installed | `/follow-tool-opencode`, `/follow-tool-devin-cli`, `/follow-tool-qoder-cli`, `/use-subagents` |
-| skill installer | `skills` (npm) | installed | `/update-devin-global-skills` |
+| coding agents | `amp` / `codex` / `opencode` / `stakpak` / `devin` / `qoder` | installed | `/follow-tool-opencode`, `/use-devin-cli`, `/follow-tool-qoder-cli`, `/use-subagents` |
+| skill installer | `skills` (npm) | installed | `/update-agents-skills-global` |
 | library docs | `ctx7` / Context7 MCP | installed | `/learn-from-web` |
 | shell history | `atuin` | installed | — |
 | speech-to-text | `ostt` | installed | — |

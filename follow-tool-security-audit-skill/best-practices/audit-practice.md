@@ -31,5 +31,5 @@ Patterns verified against the `cloudflare/security-audit-skill` README and its d
 
 ## 6. Make Runs Compound
 
-- Re-run after every fix round; the skill reuses prior ledgers to revalidate changed source and target gaps — track run numbers and diff `findings.json` between runs (`/diff-file-history` style)
+- Re-run after every fix round; the skill reuses prior ledgers to revalidate changed source and target gaps — track run numbers and diff `findings.json` between runs (`/report-diff-in-web history` style)
 - Promote recurring invariant violations into ast-grep rules (`/update-astgrep-rules`) so linters catch them before the next audit
