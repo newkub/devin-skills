@@ -1,7 +1,7 @@
 ---
-name: merge
-description: merge files or folders together and delete the original source
-argument-hint: "[domain] | @files [destination]"
+name: merge-files
+description: Merge files or folders into one destination and delete the original source
+argument-hint: "@files [destination]"
 allowed-tools:
   - read
   - edit
@@ -33,11 +33,10 @@ merge source files or folders together into a single destination file or folder,
 
 ## Scope
 
-Use when you need to combine content from multiple files or folders together and delete the source after merge — or when you need to merge a git branch/PR by domain
+Use when you need to combine content from multiple files or folders together and delete the source after merge
 
-- `git-branch` → merge a feature branch into the target branch with `--no-ff`
-- `github-pr` → merge a pull request with the appropriate strategy
-- `all-branch-by-me-to-main` → merge every branch created by the user into `main` then delete the branches
+- Files only — merge content, keep one destination, remove the originals
+- Git branch merges use `/git-branch`, PR merges use `/merge-github-pr`, and every own branch into `main` uses `/merge-all-branch-by-me-to-main` — not this skill
 
 ## Execute
 
@@ -104,19 +103,6 @@ Use when you need to combine content from multiple files or folders together and
 3. Check for data loss
 4. Do `/report table` summarizing: `No.`, `Source`, `Destination`, `Status`, `Notes`
 5. If there are multiple pending steps → do `/report-progress`
-
-### Skills
-
-> Goal: dispatch to the destination skill by domain when the merge is a git branch/PR workflow
-
-| Domain | Skill |
-|--------|----------|
-| `git-branch` | `git merge --no-ff <branch>` — direct command (the former `merge-git-branch` skill was removed) |
-| `github-pr` | /merge-github-pr — merge the PR with the appropriate strategy |
-| `all-branch-by-me-to-main` | /merge-all-branch-by-me-to-main — merge every branch of the user into `main` |
-
-1. If the argument matches a domain in the table → follow the `Skill` column (read the skill file first when it is a `/skill`) — do not execute directly from this table
-2. If it is an `@files` merge → follow steps 1-7 above
 
 ## Rules
 
