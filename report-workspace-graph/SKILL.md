@@ -6,7 +6,7 @@ related:
   - check-monorepo
   - list-workspaces
   - refactor
-  - all-workspace
+  - all
 
   - report
   - suggest-next-action
@@ -149,7 +149,7 @@ For monorepos with many workspace packages — not duplicating `/list-workspaces
 - If the graph is truly complex, use mermaid or a text graph in markdown instead
 
 - Use /refactor (workspace scope — split/merge/relocate members) if needed
-- Use /all-workspace if needed
+- Use /all workspace if needed
 - Use /follow-tasks if needed
 - Use /follow-monorepo if needed
 - Use /run-build if needed

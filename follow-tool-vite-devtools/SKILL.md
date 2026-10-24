@@ -5,8 +5,6 @@ argument-hint: "[setup-or-kit-scope]"
 related:
   - use-wrikka-vite-devtools
   - follow-tool-vite
-  - follow-tool-vite-plugins
-  - follow-tool-devfra
   - follow-tool-vitest
   - follow-tool-rolldown
   - follow-my-techstack
@@ -29,6 +27,7 @@ Use for work involving the Vite ecosystem devtools framework
 - Use built-in integrations — Rolldown, Vite, Vitest, Oxc
 - Write Vite plugins that mount UI into the dock via `devtools.setup`
 - Port a Devframe app into the hub with `createPluginFromDevframe`
+- Build a framework-neutral tool with `devframe`, then mount it in the dock (see `### 8. Devframe Layer`)
 - Option details/API matrix → `references/apis.md`
 - References: [Vite DevTools — Best Practices](best-practices/vite-devtools.md)
 
@@ -97,14 +96,27 @@ Use for work involving the Vite ecosystem devtools framework
 - Reference error codes when kit/rolldown breaks: DTK00xx (Kit) and RDDT00xx (Rolldown) on the docs Error Reference page
 - Docs: `https://devtools.vite.dev/guide/` (Getting Started, Chrome Extension), `/kit/` (Kit), `/rolldown/`, `/vite/`, `/vitest/`, `/oxc/`, `/errors/`
 
+### 8. Devframe Layer
+
+> Goal: build the tool once, then mount it in the dock — the layer beneath the Kit
+
+1. Install `bun add devframe` (ESM-only, no Vite dependency) plus `cac` for a standalone CLI and a Standard Schema validator (`valibot` or `zod`; do `/follow-lib-zod`)
+2. Write one `defineDevframe({ id, name, version, packageName, importMetaUrl: import.meta.url, homepage, description, setup })`; inside `setup(ctx)` always use `ctx.scope('<id>')` so RPC ids, shared-state keys, and channels stay namespaced
+3. Declare RPC with `defineRpcFunction({ name, type, args, returns, handler | setup })` — `type` is `query` (changing reads), `static` (fixed per input, dumped into static builds), `action` (mutations), or `event` (fire-and-forget); set `agent: { description, title }` to expose it over MCP
+4. Use `await my.rpc.sharedState('key', { initialValue })` for patch-synced state that survives reconnects, and `ctx.rpc.streaming.create('<id>:channel', { replayWindow })` for chunk feeds
+5. Point `clientAssets` at the built SPA (a path, or `{ package, version }` for a published one); the browser connects with `connectDevframe()` from `devframe/client`
+6. Mount per surface: `.handler`/`.nodeMiddleware` from `devframe/initiate`, `createCac(def)` (`dev`/`build`/`mcp`), `createDevServer`, `createBuild`, `createMcpServer`, or `createPluginFromDevframe(def)` for the Vite dock
+7. Compose several definitions with `initHub({ base, devframes, ui })` from `@devframes/hub/initiate` + `@devframes/hub-ui`
+8. Version notes: latest `devframe@1.2.5` (verified 2026-10-15), stable pin `1.2.3`; `@devframes/*` kits track the same `1.2.x`; docs at `https://devfra.me` (`/raw/<path>.md` per page, `llms-full.txt` for all)
+
 ## Rules
 
 ### 1. Choose The Right Layer
 
 - Writing a plain Vite plugin → use `Plugin.devtools.setup` directly (docks, terminals, palette, custom renderers all live here)
 - Already have a Devframe definition → use `createPluginFromDevframe(def, { setup })` from `@vitejs/devtools-kit/node`; the dock iframe comes automatically from `id`/`name`/`icon`/`basePath` — no plugin to write yourself
-- Need a tool with zero Vite dependency (CLI/MCP/static dashboard) → go to `follow-tool-devfra`, which is the layer beneath the Kit
-- Layer order: Vite DevTools → `@vitejs/devtools-kit` (hub: dock, palette, terminals, `devtools.setup`) → Devframe (framework-neutral)
+- Need a tool with zero Vite dependency (CLI/MCP/static dashboard) → build it on the Devframe layer (`### 8. Devframe Layer`), then mount it in the dock with `createPluginFromDevframe`
+- Layer order: Vite DevTools → `@vitejs/devtools-kit` (hub: dock, palette, terminals, `devtools.setup`) → Devframe (framework-neutral, `### 8`)
 
 ### 2. Config Discipline
 
@@ -124,7 +136,7 @@ Use for work involving the Vite ecosystem devtools framework
 
 ### 4. Boundaries With Other Skills
 
-- General dev server/build config → `/follow-tool-vite`; plugin authoring → `/follow-tool-vite-plugins` / `/follow-create-vite-plugin`; this skill covers only the devtools layer
+- General dev server/build config → `/follow-tool-vite`; plugin authoring → `/follow-tool-vite plugins` / `/follow-create-vite-plugin`; this skill covers only the devtools layer
 - Projects using the `wrikka-vite-devtools` plugin (`/use-wrikka-vite-devtools`) already have their own devtools hub on Devframe — do not stack `@vitejs/devtools` on top and end up with two docks by accident; to consolidate, mount through a single `createPluginFromDevframe`
 
 ### 5. Quality Gates

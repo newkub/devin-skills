@@ -4,8 +4,7 @@ description: Draw/fix ANSI box-drawing so outer boxes are uniform width and neve
 argument-hint: "[input]"
 related:
   - draw-svg-image
-  - draw-excalidraw
-  - draw-tldraw
+  - draw
 ---
 
 ## Goal
@@ -81,8 +80,8 @@ bunx /path/to/draw-ansi/scripts/draw-ansi.ts --fix --width 60 existing-box.txt
 - Do not use a ` ```ansi ` block
 - Output is ready to drop into a README ` ```text ` block immediately
 - Use /draw-svg-image if needed
-- Use /draw-excalidraw if needed
-- Use /draw-tldraw if needed
+- Use /draw excalidraw if needed
+- Use /draw tldraw if needed
 
 ## Expected Outcome
 

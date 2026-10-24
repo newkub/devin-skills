@@ -1,7 +1,7 @@
 ---
 name: follow-create-bot
 description: Build a bot for Slack, Discord, Telegram, LINE, or a GitHub App/bot with TypeScript/Bun
-argument-hint: "<slack|discord|telegram|line|github|github-app> [features]"
+argument-hint: "<slack|discord|telegram|line|github> [features]"
 related:
   - deep-review
   - follow-secret-manager
@@ -29,18 +29,17 @@ Build a bot for the specified platform — Slack, Discord, Telegram, LINE, or Gi
 
 > Goal: Identify the platform and read its platform-specific details
 
-| Platform   | Skill |
-|------------|----------|
-| Slack      | `/follow-create-bot-slack` — slash commands, events, Socket Mode |
-| Discord    | `/follow-create-bot-discord` — commands, intents, gateway |
-| Telegram   | `/follow-create-bot-telegram` — Bot API, commands, webhooks |
-| LINE       | `/follow-create-bot-line` — Messaging API, webhook, reply |
-| GitHub     | `/follow-create-bot-github` — GitHub bot, probot, webhooks |
-| GitHub App | `/follow-create-bot-github-app` — app manifest, JWT auth, installation |
+| Platform   | Invocation | Workflow |
+|------------|------------|----------|
+| Slack      | `/follow-create-bot slack` — slash commands, events, Socket Mode | `workflows/slack/SKILL.md` |
+| Discord    | `/follow-create-bot discord` — commands, intents, gateway | `workflows/discord/SKILL.md` |
+| Telegram   | `/follow-create-bot telegram` — Bot API, commands, webhooks | `workflows/telegram/SKILL.md` |
+| LINE       | `/follow-create-bot line` — Messaging API, webhook, reply | `workflows/line/SKILL.md` |
+| GitHub     | `/follow-create-bot github` — GitHub bot or GitHub App, probot, webhooks, installation | `workflows/github/SKILL.md` |
 
 1. Read the platform from the argument — if unspecified → run `/ask-me`
 2. Run `/deep-research` + `/follow-best-practice` to confirm the platform SDK's latest versions and patterns, then run `/deep-review`
-3. Invoke the selected platform's skill and follow its flow — do not execute directly from this table
+3. Open the workflow file for the selected platform and follow it end to end — do not execute directly from this table
 
 ### 2. Setup Project
 

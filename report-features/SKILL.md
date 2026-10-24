@@ -5,7 +5,7 @@ argument-hint: "[scope]"
 related:
   - update-docs
   - deep-review
-  - all-workspace
+  - all
 
   - report
   - suggest-next-action
@@ -39,7 +39,7 @@ Verify feature files exist and are current
 
 Read feature files from every workspace
 
-1. Use `/all-workspace` to identify all workspaces
+1. Use `/all workspace` to identify all workspaces
 2. Read `.devin/features/<workspace>/index.ts` for the manifest and `allFeatures`
 3. Read `.devin/features/<workspace>/types.ts` for the Feature interface
 4. Collect features from all workspaces into a single list

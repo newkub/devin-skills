@@ -6,9 +6,7 @@ allowed-tools:
   - exec
   - read
 related:
-  - follow-tool-devfra
   - follow-tool-vite
-  - follow-tool-vite-plugins
   - follow-tool-vite-devtools
   - follow-tool-pkg-new
   - check-types-definition
@@ -26,7 +24,7 @@ an in-app comment overlay that starts an agent CLI on submit, and an aggregate M
 ## Scope
 
 - In: installing and mounting the plugin in any Vite project, verifying hub/overlay/MCP, day-to-day options
-- Out: developing or maintaining the plugin itself → `/update-wrikka-vite-devtools`; general Vite dev-server config → `/follow-tool-vite`; general Devframe docs → `/follow-tool-devfra`; full option/RPC reference → the plugin repo's `USAGE.md`
+- Out: developing or maintaining the plugin itself → `/update-wrikka-vite-devtools`; general Vite dev-server config → `/follow-tool-vite`; general Devframe docs → `/follow-tool-vite-devtools` (`### 8`); full option/RPC reference → the plugin repo's `USAGE.md`
 - Source repo: `%APPDATA%\devin\skills\wrikka-vite-devtools\` (git submodule, pkg.pr.new preview releases — not published to npm)
 
 ## Execute
@@ -96,8 +94,8 @@ Options: `base` (`/__devframes/`), `plugins` (keys or `'all'`), `mcp` (`'auto'|t
 - Agent runs are driven from `process.cwd()` of the dev server — keep it the intended project
 - Do not stack `@vitejs/devtools` on top — the project already has a dock; see `/follow-tool-vite-devtools` boundaries
 
-Use /follow-tool-devfra if needed
-Use /follow-tool-vite-plugins if needed
+Use /follow-tool-vite-devtools if needed (layers, Kit, Devframe `### 8`)
+Use /follow-tool-vite plugins if needed
 
 ## Expected Outcome
 

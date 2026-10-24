@@ -4,11 +4,9 @@ description: Open a file in the gitui TUI with gitui -f <file> via a TTY-capable
 argument-hint: "[file]"
 related:
   - follow-tool-git
-  - open-wezterm
-  - open-in-zed
+  - open-in
   - report-diff-in-web
   - git-file-history
-  - open-in-explorer
 ---
 
 ## Goal
@@ -17,7 +15,7 @@ Open the specified file in gitui's Files tab with `gitui -f <file>`, spawned in 
 
 ## Scope
 
-Use when viewing one file's stage/unstage status and diff in gitui from the current context (a user-specified path, the open file, or the current working directory). Supports Windows, macOS, and Linux with `gitui` in PATH — to view a diff in a browser use /report-diff-in-web open, to open a file in an editor use /open-in-zed, to open an empty terminal use /open-wezterm
+Use when viewing one file's stage/unstage status and diff in gitui from the current context (a user-specified path, the open file, or the current working directory). Supports Windows, macOS, and Linux with `gitui` in PATH — to view a diff in a browser use /report-diff-in-web open, to open a file in an editor use /open-in zed, to open an empty terminal use /open-in wezterm
 
 ## Execute
 
@@ -60,13 +58,13 @@ Use when viewing one file's stage/unstage status and diff in gitui from the curr
 
 1. Never run `gitui` directly in the agent's shell — it is a blocking TUI; without a TTY it hangs until killed (confirmed with 0.28.1)
 2. Spawn via a terminal per platform:
-   - Windows + WezTerm: `wezterm start --cwd "<repo-root>" -- gitui -f "<file>"` (see /open-wezterm)
+   - Windows + WezTerm: `wezterm start --cwd "<repo-root>" -- gitui -f "<file>"` (see /open-in wezterm)
    - Windows Terminal: `wt -d "<repo-root>" pwsh -NoExit -c "gitui -f '<file>'"`
    - Linux: `x-terminal-emulator --working-directory="<repo-root>" -e gitui -f "<file>"` or `gnome-terminal --working-directory="<repo-root>" -- gitui -f "<file>"`
    - macOS: `osascript -e 'tell application "Terminal" to do script "cd <repo-root> && gitui -f <file>"'`
    - An existing tmux session: `tmux new-session -d -c "<repo-root>" gitui -f "<file>"` then `tmux attach -t <session>`
 3. Multiple files → open one per window/session, because `-f` accepts one path per invocation
-4. With no terminal available, print the ready command (`cd "<repo-root>" && gitui -f "<file>"`) for the user to copy — /open-wezterm can open a terminal first
+4. With no terminal available, print the ready command (`cd "<repo-root>" && gitui -f "<file>"`) for the user to copy — /open-in wezterm can open a terminal first
 
 ### 4. Verify And Report
 
@@ -75,7 +73,7 @@ Use when viewing one file's stage/unstage status and diff in gitui from the curr
 1. Check the terminal process was spawned (`wezterm` exit 0, or `tmux ls` shows the new session) — this does not mean gitui is still running, only that the command was delivered
 2. If gitui opened but the file is not selected = the file has no change in the Files tab (clean/ignored) → tell the user directly and offer routes: edit the file first, view history with `git log -p -- <file>` / /git-file-history, or open the diff in a browser with /report-diff-in-web open
 3. Report: file path, repo root, terminal used, the full command used, and a note that key bindings are visible in gitui's footer (press `?` in normal mode)
-4. To select the file in File Explorer instead of the TUI use /open-in-explorer; to open it in an editor use /open-in-zed
+4. To select the file in File Explorer instead of the TUI use /open-in explorer; to open it in an editor use /open-in zed
 
 ## Rules
 
@@ -100,11 +98,11 @@ Use when viewing one file's stage/unstage status and diff in gitui from the curr
 - On failure, state the cause (no gitui / not a repo / file clean / no terminal) with clear next steps
 
 - Use /follow-tool-git if needed
-- Use /open-wezterm if needed
-- Use /open-in-zed if needed
+- Use /open-in wezterm if needed
+- Use /open-in zed if needed
 - Use /report-diff-in-web open if needed
 - Use /git-file-history if needed
-- Use /open-in-explorer if needed
+- Use /open-in explorer if needed
 
 ## Expected Outcome
 

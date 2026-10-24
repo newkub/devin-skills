@@ -91,7 +91,7 @@ Use when you need to combine content from multiple files or folders together and
 
 1. Do `/update-references` to update every skill that references the source
 2. Do `/edit-relative` when the merge affects relative paths, imports, markdown links, or semantic references (skill names, `related` lists) of other files — covering both path-level and symbol-level updates
-3. Check for skills related to file ops (`move-to`, `rename`, `all-this-patterns`, `edit-only`, `refactor`, `flatten-directory`) and update references to point to the destination
+3. Check for skills related to file ops (`move-to`, `rename`, `all` patterns mode, `edit-only`, `refactor`, `flatten-directory`) and update references to point to the destination
 4. Use `grep` to re-check for leftover old references
 
 ### 7. Validate

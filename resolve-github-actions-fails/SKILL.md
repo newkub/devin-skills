@@ -1,9 +1,11 @@
 ---
 name: resolve-github-actions-fails
-argument-hint: "[--repo <owner/repo> | verify]"
-description: Inspect and fix failed GitHub Actions workflow runs for the current repo or the specified repo
+argument-hint: "[--repo <owner/repo> | --all [--owner <user-or-org>] | verify]"
+description: Inspect and fix failed GitHub Actions runs for one repo or every repo in the account
 related:
   - resolve-errors
+  - all-github-repo
+  - delete-cicd-fails
   - report
   - suggest-next-action
   - ask-me
@@ -12,13 +14,14 @@ related:
 
 ## Goal
 
-List failed GitHub Actions workflow runs for the specified project/repo, then resolve them all
+List failed GitHub Actions workflow runs for one repo or every repo in the account, then resolve them all
 
 ## Scope
 
-Applies to the current repo or the repo specified by the user; covers public/private per the `gh` token permissions
+Applies to the current repo, the repo given by `--repo`, or — with `--all` — every repo the `gh` token can access; public/private per the token permissions
 
 - For list fails see `references/list-fails.md`
+- The `--all` repo list is the same inventory `/all-github-repo` produces
 
 ## Execute
 
@@ -27,9 +30,11 @@ Applies to the current repo or the repo specified by the user; covers public/pri
 | Argument | Workflow |
 |----------|----------|
 | `verify`, `verify-resolved` | `workflows/verify-resolved/SKILL.md` — watch the new run to completion, confirm success on the remote |
+| `--all` [+ `--owner`] | Steps 2A-2C, then Steps 3-9 once per failing repo |
 
 1. If the argument is `verify` → read `workflows/verify-resolved/SKILL.md` then follow the flow — do not resolve again
-2. If not specified → do Steps 1-8 as usual
+2. If `--all` is present → do Steps 1-2, Step 2A-2C, then Steps 3-9 once per failing repo
+3. If not specified → do Steps 1-8 as usual
 
 ### 1. Verify gh CLI
 
@@ -43,8 +48,31 @@ Applies to the current repo or the repo specified by the user; covers public/pri
 
 > Goal: Identify the repo to resolve
 1. If `--repo` is present → use that value
-2. If not → use `gh repo view --json nameWithOwner` or `git remote -v` from the current directory
-3. If the repo cannot be found → run `/ask-me` to have the user specify it
+2. If `--all` is present → skip this step and go to Step 2A
+3. If not → use `gh repo view --json nameWithOwner` or `git remote -v` from the current directory
+4. If the repo cannot be found → run `/ask-me` to have the user specify it
+
+### 2A. List Repos (`--all`)
+
+> Goal: Collect every repo the token can reach
+1. If `--owner` is present → use that owner (user or org)
+2. If not → `gh repo list <owner> --limit 100` for the user and for each org from `gh api user/orgs --jq ".[].login"`
+3. Batch 5-10 repos per round to stay under the rate limit
+
+### 2B. Scan Repos For Failures (`--all`)
+
+> Goal: Keep only repos that have failed runs
+1. For each repo run `gh run list --repo <owner/repo> --status failure --limit 10`
+2. Keep the repos with failures plus their run counts
+3. If no repo fails → report that the work is done and stop
+
+### 2C. Loop Per Repo (`--all`)
+
+> Goal: Run the single-repo flow on each failing repo
+1. For each failing repo run Steps 3-7 with `--repo <owner/repo>`
+2. Record that repo's last green SHA before pushing a fix
+3. If the repo has no local clone or cannot be resolved → mark `manual-fix-required` and move to the next repo
+4. Continue until every failing repo is done
 
 ### 3. List Failed Runs
 
@@ -96,6 +124,7 @@ Applies to the current repo or the repo specified by the user; covers public/pri
 2. Use `/report` columns: No., Workflow, Branch, Commit, Event, Started At, Status After Resolve, Deleted, Notes
 3. Sort by latest Started At
 4. State a summary: total failures, resolved, deleted, remaining manual-fix-required
+5. With `--all` → one row per repo instead: No., Repo, Failing Runs, Status, Action Taken, Deleted, Last Green SHA, Notes; sort by repo name
 
 ### 9. Suggest Next Action
 
@@ -122,7 +151,9 @@ Applies to the current repo or the repo specified by the user; covers public/pri
 - Do not expose secrets or tokens in the output
 
 ### 5. Account-wide
-- If the user wants to resolve across all repos → use `/resolve-all-github-actions-fails` instead (this skill does one repo at a time)
+- `--all` sweeps every repo of the account; `--owner <user-or-org>` narrows it to one owner
+- Batch 5-10 repos per round and keep `--limit`/`--page` on every `gh run list`
+- On a 403/429 rate limit → wait and retry the same batch
 
 ### 6. Watch Timeouts
 - `perRoundTimeout` = `120` seconds for each fix-and-push round
@@ -147,4 +178,4 @@ Applies to the current repo or the repo specified by the user; covers public/pri
 - workflow, branch, commit, url, action taken data available
 - No push/merge or repo modification without permission
 
-- Also used in `git-push`; account-wide scope is at `/resolve-all-github-actions-fails`
+- Also used in `git-push`; the account-wide sweep is `--all [--owner <user-or-org>]` on this skill

@@ -18,7 +18,7 @@ $falsePositivePatterns = @(
     # Tool/skill names containing todo/mock
     'todo_write', 'productionize-implementation', 'implement-mock', 'productionize-implementation',
     'update-docs-todo-md', 'report-todo', 'mock-inventory', 'todo-inventory',
-    'save-to-todo-gist', 'list-todo-gist',
+    'list-todo-gist',
     # Backtick-quoted markers (instructions about them)
     '`TODO`', '`MOCK`', '`FIXME`', '`STUB`', '`FAKE`', '`placeholder`', '`mock`',
     '`TODO/MOCK', 'TODO/MOCK/placeholder', 'TODO/MOCK',

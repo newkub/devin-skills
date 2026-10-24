@@ -3,8 +3,7 @@ name: create-mermaid-diagram
 description: Generate Mermaid source code from a description; save as .md or .mmd
 argument-hint: "[prompt or topic]"
 related:
-  - draw-excalidraw
-  - draw-tldraw
+  - draw
   - follow-tool-archify
   - report
   - report-flow
@@ -109,8 +108,8 @@ Supports both a direct prompt and reading from files/images. To visualize from c
 - If `mmdc` is not available → hand the mermaid source to the user without doing anything extra
 - If validation fails after 3 rounds → report the status and stop
 
-- Use /draw-excalidraw if needed
-- Use /draw-tldraw if needed
+- Use /draw excalidraw if needed
+- Use /draw tldraw if needed
 - Use /follow-tool-archify if needed
 - Use /report-flow if needed
 - Use /ship if needed

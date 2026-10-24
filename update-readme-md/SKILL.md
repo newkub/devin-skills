@@ -15,7 +15,7 @@ related:
   - update-contributing
   - update-license-md
   - update-references
-  - all-workspace
+  - all
   - check-should-update
 ---
 
@@ -75,7 +75,7 @@ Covers generating `README.md` for the root and every workspace in a monorepo, an
 
 > Goal: update the README of every workspace in the monorepo
 
-1. Run `/all-workspace` to update the README of all workspaces with the same template as the root, but no `## License`/`## Contributing` (use the root ones)
+1. Run `/all workspace` to update the README of all workspaces with the same template as the root, but no `## License`/`## Contributing` (use the root ones)
 2. Workspace README includes Status, Hero, Flow Diagram, Get Started, Features, Usage — if a workspace has no `package.json` → skip and report; if the update fails → retry (max 3 → stop/report)
 
 ### 7. Setup License

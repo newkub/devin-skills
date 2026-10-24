@@ -1,7 +1,7 @@
 ---
 name: deep-report
-description: Turn review and analysis findings into one interactive HTML deep report
-argument-hint: "[scope]"
+description: Turn review and analysis findings into one interactive HTML deep report or a quick chat table
+argument-hint: "[quick] [scope]"
 related:
   - deep-thinking
   - deep-review
@@ -22,13 +22,16 @@ Produce one interactive HTML deep report from `/deep-review` and `/deep-analyze`
 
 ## Scope
 
-Use when the user asks for a deep report of a reviewed or analyzed scope; the deliverable is a single-file HTML artifact saved under `.devin/reports/`
+Use when the user asks for a deep report of a reviewed or analyzed scope; the default deliverable is a single-file HTML artifact saved under `.devin/reports/`
 
 | Need | Owner |
 |------|-------|
 | Chat table only | `/report` |
 | JSON or markdown artifact | `/create-report-to-dot-agents` |
 | Deep report in the browser | `/deep-report` |
+| Same 7 columns and 4-part summary, chat only, no file | `/deep-report quick <scope>` |
+
+`quick` mode runs Steps 1-5 and 9 and skips Steps 6-8 (no data array, no HTML, no browser verification)
 
 ## Execute
 
@@ -98,6 +101,7 @@ Use when the user asks for a deep report of a reviewed or analyzed scope; the de
 
 > Goal: a single interactive HTML file, built by `/report-in-html`
 
+0. `quick` mode → print the Step 4 table and the Step 5 4-part summary in chat, then skip to Step 9; create no file and open no browser
 1. Dispatch `/report-in-html` with the Step 6 data and require these sections: Key Findings, findings table with sort/filter/group/search, the 4-part summary, Next Action
 2. Follow `/report-in-html` for the shell — Tailwind + Vue CDN, theme toggle, sticky tabs, sticky table header, per-row dropdown, print CSS, empty state, `prefers-reduced-motion`
 3. Save as `.devin/reports/deep-report-<scope>-<yyyy-mm-dd>.html`; use `reports/<name>.html` only when the project has no `.devin/` convention
@@ -126,7 +130,8 @@ Use when the user asks for a deep report of a reviewed or analyzed scope; the de
 
 ### 1. Output Contract
 
-- The only deliverable is one self-contained HTML file built through `/report-in-html`
+- The default deliverable is one self-contained HTML file built through `/report-in-html`
+- `quick` mode delivers the same 7 columns and 4-part summary in chat and creates no file
 - Chat table → `/report`; JSON or markdown artifact → `/create-report-to-dot-agents`; never produce two deliverable formats for one request
 - Key Findings sit on top of the HTML, the table follows, the 4-part summary and Next Action close it
 

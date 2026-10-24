@@ -1,7 +1,7 @@
 ---
 name: resolve-cloudflare-worker-fails
-argument-hint: "[--worker <worker-name>] [--project <pages-project>]"
-description: Inspect and fix the specified Cloudflare Worker or Pages project
+argument-hint: "[--worker <worker-name> | --project <pages-project> | --all]"
+description: Inspect and fix one Cloudflare Worker/Pages project or every one in the account
 related:
   - resolve-errors
   - list-cloudflare-projects
@@ -13,15 +13,15 @@ related:
 
 ## Goal
 
-Inspect and fix the specified Cloudflare Worker or Pages project by finding the local project in `D:\` and redeploying
+Inspect and fix the specified Cloudflare Worker or Pages project by finding the local project in `D:\` and redeploying; with `--all`, sweep every worker and Pages project in the account first
 
 ## Scope
 
-Applies to a single worker or pages project; if not specified, it will be found from the current project or repo name
+Applies to one worker or Pages project, or — with `--all` — every worker and Pages project in the account. Without a target it is found from the current project or repo name
 
-- For list fails see `## Merged Details → references/list-fails`
+- `--all` also covers the read-only listing flow: it reports every target whose latest deployment is not in a success state
 
-See also: /list-cloudflare-projects, /resolve-all-cloudflare-worker-fails, `## Merged Details → references/list-fails`
+See also: /list-cloudflare-projects
 
 ## Execute
 
@@ -37,8 +37,35 @@ See also: /list-cloudflare-projects, /resolve-all-cloudflare-worker-fails, `## M
 > Goal: Identify the target
 1. If `--worker` is present → use that worker name
 2. If `--project` is present → use that Pages project
-3. If neither → find the worker name from `wrangler.toml` or the repo name from `git remote -v`
-4. If not found → run `/ask-me`
+3. If `--all` is present → skip to Step 2A
+4. If none → find the worker name from `wrangler.toml` or the repo name from `git remote -v`
+5. If not found → run `/ask-me`
+
+### 2A. Resolve Account Access (`--all`)
+
+> Goal: Obtain the account ID and credentials to query the API
+1. Get the account ID from `wrangler whoami`, else `CLOUDFLARE_ACCOUNT_ID`, else `~/.wrangler/config/` or a `wrangler.toml`
+2. Get the token from the `wrangler login` credentials or `CLOUDFLARE_API_TOKEN` — never print it
+3. If neither is available → run `/ask-me` to have the user run `wrangler login`
+
+### 2B. List Every Target (`--all`)
+
+> Goal: Fetch all workers and Pages projects, then find the failing ones
+1. Workers: `curl -s -H "Authorization: Bearer <token>" "https://api.cloudflare.com/client/v4/accounts/<account_id>/workers/scripts"`
+2. Pages: `curl -s -H "Authorization: Bearer <token>" "https://api.cloudflare.com/client/v4/accounts/<account_id>/pages/projects"`
+3. Per worker: `.../workers/scripts/<worker_name>/deployments`; per Pages project: `.../pages/projects/<project_name>/deployments`
+4. Keep every target whose latest deployment status is not `success` or `active`, with its status, created at, and version
+5. If nothing fails → report that the account is clean and stop
+6. On a 429 → wait and retry the same batch
+
+### 2C. Fix Each Failing Target (`--all`)
+
+> Goal: Resolve the failing targets one at a time
+1. For each failing target run Steps 3-4 scoped to that worker or Pages project
+2. Record the last successful deployment version before changing anything
+3. Repeat at most 3 rounds per target
+4. If it cannot be resolved, or has no local repo → mark `manual-fix-required` and move to the next target
+5. Do not deploy a high-impact target without confirmation
 
 ### 3. Check Deployment And Logs
 
@@ -65,12 +92,13 @@ See also: /list-cloudflare-projects, /resolve-all-cloudflare-worker-fails, `## M
 
 > Goal: Summarize the result
 1. Use `/report` columns: No., Worker/Project, Type, Latest Deployment, Status, Action Taken, Errors / Notes
-2. State: resolved or manual-fix-required
+2. With `--all` → one row per target sorted by name, plus totals: scanned, failing, resolved, manual-fix-required
+3. State: resolved or manual-fix-required
 
 ### 6. Suggest Next Action
 
 > Goal: Suggest the next step
-1. Run `/suggest-next-action` to suggest redeploy, check logs, or `/resolve-all-cloudflare-worker-fails`
+1. Run `/suggest-next-action` to suggest redeploy, check logs, or `--all` on this skill to sweep the account
 
 ## Rules
 
@@ -91,120 +119,13 @@ See also: /list-cloudflare-projects, /resolve-all-cloudflare-worker-fails, `## M
 - Avoid querying too quickly
 - If the API returns 429, wait and retry
 
-## Merged Details
-
-### references/list-fails
-
-#### List Cloudflare Worker Fails
-
-##### Goal
-
-Summarize all Cloudflare Workers/Pages whose deployment failed or whose latest deployment is not in the success state in the Cloudflare account the user can access
-
-##### Scope
-
-Used when you want to inspect workers that failed to deploy or have a failed deployment status in the user's Cloudflare account, using `wrangler` or the Cloudflare API, without modifying the worker or redeploying
-
-See also: /list-cloudflare-projects, /check-deployment-fails, /open-cloudflare-workers, /follow-service-cloudflare
-
-##### Execute
-
-###### 1. Verify wrangler Authentication
-
-> Goal: Confirm that wrangler is ready and authenticated
-
-1. Run `wrangler --version` to check the installation
-2. Run `wrangler whoami` to check authentication and account
-3. If not authenticated → run `/ask-me` to have the user run `wrangler login`
-4. Record the account info
-
-###### 2. Get Account ID And Token
-
-> Goal: Obtain the account ID and token to query the API
-
-1. Find the account ID from:
-   - `wrangler whoami` output
-   - `CLOUDFLARE_ACCOUNT_ID` env var
-   - `~/.wrangler/config/` or `wrangler.toml` in any project
-2. Find the token from the `wrangler` credentials stored by `wrangler login` or the `CLOUDFLARE_API_TOKEN` env var
-3. If not found → run `/ask-me` to have the user specify it
-
-###### 3. List All Workers And Pages Functions
-
-> Goal: Fetch the list of all workers in the account
-
-1. Run the API:
-   `curl -s -H "Authorization: Bearer <token>" "https://api.cloudflare.com/client/v4/accounts/<account_id>/workers/scripts"`
-2. Or use a Bun/Node script to call the same API
-3. For Pages projects use:
-   `curl -s -H "Authorization: Bearer <token>" "https://api.cloudflare.com/client/v4/accounts/<account_id>/pages/projects"`
-4. Record the worker names and pages project names
-
-###### 4. Detect Failing Deployments
-
-> Goal: Find the workers with problems
-
-1. For each worker run:
-   `curl -s -H "Authorization: Bearer <token>" "https://api.cloudflare.com/client/v4/accounts/<account_id>/workers/scripts/<worker_name>/deployments"`
-2. For Pages projects use:
-   `curl -s -H "Authorization: Bearer <token>" "https://api.cloudflare.com/client/v4/accounts/<account_id>/pages/projects/<project_name>/deployments"`
-3. Record the latest deployment: status, created at, version
-4. Find statuses that are not `success` or `active`
-5. Collect the list to report
-
-###### 5. Build Report
-
-> Goal: Summarize the result as a table
-
-1. Use `/report` columns:
-   - No.
-   - Worker / Project
-   - Type
-   - Latest Deployment
-   - Status
-   - Errors / Notes
-2. Sort by Worker / Project name
-3. State a summary: total count, count of failed deployments
-
-###### 6. Suggest Next Action
-
-> Goal: Suggest the next step
-
-1. Run `/suggest-next-action` to suggest check logs, `/resolve-cicd`, or `/resolve-cloudflare-worker-fails`
-
-##### Rules
-
-###### 1. Read Only
-
-- Do not redeploy, delete a worker, or modify config
-- Do not push code or deploy automatically
-
-###### 2. Secret Safety
-
-- Do not expose `CLOUDFLARE_API_TOKEN`, account ID, or credentials in the output
-- Use env vars or `wrangler` credentials only
-- Mask the token in logs
-
-###### 3. Auth Required
-
-- Must log in with `wrangler login` or have `CLOUDFLARE_API_TOKEN` first
-- If lacking the `Workers Scripts:Read` or `Pages:Read` permission, report it
-
-###### 4. Rate Limit
-
-- Do not query too quickly; if there are many workers, batch
-- If the API returns 429, wait and retry
-
-##### Expected Outcome
-
-- A list of Cloudflare Workers/Pages with their latest status
-- Workers with failed deployments are clearly marked
-- A table sorted by worker/project name
-- A report of the failed deployments with notes
-- No worker is modified or redeployed in any way
+### 5. Account-wide
+- `--all` scans every worker and Pages project; it never deploys without permission
+- Record the last successful deployment version before changing any target
+- Keep API payloads small and batch the calls; on a 429 wait and retry the same batch
 
 ## Expected Outcome
 
-- The specified Worker/Pages project is resolved or marked manual-fix-required
+- The specified Worker/Pages project, or every failing target under `--all`, is resolved or marked manual-fix-required
 - A summary table of status, action, errors
 - No auto-deploy without permission

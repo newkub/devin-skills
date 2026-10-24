@@ -4,7 +4,7 @@ description: Archify — agent skill turning ideas/codebases into interactive HT
 argument-hint: "[subject-to-diagram]"
 related:
   - create-mermaid-diagram
-  - draw-excalidraw
+  - draw
   - deep-analyze
 ---
 
@@ -17,7 +17,7 @@ Generate communication-grade interactive diagrams with Archify (MIT, `tt-a1i/arc
 Use when a diagram must be explored, shared, or presented — not when inline markdown diagrams suffice
 
 - 10 diagram types: architecture, workflow, sequence, data flow, lifecycle, ERD, class, tree, timeline, waterfall (+ architecture-delta compare)
-- Inline doc diagrams stay Mermaid (`/create-mermaid-diagram`); freeform whiteboards stay `/draw-excalidraw`/`/draw-tldraw`
+- Inline doc diagrams stay Mermaid (`/create-mermaid-diagram`); freeform whiteboards stay `/draw excalidraw`/`/draw tldraw`
 - Archify is not a drawing editor or a Mermaid theme — it turns technical intent into one shareable HTML artifact
 
 ## Execute

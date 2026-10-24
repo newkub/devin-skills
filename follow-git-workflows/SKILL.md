@@ -1,66 +1,83 @@
 ---
 name: follow-git-workflows
-description: Switch to the correct git branch for the named workflow
-argument-hint: "[scope]"
-related:
-  - refactor
-  - fix
-  - review
-  - run-deploy
+description: Set up git flow or switch to the correct workflow branch
+argument-hint: "<setup|switch> [scope]"
+related: [git-branch, git-commit, git-sync, git-worktree, update-github-metadata, ship]
 ---
+
+# Follow Git Workflows
 
 ## Goal
 
-Switch to the correct git branch for a named workflow (restructure, feature, fix, review)
+Establish the git flow once, then always land work on the branch that flow
+requires.
 
 ## Scope
 
-Use `follow-git-workflows` when the user wants to move the working tree to a workflow-specific branch before running a workflow
+Two modes:
+
+| Mode | Use when |
+| --- | --- |
+| `setup` | The repository has no integration branch, no hooks, or no worktree convention yet. |
+| `switch` | The flow exists and the current branch is not the one this task needs. |
+
+Applies to any git repository. See also: `/git-branch` for branch operations,
+`/git-worktree` for parallel checkouts, `/git-commit` and `/git-sync` to land
+work, `/update-github-metadata` for the repository settings `setup` changes,
+and `/ship` to finish.
 
 ## Execute
 
-### 1. Identify Workflow
+### 1. Read Current State
 
-> Goal: Determine which workflow branch to use
+> Goal: know the current branch and whether it is safe to switch
 
-1. Ask or analyze which workflow the user wants: `restructure`, `feature`, `fix`, `review`
-2. Run `git status --short` to check the current status
-3. If there are uncommitted changes → stop and ask whether to commit, stash, or reset first
+1. Run `git status` and `git branch --all`.
+2. If the working tree has uncommitted changes, note them; do not switch yet.
+3. If the first argument is missing or not `setup` / `switch`, ask and stop.
 
-### 2. Switch Branch
+### 2. Pick The Workflow
 
-> Goal: Move to the workflow branch
+> Goal: choose setup or switch from the actual repository state
 
-1. Run `git branch --list` to check whether the branch exists
-2. If the branch does not exist → create it with `git switch -c <workflow>`
-3. If the branch exists → switch to it with `git switch <workflow>`
-4. Verify with `git branch --show-current`
+| Mode | Workflow |
+| --- | --- |
+| `setup` | `workflows/setup/SKILL.md` |
+| `switch` | `workflows/switch/SKILL.md` |
 
-### 3. Confirm Context
+1. Run `setup` only when an integration branch, hooks, or the worktree
+   convention is actually missing. Otherwise go straight to `switch`.
+2. Follow the selected workflow from the current state.
 
-> Goal: Report the new branch and next action
+### 3. Report
 
-1. Show the current branch
-2. If the user wants to continue with a task such as restructure, feature, fix, or review, recommend the next skill
+> Goal: the branch change is evidenced and no work was lost
+
+1. State the branch before, the branch after, and why.
+2. List any uncommitted path left untouched.
 
 ## Rules
 
-### 1. Branch Names
+### 1. Never Destroy Work
 
-- `restructure` for restructure/refactor tasks
-- `feature` for development tasks
-- `fix` for bug fixes
-- `review` for review tasks
+- Never discard uncommitted work to switch branches. Commit, stash with a
+  unique tag, or stop and ask.
+- Never force-push and never delete a branch that is not merged, unless the
+  user explicitly asks for that exact branch.
 
-### 2. Safety
+### 2. Branch Naming
 
-- Do not switch branches with uncommitted changes unless permitted
-- Do not delete or force-push branches
-- Use `git switch -c` only when the branch does not yet exist
-- Use /run-deploy if needed
+- Branch names follow `restructure/*`, `feature/*`, `fix/*`, `review/*`.
+- `setup` runs once per repository; re-running it must be idempotent.
+
+### 3. Scope
+
+- `setup` changes repository settings, hooks, and GitHub metadata; confirm
+  before any shared or remote-side change.
+- `switch` only moves the working tree; it must not create commits.
 
 ## Expected Outcome
 
-- The working tree is on the correct workflow branch
-- No uncommitted changes are lost
-- The current branch and next action are reported clearly
+- The repository has an integration branch, hooks, and a worktree convention
+  that match the project.
+- Work always happens on the branch the flow requires, with no lost changes.

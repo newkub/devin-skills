@@ -4,11 +4,10 @@ description: Set up and use Vite 8 (Rolldown bundler) for modern web application
 argument-hint: "[scope]"
 related:
   - follow-tool-vitest
-  - follow-tool-devfra
+  - follow-tool-vite-devtools
   - follow-tool-rolldown
   - follow-tool-tsdown
   - follow-tool-vitepress
-  - follow-tool-vite-plugins
   - follow-create-plugins
   - follow-tool-biome
   - follow-tool-viteplus
@@ -26,7 +25,7 @@ Use for modern web applications that use Vite as their build tool and dev server
 
 - gzip/brotli pre-compression: see `references/apis.md`
 
-- Boundary: Vite is for app dev server/build — library bundling → `/follow-tool-tsdown`; raw bundler internals → `/follow-tool-rolldown`; static docs site → `/follow-tool-vitepress`; devtools (inspector/analyzer mounted in the app or standalone) → `/follow-tool-devfra`; testing setup → `/follow-tool-vitest`; inside a Vite+ project the same dev server/build runs as `vp dev`/`vp build` from one `vite.config.ts` → `/follow-tool-viteplus`
+- Boundary: Vite is for app dev server/build — library bundling → `/follow-tool-tsdown`; raw bundler internals → `/follow-tool-rolldown`; static docs site → `/follow-tool-vitepress`; devtools (inspector/analyzer docked in the app or shipped with the build) → `/follow-tool-vite-devtools`; testing setup → `/follow-tool-vitest`; inside a Vite+ project the same dev server/build runs as `vp dev`/`vp build` from one `vite.config.ts` → `/follow-tool-viteplus`
 
 ## Execute
 
@@ -45,7 +44,7 @@ Use for modern web applications that use Vite as their build tool and dev server
 
 1. Create `vite.config.ts` at the root
 2. Use `defineConfig` from `vite`
-3. Configure plugins for the framework used — pick from the `/follow-tool-vite-plugins` catalog
+3. Configure plugins for the framework used — pick from the `/follow-tool-vite plugins` catalog
 4. Define `resolve.alias` with absolute paths
 5. Enable `resolve.tsconfigPaths: true`
 6. Use the top-level `tsconfig` option (Vite 8.3+) when specifying the tsconfig Vite uses for resolve/transform
@@ -103,7 +102,7 @@ Use for modern web applications that use Vite as their build tool and dev server
 | optimize build/bundle (chunk splitting, minify, sourcemap) | `workflows/optimize-build/SKILL.md` |
 | Migrate from Vite ≤7/`rolldown-vite` to Vite 8 | `workflows/migrate-to-vite8/SKILL.md` |
 | Component testing with Testing Library (setup + queries + user-event) | `workflows/testing-library/SKILL.md` |
-| Pick/setup plugins — unified + frontend-lib catalogs | `/follow-tool-vite-plugins` |
+| Pick/setup plugins — unified + frontend-lib catalogs | `/follow-tool-vite plugins` → `workflows/plugins/SKILL.md` |
 
 ### Use Cases
 
@@ -111,6 +110,8 @@ Use for modern web applications that use Vite as their build tool and dev server
 |----------|----------|
 | Dev proxy to a backend + typed env vars | `usecases/dev-proxy-and-env.md` |
 | Production build, `preview` verification, deploy | `usecases/build-and-preview.md` |
+| Order plugins and drop duplicates | `usecases/plugin-order-and-duplicates.md` |
+| Check a plugin against Rolldown before committing | `usecases/rolldown-compat-check.md` |
 
 ## Rules
 
@@ -145,9 +146,9 @@ Use for modern web applications that use Vite as their build tool and dev server
 - Use absolute paths for `resolve.alias`
 
 - Use /follow-tool-vitest for test setup (see `### 6. Testing and Deployment`)
-- Use /follow-tool-devfra if needed (devtool/inspector for the app)
+- Use /follow-tool-vite-devtools if needed (devtool dock/integrations for the app)
 - Use /follow-tool-rolldown if needed
-- Use /follow-tool-vite-plugins for plugin selection/setup
+- Use `/follow-tool-vite plugins` (`workflows/plugins/SKILL.md`) for plugin selection/setup
 - Use /follow-tool-tsdown if needed
 - Use /follow-tool-vitepress if needed
 - Use /follow-create-plugins (vite) if needed (tool vite)
@@ -158,6 +159,8 @@ Use for modern web applications that use Vite as their build tool and dev server
 
 - [CLI reference](references/cli.md)
 - References: [Vite 8 — Best Practices](best-practices/vite.md)
+- Plugin APIs: [references/apis-plugins.md](references/apis-plugins.md)
+- Plugin best practices: [best-practices/vite-plugins.md](best-practices/vite-plugins.md)
 
 ## File Structure
 
