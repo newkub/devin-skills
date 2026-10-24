@@ -1,9 +1,10 @@
 ---
 name: update-tests
 description: Write/update tests across all layers — unit, integration, e2e, contract, visual — until green
-argument-hint: "[scope-or-files]"
+argument-hint: "[scope-or-files|strategy|setup|test-env]"
 related:
   - deep-review
+  - deep-test
   - run-test
   - follow-tool-playwright
   - follow-tool-vitest
@@ -29,6 +30,8 @@ Use when you want tests written/updated comprehensively — pick layers by scope
 - If you only want to run tests → `/run-test <domain>` matching the layer, or `/run-test all`
 - If you want to improve test suite quality → `/deep-review test then-fix`
 - If the scope spans many modules → dispatch via `/use-subagents`
+- No test framework or suite yet, or the level/runner/scripts/layout need repair → `workflows/setup-strategy/SKILL.md` (`/update-tests strategy|setup`)
+- Env vars, fixtures, test database, or the CI test env are missing → `workflows/config-test-env/SKILL.md` (`/update-tests test-env`)
 
 ## Execute
 
@@ -38,9 +41,11 @@ Use when you want tests written/updated comprehensively — pick layers by scope
 
 1. Check manifests (`package.json`, `Cargo.toml`, `pyproject.toml`, `go.mod`) for test deps (`vitest`, `jest`, `bun test`, `pytest`, `go test`)
 2. Check existing config + test files — naming, structure, assertion style, mock patterns
-3. Define the test pyramid and the types required by the scope — per [references/layers.md](references/layers.md)
-4. Define the data strategy: `factories` (dynamic), `fixtures` (static), `builders` (complex)
-5. Define the mock strategy: mock only external deps — use real internal pure functions
+3. Fix the strategy level (minimal/standard/complete), the pyramid share, and the coverage floor per [references/strategy.md](references/strategy.md) `## 1`–`## 5`
+4. Define the layers and types required by the scope — per [references/layers.md](references/layers.md)
+5. Define the data strategy: `factories` (dynamic), `fixtures` (static), `builders` (complex)
+6. Define the mock strategy: mock only external deps — use real internal pure functions
+7. No runner, scripts, or `tests/<layer>/` layout at all → dispatch `workflows/setup-strategy/SKILL.md` instead of writing specs into nothing
 
 ### 2. Analyze Source
 
@@ -109,6 +114,8 @@ Every handler/function must have: happy path, error path, edge cases, unauthoriz
 
 | Topic | Workflow |
 |-------|----------|
+| Set up a suite from zero (level, runner, scripts, layout) | `workflows/setup-strategy/SKILL.md` — `/update-tests strategy` |
+| Configure test env, fixtures, test db, CI test env | `workflows/config-test-env/SKILL.md` — `/update-tests test-env` |
 | Update e2e specs after UI/route changes | `workflows/update-e2e/SKILL.md` |
 | Update unit tests after a refactor | `workflows/update-unit/SKILL.md` |
 | Safely regenerate/review snapshots | `workflows/update-snapshot/SKILL.md` |
@@ -149,6 +156,7 @@ Every handler/function must have: happy path, error path, edge cases, unauthoriz
 ## Expected Outcome
 
 - Tests cover every layer the scope requires, with the project's conventions
+- The strategy level, runner config, scripts, and `tests/<layer>/` layout are in place — set up through `workflows/setup-strategy/` when missing
 - `/run-test all` passes — deterministic, no flaky
 - Coverage meets the target, specs are synced with the test cases
 - The report summarizes per layer, with raw results persisted in `.devin/temp/report/`

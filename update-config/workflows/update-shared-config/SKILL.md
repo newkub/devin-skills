@@ -45,7 +45,7 @@ Consolidate tool config and dependency versions duplicated across workspaces int
 > Goal: Every workspace really uses the shared config and nothing breaks
 
 1. Run `/update-references` — delete the duplicated child configs, keeping only workspace-specific overrides
-2. Run the ecosystem validators: `tsc -b`, `eslint .`, then `vp fmt --check` (Vite+) or `bun fmt --check` (Bun projects), then reinstall to resolve the catalog
+2. Run the ecosystem validators: `bun check -b` (no Vite) or `tsrs --noEmit` (Vite), `eslint .`, then `vp fmt --check` (Vite+) or `bun fmt --check` (Bun projects), then reinstall to resolve the catalog
 3. Run `/deep-review` dimension `config` again — confirm only one canonical config remains per domain
 4. If it fails → revert that batch and fix; up to 3 rounds → stop/report
 

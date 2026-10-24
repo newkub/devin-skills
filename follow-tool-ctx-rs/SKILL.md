@@ -30,8 +30,8 @@ Use the ctx CLI (ctx.rs) as working memory for prior agent work: search indexed 
 
 > Goal: know whether ctx can answer before relying on it
 
-1. `ctx --version` — not installed → Windows: `irm https://ctx.rs/install.ps1 -OutFile $env:TEMP\ctx-install.ps1; & $env:TEMP\ctx-install.ps1`; macOS/Linux: `curl -fsSL https://ctx.rs/install -o /tmp/ctx-install.sh && sh /tmp/ctx-install.sh`
-2. `ctx status` and `ctx sources` — confirm the local index is readable and which provider roots exist
+1. `ctx --version` — not installed → `mise use -g github:ctxrs/ctx@latest` (Windows/macOS/Linux); without mise, Windows: `irm https://ctx.rs/install.ps1 -OutFile $env:TEMP\ctx-install.ps1; & $env:TEMP\ctx-install.ps1`; macOS/Linux: `curl -fsSL https://ctx.rs/install -o /tmp/ctx-install.sh && sh /tmp/ctx-install.sh`
+2. `ctx status` and `ctx sources` — confirm the local index is readable and which provider roots exist; history and blame can each be unindexed while graph and sift still work
 3. No index yet → `ctx setup`; stale index → `ctx import --all`; first indexing can take time
 4. ctx or the required evidence unavailable → state the limit instead of inventing results
 

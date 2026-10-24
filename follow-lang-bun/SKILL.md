@@ -12,6 +12,7 @@ related:
   - follow-tool-viteplus
   - follow-best-practice
   - setup-cicd
+  - migrate
   - use-scripts
   - deep-research
 ---
@@ -41,7 +42,7 @@ For creating or improving projects that run on the Bun runtime, single package a
 
 1. New project → run the workflow `workflows/setup-project/SKILL.md` (argument `setup-project`): `bun init`/`bun create`, directory layout, `package.json` scripts, `bunfig.toml` skeleton, tsconfig, verify, git hygiene
 2. App-type scaffold (web, CLI, bot, plugin) → dispatch the matching `/follow-create-*` skill instead
-3. Moving from a Node.js project → run the workflow `workflows/migrate-from-nodejs/SKILL.md` (argument `migrate-from-nodejs`)
+3. Moving from a Node.js project → run the workflow `workflows/migrate-from-nodejs/SKILL.md` (argument `migrate-from-nodejs`); if the move spans more than the runtime swap (framework, workspace layout, data) → `/migrate`
 
 ### 3. Manage Packages
 
@@ -136,8 +137,8 @@ For creating or improving projects that run on the Bun runtime, single package a
 
 ### 4. Quality
 
-- Tests via `bun:test`; CI runs `bun install && bun check && bun test --coverage` with a `coverageThreshold` in `bunfig.toml`
-- Typecheck with `bun check` (parallel, same errors as `tsc`); `tsc --noEmit` only as the fallback on Bun < 1.4
+- Tests via `bun:test`; CI runs `bun install && bun run typecheck && bun test --coverage` with a `coverageThreshold` in `bunfig.toml`
+- Typecheck with `bun check -p . --no-script` (parallel) for projects without Vite; `tsrs --noEmit` for Vite projects; `tsc`/`tsgo` are never the typecheck gate — `tsc` only emits declarations (`--emitDeclarationOnly`)
 - Use `bun run --bun` when a script's shebang points at node but must run on Bun
 
 ### 5. Related Skills

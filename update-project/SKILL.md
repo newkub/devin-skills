@@ -41,7 +41,7 @@ Boundary: a quick root sync — for a comprehensive pre-release update with a de
 
 1. Run `/check-monorepo` to confirm monorepo status and `/follow-monorepo` to sync conventions
 2. Run `/follow-tasks` to track the update checklist
-3. Run `/all-workspace` to identify every workspace
+3. Run `/all workspace` to identify every workspace
 4. For each workspace:
    - Run `git log --oneline -5` to see the latest commits
    - Run `git diff HEAD~1 --stat` to see changed files

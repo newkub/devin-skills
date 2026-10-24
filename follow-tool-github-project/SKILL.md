@@ -123,12 +123,12 @@ Works with GitHub Projects (Projects v2) of a user, organization, or linked repo
 
 ### 5. Safety
 
-- Project delete/close commands (`delete`, `close`) are destructive — ask the user first — follow the `/delete` flow
+- Project delete/close commands (`delete`, `close`) are destructive — ask the user first — follow the `/apply` mode `delete` flow
 - Verify owner and project number before deleting/closing
 - Use `gh project close <number> --undo` instead of deleting when the goal is temporary hiding
 
 - Use `/list-github` to find the project number/owner before running commands
-- Use the `/delete` flow for destructive commands (`delete`, `close`)
+- Use the `/apply` mode `delete` flow for destructive commands (`delete`, `close`)
 
 - See best-practices/ for recommended patterns and pitfalls
 

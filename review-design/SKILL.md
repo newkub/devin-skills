@@ -107,6 +107,7 @@ Use when the question is "does this UI hold up" — a route, page, component set
 > Goal: the design state is visible and the next action is clear
 
 1. Run `/report-review`: counts per class, before → after (Lighthouse and a11y), and the verification status
+   - Use `templates/findings.md` as the output skeleton
 2. Name the root causes fixed and the rules persisted, so the same drift does not return
 3. List product decisions and deferred items with the reason
 4. Close with `/suggest-next-action`

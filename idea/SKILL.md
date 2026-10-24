@@ -9,6 +9,7 @@ related:
   - report
   - suggest-next-action
   - implement-to-production
+  - idea-global-mcp
 ---
 ## Goal
 
@@ -30,6 +31,7 @@ Use when the user says "I want ideas" or needs ideas for any work; covers featur
 | UX/UI improvement and feature ideas | `/idea-uxui` |
 | Ideas for new/improved devin global skills | `/idea-agent-skills` |
 | Skill candidates from the current session | `/idea-agent-skills` |
+| Capabilities that should be a global MCP server, scanned from skills/CLIs/hooks/services | `/idea-global-mcp` |
 | Convert CLI tools into Devin skills | `/idea-convert-my-global-cli-to-skills` |
 | Screen/prove a single idea before starting (GO/NO-GO/PIVOT in chat) | `/validate-idea` |
 

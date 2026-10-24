@@ -5,7 +5,6 @@ argument-hint: "[domain]"
 related:
   - follow-service-cloudflare
   - deploy-to-cloudflare
-  - use-wrangler
   - follow-secret-manager
   - ask-me
 
@@ -40,7 +39,6 @@ Dispatch to the skill for the Cloudflare resource that needs to be created — t
 
 - Use /follow-service-cloudflare when needed
 - Use /deploy-to-cloudflare when needed
-- Use /use-wrangler when needed
 
 ## Expected Outcome
 

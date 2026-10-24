@@ -72,7 +72,7 @@ Then write that concrete input as a normal unit test before fixing the bug, so t
 
 - Asserting an implementation detail instead of an invariant → the property breaks on every refactor; assert round-trip, idempotence, length, or ordering.
 - Using `.filter()` for preconditions → failure rates hide bad generators; use `fc.pre`.
-- Raising `numRuns` in the local loop → slow feedback; keep 100 locally, raise via `FAST_CHECK_NUM_RUNS` in CI.
+- Raising `numRuns` in the local loop → slow feedback; keep 100 locally and raise it in CI through `fc.configureGlobal` fed by your own variable (fast-check reads no `FAST_CHECK_*` env var).
 - Leaving a failing seed unrecorded → the counterexample cannot be reproduced; commit the concrete unit test.
 
 ## Related

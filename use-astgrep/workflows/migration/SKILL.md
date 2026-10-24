@@ -4,7 +4,7 @@ description: Whole-codebase migration with ast-grep rule files — staged batche
 argument-hint: "[migration-target]"
 related:
   - use-astgrep
-  - migration-with-astgrep
+  - migrate
   - scan-codebase
   - update-astgrep-rules
   - run-check
@@ -17,7 +17,7 @@ Run a codebase migration (API rename, framework upgrade, deprecation cleanup, im
 
 ## Scope
 
-- Orchestration layer for migrations with many rules/many batches — the mechanics of rule writing + apply live in `/migration-with-astgrep` (canonical), deep transform syntax → `/use-astgrep transform`, a single standalone batch rewrite → `/use-astgrep rewrite`
+- Orchestration layer for migrations with many rules/many batches — the mechanics of rule writing + apply live in `/use-astgrep` (canonical), full migration plan/cutover/data → `/migrate`, deep transform syntax → `/use-astgrep transform`, a single standalone batch rewrite → `/use-astgrep rewrite`
 
 ## Execute
 
@@ -33,7 +33,7 @@ Run a codebase migration (API rename, framework upgrade, deprecation cleanup, im
 
 > Goal: have a rule per pattern, ready to apply
 
-1. Write rules per `/migration-with-astgrep` (`id`, `language`, `rule`, `fix`) — complex transforms → `/use-astgrep transform`
+1. Write rules per `/use-astgrep` (`id`, `language`, `rule`, `fix`) — complex transforms → `/use-astgrep transform`
 2. Store them in `sg-rules/` or temp — promote only the rules that belong permanently into `rules/` via `/update-astgrep-rules`
 3. Dry-run each rule: `sg scan --rule <file>` — count matches, check for false positives
 
@@ -63,7 +63,7 @@ Run a codebase migration (API rename, framework upgrade, deprecation cleanup, im
 
 ## Rules
 
-- The canonical mechanics live in `/migration-with-astgrep` — this workflow only adds staging/orchestration, no duplication
+- The canonical rule mechanics live in `/use-astgrep`, the full plan/cutover/data migration in `/migrate` — this workflow only adds staging/orchestration, no duplication
 - Dry-run + commit before every batch — never bulk-apply the whole codebase in one shot
 - Never apply to generated files or third-party code
 - Use `/update-astgrep-rules` if needed

@@ -8,6 +8,7 @@ related:
   - search-with-astgrep
   - use-astgrep-programmatic
   - deep-review
+  - migrate
 ---
 
 ## Goal
@@ -26,7 +27,7 @@ Covers configuring `sgconfig.yml`, project structure, the scan script, and dispa
 
 1. If the project has `@ast-grep/cli` in `devDependencies`, use `bunx ast-grep` (the `ast-grep` or `sg` bin from the local install)
 2. If there is no local install, use `bunx -p @ast-grep/cli ast-grep` — never run a bare `bunx ast-grep`, because it pulls the `ast-grep` package (a different, abandoned package)
-3. For regular use, add `@ast-grep/cli` to `devDependencies` — latest `0.45.3 (verified 2026-09-12)`
+3. For regular use, add `@ast-grep/cli` to `devDependencies` — latest `0.51.0 (verified 2026-10-24)`
 
 ### 2. Configure sgconfig.yml
 
@@ -43,7 +44,7 @@ Covers configuring `sgconfig.yml`, project structure, the scan script, and dispa
 
 > Goal: create the directory structure for rules and tests
 
-1. Create ast-grep rules in the `rules/` directory at the project root per the canonical layout in `/update-astgrep-rules` (leave `.devin/rules/*.md` alone — those are natural-language guidance rules owned by `/update-dot-agents-project`, a separate concern)
+1. Create ast-grep rules in the `rules/` directory at the project root per the canonical layout in `/update-astgrep-rules` (leave `.agents/rules/*.md` alone — those are natural-language guidance rules owned by `/update-dot-agents-project`, a separate concern)
 2. If there is a `testConfigs`, create the `rule-tests/` directory at the project root
 3. If there is a `utilDirs`, create the `utils/` directory at the project root
 4. You can use `ast-grep new` to scaffold a new project (or `bunx -p @ast-grep/cli ast-grep new` if not yet installed)
@@ -74,6 +75,7 @@ Covers configuring `sgconfig.yml`, project structure, the scan script, and dispa
 | batch rewrite many files with a pattern (`-p`/`-r`, dry-run → confirm → apply) | `/use-astgrep rewrite` |
 | rule-YAML transforms (`transform`/`rewriters`/constraints) | `/use-astgrep transform` |
 | whole-codebase migration in staged batches | `/use-astgrep migration` |
+| full migration plan, cutover, and rollback orchestration | `/migrate` — this skill supplies the rewrites only |
 | ad-hoc search only (no rewrite) | `/search-with-astgrep` |
 | batch/programmatic via Bun scripts, napi | `/use-astgrep-programmatic` |
 | write/promote permanent rules in `rules/` | `/update-astgrep-rules` |
@@ -95,7 +97,7 @@ Covers configuring `sgconfig.yml`, project structure, the scan script, and dispa
 ### 2. Separation From Devin Rules
 
 - `rules/` stores `.yml` ast-grep rules at the project root (`rules/{dependencies,architecture,glob}`)
-- `.devin/rules/*.md` are natural-language agent-guidance rules (architecture, dependencies, business) owned by `/update-dot-agents-project` — leave them, never delete them here
+- `.agents/rules/*.md` are natural-language agent-guidance rules (architecture, dependencies, business) owned by `/update-dot-agents-project` — leave them, never delete them here
 - ast-grep `rules/*.yml` + `sgconfig.yml` provide machine enforcement; the two coexist as separate concerns
 - Rule files use `kebab-case` filenames
 - Non-rule files in `rules/` are ignored

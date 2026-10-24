@@ -92,6 +92,7 @@ Use before trusting a suite, after a green run that felt too easy, or when cover
 3. Suite-level health (speed, structure, fixtures, mutation score) → `/improve tests`; browser flows → `/deep-test e2e`; coverage floors → `/deep-test coverage`
 4. Never loosen or delete a failing assertion to make the suite green — a wrong expectation is corrected with evidence, a flaky test is quarantined, and a real bug is routed
 5. Tests added for a fixed bug must fail before the fix and pass after it — otherwise they prove nothing
+6. Persist what should not recur: a suite-health convention (fixture scope, no sleeps, quarantine expiry) → `/update-dot-agents-project rules`; a mechanically detectable pattern (assertion-less test, skipped forever) → `/update-astgrep-rules`
 
 ### 7. Verify
 

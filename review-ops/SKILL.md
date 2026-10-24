@@ -75,6 +75,7 @@ Use before a release, after a failed deploy, or when the runtime or supply chain
 2. Dispatch through `/improve deps`, `/improve platform`, `/improve delivery`, `/optimize ci`, and `/update-version-to-latest` — one surface at a time, minimal diff
 3. CI/CD and infrastructure changes are shared-state changes — show the diff and get confirmation before applying, and never disable a gate to make a pipeline pass
 4. Independent surfaces → parallel workers via `/use-subagents`; an error mid-fix → `/resolve-errors`
+5. Persist what should not recur: a dependency, CI, or delivery convention → `/update-dot-agents-project rules`; a mechanically detectable pattern (unpinned action, disabled gate) → `/update-astgrep-rules`
 
 ### 6. Verify
 

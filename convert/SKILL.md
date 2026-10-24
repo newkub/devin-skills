@@ -4,7 +4,8 @@ description: Convert format/structure — esm, files, git submodules, scripts, s
 argument-hint: "[domain]"
 related:
   - refactor
-  - migration-with-astgrep
+  - migrate
+  - port
   - update-references
   - run-format
   - ask-me
@@ -43,7 +44,8 @@ Dispatch to the skill matching the conversion domain — the parent only routes.
 - Conversions that touch files with references → always `/update-references`
 
 - Use /refactor if needed
-- Use /migration-with-astgrep if needed
+- Use /migrate if needed
+- Use /port if needed
 - Use /run-format if needed
 
 ## Expected Outcome

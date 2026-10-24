@@ -1,9 +1,8 @@
 ---
 name: idea-use-skills-relations
-description: Generate skill relation ideas — points where use-related-skills should be used and missing edges
+description: Generate skill relation ideas — missing edges and no-op integration points
 argument-hint: "[skill-name|family|all]"
 related:
-  - use-related-skills
   - idea-agent-skills
   - update-agents-skills-global
   - review-dot-agents-global-and-fix
@@ -14,14 +13,14 @@ related:
 
 ## Goal
 
-Generate ideas and a draft for improving skill relations — analyze the whole `related` graph, find missing edges, points where `use-related-skills` should be invoked, and new relation structures that should exist (don't actually implement until the user confirms → `/follow-your-suggestion`)
+Generate ideas and a draft for improving skill relations — analyze the whole `related` graph, find missing edges, points where the two-direction relation analysis (`/update-agents-skills-global` `## Conventions → Related Skills`) should be invoked, and new relation structures that should exist (don't actually implement until the user confirms → `/follow-your-suggestion`)
 
 ## Scope
 
 Use when you want to check and expand the relations between devin global skills:
 
 - skills that are written/edited but have no `related` yet, or whose `related` doesn't match completely
-- skills whose workflow should end with `/use-related-skills` but doesn't invoke it (e.g. `create-*`, `update-*`, `new-*` skills)
+- skills whose workflow should end with the two-direction relation analysis (`/update-agents-skills-global` `## Conventions → Related Skills`) but doesn't invoke it (e.g. `create-*`, `update-*`, `new-*` skills)
 - relations lacking symmetry — A references B but B doesn't reference A back
 - ideas for a new relation-type skill (`use-*`, `follow-*`) that don't exist yet
 
@@ -50,7 +49,7 @@ Use when you want to check and expand the relations between devin global skills:
 > Goal: Find points where relations should exist but are missing
 
 1. Skills whose `Execute` invokes `/skill-name` but doesn't list it in `related` → add an edge to `related`
-2. `create-*`, `update-*`, `new-*` type skills that touch `SKILL.md` or `global_rules.md` but don't end with `/use-related-skills` → propose adding a step
+2. `create-*`, `update-*`, `new-*` type skills that touch `SKILL.md` or `global_rules.md` but don't end with `/update-agents-skills-global` (`## Conventions → Related Skills`) → propose adding a step
 3. Skills whose Goal/Scope overlaps but that aren't linked (e.g. `idea-*` and `review-*` in the same domain) → propose complementary edges
 4. Skills that are frequently invoked but that nobody links back to → propose reverse edges
 5. Compare with the results of `/search-skills` — skills that search recommends together but `related` doesn't reflect
@@ -72,7 +71,7 @@ Use when you want to check and expand the relations between devin global skills:
 
 1. Check that every target skill actually exists, doesn't duplicate the existing `related`, and isn't a self-reference
 2. Rank by impact: broken refs > missing invocation steps > missing edges > new-skill ideas
-3. If the user confirms → run `/follow-your-suggestion` then apply via `/use-related-skills` (the Update Related Skills step) or `/update-agents-skills-global` — this skill is idea/draft only
+3. If the user confirms → run `/follow-your-suggestion` then apply via `/update-agents-skills-global` (`## Conventions → Related Skills`, the Update Related step) — this skill is idea/draft only
 4. If the draft touches `global_rules.md` → specify that applying must go through `/review-dot-agents-global-and-fix`
 5. If there are no gaps → report that the graph is already complete and run `/suggest-next-action`
 
@@ -80,20 +79,20 @@ Use when you want to check and expand the relations between devin global skills:
 
 ### 1. Draft Only
 
-- Never edit `SKILL.md`, `related`, or `global_rules.md` in this skill — only produce a draft, then hand off to `/use-related-skills`, `/update-agents-skills-global`, or `/review-dot-agents-global-and-fix`
+- Never edit `SKILL.md`, `related`, or `global_rules.md` in this skill — only produce a draft, then hand off to `/update-agents-skills-global` (`## Conventions → Related Skills`), or `/review-dot-agents-global-and-fix` for rule files
 - Every idea must cite evidence from real files (frontmatter, Execute steps) — never guess from the name alone
 - Proposed `related` edges must make sense both ways (`Goal`/`Scope`/`Execute` genuinely related) — not just linking everything together
 
 ### 2. Relation Quality
 
 - Don't force symmetry — propose a reverse edge only when the target should know that a source invokes it
-- Limit `related` to ≤ 10 entries per skill — if it exceeds this, propose only the most relevant and explain what should be dropped
+- Limit `related` to ≤15 entries per skill (owned by `update-agents-skills-global` `## Conventions → Invoke Skills`) — at the cap, propose only the most relevant and explain what should be dropped
 - When proposing an invocation step, write it per `update-agents-skills-global` (`## Conventions → Invoke Skills`)
 - Continuous numbering continuing from the previous idea report if any — don't delete old ideas
 
 ## Expected Outcome
 
 - The relations graph of skills in scope with the broken/asymmetric edges found
-- An ideas table: edges to add, points where `/use-related-skills` should be invoked, new skill ideas
+- An ideas table: edges to add, points where the relation analysis should be invoked, new skill ideas
 - Priority + rationale per idea with a draft diff that can be applied immediately after confirmation
-- A clear handoff path (`/follow-your-suggestion` → `/use-related-skills` or `/update-agents-skills-global`)
+- A clear handoff path (`/follow-your-suggestion` → `/update-agents-skills-global` `## Conventions → Related Skills`)

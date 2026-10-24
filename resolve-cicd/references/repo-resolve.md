@@ -64,7 +64,7 @@ Use with the current repo or a repo the user specifies, finding the worker/proje
 
 1. Find the worker name that matches the repo name or the project name from `wrangler.toml`
 
-2. Run `/resolve-cloudflare-worker-fails --worker <worker-name>` or `/resolve-all-cloudflare-worker-fails --project <project-name>`
+2. Run `/resolve-cloudflare-worker-fails --worker <worker-name>` or `/resolve-cloudflare-worker-fails --all --project <project-name>`
 
 3. If no worker matching the repo is found → skip and record that there is no Cloudflare resource
 

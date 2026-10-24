@@ -17,8 +17,12 @@ Use Bruno to manage API collections in a Git-native way (`.bru` / OpenCollection
 
 For projects that want an offline API client, collections as text files in the repo, and collection tests in the pipeline
 
-- Latest: `@usebruno/cli@4.2.1` (npm latest, verified 2026-10-20); GitHub Action `usebruno/bruno-cli-action@v1`
+- Latest: `@usebruno/cli@4.3.0` (npm latest, verified 2026-10-24); GitHub Action `usebruno/bruno-cli-action@v1`
+- CLI-relevant in 4.3.0: tags set on a folder now inherit into `bru run --tags`, `externalSecrets` are fetched just in time and held in memory instead of being written to disk, and digest auth credentials interpolate from env vars
+- Commands: `bru run`, `bru import`, `bru docs generate` — that is the whole CLI surface
+- Mock servers are a desktop-app Beta feature with no `bru` command — for fakes that must run in CI use `/follow-lib-mswjs`
 - If a lighter plain-text test format is needed (not the collection model) → `/follow-tool-hurl`; docs/mock from a spec → `/follow-tool-scalar`
+- Owner domain: `/deep-test api`; workflow wiring beyond the action itself → `/follow-tool-github-actions`
 
 ## Execute
 
@@ -38,6 +42,7 @@ For projects that want an offline API client, collections as text files in the r
 1. Classic format: folders of `.bru` files + `bruno.json` + `environments/*.bru`
 2. OpenCollection format (new default): `opencollection.yml` + `.yml` requests — human-readable YAML
 3. No collection yet → create one from a spec with `bru import openapi` (next step) or run `/gen-postman-collection`
+4. Mock servers (Beta, GUI only) serve saved response examples or an OpenAPI spec at `http://localhost:<port>` — they live only while the app is open and never auto-start, so a CI fake belongs in `/follow-lib-mswjs`
 
 ### 3. Import Specs
 
@@ -59,15 +64,24 @@ For projects that want an offline API client, collections as text files in the r
 4. Sandbox: `--sandbox safe` (default since v3) or `developer` when full Node APIs are needed
 5. Reporters: `--reporter-json`, `--reporter-junit`, `--reporter-html` + `--reporter-skip-*` to hide secrets/bodies in artifacts
 
-### 5. Secrets And Security
+### 5. Generate API Docs
+
+> Goal: ship a standalone HTML reference from the collection itself
+
+1. `bru docs generate` from the collection root (the folder holding `opencollection.yml` or `bruno.json`) — the CLI and the desktop app share one generator, so the output is identical
+2. Output defaults to `<collection-name>-documentation.html` in the cwd; override with `-o/--output`, and parent directories are created for you
+3. Filter with `--all-envs`, `--envs A,B` (quote names with spaces), `--exclude-envs`, `--tags`, `--exclude-tags` — the `exclude` flags win whenever both are passed
+4. It overwrites the target file without prompting, so treat the output path as generated and never hand-edit it
+
+### 6. Secrets And Security
 
 > Goal: handle secrets and TLS in CI
 
-1. `--secrets-env-file` + `externalSecrets` block → fetch from HashiCorp Vault, AWS Secrets Manager, Azure Key Vault, Google Cloud Secret Manager (never written to disk/log)
+1. `--secrets-env-file` + `externalSecrets` block → fetch from HashiCorp Vault, AWS Secrets Manager, Azure Key Vault, Google Cloud Secret Manager (fetched just in time and kept in memory since 4.3.0, never written to disk)
 2. mTLS: `--client-cert-config <config.json>`; CA: `--cacert`; proxy bypass: `--noproxy`
 3. Never commit credentials — always use env vars/secret managers
 
-### 6. GitHub Actions
+### 7. GitHub Actions
 
 > Goal: run Bruno in CI with the official action
 
@@ -95,16 +109,9 @@ For projects that want an offline API client, collections as text files in the r
 - `--sandbox safe` is the default — switch to `developer` only when collection scripts need Node APIs
 - Do not run collections against production envs without user confirmation
 
-- Use /deep-test api if needed
-- Use /follow-tool-github-actions if needed (tool bruno)
-
 ## References
 
 - [API + CLI tables](references/apis.md), [CLI options](references/cli.md)
-
-- Use /deep-test if needed
-
-
 - See best-practices/ for recommended patterns and pitfalls
 
 ### Use Cases
@@ -122,4 +129,5 @@ For projects that want an offline API client, collections as text files in the r
 - Bruno collections under version control with environments
 - `bru import openapi` builds a collection from a spec inside the pipeline
 - `bru run` executes via CLI with full reporters
+- `bru docs generate` ships an HTML reference built from the same collection
 - The GitHub Actions workflow runs collections with the official action and gates on the exit code

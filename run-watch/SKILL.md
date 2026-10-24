@@ -26,11 +26,11 @@ Run watch mode for the specified task (build, test, typecheck) to continuously d
 
 > Goal: Choose the correct watch command
 
-1. Check `package.json` scripts and the tools in use (bun, turbo, moon, vitest, tsc, cargo)
+1. Check `package.json` scripts and the tools in use (bun, turbo, moon, vitest, tsrs, cargo)
 2. Select by task:
-   - `build` → `bun run build --watch` or the tool equivalent (`tsc --watch`, `cargo watch`)
+   - `build` → `bun run build --watch` or the tool equivalent (`vite build --watch`, `cargo watch`)
    - `test` → `bun test --watch` / `vitest` (watch is the default) / `cargo watch -x test`
-   - `typecheck` → `bun run --watch typecheck` (Bun, `bun check` has no `--watch` of its own) or `tsc --noEmit --watch` or the equivalent
+   - `typecheck` → `bun run --watch typecheck` (`bun check` has no `--watch`; wrap whatever `typecheck` resolves to)
 3. Monorepo → use the monorepo run command first (`turbo run <task> --watch`)
 
 ### 2. Run Watch Mode

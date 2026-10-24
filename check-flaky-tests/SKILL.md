@@ -5,7 +5,7 @@ argument-hint: "[scope]"
 related:
   - improve
   - run-test
-  - follow-test
+  - update-tests
   - deep-test
   - report
   - suggest-next-action
@@ -27,7 +27,7 @@ Use when you suspect flakiness in a test suite — a direct check workflow (not 
 
 - Detection: re-run N times and compare results, CI-history failure rate per test, time-of-day/parallelism correlation
 - Quarantine policy: mark + issue + owner + expiry — never quarantine permanently
-- Common root causes: shared state, timing/race, wall-clock dependence, external services — aligned with `/follow-test`
+- Common root causes: shared state, timing/race, wall-clock dependence, external services — aligned with `/update-tests`
 - Tests that genuinely assert wrong (not flaky) → `/deep-test test-correctness`; slow suite → `/optimize test-suite`
 
 ## Execute
@@ -38,7 +38,7 @@ Use when you suspect flakiness in a test suite — a direct check workflow (not 
 
 1. Take `scope` from the argument — if absent, use the current project; if unclear → `/ask-me`
 2. Re-run the suspected tests (e.g. 10–20 iterations via `/run-test` or `--repeat`) and record inverted results (pass↔fail)
-3. Check CI history via `/check-git-logs` / `gh run list` — failures not tied to a diff = flaky candidates
+3. Check CI history via `/git-file-history find` / `gh run list` — failures not tied to a diff = flaky candidates
 
 ### 2. Report + Quarantine
 

@@ -22,7 +22,7 @@ Safely delete the entire `.devin/temp/` directory in the project — covering `r
 - single target: `.devin/temp/` at the project root only
 - use when you want to clear all temp artifacts (reports, plans) in the project
 - does not cover other parts of `.devin/` (`rules/`, `hooks/`, `skills/`, `mcp_config.json`)
-- not for deleting a single file or a single subdir — for selective deletion use `/delete`
+- not for deleting a single file or a single subdir — for selective deletion use `/apply` mode `delete`
 
 ## Execute
 

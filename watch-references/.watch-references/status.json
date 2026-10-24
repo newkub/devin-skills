@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "state": "idle",
+  "initializedAt": "2026-10-23T19:27:20.290Z",
+  "lastScanAt": "2026-10-23T19:27:15.930Z",
+  "lastChangeAt": "2026-10-23T19:27:15.930Z",
+  "lastError": null,
+  "files": 16,
+  "references": 981,
+  "watcher": {
+    "healthy": false,
+    "startedAt": null,
+    "lastEventAt": null,
+    "pending": 0,
+    "ignored": 0
+  }
+}

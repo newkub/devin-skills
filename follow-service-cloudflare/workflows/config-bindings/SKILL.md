@@ -49,7 +49,7 @@ Set/edit bindings and environments in `wrangler.toml`/`wrangler.jsonc` so the Wo
    - vars → `[vars]` for non-secret values
 2. The binding name must match what the code references via `env.*`
 3. Never put secrets in `vars` — use `wrangler secret put` via `/follow-secret-manager`
-4. If unsure about the schema → check official docs via `/learn-from-web` or `/use-wrangler`
+4. If unsure about the schema → check official docs via `/learn-from-web` or `/follow-service-cloudflare`
 
 ### 4. Configure Environments
 

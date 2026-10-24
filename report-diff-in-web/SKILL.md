@@ -7,7 +7,6 @@ related:
   - suggest-next-action
   - git-commit
   - git-file-history
-  - check-git-logs
   - git-search
   - follow-tool-git
   - follow-lib-diffs
@@ -30,7 +29,7 @@ One entry for every diff task: summarize a git diff with statistics and insights
 | open | `open pr <n>` / `open git <ref>` / `open branch <base>..<head>` / `open file <old> <new>` / `[--repo owner/repo]` | `references/open.md` — bundled Solid + UnoCSS viewer on `@pierre/diffs`, served by Bun |
 | history | `history <path> [range]` | `references/history.md` — per-commit evolution, hotspot, regression point |
 
-Boundaries: library-level diff rendering in another app → `/follow-lib-diffs`; staging and committing → `/git-commit`; interactive HTML file viewer → `/git-file-history`; find commits matching a condition → `/check-git-logs`; search messages, content, or blame → `/git-search`; git mechanics → `/follow-tool-git`
+Boundaries: library-level diff rendering in another app → `/follow-lib-diffs`; staging and committing → `/git-commit`; interactive HTML file viewer → `/git-file-history`; find commits matching a condition → `/git-file-history find`; search messages, content, or blame → `/git-search`; git mechanics → `/follow-tool-git`
 
 ## Execute
 

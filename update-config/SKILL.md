@@ -165,7 +165,7 @@ Update the project configuration so it is complete and consistent, reduce duplic
 1. Run `/deep-validate` to check structure and references
 2. Run the ecosystem's validation tools:
    - `moon check` or `moon run :check` (moonrepo)
-   - `bun check` (Bun ≥ 1.4), `tsc --noEmit` or `tsc -b` (TypeScript)
+   - `bun check -p . --no-script` (no Vite) or `tsrs --noEmit` (Vite project)
    - `eslint .` (ESLint)
    - `vp fmt --check` (Vite+) or `bun fmt --check` (Bun projects — add `--no-script` when a `fmt` script shadows the built-in)
    - `knip` (unused)

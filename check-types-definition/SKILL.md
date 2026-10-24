@@ -8,6 +8,7 @@ related:
   - follow-default-config
   - report
   - follow-lib-tstyche
+  - compat
 allowed-tools:
   - exec
   - grep
@@ -71,6 +72,7 @@ Summarize per `/report`: public fields/options with the defaults that must be ov
 - Type definitions are the source of truth — don't guess options/defaults that aren't declared
 - Every row needs evidence from the real definition — `-` when there's no data
 - Report-only — don't modify config files or types in this skill (override decisions live in `/follow-default-config`)
+- A member missing in the target version, or a target-platform question → `/compat` decides whether the code runs there
 
 ## Expected Outcome
 

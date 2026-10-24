@@ -4,7 +4,7 @@ description: Restore dotfiles from the git log of the chezmoi repo then chezmoi 
 argument-hint: "[scope]"
 related:
   - follow-tool-git
-  - check-git-logs
+  - git-file-history
   - deep-debug
   - ask-me
   - report
@@ -19,7 +19,7 @@ Restore dotfiles on the machine from the git log of the chezmoi source repo then
 
 Used when dotfiles on the machine are lost or damaged and need to be restored from the history of a dotfiles repo managed with chezmoi
 
-See also: /restore-files-from-git-log, /follow-tool-git, /check-git-logs, /deep-debug, /git-commit
+See also: /restore-files-from-git-log, /follow-tool-git, /git-file-history find, /deep-debug, /git-commit
 
 ## Execute
 

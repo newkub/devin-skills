@@ -56,7 +56,7 @@ Keep `AGENTS.md`, the skill packages, and the subagents in `~/.agents` aligned a
 2. Subagent calls a missing skill → update the subagent
 3. Skill references rules that no longer exist → add or drop the reference
 4. `/update-references` to sync the repository
-5. `/use-related-skills` to find overlaps before adding a new package
+5. `/update-agents-skills-global` (`## Conventions → Related Skills`) to find overlaps before adding a new package
 
 ### 5. Validate
 

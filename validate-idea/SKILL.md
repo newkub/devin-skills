@@ -9,11 +9,11 @@ related:
   - idea-merge
   - deep-research
   - compare-competitors
-  - bench-competitors
   - deep-analyze
   - reframe
   - prioritize
   - pick-bestest
+  - use-decision-model
   - ask-me
   - create-plan-in-dot-agents
   - report-review
@@ -66,11 +66,12 @@ Decide whether an idea deserves building `before` any work — turn it into a fa
 
 > Goal: a decision, not a summary
 
-1. `GO` — claim holds, evidence supports demand, feasible at this cost tier → name the first concrete step
-2. `PIVOT` — the problem is real but this shape is wrong → state which assumption broke and the narrower/different shape that survives
-3. `NO-GO` — claim fails, no demand evidence, or a hard blocker → state the blocking evidence and what would have to be true to revisit
-4. Report the verdict with the top 2 reasons and the single weakest assumption; multiple ideas → one verdict each, then a ranking
-5. Present via `/report-review`-style chat table; no files
+1. When a decision-model runtime is available → `/use-decision-model` over `GO | PIVOT | NO-GO` (`choice`) plus each open blocker as `noul`, as a pre-signal only — it never overrides a hard blocker, missing demand evidence, or the evidence below
+2. `GO` — claim holds, evidence supports demand, feasible at this cost tier → name the first concrete step
+3. `PIVOT` — the problem is real but this shape is wrong → state which assumption broke and the narrower/different shape that survives
+4. `NO-GO` — claim fails, no demand evidence, or a hard blocker → state the blocking evidence and what would have to be true to revisit
+5. Report the verdict with the top 2 reasons and the single weakest assumption; multiple ideas → one verdict each, then a ranking
+6. Present via `/report-review`-style chat table; no files
 
 ### 5. Route The Next Step
 

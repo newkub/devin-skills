@@ -10,6 +10,8 @@ related:
   - run-release
   - follow-up-to-date
   - review-use-lib-effective
+  - compat
+  - migrate
 ---
 
 ## Goal
@@ -23,6 +25,7 @@ Update dependencies, runtime, tools, CI versions, and versioned config in every 
 - Supports monorepos: Moon, Turbo, pnpm workspace, Cargo workspace
 - One-shot run: dry-run → update → install → build → test → `/deep-test usage` → report
 - The executor for the dependencies/runtime/tools/CI domains per the dispatch table in `/follow-up-to-date`
+- Boundary: a major jump → `/compat` confirms the code still runs on the target before versions move; when the change is a framework/runtime swap rather than a version bump → `/migrate` owns the staged plan
 - Fast path: workflow `workflows/update-versions/SKILL.md` — a one-shot flow that updates every ecosystem (detect → dry-run → snapshot → update → install → diff report → verify) with no changelog analysis or separate batch commits; use the full Steps 1-8 flow when you need changelog analysis, a major migration, or separate batch commits
 
 ## Execute

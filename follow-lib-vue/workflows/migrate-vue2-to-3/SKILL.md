@@ -44,7 +44,7 @@ Use when migrating a Vue 2 codebase to Vue 3 — covers the migration plan, buil
 
 > Goal: convert Vue 2 APIs to Vue 3 one pattern at a time
 
-1. Options → Composition: convert `data`/`methods`/`computed`/`watch` to `<script setup>` + `ref`/`computed`/`watch` — do it one component at a time or use a codemod (`/use-astgrep`, `/migration-with-astgrep`)
+1. Options → Composition: convert `data`/`methods`/`computed`/`watch` to `<script setup>` + `ref`/`computed`/`watch` — do it one component at a time or use a codemod (`/use-astgrep`, `/migrate`)
 2. Main breaking changes:
    - Filters are removed — convert `{{ x | filter }}` to a method/computed
    - `v-model`: a `modelValue` prop + an `update:modelValue` event instead of `value`/`input`; `.sync` → `v-model:propName`

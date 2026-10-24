@@ -16,7 +16,7 @@ related:
   - edit-only
   - move-to
   - rename
-  - all-this-patterns
+  - all-patterns
 ---
 
 ## Goal
@@ -58,7 +58,7 @@ Use when there is context or multiple tasks to the point of not knowing what to 
    - `/refactor` structure scope — move/restructure files
    - `/move-to` — move files/folders
    - `/rename` — rename identifiers/files including batch rename
-   - `/all-this-patterns` — edit multiple places by pattern
+   - `/all patterns` — edit multiple places by pattern
 3. Choose based on the `/rethink` result, with the user confirming if there are several closely comparable options
 
 ### 4. Dispatch Next Actions

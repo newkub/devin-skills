@@ -49,10 +49,10 @@ Use after a change shipped, before a release, or whenever the question is "is th
 
 > Goal: one list of everything that makes a claim
 
-1. Enumerate docs: `README.md`, `AGENTS.md` in every workspace, `docs/`, `USAGE.md`, `FEATURES.md`, `TODO.md`, `.devin/plan`/`.devin/rules`
+1. Enumerate docs: `README.md`, `AGENTS.md` in every workspace, `docs/`, `USAGE.md`, `FEATURES.md`, `TODO.md`, `.devin/plan`/`.agents/rules`
 2. Enumerate config: manifests (`package.json`/`Cargo.toml`), lockfiles, CI workflows, environment examples, tool configs, and workspace manifests
 3. Enumerate references: markdown links, import paths, alias configs, and skill/workflow names mentioned in docs
-4. Enumerate rules: ast-grep `rules/` + `sgconfig.yml`, `.devin/rules/*.md`, and project skills that encode conventions
+4. Enumerate rules: ast-grep `rules/` + `sgconfig.yml`, `.agents/rules/*.md`, and project skills that encode conventions
 5. Record each surface with its path and the kind of claim it makes — this list bounds the run
 
 ### 3. Scan For Drift

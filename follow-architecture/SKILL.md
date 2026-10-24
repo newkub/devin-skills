@@ -47,7 +47,7 @@ Handed off elsewhere: microservices/distributed topology (see `## Goal`) · the 
 
 1. Baseline first, inherited from `/refactor` `### 1`: clean working tree, `/run-verify` green, characterization tests wherever the target's public behaviour is uncovered, and `git rev-parse HEAD` recorded for the `### 4` comparison
 2. Run `/scan-codebase` at the root — identify `apps/*`, `packages/*`, `crates/*`, and the target the user specifies
-3. Read what the project already decided: its `AGENTS.md` `Follow Architecture` section + `.devin/rules/` — a recorded pattern is repaired, not re-picked; write back at `### 4`
+3. Read what the project already decided: its `AGENTS.md` `Follow Architecture` section + `.agents/rules/` — a recorded pattern is repaired, not re-picked; write back at `### 4`
 4. Count deployable entry points — a CLI that is one entry among `api`+`worker`+`cron` is not a single app; check whether several entry points must share one domain (unified support)
 5. Count bounded contexts and external volatility — group the domain into its real contexts; list the external systems (providers, queues, storage) and how often each changes; a system behind a port is only worth it when it is volatile or must be faked in tests
 6. `/deep-review` dimension `architecture` on the target — the reversed edges and leaked imports are the whole case for moving anything; no violated edge → `### 2` row 0 answers KEEP and the work stops; explicit `clean`/`layered` argument → that pattern, skipping `### 2`
@@ -85,7 +85,7 @@ Handed off elsewhere: microservices/distributed topology (see `## Goal`) · the 
 
 1. Boundaries hold: `core/` + `modules/*/domain/` (Clean) or `types/` + `utils/` (Layered) stay pure — no IO, no framework imports; `services/` performs no IO either but reaches data through `infra/` interfaces, while `types/` + `utils/` stay leaves; dependency direction never reversed; public API through barrels only, no deep imports from outside
 2. `/follow-tool-madge` (no circular) + `/deep-review` dimension `architecture` vs baseline; tests pass as before, original public API still works
-3. Persist the boundary so it stays enforced: import-direction rules → `/update-astgrep-rules` (`rules/architecture/` + `rules/dependencies/`), chosen pattern → the target's `AGENTS.md` `Follow Architecture` section via `/update-agents-md`
+3. Persist the boundary so it stays enforced: import-direction rules → `/update-astgrep-rules` (`rules/architecture/` + `rules/dependencies/`), chosen pattern → the target's `AGENTS.md` `Follow Architecture` section via `/update-agents-md` plus `.agents/rules/architecture/<workspace-type>/` via `/update-dot-agents-project rules`
 4. `/report-before-after` with the old → new layer map, diffed against the `### 1` baseline SHA — the reversed-edge count before and after is the number that proves the move
 
 ## Monorepo Architecture

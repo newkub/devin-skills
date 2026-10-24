@@ -74,6 +74,7 @@ Use before a redesign ships, after a component-system change, or when a complian
 2. Dispatch through `/improve a11y` and `/improve uxui` — prefer native semantics and existing design-system components over ARIA patches
 3. Never remove a control, hide content, or disable motion globally to silence a rule; the barrier moves, it does not close
 4. Independent component families → parallel workers via `/use-subagents`; an error mid-fix → `/resolve-errors`
+5. Persist what should not recur: an accessibility convention → `/update-dot-agents-project rules`; a mechanically detectable pattern (non-semantic clickable `div`, missing label) → `/update-astgrep-rules`
 
 ### 6. Verify
 
@@ -88,6 +89,7 @@ Use before a redesign ships, after a component-system change, or when a complian
 > Goal: the barrier list is visible before and after
 
 1. Run `/report-review`: findings per matrix row with severity, fix status, and the audit proof
+   - Use `templates/findings.md` as the output skeleton
 2. State which views were audited, which were not, and anything accepted or blocked
 3. Close with `/suggest-next-action`
 

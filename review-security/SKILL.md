@@ -75,6 +75,7 @@ Use before a release, after an auth or data change, or when a trust boundary mov
 2. Dispatch through `/improve security`, `/improve auth`, and `/improve privacy` — one file or small batch at a time, minimal diff, behavior preserved except the intended control
 3. Never weaken a control, disable a rule, or delete a test to make a finding disappear; a false positive is rejected with evidence
 4. Independent trust boundaries → parallel workers via `/use-subagents`; an error mid-fix → `/resolve-errors`, never a half-applied state
+5. Persist what should not recur: a security or auth convention → `/update-dot-agents-project rules`; a mechanically detectable pattern (banned API, missing guard) → `/update-astgrep-rules`
 
 ### 6. Verify
 

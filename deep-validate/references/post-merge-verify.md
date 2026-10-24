@@ -1,6 +1,6 @@
 # Post-Merge Verify
 
-Use after `/merge` results from `use-subagents` or after complex implementation — deeper verification than the normal validate pass
+Use after merging results from `use-subagents` or after complex implementation — deeper verification than the normal validate pass
 
 ## Execute
 

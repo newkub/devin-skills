@@ -103,7 +103,7 @@ Use to create Zed extensions that provide languages, themes, icon themes, snippe
 - Use /follow-create-rust-crate if needed
 - Use /follow-create-sdk if needed
 - Use /follow-lang-rust if needed
-- Use /open-in-zed if needed
+- Use /open-in zed if needed
 - Use /report if needed
 
 ## Expected Outcome

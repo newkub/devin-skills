@@ -9,6 +9,7 @@ related:
   - review-use-lib-effective
   - report
   - run-install
+  - compat
 ---
 
 ## Goal
@@ -65,6 +66,7 @@ Recommend improvements for the dependencies
 3. Recommend dependencies that should be removed
 4. Recommend dependencies that should be swapped for better alternatives
 5. For a full effective-use review of the installed libraries → `/review-use-lib-effective`
+6. Whether the stack runs on a target OS/runtime/browser → `/compat`
 
 ## Rules
 

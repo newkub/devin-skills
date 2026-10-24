@@ -1,6 +1,6 @@
 ---
 name: follow-create-web-docs
-description: Single-page README + docs site with Comark Vue, deployed to Cloudflare Workers via GitHub CI
+description: Single-page README + docs site with Sätteri, deployed to Cloudflare Workers via GitHub CI
 argument-hint: "[repo-path]"
 related:
   - follow-create-web
@@ -17,13 +17,13 @@ related:
 
 ## Goal
 
-Build a single-page site that renders the repo's `README.md` (and `docs/` if present) with Comark Vue — nav shows the repo name, GitHub link, registry badges, theme toggle — deployed to Cloudflare Workers via GitHub Actions
+Build a single-page site that renders the repo's `README.md` (and `docs/` if present) with Sätteri-rendered Markdown — nav shows the repo name, GitHub link, registry badges, theme toggle — deployed to Cloudflare Workers via GitHub Actions
 
 ## Scope
 
 Use when you want a small docs site for a repo — not a heavyweight docs framework (use `/run-docs` for VitePress)
 
-- Output: Vue + Vite app (single page), Comark renders markdown, deployed with `wrangler` + `cloudflare/wrangler-action`
+- Output: Vue + Vite app (single page), Sätteri renders Markdown at build time, deployed with `wrangler` + `cloudflare/wrangler-action`
 - The source of truth is the files in the repo — `README.md` is required, `docs/` optional (glob `docs/**/*.md`)
 - No router — every docs file renders in a single scroll, or a sidebar switcher within one page
 
@@ -39,12 +39,12 @@ Use when you want a small docs site for a repo — not a heavyweight docs framew
 
 ### 2. Scaffold App
 
-> Goal: Vue + Vite app ready for Comark
+> Goal: Vue + Vite app that renders Markdown at build time
 
 1. Always prefer `create-docs` (the canonical generator) — `bunx create-docs` (repo: `wrikka/create-docs`) scaffolds the whole site per this spec; if the generator isn't usable (not published yet/network) → fall back to the manual steps below
 2. Manual fallback: `bun create vite <name> --template vue-ts` (or add it to the existing repo as `site/` or `docs-site/`)
-3. `bun add @comark/vue` plus plugins as needed (shiki for code highlight)
-4. Comark Vue usage: `<Markdown>` must be inside `<Suspense>`, use `:value` or a slot
+3. `bun add satteri shiki dompurify` — render Markdown at build time, highlight fences with Shiki, sanitize the HTML
+4. Render with `markdownToHtml(source)` (build script or a Vite `import.meta.glob` pass), bind the result with `v-html`, and sanitize with DOMPurify before trusting it
 5. Bundle the markdown as strings via `import readme from '../README.md?raw'` (Vite raw imports) — no runtime fetching
 
 ### 3. Build Layout
@@ -95,7 +95,7 @@ Use when you want a small docs site for a repo — not a heavyweight docs framew
 
 ## Expected Outcome
 
-- Single-page site renders README (+docs) with Comark Vue per the layout spec
+- Single-page site renders README (+docs) with Sätteri per the layout spec
 - Nav has the repo name, GitHub link, registry badges, and theme toggle
 - GitHub Actions deploys to Cloudflare Workers and is ready to use
 - Passes local build and `wrangler deploy --dry-run`

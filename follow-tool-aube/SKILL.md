@@ -57,14 +57,14 @@ Use `aubx` for one-off tools that do not need dependencies:
 
 ```bash
 aubx vitest    # run vitest without installing
-aubx tsc       # run tsc without installing
+aubx tsrs      # run tsrs without installing
 ```
 
 Use `aube exec` for local binaries already installed in the project:
 
 ```bash
 aube exec vitest
-aube exec tsc -- --noEmit
+aube exec tsrs -- --noEmit
 ```
 
 ### 4. Dependency Management
@@ -133,7 +133,7 @@ Reads and writes lockfiles in place without migration
 
 Pick the command by use case:
 - aubr: for running scripts that need dependencies (test, build, dev)
-- aubx: for one-off tools that need no dependencies (vitest, tsc)
+- aubx: for one-off tools that need no dependencies (vitest, tsrs)
 - aube add: for adding dependencies
 - aube remove: for removing dependencies
 - aube update: for updating dependencies

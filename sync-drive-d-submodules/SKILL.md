@@ -5,7 +5,6 @@ argument-hint: "[scope]"
 
 related:
   - git-submodule
-  - list-git-submodules
   - check-uncommit
 ---
 
@@ -16,7 +15,7 @@ Safely sync and update all git submodules in the D drive to their latest remote 
 ## Scope
 
 For syncing and updating git submodules across multiple repositories in the D drive only
-- Related: `/git-submodule` manages a single submodule, `/list-git-submodules` inventories them, `/check-uncommit` finds dirty repos before syncing
+- Related: `/git-submodule` manages, lists, and removes submodules, `/check-uncommit` finds dirty repos before syncing
 
 ## Execute
 
@@ -129,8 +128,7 @@ Commit submodule updates if desired
 - Use retries for failed updates
 
 - Use /convert-git-submodules if needed
-- Use /delete-git-submodules if needed
-- Use /list-git-submodules if needed
+- Use /git-submodule if needed (list, remove modes)
 
 ## Subagents
 

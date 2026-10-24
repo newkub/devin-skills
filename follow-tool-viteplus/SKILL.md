@@ -86,7 +86,7 @@ Use when a repository adopts Vite+ (`vite-plus` / `vp`) as its unified web toolc
 | toolchain info | `vp toolchain` | versions of bundled tools |
 | update / remove `vp` | `vp upgrade` / `vp implode` | implode removes the global install |
 
-Runner mapping: `/run-dev` → `vp dev`, `/run-build` → `vp build`, `/run-test` → `vp test`, `/run-check` → `vp check`; `/run-verify` keeps the whole gate and `/run-typecheck` stays the `tsc` authority, since `vp check` type-checks only when enabled
+Runner mapping: `/run-dev` → `vp dev`, `/run-build` → `vp build`, `/run-test` → `vp test`, `/run-check` → `vp check`; `/run-verify` keeps the whole gate and `/run-typecheck` stays the `tsrs --noEmit` authority, since `vp check` type-checks only when enabled
 
 ### 5. Static Checks
 
@@ -95,7 +95,7 @@ Runner mapping: `/run-dev` → `vp dev`, `/run-build` → `vp build`, `/run-test
 1. Enable `typeAware` and `typeCheck` in `lint.options` so `vp check` includes TypeScript checks
 2. Local: `vp check --fix`; CI: `vp check` (add `--deny-warnings` to fail on lint warnings)
 3. Narrow a run with `--no-fmt` (lint + type-check) or `--no-fmt --no-lint` (type-check only)
-4. Keep `vp check` wired into `/run-check` detection — when `vite-plus` is present, prefer it over separate biome/eslint/prettier/tsc invocations
+4. Keep `vp check` wired into `/run-check` detection — when `vite-plus` is present, prefer it over separate biome/eslint/prettier invocations; the typecheck gate stays `tsrs --noEmit`
 
 ### 6. Tests
 

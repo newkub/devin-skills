@@ -33,9 +33,9 @@ Run typecheck for every workspace in the monorepo as defined in the package mani
 
 1. Do not use ignore comments/attributes in any language
 2. Pick the command by ecosystem:
-   - Vite+ project (`vite-plus` dependency): `vp check --no-lint --no-fmt` for the fast type-aware pass, then the full gate with `tsc --noEmit` (or `vue-tsc --noEmit`) because `vp check` type-aware is not a full `tsc` replacement — see `/follow-tool-viteplus`
-   - Bun project (`bun.lock`): `bun check`
-   - Otherwise: the manifest `typecheck` script (`tsc --noEmit` where Bun is absent)
+   - Vite project (`vite` dependency): `tsrs --noEmit` — see `/follow-tool-vite`; SFC projects keep `vue-tsc`/`svelte-check`/`astro check`; `vp check --no-lint --no-fmt` is only an optional fast pass, not a full typecheck
+   - No Vite: `bun check -p . --no-script` (Bun ≥ 1.4.3)
+   - `tsc`/`tsgo` are never the typecheck gate — `tsc` is kept only for declaration emit (`--emitDeclarationOnly`)
 3. Run typecheck as defined in the package manifest
 
 ### 3. Analyze Errors

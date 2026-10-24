@@ -14,10 +14,10 @@ related:
   - resolve-errors
   - continue
   - delete-git-branch
-  - delete-git-submodules
-  - delete-git-worktree
+  - git-worktree
   - delete-projects
   - delete-project-temp
+  - use-decision-model
 ---
 
 ## Goal
@@ -31,7 +31,7 @@ Apply actions correctly and safely — the canonical skill for every apply patte
 - `delete`: delete files/folders safely — dry-run, confirm, backup, update references
 - No mode given → detect from context/argument, then `/ask-me` if still unclear
 
-For domain-specific deletes, call the skill directly: `/delete-cicd-fails`, `/delete-git-branch`, `/delete-git-submodules`, `/delete-git-worktree`, `/delete-projects`, `/delete-project-temp` — each skill has its own dry-run + confirm gate
+For domain-specific deletes, call the skill directly: `/delete-cicd-fails`, `/delete-git-branch`, `/git-submodule remove`, `/git-worktree remove`, `/delete-projects`, `/delete-project-temp` — each skill has its own dry-run + confirm gate
 
 ## Execute
 
@@ -51,8 +51,8 @@ For domain-specific deletes, call the skill directly: `/delete-cicd-fails`, `/de
 
 1. `Capture options` — take them from argument/context; none → `/ask-me`; a single option → `/follow-your-suggestion`
 2. `Analyze` — assess scope, cost, effort, risk, compatibility, maintainability; close options/high trade-offs → `/rethink`
-3. `Present and confirm` — `/report table` with columns `No. | Option | Pros | Cons | Score | Recommended`; mark the recommendation with `✅`; high-risk → `/ask-me` first
-4. `Apply` — continuing from context → `/follow-your-suggestion`; a single action → `/continue`; multiple steps → `/manage`; affects many places → `/all-this-patterns`
+3. `Present and confirm` — `/report table` with columns `No. | Option | Pros | Cons | Score | Recommended`; mark the recommendation with `✅`; when a decision-model runtime is available → `/use-decision-model` (`choice` over the options) may set `✅` only at `confidence ≥ 0.6`; high-risk → `/ask-me` first
+4. `Apply` — continuing from context → `/follow-your-suggestion`; a single action → `/continue`; multiple steps → `/manage`; affects many places → `/all patterns`
 5. `Validate and report` — `/run-check` or `/deep-validate` as appropriate → `/report table` (`No. | Option | Status | Output`) → `/suggest-next-action`
 
 ### Mode: Validate
@@ -63,7 +63,7 @@ For domain-specific deletes, call the skill directly: `/delete-cicd-fails`, `/de
 2. `Select validation` — code → `/run-check`; skill/rules/config → `/deep-validate`; reference/path → `/check-reference` or `/review-dot-agents-global-and-fix`; architecture/design → the fitting `/review`; decision → `/rethink`
 3. `Run validation` — record passed/failed, findings, warnings; order by severity; `/report table` (`No. | Check | Status | Findings`)
 4. `Decide` — all pass → apply; low warnings → notify the user and apply once confirmed; error/blocker → fix until it passes; unsure → `/ask-me`
-5. `Apply` — suggestion-only → `/follow-your-suggestion`; file ops in many places → `/all-this-patterns`; multiple steps → `/manage`
+5. `Apply` — suggestion-only → `/follow-your-suggestion`; file ops in many places → `/all patterns`; multiple steps → `/manage`
 6. `Re-validate and report` — validate again after applying → `/report table` (`No. | Step | Validation | Apply | Status`); stuck step → `/report-progress` → `/suggest-next-action`
 
 ### Mode: Delete

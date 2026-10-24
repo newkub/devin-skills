@@ -4,7 +4,6 @@ description: Detailed multi-dimensional debugging from reproduction to preventin
 argument-hint: "[scope]"
 related:
   - apply
-  - check-git-logs
   - git-file-history
   - restore-files-from-git-log
   - follow-tool-git
@@ -106,7 +105,7 @@ Use for every debugging session — runtime errors, test failures, build errors,
 | Symptom | Tool |
 |---------|------|
 | Bug introduced by some commit | `git bisect` |
-| Who/when changed a line | `git blame` + `git log -p --follow -S "<snippet>" -- <file>` (or `/check-git-logs`, `/git-file-history`) |
+| Who/when changed a line | `git blame` + `git log -p --follow -S "<snippet>" -- <file>` (or `/git-file-history find`) |
 | Commit vanished from the branch | `git reflog` → `git cherry-pick <hash>` (or `git reset --hard <hash>` only after `/ask-me`) |
 | File missing | `/restore-files-from-git-log`; else `git log --all --diff-filter=D -- <file>` → `git restore --source=<hash>^ <file>` |
 | Unknown cause | `git status`, `git log --oneline -20`, `git diff HEAD~1`, `git stash list` (or `/git-search`) |
@@ -178,7 +177,7 @@ Use for every debugging session — runtime errors, test failures, build errors,
 - Build errors → `/run-build` + `/resolve-errors`
 - Type errors → `/run-typecheck` + `/follow-lang-typescript`
 - Performance → `/run-profiler` + `/deep-review`
-- Git issues → `### 7` + `/follow-tool-git` + `/check-git-logs`
+- Git issues → `### 7` + `/follow-tool-git` + `/git-file-history find`
 
 ### 5. Time Budget And Escalation
 

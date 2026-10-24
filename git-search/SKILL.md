@@ -5,7 +5,6 @@ argument-hint: "[commit|code|content|blame|file|remote]"
 related:
   - follow-tool-ctx-rs
   - follow-tool-git
-  - check-git-logs
   - git-file-history
   - report-diff-in-web
   - git-bisect
@@ -20,7 +19,7 @@ Find the commit, change, file, or line that explains a behavior — commit-messa
 ## Scope
 
 - Covers `git log`, `git grep`, `git blame`, `git log -L`, `git show`, and `gh api` for remote GitHub repos
-- Boundary: current working-tree files → `/code-search`; browsing a file's log commit-by-commit until a condition matches → `/check-git-logs`; indexed agent session recall → `/follow-tool-ctx-rs`; state-changing git work → `/follow-tool-git`
+- Boundary: current working-tree files → `/code-search`; browsing a file's log commit-by-commit until a condition matches → `/git-file-history find`; indexed agent session recall → `/follow-tool-ctx-rs`; state-changing git work → `/follow-tool-git`
 - Read-only — never checkout, restore, or rewrite during a search
 - References: [git](references/git.md) · [ctx-blame](references/ctx-blame.md)
 

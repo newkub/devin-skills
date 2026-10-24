@@ -4,7 +4,7 @@ description: Build a per-repo health scorecard — hygiene, deps, CI, activity, 
 argument-hint: "[repo-or-all]"
 related:
   - resolve-errors
-  - check-git-logs
+  - git-file-history
   - list-dependencies
   - run-audit
   - check-uncommit
@@ -34,7 +34,7 @@ Build a health scorecard of a repository — combining signals from multiple che
 1. Hygiene: check repo essentials — LICENSE, README, SECURITY.md, CODEOWNERS, `.github/` templates
 2. Dependencies: `/list-dependencies` + `/run-audit` — outdated/vulnerable counts
 3. CI: `/resolve-github-actions-fails` — latest run status, failure rate
-4. Activity: `/check-git-logs` — last commit, commit frequency, staleness
+4. Activity: `/git-file-history find` — last commit, commit frequency, staleness
 5. Working state: `/check-uncommit` — dirty working tree?
 
 ### 2. Score Dimensions

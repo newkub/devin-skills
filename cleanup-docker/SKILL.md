@@ -5,7 +5,7 @@ argument-hint: "[--images|--volumes|--all]"
 related:
   - ask-me
   - run-clean
-  - run-cleanup
+  - cleanup-artifact
 ---
 
 ## Goal
@@ -81,7 +81,7 @@ Clean up unused Docker resources — dangling images, stopped containers, unused
 - Report actual sizes from `docker system df`, not guesses
 - Include last-used or created date when it helps the decision
 - Use /run-clean if needed
-- Use /run-cleanup if needed
+- Use /cleanup-artifact if needed
 
 ## Expected Outcome
 

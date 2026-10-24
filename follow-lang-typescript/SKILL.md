@@ -86,7 +86,7 @@ For TypeScript projects — type system, code quality, testing, documentation. P
 
 - Return-type annotations, `const`, named exports, `import type`, `interface` vs `type` per shape complexity
 - `===` only, template literals, generic constraints for reusable code
-- Vite 8+ projects → prefer one `vp check`/`vp fmt`/`vp lint` pipeline (`/follow-tool-viteplus`) over stacking separate formatter/linter installs; `vp check` is not a full `tsc` replacement, so keep `/run-typecheck` as the type gate
+- Vite 8+ projects → prefer one `vp check`/`vp fmt`/`vp lint` pipeline (`/follow-tool-viteplus`) over stacking separate formatter/linter installs; `vp check` is not a full typecheck, so keep `/run-typecheck` (`tsrs --noEmit` for Vite, `bun check -p . --no-script` otherwise) as the type gate
 
 ### 3. No Stale Pins
 

@@ -31,7 +31,7 @@ Use when a scope (path, workspace, diff, whole repo, issue, plan) needs a review
 - Dimensions are not a fixed catalog. `references/review.md` (`## Dimension Matrix`) seeds candidates per artifact (tiered) and carries each row's `Check` proof statement, while `/deep-thinking` plus the review CLI/linter output decide applicability — never a blind sweep. The deterministic-scan shape is the stated deviation from the `deep-*` template: evidence comes from the CLI slice, not per-dimension `/deep-research`
 - The matrix is the row contract — `references/review.md` (`## Dimension Matrix`) defines every column. The ones this skill acts on: `Tier` (budget), `Applies to` (artifact match), `Impact` (ordering), `Cost` (run cap), `Fix mode`, `Evidence`, `Default severity`, `N/A condition` (the only legal skip), `Check` (the proof statement), `Authority`, `CLI domain` (slice + gap), `Enforcement`, `Gate`, `Aliases` (label resolution), `Tool/skill`, and `Fix owner`. Every later step reads the row instead of re-deciding
 - The matrix is advisory data, not a pipeline. `Fix owner` words bind to the `improve`/`optimize` scope-map vocabulary and to `## Domain Map` in `references/review.md`, so routing never remaps ad hoc
-- Domain knowledge is delegated: mechanical checks live in the review CLI and ast-grep `rules/`, agent guidance lives in `.devin/rules/`, and conventions live in `follow-*`/`review-dot-agents-global-and-fix`
+- Domain knowledge is delegated: mechanical checks live in the review CLI and ast-grep `rules/`, agent guidance lives in `.agents/rules/`, and conventions live in `follow-*`/`review-dot-agents-global-and-fix`
 - Preset doors — `references/presets.md` (`## Preset Map`) names this engine plus every `review-*` door, its tier, the matrix labels it seeds, and the fix route it owns. A door keeps the deep pipeline inside: a preset argument (e.g. `security`, `performance`, `data`, `ops`) seeds exactly those labels through this same pipeline; no preset argument means the standard tiered sweep. A preset never restates a check and never runs its own scan
 - One dimension only, without a preset, → `/deep-review-codebase-everything <scope> <label>`. `references/review.md` `### Label resolution` resolves the label to its matrix rows and lands right back here with only those rows selected. `/review-issues` (provably wrong behavior) and `/review-gaps` (promised but not delivered) hold their own dimension work, and `/review` runs both plus the inconsistency pass
 - Fix mode (`then-fix`) — confirm per finding first (default), follow the original suggestion (`/follow-your-suggestion`), or `fix all` as the user specifies. Per global rules, the confirm gate is skipped only in the `dont-ask-me`/`/ship` flow
@@ -87,7 +87,7 @@ Every run follows the seven principles in order; a run without `then-fix` stops 
 
 > Goal: findings become durable — the same finding must not survive the next run
 
-1. Findings whose matrix `Enforcement` is `devin-rule` (natural-language conventions/agent guidance) → `/update-dot-agents-project` (author `.devin/rules/*.md` for the workspace type)
+1. Findings whose matrix `Enforcement` is `devin-rule` (natural-language conventions/agent guidance) → `/update-dot-agents-project` (author `.agents/rules/*.md` for the workspace type)
 2. Findings whose `Enforcement` is `ast-grep` (imports, patterns, API misuse, naming) → `/update-astgrep-rules` (AST rules + `sgconfig.yml`)
 3. Findings whose `Enforcement` is `cli-check` → `/update-review-cli` adds the analyzer check, with a rule-id prefix that lands the row in its `CLI domain`; analyzer bugs → `update-review-cli/references/known-issues.md`. `Enforcement: test` → `/update-tests` asserts the invariant. `Enforcement: none` → state in the report that the row is measurement-only and cannot be made durable
 4. After persisting, re-run the analyzer on the original violation only (`--diff` or the single file named in the evidence — never a full rescan, per `## Rules`) to confirm the finding now fails loudly or is gone. A rule that does not fire on the original violation is not durable
@@ -166,7 +166,7 @@ Every run follows the seven principles in order; a run without `then-fix` stops 
 
 - One full scan sliced per applicable dimension, reviewed at max coverage under budget — proven by the `Coverage` matrix built from the ledger
 - Chat report via `/report-review`: per-dimension tables + summary + prioritized fix sequence, no files unless asked
-- Findings persisted per the matrix `Enforcement` (`.devin/rules/*.md`, ast-grep rules, analyzer checks, or a test) with analyzer gaps reported, so they cannot silently recur — measurement-only rows are named as such
+- Findings persisted per the matrix `Enforcement` (`.agents/rules/*.md`, ast-grep rules, analyzer checks, or a test) with analyzer gaps reported, so they cannot silently recur — measurement-only rows are named as such
 - Findings the user accepted instead of fixed carry a linked issue + expiry, so an accepted risk stays visible instead of becoming an unreported gap
 - With `then-fix`: confirmed findings fixed per `references/review.md` `## Domain Map`, each verified, re-reviewed with `--diff` until clean or `blocked` with reasons — and a fix score
 - Without `then-fix`: nothing edited; every finding handed to its owner skill in the suggested sequence

@@ -14,10 +14,10 @@ related:
   - check-monorepo
   - setup-cicd
   - follow-tasks
-  - run-all-tasks
   - ship
   - resolve-errors
   - report
+  - follow-tool-ctx-rs
 
 ---
 
@@ -32,7 +32,7 @@ Use as the single consolidation point for all verify work
 - Large project, monorepo, or heavy build/test → push the branch to CI/CD, then watch and resolve errors
 - Mode can be forced: `/run-verify --local` or `/run-verify --ci`
 - If an end-to-end readiness gate is needed (before ship/deploy or after a big task) → also do the `Deep Verify` section below
-- Vite+ project: `vp check` covers format + lint + type-aware, but it is not a full `tsc` replacement and does not run scan/tests/build — the `verify` script still needs all six parts (see `/follow-tool-viteplus`)
+- Vite+ project: `vp check` covers format + lint + type-aware, but it is not a full typecheck (`tsrs --noEmit`) and does not run scan/tests/build — the `verify` script still needs all six parts (see `/follow-tool-viteplus`)
 - Never merge, release, or deploy automatically
 - Use after `/implement-to-production` to verify before ship
 - This runs the `verify` subset only — to run the project's FULL task manifest (all scripts incl. custom `db:*`, `security`, `docs:build`) → use `/run-all-tasks`
@@ -68,7 +68,7 @@ Use as the single consolidation point for all verify work
 1. Read the package manifest (`package.json`, `Cargo.toml`, etc.)
 2. If there is no `verify` script → run `/follow-tasks` to create `verify` = `scan + format + lint + typecheck + test + build` (format before lint)
 3. If `verify` is missing any of the 6 parts → run `/follow-tasks` to fill them in
-4. Run the `verify` script on local (e.g. `bun run verify`; Vite+ project → `vp run verify`)
+4. Run the `verify` script on local (e.g. `bun run verify`; Vite+ project → `vp run verify`) — output is long → `ctx sift err -- bun run verify` for diagnostics or `ctx sift summary -- bun run verify` for head/tail, then `ctx sift gain` to confirm the reduction (`/follow-tool-ctx-rs`)
 5. If it fails → run `/resolve-errors` then retry up to 3 times
 
 ### 4. CI/CD Mode (Large Project)
@@ -81,7 +81,7 @@ Use as the single consolidation point for all verify work
 4. Look for CI/CD config (see the `setup-cicd` list); if none → run `/setup-cicd`
 5. Run `/git-push` if there are unpushed commits
 6. If the push is rejected → stop and report (never force push)
-7. If it is GitHub Actions → `/resolve-github-actions-fails`, otherwise `/resolve-cicd`
+7. If it is GitHub Actions → `/resolve-github-actions-fails`, otherwise `/resolve-cicd`; a fetched log → `ctx sift compact <log-file>` or `ctx sift err -- <log-command>` before reading it (`/follow-tool-ctx-rs`)
 8. If it fails → run `/resolve-errors`, then push again and re-run, up to 3 times
 9. If it passes → report
 

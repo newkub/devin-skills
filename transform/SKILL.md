@@ -9,7 +9,8 @@ related:
   - convert-files-format
   - replace
   - refactor
-  - migration-with-astgrep
+  - migrate
+  - port
   - run-verify
   - report
 ---
@@ -34,7 +35,8 @@ Pick the correct transformation path for "change X into Y at many places" jobs �
 | Edit many files via a script — reproducible, audit trail | `/use-scripts` (`### Edit Files Via Scripts`) |
 | AST pattern rewrite across many files (`-p`/`-r`, dry-run + confirm) | `/use-astgrep rewrite` |
 | rule-YAML transforms (`transform`/`rewriters`/constraints) | `/use-astgrep transform` |
-| whole-codebase migration in staged batches | `/use-astgrep migration` → `/migration-with-astgrep` |
+| whole-codebase migration in staged batches | `/migrate` |
+| adapt code to another platform, design unchanged | `/port` |
 | format conversion (json↔yaml, cjs→esm, svg, scripts) | `/convert-files-format` or the `/convert` domain |
 | a single file / few spots, no need for reproducibility | `/edit-only` or `/replace` |
 | config values per defaults/overrides | `/edit-manual` + `/follow-default-config` |

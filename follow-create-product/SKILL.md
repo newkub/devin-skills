@@ -7,7 +7,7 @@ related:
   - open-web-for-config-secret
   - follow-create-web
   - follow-my-techstack
-  - clone-product-with-my-techstack
+  - clone-product
   - follow-service-workos
   - follow-service-stripe
   - follow-service-cloudflare
@@ -33,7 +33,7 @@ Turn an idea or requirements into a ready-to-use product, covering product spec,
 - Invoke `/follow-service-workos` for auth
 - Invoke `/follow-service-stripe` for payments, pricing, billing
 - Invoke `/ship` when the work is done
-- Building from an existing product instead of an idea — cloning a live product or a GitHub repo to rebuild it — use `/clone-product-with-my-techstack` (it covers this skill's flow plus research, captures, and parity verification)
+- Building from an existing product instead of an idea — cloning a live product or a GitHub repo to rebuild it — use `/clone product` (it covers this skill's flow plus research, captures, and parity verification)
 
 - Latest: (version-agnostic — product scaffolding guide) (verified 2026-09-12)
 

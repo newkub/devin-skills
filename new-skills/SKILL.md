@@ -3,7 +3,6 @@ name: new-skills
 description: Create a new devin global skill following the repo standard
 argument-hint: "[idea or topic]"
 related:
-  - use-related-skills
   - follow-single-of-source
   - update-agents-skills-global
   - deep-review
@@ -41,7 +40,7 @@ To create skills from dependencies in a package manifest (`package.json`, `Cargo
 > Goal: confirm it does not duplicate existing skills
 
 1. Run `/scan-codebase` to find similar skills
-2. Run `/use-related-skills` to consider relatedness/extend/rename — covers both "suggest related skills" and "pick another skill to use" (including what was merged from `use-in-another-skills`)
+2. Run `/update-agents-skills-global` (`## Conventions → Related Skills`) to consider relatedness/extend/rename — covers both "suggest related skills" and "pick another skill to use"
 3. If it heavily duplicates → suggest `/update-agents-skills-global` instead
 
 ### 3. Research

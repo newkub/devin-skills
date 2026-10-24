@@ -128,7 +128,7 @@ The browser pings `/api/ping` every 2 seconds; closing the tab prompts `(r)eopen
 ```bash
 bun run dev        # Vite dev server
 bun run build      # Production build into dist/
-bun run typecheck  # tsc --noEmit
+bun run typecheck  # tsrs --noEmit
 bun run start -- git HEAD~1
 ```
 

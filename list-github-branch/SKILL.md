@@ -56,7 +56,7 @@ Use to view branches of any repository on GitHub
 - Show key data: branch name, last commit SHA, protected status
 
 - Use /list-git-branch if needed
-- Use /cleanup-git-branch if needed
+- Use /delete-git-branch if needed
 
 ## Expected Outcome
 

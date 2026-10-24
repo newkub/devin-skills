@@ -4,7 +4,7 @@
 
 ## Skill Usage Audit
 
-Audit dead/dying skills (argument `usage`/`skill-usage` — read-only): parse `related:` from every `SKILL.md` → count inbound + `/review-dot-agents-global-and-fix`; classify Orphaned (0 inbound + not referenced in `AGENTS.md`/`global_rules.md`), Leaf (0 inbound but an entry-point — not dead), Hub, Self-referencing; flag overly broad/duplicate ones; report via `/report` with columns No./Skill/Inbound/Tier/Recommendation (`keep`/`integrate`/`merge`/`delete`) — "0 references ≠ worthless"; deletion must go through `/delete` + `/update-references`
+Audit dead/dying skills (argument `usage`/`skill-usage` — read-only): parse `related:` from every `SKILL.md` → count inbound + `/review-dot-agents-global-and-fix`; classify Orphaned (0 inbound + not referenced in `AGENTS.md`/`global_rules.md`), Leaf (0 inbound but an entry-point — not dead), Hub, Self-referencing; flag overly broad/duplicate ones; report via `/report` with columns No./Skill/Inbound/Tier/Recommendation (`keep`/`integrate`/`merge`/`delete`) — "0 references ≠ worthless"; deletion must go through `/apply` mode `delete` + `/update-references`
 
 ## Living Documents
 

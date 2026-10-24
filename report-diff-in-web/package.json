@@ -7,7 +7,8 @@
     "dev": "vite",
     "build": "vite build",
     "start": "bun src/serve.ts",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsrs --noEmit",
+    "format:check": "vp fmt --check src"
   },
   "dependencies": {
     "@pierre/diffs": "^1.6.1",

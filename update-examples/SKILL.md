@@ -1,6 +1,6 @@
 ---
 name: update-examples
-description: Write examples covering every API in the project for docs, tests, and onboarding
+description: Write and run examples covering every API — docs, tests, onboarding
 argument-hint: "[scope]"
 related:
   - deep-analyze
@@ -12,7 +12,9 @@ related:
   - update-tests
   - run-format
   - run-typecheck
-  - run-examples
+  - update-references
+  - deep-review
+  - follow-tool-vitepress
 
 ---
 
@@ -26,15 +28,19 @@ Use `/update-examples` for specific tasks and workflows by creating or improving
 
 ## Execute
 
+> Pre-Run: Run `/deep-review` first — examples are written to be run, so the APIs they show must already be reviewed; if findings are blockers, fix or report before writing
+
 ### 1. Analyze APIs
 
 > Goal: Find and group all public APIs
 
 1. Run `/deep-analyze` for an overview
-2. Run `/scan-codebase` to find all public APIs (exports, functions, classes, types)
-3. Read the `package.json` exports field to find entry points
-4. Identify all APIs from the source code
-5. Group APIs by module/domain
+2. Use `/follow-tool-vitepress` to gather reference material when the project has a docs site
+3. Run `/scan-codebase` to find all public APIs (exports, functions, classes, types)
+4. Read the `package.json` exports field to find entry points
+5. Read the entry point and index files in each module
+6. Identify all APIs from the source code
+7. Group APIs by module/domain
 
 ### 2. Plan Examples
 
@@ -49,10 +55,11 @@ Use `/update-examples` for specific tasks and workflows by creating or improving
 
 > Goal: Create the correct `examples/` structure
 
-1. Create the `examples/` directory
+1. Create the `examples/` directory — use `apps/examples` for a monorepo, `examples` for a single package
 2. Create subdirectories following the project organization
 3. Create a `src/` directory in each example subdirectory
 4. Create a `README.md` explaining the structure and how to run
+5. In a monorepo, reference internal packages with `workspace:*` dependencies
 
 ### 4. Write Examples per Module
 
@@ -82,7 +89,7 @@ Use `/update-examples` for specific tasks and workflows by creating or improving
 1. Run every example with `bun run examples/<name>.ts`
 2. Check that the output matches expected
 3. If there is an error → fix and rerun
-4. Use `/run-examples` to run them all
+4. Run them all at once — single package: `bun run examples/index.ts`; monorepo: `bun --filter 'examples' run examples` or `bun run --cwd apps/examples <script>`
 
 ### 7. Validate
 
@@ -102,6 +109,7 @@ Use `/update-examples` for specific tasks and workflows by creating or improving
 2. Link the examples to the API docs
 3. Follow `/update-readme-md` to add examples to the Usage section of README.md
 4. Update the API Reference with a complete table following the format defined in `/update-readme-md`
+5. If example files were moved or renamed → run `/update-references` to fix stale references
 
 ## Rules
 
@@ -135,6 +143,15 @@ Use `/update-examples` for specific tasks and workflows by creating or improving
 - Update the examples when the API changes
 - Run the examples in CI to catch breaking changes
 - Use `/update-examples` to create new ones
+
+### 6. Monorepo
+
+- Use `apps/examples` for a monorepo, `examples` for a single package
+- Order examples by module and complexity
+
+### 7. Dependencies
+
+- Use `workspace:*` for internal dependencies in a monorepo
 
 - Use /run-dev if needed
 - Use /deep-validate if needed

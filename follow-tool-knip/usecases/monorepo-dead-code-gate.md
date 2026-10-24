@@ -51,7 +51,7 @@ Gate the apps first — they have a real entry point. Libraries often expose typ
 ```bash
 bunx knip --workspace packages/ui --include dependencies
 bunx bun pm remove <reported-package>
-bunx tsc --noEmit -p packages/ui
+bun check -p packages/ui --no-script
 ```
 
 ## Pitfalls

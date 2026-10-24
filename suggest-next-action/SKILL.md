@@ -11,6 +11,7 @@ related:
   - ship
   - continue
   - rethink
+  - use-decision-model
 
 ---
 ## Goal
@@ -86,6 +87,7 @@ Assess the importance of the possible actions
 - Risk of doing it (high/medium/low)
 - Dependencies on other tasks
 - Time sensitivity
+- When a decision-model runtime is available → `/use-decision-model` for an ordering hint (`score` impact/effort per action, `noul` urgency); the gathered evidence still decides, and the model never picks the action for the user
 
 ### 6. Suggest Actions
 

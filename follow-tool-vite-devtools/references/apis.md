@@ -64,7 +64,7 @@
 |-------|---------|-------|
 | Vite DevTools | `@vitejs/devtools` | ecosystem framework, built-in integrations |
 | DevTools Kit | `@vitejs/devtools-kit` | hub: dock, palette, terminals, `devtools.setup` |
-| Devframe | `devframe` | framework-neutral: SPA, CLI, static, MCP — standalone tools use it directly (`/follow-tool-devfra`), not the Kit |
+| Devframe | `devframe` | framework-neutral: SPA, CLI, static, MCP — standalone tools use it directly (this skill `### 8`), not the Kit |
 
 | Ecosystem user of Kit | Note |
 |-----------------------|------|

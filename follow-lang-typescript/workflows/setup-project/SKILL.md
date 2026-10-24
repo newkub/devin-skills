@@ -42,13 +42,13 @@ For a fresh TypeScript project; live-check the latest stable TypeScript and its 
 
 1. Linter/formatter per `/follow-my-techstack` (Biome default; `@typescript-eslint` only when a required rule lives there)
 2. `vitest` + `expect-type`; one passing smoke test from the first commit
-3. Scripts in `package.json`: `typecheck` (`bun check` when Bun ≥ 1.4 is available, else `tsc --noEmit`), `lint`, `test`
+3. Scripts in `package.json`: `typecheck` (`bun check -p . --no-script` without Vite; `tsrs --noEmit` with Vite), `lint`, `test`, `format:check` (`bun fmt -c` without Vite; `vp fmt --check src` with Vite)
 
 ### 4. Verify
 
 > Goal: Verify.
 
-1. `bun check` (or `tsc --noEmit`) clean → lint/format check clean → `vitest run` green → `bunx type-coverage --detail` shows no `any`
+1. `bun check -p . --no-script` (or `tsrs --noEmit` for Vite projects) clean → lint/format check clean (`bun fmt -c` or `vp fmt --check src`) → `vitest run` green → `bunx type-coverage --detail` shows no `any`
 2. On failure → run `/resolve-errors`
 
 ## Rules

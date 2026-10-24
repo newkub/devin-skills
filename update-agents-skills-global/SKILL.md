@@ -26,13 +26,14 @@ Create, update, or refactor global Devin skills in `%APPDATA%\devin\skills` so t
 
 ## Scope
 
-For new or existing skills: update one skill, many skills, or the whole repo; create a new skill from an idea/topic (a single focused skill → `/new-skills`); refactor for clear SRP (`refactor` argument → `workflows/refactor/SKILL.md`); organize `workflows/` and subagent profiles (`SKILL.md ## Subagents`) per `## Conventions → Workflows And Subagents`
+For new or existing skills: update one skill, many skills, or the whole repo; create a new skill from an idea/topic (a single focused skill → `/new-skills`); refactor for clear SRP (`refactor` argument → `workflows/refactor/SKILL.md`); organize `workflows/` and subagent profiles (`SKILL.md ## Subagents`) per `## Conventions → Workflows And Subagents`; analyze `related` in both directions per `## Conventions → Related Skills`
 
 | Argument | Routes to |
 |----------|-----------|
 | none, `@files`, or a topic | this `SKILL.md` `## Execute` |
 | `refactor` | `workflows/refactor/SKILL.md` — restructure skill packages (split, merge, workflows, metadata, sync refs) |
 | `usage` / `skill-usage` | `references/maintenance.md` `#skill-usage-audit` — read-only dead/dying skill audit |
+| `related [<skill>]` | `## Conventions → Related Skills` — inbound (which skills this one should use) + outbound (which skills should use it), then write `related` |
 
 ## Execute
 
@@ -40,7 +41,7 @@ For new or existing skills: update one skill, many skills, or the whole repo; cr
 > Goal: know the environment, conventions, and scope before starting
 
 1. Detect the skills dir from the path: Devin CLI → `%APPDATA%\devin\skills\` or `~/.config/devin/skills/`; Windsurf → `%APPDATA%\Codeium\Windsurf\skills\`; Codex → `~/.codex/skills/`; Claude → `~/.claude/skills/`; OpenCode → `~/.opencode/skills/` — undetectable → `/ask-me`
-2. Read that repo's `global_rules.md` + `AGENTS.md`; run `/review-dot-agents-global-and-fix` + `/check-reference` on related skills, and `/use-related-skills` to consider composing/extending them
+2. Read that repo's `global_rules.md` + `AGENTS.md`; run `/review-dot-agents-global-and-fix` + `/check-reference` on related skills, then `## Conventions → Related Skills` to consider composing/extending them
 3. Skill already exists → read the original file to identify what needs changing; long-horizon/near-full context → `/follow-context-engineering`; context unavailable or a required reference missing → stop and report
 4. Target family has existing skills → `/follow-principles` scope `skill` (`### 2`–`### 4` only) to collect their `Rules` + `Expected Outcome` as hard constraints; its report step is skipped
 
@@ -48,7 +49,7 @@ For new or existing skills: update one skill, many skills, or the whole repo; cr
 > Goal: know which skill(s) to create, update, or refactor
 
 1. `@files` → update only those (`SKILL.md` doesn't exist yet → `/new-skills`); no `@files` → pick the target set from the topic/family prefix (`follow-*`, `review-*`); no scope at all → `/ask-me` first, never sweep the whole repo
-2. Keep the target list as a No./Skill/Reason/Priority table; unclear names → `/ask-me`; find related skills with `/use-related-skills` + `/search-skills`
+2. Keep the target list as a No./Skill/Reason/Priority table; unclear names → `/ask-me`; find related skills with `## Conventions → Related Skills`
 3. Several independent skills (a whole family or >10 skills) → spawn the `skill-updater` profile (contract in `## Conventions → Workflows And Subagents`) via `/use-subagents` one skill at a time; skills sharing refs or touching `AGENTS.md`/`global_rules.md` conflict → sequential, never spawn — the parent always syncs living documents + `/git-commit` per batch + validates collectively
 4. Scope includes Wrikka org packages or `use-wrikka-*` skills → run `/update-use-wrikka-project` first so every consumable package has one current use skill resolved from the registry or a sha-pinned pkg.pr.new preview, then continue the ordinary update flow
 
@@ -67,15 +68,18 @@ For new or existing skills: update one skill, many skills, or the whole repo; cr
 ### 5. Deep Research
 > Goal: have the latest data before editing
 
-1. `/deep-research` to pin down the topic/skill (skip when no research is needed); pick sources: docs/site → `/learn-from-web`, CLI → `/learn-from-cli`, library API → `/check-types-definition`, integrations/plugins/extensions → `/deep-research` (integrations domain) — official docs are the primary source
-2. `/check-reference` to find stale versions/commands/links; `/check-update` to read the latest published version from GitHub releases, registry, and blog; `/deep-research` to verify latest + breaking changes; `/check-types-definition` + `/learn-from-cli` to verify `references/apis.md`/`cli.md` against the real API/commands
-3. Record latest version, breaking changes, new commands, deprecations, env vars, URLs — find real examples, never guess
+1. `/deep-research` first — a precondition for every create or update, run before the first edit; research already performed in this session may be reused when its sources are cited
+2. Pick sources by artifact: docs/site → `/learn-from-web`, CLI → `/learn-from-cli`, library API → `/check-types-definition`, integrations/plugins/extensions → `/deep-research` (integrations domain) — official docs are the primary source
+3. `/check-reference` to find stale versions/commands/links; `/check-update` to read the latest published version from GitHub releases, registry, and blog; `/deep-research` to verify latest + breaking changes; `/check-types-definition` + `/learn-from-cli` to verify `references/apis.md`/`cli.md` against the real API/commands
+4. Record latest version, breaking changes, new commands, deprecations, env vars, URLs — find real examples, never guess
 
-### 6. Prefer Existing CLI Tools Over Custom How-To
-> Goal: how-tos use real installed tools; don't hand-write scripts when a CLI can do it
+### 6. Prefer Existing Executable Tools Over Custom How-To
+> Goal: how-tos use real installed tools; don't hand-write scripts when a CLI can do it, and don't encode an executable capability as prose
 
 1. Before writing a how-to (search/replace, JSON/YAML, diff, benchmark, git, API, screenshots) → always first check `check-my-global-cli/references/global-cli-commands.md` + `check-my-global-cli/references/tool-map.md`; a tool matches the problem → reference the real command (`sd`/`sad` instead of hand-rolled replace, `yq`/`jq` instead of parsing, `hyperfine` instead of timing, `xh` instead of curl, `ast-grep` instead of regex refactor, `agent-browser`/`playwright` instead of browser automation)
 2. Unsure which tool exists → `/check-my-global-cli` or `/deep-research`; write your own only when no tool exists at all; find a tool missing from the inventory/map → update both at once; install via `mise use -g <tool>` (or scoop/winget)
+3. The capability executes and more than one MCP client needs it → it belongs in a global MCP server, not in skill prose: decide with `/idea-global-mcp`, build via `/follow-create-mcp`, then register and smoke-test via `/update-devin-global-mcp create` (its `### 2` holds the artifact table: tool, resource, prompt, or skill only); the skill keeps only the pointer to the server and its tools
+4. Both a server and a skill describe one capability → the server owns execution (`/follow-single-of-source`); never restate the commands in prose — reference data goes to a resource and workflow text to a prompt
 
 ### 7. Write Or Update SKILL.md
 > Goal: `SKILL.md` conforms to the spec
@@ -96,7 +100,7 @@ For new or existing skills: update one skill, many skills, or the whole repo; cr
 1. Gate by size: one skill → items 2–3; a family or several skills → add 4–6; repo-wide or a convention change → every item, then full `/ship` in step 10 — never run the expensive gates on a single-file edit
 2. `/review-dot-agents-global-and-fix` — conventions/naming/structure; `/check-reference` — commands/APIs/claims; `/reframe` for a new skill or major rewrite
 3. `/deep-validate` — frontmatter, sections, length, `related` missing/unused, TODO/MOCK/placeholder; fixing `related` → `/follow-tool-madge`; has `rules/` or `sgconfig.yml` → `/deep-review`
-4. `/update-references` to sync refs across the repo + `/use-related-skills` to find integrations; rename/move → update `AGENTS.md`; involves global rules → `global_rules.md` + `/review-dot-agents-global-and-fix`
+4. `/update-references` to sync refs across the repo + `## Conventions → Related Skills` for inbound/outbound integrations; rename/move → update `AGENTS.md`; involves global rules → `global_rules.md` + `/review-dot-agents-global-and-fix`
 5. After any skill or tool add/remove/merge/rename → always sync living documents per `## Conventions → Living Documents` — not optional; failing → fix and recheck (max 3 → stop/report)
 6. Run `bun check-skills-structure/scripts/check-skills-structure.ts --anchors --tables --findings` — every cited heading must exist in the target's `SKILL.md`, every table row must keep the header's cell count; a cross-skill citation is proven only when the citing skill is scanned
 7. Cross-skill conflict — two skills state contradictory rules (content language, `related` cap, a mandatory step) → `/follow-principles` `### 3`–`### 4` ranks them, then fix at the owning skill, never keep both; unresolved authority conflict → `/ask-me`
@@ -122,7 +126,7 @@ See [references/prefixes.md](references/prefixes.md) — the follow/check/review
 
 ### Templates
 
-See [references/templates.md](references/templates.md) — the execute-pattern core for every prefix (longest match first).
+See [references/templates.md](references/templates.md) — the execute-pattern core for every prefix (longest match first). Every `implement-*` skill answers the plan in chat with `/report-todo` (architecture diagram when structure changes, file tree when layout changes, `No.`-first table, baseline row `No. 1` = `/run-verify`) — `report-plan` is deleted and never referenced.
 
 ### Directory Structure
 
@@ -139,6 +143,10 @@ See [references/workflows.md](references/workflows.md) — content decision matr
 ### Invoke Skills
 
 See [references/invoke-skills.md](references/invoke-skills.md) — invocation syntax, ordering, `related` contract, and limits.
+
+### Related Skills
+
+See [references/related-skills.md](references/related-skills.md) — the two-direction scan (which skills this one should use, which skills should use this one), relation types and evidence, the `related` write-back rules, and picking a skill to invoke for a task.
 
 ### Write References
 
@@ -163,7 +171,7 @@ See [references/maintenance.md](references/maintenance.md#living-documents) — 
 ## Rules
 
 1. Single Responsibility And Refactor — every file in a skill package ≤250 lines; `SKILL.md` = entry point holding the high-level workflow + pointers; split sub-files per `## Conventions → When To Split`/`Directory Structure`; content duplicating another skill → merge into the existing one
-2. Official Sources And Evidence — official docs, changelog, repository are the primary sources (never third-party when an official one exists), state source URLs; every change carries evidence + the researched version — never guess APIs, commands, or versions
+2. Official Sources And Evidence — official docs, changelog, repository are the primary sources (never third-party when an official one exists), state source URLs; every change carries evidence + the researched version — never guess APIs, commands, or versions; every create/update starts with `/deep-research` (step `### 5`) before the first edit — research is never skipped
 3. Safety — dry run before destructive/high-risk actions; overwriting an existing file → user confirmation; never break references or existing skills; `permissions` must list `deny` for risky system paths; no secrets/credentials in prompts
 4. Content Standard — how-tos reference actually installed CLI tools (inventory `check-my-global-cli/references/global-cli-commands.md`, map `check-my-global-cli/references/tool-map.md`), never hand-write scripts when a CLI can do it (none exists → `/deep-research` or `mise use -g`); `name` matches directory name, `description` ≤100 characters; no TODO/MOCK/placeholder — flag uncertainty explicitly; global skills written in English; no `**` bold; config guidance follows `/follow-default-config` (only overrides of tool defaults, verified via `/check-types-definition`/official docs); install per ecosystem `bun add`/`cargo add`/`go get`/`pip install`/`mise use -g npm:<package>` — avoid floating ranges
 5. Precedence — `global_rules.md` + root `AGENTS.md` set the authority order; within a skill, `## Rules` beats `## Execute`; this skill's `## Conventions` beats a one-skill local convention; two skills contradicting → `/follow-principles` `### 3`–`### 4` ranks them, then fix at the owning skill — never keep both; an unresolved authority conflict (e.g. content language) → `/ask-me`, never pick silently

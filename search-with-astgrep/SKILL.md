@@ -7,7 +7,7 @@ related:
   - use-astgrep-programmatic
   - update-astgrep-rules
   - replace
-  - migration-with-astgrep
+  - migrate
   - scan-codebase
   - check-code-structure
 ---
@@ -19,7 +19,7 @@ Search symbols, call sites, and patterns in code with AST-based matching that is
 ## Scope
 
 - Covers ad-hoc structural search (`ast-grep run -p`), temporary rules (`--inline-rules`), pattern syntax, and interface selection
-- Excludes project setup (`/use-astgrep`), permanent rule authoring (`/update-astgrep-rules`), rewrite/migration (`/replace`, `/migration-with-astgrep`)
+- Excludes project setup (`/use-astgrep`), permanent rule authoring (`/update-astgrep-rules`), rewrite/migration (`/replace`, `/migrate`)
 
 (restored from its merge into `use-astgrep` — split back out as a standalone workflow dedicated to search)
 
@@ -32,7 +32,7 @@ Search symbols, call sites, and patterns in code with AST-based matching that is
 1. One-off search / verify a pattern / view context around a match → CLI `ast-grep run` (this workflow's default)
 2. Need to aggregate across many files, post-process, or feed scripts/CLI → `/use-astgrep-programmatic`
 3. A pattern will be run repeatedly → promote it to a rule with `/update-astgrep-rules`
-4. Need a rewrite after finding matches → `/replace` or `/migration-with-astgrep`
+4. Need a rewrite after finding matches → `/replace` or `/migrate`
 5. Need to see structure before searching → `ast-grep outline <path>` or `/check-code-structure`
 
 ### 2. Prepare Search
@@ -95,7 +95,7 @@ rule:
 1. Read code → open the file at the file:line from the output
 2. Count/aggregate → `--json` then process with `/use-scripts` or `/use-astgrep-programmatic`
 3. A single point / a few points to fix → edit by hand
-4. Many mechanical fixes → `/replace` (rewrite rules) or `/migration-with-astgrep`
+4. Many mechanical fixes → `/replace` (rewrite rules) or `/migrate`
 5. If this search is a hygiene check worth running regularly → `/update-astgrep-rules` or a `check-*` skill
 
 ## Rules

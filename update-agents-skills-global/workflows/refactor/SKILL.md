@@ -8,7 +8,6 @@ related:
   - simplify
   - new-skills
   - use-subagents
-  - use-related-skills
   - check-long-files
   - deep-validate
   - update-references
@@ -41,7 +40,7 @@ Reached via `/update-agents-skills-global refactor`. This file is a `workflows/`
    | 1 | File exceeds 250 lines | `/check-long-files` |
    | 2 | Multiple responsibilities | Read `## Execute` — count workflows with different goals |
    | 3 | Workflow lives in `references/` | Compare with decision matrix (step 2) |
-   | 4 | Content duplicated from another skill | `/use-related-skills` + grep title/description |
+   | 4 | Content duplicated from another skill | `/update-agents-skills-global` (`## Conventions → Related Skills`) + grep title/description |
    | 5 | `references/` is not flat | list dir |
    | 6 | Wrong frontmatter | `name` ≠ dir, `description` >100 |
    | 7 | Dangling `related` | `/deep-validate` |

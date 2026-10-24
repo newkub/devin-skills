@@ -28,7 +28,7 @@ Build one health scorecard for `~/.agents` from validation, references, git stat
 2. Record the broken reference count from that same pass
 3. `/check-uncommit` → modified and untracked files
 4. `/check-unpush` → unpushed commits
-5. `/check-git-logs` → last commit, frequency, staleness
+5. `/git-file-history find` → last commit, frequency, staleness
 6. `/check-long-files` → files over 250 lines
 
 ### 2. Score Dimensions

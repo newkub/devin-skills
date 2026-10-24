@@ -8,7 +8,7 @@ related:
   - scan-codebase
   - check-should-update
   - simplify
-  - all-this-patterns
+  - all-patterns
   - ask-me
   - run-check
   - deep-validate
@@ -43,7 +43,7 @@ Apply a decided action to the current project end to end — mode from `/apply` 
 
 1. Run `/scan-codebase` to find the affected files/patterns; check `git status` — record any in-progress work, do not clobber it
 2. Run `/check-should-update` per candidate target — skip targets that don't actually need the action
-3. Plan the minimal change set with `/simplify guard`; the action reaching several places → `/all-this-patterns` inside this project
+3. Plan the minimal change set with `/simplify guard`; the action reaching several places → `/all patterns` inside this project
 
 ### 3. Apply
 

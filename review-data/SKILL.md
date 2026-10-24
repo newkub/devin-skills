@@ -74,6 +74,7 @@ Use before a migration ships, after a data incident, or when a schema and its co
 2. Dispatch through `/improve data`, `/improve database`, `/improve migration`, `/improve consistency`, and `/improve retention` — one migration or batch at a time, with a rollback written before it runs
 3. Never run a destructive migration without an explicit confirmation and a backup; never rewrite history that another environment already applied
 4. Independent modules → parallel workers via `/use-subagents`; an error mid-migration → `/resolve-errors` immediately, never a partially applied schema
+5. Persist what should not recur: a schema or migration convention → `/update-dot-agents-project rules`; a mechanically detectable pattern (destructive DDL, missing FK index) → `/update-astgrep-rules`
 
 ### 6. Verify
 
@@ -88,6 +89,7 @@ Use before a migration ships, after a data incident, or when a schema and its co
 > Goal: data risk is visible before and after
 
 1. Run `/report-review`: findings per matrix row with severity, blast radius, fix status, and verification result
+   - Use `templates/findings.md` as the output skeleton
 2. State the rollback path used for each migration and anything accepted or blocked
 3. Close with `/suggest-next-action`
 

@@ -5,7 +5,7 @@ argument-hint: "[scope]"
 related:
   - follow-tool-playwright
   - use-astgrep
-  - migration-with-astgrep
+  - migrate
   - run-test
   - update-tests
 ---
@@ -47,7 +47,7 @@ Migrate the E2E test suite from Cypress to Playwright safely — the suite must 
 3. Network: `cy.intercept()` → `page.route()` or `context.route()`
 4. State: `cy.clearCookies()`/`localStorage` → context methods or `storageState` config
 5. Custom commands → Playwright fixtures (`test.extend()`) or page object methods — never create global commands
-6. Use `/use-astgrep`/`/migration-with-astgrep` for bulk rename patterns — one commit per pattern
+6. Use `/use-astgrep` or `/migrate` for bulk rename patterns — one commit per pattern
 
 ### 4. Extract Page Objects
 

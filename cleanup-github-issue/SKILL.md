@@ -7,7 +7,7 @@ related:
   - cleanup-project
   - suggest-next-action
   - run-clean
-  - run-cleanup
+  - cleanup-artifact
 ---
 
 ## Goal
@@ -57,7 +57,7 @@ Use for maintaining the issue backlog
 - Use /cleanup-disk-computer if needed
 - Use /cleanup-project if needed
 - Use /run-clean if needed
-- Use /run-cleanup if needed
+- Use /cleanup-artifact if needed
 
 ## Expected Outcome
 

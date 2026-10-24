@@ -9,6 +9,7 @@ related:
   - follow-lib-orpc
   - follow-lib-effect-ts
   - follow-web-standard
+  - follow-lib-gpuix
 ---
 
 ## Goal

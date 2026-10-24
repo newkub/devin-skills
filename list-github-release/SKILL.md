@@ -62,7 +62,7 @@ Use to view releases of any repository on GitHub
 - Sort by most recent publish date
 - Show key data: tag, title, draft, prerelease, published, author
 
-- Use /list-git-release if needed
+- Use /list-git-tags if needed
 - Use /resolve-github-actions-fails if needed
 - Use /list-github-branch if needed
 - Use /run-release if needed

@@ -8,7 +8,6 @@ related:
   - review-dot-agents-global-and-fix
   - update-agents-skills-global
   - check-agents-session
-  - use-related-skills
   - ask-me
   - deep-research
   - report
@@ -47,7 +46,7 @@ Turn observations into skill proposals — new ideas, session-mined candidates, 
 
 1. Run `/check-my-global-cli` when tool coverage or a missing CLI is part of the question
 2. Use `/check-agents-session` when the evidence lives in past sessions
-3. Use `/use-related-skills` to find overlaps before proposing anything new
+3. Use `/update-agents-skills-global` (`## Conventions → Related Skills`) to find overlaps before proposing anything new
 4. Use `/deep-research` only when best practice is genuinely unclear
 5. Never cite a skill, file, or command that does not exist
 

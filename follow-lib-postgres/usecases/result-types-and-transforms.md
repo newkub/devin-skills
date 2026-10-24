@@ -95,7 +95,7 @@ const grid = await sql`select id, name from products limit 10`.values();
 1. `typeof row.price` on a `numeric` column — `"string"`, and the mapper yields the expected cents
 2. A row with `metadata = '{"tags":["a"]}'` — `row.metadata.tags` is an array without any parse call
 3. `select count(*)` without a cast — the value is a string; with `::int` it is a number
-4. `tsc --noEmit` — the row type matches every property the query selects
+4. `bun run typecheck` — the row type matches every property the query selects
 5. An insert with `notes: undefined` — it throws `UNDEFINED_VALUE`; with `undefined: null` it stores `NULL`
 6. An `update` matching no rows — `.count` is `0` and the handler returns 404
 7. `/run-test` — a mapper test for `price`, `createdAt`, and `metadata`

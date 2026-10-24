@@ -20,7 +20,7 @@ Patterns verified against the Archify README (MIT, `tt-a1i/archify`, v3.1) and i
 ## 4. Repo-Grounded Architecture Maps
 
 - Analyze first (`/deep-analyze` or read the actual entrypoints), then generate — diagrams from memory drift
-- Pin evidence to one public commit when requesting `SRC` nodes; state the commit in the artifact meta so staleness is detectable (`/check-git-logs` to re-verify later)
+- Pin evidence to one public commit when requesting `SRC` nodes; state the commit in the artifact meta so staleness is detectable (`/git-file-history find` to re-verify later)
 
 ## 5. Delivery And Sharing
 

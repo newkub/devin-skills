@@ -5,6 +5,7 @@ Run load tests with k6 or autocannon — measure throughput, latency distributio
 Signals: `k6`, `autocannon`, `loadtest` scripts, performance thresholds, `/run-deploy` and `/ship` gates
 
 - Fast liveness gate → `/deep-test smoke`; per-request latency drill-down → `/run-profiler` / `/deep-optimize`; web vitals in the browser → `/optimize web-vitals`
+- k6 install, script model, executors, thresholds, CI gate → `/follow-tool-k6`
 
 ## 1. Prepare Target
 
@@ -19,7 +20,7 @@ Signals: `k6`, `autocannon`, `loadtest` scripts, performance thresholds, `/run-d
 
 > Goal: pick the tool and load pattern that fit the objective
 
-1. `k6` when complex scenarios are needed (stages, thresholds, checks) — write a temporary script in temp
+1. `k6` when complex scenarios are needed (stages, thresholds, checks) — install, config, and script shape live in `/follow-tool-k6`; write a temporary script in temp
 2. `autocannon` when a quick benchmark is enough: `autocannon -c <conn> -d <sec> <url>`
 3. Default scenario: ramp 0→N VUs → sustain → ramp down; other patterns: smoke (low), stress (find the limit), spike
 4. Define measurable thresholds: p95 latency, error rate, minimum RPS

@@ -36,7 +36,7 @@ Every scope is handled by the `/improve` thin entry (or `/optimize` for metric-d
 | `devin-global-skills` | review-dot-agents-global-and-fix | harness review (skills, subagents, hooks, MCP, global rules) — fix via `/deep-review <scope> then-fix`, standards via `/update-agents-skills-global` |
 | `docs` | docs | README/guides/structure; writing findings → `/improve writing` |
 | `dot-devin` | dot-devin | project devin config/assets |
-| `dx` | dx, bundle | tooling, onboarding; devtools dock/integrations → `/follow-tool-vite-devtools`, standalone devtool → `/follow-tool-devfra`; size → `/optimize bundle` |
+| `dx` | dx, bundle | tooling, onboarding; devtools dock/integrations and standalone devtools → `/follow-tool-vite-devtools`; size → `/optimize bundle` |
 | `email` | backend, frontend | deliverability (SPF/DKIM/DMARC), bounces, templates; notifications channel → `/improve notifications`; sending service → `/follow-service-resend` |
 | `env-parity` | config, iac | dev/staging/prod config drift; never copy secret values — → `/follow-secret-manager` |
 | `error-handling` | stability, code-quality, frontend, uxui, api, cli | **sole owner** of error paths, retries, recovery, error states/error UI/error boundaries |
@@ -86,6 +86,6 @@ Tool hints per scope — run the tool for deterministic evidence before judging 
 |-------|--------|
 | `a11y`, `form` | `follow-tool-unlighthouse` |
 | `seo`, `web` | `follow-tool-unlighthouse`, `follow-tool-takumi` |
-| `uxui` | `follow-lib-unocss`, `follow-lib-shiki`, `follow-lib-comark` |
+| `uxui` | `follow-lib-unocss`, `follow-lib-shiki`, `follow-lib-satteri` |
 | `code-quality`, `consistency` | `follow-tool-knip`, `follow-tool-jscpd` |
 | `security`, `privacy` | `follow-tool-gitleaks`, `follow-tool-semgrep` |

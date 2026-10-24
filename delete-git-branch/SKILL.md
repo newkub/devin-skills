@@ -1,85 +1,99 @@
 ---
 name: delete-git-branch
-description: Safely delete a local or remote git branch
-argument-hint: "[scope]"
+description: Delete git branches — merged sweep, individual, or abandoned, dry-run first
+argument-hint: "[branch|filter] [--merged] [base] [--remote]"
 related:
-  - refactor-commit
-  - resolve-github-pr
-
+  - git-branch
+  - cleanup
+  - git-worktree
+  - check-unpush
+  - ask-me
+  - report
 ---
 
 ## Goal
 
-Safely delete the specified git branch from local or remote
+Delete branches safely — a merged sweep of everything already in the base branch, or targeted deletion of individual and abandoned branches
 
 ## Scope
 
-Use when cleaning up branches that are no longer needed
+- Merged sweep (`--merged`): every local branch merged into the base (default `main`), plus remote branches when `--remote` is also given
+- Ad-hoc deletion: one branch or a small group matched by `[branch|filter]`, including abandoned (unmerged) branches
+- Skip: the base branch, the current checkout, and protected patterns (`main`, `master`, `develop`, `release/*`, `hotfix/*`)
+- Destructive: always requires a dry-run report + user confirmation
 
 ## Execute
 
-### 1. Identify Branch
+### 1. Survey Branches
 
-> Goal: Identify the branch to delete
+> Goal: gather all branches and their status
 
-1. Run `git branch --all`
-2. Confirm the branch name
-3. Check that it is not `main`, `master`, or a protected branch
+1. `git fetch --prune` to sync remote refs — stale refs make the list wrong
+2. `git branch --merged <base>` for merged local branches; `git branch -r --merged <base>` for remote
+3. Ad-hoc target: `git branch --list <filter>` plus `git log -1 --format="%ad %s" --date=iso <branch>` for recent activity
+4. Cross-check GitHub with `gh pr list --state merged` (and open PRs when the base is on GitHub)
 
-### 2. Check Merge Status
+### 2. Build Deletion List
 
-> Goal: Delete safely
+> Goal: build the list of branches that are safe to delete
 
-1. Run `git branch --merged` to see which branches are already merged
-2. If the branch is not merged → ask before deleting
-3. If already merged → it can be deleted with `-d`
+1. Skip the base branch, the current checkout, and protected patterns (`main`, `master`, `develop`, `release/*`, `hotfix/*`)
+2. Flag branches that are merged but have unmerged commits on their remote counterpart
+3. Flag branches that are merged but still have an open PR — it could be reopened
+4. Keep only: merged + no open PR + not protected
+5. For an abandoned branch: verify there is no unmerged work worth keeping, and back up the ref (`git tag backup/<branch> <branch>`) when there is any risk
 
-### 3. Delete Local Branch
+### 3. Dry-Run Report
 
-> Goal: Delete the local branch
+> Goal: show what will be deleted before doing it
 
-1. Run `git branch -d <branch>` for a merged branch
-2. If not merged and the user confirms → run `git branch -D <branch>`
+1. Report via `/report` with columns: `No.`, `Branch`, `Local/Remote`, `Merged Into`, `Last Commit`, `Safe`
+2. State the total count and every skipped branch with its reason
+3. Wait for user confirmation via `/ask-me` before deleting anything
 
-### 4. Delete Remote Branch
+### 4. Delete
 
-> Goal: Delete the remote branch
+> Goal: delete exactly what was confirmed
 
-1. Run `git push origin --delete <branch>`
-2. Or `git push origin :<branch>`
-3. Verify that the remote branch was deleted
+1. Merged local: `git branch -d <branch>` — safe delete, refuses unmerged branches
+2. Unmerged/abandoned: `git branch -D <branch>` only with explicit approval for that branch, stating the commits that will be lost
+3. Remote (only with `--remote` and confirmation): `git push origin --delete <branch>` (or `git push origin :<branch>`)
+4. If `-d` fails → never force `-D` on your own — report it and let the user decide
 
-### 5. Cleanup
+### 5. Cleanup And Report
 
-> Goal: Clean up local tracking
+> Goal: confirm the repository is clean
 
-1. Run `git fetch --prune`
-2. Run `git branch -vv` to check tracking
+1. `git fetch --prune` + `git branch -vv` to verify tracking
+2. Result table via `/report`: deleted, skipped, failed — each with its reason
+3. Note that deleting a branch does not delete tags pointing at its commits; check with `/list-git-tags` when relevant
 
 ## Rules
 
-### 1. Protect Main
+### 1. Confirmation Required
 
-- Never delete `main`, `master`, or the default branch
-- Never delete a branch with an open PR without asking
+- Never delete any branch without a dry-run report and user confirmation
+- Use `-d` (safe), not `-D` (force), unless the user explicitly approves that specific branch
 
-### 2. Confirm Unmerged
+### 2. Protect Critical Branches
 
-- If the branch is not merged → ask before using `-D`
-- State whether commits will be lost
+- The base branch, the current branch, and protected patterns must never appear in the deletion list
+- Never delete `main`/`master`/the default branch
+- Branches with an open PR or unmerged commits must be flagged, not deleted
+- Keep `release/*` and `hotfix/*` per project policy
 
-### 3. Preserve Tags
+### 3. Sync First
 
-- Deleting a branch does not delete tags pointing to its commits
-- If needed, check the tags
+- Always `git fetch --prune` before listing
+- Perform remote deletions only when the user passes `--remote` and confirms
 
-- Use /list-git-commit if needed
-- Use /refactor-commit if needed
-- Use /resolve-github-pr if needed
+- Use /git-worktree cleanup if needed
+- Use /check-unpush if needed
+- Use /git-branch create if needed
 
 ## Expected Outcome
 
-- The local branch is deleted
-- The remote branch is deleted (if requested)
-- Main/master is unaffected
-- No commits lost without explicit intent
+- Merged branches deleted safely, local and remote (when selected)
+- Protected and open-PR branches left untouched
+- A deleted/skipped report with complete reasons
+- No commits lost without explicit intent; refs backed up when there was any risk

@@ -81,7 +81,7 @@ if (hasAtLeast(emails, 1)) {
 
 ## 6. Verify
 
-1. `tsc --noEmit` — no `as string`, no `!`, and no `@ts-expect-error` in the narrowed chain
+1. `bun run typecheck` — no `as string`, no `!`, and no `@ts-expect-error` in the narrowed chain
 2. Pass a list with `undefined` holes — the output array length equals the number of defined values
 3. `isNonNullish` on `null` and `undefined` — both are removed; `isDefined` keeps `null` and narrows only `undefined`
 4. A click event in the `filter` — inside the resulting array, `event.x` compiles without a cast

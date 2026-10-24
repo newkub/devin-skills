@@ -19,7 +19,7 @@ Use when the task involves `fast-check` — setup, writing property tests, model
 
 - Use this skill for property-based testing only — general unit tests go to `/run-test` or `/follow-tool-vitest`
 - `fast-check` is a test library — install as a devDependency and there is no standalone CLI (run via the test runner)
-- Latest: `fast-check@4.10.2` (verified 2026-09-24) — v4 requires Node ≥12.17 / ES2020 and drops deprecated arbitraries (`unicode*`, `ascii*`, `char`, `uuidV`, `.noBias`, `.noShrink`) while including invalid dates and null-prototype objects by default
+- Latest: `fast-check@4.10.2` (verified 2026-10-23) — v4 requires Node ≥12.17 / ES2020 and drops deprecated arbitraries (`unicode*`, `ascii*`, `char`, `uuidV`, `.noBias`, `.noShrink`) while including invalid dates and null-prototype objects by default; it reads no `FAST_CHECK_*` environment variables, so every override goes through `fc.configureGlobal` or a per-call parameter
 - References: [apis](references/apis.md) 
 - References: [fast-check — Best Practices](best-practices/fast-check.md)
 ## Execute
@@ -31,8 +31,10 @@ Use when the task involves `fast-check` — setup, writing property tests, model
 1. Run `bun add -D fast-check` — devDependency only, never put it in `dependencies`
 2. Install the runner integration matching the test framework: `bun add -D @fast-check/vitest` for vitest (setup: `/follow-tool-vitest`), `@fast-check/jest` for jest, `@fast-check/ava` for ava
 3. Install `bun add -D @fast-check/poisoning` if you need prototype-pollution checks during tests
-4. Set global defaults with `fc.configureGlobal({ numRuns, seed })` or the env vars `FAST_CHECK_NUM_RUNS` / `FAST_CHECK_SEED`
-5. Check the version in `package.json` — the v4 API differs from v3 (deprecated arbitraries removed)
+4. Set global defaults with `fc.configureGlobal({ numRuns, seed, verbose })` — it merges into the active global config instead of replacing it
+5. Read the active defaults with `fc.readConfigureGlobal()`; `fc.resetConfigureGlobal()` clears every global setting back to an empty config
+6. Keep CI knobs in your own code — a setup file can read `process.env.FAST_CHECK_NUM_RUNS` and forward it to `fc.configureGlobal`, but the library never reads the environment itself
+7. Check the version in `package.json` — the v4 API differs from v3 (deprecated arbitraries removed)
 
 ### 2. Write Property Tests
 
@@ -44,14 +46,18 @@ Use when the task involves `fast-check` — setup, writing property tests, model
 4. Pick arbitraries by domain: `fc.string()`, `fc.integer({ min, max })`, `fc.record()`, `fc.oneof()`, `fc.array()`
 5. Use `fc.sample(arb, n)` to inspect generated values while debugging
 6. Use `fc.statistics(property, classifier)` to measure the distribution of generated inputs
+7. Use `fc.check(property, params)` when the outcome must stay data — it returns `RunDetails` (`failed`, `numRuns`, `numSkips`, `seed`) and never throws
+8. Tune a run with the v4 `Parameters` fields that exist: `seed`, `path`, `numRuns`, `maxSkipsPerRun`, `examples`, `endOnFailure`, `verbose`, `randomType`, `plugins`, plus the reporter hooks
+9. Wrap every run with the plugin API (added in 4.10) — build a plugin with `fc.beforeEach(fn)` / `fc.afterEach(fn)` and pass it through `plugins: [...]` or `fc.installGlobalPlugin(plugin)`; globally installed plugins become the outermost wrappers
 
 ### 3. Handle Failures And Shrinking
 
 > Goal: reproduce and turn counterexamples into regression tests
 
 1. On failure, fast-check automatically shrinks to a minimal counterexample
-2. Record the `seed` and `path` from the failure output — replay with `fc.assert(prop, { seed, path })` or the env `FAST_CHECK_SEED`
-3. Convert the counterexample into a plain unit test to prevent regression before fixing the bug
+2. Record the `seed` and `path` from the failure output — replay with `fc.assert(prop, { seed, path })`, which is the only replay channel (no environment variable)
+3. Promote the counterexample with `fc.assert(prop, { examples: [[...args]] })` so it runs on every execution, not only during a replay
+4. Convert the counterexample into a plain unit test to prevent regression before fixing the bug
 
 ### 4. Model-Based And Race Testing
 
@@ -82,8 +88,8 @@ Use when the task involves `fast-check` — setup, writing property tests, model
 ## Rules
 
 - Property tests complement unit tests, never replace them — use for pure functions, serializers, and invariants
-- Balance `numRuns` between coverage and time (default 100; increase in CI via `fc.configureGlobal` or env `FAST_CHECK_NUM_RUNS`)
-- Use a fixed seed in CI for reproducibility — specify `{ seed }` or env `FAST_CHECK_SEED` when replaying a failure
+- Balance `numRuns` between coverage and time (default 100; raise it in CI via `fc.configureGlobal`)
+- Replay a failure with `{ seed }` + `{ path }` from the run output, then pin the counterexample in `examples` instead of pinning a seed in CI
 - Compose arbitraries with `.map()`, `.filter()`, `.chain()` instead of writing generators by hand
 - Never use deprecated v3 arbitraries (`unicode*`, `ascii*`, `char`, `uuidV`, `.noBias`, `.noShrink`) — removed in v4
 

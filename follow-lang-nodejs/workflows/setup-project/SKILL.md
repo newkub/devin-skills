@@ -32,7 +32,7 @@ For a fresh Node.js project (JavaScript or TypeScript); live-check the current L
 
 1. `npm init -y` (or the chosen PM's init); pick `npm`/`pnpm`/`yarn` per project and stick to one
 2. Layout: flat `src/` with one entry file; `"type": "module"` (ESM) unless dependencies force CJS
-3. Scripts: `dev: node --watch src/index.js`, `start: node src/index.js`, `test: node --test`, `typecheck: bun check` (TS only, Bun ≥ 1.4 — else `tsc --noEmit`), `build:` per target
+3. Scripts: `dev: node --watch src/index.js`, `start: node src/index.js`, `test: node --test`, `typecheck: bun check -p . --no-script` (TS only; `tsrs --noEmit` when the project uses Vite), `format:check: bun fmt -c` (or keep the project's Biome script), `build:` per target
 4. TypeScript for large projects: `bun add -d typescript @types/node` with `strict` — `node --watch` handles dev reload, no `nodemon`; JavaScript is fine for scripts/prototyping
 
 ### 3. Configure

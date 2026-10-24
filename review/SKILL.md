@@ -62,6 +62,7 @@ Review anything the user points at (code, docs, a feature area, a plan, a config
 1. Merge the findings from `/review-issues`, `/review-gaps`, and the `### 2` inconsistency pass into one deduplicated list, ordered by severity — Critical/High first
 2. Score and grade per `/report-review` step 3 (the weights/grades SSOT) — never restate the formula here
 3. Produce a `/report-review` table (chat, no files) with its canonical columns, plus this dimension's extras: `Area`, `Type` (issue|gap|inconsistency) — the owner column is `Owner skill`
+   - Use `templates/findings.md` as the output skeleton
 4. If the user did not append `and fix` → ask which items to fix and wait for confirmation
 
 ### 4. Fix Confirmed Items
@@ -103,4 +104,4 @@ Review anything the user points at (code, docs, a feature area, a plan, a config
 - The scope is reviewed across `issues` (via `/review-issues`), `gaps` (via `/review-gaps`), and inconsistencies (here) with complete type, severity, and evidence
 - A scored, severity-ordered `/report-review` table is presented and the fix set is confirmed by the user
 - Confirmed findings are fixed + verified via `/run-verify`, with SRP respected on touched files
-- Durable findings are persisted as ast-grep rules or `.devin/rules` conventions, each proven on its original `file:line`
+- Durable findings are persisted as ast-grep rules or `.agents/rules` conventions, each proven on its original `file:line`

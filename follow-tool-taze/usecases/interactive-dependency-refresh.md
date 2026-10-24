@@ -27,7 +27,7 @@ Commit the non-major bump separately from each major migration — one bisectabl
 
 ```bash
 bun install
-bunx tsc --noEmit && bun test && bun run build
+bun run typecheck && bun test && bun run build
 ```
 
 `taze -w` only edits the manifest; nothing is installed or validated until you run the install.

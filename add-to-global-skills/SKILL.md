@@ -9,7 +9,6 @@ related:
   - idea-agent-skills
   - check-agents-session
   - check-my-global-cli
-  - use-related-skills
   - scan-codebase
   - review-dot-agents-global-and-fix
   - deep-validate
@@ -55,7 +54,7 @@ Artifact exists and must be promoted. Not this skill when there is only an idea 
 
 > Goal: the right package, prefix, and section
 
-1. Run `/scan-codebase` and `/use-related-skills` for near-duplicates; a near-duplicate → extend that skill via `/update-agents-skills-global`
+1. Run `/scan-codebase` and `/update-agents-skills-global` (`## Conventions → Related Skills`) for near-duplicates; a near-duplicate → extend that skill
 2. Pick the prefix from the contract in `new-skills` `## Rules` `### 4`; when no prefix fits, use the default `Goal` → `Scope` → `Execute` → `Rules` → `Expected Outcome` shape
 3. When the artifact is a sub-case of an existing skill, add `workflows/<case>/SKILL.md` inside that package instead of a new top-level skill
 
@@ -79,7 +78,7 @@ Artifact exists and must be promoted. Not this skill when there is only an idea 
 
 > Goal: the new skill is discoverable and referenced
 
-1. Add `related` entries (maximum 15) and mention each one in the body; use `/use-related-skills` to find the real integration points
+1. Add `related` entries (maximum 15) and mention each one in the body; use `/update-agents-skills-global` (`## Conventions → Related Skills`) to find the real integration points
 2. Wire inbound references only where a caller genuinely hands off, and record the skipped candidates with the reason
 3. Run `/update-references`, then sync the skills `AGENTS.md` counts and family list in the same change
 

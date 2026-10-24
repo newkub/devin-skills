@@ -9,7 +9,7 @@
 | `sg outline` | symbols and members | `sg outline src/checkout.ts` |
 | `sg run --debug` | inspect pattern parsing | `sg run -p 'await $X' --debug src` |
 | `sg run --json pretty` | structured matches | `sg run -p 'function $F($$$) { $$$ }' --json pretty .` |
-| `sg scan -r` | apply a rewrite rule | route to `/migration-with-astgrep` |
+| `sg scan -r` | apply a rewrite rule | route to `/migrate` |
 
 ## Pattern Syntax
 
@@ -58,5 +58,5 @@
 | Test first | run on one or two files before the whole repo |
 | Too many hits | add `inside`/`has`/`kind`; never post-filter with regex |
 | No hits | verify with `--debug`, then check `--lang` and pattern syntax |
-| Rewrites | route to `/migration-with-astgrep` or `/replace` |
+| Rewrites | route to `/migrate` or `/replace` |
 | Interaction | `sg` and `rg` complement each other — use `rg -l` to limit files, then `sg` on them |

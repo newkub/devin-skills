@@ -5,7 +5,6 @@ argument-hint: "[scope]"
 related:
   - update-agents-skills-global
   - deep-review
-  - use-related-skills
   - deep-validate
 ---
 
@@ -91,9 +90,8 @@ Use when creating a new skill, file, component, or project structure based on an
 - Do not guess context; if unclear → use `/ask-me`
 - If creating a new skill → update `AGENTS.md`
 
-- Use /update-agents-skills-global if needed (similar)
 - Use /deep-review if needed
-- Use /use-related-skills if needed
+- Use `/update-agents-skills-global` (`## Conventions → Related Skills`) if needed
 - Use /use-scripts if needed
 
 ## Expected Outcome

@@ -7,7 +7,7 @@ related:
   - scan-codebase
   - check-code-structure
   - use-astgrep
-  - report-deep
+  - deep-report
   - deep-research
   - run-audit
   - use-scripts
@@ -141,7 +141,7 @@ Covers analysis across many dimensions:
 
 1. Follow `workflows/report-analysis/SKILL.md` — organize findings, root cause chains, evidence
 2. Aggregate per-domain scores from the dispatched `/deep-review` dimensions → overall score + grade — table `No. | Domain | Score | Grade | Top Finding`
-3. Run `/report-deep` or `/create-report-to-dot-agents` for a persistent artifact
+3. Run `/deep-report quick` or `/create-report-to-dot-agents` for a persistent artifact
 4. Provide recommendations by priority and impact with action items + roadmap
 
 ## Rules
@@ -190,7 +190,7 @@ Covers analysis across many dimensions:
 
 - Group findings by category
 - Provide recommendations + roadmap + action items by priority and impact
-- Use `/report-deep` for a detailed report or `/report` for a chat table
+- Use `/deep-report quick` for a detailed report or `/report` for a chat table
 
 ### 7. Deep Analysis Scripts
 

@@ -11,7 +11,7 @@ related:
   - suggest-next-action
   - cleanup-project
   - run-clean
-  - run-cleanup
+  - cleanup-artifact
 ---
 
 ## Goal
@@ -127,7 +127,7 @@ Use on any user computer (not limited to a workspace), covering package caches, 
 - macOS/Linux: use bash/zsh commands
 - Use `dua`, `duf`, `ncdu`, `gt5` if installed
 - Use /run-clean if needed
-- Use /run-cleanup if needed
+- Use /cleanup-artifact if needed
 
 - Final report via `/report-review` — one chat table (No./Action/Evidence/Severity/Risk/Priority/Owner skill/Status), no report files
 

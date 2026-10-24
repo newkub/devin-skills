@@ -65,7 +65,7 @@ Use when a project needs a measured quality gate — the review CLI exists (or i
 2. A category with no mapping → mark it an analyzer gap for `/update-review-cli`; never invent a dimension name
 3. Hand the evidence-backed set to `/deep-review <scope>` when the fix needs review-grade analysis, or straight to its `/improve`/`/optimize` fix owner when the finding is already actionable
 4. Fixing is never implicit — a fix round runs through `/deep-review <scope> then-fix` after the user confirms
-5. Persist durable findings before closing the run (`### 5`) — a Critical/High finding that is mechanically enforceable becomes an ast-grep rule or a `.devin/rules/*.md` convention, so the next run catches it instead of re-reporting it
+5. Persist durable findings before closing the run (`### 5`) — a Critical/High finding that is mechanically enforceable becomes an ast-grep rule or a `.agents/rules/*.md` convention, so the next run catches it instead of re-reporting it
 
 ### 5. Verify The Project State
 
@@ -107,7 +107,7 @@ Use when a project needs a measured quality gate — the review CLI exists (or i
 
 ### 5. Persist Durable Findings
 
-- Every confirmed Critical/High finding that is mechanically enforceable is persisted before the run closes: patterns, imports, and API misuse → `/update-astgrep-rules` (AST rule + `sgconfig.yml`); conventions and agent guidance → `/update-dot-agents-project` (`.devin/rules/*.md`); a durable analyzer gap → `/update-review-cli`
+- Every confirmed Critical/High finding that is mechanically enforceable is persisted before the run closes: patterns, imports, and API misuse → `/update-astgrep-rules` (AST rule + `sgconfig.yml`); conventions and agent guidance → `/update-dot-agents-project` (`.agents/rules/*.md`); a durable analyzer gap → `/update-review-cli`
 - Route by the `Enforcement` column of `deep-review-codebase-everything/references/review.md` (`## Dimension Matrix`) — never a second catalog
 - Confirm the new rule fires on the original `file:line`; a rule that does not fire on the violation is not durable
 
@@ -122,6 +122,6 @@ Use when a project needs a measured quality gate — the review CLI exists (or i
 - One full scan run and read: score, grade, domain breakdown, category coverage, analyzer errors, false-positive rate, and baseline delta
 - Metric triggers either cleared within 3 rounds or reported with the exact gap handed to `/update-review-cli`
 - Every Critical/High finding routed to a real dimension through the CLI `reviewWorkflow` map
-- Durable Critical/High findings persisted as ast-grep rules or `.devin/rules` conventions, each proven on its original `file:line`
+- Durable Critical/High findings persisted as ast-grep rules or `.agents/rules` conventions, each proven on its original `file:line`
 - Project state verified with `/run-verify`, remaining work tracked with `/follow-tasks`
 - One chat report via `/report-review` followed by `/suggest-next-action`

@@ -5,7 +5,7 @@ argument-hint: "[scope]"
 related:
   - follow-tool-vitest
   - use-astgrep
-  - migration-with-astgrep
+  - migrate
   - update-tests
   - run-test
 ---
@@ -45,7 +45,7 @@ Migrate the test suite from Jest to Vitest safely — the suite fully green befo
 
 > Goal: convert Jest APIs to Vitest equivalents
 
-1. Use `/use-astgrep` or `/migration-with-astgrep` for bulk renames — one commit per pattern
+1. Use `/use-astgrep` or `/migrate` for bulk renames — one commit per pattern
 2. Map mock APIs: `jest.mock` → `vi.mock`, `jest.fn` → `vi.fn`, `jest.spyOn` → `vi.spyOn`, `jest.requireActual` → `vi.importActual` (async), `jest.doMock` → `vi.doMock`
 3. Map timers: `jest.useFakeTimers` → `vi.useFakeTimers`, `jest.advanceTimersByTime` → `vi.advanceTimersByTime`
 4. `@jest/globals` imports → `vitest` imports or the globals config

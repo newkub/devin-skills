@@ -137,9 +137,7 @@ Use for git repositories that need to work on several branches at once without d
 - Run `git worktree prune` to remove leftover tracking
 - Do not delete the worktree directory manually before running `git worktree remove`
 
-- Use /list-git-worktree if needed
-- Use /delete-git-worktree if needed
-- Use /cleanup-worktree if needed
+- Use /git-worktree if needed (list, remove, cleanup modes)
 
 ## Expected Outcome
 

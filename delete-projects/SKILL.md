@@ -141,7 +141,7 @@ Safely delete a project from every place it lives: the local directory, the remo
 - If a deletion was a mistake → notify the user and state the recovery steps
 
 - Use /delete-git-branch if needed
-- Use /delete-git-worktree if needed
+- Use /git-worktree remove if needed
 - Use /follow-service-cloudflare if needed
 - Use /list-cloudflare-projects if needed
 

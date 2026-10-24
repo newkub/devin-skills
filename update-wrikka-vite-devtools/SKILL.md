@@ -7,7 +7,7 @@ allowed-tools:
   - read
 related:
   - use-wrikka-vite-devtools
-  - follow-tool-devfra
+  - follow-tool-vite-devtools
   - follow-tool-tsdown
   - follow-tool-pkg-new
   - git-commit-and-push
@@ -25,7 +25,7 @@ RPC/option surface, docs sync, and shipping a pkg.pr.new preview — with minima
 ## Scope
 
 - In: the repo at `%APPDATA%\devin\skills\wrikka-vite-devtools\` (a git submodule of `devin-skills`): `src/`, `scripts/`, build configs, `README.md`, `USAGE.md`, `.github/workflows/`
-- Out: mounting the plugin in a host project → `/use-wrikka-vite-devtools`; upstream Devframe behaviour → `/follow-tool-devfra`
+- Out: mounting the plugin in a host project → `/use-wrikka-vite-devtools`; upstream Devframe behaviour → `/follow-tool-vite-devtools` (`### 8`)
 - The repo's `AGENTS.md` is the SSOT for layering, bundling constraints, and code conventions — read it before editing, never restate it here
 
 ## Execute

@@ -14,9 +14,9 @@ related:
   - use-lib-effective
   - follow-best-practice
   - follow-architecture
+  - follow-tool-ctx-rs
   - update-agents-skills-global
   - update-references
-  - use-subagents
   - simplify
 ---
 
@@ -53,7 +53,7 @@ Out of scope here — handed off; every `/skill` mention below is either the `re
 | performance tuning | `/deep-optimize` |
 | circular dependency graph | `/follow-tool-madge` |
 | ORM setup, payload/schema validation boundary | `/follow-lib-drizzle`, `/follow-tool-data-validation` |
-| `AGENTS.md`, ast-grep rules, `.devin/rules` persistence | `/update-agents-md`, `/update-astgrep-rules`, `/update-dot-agents-project` |
+| `AGENTS.md`, ast-grep rules, `.agents/rules` persistence | `/update-agents-md`, `/update-astgrep-rules`, `/update-dot-agents-project` |
 | error recovery, user decision, single-source convention | `/resolve-errors`, `/ask-me`, `/follow-single-of-source` |
 
 ## Execute
@@ -67,6 +67,7 @@ Out of scope here — handed off; every `/skill` mention below is either the `re
 4. Read the table before planning: empty table and no new code → nothing to refactor, report and stop; new code only → jump to `### 3` file/SRP with no baseline
 5. Safety net: target's public behavior has no tests → run `/update-tests` to lock current behavior with characterization tests
 6. Record the baseline for the after-comparison: `git rev-parse HEAD` (the sha `### 5` diffs against), `/check-long-files` line counts, `/deep-review` finding count, suite and lint status
+7. Map the blast radius with `/follow-tool-ctx-rs`: `ctx graph index .` once, then `ctx graph impact <symbol>` and `ctx graph callers <symbol>` for every target — add the callers that must change with it to the `### 1` table; `ctx blame file <path> --lines <start>:<end>` when the provenance of a block affects whether to keep it; graph evidence is potential impact, never runtime proof, and an unindexed graph is reported as a limit rather than guessed around
 
 ### 2. Plan
 > Goal: know what moves and in what order before moving it

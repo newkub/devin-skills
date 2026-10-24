@@ -9,6 +9,7 @@ related:
   - create-plan-in-dot-agents
   - deep-validate
   - report
+  - idea-global-mcp
 ---
 
 ## Goal
@@ -22,6 +23,7 @@ Use when you want skills to be accessible from other MCP clients or to integrate
 - Survey skills/families that contain executable logic (scripts, CLIs, data-returning checks)
 - Assess which skills are suitable as an MCP tool/resource/prompt
 - Write a draft MCP server design (don't actually implement until the user confirms → `/follow-your-suggestion`)
+- Broader discovery across skills, CLIs, hooks, and services, plus the build-or-not decision → `/idea-global-mcp`; this skill owns the skill-to-MCP draft design
 - Support single skills, skill families (`check-*`, `run-*`), and the whole repo
 
 ## Execute

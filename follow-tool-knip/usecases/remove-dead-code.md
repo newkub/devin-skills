@@ -35,7 +35,7 @@ Remove in this order — each step can make more of the next one unused:
 ## 3. Verify after each step
 
 ```bash
-bunx tsc --noEmit && bun test && bun run build
+bun run typecheck && bun test && bun run build
 ```
 
 A removed export that something *did* use fails typecheck immediately; a removed file that a bundler resolved dynamically fails the build.

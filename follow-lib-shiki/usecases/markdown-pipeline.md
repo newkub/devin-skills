@@ -1,104 +1,105 @@
 # Use Case — Highlight Fenced Code in a Markdown Pipeline
 
-> Handing markdown fences to Shiki means the plugin must be created once, with the same themes and transformers as the rest of the site, and wired into the renderer without making every render async. Source: https://shiki.style/packages/markdown-it (accessed 2026-10-20)
+> Sätteri parses Markdown into HAST; Shiki turns each fence into highlighted HAST. Create the highlighter once with the same themes and transformers the rest of the site uses, then swap the fence nodes in a single tree pass. Source: https://satteri.bruits.org/docs/asts (accessed 2026-10-24)
 
-## 1. Create the markdown instance once
-
-```ts
-// src/markdown.ts
-import MarkdownIt from "markdown-it";
-import Shiki from "@shikijs/markdown-it";
-import { transformerNotationDiff } from "@shikijs/transformers";
-
-export const md = MarkdownIt({ html: true, linkify: true });
-
-md.use(
-  await Shiki({
-    themes: {
-      light: "vitesse-light",
-      dark: "vitesse-dark",
-    },
-    transformers: [transformerNotationDiff()],
-  }),
-);
-```
-
-`Shiki()` is async because it initializes a highlighter, so the `await` belongs at module scope in a build script or server entry — not inside the request handler. One instance, reused for every document.
-
-## 2. Pass transformers in the same options object
+## 1. Create the highlighter once
 
 ```ts
-import { transformerNotationDiff, transformerNotationHighlight } from "@shikijs/transformers";
+// src/markdown/highlighter.ts
+import { codeToHast } from "shiki"
+import { transformerNotationDiff } from "@shikijs/transformers"
 
-md.use(
-  await Shiki({
-    themes: { light: "vitesse-light", dark: "vitesse-dark" },
-    transformers: [transformerNotationDiff(), transformerNotationHighlight()],
-  }),
-);
+export const shikiOptions = {
+  themes: { light: "vitesse-light", dark: "vitesse-dark" },
+  transformers: [transformerNotationDiff()],
+} as const
+
+export const highlightFence = (code: string, lang: string) =>
+  codeToHast(code, { ...shikiOptions, lang })
 ```
 
-These are the same transformers you would pass to `codeToHtml`; the plugin forwards its options straight to the highlighter, so behaviour stays identical between markdown fences and code rendered directly.
+`codeToHast` is async because it initializes the grammar. Export the function, not a per-render call, so the grammar is loaded once for the whole build.
 
-## 3. Keep a fine-grained bundle
+## 2. Parse the document to HAST
 
 ```ts
-import { fromHighlighter } from "@shikijs/markdown-it/core";
-import { createHighlighterCore } from "shiki/core";
-import { createOnigurumaEngine } from "shiki/engine/oniguruma";
+import { markdownToHast } from "satteri"
 
-const highlighter = await createHighlighterCore({
-  themes: [import("@shikijs/themes/vitesse-light"), import("@shikijs/themes/vitesse-dark")],
-  langs: [import("@shikijs/langs/ts"), import("@shikijs/langs/bash")],
-  engine: createOnigurumaEngine(() => import("shiki/wasm")),
-});
-
-md.use(fromHighlighter(highlighter, { /* same options */ }));
+const tree = markdownToHast(source, { position: false })
 ```
 
-The default `@shikijs/markdown-it` entry imports the full bundle. `fromHighlighter` lets the same plugin run against a highlighter you already control, which is how a docs site keeps only the grammars it actually documents.
+`markdownToHast` is synchronous and does no rendering. `position: false` skips source positions — a real cost saving when the tree is used only to transform nodes.
 
-## 4. Use the async path when languages are unknown
+## 3. Replace each `pre > code` fence
 
 ```ts
-import MarkdownItAsync from "markdown-it-async";
-import { fromAsyncCodeToHtml } from "@shikijs/markdown-it/async";
-import { codeToHtml } from "shiki";
+// src/markdown/render.ts
+import { markdownToHast, hastToHtml } from "satteri"
+import { highlightFence } from "./highlighter"
 
-const md = MarkdownItAsync();
+const fenceLang = (pre: any): string | null => {
+  const code = pre.children?.find((n: any) => n.type === "element" && n.tagName === "code")
+  if (!code) return null
+  const raw = code.properties?.className ?? []
+  const classes = Array.isArray(raw) ? raw : [raw]
+  const hit = classes.map(String).find((c: string) => c.startsWith("language-"))
+  return hit ? hit.slice("language-".length) : null
+}
 
-md.use(
-  fromAsyncCodeToHtml(codeToHtml, {
-    themes: { light: "vitesse-light", dark: "vitesse-dark" },
-  }),
-);
+const walk = async (node: any) => {
+  if (!Array.isArray(node.children)) return
+  for (let i = 0; i < node.children.length; i++) {
+    const child = node.children[i]
+    if (child.type === "element" && child.tagName === "pre") {
+      const lang = fenceLang(child)
+      if (lang) {
+        const code = child.children.find((n: any) => n.type === "element" && n.tagName === "code")
+        const text = code.children.map((n: any) => n.value ?? "").join("")
+        const hast = await highlightFence(text, lang)
+        const replacement = hast.children?.[0]
+        if (replacement) {
+          node.children[i] = replacement
+          continue
+        }
+      }
+    }
+    await walk(child)
+  }
+}
 
-const html = await md.renderAsync(markdown);
+export const renderMarkdown = async (source: string): Promise<string> => {
+  const tree = markdownToHast(source, { position: false })
+  await walk(tree)
+  return hastToHtml(tree)
+}
 ```
 
-Plain markdown-it cannot await a highlighter. `markdown-it-async` plus `fromAsyncCodeToHtml` keeps the shorthand's on-demand loading and returns a promise from `renderAsync` — the right shape when authors use languages you did not preload.
+Shiki returns a full `<pre>` subtree, so `hast.children[0]` replaces the fence wholesale — no wrapper is re-applied and no double escaping happens.
 
-## 5. Know the `<pre><code>` wrapper constraint
+## 4. Keep one highlighter for fences and direct code
 
-markdown-it enforces `<pre><code>` as the outermost elements of a fence. A transformer that wraps the block in another `<div>` gets wrapped again, producing nested `<pre>` tags. If the design needs a wrapper, add `olets/markdown-it-wrapperless-fence-rule`, or write a fence rule that returns the HTML without the default wrapper — otherwise keep custom markup inside the `<code>` node.
+The same `shikiOptions` object feeds `codeToHtml`/`codeToHast` elsewhere in the app. A transformer added for Markdown fences must also apply to standalone code blocks, otherwise the same snippet renders two different ways on one page.
+
+## 5. Prefer the plugin form for one pass
+
+If the pipeline already runs Sätteri plugins, do the same work in a `defineHastPlugin` `element` visitor and return the Shiki subtree from the visitor to replace the `pre` node. The tree walk above is the explicit version — useful when the render step is a script rather than a compile.
 
 ## 6. Verify
 
-1. Render a fence with `ts` — the output contains `class="shiki"` and per-token inline colors
-2. Render a fence tagged with an unknown language — the block still renders (no crash) and the language is visibly unhandled
-3. Dark mode — the same HTML switches colors without a re-render
+1. Render a `ts` fence — output contains `class="shiki"` and per-token inline colours
+2. Render an unknown language — the block still renders escaped, no throw
+3. Dark mode — the same HTML switches colours without a re-render
 4. `// [!code ++]` inside a fence — the comment is stripped and the line carries `diff add`
-5. A transformer that wraps the block — confirm there is exactly one `<pre>` in the output
-6. Build time — the plugin is created once, not per document
+5. Build time — the grammar is requested once per language, not once per document
 
 ## Pitfalls
 
-- `await Shiki()` inside a render function, which re-initializes the highlighter for every document.
-- Using a transformer in markdown but not in the direct `codeToHtml` calls, so the same snippet renders differently in two places.
-- Importing `@shikijs/markdown-it` in a client bundle — the plugin belongs in the build/SSR layer.
-- Forgetting `markdown-it-async` and calling `md.render` with the async integration; `renderAsync` is the async entry.
-- A custom transformer that adds a wrapper element, which markdown-it wraps in another `<pre><code>` pair.
-- Preloading every language "because authors might use it" — the fine-grained path exists to avoid exactly that.
+- Calling `codeToHast` per fence without caching the highlighter — grammars reload for every document.
+- Reading `code.children[0].value` as the whole code — fences may be split across several text nodes; join them.
+- Forgetting `position: false` in build scripts — positions cost parse time and memory for a tree nobody inspects.
+- Re-parsing the rendered HTML with `markdownToHast` — the input is HTML; use `htmlToHast` if a parse is really needed.
+- Importing Shiki in the client bundle — highlighting belongs in the build/SSR layer.
+- Preloading every language "because authors might use it" — pass `lang` per fence and let Shiki load on demand.
 
 ## Related
 

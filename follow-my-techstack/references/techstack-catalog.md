@@ -15,7 +15,7 @@ Canonical tech stack + default picks per category, grouped by ecosystem.
 | Package Manager | `Bun` | `aube` | `Cargo` | - |
 | Build Tool | `tsdown`, `Rolldown` (oxc engine) | - | `Cargo` | - |
 | JS/TS Parser | `oxc-parser` | - | `oxc_parser` | - |
-| Type Checker | `tsc` | - | `rustc` | - |
+| Type Checker | `bun check` (no Vite), `tsrs` (Vite) | `tsc` (declaration emit only) | `rustc` | - |
 | Tool Version Manager | `mise` | - | `mise` | - |
 | Web Framework | `Elysia` | `Hono` (→CF Workers/multi-runtime), `Nitro` (→in Nuxt) | `Axum` | `Actix Web` |
 | Full-stack Framework | `Nuxt 4` (Vue), `TanStack Start` (Solid) | `Astro` (→content site), `SvelteKit` (→Svelte), `Next.js` (→React, `/follow-lib-react`) | `Dioxus` | - |
@@ -33,7 +33,7 @@ Canonical tech stack + default picks per category, grouped by ecosystem.
 | Router | `TanStack Router` | `Vue Router` (→in Nuxt) | `Axum` router | - |
 | Data Fetching | `TanStack Query` | `pinia-colada` (→light Vue) | `reqwest` | - |
 | Caching | `TanStack Query` cache | - | `moka` | - |
-| Markdown | `marked` + `shiki` | `markdown-it`, `comark` | `pulldown-cmark` | `comrak`, `syntect` (→highlight) |
+| Markdown | `satteri` + `shiki` (see `/follow-lib-satteri`) | `marked` (→minimal) | `pulldown-cmark` | `comrak`, `syntect` (→highlight) |
 | HTML Templating | `Edge.js` (see `/follow-lib-edgejs`) | - | - | - |
 | i18n | `vue-i18n` (`@intlify/*`) | - | `fluent` | - |
 | CLI Framework | `citty` (+`usage` spec) | `cac`, `commander`, `TanStack CLI` | `Clap` | - |
@@ -62,7 +62,7 @@ Canonical tech stack + default picks per category, grouped by ecosystem.
 | AI Memory | `Cloudflare Agent Memory` | `supermemory` (→hosted) | - | - |
 | Linter | `Biome` | `Oxlint` (→big repo/speed), `ESLint` (→compat) | `Clippy` | - |
 | Formatter | `Biome` | `bun fmt` (→Bun runtime, built in), `dprint` (→other languages), `oxfmt` (→oxc formatter, new) | `rustfmt` | `dprint` |
-| Code Search | `ast-grep` | `GritQL` (→in Biome), `Semgrep` (→security) | `ast-grep` | - |
+| Code Search (AST + text) | `ast-grep` + `ripgrep` | `GritQL` (→in Biome), `Semgrep` (→security), `tgrep` (→regex on 100k+ files, trigram index + shared server, `microsoft/tgrep`) | `ast-grep` + `ripgrep` | `tgrep` (→`microsoft/tgrep`, ripgrep-compatible flags) |
 | Dep Hygiene | `Knip` (unused) | `madge` (circular), `publint` + `attw` (package lint) | `cargo-udeps` | `cargo-modules` |
 | Testing | `Vitest` + `Playwright` | `happy-dom` (→DOM env), `fast-check` (→property, `/follow-lib-fast-check`), `TSTyche` (→types, `/follow-lib-tstyche`) | `cargo-nextest` | `insta` (→snapshot), `proptest` (→property) |
 | E2E (Mobile/UI) | `Playwright` (→web, `/follow-tool-playwright`) | `Maestro` (→Android/iOS/web YAML flows + MCP, `/follow-tool-maestro`), `e2e` (→agentic, `/follow-tool-e2e`) | - | - |
@@ -99,7 +99,7 @@ Canonical tech stack + default picks per category, grouped by ecosystem.
 | Native Speed | `lightningcss` (CSS) | `oxfmt` (format), `bun fmt` (→Bun runtime, no install) |
 | Bundle Analysis | `sonda` | `bundlewatch` |
 | Inspect / Debug | `vite-plugin-inspect` | `node-modules-inspector` |
-| DevTools Framework | `@vitejs/devtools` (→`/follow-tool-vite-devtools`) | `@vitejs/devtools-kit` (→author integrations), `devframe` (→framework-neutral, `/follow-tool-devfra`), `wrikka-vite-devtools` (→project-specific dock, `/use-wrikka-vite-devtools`) |
+| DevTools Framework | `@vitejs/devtools` (→`/follow-tool-vite-devtools`) | `@vitejs/devtools-kit` (→author integrations), `devframe` (→framework-neutral, same skill `### 8`), `wrikka-vite-devtools` (→project-specific dock, `/use-wrikka-vite-devtools`) |
 
 ## Vue / Nuxt Ecosystem
 

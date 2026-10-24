@@ -99,7 +99,7 @@ Latest: `taze@21.1.0`, `lefthook@2.1.14` (verified 2026-09-16)
 
 Pick the tier by project size and complexity
 - Minimal (Default): dev, build, typecheck, lint, format, test, scan, check, verify, ci - fits most projects
-- Standard: Minimal + test:watch, test:coverage, deps:analyze, clean, security, db scripts, predeploy, deploy:staging - fits projects needing extra testing and dependency management
+- Standard: Minimal + test:watch, test:coverage, examples, deps:analyze, clean, security, db scripts, predeploy, deploy:staging - fits projects needing extra testing and dependency management
 - Complete: Standard + build:watch, typecheck:watch, test:integration, test:e2e, benchmarks, prerelease, db:studio - fits infra/tooling teams
 
 For Bun monorepos:
@@ -113,7 +113,7 @@ All command-lookup tables live in [references/scripts-tables.md](references/scri
 
 - `Script Mechanism` — `Cargo.toml`/Python/Go have no built-in script runner → use `justfile`, `cargo-make`, `xtask`, `Makefile`, `poe`, `nox`, `Taskfile.yml` (never put scripts in `Cargo.toml`)
 - `Bun-Native Alternatives` — `bun test`, `bun audit`, `bun ci`, `bun run --workspaces`, `bun --filter`
-- `Required / Watch / Testing / Deps / Database / Prerelease+Bench / Security / Deploy / Docs` — every stack covered: Bun, Nuxt (`nuxi` commands), Next.js, Solid Start, SvelteKit, Tauri, Rust, Python, Go
+- `Required / Watch / Testing / Examples / Deps / Database / Prerelease+Bench / Security / Deploy / Docs` — every stack covered: Bun, Nuxt (`nuxi` commands), Next.js, Solid Start, SvelteKit, Tauri, Rust, Python, Go
 - `Secrets, Monorepo, Review CLI, Other Ecosystems` (Kotlin, PHP, Swift, Zig, Lua, C#)
 
 Key rules tied to the tables:
@@ -151,6 +151,7 @@ The `dev` script must not hardcode a port — run it through `portless` so it ge
 - `package.json` or the task runner file carries the scripts of the chosen template (state change)
 - Scripts match the tech stack (tables in [references/scripts-tables.md](references/scripts-tables.md))
 - The `verify` and `ci` pipelines work correctly — `bun run verify` passes, `ci` is read-only
+- With the Standard tier or an `examples/` directory: the `examples` script runs every example with one command
 - `dev` runs through `portless` at `https://<name>.localhost` with no hardcoded port
 - If `review/` exists, `bun run review` passes or the failure cause is known
 - With Infisical: root `package.json` has the `secrets:*` scripts and `INFISICAL_TOKEN` is set in CI/CD

@@ -5,6 +5,7 @@ argument-hint: "[scope]"
 related:
   - keepup-source-code
   - update-version-to-latest
+  - check-update
   - check-should-update
   - deep-review
   - update-agents-skills-global
@@ -16,7 +17,6 @@ related:
   - deep-research
   - learn-from-web
   - sync-drive-d-submodules
-  - report
   - suggest-next-action
 
 ---
@@ -46,10 +46,11 @@ Not the executor of fixes — project code → `/keepup-source-code`, deps/versi
 
 > Goal: have evidence before every fix
 
-1. Use `/check-should-update` to compare git changes and decide whether a target needs update, skip, or create
-2. Use `/deep-review` to find domain signals: deprecated APIs, versions older than latest, content/links not matching reality (scopes `deprecated-apis`, `content-outdate`)
-3. Compare against external latest with `/deep-research` or `/learn-from-web` — official docs/registry/release tags only, never recall values from memory
-4. Consolidate into a list: `{domain, item, signal, severity}` — no signal = no change for that domain
+1. Use `/check-update` to compare installed versions against GitHub releases, registry, and blog channels — it classifies up-to-date/patch/minor/major
+2. Use `/check-should-update` to compare git changes and decide whether a target needs update, skip, or create
+3. Use `/deep-review` to find domain signals: deprecated APIs, versions older than latest, content/links not matching reality (scopes `deprecated-apis`, `content-outdate`)
+4. Compare against external latest with `/deep-research` or `/learn-from-web` — official docs/registry/release tags only, never recall values from memory
+5. Consolidate into a list: `{domain, item, signal, severity}` — no signal = no change for that domain
 
 ### 3. Dispatch To The Right Updater
 
@@ -58,7 +59,7 @@ Not the executor of fixes — project code → `/keepup-source-code`, deps/versi
 | No. | Domain | Executor |
 |-----|--------|----------|
 | 1 | project source code (docs/tests/config in sync with code) | `/keepup-source-code` |
-| 2 | dependencies, runtime, tools, CI, lockfile | `/update-version-to-latest` |
+| 2 | dependencies, runtime, tools, CI, lockfile | `/check-update` → `/update-version-to-latest` |
 | 3 | global skill content/repo standards | `/update-agents-skills-global` |
 | 4 | project docs / `AGENTS.md` | `/update-docs`, `/update-agents-md` |
 | 5 | locally installed programs | `/update-all-program-in-computer` |

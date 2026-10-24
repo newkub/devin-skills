@@ -1,0 +1,25 @@
+{
+  "name": "watch-references",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Continuously running reference intelligence for coding agents",
+  "bin": {
+    "watch-ref": "./src/cli.ts"
+  },
+  "scripts": {
+    "scan": "bun src/cli.ts scan",
+    "watch": "bun src/cli.ts watch",
+    "serve": "bun src/cli.ts serve",
+    "test": "bun test tests",
+    "typecheck": "bun check -p . --no-script",
+    "format:check": "bun fmt -c"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.30.0",
+    "zod": "^3.25.76"
+  },
+  "devDependencies": {
+    "@types/bun": "^1.4.4"
+  }
+}

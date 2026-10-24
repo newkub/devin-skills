@@ -61,7 +61,7 @@ export const app = createApp();
 ```
 ````
 
-`this.options.meta.__raw` is the raw string markdown-it or rehype attached to the fence; treat it as untrusted text and put the parsed value in an attribute rather than building markup from it. Guard on `meta` — the same transformer also runs for direct `codeToHtml` calls, where there is no fence.
+`this.options.meta.__raw` is the raw string the renderer (Sätteri or rehype) attached to the fence; treat it as untrusted text and put the parsed value in an attribute rather than building markup from it. Guard on `meta` — the same transformer also runs for direct `codeToHtml` calls, where there is no fence.
 
 ## 4. Tag tokens only when something consumes them
 

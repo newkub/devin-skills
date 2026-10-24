@@ -6,7 +6,7 @@ related:
   - use-astgrep
   - search-with-astgrep
   - use-astgrep-programmatic
-  - migration-with-astgrep
+  - migrate
   - run-check
   - ask-me
   - report
@@ -86,7 +86,7 @@ Safely change code across many files with ast-grep AST patterns — preview matc
 - If dirty → warn and offer commit/stash first; never apply silently
 
 - Use /search-with-astgrep when needed (pattern syntax/search)
-- Use /migration-with-astgrep when needed (rule-file migrations)
+- Use /migrate when needed (staged migration plan, data, cutover)
 - Use /use-astgrep-programmatic when needed (multi-file scan via napi, transforms YAML can't do)
 - Use /ask-me when needed
 

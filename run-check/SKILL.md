@@ -7,6 +7,7 @@ related:
   - run-lint
   - run-typecheck
   - run-scan
+  - follow-tool-ctx-rs
 
 ---
 
@@ -18,7 +19,7 @@ Run lint, typecheck and scan to verify quality
 
 Use `run-check` for tasks and workflows within its coverage (check)
 
-- Vite+ project: `vp check` runs fmt + lint + type-aware check in one pass, but it is not a full `tsc` replacement — still run `/run-typecheck` and `/run-scan` (see `/follow-tool-viteplus`)
+- Vite+ project: `vp check` runs fmt + lint + type-aware check in one pass, but it is not a full typecheck (`tsrs --noEmit`) — still run `/run-typecheck` and `/run-scan` (see `/follow-tool-viteplus`)
 
 ## Execute
 
@@ -47,6 +48,15 @@ Use `run-check` for tasks and workflows within its coverage (check)
 1. Run `/run-scan` to check code patterns
 2. Fix scan issues if any
 3. Confirm scan passes
+
+### 4. Compact Noisy Output
+
+> Goal: keep check output readable and inside the token budget (`/follow-tool-ctx-rs`)
+
+1. Output is long (>100 lines) → rerun the read-only check through sift: `ctx sift err -- vp lint`, `ctx sift summary -- vp run typecheck`, `ctx sift test -- bun test`
+2. Output already captured in a log → `ctx sift compact <log-file>` instead of rerunning anything
+3. `ctx sift gain` — confirm the measured reduction before claiming one; short output passes through unchanged
+4. Sift is a reading aid only — diagnostics and fix decisions come from the real command and its exit status, never from the compacted view alone
 
 ## Rules
 

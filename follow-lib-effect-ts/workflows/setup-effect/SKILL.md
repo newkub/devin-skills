@@ -46,7 +46,7 @@ Install Effect-TS and configure TypeScript/project structure so `Effect`, `Layer
 2. `bun add @effect/platform` + `@effect/platform-bun` (Bun) or `@effect/platform-node` (Node) per runtime
 3. `bun add -D vitest @effect/vitest` for tests — check the peer `vitest ^3.2` first (setup: `/follow-tool-vitest`)
 4. `Schema` lives in core `effect` — don't install `@effect/schema` separately (legacy)
-5. (optional) `bun add -D @effect/language-service` + add `{ "name": "@effect/language-service" }` to `tsconfig.compilerOptions.plugins` for editor diagnostics; TypeScript `>= 7` uses `@effect/tsgo` instead
+5. (optional) `bun add -D @effect/language-service` + add `{ "name": "@effect/language-service" }` to `tsconfig.compilerOptions.plugins` for editor diagnostics
 
 ### 4. Create Structure And Basics
 

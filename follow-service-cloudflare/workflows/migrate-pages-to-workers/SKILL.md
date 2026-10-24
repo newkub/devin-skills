@@ -79,7 +79,7 @@ Migrate the project from Cloudflare Pages to Workers (Static Assets + Worker scr
 
 ### 3. Docs First
 
-- assets config fields and limits can change — rely on official docs via `/use-wrangler` instead of guessing
+- assets config fields and limits can change — rely on official docs via `/follow-service-cloudflare` instead of guessing
 
 ## Expected Outcome
 

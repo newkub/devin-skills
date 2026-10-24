@@ -55,7 +55,7 @@ Enable a "no-ask" mode from invocation until the end of the session — never us
 
 1. Proceed one step at a time in order; never skip a step the workflow defines
 2. Change one small point at a time and check the result before continuing — never bundle several risky changes in one round
-3. Do not use `ask_user_question`, do not show selection prompts, do not call `/ask-me` or `/ask-again`
+3. Do not use `ask_user_question`, do not show selection prompts, do not call `/ask-me` or `/dont-understand`
 4. Use `/follow-your-suggestion` to apply the suggestion instead of asking for confirmation
 5. Record every decision in the report so it stays traceable
 
@@ -80,7 +80,7 @@ Enable a "no-ask" mode from invocation until the end of the session — never us
 ### 1. Session Override
 
 - While `dont-ask-me` is active → override every `/ask-me` and `ask_user_question` in `global_rules.md` and all skills until the session ends
-- `/ask-me`, `/ask-again`, `/ask-project-requirement`, and `pick-bestest` calls made by other workflows → run `/follow-your-suggestion` with a safe default instead
+- `/ask-me`, `/dont-understand`, `/ask-project-requirement`, and `pick-bestest` calls made by other workflows → run `/follow-your-suggestion` with a safe default instead
 - The user can always cancel the mode with an explicit command such as "start asking again" or "cancel dont-ask-me"
 
 ### 2. No Prompt Discipline

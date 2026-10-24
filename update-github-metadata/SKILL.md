@@ -17,7 +17,7 @@ Update GitHub repository metadata to reflect the real project, covering descript
 
 ## Scope
 
-Use after push or after `update-project` to sync GitHub repo metadata with the content in `README.md`, `package.json`, and `AGENTS.md`, including the Cloudflare project URL from `/list-cloudflare-projects`. Covers metadata set via `gh repo edit` and branch protection via `gh api`; does not edit code, docs, or license. For `.github` templates use `/follow-dot-github`; for the local git flow use `/follow-git-flow`
+Use after push or after `update-project` to sync GitHub repo metadata with the content in `README.md`, `package.json`, and `AGENTS.md`, including the Cloudflare project URL from `/list-cloudflare-projects`. Covers metadata set via `gh repo edit` and branch protection via `gh api`; does not edit code, docs, or license. For `.github` templates use `/follow-dot-github`; for the local git flow use `/follow-git-workflows setup`
 
 ## Execute
 
@@ -134,7 +134,7 @@ Use after push or after `update-project` to sync GitHub repo metadata with the c
 
 - Use `/git-push` if you need to push first
 - Use `/follow-dot-github` if you need to check GitHub settings or create `.github` templates
-- Use `/follow-git-flow` if you only need the local git flow
+- Use `/follow-git-workflows setup` if you only need the local git flow
 - Use `/list-github-repo` if you need to list repos
 - Use `/list-cloudflare-projects` if you need to find a Cloudflare URL
 - Use `/create-github-repo` if the repo does not exist yet

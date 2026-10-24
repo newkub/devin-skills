@@ -5,7 +5,7 @@ argument-hint: "[current|last|all|session-id]"
 related:
   - check-agents-session
   - enhance-prompt
-  - use-related-skills
+  - update-agents-skills-global
   - scan-codebase
   - deep-validate
   - report
@@ -68,7 +68,7 @@ Read every user request in a session, decide per requirement whether it was actu
 
 > Goal: answer "which skill should have been used"
 
-1. For each requirement run `/use-related-skills`, and `/scan-codebase` when the owner is still unclear
+1. For each requirement run `/update-agents-skills-global` (`## Conventions → Related Skills`), and `/scan-codebase` when the owner is still unclear
 2. Record two values: `skill used` (what actually ran, from the session's tool calls) and `skill should use` (the real owner)
 3. A gap is `should use` never ran, or an unrelated skill ran; no owner at all → mark `missing skill`
 

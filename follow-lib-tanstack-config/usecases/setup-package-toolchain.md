@@ -60,7 +60,7 @@ packages/my-lib/
     "test:build": "publint --strict",
     "test:eslint": "eslint --concurrency=auto ./src",
     "test:lib": "vitest run",
-    "test:types": "tsc --noEmit"
+    "test:types": "bun check -p . --no-script"
   }
 }
 ```

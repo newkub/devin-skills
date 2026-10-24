@@ -75,6 +75,7 @@ Use before a release, after a regression, or when a budget is suspected — a ro
 2. Dispatch through `/optimize` scopes (`perf`, `web-vitals`, `bundle`, `cache`, `network`, `llm`, `memory`, `startup`, `docker`, `cost`, `queries`) — one change at a time, re-measured before the next
 3. Optimization never changes the output or behavior of the optimized path; a gain that needs a feature change is a product decision, not a fix
 4. Independent targets → parallel workers via `/use-subagents`; an error mid-fix → `/resolve-errors`
+5. Persist what should not recur: a performance budget or convention → `/update-dot-agents-project rules`; a mechanically detectable anti-pattern (blocking call in a render path, unbounded query) → `/update-astgrep-rules`
 
 ### 6. Verify
 

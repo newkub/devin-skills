@@ -11,6 +11,7 @@ related:
   - follow-best-practice
   - use-my-packages-on-registry
   - setup-cicd
+  - migrate
 
 ---
 
@@ -115,7 +116,7 @@ For Vue 3 projects on either Vite 8 or Nuxt 4 (Vue 3.5.43 is the latest stable, 
 
 ### Workflows
 
-- Migrate Vue 2 → Vue 3 — options→composition, breaking changes, `@vue/compat` → `workflows/migrate-vue2-to-3/SKILL.md`
+- Migrate Vue 2 → Vue 3 — options→composition, breaking changes, `@vue/compat` → `workflows/migrate-vue2-to-3/SKILL.md`; for a staged plan with cutover and rollback → `/migrate`
 
 ### Use Cases
 

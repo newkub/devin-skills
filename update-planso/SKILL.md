@@ -3,10 +3,10 @@ name: update-planso
 description: Create or update Plane.so projects, work items, labels, priorities, and states
 argument-hint: "[project|workitem|label] <target> <changes>"
 related:
-  - list-planso
-  - create-task-in-planso
-  - create-plan-in-planso
-  - implement-from-planso
+  - list-todo-from-planso
+  - create-todo-in-planso
+  - implement-todo-from-planso
+  - save-to-backlog-in-planso
   - report
   - ask-me
 ---
@@ -20,7 +20,7 @@ Apply explicit changes to Plane.so projects, work items, labels, priorities, sta
 - Use when: the user asks to create a project, change priority/labels/state/assignee on existing items, or adjust project metadata
 - Writes through the Plane MCP: `mcp__plane__project`, `mcp__plane__workitem`, `mcp__plane__state`, `mcp__plane__label`, `mcp__plane__workitem_relation`, `mcp__plane__workitem_comment`, and `mcp__plane__workitem_type`
 - Bulk edits, state or label creation, and every delete need explicit confirmation
-- Browse with `/list-planso`, create items from findings with `/create-task-in-planso`, publish plans with `/create-plan-in-planso`; executing items -> `/implement-from-planso`
+- Browse with `/list-todo-from-planso`, create Todo items with `/create-todo-in-planso`, defer work with `/save-to-backlog-in-planso`, publish plans with `/create-todo-in-planso plan`; executing items -> `/implement-todo-from-planso`
 
 ## Execute
 

@@ -4,8 +4,7 @@ description: Use the Shiki syntax highlighter — TextMate grammars, zero runtim
 argument-hint: "[scope]"
 related:
   - improve
-  - follow-lib-comark
-  - follow-lib-markdown-it
+  - follow-lib-satteri
   - follow-tool-vitepress
 ---
 
@@ -17,7 +16,7 @@ Use Shiki as the project's syntax highlighter — the same TextMate grammars as 
 
 For JS/TS projects that need to highlight code blocks in UI, docs, markdown, or an editor — every runtime (Node, Bun, browser, Cloudflare Workers)
 
-- Boundary: Shiki does syntax highlighting only; the full markdown rendering pipeline → `/follow-lib-comark` or `/follow-lib-markdown-it`; a live editor → `@shikijs/monaco`
+- Boundary: Shiki does syntax highlighting only; the full markdown rendering pipeline → `/follow-lib-satteri`; a live editor → `@shikijs/monaco`
 - Used in `/improve uxui` when findings concern code blocks/UI code readability
 - Latest: `shiki@4.5.0` (verified 2026-10-03)
 
@@ -68,7 +67,7 @@ For JS/TS projects that need to highlight code blocks in UI, docs, markdown, or 
 
 > Goal: pick the integration per stack
 
-1. Markdown pipelines: `@shikijs/markdown-it`, `markdown-exit`, `@shikijs/rehype` — or via the Comark plugin `comark/plugins/shiki` (see `/follow-lib-comark`)
+1. Markdown/MDX pipelines: highlight fences inside a Sätteri HAST plugin with a shared highlighter, or use `@shikijs/rehype` on a rehype pass of the Sätteri HAST tree (see `/follow-lib-satteri`)
 2. Frameworks: `@shikijs/vitepress`, `@shikijs/nuxt`, `@shikijs/next`, `@shikijs/astro`
 3. Editor/runtime: `@shikijs/monaco`, `@shikijs/twoslash` (TypeScript hover info), `@shikijs/magic-move` (animated transitions), `@shikijs/stream` (streaming highlight)
 4. CLI for one-off file → html/svg: see [CLI reference](references/cli.md)
@@ -91,8 +90,7 @@ For JS/TS projects that need to highlight code blocks in UI, docs, markdown, or 
 - Workers/Edge → check WASM constraints before choosing the engine
 
 - Use /improve uxui if needed
-- Use /follow-lib-comark if needed
-- Use /follow-lib-markdown-it if needed
+- Use /follow-lib-satteri if needed
 - Use /follow-tool-vitepress if needed
 
 ### Use Cases
@@ -117,5 +115,5 @@ For JS/TS projects that need to highlight code blocks in UI, docs, markdown, or 
 
 - `shiki` installed and able to highlight via both the async shorthand and a singleton highlighter
 - Themes/langs loaded explicitly, bundle size controlled via fine-grained imports
-- The right integration chosen per stack (markdown-it, rehype, VitePress, Nuxt, Next, Astro, Comark)
+- The right integration chosen per stack (Sätteri HAST plugin, rehype, VitePress, Nuxt, Next, Astro)
 - Ready for `/improve uxui` fixes around code highlighting

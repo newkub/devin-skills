@@ -1,24 +1,26 @@
 ---
 name: git-file-history
-description: View a file's git history via the released @wrikka/git-cli package with the file-history command
-argument-hint: "[file]"
+description: View a file's git history in HTML, or find the newest commit matching a condition
+argument-hint: "[file] [find] [condition]"
 related:
-  - check-git-logs
   - list-brave-browser-history
-  - follow-git-flow
+  - follow-git-workflows-setup
   - resolve-errors
   - follow-best-practice
+  - git-search
+  - report
+  - suggest-next-action
 ---
 
 ## Goal
 
-View the git file history of a given file via the already-released `@wrikka/git-cli` package using the `git-ai file-history <file>` command, which automatically generates an HTML viewer with a split-screen timeline, commit type badges, diff view, and keyboard navigation
+View the git file history of a given file via the already-released `@wrikka/git-cli` package using the `git-ai file-history <file>` command, which automatically generates an HTML viewer with a split-screen timeline, commit type badges, diff view, and keyboard navigation; with the `find` argument, skip the viewer and walk `git log` from newest backwards until a condition matches (file not empty, contains a value, modified by an author) in a local or remote GitHub repo
 
 ## Scope
 
-Use to view the git file history of any file in a workspace that has a git repository and has `@wrikka/git-cli` installed
+Two modes: the default opens the interactive HTML viewer for any file in a workspace that has a git repository and has `@wrikka/git-cli` installed; `find` locates the condition-matching commit without the viewer - local repos and remote GitHub repos
 
-Boundary: interactive HTML viewer only — find the commit matching a condition → `/check-git-logs`; analyze evolution/patterns → `/report-diff-in-web history`
+Boundary: viewer and condition-matching commits live here (used as a helper in `/deep-debug` and `/restore-files`) — searching by message, pickaxe, content at a revision, or line attribution → `/git-search`; analyze evolution/patterns → `/report-diff-in-web history`
 
 ## Execute
 
@@ -87,6 +89,16 @@ Boundary: interactive HTML viewer only — find the commit matching a condition 
 6. Timeline scroll into view, smooth
 7. `fade-in-up` animation for the content area
 
+### 6. Find Mode — Walk Commits Until A Condition Matches
+
+> Goal: find the newest commit whose file content satisfies the condition, viewer not required
+
+1. Take the file path, the repo source (a local path or `owner/repo` on GitHub), and the condition from the argument or context, e.g. "file is not empty", "has a line containing X", "file was deleted", "file was modified by author Y"; no condition -> show the full history
+2. Local repo: run `git log --all --pretty=format:"%H %ad %an %s" --date=iso <file>`; if the file was renamed -> add `--follow`; for each commit newest to oldest run `git show <sha>:<file>`, check the condition, stop at the first match
+3. Remote repo: confirm with `gh repo view <owner/repo>`, fetch commits with `gh api repos/<owner>/<repo>/commits?path=<file>&per_page=100`, fetch each commit's content with `gh api repos/<owner>/<repo>/contents/<file>?ref=<sha>` (decode base64), check the condition newest to oldest; nothing found -> paginate with the `page` parameter
+4. Report via `/report`: No, Commit SHA, Date, Author, Message, Match, plus the file content in the matching commit (if not sensitive); nothing found -> state that no commit matches
+5. Run `/suggest-next-action`, e.g. restore, bisect, or view the previous commit
+
 ## Rules
 
 ### 1. Package Usage
@@ -112,10 +124,20 @@ Boundary: interactive HTML viewer only — find the commit matching a condition 
 - every commit must have an entry in the timeline
 - the file must work immediately when opened in the browser
 
-- Use /check-git-logs if needed
+### 4. Find Mode Discipline
+
+- condition parsing supports `contains`, `not-empty`, `empty`, `equals`, `size-gt`; a plain string condition means `contains` on the content; a JSON path condition is verified with `jq` or Python
+- stop immediately at the first (most recent) matching commit; show the full list only when the user asks for it explicitly
+- for `git log --grep`, pickaxe (`-S`/`-G`), `git grep <rev>`, or `ctx blame` -> use `/git-search` instead of rebuilding the query here
+- never modify files or the repo; never expose secrets in the report — redact sensitive content before displaying
+- if no repo is specified -> use the current local repo
+
+- Use /git-search if needed
+- Use /report if needed
+- Use /suggest-next-action if needed
 - Use /list-brave-browser-history if needed
 - Use /restore-files-from-devin-history if needed
-- Use /follow-git-flow if needed
+- Use /follow-git-workflows setup if needed
 - Use /resolve-errors if needed
 - Use /follow-best-practice if needed
 
@@ -127,3 +149,4 @@ Boundary: interactive HTML viewer only — find the commit matching a condition 
 - keyboard navigation (left/right) with transition animations
 - content and diff views are switchable
 - the browser opens automatically after generating
+- In find mode: the condition-matching commit with SHA, date, author, message, and content, for local and remote repos

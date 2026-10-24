@@ -9,9 +9,9 @@
 |-------|-------|
 | Package | `wrangler` |
 | Registry | `npm` |
-| Latest Version | `4.131.1` |
-| Release Date | `2026-09-11` |
-| Verified | `2026-09-12` (date this file was last checked) |
+| Latest Version | `4.151.0` |
+| Release Date | `n/a` (GitHub API unreachable at last check) |
+| Verified | `2026-10-15` (date this file was last checked — `registry.npmjs.org` dist-tags, requires Node >= 22) |
 | Author / Publisher | Cloudflare |
 | License | `MIT OR Apache-2.0` |
 | Repository | `https://github.com/cloudflare/workers-sdk` |

@@ -9,6 +9,7 @@ related:
   - resolve-errors
   - follow-tool-mise
   - follow-tasks
+  - follow-service-cloudflare-container
 
 ---
 
@@ -26,7 +27,11 @@ Used for:
 - Nitro preset for Nuxt and other frameworks deploying to Cloudflare
 - Secrets, environment variables, bindings, and CI/CD integration
 - Local development, staging/production deploy, version management, and rollback
-- References: [Service Cloudflare API & Dependencies](references/apis.md), [Wrangler Commands](references/commands.md), [Wrangler Install And Authentication](references/install-and-auth.md), [Wrangler CLI Overview](references/overview.md), [Package Manifest](references/package-manifest.md), [Cloudflare Workers Reference](references/workers-overview.md)
+
+Not used for:
+- Containers (Dockerfile image owned by a Durable Object, instance types, cold start, manual scaling) → `/follow-service-cloudflare-container`
+
+References: [Service Cloudflare API & Dependencies](references/apis.md), [Wrangler Commands](references/commands.md), [Wrangler Install And Authentication](references/install-and-auth.md), [Wrangler CLI Overview](references/overview.md), [Package Manifest](references/package-manifest.md), [Cloudflare Workers Reference](references/workers-overview.md)
 
 ## Execute
 
@@ -34,7 +39,7 @@ Used for:
 
 > Goal: Install the Wrangler CLI and connect to the Cloudflare account
 
-Latest: `wrangler@4.141.0`, `@cloudflare/workers-types@5.20260926.1` (verified 2026-09-26)
+Latest: `wrangler@4.151.0` (verified 2026-10-15, requires Node >= 22), `@cloudflare/workers-types@5.20260926.1`
 
 1. Install Wrangler with `bun add -D wrangler`
 2. Check the version with `wrangler --version` (must be >= 4.0)
@@ -72,7 +77,8 @@ Latest: `wrangler@4.141.0`, `@cloudflare/workers-types@5.20260926.1` (verified 2
 3. Create an R2 bucket with `wrangler r2 bucket create my-bucket`
 4. Add bindings in `wrangler.jsonc` or use automatic provisioning (beta)
 5. Run `wrangler types` to generate `worker-configuration.d.ts`
-6. See details in [references/bindings.md](references/bindings.md) and [references/d1-migrations.md](references/d1-migrations.md)
+6. v4 uses space syntax (`kv namespace`, `kv key`, `r2 bucket`, `d1 execute`) — the legacy colon syntax (`kv:namespace`) is removed
+7. See details in [references/bindings.md](references/bindings.md) and [references/d1-migrations.md](references/d1-migrations.md)
 
 ### 5. Manage Secrets
 
@@ -183,6 +189,7 @@ Latest: `wrangler@4.141.0`, `@cloudflare/workers-types@5.20260926.1` (verified 2
 
 - Always deploy staging before production
 - Use `--dry-run` to inspect before a real deploy
+- A real deploy must pass `/run-verify` first; a production deploy requires user confirmation
 - Use versioning for rollback capability
 - Use `CLOUDFLARE_API_TOKEN` for automated deploys
 

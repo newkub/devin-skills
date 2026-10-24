@@ -53,7 +53,7 @@
 
 | Action | Tool | Install | Skill |
 |--------|------|---------|-------|
-| GitHub ops (issue/pr/repo/run) | `gh` | installed (mise gh 2.101) | `/create-github-*`, `/list-all-github-pr`, `/list-all-github-issue` |
+| GitHub ops (issue/pr/repo/run) | `gh` | installed (mise gh 2.101) | `/create-github-*`, `/list-github-pr`, `/list-github-issue` |
 | git worktrees | `worktrunk` / `git worktree` | installed | `/use-git-worktrees` |
 | TUI git | `lazygit` / `gitui` / `gitu` | installed | interactive |
 | Linear | `linear` CLI | installed | ad-hoc (`gh` for GitHub) |
@@ -73,7 +73,7 @@
 | version bumps | `taze` / `changelogen` | installed | `/follow-tool-taze`, `/follow-tool-changelogen` |
 | lint/format JS/TS | `biome` / `oxlint` / `oxfmt` / `bun fmt` (built in) | installed | `/run-lint`, `/run-format` |
 | test coverage to target | project coverage runner (`vitest`/`jest`/`c8`/`cargo-llvm-cov` per project) | per project | `/run-test coverage` (→ `/deep-test coverage`) |
-| fast typecheck | `tsc` (`typescript@7` native) / `vue-tsc` | installed | `/run-typecheck` |
+| fast typecheck | `bun check -p . --no-script` (no Vite) / `tsrs --noEmit` (Vite) / `vue-tsc` | installed | `/run-typecheck` |
 | watch + rerun | `watchexec` | installed | `/run-watch` |
 | benchmark commands | `hyperfine` | installed | `/deep-review` (`performance`) |
 | optimize app end-to-end (review→fix→measure) | `rg`/`sg` + build output + profilers | installed | `/optimize perf` |
@@ -82,7 +82,7 @@
 | clone template | `giget` | installed | `/create-*` |
 | compile cache (Cargo-aware: worktrees/CI + managed target) | `mbx` (mr-boxington) | `mise use -g --tool-option mr_boxington=true rust mr-boxington` / `cargo install mbx --locked` | `/follow-tool-mr-boxington` |
 | compile cache (multi-compiler, distributed) | `sccache` | installed | `/follow-tool-mr-boxington` (mbx defers to the `RUSTC_WRAPPER` pointing at sccache) |
-| build devtool once, mount anywhere | `devframe` | `bun add devframe` (+ `cac` peer) | `/follow-tool-devfra` |
+| build devtool once, mount anywhere | `devframe` | `bun add devframe` (+ `cac` peer) | `/follow-tool-vite-devtools` (`### 8`) |
 | bundle analyze/visualize (source-map accurate) | `sonda` (bundler plugin) | `bun add -D sonda` | `/follow-tool-sonda`, `/report-bundle` |
 | inspect node_modules (tree, dupes, sizes) | `node-modules-inspector` | `bunx node-modules-inspector` | `/follow-tool-node-modules-inspector`, `/report-bundle` |
 | cleanup dev dirs | `clean-dev-dirs` / `npkill` / `gleanup` / `cargo-sweep` | installed | `/cleanup-disk-computer` |
@@ -114,7 +114,7 @@
 | diagrams | `mmdc` (mermaid-cli) | installed | `/report-architecture-diagram` |
 | code highlight | `shiki` CLI | installed | `/follow-lib-shiki` |
 | OG images/social cards/PDFs from JSX | `takumi-js` | `bun add takumi-js` | `/follow-tool-takumi`, `/improve seo` |
-| markdown parse/render multi-target (html/ansi/vue/react/svelte/angular) | `comark` + `@comark/*` | `bun add comark @comark/<target>` | `/follow-lib-comark`, `/improve uxui` |
+| markdown/MDX parse and render (html/js, Markdown or MDX, plugins) | `satteri` (+ `vite-plugin-satteri`) | `bun add satteri` | `/follow-lib-satteri`, `/improve uxui` |
 | markdown render | `glow` | installed | preview docs |
 | LaTeX → PDF | `tectonic` | installed | docs |
 
@@ -122,7 +122,7 @@
 
 | Action | Tool | Install | Skill |
 |--------|------|---------|-------|
-| Cloudflare | `wrangler` | installed | `/use-wrangler`, `/follow-service-cloudflare` |
+| Cloudflare | `wrangler` | installed | `/follow-service-cloudflare` |
 | Vercel | `vercel` | installed | deploy skills |
 | Supabase | `supabase` | installed (scoop) | `/follow-service-*` |
 | containers | `podman` / `docker-compose` / `druk` / `oxker` | installed | `/follow-create-docker` |

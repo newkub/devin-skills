@@ -7,6 +7,7 @@ related:
   - deep-research
   - learn-from-web
   - deep-validate
+  - follow-lib-gpuix
 ---
 
 ## Goal

@@ -73,6 +73,7 @@ Use when an endpoint, schema, webhook, or client integration changes, or before 
 2. Dispatch through `/improve api`, `/improve events`, and `/improve auth` — one contract at a time, with the spec, handler, and client updated together
 3. A breaking change ships behind a new version or a documented deprecation window; never silently change the shape of a live endpoint
 4. Independent endpoints → parallel workers via `/use-subagents`; an error mid-fix → `/resolve-errors`
+5. Persist what should not recur: a contract or versioning convention → `/update-dot-agents-project rules`; a mechanically detectable pattern (unversioned route, missing idempotency key) → `/update-astgrep-rules`
 
 ### 6. Verify
 
@@ -87,6 +88,7 @@ Use when an endpoint, schema, webhook, or client integration changes, or before 
 > Goal: contract state is visible before and after
 
 1. Run `/report-review`: findings per matrix row with severity, fix status, and the replayed proof
+   - Use `templates/findings.md` as the output skeleton
 2. State each breaking change, its deprecation window, and anything accepted or blocked
 3. Close with `/suggest-next-action`
 

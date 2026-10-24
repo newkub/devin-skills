@@ -9,6 +9,7 @@ related:
   - run-test
   - follow-lib-tstyche
   - follow-tool-viteplus
+  - migrate
 
 ---
 
@@ -33,7 +34,7 @@ Install and set up Vitest 5 for unit testing in single projects and monorepos
 | Topic | Workflow |
 |-------|----------|
 | setup | `workflows/setup-vitest/SKILL.md` — install, vitest.config, environment, coverage provider |
-| migrate | `workflows/migrate-from-jest/SKILL.md` — jest→vitest globals, mock APIs, snapshots, verify |
+| migrate | `workflows/migrate-from-jest/SKILL.md` — jest→vitest globals, mock APIs, snapshots, verify; multi-stage rollout with rollback → `/migrate` |
 | optimize | `workflows/optimize-tests/SKILL.md` — isolation, pool options, shard, watch excludes |
 
 1. If the argument matches a topic → read and follow `workflows/<name>/SKILL.md` instead of the steps below

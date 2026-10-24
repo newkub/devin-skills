@@ -22,7 +22,7 @@ TextMate-grammar syntax highlighter — highlight ahead of time, ship zero runti
 ## UX/UI Integration
 
 - Use in `/improve uxui` when code blocks lack highlighting, the theme doesn't match dark/light, or there are no line highlights/focus
-- Pair with `/follow-lib-comark` — the `comark/plugins/shiki` plugin highlights code fences in the markdown pipeline
+- Pair with `/follow-lib-satteri` — highlight fences with a Sätteri HAST plugin that reuses the same highlighter instance
 - Code blocks in a docs site → prefer VitePress/Nuxt/Next/Astro integrations over manual wiring
 
 ## Do / Don't

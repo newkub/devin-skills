@@ -62,7 +62,7 @@ Create a social media cover image that matches the platform dimensions, brand id
 
 1. If using AI generation → use `/gen-media-ai-images` with a dedicated prompt
 2. If using vector → use `/draw-svg-image`
-3. If using geometric → use `/draw-tldraw` or `/draw-excalidraw`
+3. If using geometric → use `/draw tldraw` or `/draw excalidraw`
 4. The prompt should state aspect ratio, style, and mood
 
 ### 5. Add Text And Branding

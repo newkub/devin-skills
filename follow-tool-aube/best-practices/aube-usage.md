@@ -7,7 +7,7 @@ Guidelines for using Aube correctly as the Node.js package manager — command s
 ### Command Selection
 
 - `aubr <script>` when the script needs installed `node_modules` (test, build, dev, lint) — auto-install always runs first
-- `aubx <tool>` for a one-off tool that can be resolved without installing the whole project (e.g. temporary `aubx tsc --noEmit`)
+- `aubx <tool>` for a one-off tool that can be resolved without installing the whole project (e.g. temporary `aubx tsrs --noEmit`)
 - `aube exec <bin>` when you want the binary directly from the current project's `node_modules/.bin` — more deterministic than `aubx` for tools that are already dependencies
 - `aube add`/`remove`/`update` for the dependency lifecycle — do not hand-edit `package.json` and forget the lockfile; let aube manage both together
 

@@ -34,7 +34,7 @@ Create and update project-local skills in `<project>/.agents/skills/` with the s
 > Goal: no duplication with existing skills
 
 1. Check `.agents/skills/` and `~/.agents/skills/` for a skill with the same purpose
-2. Run `/use-related-skills` when an overlap is possible
+2. Run `/update-agents-skills-global` (`## Conventions → Related Skills`) when an overlap is possible
 3. Read `AGENTS.md` and the existing project skills to match conventions and commands
 
 ### 3. Create The Structure

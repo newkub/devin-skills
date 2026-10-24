@@ -94,7 +94,7 @@ Rename code identifiers with ast-grep, or rename files/skills/directories with c
 > Goal: Check that the rename is complete and does not break code
 
 1. Run `grep_search` to search for the old name again → it must not be found (except in git history or unrelated comments)
-2. Run typecheck: `bun check` (Bun) or `tsc --noEmit`, or the `typecheck` script
+2. Run typecheck: `bun check -p . --no-script` (no Vite) or `tsrs --noEmit` (Vite), or the `typecheck` script
 3. Run lint: `biome lint` or `bun run lint`
 4. Run tests: `bun run test` or `vitest run`
 5. If validation fails → run `/resolve-errors` and fix until it passes (max 3 attempts → stop/report)

@@ -79,7 +79,7 @@ See also: /review-dot-agents-global-and-fix, /update-agents-skills-global, /sear
 
 - Check existing skills before proposing a new skill
 - If a similar skill already exists, propose extending that skill instead
-- Use `use-related-skills` when you find overlap
+- Use `/update-agents-skills-global` (`## Conventions → Related Skills`) when you find overlap
 
 ### 2. Concrete And Focused
 

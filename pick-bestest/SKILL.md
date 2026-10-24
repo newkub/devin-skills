@@ -9,6 +9,7 @@ related:
   - follow-create-cli
   - deep-review
   - plan
+  - use-decision-model
 ---
 
 ## Goal
@@ -30,6 +31,7 @@ Use when there are multiple options and only one answer is needed, e.g. choosing
 3. If there are more than 10 options → group or filter them before asking
 4. If the options are unclear → run `/summarize-your-understand` first
 5. State a recommendation if any, by marking `(recommended)` or a short explanation
+6. When a decision-model runtime is available → `/use-decision-model` over the options as `choice`; mark `(recommended)` only at `confidence ≥ 0.6`, and keep every option on the list for the user to choose
 
 ### 2. Ask User
 

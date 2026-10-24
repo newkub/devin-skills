@@ -7,7 +7,7 @@ related:
   - report-file-structure
   - check-reference
   - run-clean
-  - run-cleanup
+  - cleanup-artifact
 ---
 
 ## Goal
@@ -87,7 +87,7 @@ Applies to source files in the project workspace — excludes `node_modules`, `d
 - Follow the language/framework conventions
 - Update barrel exports if present
 - Use /run-clean if needed
-- Use /run-cleanup if needed
+- Use /cleanup-artifact if needed
 
 ## Expected Outcome
 

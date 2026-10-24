@@ -130,7 +130,7 @@ Use when a repo directory has grown too large, needs to be split into its own re
 
 - Use `git submodule add`, not manual edits to `.gitmodules`
 - Check `git submodule status` after adding
-- To remove the submodule later → use `/delete-git-submodules`
+- To remove the submodule later → use `/git-submodule remove`
 
 ### 5. Clean Working Tree
 
@@ -141,7 +141,7 @@ Use when a repo directory has grown too large, needs to be split into its own re
 - Never commit temp files into the repo
 
 - Use /git-commit-and-push if needed
-- Use /list-git-submodules if needed
+- Use /git-submodule list if needed
 
 ## Expected Outcome
 

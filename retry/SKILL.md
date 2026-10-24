@@ -3,7 +3,7 @@ name: retry
 description: Re-run the latest user prompt to fix an issue or try again
 argument-hint: "[prompt]"
 related:
-  - ask-again
+  - dont-understand
   - follow-best-practice
   - suggest-next-action
   - loop-until-complete
@@ -45,7 +45,7 @@ Use when work must be redone per the latest user prompt, e.g. after an error, a 
 - Always use minimal changes
 - If retried several times, record what was tried that did not work
 
-- Use /ask-again if needed
+- Use /dont-understand if needed
 - Use /follow-best-practice if needed
 - Use /suggest-next-action if needed
 - Use /resolve-errors if needed

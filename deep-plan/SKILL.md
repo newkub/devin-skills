@@ -15,6 +15,7 @@ related:
   - implement-to-production
   - ask-me
   - report
+  - follow-tool-ctx-rs
   - suggest-next-action
 
 ---
@@ -39,6 +40,7 @@ Own the deep analyze→plan workflow: think, gather evidence across every dimens
 1. Run `/deep-thinking` — objectives, sub-problems, assumptions, success criteria
 2. Identify the dimensions to analyze (structure, deps, data flow, UX, risk — per topic); unclear scope → run `/ask-me`
 3. Read the relevant context, design docs, and prior reports; if it doesn't exist → note it as an unknown, never invent it
+4. Recall prior agent work on the topic with `/follow-tool-ctx-rs`: `ctx search "<topic>"` then `ctx show event <id> --window 5`; cite the ctx session and event IDs, and when the index is unavailable record the gap and continue on repo evidence
 
 ### 2. Deep Analyze
 

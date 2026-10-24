@@ -64,7 +64,7 @@ Use to create, improve, and verify the entire `.vscode` directory. Does not over
 2. Run `/check-monorepo` to check the project type
 3. Identify the package manager (Bun, npm, pnpm, yarn)
 4. Identify the formatter/linter (Vite+ `vp fmt`/`vp lint` on Oxfmt + Oxlint, Biome, ESLint, or the built-in `bun fmt` on a Bun-runtime project — no install)
-5. Identify the type checker (tsc)
+5. Identify the type checker (`tsrs` for Vite projects, `bun check` otherwise)
 6. Identify the test runner (Vitest, Jest, Playwright)
 7. If the project type is unclear → stop and report
 

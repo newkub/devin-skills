@@ -1,6 +1,6 @@
 # Use Case — Runner Integration and CI
 
-> Run properties through the same test runner as the unit tests, raise the run count in CI, and replay a past failure from the environment. Source: https://fast-check.dev/docs/configuration/global-settings/ (accessed 2026-10-20)
+> Run properties through the same test runner as the unit tests, raise the run count in CI from your own environment knob, and replay a past failure with its seed and path. Source: https://fast-check.dev/docs/configuration/global-settings/ (accessed 2026-10-23)
 
 ## 1. Use the runner adapter, not a bare assert
 
@@ -33,7 +33,7 @@ bun add -D fast-check @fast-check/vitest
 import fc from "fast-check";
 
 fc.configureGlobal({
-  numRuns: Number(process.env.FAST_CHECK_NUM_RUNS ?? 100),
+  numRuns: Number(process.env.PROPERTY_NUM_RUNS ?? 100),
   verbose: process.env.CI ? 2 : 0,
 });
 ```
@@ -45,7 +45,7 @@ export default defineConfig({
 });
 ```
 
-One global default keeps local runs fast and lets CI raise the count without touching test files. `FAST_CHECK_NUM_RUNS` and `FAST_CHECK_SEED` are also read directly by the library, so a pipeline can override a single job without a config change.
+One global default keeps local runs fast and lets CI raise the count without touching test files. `PROPERTY_NUM_RUNS` is your own variable — fast-check reads no `FAST_CHECK_*` environment variable, so the setup file is the only bridge from the pipeline to `fc.configureGlobal`.
 
 ## 3. Raise the count in CI, keep the seed free
 
@@ -53,10 +53,10 @@ One global default keeps local runs fast and lets CI raise the count without tou
 - name: Test
   run: bun run test
   env:
-    FAST_CHECK_NUM_RUNS: 1000
+    PROPERTY_NUM_RUNS: 1000
 ```
 
-Do not pin `FAST_CHECK_SEED` in the default job. A fixed seed makes every run explore the same path, which turns a property suite into one slow example. Use the variable only in a replay job with a seed copied from a failure log.
+Do not pin a seed in the default job. A fixed `seed` makes every run explore the same path, which turns a property suite into one slow example. Pass `{ seed, path }` only in a replay job, copied from a failure log, and remove it once the regression test exists.
 
 ## 4. Guard against prototype pollution
 
@@ -87,8 +87,8 @@ Per-test `numRuns` belongs on the tests that model size or arithmetic, where 100
 ## 6. Verify
 
 1. `/run-test` locally — properties appear as normal tests and the report names the shrunk arguments
-2. Run once with `FAST_CHECK_NUM_RUNS=1000` — no new failure and an acceptable wall time
-3. Replay a past failure with `FAST_CHECK_SEED=<seed>` and confirm it fails identically
+2. Run once with `PROPERTY_NUM_RUNS=1000` — no new failure and an acceptable wall time
+3. Replay a past failure with `{ seed, path }` in the failing test and confirm it fails identically
 4. `/run-verify` — `fast-check` and the adapter are devDependencies only
 
 ## Pitfalls
@@ -96,7 +96,8 @@ Per-test `numRuns` belongs on the tests that model size or arithmetic, where 100
 - Installing `fast-check` in `dependencies`, so it ships to production bundles.
 - Importing `test` from both the runner and the adapter in one file, so `.prop` is undefined.
 - Raising `numRuns` only on a developer machine, leaving CI at the default 100.
-- Setting a fixed `FAST_CHECK_SEED` on the default CI job, which stops the suite from exploring.
+- Setting a fixed `seed` on the default CI job, which stops the suite from exploring.
+- Assuming fast-check reads `FAST_CHECK_*` variables — nothing in the library reads the environment, so an unforwarded variable silently does nothing.
 - Turning on `@fast-check/poisoning` for the whole suite, where unrelated tests start failing on polluted globals.
 
 ## Related

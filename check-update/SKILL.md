@@ -11,6 +11,8 @@ related:
   - run-install
   - deep-research
   - report
+  - compat
+  - migrate
 
 allowed-tools:
   - exec
@@ -82,7 +84,7 @@ Report the true latest published version of each target across three channels �
 
 1. `/report` table: `No.`, `Target`, `Channel`, `Current`, `Latest`, `Gap`, `Published`, `Evidence`
 2. Sort by risk: major → minor → patch → prerelease-only → unknown → up-to-date
-3. Hand off: deps/tools → `/update-version-to-latest`; missing install → `/run-install`; skill content → `/update-agents-skills-global`; methodology → `/follow-up-to-date`
+3. Hand off: deps/tools → `/update-version-to-latest`; missing install → `/run-install`; skill content → `/update-agents-skills-global`; methodology → `/follow-up-to-date`; major jump → `/compat` (will it run?) then `/migrate` (staged change)
 
 ## Rules
 

@@ -3,6 +3,7 @@ name: report
 description: "Pick the fitting report format: table or numbered list"
 argument-hint: "[scope]"
 related:
+  - report-ansi
   - report-todo
   - report-progress
   - suggest-next-action
@@ -19,7 +20,8 @@ Select and execute the report format that fits the context
 Used for reporting results in chat; `/report` dispatches to `report-table` or `report-numbered` based on the data type
 
 - Merged capability from the original skills that were moved into workflows
-- References: [Format ansi](references/format-ansi.md), [Format codeblock](references/format-codeblock.md), [Format numbered bullet](references/format-numbered-bullet.md)
+- Terminal-shaped reports (status, progress, boxes, trees, diagrams) live in the `/report-ansi` skill; `references/format-ansi.md` is kept only as a pointer
+- References: [Format codeblock](references/format-codeblock.md), [Format numbered bullet](references/format-numbered-bullet.md)
 
 ## Execute
 
@@ -41,7 +43,8 @@ Used for reporting results in chat; `/report` dispatches to `report-table` or `r
 3. If it is an action plan from chat not yet executed → use `/report-todo`
 4. If it is commands, code snippets, config, logs, diff → use `/report codeblock`
 5. If it is progress/status → use `/report-progress`
-6. If it is TODO markers → read `TODO.md` + use `/scan-codebase` to find `TODO`/`FIXME`/`HACK` markers, then report table
+6. If it is terminal-shaped — status lines, progress bars, boxed panels, file trees, flow or architecture diagrams — use `/report-ansi`
+7. If it is TODO markers → read `TODO.md` + use `/scan-codebase` to find `TODO`/`FIXME`/`HACK` markers, then report table
 
 ### 2. Execute Selected Skill
 
@@ -73,6 +76,7 @@ Used for reporting results in chat; `/report` dispatches to `report-table` or `r
 - Use `/report table` when the work has comparison/status across multiple columns
 - Use `/report numbered` when the work emphasizes step order
 - Use `/report-todo` when the work has not started and needs an action plan
+- Use `/report-ansi` when the output is terminal-shaped: status lines, progress bars, boxed panels, file trees, or diagrams; render it in one ` ```text ` block at most 80 columns wide
 - Every table must have the `No.` column first
 - Every report must summarize key findings at the top
 - Use emoji per the legend in `references/uxui.md`

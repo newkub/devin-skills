@@ -3,7 +3,7 @@ name: git-revert
 description: Safely revert commits with a new inverse commit — no history rewrite
 argument-hint: "[sha|range|merge-sha]"
 related:
-  - check-git-logs
+  - git-file-history
   - run-check
   - resolve-errors
 ---
@@ -24,7 +24,7 @@ Undo the effect of commit(s) with `git revert` — create a new inverse commit i
 
 > Goal: clearly identify the commit(s) to revert
 
-1. if the user gives a sha/range → use it directly; otherwise → run `/check-git-logs` to find the target commit
+1. if the user gives a sha/range → use it directly; otherwise → run `/git-file-history find` to find the target commit
 2. review the content with `git show <sha>` — confirm it is really the change to undo
 3. check whether the commit is a merge commit (look at the `Merge:` header in `git show`) and whether later commits touched the same files (conflict risk)
 

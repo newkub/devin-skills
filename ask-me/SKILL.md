@@ -11,11 +11,12 @@ related:
   - ask-project-requirement
   - follow-my-persona
   - follow-your-suggestion
-  - ask-again
+  - dont-understand
   - dont-ask-me
   - update-references
   - plan
   - search-skills
+  - use-decision-model
 
 ---
 
@@ -59,6 +60,7 @@ Use the `ask_user_question` tool only; no other way of asking the user is allowe
 8. Order the options with the recommended one first
 9. Add a `Skip` option so the user can bypass this question — `description`: "Skip this question; use the default or continue without answering"
 10. Add a `Suggest another` option so the user can request different choices — `description`: "Ask the AI to suggest other options not on the list"
+11. When a decision-model runtime is available → `/use-decision-model` over the options (`choice`); put the top option first only at `confidence ≥ 0.6`, and never remove an option or answer for the user
 
 ### 3. Ask With `ask_user_question`
 
@@ -141,8 +143,8 @@ Don't ask the user when:
 - If an answer leads to a new question, follow up with it
 - Once answers are in, proceed immediately without stalling
 - If the user picks `Skip` many times in a row, consider using defaults instead of asking further
-- If the user picks `Suggest another` a second time, use `/ask-again` or ask open-ended
-- If the user says "don't understand", "ask again" → use `/ask-again` to rephrase
+- If the user picks `Suggest another` a second time, use `/dont-understand` or ask open-ended
+- If the user says "don't understand", "ask again" → use `/dont-understand` to rephrase
 - If the user picks `Skip` on every question, stop asking and proceed with all defaults
 
 ### 6. Update References

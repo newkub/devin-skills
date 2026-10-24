@@ -11,7 +11,6 @@ related:
   - review-dot-agents-global-and-fix
   - idea-agent-skills
   - check-agents-session
-  - use-related-skills
   - follow-principles
   - report
   - ask-me
@@ -71,7 +70,7 @@ Runs once per finished task, or when the user asks what is worth improving. Cove
 
 > Goal: no candidate that already exists
 
-1. Run `/use-related-skills` and search the repo for the same rule, command, tool name, agent, hook, or MCP entry
+1. Run `/update-agents-skills-global` (`## Conventions → Related Skills`) and search the repo for the same rule, command, tool name, agent, hook, or MCP entry
 2. Covered already → the candidate becomes an edit route through its owner skill in `### 3`, not a new asset
 3. Uncovered → keep it and note the closest existing package, agent, or rule file
 

@@ -103,7 +103,7 @@ const publicEnv = pipe(
 
 ## Verify
 
-1. `tsc --noEmit` — `toPublicUser` returns no `passwordHash`, and a nested typo in `prop` fails to compile
+1. `bun run typecheck` — `toPublicUser` returns no `passwordHash`, and a nested typo in `prop` fails to compile
 2. A user with `city: undefined` — `defaultTo` returns `"Unknown"`; `city: ""` returns `""`
 3. `stringToPath("billing.address.city")` — the parsed path matches the nested key order used by `prop`
 4. `evolve` against an object missing `retries` — the function is not called and the key stays absent

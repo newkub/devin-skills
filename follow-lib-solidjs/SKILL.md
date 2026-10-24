@@ -7,6 +7,7 @@ related:
   - follow-tool-vite
   - follow-create-plugins
   - follow-tool-vitest
+  - follow-lib-gpuix
 
 ---
 

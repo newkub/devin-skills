@@ -6,9 +6,9 @@ related:
   - review-implement-to-production
   - deep-review
   - create-plan-in-dot-agents
+  - create-todo-in-planso
   - refactor
   - deep-test
-  - deep-validate
   - improve
   - ship
   - run-verify
@@ -34,6 +34,7 @@ Convert every TODO, MOCK, FAKE, STUB, placeholder, and dead UI into real product
 - The entry point is `/review-implement-to-production`: know what is missing first, implement everything in the report, then verify with `/deep-test`. Never skip the first step, and never implement only some items
 - An item with no design for its surface yet (CLI commands/flags, TUI screens, web layout) → design before writing code: `/design-cli-prototype` / `/design-tui-prototype` answer in chat, and `/design-web-prototype` / `/design-html-prototype` cover the case that must be seen for real. Never leave new stubs behind after implement
 - Cover improvements around the scope, not only TODO items. After implement, the work must pass the relevant `/improve` domains; a scope with UI must also pass `/improve uxui`, which reviews the UI as actually rendered, not only the source
+- A scope tracked in Plane.so → the `### 1.4` queue survives the session as Plane work items: run `/create-todo-in-planso` to file the `pending`/`blocked` rows into Todo (with `plan` for a task → subtask hierarchy and blocked-by links), and re-read them with `/list-todo-from-planso` when resuming. Plane is the durable queue for that project; `TODO.md` stays the file-based equivalent
 
 ## Execute
 
@@ -44,14 +45,14 @@ Convert every TODO, MOCK, FAKE, STUB, placeholder, and dead UI into real product
 1. Run the `/review` pre-action gate (issues, gaps, inconsistencies), then `/deep-review` with the dimensions that match the context, then across every dimension to find TODO/MOCK/placeholder and issues
 2. Always run `/review-implement-to-production` on the whole scope as the first step (report-only). It returns a work queue table (`missing`/`fake`/`partial`/`unwired`/`promised`) covering markers, stubs, dead UI, and missing routes/docs, and it owns the `gap-scanner` profile. Never start implementing without it. A queue passed in by that preset is the same artifact — reuse it and skip the re-scan, never recurse. On a large codebase → have the skill spawn its own `gap-scanner` profile per directory in parallel; run `/deep-analyze` for the stack/context and `/deep-research` when you need external patterns
 3. If the input is a plan file / `TODO.md` / loose plan → complete the matching `## Input Flows` first
-4. Record the baseline and keep it resumable: list the unfinished items from the report, their files, dependencies, and infrastructure gaps in a table with one `status` per item (`pending`/`in-progress`/`completed`/`blocked`), and update a row the moment its item closes (write it to the plan file once `### 2.1` creates one; until then keep it in chat and copy it over). A resumed or compacted session continues from the table instead of re-scanning. If you must rely on an external package that is not installed → run `/use-my-packages-on-registry` to list the packages we own before looking for external deps
+4. Record the baseline and keep it resumable: list the unfinished items from the report, their files, dependencies, and infrastructure gaps in a table with one `status` per item (`pending`/`in-progress`/`completed`/`blocked`), and update a row the moment its item closes (write it to the plan file once `### 2.1` creates one; until then keep it in chat and copy it over). Answer in chat with `/report-todo` — architecture diagram when the structure changes, file tree when the layout changes, the `No.`-first table, and baseline row `No. 1` = `/run-verify` — before the first item; never `report-plan` (deleted, `report-todo` owns the plan answer). A resumed or compacted session continues from the table instead of re-scanning. If you must rely on an external package that is not installed → run `/use-my-packages-on-registry` to list the packages we own before looking for external deps
 5. Read `refactor/SKILL.md` `## Rules` and the SRP split in `### 3` before implementing — new code must meet the refactor standards from the first line: 1 unit = 1 reason to change, ≤250 lines, preserve the public API, minimal change
 
 ### 2. Review Architecture
 
 > Goal: confirm the architecture before starting
 
-1. Always run `/create-plan-in-dot-agents` (an existing plan file → read it and follow it), then run `/deep-review` to inspect boundaries, layers, and data flow
+1. Always run `/create-plan-in-dot-agents` (an existing plan file → read it and follow it), present it in chat with `/report-todo` (`report-plan` was deleted — never use it), then run `/deep-review` to inspect boundaries, layers, and data flow
 2. Implementing in `packages/`, `crates/`, or `apps/` → run `/follow-architecture` to pick and apply that directory's pattern (`packages/`/`crates/` → `clean`, `apps/` → `layered`)
 3. Before the first line run `/follow-best-practice` for the stack in the manifest — the owner skills' `best-practices/` are the patterns the new code must follow, and the same call lists which deps already have an owner skill. A dep with none → persist the research via `/update-agents-skills-global`
 4. If the architecture is unclear or a big structure change is needed → run `/ask-me` first. Identify the critical path: schema → data → API → UX/UI
@@ -135,7 +136,7 @@ Convert every TODO, MOCK, FAKE, STUB, placeholder, and dead UI into real product
 7. A real deploy → run `/run-deploy` or `/follow-deploy` (dispatches to `deploy-to-<platform>`); deploy staging/preview first when the platform supports it, and always record the deployment URL + version/revision
 8. Post-deploy verify: smoke-test the critical paths on the real production URL, check logs/metrics/error tracking for an error spike, and compare behavior against the passing `/run-check` results. On failure → execute the rollback plan immediately, then report
 9. Complex work or several workspaces → add a deep pass: front-load `/deep-thinking` and `/deep-analyze` for high-impact changes, order the critical path (schema → data → API → UX), and extend the `### 2.5` rollback plan for each batch before it starts
-10. If this work implements a GitHub issue I created → `/resolve-github-issue-by-me` to comment the result and close it; pending/blocked/deferred work → `/save-to-todo-md`
+10. If this work implements a GitHub issue I created → `/resolve-github-issue-by-me` to comment the result and close it; pending/blocked/deferred work → `/save-to-todo-md`, and when the queue is tracked in Plane.so → `/create-todo-in-planso` instead so it stays in the same project
 11. Run `/suggest-next-action` — when everything passes and the user wants production → the full `/ship` (commit/push → PR review gate → merge `main`), or `/release-new-version` when a version must be released
 
 ## TDD Loop
@@ -182,7 +183,7 @@ Convert every TODO, MOCK, FAKE, STUB, placeholder, and dead UI into real product
 
 > Dispatched by the `## Scope` argument `setup-coverage`/`coverage`. Use it when the project has no coverage tooling yet or needs a fresh setup before the TDD loop. Supports Bun/Node (vitest), Rust (llvm-cov), Go (built-in), and Python (pytest-cov). Tooling setup only — writing tests → `/update-tests`, closing coverage gaps → `/improve coverage`
 
-1. Detect ecosystem and state: check the manifest (`package.json`, `Cargo.toml`, `go.mod`, `pyproject.toml`), the existing test framework (vitest, cargo test/nextest, go test, pytest), and the existing coverage state (config, devDeps, CI step — an idempotent check). No test framework → `/use-related-skills` to find `follow-tool-vitest` etc. first
+1. Detect ecosystem and state: check the manifest (`package.json`, `Cargo.toml`, `go.mod`, `pyproject.toml`), the existing test framework (vitest, cargo test/nextest, go test, pytest), and the existing coverage state (config, devDeps, CI step — an idempotent check). No test framework → see also `/update-agents-skills-global` (`## Conventions → Related Skills`) to find `follow-tool-vitest` etc. first
 2. Install per ecosystem, using only the standard tools — never redundant; unsure about a tool/version → check the official docs before installing, never guess flags: Bun → built-in (`bun test --coverage`) · Node → `@vitest/coverage-v8` (`vitest run --coverage`) · Rust → `cargo-llvm-cov` (`cargo llvm-cov`) · Go → built-in (`go test -coverprofile=coverage.out ./...`) · Python → `pytest-cov` (`pytest --cov`). Install via the project's package manager, add a `test:coverage` script in the manifest (per `/deep-test strategy` `## 4`), and set up a minimal coverage config — provider, include/exclude patterns, reporters
 3. Configure thresholds and output: set the output dir (e.g. `coverage/`) and add it to `.gitignore` — coverage output must never be committed. Set thresholds per the `/deep-test strategy` `## 5. Coverage Floors` table (overall 70% / 80% / 90% by level; unit floors 70% / 85% / 95%) when the tool supports them, but never so high that they block the TDD loop. Reporters: text for the terminal plus html/lcov for CI
 4. Wire CI and verify: add a coverage step to the CI workflow when one exists; no pipeline yet → `/setup-cicd`. The coverage command must produce a report successfully. Run `/deep-test coverage` to confirm the report is correct (no test suite yet → `/update-tests` before measuring). A failure → `/resolve-errors` max 3 rounds, then stop and report
@@ -195,6 +196,7 @@ Convert every TODO, MOCK, FAKE, STUB, placeholder, and dead UI into real product
 - Minimal And Maintainable — always read the `/refactor` rules before implementing and always run `/refactor` after implement (step 8), never skip; follow `/simplify guard`; before rewriting or when you find duplicates → `/use-lib-effective`; for a new dep → check the packages we own with `/use-my-packages-on-registry` before an external dep; preserve the public API unless it truly must change; files no longer than 250 lines
 - Best Practice First — every implementation starts from `/follow-best-practice`: the manifest's deps mapped to their owner skills, and those skills' `best-practices/` followed as written; a pattern that contradicts them needs a stated reason, never a silent preference; a dep with no `best-practices/` → backfill through `/update-agents-skills-global`
 - Plan Always — every implement task must have a plan from `/create-plan-in-dot-agents` first; never start steps 4–9 without a plan (`setup-infra` runs only `### 3`, so it needs none)
+- Queue Persistence — no item may disappear between sessions: every `pending`/`blocked` row of the `### 1.4` queue is written back to the same tracker the work came from — Plane.so (`/create-todo-in-planso` into Todo, `/save-to-backlog-in-planso` when it is not actionable yet) or `TODO.md` (`/save-to-todo-md`) — before the session ends, and never as a silent drop
 - Test First — no production code without a failing test that locks the behavior first; after implementing every item → `/deep-test` every domain touched (`unit`/`integration`/`api`/`e2e`/`website`) until green before entering the verify gate in `### 9` — a test that is not green means the work is not done (cycle order, coverage setup, and commit splitting are owned by `## TDD Loop`)
 
 ## Subagents
@@ -220,6 +222,7 @@ Convert every TODO, MOCK, FAKE, STUB, placeholder, and dead UI into real product
 ## Expected Outcome
 
 - The scope's gaps are known from `/review-implement-to-production` before starting, and every item is closed or reported blocked/deferred with a reason — the `### 9.1` re-scan returns 0 markers and the queue in the plan file shows every item closed
+- The queue is durable: open items live in the tracker the work came from (Plane.so via `/create-todo-in-planso` or `TODO.md`), so a resumed or compacted session re-loads them instead of scanning again
 - No TODO/MOCK/placeholder remains in production code, including every dead UI point; schema, validation, types, API, and UX/UI are complete and connected
 - Every interactive element works end-to-end — verified by a real click-through in the browser
 - Improvements around the scope are found and fixed comprehensively via `/improve`; the UI passes `/improve uxui` on a real render with every finding covered (or skipped with a reason when there is no UI); any needed new dep is chosen via `/use-my-packages-on-registry` before an external dep and verified in the manifest/lockfile

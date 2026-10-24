@@ -5,7 +5,7 @@ argument-hint: "[domain]"
 related:
   - cleanup-project
   - cleanup-disk-computer
-  - run-cleanup
+  - cleanup-artifact
   - ask-me
 
 ---
@@ -25,13 +25,12 @@ Dispatch to the target skill based on the cleanup domain — the parent only rou
 | Domain | Skill |
 |---|---|
 | `artifact` | /cleanup-artifact — build artifacts + dependency caches (Rust CLI, dry-run first) |
-| `branches-merged` | /cleanup-branches-merged — local branches already merged |
 | `docker` | /cleanup-docker — unused images, containers, volumes |
-| `git-branch` | /cleanup-git-branch — stale/orphan branches |
+| `git-branch` | /delete-git-branch — merged sweep, individual, or abandoned branches |
 | `github-issue` | /cleanup-github-issue — old or resolved issues |
-| `worktree` | /cleanup-worktree — unused git worktrees |
+| `worktree` | /git-worktree cleanup — unused git worktrees |
 
-1. Identify the domain from the argument (e.g. `/cleanup-worktree`)
+1. Identify the domain from the argument (e.g. `/cleanup-artifact`)
 2. If the domain is supported → follow the `/cleanup-<domain>` flow end to end
 3. If no domain is given or it is unknown → `/ask-me` picks the domain
 
@@ -42,7 +41,7 @@ Dispatch to the target skill based on the cleanup domain — the parent only rou
 
 - Use /cleanup-project if needed
 - Use /cleanup-disk-computer if needed
-- Use /run-cleanup if needed
+- Use /cleanup-artifact if needed
 
 ## Expected Outcome
 

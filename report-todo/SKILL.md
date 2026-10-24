@@ -4,8 +4,10 @@ description: Plan table: tasks with how, why, before, after, skills; architectur
 argument-hint: "[actions-or-context]"
 related:
   - report
+  - report-ansi
   - report-file-structure
   - refactor
+  - ask-me
   - suggest-next-action
 ---
 
@@ -35,8 +37,8 @@ Answer with the target architecture picture, the file structure, and the tech st
 > Goal: show the image of what it should be before listing tasks
 
 1. Draw this section before the table whenever the plan changes structure (folders, modules, dependency direction, data flow)
-2. Pick the fitting form: an ANSI box diagram for flows and dependencies — every outer box uses uniform width and stays undistorted (fix with `/draw-ansi` when needed)
-3. When a relation flips direction (a dependency reverses, a module moves sides), show `before` then `after` as two diagrams
+2. Render through `/report-ansi` (box diagram view): an ANSI box diagram for flows and dependencies — every outer box uses uniform width and stays undistorted (fix with `/draw-ansi` when needed)
+3. When a relation flips direction (a dependency reverses, a module moves sides), show `before` then `after` as two `/report-ansi` renders, never one mixed diagram
 4. No emoji and no `**` bold inside diagrams
 5. Skip this section when nothing structural changes
 
@@ -45,9 +47,9 @@ Answer with the target architecture picture, the file structure, and the tech st
 > Goal: show the target layout of the scope as an ANSI file tree
 
 1. Draw this section after the architecture diagram whenever the plan changes the layout (new folders, moved modules, renamed packages)
-2. Use an ANSI file tree (`├──`, `│`, `└──`) of the target structure — one root line, a `#` comment after each folder that carries a role
+2. Render through `/report-ansi` (tree view): an ANSI file tree (`├──`, `│`, `└──`) of the target structure — one root line, a `#` comment after each folder that carries a role
 3. Annotate only what the plan touches; keep unrelated branches out of the tree
-4. When files move, show `before` and `after` as two trees, never one mixed tree
+4. When files move, show `before` and `after` as two `/report-ansi` trees, never one mixed tree
 5. The deep scan of an existing tree belongs to `/report-file-structure`; this section shows only the target layout of the plan
 6. Skip this section when the layout does not change
 
@@ -77,6 +79,7 @@ Answer with the target architecture picture, the file structure, and the tech st
 4. Optional columns — Dependencies, Verification — add only the ones that carry information for this plan
 5. Keep the main table at most 9 columns (7 required + 2 optional); when more are needed, move the overflow into a second detail table keyed by `No.`
 6. Use backticks for paths, commands, and skill names
+7. A row that cannot start until the user chooses (scope, stack, destructive step, credential) → state the open choice in `Before` and put `/ask-me` first in that row's `Skills`; the answer belongs to the user, never to the plan
 
 Example A — 7 required plus two optional:
 
@@ -121,12 +124,15 @@ Example B — overflow into a detail table keyed by `No.`:
 9. Every `After` cell is checkable — it says how to tell the row is done
 10. Every `Skills` cell names skills that exist; a skill that does not exist is replaced by the nearest one in the same family
 11. No `**` bold, no emoji in any cell
+12. Every architecture diagram and file tree is rendered per `/report-ansi` — one ` ```text ` block, uniform outer width, at most 80 columns
+13. Every blocked decision carries `/ask-me` first in its `Skills` cell and states the open choice in `Before`
 
 ## Rules
 
 - Answer in chat only; never create a report file from this skill
 - One task per row, single responsibility
-- Architecture first, file tree second, tech stack third, table fourth; diagrams use ANSI with uniform outer boxes, before/after when a direction or a layout flips
+- Architecture first, file tree second, tech stack third, table fourth; diagrams use ANSI with uniform outer boxes, before/after when a direction or a layout flips, and every render follows `/report-ansi`
+- A blocked decision is asked through `/ask-me` before its row runs; the plan never chooses on the user's behalf
 - A code-touching plan reads `/refactor` first and opens with the baseline row; no implementation row precedes it
 - Tech-stack rows name the boundary of every confined library on the same row
 - `How` names the concrete method or change, never a restatement of `Task`, and `Skills` names the skills that run the row in the order to run them
@@ -139,8 +145,10 @@ Example B — overflow into a detail table keyed by `No.`:
 
 - An architecture picture of what it should be, drawn before the plan table when structure changes
 - An ANSI file-structure tree of the target layout when the layout changes, before/after when files move
+- Diagrams and trees rendered by `/report-ansi` — aligned, at most 80 columns, inside one ` ```text ` block
 - A tech-stack table naming layer and tech with its boundary whenever the plan adds or locks a choice
 - A table with `No.` first, the 7 required columns filled with evidence, optional columns chosen for fit, capped at 9 columns with overflow in a keyed detail table
 - A baseline row from `/refactor` as `No. 1` whenever the plan touches code
+- Every open decision routed to `/ask-me` before the row it blocks
 - A numbered summary and a start line below the table
 - A plan the user can approve row by row, seeing how each row is done, why it exists, what changes from before to after, and which skills run it

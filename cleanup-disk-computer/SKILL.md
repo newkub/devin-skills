@@ -9,7 +9,7 @@ related:
   - delete
   - report
   - run-clean
-  - run-cleanup
+  - cleanup-artifact
 ---
 
 ## Goal
@@ -124,7 +124,7 @@ Run the global `mise run cleanup` task to reclaim disk space from caches, temp f
 - Use `/follow-tool-mise` if needed
 - Use `/alternative` when choosing cleanup commands
 - Use `/run-clean` for project-scoped build artifacts and cache
-- Use `/run-cleanup` if needed
+- Use `/cleanup-artifact` if needed
 
 ## Expected Outcome
 

@@ -38,7 +38,7 @@ Step dependencies: each step depends on the previous step (Step N depends on Ste
 |-------|-------|
 | GitHub Actions workflow runs that failed | `/resolve-github-actions-fails` |
 | The specified Cloudflare Worker or Pages project | `/resolve-cloudflare-worker-fails` |
-| All Cloudflare Workers/Pages in the account | `/resolve-all-cloudflare-worker-fails` |
+| All Cloudflare Workers/Pages in the account | `/resolve-cloudflare-worker-fails --all` |
 | Repo-scoped CI/CD pipeline or single run/URL (watch + dispatch) | `/resolve-cicd` |
 
 ### Workflows

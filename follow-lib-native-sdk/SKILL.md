@@ -5,6 +5,7 @@ argument-hint: "[feature-or-component]"
 related:
   - follow-create-desktop-tauri
   - follow-lib-gpui-kit
+  - follow-lib-gpuix
 
 ---
 

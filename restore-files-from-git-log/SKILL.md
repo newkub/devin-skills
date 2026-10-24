@@ -4,7 +4,7 @@ description: Restore files from git log, starting from the latest commit and wal
 argument-hint: "[scope]"
 related:
   - deep-debug
-  - check-git-logs
+  - git-file-history
   - follow-tool-git
   - ask-me
   - git-commit
@@ -84,7 +84,7 @@ See also: /restore-files-from-my-dotfiles
 - Always specify a clear commit hash before restoring
 
 - Use /deep-debug if necessary
-- Use /check-git-logs if necessary
+- Use /git-file-history find if necessary
 
 ## Expected Outcome
 

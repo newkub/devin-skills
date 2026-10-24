@@ -8,6 +8,7 @@ related:
   - follow-best-practice
   - setup-cicd
   - deep-review
+  - follow-lib-gpuix
 
 ---
 

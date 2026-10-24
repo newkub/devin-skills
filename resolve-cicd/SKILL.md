@@ -4,7 +4,7 @@ description: Watch CI (GitHub Actions) and CD (Cloudflare, deploy targets) then 
 argument-hint: "[--repo <owner/repo> | --run-id <id> | --url <url> | verify]"
 related:
   - resolve-errors
-  - use-wrangler
+  - follow-service-cloudflare
   - run-check
   - loop-until-complete
   - report-progress
@@ -70,7 +70,7 @@ CD (Cloudflare and others):
 3. For each failure group → call the matching resolve skill:
    - GitHub Actions → `/resolve-github-actions-fails`
    - Specific Cloudflare Worker/Pages → `/resolve-cloudflare-worker-fails`
-   - Cloudflare across the whole account → `/resolve-all-cloudflare-worker-fails`
+   - Cloudflare across the whole account → `/resolve-cloudflare-worker-fails --all`
    - General code/config errors → `/resolve-errors`
 4. After a fix → commit + push then return to Step 2 to watch the new run — run `/loop-until-complete` until every pipeline is green or a blocker is hit
 5. Blockers that cannot be fixed yourself (missing secrets, quota, permissions, billing) → stop and report the list of secrets/values the user must set — do not commit secrets or a workaround that lowers the security posture
@@ -110,7 +110,7 @@ CD (Cloudflare and others):
 
 - `/git-commit-and-push` — use after a fix to push then continue watching
 - `gh` CLI — command reference for runs/workflows
-- `/use-wrangler` — command reference for wrangler deployments
+- `/follow-service-cloudflare` — command reference for wrangler deployments
 - `/run-check` — local gate before pushing a fix
 
 - Use /list-github if necessary

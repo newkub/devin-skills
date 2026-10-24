@@ -3,7 +3,7 @@ name: follow-tool-git
 description: Use git commands per situation
 argument-hint: "[scope]"
 related:
-  - follow-git-flow
+  - follow-git-workflows-setup
   - follow-git-workflows
   - follow-tool-hk
   - follow-tool-moonrepo
@@ -94,7 +94,7 @@ Use with every git project, whether local workflow, collaboration, or history in
 - keep `git status` clean before pushing
 - use `git diff` to review work before committing
 
-- Use `/follow-git-flow` for the branching model
+- Use `/follow-git-workflows setup` for the branching model
 - Use `/follow-git-workflows` for team workflows
 - Use `/follow-tool-hk` for git hooks in non-moon repos
 - Use `/follow-tool-moonrepo` for `vcs.hooks` in moon repos

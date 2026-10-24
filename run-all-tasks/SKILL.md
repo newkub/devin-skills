@@ -23,7 +23,7 @@ Enumerate every task defined in the project's task manifest (`package.json` scri
 
 - Use when you want to verify the full project health via its own defined task suite (not just the verify subset that `/run-verify` covers)
 - Covers custom tasks beyond the standard chain: `db:migrate`, `security`, `deploy:staging`, `docs:build`, `lint:fix`, and any project-specific scripts
-- Monorepo: run root tasks first, then delegate per-workspace via `/all-workspace` or `/use-subagents`; ordering: foundation packages before applications
+- Monorepo: run root tasks first, then delegate per-workspace via `/all workspace` or `/use-subagents`; ordering: foundation packages before applications
 - Destructive tasks (`deploy:*`, `db:reset`, `clean --force`, `prune`, `drop:*`) → skip unless `skip-destructive` is NOT passed AND the user explicitly confirms
 - `skip-destructive` argument → never run destructive tasks, mark them `skipped` in the report
 - This skill does NOT create or modify the task definitions — if tasks are missing or incomplete, recommend `/follow-tasks` to set them up first

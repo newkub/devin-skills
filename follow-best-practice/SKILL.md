@@ -39,7 +39,7 @@ Apply to every workspace and every kind of work (code, workflow, config, documen
 
 > Goal: Research current best practices from credible sources — the owner skill first, the web only for gaps
 
-1. Order of authority: manifest facts → project conventions (`AGENTS.md`, `.devin/rules`, existing code) → the owner skill's `best-practices/` → web sources
+1. Order of authority: manifest facts → project conventions (`AGENTS.md`, `.agents/rules`, existing code) → the owner skill's `best-practices/` → web sources
 2. Follow `/learn-from-web` for systematic learning from web sources — for the gaps only, never re-research what `best-practices/` already answers
 3. Follow `/deep-research` when deep information from multiple sources is needed
 4. Verify the information is current against the version the manifest installed — a practice for another major version is not a best practice for this repo
@@ -130,7 +130,7 @@ Every practice must trace to the manifest or an owner skill — never to memory 
 - Start from the package manifest and its lockfile — the deps, scripts, and versions there are the only facts about the stack
 - Every dep in the manifest that a `follow-*` skill owns → read that skill's `best-practices/` before writing code; when the file and generic web advice disagree, the `best-practices/` file wins
 - A dep with no owner skill, or an owner skill with no `best-practices/` → research it, then persist it via `/update-agents-skills-global` (new skill or backfilled `best-practices/` file) — a gap that stays in chat is lost
-- Project conventions (`AGENTS.md`, `.devin/rules`, existing patterns) outrank generic best practices — apply the practice with a minimal diff, never rewrite the whole file to match a guide
+- Project conventions (`AGENTS.md`, `.agents/rules`, existing patterns) outrank generic best practices — apply the practice with a minimal diff, never rewrite the whole file to match a guide, and record a newly confirmed convention through `/update-dot-agents-project rules`
 
 ## Expected Outcome
 

@@ -3,7 +3,6 @@ name: restore-files
 description: Recover files/state — from git log, devin history, dotfiles, or deleted files via top-level skills
 argument-hint: "[domain|verify]"
 related:
-  - check-git-logs
   - git-file-history
   - git-restore
   - git-revert
@@ -43,7 +42,7 @@ Dispatch to the destination skill according to the restore source — the parent
 - The parent only dispatches — do not duplicate the destination skill's workflow
 - A restore that overwrites the current file must always be confirmed first
 
-- Use /check-git-logs if necessary
+- Use /git-file-history find if necessary
 - Use /git-file-history if necessary
 
 ## Merged Details

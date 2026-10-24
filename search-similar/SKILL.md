@@ -5,7 +5,7 @@ argument-hint: "[scope]"
 related:
   - search
   - use-astgrep
-  - use-related-skills
+  - update-agents-skills-global
   - create-similar
   - ask-me
   - report
@@ -79,7 +79,7 @@ See also: /use-astgrep
 - Do not expose secrets or sensitive data in snippets
 - If the context is unclear → ask the user first
 
-- Use /use-related-skills if needed
+- Use `/update-agents-skills-global` (`## Conventions → Related Skills`) if needed
 
 ## Expected Outcome
 

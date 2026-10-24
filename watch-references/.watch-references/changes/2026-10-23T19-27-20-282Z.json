@@ -1,0 +1,102 @@
+{
+  "version": 1,
+  "at": "2026-10-23T19:27:20.282Z",
+  "entries": [
+    {
+      "path": "package.json",
+      "kind": "added",
+      "at": "2026-10-23T19:27:15.930Z",
+      "refsChanged": 18
+    },
+    {
+      "path": "src/astgrep.ts",
+      "kind": "added",
+      "at": "2026-10-23T19:27:15.930Z",
+      "refsChanged": 49
+    },
+    {
+      "path": "src/cli.ts",
+      "kind": "added",
+      "at": "2026-10-23T19:27:15.930Z",
+      "refsChanged": 162
+    },
+    {
+      "path": "src/config.ts",
+      "kind": "added",
+      "at": "2026-10-23T19:27:15.930Z",
+      "refsChanged": 34
+    },
+    {
+      "path": "src/derive.ts",
+      "kind": "added",
+      "at": "2026-10-23T19:27:15.930Z",
+      "refsChanged": 58
+    },
+    {
+      "path": "src/devproc.ts",
+      "kind": "added",
+      "at": "2026-10-23T19:27:15.930Z",
+      "refsChanged": 60
+    },
+    {
+      "path": "src/feedback.ts",
+      "kind": "added",
+      "at": "2026-10-23T19:27:15.930Z",
+      "refsChanged": 74
+    },
+    {
+      "path": "src/mcp.ts",
+      "kind": "added",
+      "at": "2026-10-23T19:27:15.930Z",
+      "refsChanged": 92
+    },
+    {
+      "path": "src/runproc.ts",
+      "kind": "added",
+      "at": "2026-10-23T19:27:15.930Z",
+      "refsChanged": 18
+    },
+    {
+      "path": "src/scan.ts",
+      "kind": "added",
+      "at": "2026-10-23T19:27:15.930Z",
+      "refsChanged": 109
+    },
+    {
+      "path": "src/skills.ts",
+      "kind": "added",
+      "at": "2026-10-23T19:27:15.930Z",
+      "refsChanged": 47
+    },
+    {
+      "path": "src/store.ts",
+      "kind": "added",
+      "at": "2026-10-23T19:27:15.930Z",
+      "refsChanged": 55
+    },
+    {
+      "path": "src/types.ts",
+      "kind": "added",
+      "at": "2026-10-23T19:27:15.930Z",
+      "refsChanged": 17
+    },
+    {
+      "path": "src/visual.ts",
+      "kind": "added",
+      "at": "2026-10-23T19:27:15.930Z",
+      "refsChanged": 76
+    },
+    {
+      "path": "src/watch.ts",
+      "kind": "added",
+      "at": "2026-10-23T19:27:15.930Z",
+      "refsChanged": 83
+    },
+    {
+      "path": "tsconfig.json",
+      "kind": "added",
+      "at": "2026-10-23T19:27:15.930Z",
+      "refsChanged": 13
+    }
+  ]
+}

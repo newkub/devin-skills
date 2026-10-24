@@ -67,7 +67,7 @@ Used to install `wrangler`, set up authentication (`wrangler login` or `CLOUDFLA
 
 ### 3. Docs First
 
-- If unsure about a command/flag → check official docs via `/learn` (web) or `/use-wrangler` instead of guessing
+- If unsure about a command/flag → check official docs via `/learn` (web) or `/follow-service-cloudflare` instead of guessing
 
 ## Expected Outcome
 

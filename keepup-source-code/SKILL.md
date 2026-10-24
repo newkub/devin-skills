@@ -12,6 +12,7 @@ related:
   - update-config
   - deep-review
   - check-should-update
+  - check-update
   - run-check
   - deep-validate
   - report
@@ -34,12 +35,13 @@ Use when you want the code not to go out of date — e.g., after bumping deps, c
 
 > Goal: Know what in the project is stale
 
-1. Run `/check-should-update` to look at git changes and assess whether a target needs updating
-2. Run `/deep-review` scope `deprecated-apis` to find code using deprecated APIs/dependencies
-3. Run `/deep-review` scope `content-outdate` to check skills/docs/specs that are outdated
-4. Run `/deep-review` dimension `config` to check config that has drifted from defaults
-5. Check manifest drift — `package.json`/`Cargo.toml`/`go.mod` changed but the lockfile or code did not follow
-6. Combine the signals into a list: `{area, signal, severity}`
+1. Run `/check-update` to check GitHub release, registry, and blog channels for newer versions
+2. Run `/check-should-update` to look at git changes and assess whether a target needs updating
+3. Run `/deep-review` scope `deprecated-apis` to find code using deprecated APIs/dependencies
+4. Run `/deep-review` scope `content-outdate` to check skills/docs/specs that are outdated
+5. Run `/deep-review` dimension `config` to check config that has drifted from defaults
+6. Check manifest drift — `package.json`/`Cargo.toml`/`go.mod` changed but the lockfile or code did not follow
+7. Combine the signals into a list: `{area, signal, severity}`
 
 ### 2. Map Signal To Update
 
@@ -47,7 +49,7 @@ Use when you want the code not to go out of date — e.g., after bumping deps, c
 
 | No. | Signal | Dispatch To |
 |-----|--------|-------------|
-| 1 | old deps/runtime/tools | `/update-version-to-latest` |
+| 1 | old deps/runtime/tools | `/check-update` → `/update-version-to-latest` |
 | 2 | config drift or missing | `/update-config` |
 | 3 | public API/exports changed | `/update-usage-md` + `/update-features-md` |
 | 4 | outdated docs | `/update-docs` |

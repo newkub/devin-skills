@@ -63,7 +63,7 @@ Use when the user asks:
 2. Map out the data flow or execution flow including state changes, lifecycle, edge cases
 3. Start with a short overview, then break the work into 3-7 steps
 4. For each step state what happens, why, and how
-5. Use `/report-flow`, `/report`, or `/draw-tldraw` if it helps visualize
+5. Use `/report-flow`, `/report`, or `/draw tldraw` if it helps visualize
 
 ### 4. Suggest Next Steps
 

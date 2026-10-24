@@ -35,8 +35,8 @@ Use for writing and improving `AGENTS.md` in a project's root and workspaces fro
 1. Run `/follow-agents-md` if an `AGENTS.md` already exists
 2. Run `/check-monorepo` to check monorepo status
 3. Run `/deep-analyze` to analyze the tech stack and structure
-4. Run `/all-workspace` if it is a monorepo
-5. Read the global rules from `%USERPROFILE%\.codeium\windsurf\memories\global_rules.md`
+4. Run `/all workspace` if it is a monorepo
+5. Read the global rules from `D:\dot-agents\global_rules.md`
 6. Run `/ask-project-requirement` if the context or requirements are unclear
 7. Identify the platform and target user from the context and dependencies
 8. If the project has a root `review/` CLI (`review/package.json`), run `/update-review-cli`

@@ -71,7 +71,7 @@ Select workflows by the project's needs:
 3. Run `/follow-tool-release-it` to set up automated releases (if a monorepo)
 4. Run `/follow-release` to write `release.yml` (tag-triggered) when the project releases
 5. Create `.github/workflows/ci.yml` for lint, typecheck, test
-6. Vite+ project: add `setup-vp` before the install/build steps and run `vp check` + `vp test` (+ `vp build`, `vp pack` for a library) instead of separate formatter/linter installs — keep `/run-typecheck` as the full `tsc` gate (`/follow-tool-viteplus`)
+6. Vite+ project: add `setup-vp` before the install/build steps and run `vp check` + `vp test` (+ `vp build`, `vp pack` for a library) instead of separate formatter/linter installs — keep `/run-typecheck` as the typecheck gate (`tsrs --noEmit` for Vite, `bun check -p . --no-script` otherwise) (`/follow-tool-viteplus`)
 
 ### 4. Add Workflows As Needed
 

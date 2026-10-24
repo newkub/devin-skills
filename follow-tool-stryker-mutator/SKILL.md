@@ -23,7 +23,7 @@ For JavaScript, TypeScript, React, Angular, Vue, Svelte, and Node.js projects wi
 - Stryker measures test quality through mutants — it is not a test runner or coverage tool; run tests via `/deep-test` and check coverage via `improve coverage`
 - Use it once tests pass and are stable — if tests still fail or are flaky, fix them first with `/update-tests`
 
-- Latest: `@stryker-mutator/core@10.0.0` (verified 2026-09-13) — v10 requires Node.js 22+ (dropped Node 20)
+- Latest: `@stryker-mutator/core@10.0.0` (verified 2026-10-23) — v10 requires Node.js 22+ (Node 20 dropped), ships babel 8, adds the `empty-expression-mutator`, filters mutants whose mutation is semantically empty, keeps a partial incremental report when a run exits unexpectedly, moves to mocha v12, and fixes the vitest runner; the typescript-checker's TS 7 support is experimental
 
 ## Execute
 
@@ -47,7 +47,8 @@ For JavaScript, TypeScript, React, Angular, Vue, Svelte, and Node.js projects wi
 2. Install `@stryker-mutator/core` with `bun add -D @stryker-mutator/core`
 3. Install the runner plugin, e.g. `bun add -D @stryker-mutator/vitest-runner`
 4. Install the TypeScript checker if you use TypeScript: `bun add -D @stryker-mutator/typescript-checker`
-5. See the details in 
+5. Set `"testRunner"` and `"checkers": ["typescript"]` in the config; install one runner plugin per project, not several
+6. Confirm the runner works on its own (`bunx vitest run` or `bunx jest`) before adding Stryker on top
 
 ### 2. Initialize and Configure
 
@@ -55,9 +56,21 @@ For JavaScript, TypeScript, React, Angular, Vue, Svelte, and Node.js projects wi
 
 1. Run `bunx stryker init` to generate the config
 2. Check `stryker.config.json` or `stryker.config.mjs`
-3. Define `testRunner`, `mutator`, `reporters`, `coverageAnalysis`
-4. Set the `mutate` and `ignorePatterns` globs
-5. See the config options in 
+3. Set the core keys: `testRunner`, `mutate`, `ignorePatterns`, `coverageAnalysis`
+4. Tune `mutators` — include `empty-expression-mutator` only when empty expressions exist in the code; exclude groups you do not want reported via `mutator.excludedMutations`
+5. Pick `reporters`: `html`, `clear-text`, `progress`, and `dashboard` when you report to the Stryker Dashboard
+6. Set `thresholds` (`high`, `low`, `break`) so CI fails when the score drops below the agreed baseline
+7. Set `incremental: true` and let Stryker write `reports/stryker-incremental.json` for repeat runs
+8. Remember CLI options replace the config-file value rather than adding to it — pass `--mutate` only when you want to override the whole glob
+
+### 2.1 Suppress Mutants
+
+> Goal: Exclude only the mutations that genuinely cannot be tested
+
+1. `mutator.excludedMutations` — remove a mutator group project-wide (e.g. `StringLiteral`)
+2. `// Stryker disable next-line <mutator>,<mutator>: <why>` — inline suppression with a reason
+3. The ignore plugin — implement `shouldRun` for path/line based rules when the two above are not enough
+4. `ignored` mutants are counted separately and do not affect the mutation score — suppression hides a hole, so record the reason
 
 ### 3. Run Mutation Testing
 
@@ -103,30 +116,31 @@ For JavaScript, TypeScript, React, Angular, Vue, Svelte, and Node.js projects wi
 
 ### 3. Mutant Handling
 
-- Add tests for surviving mutants
-- Use `// Stryker disable` only when necessary
-- Track the mutation score across runs
+- Add tests for surviving mutants; never delete or weaken an existing test to make a mutant die
+- `ignored` mutants are excluded from the score — suppress only with a written reason
+- Treat `timeout` and `survived` differently: a timeout means the mutant hung, not that a test is missing
+- Track the mutation score across runs and ratchet `thresholds.break` upward
 
 ### 4. Reports
 
 - View the HTML report after each run
-- Use the dashboard for trends
-- Check the `timeout` mutants
-
-- Use /deep-test if needed
-- Use /run-test if needed
-- Use /follow-tool-vitest if needed
-- Use /follow-lang-typescript if needed
-- Use /follow-lang-javascript if needed
+- `clear-text` for CI logs, `dashboard` for trends across branches
+- Read survivors by file and line, not just the total score
 
 ## References
 
-- [CLI reference](references/cli.md)
+- [CLI reference](references/cli.md) — `stryker run` and `stryker init` options
+- [API and config reference](references/apis.md) — package, config keys, thresholds
+- [Best practices](best-practices/stryker.md) — recommended patterns and pitfalls
+- Workflows: `workflows/setup-stryker/SKILL.md`, `workflows/optimize-mutation/SKILL.md`
+- Calling skills: `/deep-test mutation`, `/update-tests`, `/run-test`, `/follow-tool-vitest`, `/follow-lang-typescript`, `/follow-lang-javascript`
 
-- Use /deep-test mutation if needed
+### Use Cases
 
-- See best-practices/ for recommended patterns and pitfalls
-- References: [Stryker Mutator — Best Practices](best-practices/stryker.md), [apis](references/apis.md)
+| Scenario | Use case |
+|----------|----------|
+| Green vitest suite → first readable mutation report | `usecases/first-mutation-run.md` |
+| Score as a PR gate without a full run every push | `usecases/ci-threshold-gate.md` |
 
 ## Expected Outcome
 

@@ -25,10 +25,9 @@ Dispatch to the top-level skill for the git resource to list — the parent only
 |---|---|
 | `branch` | /list-git-branch — branches + merge status |
 | `commit` | /list-git-commit — commit history |
-| `release` | /list-git-release — releases |
-| `submodules` | /list-git-submodules — submodule status |
-| `tags` | /list-git-tags — tags |
-| `worktree` | /list-git-worktree — worktrees |
+| `submodules` | /git-submodule list — submodule status |
+| `tags` | /list-git-tags — tags and releases |
+| `worktree` | /git-worktree list — worktrees |
 
 1. Identify the domain from the argument (e.g. `/list-git-branch`)
 2. When the domain is supported → call the `/list-<parent>-<domain>` skill and follow its flow

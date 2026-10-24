@@ -7,6 +7,7 @@ related:
   - suggest-next-action
   - resolve-errors
   - deep-thinking
+  - use-decision-model
 ---
 
 ## Goal
@@ -48,6 +49,7 @@ Estimate the difficulty and time required
 Calculate priority from impact and effort
 
 1. Run `/deep-thinking` to review multiple perspectives before deciding priority
+2. When a decision-model runtime is available → `/use-decision-model` to pre-rate `impact` and `effort` (`score`) and urgency (`noul`); treat it as an advisory pre-rate only — the matrix below stays the authority
 
 | Impact | Effort | Priority | Rationale |
 |--------|--------|----------|-----------|

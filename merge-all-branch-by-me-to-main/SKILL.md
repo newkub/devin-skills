@@ -75,7 +75,7 @@ If you need to merge branches that are not yours → you must check the branch o
 
 > Goal: delete the user's old branches after a successful merge
 
-1. Delete merged local branches with `git branch -d <branch>` — use `/delete-git-branch` or `/cleanup-branches-merged`
+1. Delete merged local branches with `git branch -d <branch>` — use `/delete-git-branch --merged`
 2. Unmerged branches that have now merged successfully → `git branch -d` is fine; ones not yet merged → do not delete unless the user confirms `--force-unmerged`
 3. If `--remote` → delete remote branches with `git push origin --delete <branch>` only for those merged and already confirmed
 4. Prune stale remote refs with `git fetch --prune`

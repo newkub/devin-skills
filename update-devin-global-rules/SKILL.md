@@ -14,7 +14,6 @@ related:
   - update-astgrep-rules
   - check-reference
   - update-references
-  - use-related-skills
   - new-skills
   - deep-validate
   - report-before-after
@@ -28,7 +27,7 @@ Keep the machine-wide agent rules file (`global_rules.md`) correct, enforceable,
 
 ## Scope
 
-- Owns `global_rules.md` only — project-level `.devin/rules/*.md` → `/update-dot-agents-project`; project ast-grep `rules/` → `/update-astgrep-rules`; cross-layer alignment (rules vs skills vs subagents) → `/review-dot-agents-global-and-fix`, which delegates the rules edit here
+- Owns `global_rules.md` only — project-level `.agents/rules/*.md` → `/update-dot-agents-project`; project ast-grep `rules/` → `/update-astgrep-rules`; cross-layer alignment (rules vs skills vs subagents) → `/review-dot-agents-global-and-fix`, which delegates the rules edit here
 - `/update-devin global-rules` dispatches here
 - Argument routes the work: `add` a new rule · `update` an existing rule · `remove` a rule · `audit` (read-only health check) — no argument → `/ask-me`
 - Boundary with `/review-dot-agents-global-and-fix`: this skill edits the rules file and syncs reverse references; harness owns detecting that layers disagree
@@ -39,7 +38,7 @@ Keep the machine-wide agent rules file (`global_rules.md`) correct, enforceable,
 
 > Goal: know the current rules and what the change really means
 
-1. Read the rules file — canonical path on this machine: `%USERPROFILE%\.codeium\windsurf\memories\global_rules.md` (the `global-rules:` entry in the skills repo `AGENTS.md` records the source; other installs keep it in dotfiles/chezmoi — check there before creating a second copy)
+1. Read the rules file — canonical path on this machine: `D:\dot-agents\global_rules.md` (the `global-rules:` entry in the skills repo `AGENTS.md` records the source; other installs keep it in dotfiles/chezmoi — check there before creating a second copy)
 2. For each existing section record: number, title, the skills/commands it cites, and its intent — never edit blind
 3. Capture the requested change as one falsifiable rule: what agent behavior changes, when it triggers, which skill enforces it
 
@@ -49,7 +48,7 @@ Keep the machine-wide agent rules file (`global_rules.md`) correct, enforceable,
 
 1. A rule covering existing behavior → update that section instead of adding a twin
 2. The behavior is really owned by one skill's workflow → the skill should own it; the global rule stays only if every session must obey it regardless of task
-3. Run `/use-related-skills` — the rule must cite a real skill that exists (missing → create it first via `/new-skills`)
+3. Run `/update-agents-skills-global` (`## Conventions → Related Skills`) — the rule must cite a real skill that exists (missing → create it first via `/new-skills`)
 
 ### 3. Audit Before Editing (always)
 

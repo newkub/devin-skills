@@ -4,7 +4,7 @@ description: Cherry-pick commits across branches correctly — single, range, me
 argument-hint: "[sha|range]"
 related:
   - git-revert
-  - check-git-logs
+  - git-file-history
   - resolve-errors
 ---
 
@@ -24,7 +24,7 @@ Bring commit(s) from one branch to another with `git cherry-pick` — without me
 
 > Goal: clearly identify the commits to pick
 
-1. `git log --oneline <source-branch>` or `/check-git-logs` to find the sha
+1. `git log --oneline <source-branch>` or `/git-file-history find` to find the sha
 2. `git show <sha>` — confirm content and dependencies (a commit may rely on earlier commits)
 3. check whether that change already exists in the target (`git cherry <target> <source>` or `git log --grep`)
 

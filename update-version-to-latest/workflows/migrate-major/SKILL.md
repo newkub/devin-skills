@@ -73,7 +73,7 @@ Safely upgrade a dependency/runtime across a major version — scan all breaking
 
 1. Run the official codemod if the package provides one — see the migration guide
 
-2. If there's no codemod → use `/use-astgrep` or `/migration-with-astgrep` to write patterns that transform renamed/removed APIs
+2. If there's no codemod → use `/use-astgrep` or `/migrate` to write patterns that transform renamed/removed APIs
 
 3. Manually fix the parts a codemod can't handle — behavior changes, config moves, type changes
 

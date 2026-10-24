@@ -19,11 +19,12 @@ templates/ examples/ scripts/ src/ guide/
 
 ### Package Shapes
 
-- `review-*` package = a single `SKILL.md` for each of the nine assessors (`review`, `review-issues`, `review-gaps`, `review-test`, `review-use-lib-effective`, `review-dot-agents-global-and-fix`, `review-github-pr`, `review-github-issue`, `review-by-all-stakeholder`) and each of the eleven deep-inside preset doors (`review-refactor` … `review-a11y`, owned by the preset map)
+- `review-*` package = a single `SKILL.md` + `templates/` (the output skeleton the skill fills — findings table, confirm line, fix-route block; one file per artifact, named `<artifact>.md`, pointed at from `SKILL.md`) for each of the nine assessors (`review`, `review-issues`, `review-gaps`, `review-test`, `review-use-lib-effective`, `review-dot-agents-global-and-fix`, `review-github-pr`, `review-github-issue`, `review-by-all-stakeholder`) and each of the eleven deep-inside preset doors (`review-refactor` … `review-a11y`, owned by the preset map)
   - the per-label dimensions are rows in `deep-review-codebase-everything/references/review.md`, not skills
   - exceptions with real assets: `review-github-pr` has `workflows/`, `review-by-all-stakeholder` has role catalogs in `references/`, `review-dot-agents-global-and-fix`/`update-review-cli` carry `src/`/`scripts/`
   - every domain review delegates to `/deep-review`, dispatched per the artifact-seeded rows in `deep-review-codebase-everything/references/review.md` `## Dimension Matrix` (no inline domain catalog in its `SKILL.md`)
   - `review-dot-agents-global-and-fix` = the tooling-package exception (has real `src/`/`scripts/`/`workflows/`)
+- `report-*` package = `SKILL.md` + `templates/<artifact>.md` — the deliverable skeleton the skill fills in (table header with its own real columns, one example row, fill rules); a report skill without `templates/` is incomplete, and `SKILL.md` must point at the file it uses
 - knowledge other skills read cross-cuttingly (living docs, catalogs, boilerplate) → the `references/` of the canonical owner skill, or inline in the owner's SKILL.md (e.g. `deep-review-codebase-everything/SKILL.md`, `follow-my-techstack/references/`) — there is no `shared/` at the repo root
 - `follow-create-*` packages = a single `SKILL.md` only — no `references/`
 - `follow-lib-*`/`follow-tool-*` packages = `SKILL.md` entry + `references/apis.md` (+ `cli.md` for a real CLI) + `best-practices/` + `usecases/` — the SKILL.md points at all three
@@ -32,7 +33,7 @@ templates/ examples/ scripts/ src/ guide/
 
 ### Package Shapes For Review, Design, Refactor, Architecture, And Production
 
-- `deep-review` family packages = a single `SKILL.md` each (the general `/deep-review` dispatcher, the `deep-review-codebase-everything` engine, and the eleven `review-*` doors) — the matrix, ledger, report, and fix routing stay in `deep-review-codebase-everything`, a door only narrows labels + owns its fix route; the family's tier/labels/fix-route map is `deep-review-codebase-everything/references/presets.md` (`## Preset Map`), validated by `scripts/verify-matrix.ts`
+- `deep-review` family packages = `SKILL.md` + `templates/` for the general `/deep-review` dispatcher, the `deep-review-codebase-everything` engine, and the eleven `review-*` doors — the matrix, ledger, report, and fix routing stay in `deep-review-codebase-everything`, a door only narrows labels + owns its fix route + ships its own output skeleton in `templates/`; the family's tier/labels/fix-route map is `deep-review-codebase-everything/references/presets.md` (`## Preset Map`), validated by `scripts/verify-matrix.ts`
 - `design-*` packages = a single `SKILL.md`, with `references/` only when a spec is too large for the body (e.g. `design-web-prototype/references/cli-explorer-spec.md`)
 - `refactor` package = a single `SKILL.md` (file-level refactor scopes: verify before → plan → refactor → update references → verify after) — no `workflows/`, no `references/`
 - architecture knowledge lives in the top-level `follow-architecture` package = `SKILL.md` (pattern selection + `## Monorepo Architecture` + `## File Structure By Workspace Type`) + `references/clean-arch.md` and `references/layered-arch.md` (the two pattern guides — file structure, layer table, rules), dispatched from `/refactor` for architecture scopes; the event-driven detail file was deleted by owner decision — messaging work routes to `/improve {events,queues,realtime}`

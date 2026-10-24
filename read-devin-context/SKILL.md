@@ -27,18 +27,18 @@ Read both global and project context that affects how devin works, including `gl
    - Windows: `%USERPROFILE%\.agents`, e.g. `C:\Users\<user>\.agents`
    - Linux/macOS: `~/.agents`
    - Legacy client path `%APPDATA%\devin` — read only when it resolves; report a broken junction instead of repairing it
-2. Check for windsurf context:
-   - `C:\Users\<user>\.codeium\windsurf\memories\global_rules.md`
-   - `C:\Users\<user>\.codeium\windsurf\skills`
+2. Check for skills-repo context (`D:\dot-agents`, or the current clone):
+   - `global_rules.md`
+   - `skills/` and `skills/AGENTS.md`
 3. Check for project context:
-   - `.agents/`, `.windsurf/`, `.agents/skills/`, `.agents/mcp/mcp_config.json`, `.agents/hooks/`, `rules/`, `sgconfig.yml`
+   - `.agents/`, `.agents/skills/`, `.agents/mcp/mcp_config.json`, `.agents/hooks/`, `rules/`, `sgconfig.yml`
 4. If an important path is not found → report and skip
 
 ### 2. Read Global Rules
 
 > Goal: Read global rules
 
-1. Read `global_rules.md` from windsurf memories or the project `AGENTS.md`
+1. Read `global_rules.md` from the skills repo or the project `AGENTS.md`
 2. Summarize the step order, restrictions, and required references
 3. If the file does not exist → report that no global rules were found
 
@@ -47,8 +47,8 @@ Read both global and project context that affects how devin works, including `gl
 > Goal: Read skills context
 
 1. List skills in `~/.agents/skills` (global skills)
-2. List skills in `C:\Users\<user>\.codeium\windsurf\skills` (windsurf skills)
-3. List project skills in `.agents/skills/` or `.windsurf/skills/` if any
+2. List skills in the skills repo `skills/` directory
+3. List project skills in `.agents/skills/` if any
 4. If there is a skill matching the task, point to it and read only the essential main `SKILL.md`
 
 ### 4. Read MCP Config

@@ -12,7 +12,7 @@ related:
   - follow-design-system
   - follow-web-standard
   - follow-service-cloudflare
-  - follow-tool-devfra
+  - follow-tool-vite-devtools
   - run-dev
 
 ---
@@ -37,7 +37,7 @@ Choose the right web project type and hand the work off to the correct skill
 | SvelteKit | `/follow-create-web-svelte` |
 | SolidStart | `/follow-create-web-solidstart` |
 | TanStack Start (Solid) | `/follow-solid-framework` |
-| Docs site (single-page README+docs, Comark Vue → CF Workers) | `/follow-create-web-docs` |
+| Docs site (single-page README+docs, Sätteri → CF Workers) | `/follow-create-web-docs` |
 
 - Default toolchain: `vite` (Rolldown-powered since v8) — always confirm the latest version with `/deep-research` + `/follow-best-practice` (never pinned in this file — per `/update-agents-skills-global`)
 
@@ -133,7 +133,7 @@ Choose the right web project type and hand the work off to the correct skill
 - Use /follow-create-plugins if needed
 - Use /follow-create-web-mcp if needed
 - Use /follow-web-standard when implementing UI markup/widgets — semantic HTML, native form validation, standard Web APIs before libraries
-- Use /follow-tool-devfra if the site needs devtools (inspector/analyzer)
+- Use /follow-tool-vite-devtools if the site needs devtools (inspector/analyzer dock)
 - Use /deep-test component for component tests and /deep-test e2e for user flows
 
 ## Expected Outcome

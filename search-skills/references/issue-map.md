@@ -24,7 +24,7 @@ Table mapping common symptoms to the skill or workflow that should be used
 | release workflow/config missing | `/setup-cicd`, `/follow-release`, `/follow-tool-release-it` |
 | TODO/MOCK/placeholder left over | `/scan-codebase`, `/update-todo-md`, `/implement-to-production` |
 | dependencies outdated | `/update-version-to-latest`, `/follow-tool-taze` |
-| cluttered files/branches/worktrees | `/run-cleanup`, `/cleanup-project`, `/cleanup-git-branch`, `/cleanup-worktree` |
+| cluttered files/branches/worktrees | `/cleanup-artifact`, `/cleanup-project`, `/delete-git-branch`, `/git-worktree cleanup` |
 | git conflict | `/resolve-merge-conflicts`, `/deep-debug` |
 | multiple inconsistent workspaces | `/review-dot-agents-global-and-fix`, `/sync-drive-d-submodules` |
 | unsure which skill to use | `/search-skills`, `/suggest-next-action`, `/ask-me` |

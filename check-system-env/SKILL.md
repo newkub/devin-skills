@@ -16,7 +16,7 @@ allowed-tools:
 
 ## Goal
 
-Inspect Windsurf's system environment including OS, shell, environment variables, and global root paths
+Inspect the system environment for Devin and other agent harnesses, including OS, shell, environment variables, and global root paths
 
 ## Scope
 
@@ -69,8 +69,6 @@ $PSVersionTable.PSEdition
 1. Run `$env:PATH -split ';'` to show PATH
 2. Run `$env:USERPROFILE` to show the user profile path
 3. Run `$env:HOME` to show the home path
-4. Run `$env:CODEIUM_HOME` to show the Codeium home
-5. Run `$env:WINDSURF_HOME` to show the Windsurf home
 
 ```powershell
 # Check PATH
@@ -79,76 +77,68 @@ $env:PATH -split ';'
 # Check HOME/USERPROFILE
 $env:USERPROFILE
 $env:HOME
-
-# Check Windsurf specific
-$env:CODEIUM_HOME
-$env:WINDSURF_HOME
 ```
 
 ### 4. Check Global Root Paths
 
-> Goal: Check Global Root Paths
+> Goal: Check the global agent root paths
 
-Check Windsurf's global root paths:
-
-1. Check `$env:USERPROFILE\.codeium\windsurf\global_workflows`
-2. Check `$env:USERPROFILE\.codeium\windsurf\skills`
-3. Check `$env:USERPROFILE\.codeium\windsurf\global_rules`
-4. Check `$env:USERPROFILE\.codeium\windsurf\mcp_config.json`
+1. Check `$env:USERPROFILE\.agents` (global agent context)
+2. Check `$env:USERPROFILE\.agents\skills` (global skills)
+3. Check `$env:USERPROFILE\.agents\hooks` (global hooks)
+4. Check `$env:USERPROFILE\.qoder` (Qoder client config)
+5. Check `$env:USERPROFILE\.devin` (Devin client config)
+6. Check `D:\dot-agents` (skills repo: `skills/`, `global_rules.md`, `AGENTS.md`)
 
 ```powershell
-# Global workflows path
-$env:USERPROFILE\.codeium\windsurf\global_workflows
+# Global agent roots
+$env:USERPROFILE\.agents
+$env:USERPROFILE\.agents\skills
+$env:USERPROFILE\.agents\hooks
+$env:USERPROFILE\.qoder
+$env:USERPROFILE\.devin
 
-# Global skills path
-$env:USERPROFILE\.codeium\windsurf\skills
-
-# Global rules path
-$env:USERPROFILE\.codeium\windsurf\global_rules
-
-# MCP config path
-$env:USERPROFILE\.codeium\windsurf\mcp_config.json
+# Skills repo
+Test-Path D:\dot-agents
 ```
 
 ### 5. Check MCP Configuration
 
 > Goal: Check MCP configuration
 
-1. Run `Get-Content $env:USERPROFILE\.codeium\windsurf\mcp_config.json` to show the MCP config
+1. Run `Get-Content $env:USERPROFILE\.agents\mcp\mcp_config.json` to show the global MCP config
+2. Run `Get-Content $env:APPDATA\devin\mcp_config.json` to show the Devin app MCP config (if it exists)
 
-### 6. Check Global Workflows
-
-> Goal: Check the existing global workflows
-
-1. Run `Get-ChildItem $env:USERPROFILE\.codeium\windsurf\global_workflows -Filter "*.md"` to list the workflows
-
-```powershell
-# List global workflows
-Get-ChildItem $env:USERPROFILE\.codeium\windsurf\global_workflows -Filter "*.md"
-```
-
-### 7. Check Global Skills
+### 6. Check Global Skills
 
 > Goal: Check Global Skills
 
 Check the existing global skills:
 
-1. Run `Get-ChildItem $env:USERPROFILE\.codeium\windsurf\skills -Recurse -Filter "*.md"` to list the skills
+1. Run `Get-ChildItem D:\dot-agents\skills -Recurse -Filter "SKILL.md"` to list the skills repo
+2. Run `Get-ChildItem $env:USERPROFILE\.agents\skills -Recurse -Filter "*.md"` to list the global skills
 
 ```powershell
+# List skills repo
+Get-ChildItem D:\dot-agents\skills -Recurse -Filter "SKILL.md"
+
 # List global skills
-Get-ChildItem $env:USERPROFILE\.codeium\windsurf\skills -Recurse -Filter "*.md"
+Get-ChildItem $env:USERPROFILE\.agents\skills -Recurse -Filter "*.md"
 ```
 
-### 8. Check Global Rules
+### 7. Check Global Rules
 
 > Goal: Check the existing global rules
 
-1. Run `Get-ChildItem $env:USERPROFILE\.codeium\windsurf\global_rules -Filter "*.md"` to list the rules
+1. Run `Get-Item D:\dot-agents\global_rules.md` to confirm the canonical rules file exists
+2. Run `Get-ChildItem D:\dot-agents -Filter "AGENTS.md"` to list the root rules descriptor
 
 ```powershell
-# List global rules
-Get-ChildItem $env:USERPROFILE\.codeium\windsurf\global_rules -Filter "*.md"
+# Canonical global rules
+Get-Item D:\dot-agents\global_rules.md
+
+# Rules descriptor
+Get-ChildItem D:\dot-agents -Filter "AGENTS.md"
 ```
 
 ### 9. Check CLI Programs Inventory

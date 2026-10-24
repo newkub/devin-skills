@@ -3,7 +3,7 @@ name: update-references
 description: Update all related references when a file is edited, moved, or deleted
 argument-hint: "[scope]"
 related:
-  - use-related-skills
+  - update-agents-skills-global
   - search
   - deep-review
   - report
@@ -24,12 +24,11 @@ Use when:
 - Renaming a workflow or skill
 
 Covers:
-- Global workflows (`~/.codeium/windsurf/global_workflows/`)
-- Global skills (`%APPDATA%\devin\skills\` or `~/.codeium/windsurf/skills/`)
+- Global skills (`D:\dot-agents\skills\` or `%USERPROFILE%\.agents\skills\`)
 - Project codebase (source code, configs, docs)
 - `rules/` (ast-grep) at the repo root
 - `AGENTS.md` in each workspace
-- Workspace workflows (`.devin/workflows/`, `.windsurf/workflows/`)
+- Workspace workflows (`.devin/workflows/`, `.agents/workflows/`)
 
 ## Execute
 
@@ -58,7 +57,7 @@ Covers:
 3. Search the project codebase with `Grep` or `ast-grep`
 4. Search `rules/` at the repo root
 5. Search `AGENTS.md` of every workspace
-6. Search workspace workflows (`.devin/workflows/`, `.windsurf/workflows/`)
+6. Search workspace workflows (`.devin/workflows/`, `.agents/workflows/`)
 7. Search old file names, old paths, import statements, and workflow references
 
 ### 3. Update References
@@ -132,7 +131,7 @@ Verify correctness:
 - Verify that the code still works
 - Verify that there are no broken imports
 
-- Use /use-related-skills if needed
+- Use `/update-agents-skills-global` (`## Conventions → Related Skills`) if needed
 - Use /update-references if needed
 - Use /code-search if needed
 - Use /report if needed

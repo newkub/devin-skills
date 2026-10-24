@@ -17,6 +17,6 @@
 | `bun fmt` | built-in formatter on the Bun runtime — no install, Prettier-compatible output, reads `.prettierignore`/`.editorconfig`/`bunfig.toml [fmt]` (never `.prettierrc`); lint still needs Biome/ESLint | built in (Bun projects only) |
 | ESLint + Oxfmt | alternative lint/format pair when the project needs ESLint plugins — format with `vp fmt` (Oxfmt) or `bun fmt`; Prettier is not installed | `npm install -D eslint` + `/follow-tool-viteplus` or built-in `bun fmt` |
 | `vitest` | unit test runner | `npm install -D vitest` |
-| `tsc` (checkJs) | optional type checking of JS via JSDoc | `npm install -D typescript` |
+| `bun check` (checkJs) | optional type checking of JS via JSDoc — `bun check -p . --no-script` | built in (Bun ≥ 1.4) |
 | browserslist / `es-toolkit` | feature-support target and utility layer — per live check | project config / `npm install` |
 | `package.json` `engines` + `.nvmrc`/`mise.toml` | runtime pin — one source of truth | project files |

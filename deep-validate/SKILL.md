@@ -25,7 +25,7 @@ Validate in detail across many dimensions: correctness, type safety, runtime, se
 
 Use for validation that needs high thoroughness, covering every dimension of the system
 
-- If you need to verify after `/merge` or parallel work, see `references/post-merge-verify.md`
+- If you need to verify after merging subagent results or parallel work, see `references/post-merge-verify.md`
 - To validate tests use `/run-test`; to validate a review use `/deep-review`
 
 ## Execute

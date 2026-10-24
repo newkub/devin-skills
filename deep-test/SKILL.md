@@ -1,7 +1,7 @@
 ---
 name: deep-test
-description: Deep test every domain — suite setup, quick run path or deep workflow, all orchestrator
-argument-hint: "[domain|all|strategy|test-env] [scope] [target%]"
+description: Deep test every domain — quick run path or deep workflow, all orchestrator
+argument-hint: "[domain|all] [scope] [target%]"
 related:
   - check-correctness
   - run-test
@@ -23,13 +23,13 @@ related:
 
 ## Goal
 
-Run testing for any domain in one place — each domain has a `## Run Quick Path` (run the existing suite, or audit it statically in `test-correctness`) and numbered steps (deep workflow: detect → run → classify → report); `all` orchestrates every domain from real signals in fail-fast order (merged all `test-*` skills — there are no separate `test-*` skills anymore; merged the deleted `/check-test-correctness` as the `test-correctness` domain, and the deleted `/follow-test` as `references/strategy.md` + `workflows/setup-strategy/` + `workflows/config-test-env/` — suite setup lives here too, there is no separate test-strategy skill)
+Run testing for any domain in one place — each domain has a `## Run Quick Path` (run the existing suite, or audit it statically in `test-correctness`) and numbered steps (deep workflow: detect → run → classify → report); `all` orchestrates every domain from real signals in fail-fast order (merged all `test-*` skills — there are no separate `test-*` skills anymore; merged the deleted `/check-test-correctness` as the `test-correctness` domain; suite setup and test env moved to `/update-tests`)
 
 ## Scope
 
-Use when tests must run, a test domain must be analyzed deeply, or a suite must be built — unit, integration, e2e, api, cli, contract, component, visual, a11y, property, database, mobile, smoke, load, coverage, mutation, usage, website, test-correctness, plus strategy setup and the test environment
+Use when tests must run or a test domain must be analyzed deeply — unit, integration, e2e, api, cli, contract, component, visual, a11y, property, database, mobile, smoke, load, coverage, mutation, usage, website, test-correctness
 
-- Suite setup (strategy level, runner config, manifest scripts, directory layout, first specs) → `workflows/setup-strategy/` reading `references/strategy.md`; test env (env vars, fixtures, test db, CI) → `workflows/config-test-env/`; both are dispatched from the `### Workflows` table below
+- Suite setup (strategy level, runner config, scripts, `tests/<layer>/` layout, first specs) and the test env → `/update-tests` (`workflows/setup-strategy/`, `workflows/config-test-env/`); this skill consumes the suite, it never builds it
 - `/run-test [domain]` = thin dispatcher that routes here; the workflows live only in this skill (`references/<domain>.md`)
 - Findings-only audit without running the suites → `/review-test` (thin entry → `/deep-review` dimensions `tests` + `test-data-hygiene`)
 - Writing or restructuring test specs → `/update-tests`; improving the running suite (flaky, coverage gaps, suite speed) → `/improve tests` + `/deep-review` (dimension `tests`)
@@ -39,12 +39,9 @@ Use when tests must run, a test domain must be analyzed deeply, or a suite must 
 
 ### Workflows
 
-> Goal: dispatch setup work to its workflow — domain work continues at `### 1`
+> Goal: hand suite setup back to its owner — domain work continues at `### 1`
 
-| Topic/Argument | Workflow |
-|----------------|----------|
-| `strategy`, `setup`, `setup-test`, no test framework or no suite | `workflows/setup-strategy/SKILL.md` — level, runner config, scripts, `tests/<layer>/`, first specs; knowledge in `references/strategy.md` |
-| `test-env`, `env`, `fixtures`, `test-db`, `config-test-env` | `workflows/config-test-env/SKILL.md` — test env vars, fixtures/helpers, test db, CI test env |
+No test framework, no suite, or a broken level/runner/scripts/layout → `/update-tests strategy` (`workflows/setup-strategy/`); missing env vars, fixtures, test database, or CI test env → `/update-tests test-env` (`workflows/config-test-env/`). This skill only runs and analyzes a suite that exists.
 
 ### 1. Domain Workflows And Signals
 
@@ -72,7 +69,7 @@ Use when tests must run, a test domain must be analyzed deeply, or a suite must 
 | test-correctness | [references/test-correctness.md](references/test-correctness.md) | test files with assertions/mocks/snapshots, PR diff | assertions match the spec (not the implementation), vacuous/false-positive tests, mock drift — static audit, never runs the suite |
 | usage | [references/usage.md](references/usage.md) | README/USAGE code blocks, package scripts | every documented example really runs (pre-ship gate) |
 
-Every layer lives under `tests/` — `tests/unit`, `tests/integration`, `tests/e2e`, `tests/component` + `tests/fixtures`/`tests/helpers` (`references/strategy.md` `## 3. Directory Structure`); e2e is always `tests/e2e/`, never a second root
+Every layer lives under `tests/` — `tests/unit`, `tests/integration`, `tests/e2e`, `tests/component` + `tests/fixtures`/`tests/helpers` (layout SSOT: `/update-tests` `references/strategy.md` `## 3. Directory Structure`); e2e is always `tests/e2e/`, never a second root
 
 ### 2. Flow
 
@@ -91,7 +88,7 @@ Every layer lives under `tests/` — `tests/unit`, `tests/integration`, `tests/e
 > Goal: run only the domains a real signal justifies, cheapest failures first — never runs tests itself, never runs every type without a signal
 
 1. `/run-lint` + `/run-typecheck` first; fix those errors — they are not test failures
-2. Detect applicable domains from the signals table; no test framework or no suite → `workflows/setup-strategy/` first; no tests or incomplete coverage → `/update-tests`; record the chosen list + reasons
+2. Detect applicable domains from the signals table; no test framework or no suite → stop and hand off to `/update-tests strategy` first; no tests or incomplete coverage → `/update-tests`; record the chosen list + reasons
 3. Fail-fast order: unit → property → component → database/integration → api/cli/contract (per signals) → e2e → mobile → visual → a11y; load only with a perf signal; smoke as a post-deploy gate, not part of a suite run — record result/duration/failures per domain; the static `test-correctness` domain is never part of the run order — audit it separately (or as a pre-`/run-verify` gate)
 4. Validate + classify: `/deep-validate` the source and `/deep-review` the tests — wrong source → `/resolve-errors`, wrong test → `/update-tests`, unclear → report; never fix without evidence
 5. Fix per the classification and rerun; the same failure repeating ≥3 times → stop + report
@@ -110,11 +107,11 @@ Every layer lives under `tests/` — `tests/unit`, `tests/integration`, `tests/e
 
 ### 2. Boundaries
 
-- This skill runs and analyzes tests and stands up the suite; it does not author specs (`/update-tests`), not close coverage gaps or speed up a running suite (`/improve tests`); overall test quality → `/deep-review` (dimension `tests`), while the assertion-vs-spec audit is this skill's static `test-correctness` domain
+- This skill runs and analyzes an existing suite; it does not build the suite or author specs (`/update-tests`), not close coverage gaps or speed up a running suite (`/improve tests`); overall test quality → `/deep-review` (dimension `tests`), while the assertion-vs-spec audit is this skill's static `test-correctness` domain
 - General "is X correct?" questions across artifact types (docs claims, types, config, data) start at `/check-correctness`, which routes the tests domain here
 - Dispatcher only: `/run-test` forwards here — never duplicate domain workflows there
-- One workflow per domain, one setup workflow for the suite: `references/<domain>.md` and `references/strategy.md` are the SSOTs; other skills link to `/deep-test <domain>` / `/deep-test strategy` instead of restating them
-- Suite setup never restates a domain: `workflows/setup-strategy/` writes config, scripts, and layout, then hands specs to `/update-tests` and runs to the domains
+- One workflow per domain: `references/<domain>.md` is the only domain SSOT; other skills link to `/deep-test <domain>` instead of restating them
+- Suite setup and the test env live in `/update-tests` (`references/strategy.md`, `workflows/setup-strategy/`, `workflows/config-test-env/`); this skill never restates a domain and never writes a runner config, script, or layout
 - Browser tooling for website/e2e/visual/mobile: `/use-agent-browser` (default), `/use-chrome-devtools` to inspect a failure; authored suites → `/follow-tool-playwright`
 
 ## Subagents

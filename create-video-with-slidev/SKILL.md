@@ -24,7 +24,7 @@ Create a presentation video from a Slidev deck focused on visual interactive tra
 ## Scope
 
 - Create or enhance `slides.md` via `/follow-create-slide-slidev` — every slide must have motion (not a static deck)
-- Use the `slidev` MCP server (`bunx slidev mcp slides.md` — registered in `%APPDATA%\devin\mcp_config.json` via `/update-devin-global-mcp`) to inspect, edit, reorder, and navigate slides
+- Use the built-in `slidev` MCP server (`slidev mcp [entry]`, shipped since Slidev v52 — registered in `%APPDATA%\devin\mcp_config.json` via `/update-devin-global-mcp`) to inspect, edit, reorder, and navigate slides
 - Record the video with `/record-video-web-with-agents-browser` (agent-browser) while auto-advancing the deck to the end
 - Alternatives outside the main scope: advanced programmatic video (multi-track, effects) → use `/edit-video-with-remotion` or `/create-programatic-video-with-fframes` instead
 
@@ -51,10 +51,11 @@ Create a presentation video from a Slidev deck focused on visual interactive tra
 
 > Goal: the deck is correct and MCP-drivable before recording
 
-1. Check that the `slidev` server is in `%APPDATA%\devin\mcp_config.json` — if missing, run `/update-devin-global-mcp` to add `{ "command": "bunx", "args": ["slidev", "mcp", "slides.md"] }`
-2. Call `mcp_list_tools` on the `slidev` server to see the real tools (inspect/edit/reorder/navigate) — never guess tool names
-3. The stdio server operates on the `slides.md` in the cwd it launches in — if the deck lives elsewhere, pass the full path when calling tools, or use the HTTP transport `http://localhost:3030/__mcp` while the dev server runs
-4. Use MCP tools to check slide count, order, and click counts per slide → yields the click budget for recording
+1. Check that the `slidev` server is in `%APPDATA%\devin\mcp_config.json` — if missing or unpinned, run `/update-devin-global-mcp` with `{ "command": "bunx", "args": ["@slidev/cli@latest", "mcp", "slides.md"] }` (Node `>=22.12.0` is required by `@slidev/cli` 53)
+2. Call the server's tool list first — never guess tool names; the surface is `slidev-get-info`, `slidev-list-slides`, `slidev-get-slide`, `slidev-update-slide`, `slidev-insert-slide`, `slidev-remove-slide`, `slidev-move-slide`, `slidev-goto-slide`
+3. The stdio server resolves `slides.md` from the cwd it launches in — for a deck elsewhere, start it in that folder/pass the full path, or use the HTTP transport `http://localhost:3030/__mcp` while the dev server runs
+4. `slidev-goto-slide` exists only over HTTP — plan to drive navigation through `__mcp`, not stdio
+5. Use MCP tools to check slide count, order, and click counts per slide → yields the click budget for recording
 
 ### 4. Run Dev Server
 
@@ -98,9 +99,10 @@ Create a presentation video from a Slidev deck focused on visual interactive tra
 
 ### 2. MCP Usage
 
-- Always run `mcp_list_tools` first — the `slidev mcp` tool surface changes across versions
-- `slides.md` in the config args is relative — the stdio server binds to the cwd the agent launches in; for a deck in another project, use the HTTP `__mcp` or check the cwd first
-- Edit `slides.md` via MCP when possible (SSOT) — hand-edit only what MCP doesn't cover
+- Call the server's tool list first — never guess tool names; the surface is the 8 `slidev-*` tools (`get-info`, `list-slides`, `get-slide`, `update-slide`, `insert-slide`, `remove-slide`, `move-slide`, `goto-slide`)
+- The global stdio server runs `bunx @slidev/cli@latest mcp slides.md` — it resolves `slides.md` from its own cwd, so start it in the deck folder or pass the full path
+- `slidev-goto-slide` exists only over HTTP (`http://localhost:3030/__mcp`) while the dev server runs — navigation during recording needs that transport
+- Edit `slides.md` via MCP when possible (SSOT) — hand-edit only what MCP doesn't cover; `mcp: false` in the headmatter makes the HTTP endpoint answer `403`
 
 ### 3. Recording
 
@@ -119,6 +121,6 @@ Create a presentation video from a Slidev deck focused on visual interactive tra
 
 ## Expected Outcome
 
-- A `slides.md` where every slide has visual interactive transitions, verified via slidev MCP
+- A `slides.md` where every slide has visual interactive transitions, verified through the `slidev` MCP server (stdio for inspect/edit, HTTP `__mcp` for navigation)
 - A `.webm` video file (and `.mp4` if converted) capturing all motion beats in full
 - A report of output paths, duration, and transitions used

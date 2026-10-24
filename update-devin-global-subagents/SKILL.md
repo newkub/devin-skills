@@ -4,6 +4,7 @@ description: Create, update, and orchestrate global subagents via AGENT.md and j
 argument-hint: "[agent-name]"
 related:
   - update-devin
+  - update-agents-skills-global
   - review-dot-agents-global-and-fix
   - follow-agents-md
   - update-docs
@@ -90,7 +91,7 @@ See also: /follow-agents-md, /update-agents-md
 > Goal: split complex work into subtasks and run subagents by role in parallel, then merge and deliver
 
 1. Decompose the task into independent subtasks by layer (frontend, backend, qa, devops, security, architecture); each subtask has clear input, expected output, success criteria; order dependent subtasks
-2. Run `/list-dot-agents-global` to pick roles matching each subtask; a needed role that doesn't exist → `/use-related-skills` or create a new `AGENT.md` here
+2. Run `/list-dot-agents-global` to pick roles matching each subtask; a needed role that doesn't exist → `/update-agents-skills-global` (`## Conventions → Related Skills`) or create a new `AGENT.md` here
 3. Use `/use-subagents` to spawn subagents in parallel; pass complete context (task, constraints, files, expected output); one role per subagent, never overlapping/duplicate subtasks
 4. Merge every subagent's output into a single deliverable before finalizing (never ship one subagent's output as final); resolve conflicts with `/resolve-errors`; call out contradictory recommendations that were excluded
 5. Run `/deep-review then-fix` on the merged output; a subtask with a complex workflow → extra `/deep-review`; gaps → spawn more subagents

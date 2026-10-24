@@ -67,7 +67,7 @@ For projects that need functional programming with Effect-TS — pick the workfl
    - `skipLibCheck: true`
    - `module: "ESNext"`/`"Preserve"` + `moduleResolution: "bundler"` or `"nodenext"` per runtime
    - `target: "ES2022"` or newer
-3. (optional) Add the Effect LSP plugin in `compilerOptions.plugins`: `{ "name": "@effect/language-service" }` — must be installed per step 3 and the editor configured to use workspace TypeScript; with TypeScript `>= 7.0` use `@effect/tsgo` instead
+3. (optional) Add the Effect LSP plugin in `compilerOptions.plugins`: `{ "name": "@effect/language-service" }` — must be installed per step 3 and the editor configured to use workspace TypeScript
 
 ### 3. Install Effect Packages
 
@@ -80,7 +80,7 @@ For projects that need functional programming with Effect-TS — pick the workfl
 5. Run `bun add -D vitest@^3.2 @effect/vitest` for testing — `@effect/vitest@0.30.0` requires peer `vitest ^3.2.0`; if the project uses vitest 4/5, check peers first
 6. Run `bun add -D tstyche` for type-level tests (optional)
 7. Run `bun add @effect/cli` when building a CLI app, or `bun add @effect/experimental` for experimental APIs (optional)
-8. (optional) Run `bun add -D @effect/language-service` for the editor LSP plugin — Effect diagnostics/quickfixes such as `floatingEffect`, `missingStarInYieldEffectGen`, `missingEffectContext`, `runEffectInsideEffect`; in a monorepo install at the root + configure in the root `tsconfig.json`; with TypeScript `>= 7.0` use `@effect/tsgo` instead
+8. (optional) Run `bun add -D @effect/language-service` for the editor LSP plugin — Effect diagnostics/quickfixes such as `floatingEffect`, `missingStarInYieldEffectGen`, `missingEffectContext`, `runEffectInsideEffect`; in a monorepo install at the root + configure in the root `tsconfig.json`
 
 ### 4. Create Project Structure
 
@@ -194,7 +194,7 @@ For projects that need functional programming with Effect-TS — pick the workfl
 
 - Latest stable (verified 2026-09-16): `effect@3.22.2`, `@effect/platform@0.97.2`, `@effect/platform-bun@0.91.2`, `@effect/platform-node@0.108.2`, `@effect/vitest@0.30.0`
 - Effect v4 RC: `effect@rc` (`4.0.0-rc.115`, verified 2026-09-16) with major breaking changes: package consolidation (`effect/unstable/*`), `Context.Service` replaces `Context.Tag`/`Context.GenericTag`/`Effect.Service`, `Yieldable` types require `.asEffect()`, `Layer`/`Runtime` APIs changed
-- TypeScript latest: `7.0.2` (native/tsgo) — `effect` requires at least `5.4`; check compatibility with the project toolchain before use; editor LSP: `@effect/language-service` supports TS `< 7` only, with TS `>= 7` use `@effect/tsgo`
+- TypeScript latest: `7.0.2` (native compiler) — `effect` requires at least `5.4`; check compatibility with the project toolchain before use; editor LSP: `@effect/language-service`
 - Always check the version in `package.json` before choosing APIs
 
 - Use /follow-best-practice if needed

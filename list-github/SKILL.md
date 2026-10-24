@@ -4,8 +4,8 @@ description: List GitHub resources — branches, issues, PRs, projects, releases
 argument-hint: "[domain]"
 related:
   - all-github-repo
-  - list-all-github-issue
-  - list-all-github-pr
+  - list-github-issue
+  - list-github-pr
   - report
   - ask-me
 
@@ -25,11 +25,9 @@ Dispatch to the top-level skill for the GitHub resource to list — the parent o
 
 | Domain | Skill |
 |---|---|
-| `all-issue` | /list-all-github-issue — issues across all repos of personal + orgs |
-| `all-pr` | /list-all-github-pr — pull requests across all repos of personal + orgs |
 | `branch` | /list-github-branch — branches in a repo |
-| `issue` | /list-github-issue — issues with filters |
-| `pr` | /list-github-pr — pull requests with status |
+| `issue` | /list-github-issue — issues in one repo, or `--all` for personal + orgs |
+| `pr` | /list-github-pr — pull requests in one repo, or `--all` for personal + orgs |
 | `project` | /list-github-project — GitHub projects |
 | `release` | /list-github-release — releases |
 | `repo` | /list-github-repo — repositories |
@@ -37,7 +35,7 @@ Dispatch to the top-level skill for the GitHub resource to list — the parent o
 
 1. Identify the domain from the argument (e.g. `/list-github-pr`)
 2. When the domain is supported → call the skill from the Skill column in the table above and follow its flow
-3. The `all-*` domains are a cross-repo view of personal + orgs; other domains target a single repo
+3. `issue` and `pr` accept `--all` for a cross-repo view of personal + orgs; every other domain targets a single repo
 4. When the domain is missing or unknown → `/ask-me` to pick a domain
 
 ## Rules

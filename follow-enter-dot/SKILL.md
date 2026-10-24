@@ -16,6 +16,7 @@ related:
   - report-progress
   - report
   - save-to-todo-md
+  - use-decision-model
 
 ---
 
@@ -53,6 +54,7 @@ Choose by order of items 1-8 — the first item that matches the state wins
 6. If the context indicates a need for feature ideas or brainstorming (e.g. previous messages mention "ideas", "features", or the user asks open-ended questions about features) → run `/idea-features`
 7. If the context is unclear or needs an answer from the user → run `/ask-me`; but if the session is in `dont-ask-me` mode → run `/follow-your-suggestion` with a safe default instead
 8. If the user indicates a specific intent (e.g. ship, continue, commit, push, ask) → do what the user wants
+9. Only when two or more of the rules above genuinely tie, or the state is mixed → `/use-decision-model` (`choice` over the tied actions, `noul` for risk); the ordered rules still win in every non-tied case, and the model never clears a missing validation gate
 
 ### 3. Execute Action
 

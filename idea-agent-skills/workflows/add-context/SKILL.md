@@ -6,7 +6,6 @@ related:
   - update-agents-skills-global
   - list-dot-agents-global
   - check-agents-session
-  - use-related-skills
   - ask-me
 ---
 
@@ -38,7 +37,7 @@ Take context from a session, a user prompt, or learned information, then place i
 > Goal: find the best fit
 
 1. Run `/list-dot-agents-global skills` to see the current packages
-2. Run `/use-related-skills` to find adjacent skills
+2. Run `/update-agents-skills-global` (`## Conventions → Related Skills`) to find adjacent skills
 3. Search the repo case-insensitively for the topic
 4. Read the 2 to 4 most relevant `SKILL.md` files
 5. Compare `description`, `## Scope`, and `related` before deciding

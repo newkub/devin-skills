@@ -50,7 +50,7 @@ Not for reviewing work with no incident — use `/deep-review` instead
 2. Run `/analyze-root-cause-analysis` to build the causal graph
 3. Collect logs, traces, metrics, screenshots, error messages
 4. Collect decisions and communication within the team
-5. Inspect git history: `/follow-tool-git` or `/check-git-logs`
+5. Inspect git history: `/follow-tool-git` or `/git-file-history find`
 
 ### 4. Identify Contributing Factors
 

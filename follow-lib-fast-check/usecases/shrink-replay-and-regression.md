@@ -30,11 +30,17 @@ await fc.assert(fc.property(orderArb, totalIsFinite), {
 
 `endOnFailure: true` stops at the first failure instead of continuing to look for others, which keeps the replay fast and the output identical. Passing the `path` is what pins the specific value; without it the seed reproduces the run, not the counterexample.
 
-In CI, replay through the environment variable instead of editing the test:
+Replay from the test code — fast-check reads no `FAST_CHECK_*` environment variable, so a seed in CI only works if your setup file forwards it:
 
-```bash
-FAST_CHECK_SEED=1234567890 bun run test
+```ts
+await fc.assert(fc.property(orderArb, totalIsFinite), {
+  seed: Number(process.env.REPLAY_SEED ?? 0) || undefined,
+  path: process.env.REPLAY_PATH || undefined,
+  endOnFailure: true,
+});
 ```
+
+Keep the forwarded replay out of the default job: a seed that never changes stops the suite from exploring new inputs.
 
 ## 3. Force a known input while fixing
 

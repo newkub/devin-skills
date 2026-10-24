@@ -6,7 +6,7 @@ related:
   - delete
   - report
   - run-clean
-  - run-cleanup
+  - cleanup-artifact
 ---
 
 ## Goal
@@ -71,7 +71,7 @@ Find and remove empty directories — including nested empty trees — with a dr
 - Delete all-or-nothing per tree — never leave a parent weirdly half-empty from a partial delete
 - Windows: beware locked dirs — skip with a note instead of failing the whole batch
 - Use /run-clean if needed
-- Use /run-cleanup if needed
+- Use /cleanup-artifact if needed
 
 ## Expected Outcome
 

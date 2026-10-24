@@ -8,7 +8,7 @@ related:
   - resolve-errors
   - run-check
   - run-verify
-  - run-cleanup
+  - cleanup-artifact
 ---
 
 ## Goal
@@ -98,7 +98,7 @@ Use `run-clean` for tasks and workflows within its coverage (clean)
 - Use /resolve-errors if needed
 - Use /run-check if needed
 - Use /run-verify if needed
-- Use /run-cleanup if needed
+- Use /cleanup-artifact if needed
 
 ## Expected Outcome
 
